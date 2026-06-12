@@ -1,6 +1,6 @@
-# Template Galerij — 18 kant-en-klare websites
+# Template Galerij — 19 kant-en-klare websites
 
-Een verzameling van **18 complete, responsive website-templates**, elk met een eigen stijl — waaronder **8 premium designs** met volledige animatie-choreografie. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **19 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie en één **flagship** dat de beste features uit de hele galerij combineert. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -26,6 +26,7 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 16 | `templates/16-bouw/` | ★ ZZP Metselaar | Zwart/blauw/grijs blueprint-stijl, zelftekenende troffel-SVG, voor/na-slider, projectfilter |
 | 17 | `templates/17-koffie/` | ★ Koffiebranderij | Crème/karamel-huisstijl, stoom-animaties, brandgraad-meters, zelftekenende procestijdlijn, abonnement-toggle |
 | 18 | `templates/18-gym/` | ★ Boxing Gym | Zwart/acid-geel, knallende stapeltypografie, dubbele kinetische marquee, duotone-foto's, lesrooster-tabs met ARIA |
+| 19 | `templates/19-studio/` | ✦ **Flagship** — Studio Kaap | Combineert de sterkste features: preloader, custom cursor, scroll-gedreven manifest, bento-grid, 3D-tilt, voor/na-slider, tekenende tijdlijn, duotone-team, prijs-toggle, carrousel |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 
