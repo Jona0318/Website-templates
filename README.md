@@ -1,6 +1,6 @@
-# Template Galerij — 20 kant-en-klare websites
+# Template Galerij — 22 kant-en-klare websites
 
-Een verzameling van **20 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie en **twee flagships** die de beste features uit de hele galerij combineren: één donker (Studio Kaap) en één licht (Buitenplaats). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **22 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **twee signature-templates** met dieper uitgewerkte interactiviteit (Letterstudio en Museum). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -28,6 +28,8 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 18 | `templates/18-gym/` | ★ Boxing Gym | Zwart/acid-geel, knallende stapeltypografie, dubbele kinetische marquee, duotone-foto's, lesrooster-tabs met ARIA |
 | 19 | `templates/19-studio/` | ✦ **Flagship** — Studio Kaap | Combineert de sterkste features: preloader, scroll-gedreven manifest, bento-grid, 3D-tilt, voor/na-slider, tekenende tijdlijn, snelheidsreactieve marquee, FAQ-accordion, live studioklok, filmkorrel, duotone-team, prijs-toggle, carrousel |
 | 20 | `templates/20-buitenplaats/` | ✦ **Flagship** — Buitenplaats | De lichte, serif-gedreven tegenpool: curtain-reveal, boogmaskers, meeschuivende hover-previews bij diensten, projectfilter, schets-naar-tuin-slider, seizoenstijdlijn, groene duotones, FAQ, live klok, papierkorrel |
+| 21 | `templates/21-letterstudio/` | ✦ **Signature** — Letterstudio | Paars/lila (#6260ff · #e4e4ff) interactief specimen-lab: bewerkbaar proefwoord + sliders, scroll-morfend variabel font met live wght/opsz-uitlezing, glyph-raster met reuze-preview, licentie-toggle, vier pure CSS-showcases (geen stockfoto's) |
+| 22 | `templates/22-museum/` | ✦ **Signature** — Museum KADE | Blauw/zachtroze (#3447aa · #fbeaeb): live open-status berekend uit openingstijden, sleepbare collectiestrook met scroll-snap, volwaardige lightbox (focus-trap, Esc, pijlen), agenda, tarieven, vrienden-tiers, tickets-banner |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 

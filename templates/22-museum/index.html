@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="nl" class="js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KADE — museum voor hedendaagse kunst, Dordrecht</title>
+<meta name="description" content="KADE is een museum voor hedendaagse kunst in een verbouwd pakhuis aan het water in Dordrecht. Tentoonstellingen, collectie, rondleidingen en Late Nights — vijf minuten lopen van het station.">
+<meta name="theme-color" content="#3447aa">
+<meta property="og:title" content="KADE — museum voor hedendaagse kunst, Dordrecht">
+<meta property="og:description" content="Hedendaagse kunst in een pakhuis aan het water. Nu te zien: Waterlijnen van Mara Veldkamp.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+  /* Opt-in voor animaties: alleen wanneer reduced-motion uit staat.
+     Zonder JS blijft alles zichtbaar (html.no-anim = harde eindstaten). */
+  (function () {
+    var h = document.documentElement;
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        h.classList.remove('no-anim');
+        h.classList.add('anim-ok');
+      }
+    } catch (e) { /* oude browsers: alles direct zichtbaar */ }
+  })();
+</script>
+<style>
+/* ============================================================
+   KADE — museum voor hedendaagse kunst · Dordrecht
+   flagship one-page template · zachtroze canvas, blauwe vlakken
+   ============================================================ */
+:root{
+  --blauw:#3447aa;
+  --roze:#fbeaeb;
+  --roze-2:#f5dcde;
+  --ink:#191b2b;
+  --blauw-diep:#273683;
+  --blauw-zacht:rgba(52,71,170,.12);
+  --blauw-lijn:rgba(52,71,170,.22);
+  --ink-zacht:rgba(25,27,43,.62);
+  --lijn:rgba(25,27,43,.14);
+  --wit-lijn:rgba(251,234,235,.22);
+  --wit-zacht:rgba(251,234,235,.72);
+  --open-groen:#1e9d83;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-hard:cubic-bezier(.7,0,.2,1);
+  --font-display:"Syne","Helvetica Neue",Arial,sans-serif;
+  --font-serif:"Newsreader",Georgia,serif;
+  --font-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --header-h:76px;
+  --gutter:clamp(1.25rem,4.5vw,5rem);
+  --maxw:1460px;
+  --radius:18px;
+}
+@property --ang{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 14px);-webkit-text-size-adjust:100%}
+html.no-anim{scroll-behavior:auto}
+body{
+  background:var(--roze);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+table{border-collapse:collapse;width:100%}
+::selection{background:var(--blauw);color:#fff}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--roze-2)}
+::-webkit-scrollbar-thumb{background:var(--blauw);border-radius:99px;border:3px solid var(--roze-2)}
+::-webkit-scrollbar-thumb:hover{background:var(--blauw-diep)}
+:focus-visible{outline:2px solid var(--blauw);outline-offset:3px;border-radius:3px}
+
+/* korrel — heel subtiele textuur over de hele pagina */
+body::after{
+  content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(4.5rem,9vw,8rem)}
+.vlak-2{background:var(--roze-2)}
+.vlak-blauw{background:var(--blauw);color:var(--roze)}
+.vlak-diep{background:var(--blauw-diep);color:var(--roze)}
+.vlak-ink{background:var(--ink);color:var(--roze)}
+.muted{color:var(--ink-zacht)}
+.vlak-blauw .muted,.vlak-diep .muted,.vlak-ink .muted{color:var(--wit-zacht)}
+
+/* ---------- typografie helpers ---------- */
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.04;letter-spacing:-.015em}
+.serif{font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:0}
+.mono{font-family:var(--font-mono)}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:400;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--blauw);
+  display:inline-flex;align-items:center;gap:.6rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--blauw)}
+.vlak-blauw .eyebrow,.vlak-diep .eyebrow,.vlak-ink .eyebrow{color:var(--roze-2)}
+.vlak-blauw .eyebrow::before,.vlak-diep .eyebrow::before,.vlak-ink .eyebrow::before{background:var(--roze-2)}
+.section-head{max-width:48rem;margin-bottom:clamp(2.2rem,5vw,3.8rem)}
+.section-head h2{font-size:clamp(2rem,5vw,3.4rem);margin:1rem 0 .9rem}
+.section-head h2 .serif{color:var(--blauw)}
+.vlak-blauw .section-head h2 .serif,.vlak-diep .section-head h2 .serif{color:var(--roze-2)}
+.section-head p{color:var(--ink-zacht);font-size:clamp(1rem,1.4vw,1.1rem);max-width:44rem}
+
+/* ---------- knoppen ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:1rem 1.6rem;border-radius:99px;border:1px solid var(--blauw-lijn);
+  transition:transform .5s var(--ease),background-color .35s,color .35s,border-color .35s;
+  will-change:transform;
+}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-blauw{background:var(--blauw);color:#fff;border-color:var(--blauw)}
+.btn-blauw:hover{background:var(--blauw-diep);border-color:var(--blauw-diep)}
+.btn-licht{background:var(--roze);color:var(--blauw);border-color:var(--roze)}
+.btn-licht:hover{background:#fff;border-color:#fff}
+.btn-ghost{color:var(--ink)}
+.btn-ghost:hover{border-color:var(--blauw);color:var(--blauw)}
+.vlak-blauw .btn-ghost,.vlak-diep .btn-ghost{color:var(--roze);border-color:var(--wit-lijn)}
+.vlak-blauw .btn-ghost:hover,.vlak-diep .btn-ghost:hover{border-color:var(--roze);color:#fff}
+
+/* skip link */
+.skip-link{
+  position:fixed;top:0;left:0;z-index:400;
+  background:var(--blauw);color:#fff;padding:.8rem 1.3rem;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  transform:translateY(-120%);transition:transform .3s var(--ease);
+}
+.skip-link:focus{transform:translateY(0)}
+
+/* ---------- open-status pil + pulserende stip ---------- */
+.status-pil{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;
+  border:1px solid var(--blauw-lijn);border-radius:99px;padding:.5rem .95rem;
+  color:var(--ink);background:rgba(255,255,255,.4);
+  transition:border-color .3s,background-color .3s;
+}
+.status-pil:hover{border-color:var(--blauw)}
+.status-stip{width:8px;height:8px;border-radius:50%;background:var(--ink-zacht);position:relative;flex:none;opacity:.55}
+.status-pil.is-open .status-stip,.bezoek-status.is-open .status-stip{background:var(--open-groen);opacity:1}
+.status-stip::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit}
+html.anim-ok .is-open .status-stip::after{animation:pulse 2s var(--ease) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.7);opacity:0}}
+
+/* ============================================================
+   HEADER — auto-hide, solid bij scroll, scroll-progress
+   ============================================================ */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:200;
+  background:linear-gradient(90deg,var(--blauw),var(--blauw-diep));
+  transform:scaleX(0);transform-origin:left center;
+}
+html.no-anim .scroll-progress{display:none}
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  transition:transform .5s var(--ease),background-color .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+.header.is-hidden{transform:translateY(-101%)}
+.header.is-solid{
+  background:rgba(251,234,235,.84);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom-color:var(--lijn);
+}
+.header-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:var(--header-h)}
+.brand{display:inline-flex;align-items:baseline;gap:.6rem;font-family:var(--font-display);font-weight:800;font-size:1.35rem;letter-spacing:.02em;color:var(--ink)}
+.brand .brand-blok{width:15px;height:15px;background:var(--blauw);flex:none;transform:translateY(1px);border-radius:3px}
+.brand small{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-zacht);font-weight:400}
+.header-nav{display:flex;align-items:center;gap:1.6rem}
+.header-links{display:flex;gap:1.6rem}
+.header-links a{font-size:.86rem;color:var(--ink-zacht);transition:color .3s}
+.header-links a:hover{color:var(--blauw)}
+.header-actions{display:flex;align-items:center;gap:.8rem}
+.menu-toggle{
+  display:none;width:46px;height:46px;border:1px solid var(--blauw-lijn);border-radius:50%;
+  align-items:center;justify-content:center;flex-direction:column;gap:5px;
+}
+.menu-toggle span{display:block;width:18px;height:1.5px;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
+@media (max-width:1100px){
+  .header-links{display:none}
+  .menu-toggle{display:inline-flex}
+}
+@media (max-width:560px){
+  .header .status-pil{display:none}
+  .brand small{display:none}
+}
+
+/* ---------- fullscreen overlay-menu (blauw vlak) ---------- */
+.menu-overlay{
+  position:fixed;inset:0;z-index:160;
+  background:var(--blauw);color:var(--roze);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--header-h) + 1.5rem) var(--gutter) var(--gutter);
+  opacity:0;visibility:hidden;
+  transition:opacity .55s var(--ease),visibility 0s linear .55s;
+}
+.menu-overlay.is-open{opacity:1;visibility:visible;transition:opacity .55s var(--ease)}
+.menu-overlay__close{
+  position:absolute;top:calc((var(--header-h) - 46px)/2);right:var(--gutter);
+  width:46px;height:46px;border:1px solid var(--wit-lijn);border-radius:50%;
+  display:grid;place-items:center;color:var(--roze);
+}
+.menu-overlay__close::before,.menu-overlay__close::after{content:"";position:absolute;width:18px;height:1.5px;background:currentColor}
+.menu-overlay__close::before{transform:rotate(45deg)}
+.menu-overlay__close::after{transform:rotate(-45deg)}
+.menu-list li{overflow:hidden;padding-block:.12rem}
+.menu-list a{
+  display:inline-flex;align-items:baseline;gap:1rem;
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2.1rem,7.5vw,4.2rem);line-height:1.16;letter-spacing:-.01em;color:var(--roze);
+  transform:translateY(112%);transition:transform .85s var(--ease),color .3s;
+}
+.menu-list a .idx{font-family:var(--font-mono);font-size:.78rem;font-weight:400;color:var(--roze-2);letter-spacing:.1em;opacity:.7}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(1) a{transition-delay:.07s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(2) a{transition-delay:.13s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(3) a{transition-delay:.19s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(4) a{transition-delay:.25s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(5) a{transition-delay:.31s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(6) a{transition-delay:.37s}
+.menu-overlay.is-open .menu-list a{transform:translateY(0)}
+.menu-list a:hover{color:#fff}
+.menu-foot{margin-top:clamp(1.8rem,5vh,3.2rem);display:flex;gap:1.8rem;flex-wrap:wrap;opacity:0;transition:opacity .8s var(--ease) .45s}
+.menu-overlay.is-open .menu-foot{opacity:1}
+.menu-foot a,.menu-foot span{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;color:var(--roze-2)}
+.menu-foot a:hover{color:#fff}
+/* zonder animatie: menu-links direct zichtbaar zodra het menu opent */
+html.no-anim .menu-list a{transform:none}
+html.no-anim .menu-foot{opacity:1}
+
+/* ============================================================
+   HERO — groot blauw paneel op roze canvas
+   ============================================================ */
+.hero{padding-top:calc(var(--header-h) + clamp(1.2rem,3vw,2.4rem));padding-bottom:clamp(1.2rem,3vw,2.4rem)}
+.hero-paneel{
+  position:relative;background:var(--blauw);color:var(--roze);
+  border-radius:calc(var(--radius) + 8px);overflow:hidden;
+  padding:clamp(2rem,5vw,4.5rem);
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(2rem,4vw,3.5rem);align-items:end;
+  min-height:min(82svh,860px);
+}
+/* zachte gloed in het paneel */
+.hero-paneel::before{
+  content:"";position:absolute;top:-18%;right:-10%;width:55%;aspect-ratio:1;
+  background:radial-gradient(closest-side,rgba(251,234,235,.14),transparent 70%);
+  pointer-events:none;
+}
+.hero-tekst{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end}
+.hero .eyebrow{margin-bottom:1.3rem;color:var(--roze-2)}
+.hero .eyebrow::before{background:var(--roze-2)}
+.hero h1{font-size:clamp(2.7rem,7.2vw,5.8rem);font-weight:800;color:#fff;max-width:14ch}
+.hero h1 .serif{color:var(--roze-2);font-weight:500}
+.reveal-regel{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.08em}
+.reveal-regel__inner{display:inline-block}
+html.anim-ok .reveal-regel__inner{transform:translateY(112%);transition:transform .95s var(--ease)}
+html.anim-ok.loaded .hero h1 .reveal-regel:nth-child(1) .reveal-regel__inner{transition-delay:.25s}
+html.anim-ok.loaded .hero h1 .reveal-regel:nth-child(2) .reveal-regel__inner{transition-delay:.38s}
+html.anim-ok.loaded .reveal-regel__inner{transform:translateY(0)}
+.hero-kunstenaar{margin-top:1.4rem;font-size:clamp(1rem,1.5vw,1.15rem);color:var(--roze-2)}
+.hero-kunstenaar strong{color:#fff;font-weight:600}
+.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.8rem}
+html.anim-ok .hero .eyebrow,html.anim-ok .hero-kunstenaar,html.anim-ok .hero-cta{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+}
+html.anim-ok.loaded .hero .eyebrow{transition-delay:.15s;opacity:1;transform:none}
+html.anim-ok.loaded .hero-kunstenaar{transition-delay:.6s;opacity:1;transform:none}
+html.anim-ok.loaded .hero-cta{transition-delay:.75s;opacity:1;transform:none}
+
+/* hero-kunstwerk: clip-reveal op de BINNENSTE wrapper, niet op het kader zelf */
+.hero-art{position:relative;border-radius:var(--radius);min-height:380px;align-self:stretch}
+.hero-art .clip-wrap{position:absolute;inset:0;border-radius:var(--radius);overflow:hidden}
+html.anim-ok .hero-art .clip-wrap{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease) .2s}
+html.anim-ok.loaded .hero-art .clip-wrap{clip-path:inset(0 0 0 0)}
+.hero-art img{position:absolute;inset:-4% -3%;width:106%;height:108%;object-fit:cover}
+html.anim-ok .hero-art img{animation:kenburns 30s ease-in-out 1.5s infinite alternate}
+@keyframes kenburns{from{transform:scale(1.01) translate(0,0)}to{transform:scale(1.1) translate(-1.4%,-1.8%)}}
+.hero-art-cap{
+  position:absolute;left:1rem;bottom:1rem;z-index:3;
+  background:rgba(25,27,43,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--roze);border-radius:10px;padding:.7rem 1rem;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;line-height:1.7;
+}
+.hero-art-cap strong{display:block;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+html.anim-ok .hero-art-cap{opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease) 1.1s,transform .8s var(--ease) 1.1s}
+html.anim-ok.loaded .hero-art-cap{opacity:1;transform:none}
+.hero-onder{
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  padding:1.3rem .4rem 0;
+}
+.hero-onder .mono{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-zacht)}
+@media (max-width:1100px){
+  .hero-paneel{grid-template-columns:1fr;align-items:start}
+  .hero-art{min-height:320px;order:-1}
+  .hero-art .clip-wrap,.hero-art img{position:absolute}
+  .hero-art{aspect-ratio:16/10;min-height:0}
+}
+@media (max-width:560px){
+  .hero-paneel{padding:1.4rem;min-height:0}
+  .hero-art{aspect-ratio:4/3}
+}
+
+/* ============================================================
+   reveal-systeem — één IntersectionObserver, --d als vertraging
+   ============================================================ */
+html.anim-ok [data-rv]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok [data-rv].in-view{opacity:1;transform:none}
+/* clip-variant: de wrapper IN het geobserveerde element krijgt de clip */
+html.anim-ok [data-rv="clip"]{opacity:1;transform:none;transition:none}
+html.anim-ok [data-rv="clip"] .clip-inner{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok [data-rv="clip"].in-view .clip-inner{clip-path:inset(0 0 0 0)}
+
+/* ============================================================
+   NU TE ZIEN — drie tentoonstellingskaarten
+   ============================================================ */
+.expo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.8rem)}
+@media (max-width:1100px){.expo-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:820px){.expo-grid{grid-template-columns:1fr;max-width:560px}}
+.expo-kaart{
+  position:relative;background:#fff;border:1px solid var(--lijn);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s;
+}
+.expo-kaart:hover{transform:translateY(-5px);border-color:var(--blauw-lijn);box-shadow:0 26px 50px -28px rgba(39,54,131,.35)}
+.expo-datum{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.85rem 1.3rem;border-bottom:1px solid var(--lijn);
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blauw);
+}
+.expo-datum .zaal{color:var(--ink-zacht)}
+.expo-beeld{position:relative;overflow:hidden;aspect-ratio:4/3}
+.expo-beeld .clip-inner{position:absolute;inset:0;overflow:hidden}
+.expo-beeld img{
+  width:100%;height:100%;object-fit:cover;
+  filter:sepia(.45) saturate(.65) contrast(1.02);
+  transition:filter .7s var(--ease),transform .9s var(--ease);
+}
+.expo-kaart:hover .expo-beeld img{filter:none;transform:scale(1.04)}
+.expo-cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:1.6rem 1.3rem .9rem;color:var(--roze);
+  background:linear-gradient(0deg,rgba(25,27,43,.85),transparent);
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  transform:translateY(30%);opacity:0;transition:transform .5s var(--ease),opacity .5s var(--ease);
+}
+.expo-kaart:hover .expo-cap{transform:translateY(0);opacity:1}
+html.no-anim .expo-cap{transform:none;opacity:1}
+.expo-body{padding:1.4rem 1.3rem 1.6rem;display:flex;flex-direction:column;flex:1}
+.expo-body h3{font-size:clamp(1.3rem,2vw,1.6rem);font-weight:700}
+.expo-body .sub{font-family:var(--font-serif);font-style:italic;font-size:1.05rem;color:var(--blauw);margin-top:.3rem}
+.expo-body p{color:var(--ink-zacht);font-size:.92rem;margin-top:.8rem;flex:1}
+.expo-link{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blauw);
+  border-bottom:1px solid var(--blauw);padding-bottom:.25rem;align-self:flex-start;transition:gap .3s;
+}
+.expo-link:hover{gap:.9rem;color:var(--blauw-diep)}
+.expo-badge{
+  position:absolute;top:14px;left:14px;z-index:3;
+  background:var(--blauw);color:#fff;border-radius:99px;padding:.4rem .85rem;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+}
+
+/* ============================================================
+   COLLECTIE — horizontale sleepbare strook + lightbox
+   ============================================================ */
+.collectie{overflow:hidden}
+.collectie-kop{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.strip-knoppen{display:flex;gap:.7rem}
+.strip-knop{
+  width:50px;height:50px;border:1px solid var(--blauw-lijn);border-radius:50%;
+  display:grid;place-items:center;color:var(--blauw);
+  transition:background-color .3s,color .3s,border-color .3s,opacity .3s;
+}
+.strip-knop:hover{background:var(--blauw);color:#fff;border-color:var(--blauw)}
+.strip-knop:disabled{opacity:.25;pointer-events:none}
+.strip-knop svg{width:17px;height:17px}
+/* de strook steekt rechts uit het raster, maar body scrolt nooit mee */
+.strip-wrap{margin-top:clamp(2rem,4vw,3rem)}
+.strip{
+  display:flex;gap:clamp(14px,2vw,28px);
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:6px max(var(--gutter),calc((100vw - var(--maxw))/2 + var(--gutter))) 26px;
+  cursor:grab;
+  scrollbar-width:thin;scrollbar-color:var(--blauw) transparent;
+}
+.strip.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.strip.is-dragging *{pointer-events:none}
+.strip::-webkit-scrollbar{height:3px}
+.strip::-webkit-scrollbar-track{background:rgba(52,71,170,.12)}
+.strip::-webkit-scrollbar-thumb{background:var(--blauw)}
+.werk{flex:0 0 auto;width:min(66vw,360px);scroll-snap-align:start}
+.werk-link{display:block}
+.werk-beeld{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  aspect-ratio:3/4;background:var(--roze-2);border:1px solid var(--lijn);
+}
+.werk-beeld img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.werk-link:hover .werk-beeld img,.werk-link:focus-visible .werk-beeld img{transform:scale(1.05)}
+.werk-beeld::after{
+  content:"+";position:absolute;right:12px;bottom:12px;width:38px;height:38px;
+  display:grid;place-items:center;border-radius:50%;
+  background:rgba(251,234,235,.9);color:var(--blauw);font-size:1.3rem;font-weight:500;
+  opacity:0;transform:scale(.8);transition:opacity .35s var(--ease),transform .35s var(--ease);
+}
+.werk-link:hover .werk-beeld::after,.werk-link:focus-visible .werk-beeld::after{opacity:1;transform:scale(1)}
+.werk-cap{
+  display:block;margin-top:.9rem;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;color:var(--ink-zacht);line-height:1.7;
+}
+.werk-cap strong{display:block;color:var(--ink);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+/* ---------- lightbox (volledige a11y) ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:300;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(1rem,4vw,3rem);
+  background:rgba(25,27,43,.94);
+  opacity:0;visibility:hidden;
+  transition:opacity .35s var(--ease),visibility 0s linear .35s;
+}
+.lightbox.is-open{opacity:1;visibility:visible;transition:opacity .35s var(--ease)}
+.lightbox__figure{
+  display:flex;flex-direction:column;align-items:center;gap:1.1rem;
+  max-width:min(90vw,1200px);
+  transform:scale(.95);transition:transform .35s var(--ease);
+}
+.lightbox.is-open .lightbox__figure{transform:none}
+.lightbox__img{
+  max-width:100%;max-height:76vh;width:auto;height:auto;object-fit:contain;
+  border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.5);
+  transition:opacity .25s var(--ease);
+}
+.lightbox__img.is-swapping{opacity:0}
+.lightbox__caption{
+  display:flex;align-items:baseline;gap:1.6rem;flex-wrap:wrap;justify-content:center;
+  color:rgba(251,234,235,.85);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;text-align:center;
+}
+.lightbox__count{color:rgba(251,234,235,.45);letter-spacing:.14em}
+.lightbox__close,.lightbox__nav{
+  position:absolute;display:grid;place-items:center;
+  width:52px;height:52px;border-radius:50%;
+  color:rgba(251,234,235,.85);
+  transition:color .3s var(--ease),transform .3s var(--ease);
+}
+.lightbox__close:hover,.lightbox__nav:hover{color:#fff}
+.lightbox__close:focus-visible,.lightbox__nav:focus-visible{outline:2px solid var(--roze);outline-offset:4px}
+.lightbox__close{top:clamp(.75rem,2.5vw,1.75rem);right:clamp(.75rem,2.5vw,1.75rem);font-size:2.2rem;line-height:1;font-weight:300}
+.lightbox__close:hover{transform:rotate(90deg)}
+.lightbox__nav{top:50%;margin-top:-26px;font-size:1.75rem}
+.lightbox__nav[hidden]{display:none}
+.lightbox__prev{left:clamp(.25rem,2vw,1.5rem)}
+.lightbox__next{right:clamp(.25rem,2vw,1.5rem)}
+.lightbox__nav:hover.lightbox__prev{transform:translateX(-3px)}
+.lightbox__nav:hover.lightbox__next{transform:translateX(3px)}
+body.lightbox-open{overflow:hidden}
+
+/* ============================================================
+   AGENDA — rijen met hover-indent en blauwe balk
+   ============================================================ */
+.agenda-lijst{border-top:1px solid var(--lijn)}
+.agenda-rij{
+  position:relative;display:grid;
+  grid-template-columns:96px minmax(0,1fr) auto auto;
+  gap:clamp(1rem,2.5vw,2.4rem);align-items:center;
+  padding:1.35rem .4rem;border-bottom:1px solid var(--lijn);
+  transition:padding-left .45s var(--ease),background-color .35s;
+}
+.agenda-rij::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:2px;
+  background:var(--blauw);transform:scaleY(0);transform-origin:center;
+  transition:transform .45s var(--ease);
+}
+.agenda-rij:hover{padding-left:1.4rem;background:rgba(255,255,255,.45)}
+.agenda-rij:hover::before{transform:scaleY(1)}
+.agenda-datum{font-family:var(--font-mono);line-height:1.35}
+.agenda-datum .dag{display:block;font-size:1.15rem;font-weight:700;color:var(--blauw)}
+.agenda-datum .mnd{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-zacht)}
+.agenda-titel h3{font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:700}
+.agenda-titel .soort{
+  display:inline-block;margin-top:.35rem;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blauw);border:1px solid var(--blauw-lijn);border-radius:99px;padding:.25rem .65rem;
+}
+.agenda-tijd{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;color:var(--ink-zacht);white-space:nowrap}
+.agenda-pijl{color:var(--blauw);transition:transform .35s var(--ease)}
+.agenda-pijl svg{width:18px;height:18px}
+.agenda-rij:hover .agenda-pijl{transform:translateX(5px)}
+@media (max-width:820px){
+  .agenda-rij{grid-template-columns:72px minmax(0,1fr) auto}
+  .agenda-pijl{display:none}
+}
+@media (max-width:560px){
+  .agenda-rij{grid-template-columns:60px minmax(0,1fr)}
+  .agenda-tijd{grid-column:2;justify-self:start}
+}
+
+/* ============================================================
+   MANIFEST — scroll-gedreven woord-oplichting op diepblauw
+   ============================================================ */
+.manifest{position:relative;overflow:hidden}
+.manifest::before{
+  content:"";position:absolute;top:-30%;left:-12%;width:48%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(251,234,235,.08),transparent 70%);pointer-events:none;
+}
+.manifest-text{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.6rem,4.2vw,3rem);line-height:1.3;letter-spacing:-.01em;
+  max-width:26ch;color:#fff;
+}
+.manifest-text .w{color:rgba(251,234,235,.22);transition:color .4s var(--ease)}
+.manifest-text .w.lit{color:#fff}
+.manifest-text .w.accent.lit{color:var(--roze-2)}
+html.no-anim .manifest-text .w{color:#fff}
+html.no-anim .manifest-text .w.accent{color:var(--roze-2)}
+.manifest-sign{margin-top:2.2rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wit-zacht)}
+
+/* ============================================================
+   BEZOEK — openingstijden, tarieven, adres, kaart-blok
+   ============================================================ */
+.bezoek-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,4vw,3.5rem);align-items:start}
+@media (max-width:820px){.bezoek-grid{grid-template-columns:1fr}}
+.bezoek-blok{background:#fff;border:1px solid var(--lijn);border-radius:var(--radius);padding:clamp(1.4rem,2.6vw,2.2rem)}
+.bezoek-blok + .bezoek-blok{margin-top:clamp(1.1rem,2vw,1.6rem)}
+.bezoek-blok h3{font-size:1.25rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem}
+.bezoek-blok h3 .blokje{width:11px;height:11px;background:var(--blauw);border-radius:3px;flex:none}
+.bezoek-status{
+  display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;
+  font-family:var(--font-mono);font-size:.74rem;letter-spacing:.05em;
+  background:var(--blauw-zacht);border-radius:10px;padding:.75rem 1rem;color:var(--ink);
+}
+.uren-tabel th,.uren-tabel td,.tarief-tabel th,.tarief-tabel td{
+  text-align:left;padding:.65rem .2rem;border-bottom:1px solid var(--lijn);
+  font-size:.92rem;font-weight:400;vertical-align:baseline;
+}
+.uren-tabel tr:last-child td,.uren-tabel tr:last-child th,
+.tarief-tabel tr:last-child td,.tarief-tabel tr:last-child th{border-bottom:0}
+.uren-tabel td:last-child,.tarief-tabel td:last-child{text-align:right;font-family:var(--font-mono);font-size:.8rem;letter-spacing:.04em}
+.uren-tabel .vandaag th,.uren-tabel .vandaag td{color:var(--blauw);font-weight:600}
+.uren-tabel .dicht td{color:var(--ink-zacht)}
+.tarief-tabel td:last-child{color:var(--blauw)}
+.bezoek-adres p{color:var(--ink-zacht);font-size:.95rem}
+.bezoek-adres .adres-regel{font-family:var(--font-mono);font-size:.82rem;letter-spacing:.04em;color:var(--ink);line-height:1.9;margin-bottom:.9rem}
+.bezoek-ov{display:flex;flex-direction:column;gap:.7rem;margin-top:1.1rem}
+.bezoek-ov li{display:flex;gap:.7rem;align-items:baseline;color:var(--ink-zacht);font-size:.92rem}
+.bezoek-ov li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blauw);flex:none;transform:translateY(-1px)}
+/* gestileerd kaart-blok — puur CSS, geen embed */
+.kaart-blok{
+  position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--blauw-lijn);
+  aspect-ratio:16/9;margin-top:1.3rem;
+  background:
+    radial-gradient(circle at 62% 44%,rgba(52,71,170,.16),transparent 26%),
+    linear-gradient(115deg,transparent 0 54%,rgba(52,71,170,.16) 54% 60%,transparent 60%),
+    repeating-linear-gradient(0deg,transparent 0 34px,rgba(52,71,170,.08) 34px 35px),
+    repeating-linear-gradient(90deg,transparent 0 34px,rgba(52,71,170,.08) 34px 35px),
+    var(--roze-2);
+}
+.kaart-blok .water{
+  position:absolute;left:-5%;right:-5%;bottom:-26%;height:55%;
+  background:rgba(52,71,170,.22);border-radius:50% 50% 0 0/70% 70% 0 0;transform:rotate(-3deg);
+}
+.kaart-pin{
+  position:absolute;left:58%;top:40%;width:18px;height:18px;border-radius:50%;
+  background:var(--blauw);border:3px solid #fff;box-shadow:0 6px 18px -4px rgba(39,54,131,.5);
+}
+.kaart-pin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid var(--blauw);opacity:.5}
+html.anim-ok .kaart-pin::after{animation:pulse 2.4s var(--ease) infinite}
+.kaart-label{
+  position:absolute;left:58%;top:40%;transform:translate(16px,-50%);
+  background:#fff;border:1px solid var(--lijn);border-radius:8px;padding:.4rem .7rem;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blauw);white-space:nowrap;
+}
+
+/* ============================================================
+   TICKETS — vol blauw vlak met drijvende cirkels
+   ============================================================ */
+.tickets{position:relative;overflow:hidden;text-align:center}
+.tickets .bol{
+  position:absolute;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(251,234,235,.16),transparent 72%);
+}
+.tickets .bol-1{width:46vw;max-width:560px;aspect-ratio:1;top:-22%;left:-10%}
+.tickets .bol-2{width:36vw;max-width:460px;aspect-ratio:1;bottom:-30%;right:-6%}
+.tickets .bol-3{width:22vw;max-width:300px;aspect-ratio:1;top:14%;right:18%}
+html.anim-ok .tickets .bol{animation:zweef 16s ease-in-out infinite alternate}
+html.anim-ok .tickets .bol-2{animation-duration:20s;animation-delay:-6s}
+html.anim-ok .tickets .bol-3{animation-duration:13s;animation-delay:-3s}
+@keyframes zweef{from{transform:translate(0,0) scale(1)}to{transform:translate(4%,6%) scale(1.08)}}
+.tickets-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1.6rem}
+.tickets h2{font-size:clamp(2.2rem,6.5vw,4.8rem);font-weight:800;color:#fff;max-width:18ch}
+.tickets h2 .serif{color:var(--roze-2);font-weight:500}
+.tickets .vanaf{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--roze-2)}
+.tickets .vanaf strong{color:#fff;font-size:1.05rem;letter-spacing:.06em}
+.tickets small{font-size:.8rem;color:var(--wit-zacht);max-width:42ch}
+
+/* ============================================================
+   VRIENDEN — drie membership-kaarten
+   ============================================================ */
+.vrienden-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.vrienden-grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+.vriend-kaart{
+  position:relative;background:#fff;border:1px solid var(--lijn);border-radius:20px;
+  padding:clamp(1.6rem,2.6vw,2.2rem);display:flex;flex-direction:column;
+}
+.vriend-kaart h3{font-size:1.35rem;margin-bottom:.3rem}
+.vriend-kaart .doel{color:var(--ink-zacht);font-size:.9rem;margin-bottom:1.3rem;min-height:2.6em}
+.vriend-prijs{display:flex;align-items:baseline;gap:.4rem;margin-bottom:1.5rem}
+.vriend-prijs .bedrag{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4vw,2.7rem);letter-spacing:-.02em;color:var(--blauw)}
+.vriend-prijs .per{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;color:var(--ink-zacht)}
+.vriend-kaart ul{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.6rem;flex:1}
+.vriend-kaart ul li{display:flex;gap:.6rem;align-items:flex-start;font-size:.9rem}
+.vriend-kaart ul li svg{width:16px;height:16px;flex:none;color:var(--blauw);margin-top:3px}
+.vriend-kaart .btn{width:100%}
+/* uitgelichte kaart met draaiende conic-rand */
+.vriend-uitgelicht{isolation:isolate;border-color:transparent;box-shadow:0 26px 60px -30px rgba(52,71,170,.45)}
+.vriend-uitgelicht::before{
+  content:"";position:absolute;inset:-1px;border-radius:21px;padding:1.6px;
+  background:conic-gradient(from var(--ang),rgba(52,71,170,0) 0deg,rgba(52,71,170,.95) 60deg,rgba(245,220,222,.9) 110deg,rgba(52,71,170,0) 170deg,rgba(52,71,170,0) 220deg,rgba(52,71,170,.6) 290deg,rgba(52,71,170,0) 350deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;pointer-events:none;z-index:-1;
+}
+html.anim-ok .vriend-uitgelicht::before{animation:spinRand 7s linear infinite}
+@keyframes spinRand{to{--ang:360deg}}
+.vriend-tag{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--blauw);color:#fff;border-radius:99px;padding:.35rem .85rem;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;
+}
+
+/* ============================================================
+   STATS-band — tellers (1899 blijft een jaartal)
+   ============================================================ */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.6rem);text-align:center}
+@media (max-width:680px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:2.2rem}}
+.stat .num{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5.5vw,3.8rem);line-height:1;letter-spacing:-.02em;color:#fff}
+.stat .num em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--roze-2)}
+.stat .lbl{margin-top:.7rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wit-zacht)}
+
+/* ============================================================
+   FAQ — single-open accordion (grid-template-rows)
+   ============================================================ */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:880px){.faq-grid{grid-template-columns:1fr}}
+.faq-head h2{font-size:clamp(1.9rem,4.4vw,3rem);margin:1rem 0 1rem}
+.faq-head h2 .serif{color:var(--blauw)}
+.faq-head p{color:var(--ink-zacht);max-width:36ch}
+.faq-head a{border-bottom:1px solid var(--blauw);transition:color .3s}
+.faq-head a:hover{color:var(--blauw)}
+.faq-list{border-top:1px solid var(--lijn)}
+.faq-item{border-bottom:1px solid var(--lijn)}
+.faq-q{
+  display:flex;align-items:baseline;gap:1.1rem;width:100%;text-align:left;
+  padding:1.3rem 0;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.02rem,1.8vw,1.25rem);letter-spacing:-.01em;line-height:1.3;
+  transition:color .3s;
+}
+.faq-q:hover{color:var(--blauw)}
+.faq-q .idx{font-family:var(--font-mono);font-size:.64rem;font-weight:400;color:var(--blauw);letter-spacing:.12em;flex:none;transform:translateY(-2px)}
+.faq-x{margin-left:auto;flex:none;position:relative;width:14px;height:14px;align-self:center}
+.faq-x::before,.faq-x::after{content:"";position:absolute;left:0;top:6.2px;width:14px;height:1.6px;background:var(--blauw);transition:transform .45s var(--ease)}
+.faq-x::after{transform:rotate(90deg)}
+.faq-q[aria-expanded="true"] .faq-x::after{transform:rotate(0deg)}
+.faq-a{overflow:hidden}
+.faq-ready .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.faq-ready .faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a-inner{min-height:0;overflow:hidden}
+.faq-a p{color:var(--ink-zacht);max-width:58ch;padding:0 0 1.4rem 2.4rem;font-size:.95rem}
+@media (max-width:560px){.faq-a p{padding-left:0}}
+
+/* ============================================================
+   NIEUWSBRIEF + CONTACT — compact
+   ============================================================ */
+.nieuwsbrief-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:880px){.nieuwsbrief-grid{grid-template-columns:1fr}}
+.nieuwsbrief h2{font-size:clamp(1.9rem,4.2vw,3rem);margin:1rem 0 1rem}
+.nieuwsbrief h2 .serif{color:var(--blauw)}
+.nieuwsbrief p{color:var(--ink-zacht);max-width:40ch}
+.contact-regels{display:flex;flex-direction:column;gap:.8rem;margin-top:1.8rem}
+.contact-regels a{display:flex;align-items:baseline;gap:.8rem;font-size:1rem;transition:color .3s}
+.contact-regels a:hover{color:var(--blauw)}
+.contact-regels .mono{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-zacht);min-width:72px}
+.nb-form{
+  position:relative;background:#fff;border:1px solid var(--lijn);border-radius:var(--radius);
+  padding:clamp(1.6rem,3vw,2.4rem);overflow:hidden;
+}
+.nb-form::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blauw),transparent 70%)}
+.nb-form label{display:block;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-zacht);margin-bottom:.55rem}
+.nb-rij{display:flex;gap:.8rem;flex-wrap:wrap}
+.nb-rij input{
+  flex:1;min-width:200px;background:var(--roze);border:1px solid var(--lijn);border-radius:12px;
+  color:var(--ink);font:inherit;font-size:.95rem;padding:.85rem 1.1rem;
+  transition:border-color .3s,box-shadow .3s;
+}
+.nb-rij input:focus{outline:none;border-color:var(--blauw);box-shadow:0 0 0 3px var(--blauw-zacht)}
+.nb-form.invalid input{border-color:#c44545;box-shadow:0 0 0 3px rgba(196,69,69,.14)}
+.nb-err{display:none;font-size:.8rem;color:#b03a3a;margin-top:.6rem}
+.nb-form.invalid .nb-err{display:block}
+.nb-form small{display:block;margin-top:.9rem;font-size:.76rem;color:var(--ink-zacht)}
+.nb-succes{
+  position:absolute;inset:0;background:#fff;z-index:5;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;text-align:center;padding:1.6rem;
+  opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s .6s;
+}
+.nb-form.sent .nb-succes{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
+.check-ring{
+  width:68px;height:68px;border-radius:50%;border:2px solid var(--blauw);
+  display:grid;place-items:center;color:var(--blauw);
+  box-shadow:0 0 34px -8px rgba(52,71,170,.45);
+}
+.check-ring svg{width:30px;height:30px}
+.check-ring svg path{stroke-dasharray:30;stroke-dashoffset:30}
+html.anim-ok .nb-form.sent .check-ring svg path{animation:checkDraw .6s var(--ease) .25s forwards}
+html.no-anim .check-ring svg path{stroke-dashoffset:0}
+@keyframes checkDraw{to{stroke-dashoffset:0}}
+.nb-succes h3{font-size:1.35rem}
+.nb-succes p{color:var(--ink-zacht);max-width:32ch;font-size:.92rem}
+
+/* ============================================================
+   FOOTER — roze, reuze outline-watermerk
+   ============================================================ */
+.footer{position:relative;background:var(--roze);border-top:1px solid var(--lijn);overflow:hidden;padding-top:clamp(3.5rem,7vw,5.5rem)}
+.footer-watermark{
+  position:absolute;left:50%;bottom:-4vw;transform:translateX(-50%);
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(8rem,30vw,26rem);line-height:.8;letter-spacing:-.02em;
+  color:transparent;-webkit-text-stroke:1.5px rgba(52,71,170,.14);
+  pointer-events:none;white-space:nowrap;z-index:0;
+}
+.footer-inner{position:relative;z-index:1}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:clamp(1.6rem,4vw,3rem);padding-bottom:clamp(2.6rem,6vw,4.5rem)}
+@media (max-width:820px){.footer-top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer-top{grid-template-columns:1fr}}
+.footer-col h4{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-zacht);margin-bottom:1.2rem}
+.footer-col ul{display:flex;flex-direction:column;gap:.7rem}
+.footer-col a{font-size:.92rem;transition:color .3s}
+.footer-col a:hover{color:var(--blauw)}
+.footer-brand p{color:var(--ink-zacht);font-size:.9rem;max-width:30ch;margin-top:.9rem}
+.footer-socials{display:flex;gap:.8rem;margin-top:1.4rem}
+.footer-socials a{
+  width:40px;height:40px;border:1px solid var(--blauw-lijn);border-radius:50%;
+  display:grid;place-items:center;color:var(--blauw);transition:background-color .3s,color .3s;
+}
+.footer-socials a:hover{background:var(--blauw);color:#fff}
+.footer-socials svg{width:16px;height:16px}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  padding-block:1.7rem;border-top:1px solid var(--lijn);
+}
+.footer-bottom small{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--ink-zacht)}
+.back-to-top{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-zacht);transition:color .3s;
+}
+.back-to-top:hover{color:var(--blauw)}
+.back-to-top svg{width:14px;height:14px}
+
+/* ============================================================
+   reduced motion — harde eindstaten
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .hero-art .clip-wrap{clip-path:none !important}
+  .reveal-regel__inner{transform:none !important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#hoofdinhoud">Naar hoofdinhoud</a>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-bar">
+      <a class="brand" href="#top" aria-label="KADE, naar boven">
+        <span class="brand-blok" aria-hidden="true"></span>
+        KADE <small>Dordrecht</small>
+      </a>
+      <nav class="header-nav" aria-label="Hoofdnavigatie">
+        <div class="header-links">
+          <a href="#nu-te-zien">Nu te zien</a>
+          <a href="#collectie">Collectie</a>
+          <a href="#agenda">Agenda</a>
+          <a href="#bezoek">Bezoek</a>
+          <a href="#vrienden">Vrienden</a>
+        </div>
+        <div class="header-actions">
+          <a class="status-pil" id="statusPil" href="#bezoek">
+            <span class="status-stip" aria-hidden="true"></span>
+            <span id="statusPilTekst">di&ndash;zo 10:00&ndash;17:00</span>
+          </a>
+          <a class="btn btn-blauw js-magnetic" href="#tickets">Tickets</a>
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu openen">
+            <span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     OVERLAY-MENU — blauw vlak, grote Syne-links
+     ============================================================ -->
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <button class="menu-overlay__close" id="menuClose" aria-label="Menu sluiten"></button>
+  <div class="container">
+    <nav aria-label="Overlaymenu">
+      <ul class="menu-list">
+        <li><a href="#nu-te-zien"><span class="idx">01</span>Nu te zien</a></li>
+        <li><a href="#collectie"><span class="idx">02</span>Collectie</a></li>
+        <li><a href="#agenda"><span class="idx">03</span>Agenda</a></li>
+        <li><a href="#bezoek"><span class="idx">04</span>Bezoek</a></li>
+        <li><a href="#vrienden"><span class="idx">05</span>Vrienden</a></li>
+        <li><a href="#tickets"><span class="idx">06</span>Tickets</a></li>
+      </ul>
+    </nav>
+    <div class="menu-foot">
+      <a href="mailto:welkom@kade-dordrecht.nl">welkom@kade-dordrecht.nl</a>
+      <a href="tel:+31781234567">+31 78 123 45 67</a>
+      <span>Wantijkade 12 &middot; Dordrecht</span>
+    </div>
+  </div>
+</div>
+
+<main id="hoofdinhoud">
+
+<!-- ============================================================
+     1 · HERO — blauw paneel met hoofdtentoonstelling
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-paneel">
+      <div class="hero-tekst">
+        <span class="eyebrow">Nu te zien &middot; t/m 12 oktober</span>
+        <h1>
+          <span class="reveal-regel"><span class="reveal-regel__inner">Water<span class="serif">lijnen</span></span></span>
+          <span class="reveal-regel"><span class="reveal-regel__inner">Rauwe randen van de rivier</span></span>
+        </h1>
+        <p class="hero-kunstenaar">Een overzichtstentoonstelling van <strong>Mara Veldkamp</strong> &mdash; veertig nieuwe doeken over stroming, slib en licht op het water.</p>
+        <div class="hero-cta">
+          <a class="btn btn-licht js-magnetic" href="#tickets">Koop tickets
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#nu-te-zien">Alle tentoonstellingen</a>
+        </div>
+      </div>
+      <div class="hero-art" id="heroArt">
+        <div class="clip-wrap">
+          <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&q=80&auto=format&fit=crop" alt="Abstract schilderij met krachtige blauwe, rode en gele verfstreken op doek" fetchpriority="high" decoding="async">
+        </div>
+        <div class="hero-art-cap">
+          <strong>Mara Veldkamp &mdash; Getij IV</strong>
+          Zaal 3 &middot; olieverf op doek, 2024
+        </div>
+      </div>
+    </div>
+    <div class="hero-onder">
+      <span class="mono">Museum voor hedendaagse kunst &middot; pakhuis aan het Wantij</span>
+      <span class="mono">Dordrecht &middot; sinds 1899 aan de kade</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     2 · NU TE ZIEN — drie tentoonstellingen
+     ============================================================ -->
+<section class="section" id="nu-te-zien">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-rv>Tentoonstellingen</span>
+      <h2 data-rv style="--d:.05s">Nu te zien <span class="serif">in het pakhuis</span></h2>
+      <p data-rv style="--d:.1s">Drie verdiepingen, drie verhalen. Van groot en meeslepend tot klein en stil &mdash; er is altijd een zaal die bij je dag past.</p>
+    </div>
+    <div class="expo-grid">
+
+      <article class="expo-kaart" data-rv>
+        <div class="expo-datum"><span>12 apr &mdash; 12 okt</span><span class="zaal">Zaal 1&ndash;3</span></div>
+        <div class="expo-beeld" data-rv="clip">
+          <div class="clip-inner">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80&auto=format&fit=crop" alt="Kleurrijk abstract acrylschilderij met oranje, blauwe en roze vlakken" loading="lazy" decoding="async">
+          </div>
+          <div class="expo-cap">Mara Veldkamp &middot; Stroombed, 2024</div>
+        </div>
+        <div class="expo-body">
+          <h3>Waterlijnen</h3>
+          <p class="sub">Rauwe randen van de rivier</p>
+          <p>Veldkamp schilderde twee jaar lang aan de oever van het Wantij. Het resultaat: doeken die ruiken naar slib en glinsteren als laagwater.</p>
+          <a class="expo-link" href="#tickets">Plan je bezoek
+            <svg viewBox="0 0 24 24" fill="none" width="13" height="13" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="expo-kaart" data-rv style="--d:.08s">
+        <div class="expo-datum"><span>24 mei &mdash; 30 aug</span><span class="zaal">Zaal 4</span></div>
+        <div class="expo-beeld" data-rv="clip" style="--d:.08s">
+          <div class="clip-inner">
+            <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?w=900&q=80&auto=format&fit=crop" alt="Witte klassieke sculptuur van een hoofd tegen een lichte achtergrond" loading="lazy" decoding="async">
+          </div>
+          <div class="expo-cap">Collectiepresentatie beeldhouwkunst</div>
+        </div>
+        <div class="expo-body">
+          <h3>Zaal van de stilte</h3>
+          <p class="sub">Sculptuur tussen oud en nieuw</p>
+          <p>Hedendaagse beeldhouwers gaan in gesprek met klassieke vormen. Gips naast gerecycled staal, marmer naast 3D-print.</p>
+          <a class="expo-link" href="#tickets">Plan je bezoek
+            <svg viewBox="0 0 24 24" fill="none" width="13" height="13" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="expo-kaart" data-rv style="--d:.16s">
+        <span class="expo-badge">Laatste weken</span>
+        <div class="expo-datum"><span>1 feb &mdash; 28 jun</span><span class="zaal">Zaal 5</span></div>
+        <div class="expo-beeld" data-rv="clip" style="--d:.16s">
+          <div class="clip-inner">
+            <img src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=900&q=80&auto=format&fit=crop" alt="Bezoekers bekijken schilderijen aan de wand van een museumzaal" loading="lazy" decoding="async">
+          </div>
+          <div class="expo-cap">Open Depot &middot; wisselende opstelling</div>
+        </div>
+        <div class="expo-body">
+          <h3>Open depot</h3>
+          <p class="sub">De collectie zonder vitrine</p>
+          <p>Eén keer per jaar zetten we de depotdeuren open. Loop tussen de rekken en zie hoe 340 werken bewaard, gerestaureerd en gewogen worden.</p>
+          <a class="expo-link" href="#tickets">Plan je bezoek
+            <svg viewBox="0 0 24 24" fill="none" width="13" height="13" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3 · COLLECTIE — sleepbare strook + lightbox
+     ============================================================ -->
+<section class="section vlak-2 collectie" id="collectie">
+  <div class="container">
+    <div class="collectie-kop">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="eyebrow" data-rv>Uit de collectie</span>
+        <h2 data-rv style="--d:.05s">Acht werken om <span class="serif">even bij stil te staan</span></h2>
+        <p data-rv style="--d:.1s">Sleep door een greep uit onze vaste collectie. Klik op een werk om het schermvullend te bekijken.</p>
+      </div>
+      <div class="strip-knoppen" data-rv style="--d:.15s">
+        <button class="strip-knop" id="stripPrev" aria-label="Vorige werken" aria-controls="stripTrack">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="strip-knop" id="stripNext" aria-label="Volgende werken" aria-controls="stripTrack">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="strip-wrap">
+    <ul class="strip" id="stripTrack" aria-label="Werken uit de collectie">
+      <li class="werk">
+        <a class="werk-link" href="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1600&q=80&auto=format&fit=crop" data-label="Mara Veldkamp — Stroomopwaarts, 2024 · acryl op doek">
+          <span class="werk-beeld"><img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=700&q=80&auto=format&fit=crop" alt="Abstract vloeibaar schilderij in blauwe en roze tinten" loading="lazy" decoding="async"></span>
+          <span class="werk-cap"><strong>Stroomopwaarts</strong>Mara Veldkamp &middot; acryl op doek, 2024</span>
+        </a>
+      </li>
+      <li class="werk">
+        <a class="werk-link" href="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=1600&q=80&auto=format&fit=crop" data-label="Jonas Brand — Gietsel III, 2022 · acrylgieting">
+          <span class="werk-beeld"><img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=700&q=80&auto=format&fit=crop" alt="Abstracte acrylgieting met vloeiende kleurbanen" loading="lazy" decoding="async"></span>
+          <span class="werk-cap"><strong>Gietsel III</strong>Jonas Brand &middot; acrylgieting, 2022</span>
+        </a>
+      </li>
+      <li class="werk">
+        <a class="werk-link" href="https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=1600&q=80&auto=format&fit=crop" data-label="Lin Xu — Nachtwater, 2023 · gemengde techniek">
+          <span class="werk-beeld"><img src="https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=700&q=80&auto=format&fit=crop" alt="Abstract werk in diepe paars- en blauwtinten" loading="lazy" decoding="async"></span>
+          <span class="werk-cap"><strong>Nachtwater</strong>Lin Xu &middot; gemengde techniek, 2023</span>
+        </a>
+      </li>
+      <li class="werk">
+        <a class="werk-link" href="https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600&q=80&auto=format&fit=crop" data-label="Ada Roest — Slibgoud, 2021 · pigment en hars">
+          <span class="werk-beeld"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=700&q=80&auto=format&fit=crop" alt="Abstract kunstwerk met blauwe en goudkleurige structuren" loading="lazy" decoding="async"></span>
+          <span class="werk-cap"><strong>Slibgoud</strong>Ada Roest &middot; pigment en hars, 2021</span>
+        </a>
+      </li>
+      <li class="werk">
+        <a class="werk-link" href="https://images.unsplash.com/photo-1574169208507-84376144848b?w=1600&q=80&auto=format&fit=crop" data-label="Tobias Mol — Signaal, 2024 · digitale print">
+          <span class="werk-beeld"><img src="https://images.unsplash.com/photo-1574169208507-84376144848b?w=700&q=80&auto=format&fit=crop" alt="Abstracte digitale compositie met neonkleurige golvende vormen" loading="lazy" decoding="async"></span>
+          <span class="werk-cap"><strong>Signaal</strong>Tobias Mol &middot; digitale print, 2024</span>
+        </a>
+      </li>
+      <li class="werk">
+        <a class="werk-link" href="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1600&q=80&auto=format&fit=crop" data-label="Esmee Hartog — Lichtval, 2020 · lichtinstallatie (registratie)">
+          <span class="werk-beeld"><img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=700&q=80&auto=format&fit=crop" alt="Abstracte registratie van gekleurd licht in beweging" loading="lazy" decoding="async"></span>
+          <span class="werk-cap"><strong>Lichtval</strong>Esmee Hartog &middot; lichtinstallatie, 2020</span>
+        </a>
+      </li>
+      <li class="werk">
+        <a class="werk-link" href="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?w=1600&q=80&auto=format&fit=crop" data-label="Ruben Daal — Palet van de Maas, 2019 · olieverf op doek">
+          <span class="werk-beeld"><img src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?w=700&q=80&auto=format&fit=crop" alt="Kleurrijk abstract olieverfschilderij met dikke verfstreken" loading="lazy" decoding="async"></span>
+          <span class="werk-cap"><strong>Palet van de Maas</strong>Ruben Daal &middot; olieverf op doek, 2019</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     LIGHTBOX — role=dialog, focus-trap, Esc, focus-restore
+     ============================================================ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vergrote weergave van het kunstwerk" aria-hidden="true">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Sluiten">&times;</button>
+  <button class="lightbox__nav lightbox__prev" id="lightboxPrev" aria-label="Vorig werk">&#8249;</button>
+  <figure class="lightbox__figure">
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <figcaption class="lightbox__caption">
+      <span id="lightboxLabel"></span>
+      <span class="lightbox__count" id="lightboxCount"></span>
+    </figcaption>
+  </figure>
+  <button class="lightbox__nav lightbox__next" id="lightboxNext" aria-label="Volgend werk">&#8250;</button>
+</div>
+
+<!-- ============================================================
+     4 · AGENDA
+     ============================================================ -->
+<section class="section" id="agenda">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-rv>Agenda</span>
+      <h2 data-rv style="--d:.05s">Binnenkort <span class="serif">aan de kade</span></h2>
+      <p data-rv style="--d:.1s">Rondleidingen, lezingen en &eacute;&eacute;n keer per seizoen een Late Night met muziek tussen de doeken. Reserveren kan aan de kassa of online.</p>
+    </div>
+    <div class="agenda-lijst">
+      <a class="agenda-rij" href="#tickets" data-rv>
+        <span class="agenda-datum"><span class="dag">17</span><span class="mnd">jun &middot; wo</span></span>
+        <div class="agenda-titel"><h3>Rondleiding door Waterlijnen</h3><span class="soort">Rondleiding</span></div>
+        <span class="agenda-tijd">14:00&ndash;15:00</span>
+        <span class="agenda-pijl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="agenda-rij" href="#tickets" data-rv style="--d:.05s">
+        <span class="agenda-datum"><span class="dag">27</span><span class="mnd">jun &middot; za</span></span>
+        <div class="agenda-titel"><h3>Workshop zeefdrukken aan het water</h3><span class="soort">Workshop</span></div>
+        <span class="agenda-tijd">13:00&ndash;16:00</span>
+        <span class="agenda-pijl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="agenda-rij" href="#tickets" data-rv style="--d:.1s">
+        <span class="agenda-datum"><span class="dag">09</span><span class="mnd">jul &middot; do</span></span>
+        <div class="agenda-titel"><h3>Mara Veldkamp in gesprek met de conservator</h3><span class="soort">Lezing</span></div>
+        <span class="agenda-tijd">19:30&ndash;21:00</span>
+        <span class="agenda-pijl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="agenda-rij" href="#tickets" data-rv style="--d:.15s">
+        <span class="agenda-datum"><span class="dag">19</span><span class="mnd">sep &middot; vr</span></span>
+        <div class="agenda-titel"><h3>Late Night: muziek, kunst en de kade in het donker</h3><span class="soort">Late Night</span></div>
+        <span class="agenda-tijd">20:00&ndash;24:00</span>
+        <span class="agenda-pijl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="agenda-rij" href="#tickets" data-rv style="--d:.2s">
+        <span class="agenda-datum"><span class="dag">05</span><span class="mnd">okt &middot; zo</span></span>
+        <div class="agenda-titel"><h3>Slotweekend Waterlijnen &mdash; extra rondleidingen</h3><span class="soort">Rondleiding</span></div>
+        <span class="agenda-tijd">11:00 &amp; 15:00</span>
+        <span class="agenda-pijl" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5 · MANIFEST — woord-oplichting op diepblauw
+     ============================================================ -->
+<section class="section vlak-diep manifest">
+  <div class="container">
+    <span class="eyebrow" data-rv>Waar we voor staan</span>
+    <p class="manifest-text" id="manifestText" data-rv style="--d:.05s">Kunst hoeft niet stil te zijn. KADE is een werkplaats aan het water: ruw waar het kan, zorgvuldig waar het moet, en altijd open voor wie nieuwsgierig is.</p>
+    <p class="manifest-sign" data-rv style="--d:.1s">&mdash; Team KADE, pakhuis aan het Wantij</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     6 · BEZOEK — live status, tijden, tarieven, route
+     ============================================================ -->
+<section class="section" id="bezoek">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-rv>Praktisch</span>
+      <h2 data-rv style="--d:.05s">Plan je <span class="serif">bezoek</span></h2>
+      <p data-rv style="--d:.1s">Vijf minuten lopen van station Dordrecht, aan het water. Koop je ticket online of gewoon aan de kassa &mdash; allebei prima.</p>
+    </div>
+    <div class="bezoek-grid">
+      <div>
+        <div class="bezoek-blok" data-rv>
+          <h3><span class="blokje" aria-hidden="true"></span>Openingstijden</h3>
+          <p class="bezoek-status" id="bezoekStatus">
+            <span class="status-stip" aria-hidden="true"></span>
+            <span id="bezoekStatusTekst">Geopend di&ndash;zo &middot; vrijdag tot 21:00</span>
+          </p>
+          <table class="uren-tabel" id="urenTabel">
+            <caption class="mono" style="text-align:left;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-zacht);padding-bottom:.6rem">Wekelijkse openingstijden</caption>
+            <tbody>
+              <tr class="dicht" data-dag="ma"><th scope="row">Maandag</th><td>gesloten</td></tr>
+              <tr data-dag="di"><th scope="row">Dinsdag</th><td>10:00&ndash;17:00</td></tr>
+              <tr data-dag="wo"><th scope="row">Woensdag</th><td>10:00&ndash;17:00</td></tr>
+              <tr data-dag="do"><th scope="row">Donderdag</th><td>10:00&ndash;17:00</td></tr>
+              <tr data-dag="vr"><th scope="row">Vrijdag</th><td>10:00&ndash;21:00</td></tr>
+              <tr data-dag="za"><th scope="row">Zaterdag</th><td>10:00&ndash;17:00</td></tr>
+              <tr data-dag="zo"><th scope="row">Zondag</th><td>10:00&ndash;17:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bezoek-blok" data-rv style="--d:.08s">
+          <h3><span class="blokje" aria-hidden="true"></span>Tarieven</h3>
+          <table class="tarief-tabel">
+            <tbody>
+              <tr><th scope="row">Volwassenen</th><td>&euro; 16,00</td></tr>
+              <tr><th scope="row">Studenten</th><td>&euro; 8,50</td></tr>
+              <tr><th scope="row">T/m 18 jaar</th><td>gratis</td></tr>
+              <tr><th scope="row">Museumkaart</th><td>gratis</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="bezoek-blok bezoek-adres" data-rv style="--d:.12s">
+          <h3><span class="blokje" aria-hidden="true"></span>Adres &amp; bereikbaarheid</h3>
+          <p class="adres-regel">
+            KADE &mdash; museum voor hedendaagse kunst<br>
+            Wantijkade 12, 3311 RV Dordrecht
+          </p>
+          <p>Het museum zit in het oude pakhuis op de kop van de kade, <strong>5 minuten lopen van station Dordrecht</strong>. Volg vanaf het station de borden richting het water.</p>
+          <ul class="bezoek-ov">
+            <li>Te voet: 5 minuten vanaf station Dordrecht</li>
+            <li>Waterbus: halte Wantijkade, 2 minuten lopen</li>
+            <li>Fiets: bewaakte stalling naast de ingang</li>
+            <li>Auto: parkeergarage Stadswerven, 4 minuten lopen</li>
+          </ul>
+          <div class="kaart-blok" role="img" aria-label="Gestileerde kaart: het museum ligt aan de Wantijkade, op vijf minuten lopen van station Dordrecht">
+            <span class="water" aria-hidden="true"></span>
+            <span class="kaart-pin" aria-hidden="true"></span>
+            <span class="kaart-label" aria-hidden="true">KADE &middot; Wantijkade 12</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7 · TICKETS — blauwe banner met drijvende cirkels
+     ============================================================ -->
+<section class="section vlak-blauw tickets" id="tickets">
+  <span class="bol bol-1" aria-hidden="true"></span>
+  <span class="bol bol-2" aria-hidden="true"></span>
+  <span class="bol bol-3" aria-hidden="true"></span>
+  <div class="container tickets-inner">
+    <span class="eyebrow" data-rv>Tickets</span>
+    <h2 data-rv style="--d:.05s">Koop je ticket online &mdash; <span class="serif">sla de rij over</span></h2>
+    <p class="vanaf" data-rv style="--d:.1s">Vanaf <strong>&euro; 8,50</strong> &middot; t/m 18 jaar en Museumkaart gratis</p>
+    <a class="btn btn-licht js-magnetic" href="#nieuwsbrief" data-rv style="--d:.15s">Bestel tickets
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <small data-rv style="--d:.2s">Online tickets zijn een week geldig: kom op een andere dag als het regent &mdash; of juist als de zon schijnt.</small>
+  </div>
+</section>
+
+<!-- ============================================================
+     8 · VRIENDEN — membership-kaarten
+     ============================================================ -->
+<section class="section" id="vrienden">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-rv>Vrienden van KADE</span>
+      <h2 data-rv style="--d:.05s">Houd het pakhuis <span class="serif">open</span></h2>
+      <p data-rv style="--d:.1s">Vrienden maken tentoonstellingen, restauraties en gratis toegang voor jongeren mogelijk. En ze komen zelf natuurlijk altijd binnen.</p>
+    </div>
+    <div class="vrienden-grid">
+
+      <article class="vriend-kaart" data-rv>
+        <h3>Vriend</h3>
+        <p class="doel">Voor wie een paar keer per jaar langskomt en het museum een warm hart toedraagt.</p>
+        <p class="vriend-prijs"><span class="bedrag">&euro;45</span><span class="per">per jaar</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Onbeperkt gratis toegang</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Uitnodiging voor openingen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>10% korting in het caf&eacute;</li>
+        </ul>
+        <a class="btn btn-ghost" href="#nieuwsbrief">Word Vriend</a>
+      </article>
+
+      <article class="vriend-kaart vriend-uitgelicht" data-rv style="--d:.08s">
+        <span class="vriend-tag">Meest gekozen</span>
+        <h3>Begunstiger</h3>
+        <p class="doel">Voor wie dichter op het vuur wil zitten: achter de schermen en eerder binnen dan de rest.</p>
+        <p class="vriend-prijs"><span class="bedrag">&euro;150</span><span class="per">per jaar</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alles van Vriend, voor twee personen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Preview-avond v&oacute;&oacute;r elke opening</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Jaarlijkse depotrondleiding</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Naamsvermelding in het jaarverslag</li>
+        </ul>
+        <a class="btn btn-blauw js-magnetic" href="#nieuwsbrief">Word Begunstiger</a>
+      </article>
+
+      <article class="vriend-kaart" data-rv style="--d:.16s">
+        <h3>Mecenas</h3>
+        <p class="doel">Voor wie een aankoop, restauratie of jong talent structureel mogelijk wil maken.</p>
+        <p class="vriend-prijs"><span class="bedrag">&euro;500</span><span class="per">per jaar</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alles van Begunstiger</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Diner met kunstenaar en conservator</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Adoptie van een collectiestuk</li>
+        </ul>
+        <a class="btn btn-ghost" href="#nieuwsbrief">Word Mecenas</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9 · STATS-band — tellers, 1899 blijft jaartal
+     ============================================================ -->
+<section class="section vlak-ink" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat" data-rv>
+        <p class="num"><span class="countup" data-target="24000">24.000</span></p>
+        <p class="lbl">bezoekers per jaar</p>
+      </div>
+      <div class="stat" data-rv style="--d:.06s">
+        <p class="num"><span class="countup" data-target="340">340</span></p>
+        <p class="lbl">werken in de collectie</p>
+      </div>
+      <div class="stat" data-rv style="--d:.12s">
+        <p class="num"><span class="countup" data-target="12">12</span></p>
+        <p class="lbl">tentoonstellingen per jaar</p>
+      </div>
+      <div class="stat" data-rv style="--d:.18s">
+        <p class="num"><em>1899</em></p>
+        <p class="lbl">bouwjaar van het pakhuis</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10 · FAQ — accordion
+     ============================================================ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-head">
+        <span class="eyebrow" data-rv>Goed om te weten</span>
+        <h2 data-rv style="--d:.05s">Vragen die we <span class="serif">vaak horen</span></h2>
+        <p data-rv style="--d:.1s">Staat je vraag er niet bij? Mail <a href="mailto:welkom@kade-dordrecht.nl">welkom@kade-dordrecht.nl</a> of bel ons tijdens openingstijden &mdash; er neemt gewoon iemand op.</p>
+      </div>
+      <div class="faq-list" id="faqList" data-rv style="--d:.12s">
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" aria-expanded="false"><span class="idx">01</span>Moet ik reserveren?<span class="faq-x" aria-hidden="true"></span></button>
+          </h3>
+          <div class="faq-a"><div class="faq-a-inner"><p>Nee. Reserveren mag, maar hoeft niet: er is vrijwel altijd plek. Alleen bij de Late Nights en sommige workshops raden we een online ticket aan, omdat die avonden vaak vol zitten.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" aria-expanded="false"><span class="idx">02</span>Is het museum toegankelijk met rolstoel?<span class="faq-x" aria-hidden="true"></span></button>
+          </h3>
+          <div class="faq-a"><div class="faq-a-inner"><p>Ja. Alle zalen zijn bereikbaar met de lift, de vloeren zijn drempelvrij en er is een invalidentoilet op de begane grond. Bij de kassa staat een leenrolstoel klaar; reserveren daarvan is niet nodig.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" aria-expanded="false"><span class="idx">03</span>Mag ik fotograferen?<span class="faq-x" aria-hidden="true"></span></button>
+          </h3>
+          <div class="faq-a"><div class="faq-a-inner"><p>Voor eigen gebruik graag, zonder flits en statief. Bij enkele bruiklenen geldt een fotografieverbod; dat staat dan duidelijk bij het werk aangegeven. Tag ons gerust, we kijken mee.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" aria-expanded="false"><span class="idx">04</span>Is er een caf&eacute;?<span class="faq-x" aria-hidden="true"></span></button>
+          </h3>
+          <div class="faq-a"><div class="faq-a-inner"><p>Ja, caf&eacute; De Loods zit op de begane grond, met terras aan het water. Je kunt er ook zonder museumticket terecht voor koffie, taart en een kleine lunchkaart.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" aria-expanded="false"><span class="idx">05</span>Kan ik met de Museumkaart binnen?<span class="faq-x" aria-hidden="true"></span></button>
+          </h3>
+          <div class="faq-a"><div class="faq-a-inner"><p>Ja, met de Museumkaart is de toegang gratis, ook voor alle tentoonstellingen. Voor rondleidingen, workshops en Late Nights geldt soms een kleine toeslag; dat staat altijd bij het programma vermeld.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     11 · NIEUWSBRIEF + CONTACT — compact
+     ============================================================ -->
+<section class="section vlak-2 nieuwsbrief" id="nieuwsbrief">
+  <div class="container">
+    <div class="nieuwsbrief-grid">
+      <div>
+        <span class="eyebrow" data-rv>Blijf op de hoogte</span>
+        <h2 data-rv style="--d:.05s">E&eacute;n mail per maand, <span class="serif">geen ruis</span></h2>
+        <p data-rv style="--d:.1s">Nieuwe tentoonstellingen, de eerstvolgende Late Night en af en toe een blik in het depot. Uitschrijven kan altijd met &eacute;&eacute;n klik.</p>
+        <div class="contact-regels" data-rv style="--d:.15s">
+          <a href="mailto:welkom@kade-dordrecht.nl"><span class="mono">E-mail</span>welkom@kade-dordrecht.nl</a>
+          <a href="tel:+31781234567"><span class="mono">Telefoon</span>+31 78 123 45 67</a>
+          <a href="#bezoek"><span class="mono">Bezoek</span>Wantijkade 12, Dordrecht</a>
+        </div>
+      </div>
+      <form class="nb-form" id="nbForm" novalidate data-rv style="--d:.12s">
+        <label for="nbEmail">Schrijf je in voor de nieuwsbrief</label>
+        <div class="nb-rij">
+          <input type="email" id="nbEmail" name="email" autocomplete="email" placeholder="naam@voorbeeld.nl" required aria-describedby="nbErr">
+          <button class="btn btn-blauw js-magnetic" type="submit">Inschrijven</button>
+        </div>
+        <p class="nb-err" id="nbErr" role="alert">Vul een geldig e-mailadres in, bijvoorbeeld naam@voorbeeld.nl.</p>
+        <small>We gebruiken je adres alleen voor de nieuwsbrief. Niets anders, beloofd.</small>
+        <div class="nb-succes" aria-hidden="true">
+          <span class="check-ring" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path pathLength="30" d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Je staat op de lijst</h3>
+          <p>Tot in je inbox &mdash; en hopelijk snel aan de kade.</p>
+        </div>
+        <p class="sr-status" id="nbStatus" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER — roze met reuze watermerk
+     ============================================================ -->
+<footer class="footer">
+  <span class="footer-watermark" aria-hidden="true">KADE</span>
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-col footer-brand">
+        <a class="brand" href="#top"><span class="brand-blok" aria-hidden="true"></span>KADE <small>Dordrecht</small></a>
+        <p>Museum voor hedendaagse kunst in een verbouwd pakhuis aan het Wantij. Ruw waar het kan, zorgvuldig waar het moet.</p>
+        <div class="footer-socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M14 8h2.5V5H14a4 4 0 0 0-4 4v2H7.5v3H10v7h3v-7h2.5l.5-3H13V9a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+          <a href="#top" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V17M8 7.6v.1M12 17v-3.6a2.4 2.4 0 0 1 4.8 0V17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Museum</h4>
+        <ul>
+          <li><a href="#nu-te-zien">Nu te zien</a></li>
+          <li><a href="#collectie">Collectie</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#vrienden">Vrienden van KADE</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Bezoek</h4>
+        <ul>
+          <li><a href="#bezoek">Openingstijden</a></li>
+          <li><a href="#bezoek">Tarieven</a></li>
+          <li><a href="#bezoek">Bereikbaarheid</a></li>
+          <li><a href="#tickets">Tickets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:welkom@kade-dordrecht.nl">welkom@kade-dordrecht.nl</a></li>
+          <li><a href="tel:+31781234567">+31 78 123 45 67</a></li>
+          <li><a href="#bezoek">Wantijkade 12, Dordrecht</a></li>
+          <li><span class="mono" style="font-size:.72rem;color:var(--ink-zacht)">Dordrecht &middot; <span id="kadeKlok">--:--</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>&copy; <span id="jaar">2026</span> Stichting KADE &middot; ANBI &middot; KvK 23456789 &middot; alle beelden ter illustratie</small>
+      <a class="back-to-top" href="#top">Naar boven
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   KADE — interacties (vanilla, defensief, geen libraries)
+   ============================================================ */
+(function () {
+  'use strict';
+  var doc = document;
+  var html = doc.documentElement;
+  var reduced = false;
+  try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { reduced = false; }
+  var finePointer = false;
+  try { finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches; } catch (e) { finePointer = false; }
+
+  /* ===== LOADED — start hero-reveals na eerste frame ===== */
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { html.classList.add('loaded'); });
+  });
+
+  /* ============================================================
+     HEADER — auto-hide, solid bij scroll, progressbalk
+     ============================================================ */
+  var header = doc.getElementById('header');
+  var progress = doc.getElementById('scrollProgress');
+  var lastY = window.pageYOffset || 0;
+  var menuIsOpen = false;
+
+  function updateHeader() {
+    var y = window.pageYOffset || 0;
+    if (header) {
+      header.classList.toggle('is-solid', y > 40 && !menuIsOpen);
+      if (menuIsOpen) {
+        header.classList.remove('is-hidden');
+      } else if (y > lastY && y > 220) {
+        header.classList.add('is-hidden');
+      } else {
+        header.classList.remove('is-hidden');
+      }
+    }
+    if (progress) {
+      var max = doc.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    }
+    lastY = y;
+  }
+  if (header) {
+    header.addEventListener('focusin', function () { header.classList.remove('is-hidden'); });
+  }
+
+  /* ============================================================
+     OVERLAY-MENU — focus-trap, Escape, scroll-lock
+     ============================================================ */
+  var toggle = doc.getElementById('menuToggle');
+  var overlay = doc.getElementById('menuOverlay');
+  var menuClose = doc.getElementById('menuClose');
+  var focusSel = 'a[href], button:not([disabled])';
+
+  function setMenu(open) {
+    if (!overlay || !toggle) { return; }
+    menuIsOpen = open;
+    overlay.classList.toggle('is-open', open);
+    overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    html.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      var first = overlay.querySelector(focusSel);
+      if (first) { first.focus(); }
+    } else {
+      toggle.focus();
+    }
+    updateHeader();
+  }
+  if (toggle) { toggle.addEventListener('click', function () { setMenu(!menuIsOpen); }); }
+  if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (link) { setMenu(false); }
+    });
+  }
+  doc.addEventListener('keydown', function (e) {
+    if (!menuIsOpen) { return; }
+    if (e.key === 'Escape') { e.preventDefault(); setMenu(false); return; }
+    if (e.key === 'Tab' && overlay) {
+      var nodes = [toggle].concat(Array.prototype.slice.call(overlay.querySelectorAll(focusSel)));
+      var first = nodes[0];
+      var last = nodes[nodes.length - 1];
+      if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* ============================================================
+     ÉÉN IntersectionObserver — reveals + stats-trigger
+     ============================================================ */
+  var statsStarted = false;
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('in-view');
+        if (entry.target.id === 'stats') { startTellers(); }
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(
+      doc.querySelectorAll('[data-rv], #stats'),
+      function (el) { io.observe(el); }
+    );
+  } else {
+    Array.prototype.forEach.call(
+      doc.querySelectorAll('[data-rv]'),
+      function (el) { el.classList.add('in-view'); }
+    );
+    startTellers();
+  }
+
+  /* ============================================================
+     TELLERS — NL-notatie (24.000); 1899 staat vast als jaartal
+     ============================================================ */
+  function formatNL(value) {
+    var rounded = Math.round(value);
+    try { return rounded.toLocaleString('nl-NL'); }
+    catch (e) { return String(rounded).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  }
+  function startTellers() {
+    if (statsStarted) { return; }
+    statsStarted = true;
+    Array.prototype.forEach.call(doc.querySelectorAll('.countup'), function (el, i) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target)) { return; }
+      if (reduced) { el.textContent = formatNL(target); return; }
+      var dur = 1600;
+      var startT = null;
+      function tick(t) {
+        if (startT === null) { startT = t; }
+        var p = Math.min((t - startT) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = formatNL(target * eased);
+        if (p < 1) { requestAnimationFrame(tick); }
+      }
+      el.textContent = formatNL(0);
+      setTimeout(function () { requestAnimationFrame(tick); }, 120 + i * 120);
+    });
+  }
+
+  /* ============================================================
+     MANIFEST — woord-oplichting bij scroll (accent naar roze)
+     ============================================================ */
+  var manifest = doc.getElementById('manifestText');
+  var manifestWords = [];
+  if (manifest && !reduced) {
+    var raw = manifest.textContent.trim().split(/\s+/);
+    manifest.textContent = '';
+    raw.forEach(function (word, i) {
+      var span = doc.createElement('span');
+      span.className = 'w';
+      if (/werkplaats|water|open|nieuwsgierig|KADE/i.test(word)) { span.className += ' accent'; }
+      span.textContent = word;
+      manifest.appendChild(span);
+      if (i < raw.length - 1) { manifest.appendChild(doc.createTextNode(' ')); }
+      manifestWords.push(span);
+    });
+  }
+
+  /* ============================================================
+     ÉÉN scroll-rAF-lus — header, progress, manifest, parallax
+     ============================================================ */
+  var heroArtImg = (reduced || !finePointer) ? null : doc.querySelector('.hero-art img');
+  var ticking = false;
+  function onScrollFrame() {
+    ticking = false;
+    var vh = window.innerHeight || doc.documentElement.clientHeight;
+    updateHeader();
+
+    if (manifestWords.length && manifest) {
+      var r = manifest.getBoundingClientRect();
+      var prog = (vh * 0.85 - r.top) / (r.height + vh * 0.45);
+      prog = Math.max(0, Math.min(1, prog));
+      var lit = Math.floor(prog * manifestWords.length);
+      for (var i = 0; i < manifestWords.length; i++) {
+        manifestWords[i].classList.toggle('lit', i < lit);
+      }
+    }
+
+    /* lichte verticale parallax op het hero-kunstwerk */
+    if (heroArtImg) {
+      var hr = heroArtImg.parentNode.getBoundingClientRect();
+      if (hr.bottom > -120 && hr.top < vh + 120) {
+        var center = hr.top + hr.height / 2;
+        var ratio = (center - vh / 2) / vh;
+        var move = Math.max(-16, Math.min(16, -ratio * 24));
+        heroArtImg.style.marginTop = move.toFixed(2) + 'px';
+      }
+    }
+  }
+  function requestTick() {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); }
+  }
+  window.addEventListener('scroll', requestTick, { passive: true });
+  window.addEventListener('resize', requestTick, { passive: true });
+  onScrollFrame();
+
+  /* ============================================================
+     LIVE OPEN-STATUS — berekend in Europe/Amsterdam
+     di–zo 10:00–17:00 · vr tot 21:00 · ma gesloten
+     ============================================================ */
+  var DAGEN = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'];
+  var DAG_LANG = { ma: 'maandag', di: 'dinsdag', wo: 'woensdag', do: 'donderdag', vr: 'vrijdag', za: 'zaterdag', zo: 'zondag' };
+  /* minuten sinds middernacht: [open, dicht] of null = gesloten */
+  var UREN = {
+    ma: null,
+    di: [600, 1020],
+    wo: [600, 1020],
+    do: [600, 1020],
+    vr: [600, 1260],
+    za: [600, 1020],
+    zo: [600, 1020]
+  };
+
+  function minNaarTijd(min) {
+    var h = Math.floor(min / 60);
+    var m = min % 60;
+    return h + ':' + (m < 10 ? '0' + m : String(m));
+  }
+
+  function nuInAmsterdam() {
+    var fmt;
+    try {
+      fmt = new Intl.DateTimeFormat('nl-NL', {
+        timeZone: 'Europe/Amsterdam',
+        weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+      });
+    } catch (e) { return null; }
+    var parts;
+    try { parts = fmt.formatToParts(new Date()); } catch (e2) { return null; }
+    var dag = null, uur = null, minuut = null;
+    parts.forEach(function (p) {
+      if (p.type === 'weekday') { dag = p.value.toLowerCase().replace(/[^a-z]/g, '').slice(0, 2); }
+      if (p.type === 'hour') { uur = parseInt(p.value, 10) % 24; }
+      if (p.type === 'minute') { minuut = parseInt(p.value, 10); }
+    });
+    if (dag === null || uur === null || minuut === null || isNaN(uur) || isNaN(minuut)) { return null; }
+    if (DAGEN.indexOf(dag) === -1) { return null; }
+    return { dag: dag, min: uur * 60 + minuut };
+  }
+
+  function berekenStatus() {
+    var nu = nuInAmsterdam();
+    if (!nu) { return null; }
+    var vandaag = UREN[nu.dag];
+
+    /* nu open? */
+    if (vandaag && nu.min >= vandaag[0] && nu.min < vandaag[1]) {
+      return { open: true, tekst: 'Nu geopend · sluit om ' + minNaarTijd(vandaag[1]) };
+    }
+    /* opent later vandaag? */
+    if (vandaag && nu.min < vandaag[0]) {
+      return { open: false, tekst: 'Nu gesloten · opent vandaag om ' + minNaarTijd(vandaag[0]) };
+    }
+    /* eerstvolgende opening, ook over de weekgrens heen */
+    var idx = DAGEN.indexOf(nu.dag);
+    for (var stap = 1; stap <= 7; stap++) {
+      var volgendeDag = DAGEN[(idx + stap) % 7];
+      var uren = UREN[volgendeDag];
+      if (uren) {
+        return { open: false, tekst: 'Nu gesloten · opent ' + volgendeDag + ' om ' + minNaarTijd(uren[0]) };
+      }
+    }
+    return { open: false, tekst: 'Nu gesloten' };
+  }
+
+  function toonStatus() {
+    var status = berekenStatus();
+    if (!status) { return; } /* zonder Intl: statische tijden blijven staan */
+    var pil = doc.getElementById('statusPil');
+    var pilTekst = doc.getElementById('statusPilTekst');
+    var blok = doc.getElementById('bezoekStatus');
+    var blokTekst = doc.getElementById('bezoekStatusTekst');
+    if (pilTekst) { pilTekst.textContent = status.tekst; }
+    if (blokTekst) { blokTekst.textContent = status.tekst; }
+    if (pil) { pil.classList.toggle('is-open', status.open); }
+    if (blok) { blok.classList.toggle('is-open', status.open); }
+    /* markeer de rij van vandaag in de openingstijden-tabel */
+    var nu = nuInAmsterdam();
+    if (nu) {
+      Array.prototype.forEach.call(doc.querySelectorAll('#urenTabel tr[data-dag]'), function (rij) {
+        rij.classList.toggle('vandaag', rij.getAttribute('data-dag') === nu.dag);
+      });
+    }
+  }
+  toonStatus();
+  setInterval(toonStatus, 60000);
+
+  /* ============================================================
+     COLLECTIE-STROOK — pijlen, drag-to-scroll, click-onderdrukking
+     ============================================================ */
+  var strip = doc.getElementById('stripTrack');
+  var stripPrev = doc.getElementById('stripPrev');
+  var stripNext = doc.getElementById('stripNext');
+
+  function stripStap() {
+    var item = strip ? strip.querySelector('.werk') : null;
+    if (!item) { return 320; }
+    var style = window.getComputedStyle(strip);
+    var gap = parseFloat(style.columnGap || style.gap) || 24;
+    return item.getBoundingClientRect().width + gap;
+  }
+  function stripKnoppen() {
+    if (!strip || !stripPrev || !stripNext) { return; }
+    var max = strip.scrollWidth - strip.clientWidth - 2;
+    stripPrev.disabled = strip.scrollLeft <= 2;
+    stripNext.disabled = strip.scrollLeft >= max;
+  }
+  var dragMoved = false;
+  if (strip && stripPrev && stripNext) {
+    stripPrev.addEventListener('click', function () {
+      strip.scrollBy({ left: -stripStap(), behavior: reduced ? 'auto' : 'smooth' });
+    });
+    stripNext.addEventListener('click', function () {
+      strip.scrollBy({ left: stripStap(), behavior: reduced ? 'auto' : 'smooth' });
+    });
+    strip.addEventListener('scroll', function () {
+      window.requestAnimationFrame(stripKnoppen);
+    }, { passive: true });
+    window.addEventListener('resize', stripKnoppen, { passive: true });
+    stripKnoppen();
+
+    /* drag-to-scroll: alleen muis, touch scrolt native */
+    var dragging = false;
+    var dragStartX = 0;
+    var dragStartScroll = 0;
+    strip.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') { return; }
+      dragging = true;
+      dragMoved = false;
+      dragStartX = e.clientX;
+      dragStartScroll = strip.scrollLeft;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) { return; }
+      var dx = e.clientX - dragStartX;
+      if (Math.abs(dx) > 4 && !dragMoved) {
+        dragMoved = true;
+        strip.classList.add('is-dragging');
+      }
+      if (dragMoved) { strip.scrollLeft = dragStartScroll - dx; }
+    }, { passive: true });
+    window.addEventListener('pointerup', function () {
+      if (!dragging) { return; }
+      dragging = false;
+      window.setTimeout(function () { strip.classList.remove('is-dragging'); dragMoved = false; }, 40);
+    }, { passive: true });
+    /* klik na slepen onderdrukken zodat de lightbox niet per ongeluk opent */
+    strip.addEventListener('click', function (e) {
+      if (dragMoved) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  }
+
+  /* ============================================================
+     LIGHTBOX — dialog, prev/next, Esc/pijlen, focus-trap/-restore
+     zonder JS zijn de werken gewone links naar de grote variant
+     ============================================================ */
+  (function () {
+    var links = Array.prototype.slice.call(doc.querySelectorAll('.werk-link'));
+    var lb = doc.getElementById('lightbox');
+    if (!lb || !links.length) { return; }
+    var lbImg = doc.getElementById('lightboxImg');
+    var lbLabel = doc.getElementById('lightboxLabel');
+    var lbCount = doc.getElementById('lightboxCount');
+    var closeBtn = doc.getElementById('lightboxClose');
+    var prevBtn = doc.getElementById('lightboxPrev');
+    var nextBtn = doc.getElementById('lightboxNext');
+    var figure = lb.querySelector('.lightbox__figure');
+    var index = 0;
+    var lastFocus = null;
+
+    links.forEach(function (link, i) {
+      link.setAttribute('aria-haspopup', 'dialog');
+      link.addEventListener('click', function (e) {
+        if (dragMoved) { return; } /* sleep-klik is al onderdrukt */
+        e.preventDefault();
+        openLb(i, link);
+      });
+    });
+
+    function render() {
+      var link = links[index];
+      var img = link.querySelector('img');
+      /* grotere variant laden voor fullscreen (w=700 -> w=1600) */
+      lbImg.src = img.src.replace('w=700', 'w=1600');
+      lbImg.alt = img.alt;
+      lbLabel.textContent = link.getAttribute('data-label') || '';
+      lbCount.textContent = (index + 1) + ' / ' + links.length;
+      var single = links.length < 2;
+      prevBtn.hidden = single;
+      nextBtn.hidden = single;
+    }
+
+    function openLb(i, bron) {
+      lastFocus = bron || doc.activeElement;
+      index = i;
+      render();
+      doc.body.classList.add('lightbox-open');
+      lb.classList.add('is-open');
+      lb.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+    }
+
+    function closeLb() {
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+      doc.body.classList.remove('lightbox-open');
+      if (lastFocus) { lastFocus.focus(); }
+    }
+
+    function stapLb(dir) {
+      if (links.length < 2) { return; }
+      index = (index + dir + links.length) % links.length;
+      if (reduced) { render(); return; }
+      lbImg.classList.add('is-swapping');
+      setTimeout(function () {
+        render();
+        lbImg.classList.remove('is-swapping');
+      }, 220);
+    }
+
+    closeBtn.addEventListener('click', closeLb);
+    prevBtn.addEventListener('click', function () { stapLb(-1); });
+    nextBtn.addEventListener('click', function () { stapLb(1); });
+
+    /* klik buiten het beeld sluit */
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb || e.target === figure) { closeLb(); }
+    });
+
+    /* toetsenbord: Escape sluit, pijltjes navigeren */
+    doc.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('is-open')) { return; }
+      if (e.key === 'Escape') { closeLb(); }
+      else if (e.key === 'ArrowLeft') { stapLb(-1); }
+      else if (e.key === 'ArrowRight') { stapLb(1); }
+    });
+
+    /* focus-trap binnen de dialog */
+    lb.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') { return; }
+      var focusables = [closeBtn, prevBtn, nextBtn].filter(function (b) { return !b.hidden; });
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  })();
+
+  /* ============================================================
+     MAGNETISCHE KNOPPEN — alleen fine pointer, geen reduced motion
+     ============================================================ */
+  if (finePointer && !reduced) {
+    Array.prototype.forEach.call(doc.querySelectorAll('.js-magnetic'), function (btn) {
+      var MAX = 6;
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var dx = ((e.clientX - (r.left + r.width / 2)) / (r.width / 2)) * MAX;
+        var dy = ((e.clientY - (r.top + r.height / 2)) / (r.height / 2)) * MAX;
+        btn.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+      }, { passive: true });
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; }, { passive: true });
+    });
+  }
+
+  /* ============================================================
+     FAQ — single-open accordion (grid-template-rows)
+     ============================================================ */
+  var faqList = doc.getElementById('faqList');
+  if (faqList) {
+    var faqItems = Array.prototype.slice.call(faqList.querySelectorAll('.faq-item'));
+    faqList.classList.add('faq-ready');
+    function setFaq(item, open) {
+      item.classList.toggle('open', open);
+      var b = item.querySelector('.faq-q');
+      if (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    }
+    faqItems.forEach(function (item) {
+      var btn = item.querySelector('.faq-q');
+      if (!btn) { return; }
+      btn.addEventListener('click', function () {
+        var wasOpen = item.classList.contains('open');
+        faqItems.forEach(function (it) { setFaq(it, false); });
+        if (!wasOpen) { setFaq(item, true); }
+      });
+    });
+    if (faqItems[0]) { setFaq(faqItems[0], true); }
+  }
+
+  /* ============================================================
+     NIEUWSBRIEF — validatie + succes met tekenend vinkje
+     ============================================================ */
+  var nbForm = doc.getElementById('nbForm');
+  if (nbForm) {
+    var nbEmail = doc.getElementById('nbEmail');
+    var nbStatus = doc.getElementById('nbStatus');
+    function emailOk(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+    }
+    nbEmail.addEventListener('input', function () {
+      if (nbForm.classList.contains('invalid') && emailOk(nbEmail.value)) {
+        nbForm.classList.remove('invalid');
+        nbEmail.setAttribute('aria-invalid', 'false');
+      }
+    });
+    nbForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!emailOk(nbEmail.value)) {
+        nbForm.classList.add('invalid');
+        nbEmail.setAttribute('aria-invalid', 'true');
+        nbEmail.focus();
+        if (nbStatus) { nbStatus.textContent = 'Het e-mailadres lijkt niet te kloppen. Controleer het en probeer opnieuw.'; }
+        return;
+      }
+      nbForm.classList.remove('invalid');
+      nbForm.classList.add('sent');
+      var succes = nbForm.querySelector('.nb-succes');
+      if (succes) { succes.setAttribute('aria-hidden', 'false'); }
+      if (nbStatus) { nbStatus.textContent = 'Inschrijving gelukt. Je ontvangt voortaan onze nieuwsbrief.'; }
+    });
+  }
+
+  /* ============================================================
+     KLOK — lokale tijd Dordrecht (Europe/Amsterdam) + jaartal
+     ============================================================ */
+  var klokEl = doc.getElementById('kadeKlok');
+  if (klokEl) {
+    var klokFmt = null;
+    try {
+      klokFmt = new Intl.DateTimeFormat('nl-NL', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Amsterdam' });
+    } catch (e) { klokFmt = null; }
+    if (klokFmt) {
+      var zetKlok = function () { klokEl.textContent = klokFmt.format(new Date()); };
+      zetKlok();
+      setInterval(zetKlok, 30000);
+    } else {
+      klokEl.textContent = '';
+    }
+  }
+  var jaarEl = doc.getElementById('jaar');
+  if (jaarEl) { jaarEl.textContent = String(new Date().getFullYear()); }
+})();
+</script>
+</body>
+</html>
