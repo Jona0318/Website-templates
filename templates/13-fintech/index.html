@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noventa — De bank die met je meebeweegt</title>
+<meta name="description" content="Noventa is de digitale bank voor Nederland. Open in 8 minuten een rekening, betaal wereldwijd zonder kosten en laat je geld groeien met 3,2% rente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ============================================================
+   NOVENTA — premium dark fintech template
+   ============================================================ */
+@property --ang {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root{
+  --bg:        #0a0c10;
+  --surface:   #12151c;
+  --surface-2: #181c25;
+  --line:      rgba(255,255,255,.08);
+  --line-soft: rgba(255,255,255,.05);
+  --text:      #f4f6f9;
+  --muted:     #9aa3b2;
+  --faint:     #6b7280;
+  --accent:    #00e389;
+  --accent-soft: rgba(0,227,137,.12);
+  --accent-glow: rgba(0,227,137,.35);
+  --red:       #ff6b81;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+  --radius: 18px;
+  --header-h: 72px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+html:focus-within{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* fine dot grid */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.5) 1px, transparent 1.4px);
+  background-size:30px 30px;
+  opacity:.035;
+  pointer-events:none;
+  z-index:0;
+}
+
+main, header, footer{ position:relative; z-index:1; }
+
+::selection{ background:var(--accent); color:#04130c; }
+
+img, svg{ display:block; max-width:100%; }
+button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+
+h1,h2,h3,h4{ font-family:var(--font-display); font-weight:600; line-height:1.12; letter-spacing:-.02em; }
+
+.num{ font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1; }
+
+.container{ width:min(1180px, 100% - 48px); margin-inline:auto; }
+@media (max-width:560px){ .container{ width:min(1180px, 100% - 40px); } }
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+:focus:not(:focus-visible){ outline:none; }
+
+.skip-link{
+  position:absolute; left:16px; top:-60px;
+  background:var(--accent); color:#04130c;
+  font-weight:600; padding:10px 18px; border-radius:8px;
+  z-index:200; transition:top .2s var(--ease-out);
+}
+.skip-link:focus{ top:14px; }
+
+/* ============ buttons ============ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--font-display); font-weight:600; font-size:15px;
+  padding:14px 26px; border-radius:12px;
+  transition:transform .25s var(--ease-out), box-shadow .25s var(--ease-out), background-color .25s var(--ease-out), border-color .25s var(--ease-out);
+  will-change:transform;
+}
+.btn-primary{
+  background:var(--accent); color:#04130c;
+  box-shadow:0 0 0 1px rgba(0,227,137,.4), 0 8px 32px -8px var(--accent-glow);
+}
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 0 0 1px rgba(0,227,137,.6), 0 14px 44px -8px var(--accent-glow); }
+.btn-ghost{
+  background:rgba(255,255,255,.04); border:1px solid var(--line); color:var(--text);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+}
+.btn-ghost:hover{ transform:translateY(-2px); border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.07); }
+.btn .arrow{ transition:transform .25s var(--ease-out); }
+.btn:hover .arrow{ transform:translateX(3px); }
+
+/* ============ header ============ */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  height:var(--header-h);
+  transition:background-color .35s var(--ease-out), border-color .35s var(--ease-out), backdrop-filter .35s var(--ease-out);
+  border-bottom:1px solid transparent;
+}
+.site-header.scrolled{
+  background:rgba(10,12,16,.72);
+  backdrop-filter:blur(16px) saturate(1.4);
+  -webkit-backdrop-filter:blur(16px) saturate(1.4);
+  border-bottom-color:var(--line-soft);
+}
+.header-inner{
+  height:var(--header-h);
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.logo{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--font-display); font-weight:700; font-size:20px; letter-spacing:-.02em;
+}
+.logo-mark{
+  width:30px; height:30px; border-radius:9px;
+  background:linear-gradient(135deg, var(--accent), #00b8d9);
+  display:grid; place-items:center;
+  box-shadow:0 0 18px -2px var(--accent-glow);
+}
+.logo-mark svg{ width:16px; height:16px; }
+
+.main-nav{ display:flex; align-items:center; gap:4px; }
+.main-nav a{
+  font-size:14.5px; font-weight:500; color:var(--muted);
+  padding:9px 14px; border-radius:10px;
+  transition:color .2s var(--ease-out), background-color .2s var(--ease-out);
+}
+.main-nav a:hover{ color:var(--text); background:rgba(255,255,255,.05); }
+.header-cta{ display:flex; align-items:center; gap:12px; }
+.header-cta .btn{ padding:10px 20px; font-size:14px; }
+.login-link{ font-size:14.5px; font-weight:500; color:var(--muted); transition:color .2s; }
+.login-link:hover{ color:var(--text); }
+
+.menu-toggle{
+  display:none;
+  width:44px; height:44px; border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  place-items:center;
+  position:relative; z-index:120;
+}
+.menu-toggle .bars{ position:relative; width:18px; height:12px; display:block; }
+.menu-toggle .bars span{
+  position:absolute; left:0; width:100%; height:2px; border-radius:2px;
+  background:var(--text);
+  transition:transform .35s var(--ease-out), opacity .25s var(--ease-out), top .35s var(--ease-out);
+}
+.menu-toggle .bars span:nth-child(1){ top:0; }
+.menu-toggle .bars span:nth-child(2){ top:5px; }
+.menu-toggle .bars span:nth-child(3){ top:10px; }
+.menu-open .menu-toggle .bars span:nth-child(1){ top:5px; transform:rotate(45deg); }
+.menu-open .menu-toggle .bars span:nth-child(2){ opacity:0; }
+.menu-open .menu-toggle .bars span:nth-child(3){ top:5px; transform:rotate(-45deg); }
+
+.mobile-menu{
+  position:fixed; top:0; left:0; right:0; z-index:110;
+  background:rgba(12,14,19,.88);
+  backdrop-filter:blur(24px) saturate(1.4);
+  -webkit-backdrop-filter:blur(24px) saturate(1.4);
+  border-bottom:1px solid var(--line);
+  padding:calc(var(--header-h) + 12px) 24px 28px;
+  transform:translateY(-100%);
+  visibility:hidden;
+  transition:transform .5s var(--ease-out), visibility 0s .5s;
+}
+.menu-open .mobile-menu{ transform:translateY(0); visibility:visible; transition:transform .5s var(--ease-out), visibility 0s 0s; }
+.mobile-menu a{
+  display:block; padding:14px 6px;
+  font-family:var(--font-display); font-size:21px; font-weight:600;
+  border-bottom:1px solid var(--line-soft);
+  opacity:0; transform:translateY(12px);
+  transition:opacity .4s var(--ease-out), transform .4s var(--ease-out), color .2s;
+}
+.mobile-menu a:hover{ color:var(--accent); }
+.menu-open .mobile-menu a{ opacity:1; transform:translateY(0); }
+.menu-open .mobile-menu a:nth-child(1){ transition-delay:.08s; }
+.menu-open .mobile-menu a:nth-child(2){ transition-delay:.13s; }
+.menu-open .mobile-menu a:nth-child(3){ transition-delay:.18s; }
+.menu-open .mobile-menu a:nth-child(4){ transition-delay:.23s; }
+.menu-open .mobile-menu a:nth-child(5){ transition-delay:.28s; }
+.menu-open .mobile-menu a:nth-child(6){ transition-delay:.33s; }
+.mobile-menu .btn{ margin-top:20px; width:100%; opacity:0; transform:translateY(12px); transition:opacity .4s var(--ease-out) .38s, transform .4s var(--ease-out) .38s; }
+.menu-open .mobile-menu .btn{ opacity:1; transform:translateY(0); }
+
+@media (max-width:900px){
+  .main-nav, .header-cta{ display:none; }
+  .menu-toggle{ display:grid; }
+}
+
+/* ============ hero ============ */
+.hero{
+  padding:calc(var(--header-h) + 64px) 0 80px;
+  position:relative;
+  overflow:clip;
+}
+.hero-grid{
+  display:grid; grid-template-columns:1.05fr .95fr;
+  gap:48px; align-items:center;
+}
+.hero-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:500; color:var(--muted);
+  border:1px solid var(--line); border-radius:99px;
+  padding:7px 14px 7px 8px;
+  background:rgba(255,255,255,.03);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  margin-bottom:26px;
+}
+.hero-badge .pill{
+  background:var(--accent-soft); color:var(--accent);
+  font-weight:600; font-size:12px;
+  padding:3px 10px; border-radius:99px;
+}
+.hero h1{
+  font-size:clamp(38px, 5.4vw, 66px);
+  font-weight:700;
+  margin-bottom:22px;
+}
+.hero h1 .line{ display:block; overflow:hidden; padding-bottom:.08em; margin-bottom:-.08em; }
+.hero h1 .line-inner{ display:block; }
+.js .hero h1 .line-inner{
+  transform:translateY(115%);
+  animation:lineUp 1s var(--ease-out) forwards;
+}
+.js .hero h1 .line:nth-child(2) .line-inner{ animation-delay:.12s; }
+.js .hero h1 .line:nth-child(3) .line-inner{ animation-delay:.24s; }
+@keyframes lineUp{ to{ transform:translateY(0); } }
+.hero h1 .glow-word{
+  color:var(--accent);
+  text-shadow:0 0 32px var(--accent-glow);
+}
+.hero-sub{
+  color:var(--muted); font-size:17.5px; max-width:46ch;
+  margin-bottom:34px;
+}
+.js .hero-sub, .js .hero-ctas, .js .hero-meta, .js .hero-badge{
+  opacity:0; transform:translateY(16px);
+  animation:fadeUp .9s var(--ease-out) forwards;
+}
+.js .hero-badge{ animation-delay:.05s; }
+.js .hero-sub{ animation-delay:.38s; }
+.js .hero-ctas{ animation-delay:.5s; }
+.js .hero-meta{ animation-delay:.62s; }
+@keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
+.hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:30px; }
+.hero-meta{ display:flex; align-items:center; gap:10px; color:var(--faint); font-size:13.5px; }
+.hero-meta svg{ width:15px; height:15px; flex:none; color:var(--accent); }
+
+/* hero visual */
+.hero-visual{
+  position:relative;
+  display:flex; flex-direction:column; align-items:center;
+  gap:0;
+  perspective:1200px;
+}
+.js .hero-visual{ opacity:0; animation:fadeUp 1.1s var(--ease-out) .3s forwards; }
+.orb{
+  position:absolute; top:-8%; left:50%;
+  width:520px; height:520px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle at 50% 45%, rgba(0,227,137,.28), rgba(0,184,217,.12) 42%, transparent 68%);
+  filter:blur(40px);
+  pointer-events:none;
+  z-index:0;
+}
+
+.card-float{
+  position:relative; z-index:2;
+  animation:floaty 7s ease-in-out infinite;
+  will-change:transform;
+}
+@keyframes floaty{
+  0%,100%{ transform:translateY(0) rotate(-.4deg); }
+  50%{ transform:translateY(-14px) rotate(.4deg); }
+}
+.bank-card{
+  width:min(400px, 84vw);
+  aspect-ratio:1.586;
+  border-radius:22px;
+  position:relative;
+  padding:26px 28px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  background:
+    radial-gradient(120% 160% at 8% 0%, rgba(0,227,137,.32), transparent 52%),
+    radial-gradient(130% 140% at 100% 100%, rgba(0,140,255,.22), transparent 55%),
+    linear-gradient(135deg, #1b212d, #0e1118 60%, #131825);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:
+    0 32px 70px -22px rgba(0,0,0,.75),
+    0 0 60px -18px var(--accent-glow),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  transform-style:preserve-3d;
+  will-change:transform;
+  transition:box-shadow .4s var(--ease-out);
+}
+.bank-card::after{
+  content:"";
+  position:absolute; inset:0; border-radius:inherit;
+  background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.07) 45%, transparent 60%);
+  pointer-events:none;
+}
+.card-top{ display:flex; align-items:flex-start; justify-content:space-between; }
+.card-brand{ font-family:var(--font-display); font-weight:700; font-size:17px; letter-spacing:.01em; }
+.card-brand em{ font-style:normal; color:var(--accent); }
+.contactless{ width:24px; height:24px; color:rgba(255,255,255,.7); }
+.card-chip{
+  width:44px; height:33px; border-radius:7px;
+  background:linear-gradient(135deg, #e8d28a, #b89b4e 55%, #d9c178);
+  position:relative; overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.25);
+}
+.card-chip::before, .card-chip::after{
+  content:""; position:absolute; background:rgba(60,45,10,.45);
+}
+.card-chip::before{ left:0; right:0; top:50%; height:1.5px; transform:translateY(-50%); }
+.card-chip::after{ top:0; bottom:0; left:50%; width:1.5px; transform:translateX(-50%); }
+.card-number{
+  font-family:var(--font-display);
+  font-size:clamp(18px, 4.6vw, 22px);
+  letter-spacing:.14em; font-weight:500;
+  text-shadow:0 1px 2px rgba(0,0,0,.5);
+}
+.card-bottom{ display:flex; align-items:flex-end; justify-content:space-between; }
+.card-holder .label, .card-exp .label{
+  font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45);
+  margin-bottom:3px;
+}
+.card-holder .value, .card-exp .value{
+  font-family:var(--font-display); font-size:13.5px; letter-spacing:.08em; font-weight:500;
+}
+.card-network{ display:flex; }
+.card-network i{
+  width:26px; height:26px; border-radius:50%; display:block;
+}
+.card-network i:first-child{ background:rgba(255,255,255,.85); }
+.card-network i:last-child{ background:var(--accent); opacity:.85; margin-left:-10px; mix-blend-mode:screen; }
+
+/* ============ transactions panel ============ */
+.tx-panel{
+  position:relative; z-index:3;
+  width:min(380px, 88vw);
+  margin-top:-34px;
+  margin-left:clamp(0px, 8vw, 90px);
+  background:rgba(18,21,28,.66);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  backdrop-filter:blur(20px) saturate(1.3);
+  -webkit-backdrop-filter:blur(20px) saturate(1.3);
+  box-shadow:0 28px 60px -24px rgba(0,0,0,.7);
+  padding:18px 20px 8px;
+}
+.tx-head{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:8px;
+}
+.tx-head h3{ font-size:14px; font-weight:600; letter-spacing:0; }
+.tx-live{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; font-weight:600; color:var(--accent); letter-spacing:.06em; text-transform:uppercase;
+}
+.tx-live .dot{
+  width:7px; height:7px; border-radius:50%; background:var(--accent);
+  box-shadow:0 0 8px var(--accent);
+  animation:pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot{ 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.4; transform:scale(.75);} }
+.tx-list{ display:block; }
+.tx-item{
+  display:flex; align-items:center; gap:12px;
+  padding:11px 0;
+  border-top:1px solid var(--line-soft);
+  transition:opacity .5s var(--ease-out), transform .5s var(--ease-out);
+}
+.tx-item:first-child{ border-top:0; }
+.js .tx-item.enter{ opacity:0; transform:translateY(-12px); }
+.js .tx-item.leave{ opacity:0; transform:translateY(8px); }
+.tx-icon{
+  width:36px; height:36px; border-radius:11px; flex:none;
+  display:grid; place-items:center;
+  font-size:15px;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--line-soft);
+}
+.tx-info{ flex:1; min-width:0; }
+.tx-name{ font-size:13.5px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tx-cat{ font-size:11.5px; color:var(--faint); }
+.tx-amount{ font-size:13.5px; font-weight:600; color:var(--text); white-space:nowrap; }
+.tx-amount.pos{ color:var(--accent); }
+
+/* ============ section base / reveals ============ */
+section{ padding:96px 0; }
+.section-head{ max-width:620px; margin-bottom:56px; }
+.section-head.center{ margin-inline:auto; text-align:center; }
+.eyebrow{
+  display:inline-block;
+  font-size:12.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+.section-head h2{ font-size:clamp(28px, 3.6vw, 44px); margin-bottom:16px; }
+.section-head p{ color:var(--muted); font-size:16.5px; }
+
+.js [data-reveal]{
+  opacity:0; transform:translateY(26px);
+  transition:opacity .9s var(--ease-out) var(--d, 0s), transform .9s var(--ease-out) var(--d, 0s);
+  will-change:opacity, transform;
+}
+.js [data-reveal].revealed{ opacity:1; transform:translateY(0); }
+
+/* ============ trust strip ============ */
+.trust{ padding:64px 0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+.trust-title{
+  text-align:center; color:var(--muted); font-size:15px; margin-bottom:38px;
+}
+.trust-title strong{ color:var(--text); font-weight:600; }
+.stats-row{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;
+  margin-bottom:48px;
+}
+.stat{ text-align:center; }
+.stat-value{
+  font-family:var(--font-display); font-weight:700;
+  font-size:clamp(28px, 3.4vw, 42px);
+  letter-spacing:-.02em;
+  color:var(--text);
+}
+.stat-value .accent{ color:var(--accent); }
+.stat-label{ color:var(--faint); font-size:13.5px; margin-top:4px; }
+.press-row{
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:18px 44px;
+}
+.press-row span{
+  font-family:var(--font-display); font-weight:700;
+  font-size:17px; letter-spacing:.04em;
+  color:rgba(255,255,255,.26);
+  transition:color .3s var(--ease-out);
+}
+.press-row span:hover{ color:rgba(255,255,255,.55); }
+
+/* ============ bento features ============ */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(6, 1fr);
+  gap:18px;
+}
+.tile{
+  position:relative;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:30px;
+  overflow:hidden;
+  transition:transform .45s var(--ease-out), border-color .45s var(--ease-out), box-shadow .45s var(--ease-out);
+  will-change:transform;
+}
+.tile:hover{
+  transform:translateY(-5px);
+  border-color:rgba(0,227,137,.45);
+  box-shadow:0 22px 48px -22px rgba(0,0,0,.6), 0 0 36px -12px var(--accent-glow);
+}
+.tile h3{ font-size:19px; margin-bottom:8px; }
+.tile p{ color:var(--muted); font-size:14.5px; max-width:42ch; }
+.tile-icon{
+  width:44px; height:44px; border-radius:13px;
+  background:var(--accent-soft);
+  border:1px solid rgba(0,227,137,.25);
+  display:grid; place-items:center;
+  color:var(--accent);
+  margin-bottom:18px;
+}
+.tile-icon svg{ width:21px; height:21px; }
+.tile-lg{ grid-column:span 4; }
+.tile-sm{ grid-column:span 2; }
+.tile-md{ grid-column:span 3; }
+
+/* instant payments visual */
+.pay-visual{
+  margin-top:26px;
+  display:flex; align-items:center; gap:14px;
+}
+.pay-node{
+  width:46px; height:46px; border-radius:50%; flex:none;
+  display:grid; place-items:center;
+  background:var(--surface-2); border:1px solid var(--line);
+  font-family:var(--font-display); font-weight:600; font-size:13px;
+}
+.pay-node.dest{ border-color:rgba(0,227,137,.4); color:var(--accent); }
+.pay-line{
+  flex:1; height:2px; position:relative; border-radius:2px;
+  background:rgba(255,255,255,.08);
+  overflow:hidden;
+}
+.pay-line::after{
+  content:""; position:absolute; top:0; left:0;
+  width:38%; height:100%;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation:payFlow 2.2s var(--ease-out) infinite;
+}
+@keyframes payFlow{
+  0%{ transform:translateX(-110%); }
+  60%,100%{ transform:translateX(290%); }
+}
+.pay-time{
+  font-family:var(--font-display); font-weight:600; font-size:13px;
+  color:var(--accent); white-space:nowrap;
+}
+
+/* spaarpotje counter */
+.rente-box{
+  margin-top:24px;
+  background:rgba(0,227,137,.05);
+  border:1px solid rgba(0,227,137,.18);
+  border-radius:14px;
+  padding:18px 20px;
+}
+.rente-label{ font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:4px; }
+.rente-value{
+  font-family:var(--font-display); font-weight:700; font-size:30px;
+  color:var(--accent); letter-spacing:-.01em;
+  text-shadow:0 0 24px var(--accent-glow);
+}
+.rente-note{ font-size:12.5px; color:var(--faint); margin-top:4px; }
+
+/* mini bar chart */
+.chart{
+  margin-top:26px;
+  display:flex; align-items:flex-end; gap:9px;
+  height:110px;
+}
+.chart .bar{
+  flex:1; border-radius:6px 6px 3px 3px;
+  background:linear-gradient(180deg, rgba(0,227,137,.85), rgba(0,227,137,.18));
+  transform:scaleY(0); transform-origin:bottom;
+  transition:transform 1s var(--ease-out);
+}
+.chart .bar.mut{ background:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.05)); }
+.revealed .chart .bar{ transform:scaleY(1); }
+.revealed .chart .bar:nth-child(1){ transition-delay:.15s; }
+.revealed .chart .bar:nth-child(2){ transition-delay:.25s; }
+.revealed .chart .bar:nth-child(3){ transition-delay:.35s; }
+.revealed .chart .bar:nth-child(4){ transition-delay:.45s; }
+.revealed .chart .bar:nth-child(5){ transition-delay:.55s; }
+.revealed .chart .bar:nth-child(6){ transition-delay:.65s; }
+.revealed .chart .bar:nth-child(7){ transition-delay:.75s; }
+.chart-legend{ display:flex; justify-content:space-between; margin-top:10px; font-size:11px; color:var(--faint); }
+
+/* virtual cards stack */
+.vcards{ margin-top:26px; position:relative; height:96px; }
+.vcard{
+  position:absolute; left:0; width:150px; height:92px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.15);
+  padding:12px;
+  font-family:var(--font-display); font-size:10.5px; letter-spacing:.1em;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  transition:transform .5s var(--ease-spring);
+}
+.vcard:nth-child(1){ background:linear-gradient(135deg, #1d2330, #11141c); transform:rotate(-5deg) translateY(4px); }
+.vcard:nth-child(2){ left:54px; background:linear-gradient(135deg, #15302a, #0d1a16); border-color:rgba(0,227,137,.35); transform:rotate(2deg); }
+.vcard:nth-child(3){ left:108px; background:linear-gradient(135deg, #16222e, #0c121b); transform:rotate(7deg) translateY(6px); }
+.tile:hover .vcard:nth-child(1){ transform:rotate(-8deg) translate(-6px, 0); }
+.tile:hover .vcard:nth-child(2){ transform:rotate(0deg) translateY(-7px); }
+.tile:hover .vcard:nth-child(3){ transform:rotate(10deg) translate(6px, 2px); }
+.vcard span{ opacity:.6; }
+
+/* shield pulse */
+.shield-wrap{ margin-top:26px; display:grid; place-items:center; height:110px; position:relative; }
+.shield-wrap .ring{
+  position:absolute; width:72px; height:72px; border-radius:50%;
+  border:1px solid rgba(0,227,137,.4);
+  animation:ringPulse 2.6s var(--ease-out) infinite;
+}
+.shield-wrap .ring:nth-child(2){ animation-delay:1.3s; }
+@keyframes ringPulse{
+  from{ transform:scale(.7); opacity:.9; }
+  to{ transform:scale(1.7); opacity:0; }
+}
+.shield-icon{
+  width:64px; height:64px; border-radius:50%;
+  background:var(--accent-soft); border:1px solid rgba(0,227,137,.3);
+  display:grid; place-items:center; color:var(--accent);
+  position:relative; z-index:1;
+}
+.shield-icon svg{ width:28px; height:28px; }
+
+/* ============ app showcase ============ */
+.app-section{ overflow:clip; }
+.app-grid{
+  display:grid; grid-template-columns:1fr 1.1fr;
+  gap:64px; align-items:center;
+}
+.phone-stage{ display:grid; place-items:center; position:relative; }
+.phone-stage .orb{ width:440px; height:440px; top:6%; opacity:.7; }
+.phone{
+  position:relative; z-index:1;
+  width:min(300px, 78vw);
+  aspect-ratio:9/19;
+  border-radius:46px;
+  background:#0d1016;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:
+    0 0 0 9px #161a22,
+    0 0 0 10px rgba(255,255,255,.08),
+    0 44px 90px -30px rgba(0,0,0,.8);
+  padding:14px;
+  will-change:transform;
+}
+.phone::before{
+  content:""; position:absolute; top:13px; left:50%;
+  transform:translateX(-50%);
+  width:96px; height:26px; border-radius:14px;
+  background:#05070a;
+  z-index:3;
+}
+.phone-screen{
+  width:100%; height:100%;
+  border-radius:34px;
+  background:linear-gradient(180deg, #11141b, #0b0e13);
+  overflow:hidden;
+  padding:52px 18px 18px;
+  display:flex; flex-direction:column; gap:14px;
+}
+.ps-greet{ font-size:12px; color:var(--faint); }
+.ps-name{ font-family:var(--font-display); font-weight:600; font-size:15px; margin-top:2px; }
+.ps-balance-card{
+  background:linear-gradient(135deg, rgba(0,227,137,.16), rgba(0,140,255,.08));
+  border:1px solid rgba(0,227,137,.25);
+  border-radius:18px;
+  padding:16px;
+}
+.ps-balance-label{ font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.5); }
+.ps-balance{
+  font-family:var(--font-display); font-weight:700; font-size:26px;
+  margin-top:4px; letter-spacing:-.01em;
+}
+.ps-balance small{ font-size:15px; color:var(--muted); font-weight:500; }
+.ps-delta{ font-size:11px; color:var(--accent); font-weight:600; margin-top:4px; }
+.ps-actions{ display:flex; gap:8px; }
+.ps-actions span{
+  flex:1; text-align:center;
+  font-size:10.5px; font-weight:600;
+  padding:9px 4px; border-radius:11px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line-soft);
+}
+.ps-actions span:first-child{ background:var(--accent); color:#04130c; border-color:transparent; }
+.ps-chart{
+  display:flex; align-items:flex-end; gap:5px;
+  height:64px;
+  padding:0 2px;
+}
+.ps-chart i{
+  flex:1; border-radius:4px 4px 2px 2px;
+  background:linear-gradient(180deg, rgba(0,227,137,.7), rgba(0,227,137,.1));
+}
+.ps-tx{ display:flex; align-items:center; gap:10px; padding:7px 0; border-top:1px solid var(--line-soft); }
+.ps-tx i{
+  width:28px; height:28px; border-radius:9px; flex:none;
+  background:rgba(255,255,255,.06); border:1px solid var(--line-soft);
+  display:grid; place-items:center; font-style:normal; font-size:12px;
+}
+.ps-tx .n{ flex:1; font-size:11.5px; font-weight:600; }
+.ps-tx .a{ font-size:11.5px; font-weight:600; }
+.ps-tx .a.pos{ color:var(--accent); }
+
+.benefits{ display:flex; flex-direction:column; gap:10px; margin-top:38px; }
+.benefit{
+  display:flex; gap:16px; align-items:flex-start;
+  padding:18px 20px;
+  border:1px solid var(--line-soft);
+  border-radius:14px;
+  background:rgba(255,255,255,.02);
+  transition:border-color .3s var(--ease-out), background-color .3s var(--ease-out);
+}
+.benefit:hover{ border-color:rgba(0,227,137,.3); background:rgba(0,227,137,.03); }
+.benefit-icon{
+  width:38px; height:38px; flex:none; border-radius:11px;
+  background:var(--accent-soft); border:1px solid rgba(0,227,137,.22);
+  display:grid; place-items:center; color:var(--accent);
+}
+.benefit-icon svg{ width:18px; height:18px; }
+.benefit h3{ font-size:16px; margin-bottom:3px; }
+.benefit p{ font-size:14px; color:var(--muted); }
+.store-badges{ display:flex; gap:12px; margin-top:30px; flex-wrap:wrap; }
+.store-badge{
+  display:inline-flex; align-items:center; gap:10px;
+  border:1px solid var(--line); border-radius:12px;
+  padding:10px 18px;
+  background:rgba(255,255,255,.03);
+  transition:border-color .3s, transform .3s var(--ease-out);
+}
+.store-badge:hover{ border-color:rgba(255,255,255,.25); transform:translateY(-2px); }
+.store-badge svg{ width:20px; height:20px; }
+.store-badge .sb-small{ display:block; font-size:9.5px; color:var(--faint); letter-spacing:.06em; text-transform:uppercase; }
+.store-badge .sb-big{ display:block; font-family:var(--font-display); font-size:14px; font-weight:600; line-height:1.2; }
+
+/* ============ pricing ============ */
+.pricing-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr);
+  gap:22px; align-items:stretch;
+}
+.plan{
+  position:relative;
+  background:rgba(18,21,28,.55);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:34px 30px;
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  display:flex; flex-direction:column;
+  transition:transform .45s var(--ease-out), border-color .45s var(--ease-out), box-shadow .45s var(--ease-out);
+}
+.plan:hover{ transform:translateY(-6px); border-color:rgba(255,255,255,.2); }
+.plan-name{ font-family:var(--font-display); font-size:17px; font-weight:600; margin-bottom:6px; }
+.plan-desc{ font-size:13.5px; color:var(--faint); margin-bottom:22px; min-height:2.6em; }
+.plan-price{
+  font-family:var(--font-display); font-weight:700;
+  font-size:42px; letter-spacing:-.02em;
+  margin-bottom:2px;
+}
+.plan-price small{ font-size:15px; font-weight:500; color:var(--muted); letter-spacing:0; }
+.plan-per{ font-size:12.5px; color:var(--faint); margin-bottom:26px; }
+.plan ul{ display:flex; flex-direction:column; gap:11px; margin-bottom:30px; flex:1; }
+.plan li{ display:flex; gap:10px; align-items:flex-start; font-size:14px; color:var(--muted); }
+.plan li svg{ width:16px; height:16px; flex:none; margin-top:3px; color:var(--accent); }
+.plan .btn{ width:100%; }
+
+.plan-featured{
+  background:rgba(20,26,30,.7);
+  isolation:isolate;
+  border-color:transparent;
+}
+.plan-featured::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:23px;
+  padding:1.5px;
+  background:conic-gradient(from var(--ang),
+    rgba(0,227,137,0) 0deg,
+    rgba(0,227,137,.9) 50deg,
+    rgba(102,224,255,.7) 90deg,
+    rgba(0,227,137,0) 150deg,
+    rgba(0,227,137,0) 210deg,
+    rgba(0,227,137,.55) 280deg,
+    rgba(0,227,137,0) 340deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite:exclude;
+  animation:spinBorder 7s linear infinite;
+  pointer-events:none;
+  z-index:-1;
+}
+@keyframes spinBorder{ to{ --ang:360deg; } }
+.plan-featured{ box-shadow:0 24px 70px -28px rgba(0,227,137,.25); }
+.plan-tag{
+  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+  background:var(--accent); color:#04130c;
+  font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:5px 14px; border-radius:99px;
+  box-shadow:0 4px 18px -4px var(--accent-glow);
+  white-space:nowrap;
+}
+.pricing-note{ text-align:center; color:var(--faint); font-size:13px; margin-top:28px; }
+
+/* ============ security band ============ */
+.security{ padding:80px 0; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+.sec-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; }
+.sec-item{
+  text-align:center; padding:28px 18px;
+  border:1px solid var(--line-soft); border-radius:var(--radius);
+  background:rgba(255,255,255,.015);
+  transition:border-color .35s var(--ease-out), transform .35s var(--ease-out);
+}
+.sec-item:hover{ border-color:rgba(0,227,137,.3); transform:translateY(-3px); }
+.sec-icon{
+  width:48px; height:48px; margin:0 auto 16px;
+  border-radius:14px;
+  background:var(--accent-soft); border:1px solid rgba(0,227,137,.22);
+  display:grid; place-items:center; color:var(--accent);
+}
+.sec-icon svg{ width:22px; height:22px; }
+.sec-item h3{ font-size:15.5px; margin-bottom:5px; }
+.sec-item p{ font-size:13px; color:var(--faint); }
+
+/* ============ FAQ ============ */
+.faq-list{ max-width:760px; margin-inline:auto; display:flex; flex-direction:column; gap:12px; }
+.faq-item{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.02);
+  overflow:hidden;
+  transition:border-color .3s var(--ease-out);
+}
+.faq-item.open{ border-color:rgba(0,227,137,.35); }
+.faq-q{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:18px;
+  padding:20px 24px;
+  text-align:left;
+  font-family:var(--font-display); font-size:16.5px; font-weight:600;
+  transition:color .25s;
+}
+.faq-q:hover{ color:var(--accent); }
+.faq-q .chev{
+  width:22px; height:22px; flex:none;
+  color:var(--muted);
+  transition:transform .45s var(--ease-out), color .25s;
+}
+.faq-item.open .faq-q .chev{ transform:rotate(180deg); color:var(--accent); }
+.faq-a{
+  display:grid; grid-template-rows:0fr;
+  transition:grid-template-rows .5s var(--ease-out);
+}
+.faq-item.open .faq-a{ grid-template-rows:1fr; }
+.faq-a-inner{ overflow:hidden; }
+.faq-a p{
+  padding:0 24px 22px;
+  color:var(--muted); font-size:15px; max-width:62ch;
+}
+
+/* ============ CTA band ============ */
+.cta-band{
+  position:relative;
+  border:1px solid rgba(0,227,137,.25);
+  border-radius:28px;
+  padding:clamp(48px, 7vw, 88px) clamp(28px, 6vw, 80px);
+  text-align:center;
+  overflow:hidden;
+  background:
+    radial-gradient(80% 130% at 50% 115%, rgba(0,227,137,.22), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+}
+.cta-band::before{
+  content:"";
+  position:absolute; left:50%; bottom:-220px;
+  width:560px; height:380px;
+  transform:translateX(-50%);
+  background:radial-gradient(closest-side, var(--accent-glow), transparent);
+  filter:blur(30px);
+  pointer-events:none;
+}
+.cta-band h2{ font-size:clamp(30px, 4.4vw, 52px); margin-bottom:16px; position:relative; }
+.cta-band p{ color:var(--muted); font-size:17px; max-width:48ch; margin:0 auto 34px; position:relative; }
+.cta-band .hero-ctas{ justify-content:center; margin-bottom:0; position:relative; }
+
+/* ============ footer ============ */
+.site-footer{
+  border-top:1px solid var(--line-soft);
+  padding:72px 0 36px;
+  background:linear-gradient(180deg, transparent, rgba(0,0,0,.35));
+}
+.footer-grid{
+  display:grid; grid-template-columns:1.6fr repeat(3, 1fr);
+  gap:40px;
+  margin-bottom:56px;
+}
+.footer-brand p{ color:var(--faint); font-size:14px; max-width:34ch; margin-top:16px; }
+.footer-col h3{
+  font-size:12.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--faint); margin-bottom:18px;
+}
+.footer-col ul{ display:flex; flex-direction:column; gap:11px; }
+.footer-col a{ font-size:14.5px; color:var(--muted); transition:color .2s; }
+.footer-col a:hover{ color:var(--accent); }
+.footer-bottom{
+  border-top:1px solid var(--line-soft);
+  padding-top:28px;
+  display:flex; flex-wrap:wrap; gap:14px 28px;
+  align-items:center; justify-content:space-between;
+  color:var(--faint); font-size:13px;
+}
+.footer-legal{ font-size:12px; color:rgba(255,255,255,.28); max-width:72ch; margin-top:18px; }
+
+/* ============ responsive ============ */
+@media (max-width:1080px){
+  .bento{ grid-template-columns:repeat(2, 1fr); }
+  .tile-lg, .tile-md, .tile-sm{ grid-column:span 1; }
+  .tile-lg{ grid-column:span 2; }
+}
+@media (max-width:960px){
+  .hero{ padding-top:calc(var(--header-h) + 44px); }
+  .hero-grid{ grid-template-columns:1fr; gap:64px; }
+  .hero-visual{ order:2; }
+  .app-grid{ grid-template-columns:1fr; gap:56px; }
+  .pricing-grid{ grid-template-columns:1fr; max-width:480px; margin-inline:auto; }
+  .sec-grid{ grid-template-columns:repeat(2, 1fr); }
+  .stats-row{ grid-template-columns:repeat(2, 1fr); gap:32px 16px; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:620px){
+  section{ padding:72px 0; }
+  .bento{ grid-template-columns:1fr; }
+  .tile-lg{ grid-column:span 1; }
+  .tx-panel{ margin-left:0; margin-top:-20px; }
+  .sec-grid{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr; gap:32px; }
+  .hero-ctas .btn{ width:100%; }
+  .orb{ width:340px; height:340px; }
+}
+
+/* ============ reduced motion ============ */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *, *::before, *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    transition-delay:0s !important;
+  }
+  .js [data-reveal]{ opacity:1; transform:none; }
+  .js .hero h1 .line-inner{ transform:none; animation:none; }
+  .js .hero-sub, .js .hero-ctas, .js .hero-meta, .js .hero-badge, .js .hero-visual{
+    opacity:1; transform:none; animation:none;
+  }
+  .card-float{ animation:none; }
+  .plan-featured::before{ animation:none; }
+  .chart .bar, .revealed .chart .bar{ transform:scaleY(1); }
+  .pay-line::after{ animation:none; transform:translateX(80%); }
+  .shield-wrap .ring{ animation:none; opacity:.35; transform:scale(1.2); }
+  .tx-live .dot{ animation:none; }
+  .js .tx-item.enter, .js .tx-item.leave{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Direct naar inhoud</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="logo" href="#" aria-label="Noventa — naar boven">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#04130c" stroke-width="3" stroke-linecap="round"><path d="M5 19V5l14 14V5"/></svg>
+      </span>
+      Noventa
+    </a>
+    <nav class="main-nav" aria-label="Hoofdnavigatie">
+      <a href="#functies">Functies</a>
+      <a href="#app">App</a>
+      <a href="#prijzen">Prijzen</a>
+      <a href="#veiligheid">Veiligheid</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-cta">
+      <a class="login-link" href="#">Inloggen</a>
+      <a class="btn btn-primary" href="#prijzen">Open een rekening</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu openen">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobiele navigatie">
+    <a href="#functies">Functies</a>
+    <a href="#app">App</a>
+    <a href="#prijzen">Prijzen</a>
+    <a href="#veiligheid">Veiligheid</a>
+    <a href="#faq">FAQ</a>
+    <a href="#">Inloggen</a>
+    <a class="btn btn-primary" href="#prijzen">Open een rekening</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-badge"><span class="pill">Nieuw</span> Noventa Metal — nu met 3,2% spaarrente</p>
+        <h1 id="hero-title">
+          <span class="line"><span class="line-inner">Bankieren dat</span></span>
+          <span class="line"><span class="line-inner">met je <span class="glow-word">mee&shy;beweegt</span>.</span></span>
+        </h1>
+        <p class="hero-sub">Open in 8 minuten een volwaardige Nederlandse rekening. Betaal wereldwijd zonder verborgen kosten, spaar automatisch en houd realtime grip op elke euro.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#prijzen">Gratis beginnen <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#app">Bekijk de app</a>
+        </div>
+        <p class="hero-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          Vergunning van De Nederlandsche Bank · depositogarantie tot €100.000
+        </p>
+      </div>
+
+      <div class="hero-visual">
+        <div class="orb" aria-hidden="true"></div>
+
+        <div class="card-float">
+          <div class="bank-card" id="bankCard" aria-label="Noventa betaalkaart">
+            <div class="card-top">
+              <span class="card-brand">no<em>venta</em></span>
+              <svg class="contactless" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 8.5a9 9 0 0 1 0 7"/><path d="M9.5 6.5a13 13 0 0 1 0 11"/><path d="M13 4.5a17 17 0 0 1 0 15"/><path d="M16.5 2.8a21 21 0 0 1 0 18.4"/></svg>
+            </div>
+            <div class="card-chip" aria-hidden="true"></div>
+            <p class="card-number num" aria-hidden="true">••••&nbsp;&nbsp;••••&nbsp;&nbsp;••••&nbsp;&nbsp;4912</p>
+            <div class="card-bottom">
+              <div class="card-holder">
+                <p class="label">Kaarthouder</p>
+                <p class="value">J. DE VRIES</p>
+              </div>
+              <div class="card-exp">
+                <p class="label">Geldig t/m</p>
+                <p class="value num">12/29</p>
+              </div>
+              <span class="card-network" aria-hidden="true"><i></i><i></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- live transaction panel (decorative) -->
+        <div class="tx-panel" id="txPanel" aria-hidden="true">
+          <div class="tx-head">
+            <h3>Recente transacties</h3>
+            <span class="tx-live"><span class="dot"></span> Live</span>
+          </div>
+          <div class="tx-list" id="txList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST ================= -->
+  <section class="trust" aria-label="Vertrouwen en cijfers">
+    <div class="container">
+      <p class="trust-title" data-reveal>Vertrouwd door <strong>250.000+ klanten</strong> in heel Nederland</p>
+      <div class="stats-row">
+        <div class="stat" data-reveal style="--d:.05s">
+          <p class="stat-value num"><span data-count="250000" data-format="thousands">0</span><span class="accent">+</span></p>
+          <p class="stat-label">Actieve klanten</p>
+        </div>
+        <div class="stat" data-reveal style="--d:.13s">
+          <p class="stat-value num">€<span data-count="2.4" data-decimals="1">0</span> <span class="accent">mrd</span></p>
+          <p class="stat-label">Beheerd vermogen</p>
+        </div>
+        <div class="stat" data-reveal style="--d:.21s">
+          <p class="stat-value num"><span data-count="4.8" data-decimals="1">0</span><span class="accent">★</span></p>
+          <p class="stat-label">App Store-beoordeling</p>
+        </div>
+        <div class="stat" data-reveal style="--d:.29s">
+          <p class="stat-value num"><span data-count="99.99" data-decimals="2">0</span><span class="accent">%</span></p>
+          <p class="stat-label">Uptime afgelopen jaar</p>
+        </div>
+      </div>
+      <div class="press-row" data-reveal style="--d:.35s" aria-label="Bekend van">
+        <span>FD</span><span>NRC</span><span>RTL&nbsp;Z</span><span>QUOTE</span><span>EMERCE</span><span>BNR</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES / BENTO ================= -->
+  <section id="functies" aria-labelledby="functies-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Functies</p>
+        <h2 id="functies-title" data-reveal style="--d:.08s">Alles wat een bank moet zijn. Niets wat je niet nodig hebt.</h2>
+        <p data-reveal style="--d:.16s">Van flitsbetalingen tot slimme spaarpotjes: Noventa is gebouwd voor mensen die meer uit hun geld willen halen, zonder gedoe.</p>
+      </div>
+
+      <div class="bento">
+        <article class="tile tile-lg" data-reveal>
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>
+          </div>
+          <h3>Instant betalingen, 24/7</h3>
+          <p>Stuur geld naar elke Europese rekening en het staat er binnen seconden — ook in het weekend en midden in de nacht.</p>
+          <div class="pay-visual" aria-hidden="true">
+            <span class="pay-node">Jij</span>
+            <span class="pay-line"></span>
+            <span class="pay-node dest">Lisa</span>
+            <span class="pay-time num">&lt; 3 sec</span>
+          </div>
+        </article>
+
+        <article class="tile tile-sm" data-reveal style="--d:.1s">
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3>Spaarpotjes met 3,2% rente</h3>
+          <p>Rente wordt élke dag bijgeschreven. Zie je geld groeien terwijl je slaapt.</p>
+          <div class="rente-box">
+            <p class="rente-label">Potje “Vakantie”</p>
+            <p class="rente-value num">€<span data-count="1284.56" data-decimals="2">0,00</span></p>
+            <p class="rente-note num">+€0,11 rente vandaag</p>
+          </div>
+        </article>
+
+        <article class="tile tile-sm" data-reveal style="--d:.05s">
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>
+          </div>
+          <h3>Virtuele kaarten</h3>
+          <p>Maak in één tik een wegwerpkaart aan voor elke webshop of abonnement.</p>
+          <div class="vcards" aria-hidden="true">
+            <div class="vcard"><span>•••• 8841</span></div>
+            <div class="vcard"><span>•••• 2270</span></div>
+            <div class="vcard"><span>•••• 5519</span></div>
+          </div>
+        </article>
+
+        <article class="tile tile-md" data-reveal style="--d:.12s">
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 17V10M10 17V6M14 17v-7M18 17V8"/></svg>
+          </div>
+          <h3>Inzichten die je écht begrijpt</h3>
+          <p>Automatische categorieën, weekrapporten en budgetten. Je weet altijd waar je geld blijft.</p>
+          <div class="chart" aria-hidden="true">
+            <div class="bar mut" style="height:42%"></div>
+            <div class="bar mut" style="height:60%"></div>
+            <div class="bar" style="height:78%"></div>
+            <div class="bar mut" style="height:50%"></div>
+            <div class="bar" style="height:92%"></div>
+            <div class="bar mut" style="height:36%"></div>
+            <div class="bar" style="height:66%"></div>
+          </div>
+          <div class="chart-legend" aria-hidden="true">
+            <span>ma</span><span>di</span><span>wo</span><span>do</span><span>vr</span><span>za</span><span>zo</span>
+          </div>
+        </article>
+
+        <article class="tile tile-md" data-reveal style="--d:.19s">
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Beveiliging zonder compromis</h3>
+          <p>Biometrische login, realtime fraudedetectie en de kaart bevriezen met één tik. Slaap rustig.</p>
+          <div class="shield-wrap" aria-hidden="true">
+            <span class="ring"></span>
+            <span class="ring"></span>
+            <span class="shield-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APP SHOWCASE ================= -->
+  <section id="app" class="app-section" aria-labelledby="app-title">
+    <div class="container app-grid">
+      <div class="phone-stage" data-reveal>
+        <div class="orb" aria-hidden="true"></div>
+        <div class="phone" id="phone" role="img" aria-label="Voorbeeld van de Noventa-app met saldo en transacties">
+          <div class="phone-screen" aria-hidden="true">
+            <div>
+              <p class="ps-greet">Goedemiddag</p>
+              <p class="ps-name">Jasmijn de Vries</p>
+            </div>
+            <div class="ps-balance-card">
+              <p class="ps-balance-label">Totaal saldo</p>
+              <p class="ps-balance num">€4.281,<small>90</small></p>
+              <p class="ps-delta num">▲ +€312,40 deze maand</p>
+            </div>
+            <div class="ps-actions">
+              <span>Versturen</span><span>Verzoek</span><span>Potjes</span>
+            </div>
+            <div class="ps-chart">
+              <i style="height:34%"></i><i style="height:52%"></i><i style="height:40%"></i><i style="height:68%"></i><i style="height:56%"></i><i style="height:84%"></i><i style="height:72%"></i><i style="height:100%"></i>
+            </div>
+            <div>
+              <div class="ps-tx"><i>🛒</i><span class="n">Albert Heijn</span><span class="a num">−€23,45</span></div>
+              <div class="ps-tx"><i>💼</i><span class="n">Salaris</span><span class="a num pos">+€2.850,00</span></div>
+              <div class="ps-tx"><i>🚆</i><span class="n">NS Reizigers</span><span class="a num">−€8,90</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-copy">
+        <p class="eyebrow" data-reveal>De app</p>
+        <h2 id="app-title" data-reveal style="--d:.08s">Je complete bank, in je broekzak.</h2>
+        <p data-reveal style="--d:.16s" style="color:var(--muted)">Geen wachtrijen, geen kantooruren. Alles wat je bij een traditionele bank regelt — en meer — doe je bij Noventa in een paar tikken.</p>
+        <div class="benefits">
+          <div class="benefit" data-reveal style="--d:.1s">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></span>
+            <div><h3>Realtime meldingen</h3><p>Elke betaling direct op je scherm, nog vóór de kassabon geprint is.</p></div>
+          </div>
+          <div class="benefit" data-reveal style="--d:.18s">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18"/></svg></span>
+            <div><h3>Gratis pinnen, wereldwijd</h3><p>Betaal in elke valuta tegen de échte wisselkoers, zonder opslag.</p></div>
+          </div>
+          <div class="benefit" data-reveal style="--d:.26s">
+            <span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5z"/><path d="M16 12h.01"/></svg></span>
+            <div><h3>Automatisch sparen</h3><p>Rond elke betaling af en zet het wisselgeld in een potje. Ongemerkt rijk.</p></div>
+          </div>
+        </div>
+        <div class="store-badges" data-reveal style="--d:.34s">
+          <a class="store-badge" href="#" aria-label="Download in de App Store">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.89 2.36-4.28 2.47-4.35-1.35-1.97-3.44-2.24-4.18-2.27-1.78-.18-3.47 1.05-4.37 1.05-.9 0-2.29-1.02-3.77-1-1.94.03-3.73 1.13-4.72 2.86-2.02 3.5-.52 8.67 1.45 11.51.96 1.39 2.1 2.95 3.6 2.89 1.45-.06 1.99-.93 3.74-.93s2.24.93 3.77.9c1.56-.03 2.54-1.41 3.49-2.81 1.1-1.61 1.55-3.17 1.58-3.25-.04-.02-3.03-1.16-3.06-4.6zM14.16 4.05c.8-.97 1.34-2.32 1.19-3.66-1.15.05-2.55.77-3.38 1.74-.74.86-1.39 2.23-1.22 3.55 1.29.1 2.6-.66 3.41-1.63z"/></svg>
+            <span><span class="sb-small">Download in de</span><span class="sb-big">App Store</span></span>
+          </a>
+          <a class="store-badge" href="#" aria-label="Download via Google Play">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8L13.7 12 3.6 22.2c-.37-.23-.6-.64-.6-1.13V2.93c0-.49.23-.9.6-1.13zM14.8 13.1l2.6 2.6-11.4 6.5 8.8-9.1zm3.9-2.2l2.5 1.43c.93.53.93 1.81 0 2.34l-2.5 1.43-2.9-2.6 2.9-2.6zM6 1.8l11.4 6.5-2.6 2.6L6 1.8z"/></svg>
+            <span><span class="sb-small">Ontdek het op</span><span class="sb-big">Google Play</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section id="prijzen" aria-labelledby="prijzen-title">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" data-reveal>Prijzen</p>
+        <h2 id="prijzen-title" data-reveal style="--d:.08s">Eerlijke prijzen. Geen kleine lettertjes.</h2>
+        <p data-reveal style="--d:.16s">Begin gratis en upgrade wanneer jij er klaar voor bent. Maandelijks opzegbaar, altijd.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="plan" data-reveal>
+          <h3 class="plan-name">Gratis</h3>
+          <p class="plan-desc">Voor wie modern wil bankieren zonder kosten.</p>
+          <p class="plan-price num">€0<small>,00</small></p>
+          <p class="plan-per">per maand</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Nederlandse IBAN-rekening</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Fysieke én virtuele betaalkaart</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Instant betalingen binnen Europa</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>2 spaarpotjes met 2,1% rente</li>
+          </ul>
+          <a class="btn btn-ghost" href="#">Start gratis</a>
+        </article>
+
+        <article class="plan plan-featured" data-reveal style="--d:.12s">
+          <p class="plan-tag">Meest gekozen</p>
+          <h3 class="plan-name">Plus</h3>
+          <p class="plan-desc">Voor wie meer rente, inzicht en flexibiliteit wil.</p>
+          <p class="plan-price num">€4<small>,99</small></p>
+          <p class="plan-per">per maand</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Alles uit Gratis</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Onbeperkt spaarpotjes met 3,2% rente</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>10 virtuele wegwerpkaarten</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Gratis pinnen wereldwijd</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Reis- en aankoopverzekering</li>
+          </ul>
+          <a class="btn btn-primary" href="#">Kies Plus</a>
+        </article>
+
+        <article class="plan" data-reveal style="--d:.24s">
+          <h3 class="plan-name">Metal</h3>
+          <p class="plan-desc">Voor wie het maximale uit elke euro haalt.</p>
+          <p class="plan-price num">€13<small>,99</small></p>
+          <p class="plan-per">per maand</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Alles uit Plus</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>18-grams roestvrijstalen kaart</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>1% cashback op kaartbetalingen</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Lounge-toegang op 1.200+ luchthavens</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Prioriteitssupport, 24/7</li>
+          </ul>
+          <a class="btn btn-ghost" href="#">Kies Metal</a>
+        </article>
+      </div>
+      <p class="pricing-note" data-reveal style="--d:.3s">Alle prijzen incl. btw. Maandelijks opzegbaar zonder opzegtermijn.</p>
+    </div>
+  </section>
+
+  <!-- ================= SECURITY BAND ================= -->
+  <section id="veiligheid" class="security" aria-labelledby="veiligheid-title">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" data-reveal>Veiligheid</p>
+        <h2 id="veiligheid-title" data-reveal style="--d:.08s">Jouw geld. Onze verantwoordelijkheid.</h2>
+      </div>
+      <div class="sec-grid">
+        <div class="sec-item" data-reveal>
+          <span class="sec-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+          <h3>DNB-vergunning</h3>
+          <p>Volwaardige bankvergunning, onder toezicht van De Nederlandsche Bank en de AFM.</p>
+        </div>
+        <div class="sec-item" data-reveal style="--d:.1s">
+          <span class="sec-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></span>
+          <h3>Depositogarantie</h3>
+          <p>Je tegoed is beschermd tot €100.000 onder het Nederlandse depositogarantiestelsel.</p>
+        </div>
+        <div class="sec-item" data-reveal style="--d:.2s">
+          <span class="sec-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg></span>
+          <h3>256-bit encryptie</h3>
+          <p>Bankwaardige versleuteling op elke verbinding, elke transactie, elk apparaat.</p>
+        </div>
+        <div class="sec-item" data-reveal style="--d:.3s">
+          <span class="sec-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11a5 5 0 0 1 10 0c0 6-2 8-5 10-3-2-5-4-5-10z"/><circle cx="12" cy="11" r="1.6"/></svg></span>
+          <h3>Biometrische login</h3>
+          <p>Face ID of vingerafdruk verplicht bij elke gevoelige handeling in de app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow" data-reveal>FAQ</p>
+        <h2 id="faq-title" data-reveal style="--d:.08s">Veelgestelde vragen</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" data-reveal>
+          <h3>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+              Hoe snel kan ik een rekening openen?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="faq-a-inner">
+              <p>Gemiddeld in 8 minuten. Je hebt alleen je telefoon en een geldig identiteitsbewijs nodig. Na een korte videoverificatie is je Nederlandse IBAN direct actief en kun je meteen betalen met je virtuele kaart.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal style="--d:.07s">
+          <h3>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+              Is mijn geld veilig bij Noventa?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="faq-a-inner">
+              <p>Ja. Noventa heeft een volwaardige bankvergunning van De Nederlandsche Bank. Je tegoed valt onder het depositogarantiestelsel en is beschermd tot €100.000 per persoon — precies zoals bij elke andere Nederlandse bank.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal style="--d:.14s">
+          <h3>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+              Kan ik mijn oude rekening makkelijk overstappen?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="faq-a-inner">
+              <p>Zeker. Via de Overstapservice worden je incasso's en periodieke overboekingen 13 maanden lang automatisch doorgestuurd. Wij regelen de aanvraag voor je in de app — jij hoeft alleen te bevestigen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal style="--d:.21s">
+          <h3>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+              Hoe werkt de 3,2% spaarrente precies?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div class="faq-a-inner">
+              <p>Op Plus en Metal ontvang je 3,2% rente op het saldo in je spaarpotjes, dagelijks bijgeschreven. Geen minimuminleg, geen vaste looptijd: je kunt elk moment opnemen zonder dat je rente verliest.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item" data-reveal style="--d:.28s">
+          <h3>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+              Wat kost betalen in het buitenland?
+              <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div class="faq-a-inner">
+              <p>Met Plus en Metal betaal je wereldwijd tegen de echte interbancaire wisselkoers, zonder opslag of verborgen marges. Op het gratis plan geldt een kleine toeslag van 0,5% buiten de eurozone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-band" data-reveal>
+        <h2 id="cta-title">Klaar voor een bank die wél vooruit denkt?</h2>
+        <p>Open vandaag nog je rekening. Gratis, in 8 minuten, zonder gedoe — en met een kaart die net zo goed voelt als hij eruitziet.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#">Open een rekening <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#prijzen">Vergelijk plannen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#" aria-label="Noventa">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#04130c" stroke-width="3" stroke-linecap="round"><path d="M5 19V5l14 14V5"/></svg>
+          </span>
+          Noventa
+        </a>
+        <p>De digitale bank voor Nederland. Eerlijk, snel en gebouwd voor de manier waarop jij leeft.</p>
+      </div>
+      <nav class="footer-col" aria-label="Product">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="#functies">Betaalrekening</a></li>
+          <li><a href="#functies">Spaarpotjes</a></li>
+          <li><a href="#functies">Virtuele kaarten</a></li>
+          <li><a href="#prijzen">Noventa Metal</a></li>
+          <li><a href="#">Zakelijk</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Bedrijf">
+        <h3>Bedrijf</h3>
+        <ul>
+          <li><a href="#">Over ons</a></li>
+          <li><a href="#">Werken bij</a></li>
+          <li><a href="#">Pers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Support en juridisch">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#faq">Helpcentrum</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacyverklaring</a></li>
+          <li><a href="#">Voorwaarden</a></li>
+          <li><a href="#">Cookiebeleid</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> Noventa Bank N.V. Alle rechten voorbehouden.</p>
+      <p>KvK 87654321 · Amsterdam</p>
+    </div>
+    <p class="footer-legal">Noventa Bank N.V. beschikt over een bankvergunning van De Nederlandsche Bank en staat onder toezicht van DNB en de AFM. Tegoeden vallen onder het Nederlandse depositogarantiestelsel tot €100.000 per rekeninghouder. Dit is een fictieve demonstratiewebsite.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var docEl = document.documentElement;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var finePointer = window.matchMedia('(pointer: fine)');
+
+  /* ---------- footer year ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ---------- header scroll state ---------- */
+  var header = document.getElementById('siteHeader');
+  var scrollTicking = false;
+  function onScrollHeader() {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 8);
+  }
+  window.addEventListener('scroll', function () {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(function () {
+        onScrollHeader();
+        updateParallax();
+        scrollTicking = false;
+      });
+    }
+  }, { passive: true });
+  onScrollHeader();
+
+  /* ---------- mobile menu ---------- */
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function setMenu(open) {
+    docEl.classList.toggle('menu-open', open);
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuToggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    }
+  }
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', function () {
+      setMenu(!docEl.classList.contains('menu-open'));
+    });
+    mobileMenu.addEventListener('click', function (e) {
+      var t = e.target;
+      if (t && t.closest && t.closest('a')) setMenu(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && docEl.classList.contains('menu-open')) {
+        setMenu(false);
+        menuToggle.focus();
+      }
+    });
+  }
+
+  /* ---------- reveal on scroll (staggered) ---------- */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  if ('IntersectionObserver' in window && !reduceMotion.matches) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function (el) { revealIO.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('revealed'); });
+  }
+
+  /* ---------- animated counters ---------- */
+  function formatNumber(value, decimals, format) {
+    if (format === 'thousands') {
+      return Math.round(value).toLocaleString('nl-NL');
+    }
+    return value.toLocaleString('nl-NL', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+  function animateCounter(el) {
+    var target = parseFloat(el.getAttribute('data-count') || '0');
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    var format = el.getAttribute('data-format') || '';
+    if (reduceMotion.matches) {
+      el.textContent = formatNumber(target, decimals, format);
+      return;
+    }
+    var duration = 1600;
+    var start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 4);
+      el.textContent = formatNumber(target * eased, decimals, format);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counterEls = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  if ('IntersectionObserver' in window) {
+    var counterIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counterEls.forEach(function (el) { counterIO.observe(el); });
+  } else {
+    counterEls.forEach(function (el) {
+      el.textContent = formatNumber(
+        parseFloat(el.getAttribute('data-count') || '0'),
+        parseInt(el.getAttribute('data-decimals') || '0', 10),
+        el.getAttribute('data-format') || ''
+      );
+    });
+  }
+
+  /* ---------- 3D card tilt (fine pointers only) ---------- */
+  var card = document.getElementById('bankCard');
+  if (card && finePointer.matches && !reduceMotion.matches) {
+    var targetX = 0, targetY = 0, curX = 0, curY = 0;
+    var tiltRaf = null;
+    var MAX_TILT = 10;
+    function tiltLoop() {
+      curX += (targetX - curX) * 0.1;
+      curY += (targetY - curY) * 0.1;
+      card.style.transform = 'rotateX(' + curY.toFixed(2) + 'deg) rotateY(' + curX.toFixed(2) + 'deg)';
+      if (Math.abs(targetX - curX) > 0.02 || Math.abs(targetY - curY) > 0.02) {
+        tiltRaf = requestAnimationFrame(tiltLoop);
+      } else {
+        tiltRaf = null;
+      }
+    }
+    function startTiltLoop() {
+      if (tiltRaf === null) tiltRaf = requestAnimationFrame(tiltLoop);
+    }
+    card.addEventListener('pointermove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      targetX = px * MAX_TILT * 2;
+      targetY = -py * MAX_TILT * 2;
+      if (targetX > MAX_TILT) targetX = MAX_TILT;
+      if (targetX < -MAX_TILT) targetX = -MAX_TILT;
+      if (targetY > MAX_TILT) targetY = MAX_TILT;
+      if (targetY < -MAX_TILT) targetY = -MAX_TILT;
+      startTiltLoop();
+    }, { passive: true });
+    card.addEventListener('pointerleave', function () {
+      targetX = 0;
+      targetY = 0;
+      startTiltLoop();
+    }, { passive: true });
+  }
+
+  /* ---------- live transaction feed ---------- */
+  var txList = document.getElementById('txList');
+  var txPanel = document.getElementById('txPanel');
+  var txPool = [
+    { icon: '🛒', name: 'Albert Heijn', cat: 'Boodschappen', amount: -23.45 },
+    { icon: '💼', name: 'Salaris — Bloomtech B.V.', cat: 'Inkomen', amount: 2850.00 },
+    { icon: '🚆', name: 'NS Reizigers', cat: 'Vervoer', amount: -8.90 },
+    { icon: '🎵', name: 'Spotify', cat: 'Abonnementen', amount: -10.99 },
+    { icon: '🤝', name: 'Tikkie van Sanne', cat: 'Verzoek', amount: 17.50 },
+    { icon: '📦', name: 'Bol.com', cat: 'Online winkelen', amount: -34.99 },
+    { icon: '⛽', name: 'Shell Amsterdam-Zuid', cat: 'Vervoer', amount: -62.30 },
+    { icon: '🏖️', name: 'Potje “Vakantie”', cat: 'Sparen', amount: -150.00 },
+    { icon: '💻', name: 'Coolblue', cat: 'Elektronica', amount: -129.00 },
+    { icon: '📈', name: 'Rente bijgeschreven', cat: 'Spaarpotjes', amount: 12.84 },
+    { icon: '🎬', name: 'Pathé Tuschinski', cat: 'Uitgaan', amount: -15.00 },
+    { icon: '☕', name: 'Coffeecompany', cat: 'Horeca', amount: -4.60 }
+  ];
+  function formatAmount(v) {
+    var abs = Math.abs(v).toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return (v >= 0 ? '+' : '−') + '€' + abs;
+  }
+  function buildTxItem(tx) {
+    var item = document.createElement('div');
+    item.className = 'tx-item';
+    var icon = document.createElement('span');
+    icon.className = 'tx-icon';
+    icon.textContent = tx.icon;
+    var info = document.createElement('span');
+    info.className = 'tx-info';
+    var name = document.createElement('span');
+    name.className = 'tx-name';
+    name.textContent = tx.name;
+    var cat = document.createElement('span');
+    cat.className = 'tx-cat';
+    cat.textContent = tx.cat;
+    info.appendChild(name);
+    info.appendChild(cat);
+    var amount = document.createElement('span');
+    amount.className = 'tx-amount num' + (tx.amount >= 0 ? ' pos' : '');
+    amount.textContent = formatAmount(tx.amount);
+    item.appendChild(icon);
+    item.appendChild(info);
+    item.appendChild(amount);
+    return item;
+  }
+  if (txList && txPanel) {
+    var MAX_VISIBLE = 4;
+    var txIndex = 0;
+    var txPaused = false;
+
+    // seed initial entries
+    for (var s = 0; s < MAX_VISIBLE; s++) {
+      txList.appendChild(buildTxItem(txPool[txIndex]));
+      txIndex = (txIndex + 1) % txPool.length;
+    }
+
+    txPanel.addEventListener('pointerenter', function () { txPaused = true; }, { passive: true });
+    txPanel.addEventListener('pointerleave', function () { txPaused = false; }, { passive: true });
+
+    function pushTx() {
+      if (txPaused || document.hidden) return;
+      var item = buildTxItem(txPool[txIndex]);
+      txIndex = (txIndex + 1) % txPool.length;
+      item.classList.add('enter');
+      txList.insertBefore(item, txList.firstChild);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { item.classList.remove('enter'); });
+      });
+      while (txList.children.length > MAX_VISIBLE) {
+        var last = txList.lastElementChild;
+        if (txList.children.length > MAX_VISIBLE + 1) {
+          // safety: remove extras immediately
+          txList.removeChild(last);
+        } else {
+          last.classList.add('leave');
+          (function (node) {
+            window.setTimeout(function () {
+              if (node.parentNode === txList) txList.removeChild(node);
+            }, 480);
+          })(last);
+          break;
+        }
+      }
+    }
+    if (!reduceMotion.matches) {
+      window.setInterval(pushTx, 3000);
+    }
+  }
+
+  /* ---------- phone parallax ---------- */
+  var phone = document.getElementById('phone');
+  function updateParallax() {
+    if (!phone || reduceMotion.matches || !finePointer.matches) return;
+    var rect = phone.getBoundingClientRect();
+    var vh = window.innerHeight || 1;
+    if (rect.bottom < -100 || rect.top > vh + 100) return;
+    var center = rect.top + rect.height / 2;
+    var offset = (center - vh / 2) / vh; // -0.5 .. 0.5 in view
+    var shift = offset * -36;
+    phone.style.transform = 'translateY(' + shift.toFixed(1) + 'px)';
+  }
+  updateParallax();
+
+  /* ---------- FAQ accordion ---------- */
+  var faqButtons = Array.prototype.slice.call(document.querySelectorAll('.faq-q'));
+  faqButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      // close others for a tidy single-open accordion
+      document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          var b = openItem.querySelector('.faq-q');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PULSE 2026 — Het festival voor makers, denkers & doeners</title>
+  <meta name="description" content="PULSE 2026: een energiek tweedaags congres vol inspirerende sprekers, workshops en netwerken. 18 september 2026, TivoliVredenburg, Utrecht." />
+
+  <!-- Google Fonts: Sora (geometrische moderne sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+       ============================================================ */
+    :root {
+      /* Kleuren: levendig paars -> roze gradient */
+      --c-purple: #6d28d9;
+      --c-pink: #ec4899;
+      --c-violet: #8b5cf6;
+      --gradient: linear-gradient(135deg, #6d28d9 0%, #ec4899 100%);
+      --gradient-soft: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+
+      --c-ink: #14101f;          /* donkere tekst / achtergrond */
+      --c-ink-2: #241b35;
+      --c-bg: #0f0a1c;           /* heel donker paars */
+      --c-surface: #1b1430;
+      --c-surface-2: #241a3d;
+      --c-text: #f4f1fb;
+      --c-muted: #b9adcf;
+      --c-line: rgba(255, 255, 255, 0.10);
+      --c-accent: #fbbf24;       /* warm geel accent */
+
+      /* Typografie met fluid clamp() */
+      --font: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --fs-hero: clamp(2.6rem, 7vw, 5.5rem);
+      --fs-h2: clamp(1.9rem, 4vw, 3rem);
+      --fs-h3: clamp(1.2rem, 2vw, 1.5rem);
+      --fs-body: clamp(1rem, 1.2vw, 1.125rem);
+
+      /* Ruimte & vorm */
+      --radius: 18px;
+      --radius-lg: 28px;
+      --container: 1180px;
+      --gutter: clamp(1.2rem, 4vw, 3rem);
+      --section-y: clamp(4rem, 9vw, 8rem);
+      --shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 60px -10px rgba(236, 72, 153, 0.45);
+    }
+
+    /* ============================================================
+       RESET & BASIS
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      color: var(--c-text);
+      background: var(--c-bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { line-height: 1.1; margin: 0 0 .5em; font-weight: 800; letter-spacing: -0.02em; }
+    p { margin: 0 0 1em; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    /* Focus toegankelijkheid */
+    :focus-visible {
+      outline: 3px solid var(--c-accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: .4rem .9rem;
+      border-radius: 100px;
+      background: rgba(236, 72, 153, 0.15);
+      color: #f9a8d4;
+      border: 1px solid rgba(236, 72, 153, 0.35);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-head { max-width: 640px; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+    .section-head h2 { font-size: var(--fs-h2); }
+    .section-head p { color: var(--c-muted); font-size: 1.05rem; }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ============================================================
+       KNOPPEN
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: .85rem 1.6rem;
+      border-radius: 100px;
+      border: 0;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      text-align: center;
+      line-height: 1;
+      position: relative;
+      overflow: hidden; /* nodig voor de shine-sweep */
+    }
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      box-shadow: var(--shadow-glow);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 70px -8px rgba(236, 72, 153, 0.7); }
+    /* Shine-sweep: lichtstreep glijdt over de knop bij hover */
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.4) 50%, transparent 68%);
+      transform: translateX(-130%);
+      pointer-events: none;
+    }
+    .btn-primary:hover::after { transition: transform .65s ease; transform: translateX(130%); }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-primary::after { display: none; }
+    }
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--c-text);
+      border: 1px solid var(--c-line);
+    }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
+    .btn-lg { padding: 1.1rem 2.2rem; font-size: 1.1rem; }
+
+    /* ============================================================
+       HEADER / NAV
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 10, 28, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--c-line);
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+    /* Na scrollen: meer dekkende achtergrond + zachte schaduw */
+    .site-header.scrolled {
+      background: rgba(15, 10, 28, 0.94);
+      box-shadow: 0 12px 32px -20px rgba(0, 0, 0, 0.8);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -.03em;
+    }
+    .logo .dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--gradient);
+      box-shadow: var(--shadow-glow);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: .7; }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-weight: 600;
+      font-size: .98rem;
+      color: var(--c-muted);
+      transition: color .2s ease;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--c-text); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 0; height: 2px;
+      background: var(--gradient);
+      transition: width .25s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-actions { display: flex; align-items: center; gap: .8rem; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px; height: 44px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--c-line);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      margin-inline: auto;
+      background: var(--c-text);
+      border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: fixed;
+        inset: 72px 0 auto 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: var(--c-surface);
+        border-bottom: 1px solid var(--c-line);
+        padding: 1rem var(--gutter) 2rem;
+        transform: translateY(-130%);
+        transition: transform .35s cubic-bezier(.22,1,.36,1);
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a {
+        width: 100%;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--c-line);
+        font-size: 1.1rem;
+        color: var(--c-text);
+      }
+      .nav-links a::after { display: none; }
+      .nav-actions .btn-header { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      position: relative;
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 9vw, 7rem);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: -20% -10% auto -10%;
+      height: 80%;
+      background:
+        radial-gradient(50% 60% at 20% 10%, rgba(109, 40, 217, 0.55), transparent 70%),
+        radial-gradient(50% 60% at 85% 0%, rgba(236, 72, 153, 0.5), transparent 70%);
+      filter: blur(20px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 1; }
+
+    /* Zwevende, geblurde orbs (puur decoratief) */
+    .hero .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero .orb-1 { width: 380px; height: 380px; top: -8%; left: -8%;  background: rgba(139, 92, 246, 0.35); }
+    .hero .orb-2 { width: 320px; height: 320px; top: 30%;  right: -10%; background: rgba(236, 72, 153, 0.28); }
+    .hero .orb-3 { width: 240px; height: 240px; bottom: -6%; left: 35%; background: rgba(251, 191, 36, 0.14); }
+
+    /* Bewegingsanimaties alleen voor wie dat wil (geen reduced motion) */
+    @media (prefers-reduced-motion: no-preference) {
+      /* Gradient 'ademt' langzaam: alleen transform, geen layout-werk */
+      .hero::before {
+        animation: heroBreathe 15s ease-in-out infinite alternate;
+        will-change: transform;
+      }
+      @keyframes heroBreathe {
+        from { transform: translate3d(-3%, 0, 0) scale(1); }
+        to   { transform: translate3d(3%, 3%, 0) scale(1.12); }
+      }
+
+      /* Orbs driften traag rond */
+      .hero .orb-1 { animation: orbDrift1 18s ease-in-out infinite alternate; }
+      .hero .orb-2 { animation: orbDrift2 14s ease-in-out infinite alternate; }
+      .hero .orb-3 { animation: orbDrift3 16s ease-in-out infinite alternate; }
+      @keyframes orbDrift1 { from { transform: translate3d(0, 0, 0); }      to { transform: translate3d(60px, 40px, 0) scale(1.1); } }
+      @keyframes orbDrift2 { from { transform: translate3d(0, 0, 0); }      to { transform: translate3d(-50px, -30px, 0) scale(1.15); } }
+      @keyframes orbDrift3 { from { transform: translate3d(0, 0, 0); }      to { transform: translate3d(40px, -50px, 0); } }
+
+      /* Hero-entrance: gefaseerd binnenkomen */
+      .hero .eyebrow, .hero-tagline, .hero-meta, .hero-cta, .hero .countdown {
+        opacity: 0;
+        animation: heroRise .7s cubic-bezier(.22, 1, .36, 1) forwards;
+      }
+      .hero h1 {
+        opacity: 0;
+        /* Titel met lichte overshoot voor festival-energie */
+        animation: heroPop .8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        animation-delay: .1s;
+      }
+      .hero .eyebrow   { animation-delay: 0s; }
+      .hero-tagline    { animation-delay: .35s; }
+      .hero-meta       { animation-delay: .5s; }   /* datum + locatie */
+      .hero-cta        { animation-delay: .65s; }
+      .hero .countdown { animation-delay: .8s; }
+
+      @keyframes heroRise {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes heroPop {
+        from { opacity: 0; transform: scale(.88) translateY(18px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+      }
+    }
+    .hero-inner { max-width: 860px; }
+    .hero h1 {
+      font-size: var(--fs-hero);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      color: var(--c-muted);
+      max-width: 620px;
+      margin-bottom: 2.2rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      margin-bottom: 2.4rem;
+    }
+    .hero-meta .meta-item { display: flex; align-items: center; gap: .7rem; }
+    .hero-meta .meta-icon {
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--c-line);
+      font-size: 1.3rem;
+    }
+    .hero-meta .meta-label { font-size: .8rem; color: var(--c-muted); text-transform: uppercase; letter-spacing: .1em; }
+    .hero-meta .meta-value { font-weight: 700; font-size: 1.1rem; }
+
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+
+    /* Countdown — verfijnde glas/gradient-kaarten */
+    .countdown {
+      display: flex;
+      gap: clamp(.6rem, 2vw, 1.2rem);
+      flex-wrap: wrap;
+    }
+    .count-box {
+      position: relative;
+      flex: 1 1 90px;
+      min-width: 80px;
+      text-align: center;
+      padding: 1.1rem .8rem;
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid var(--c-line);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+    /* Subtiele gradient-rand bovenop elke countdown-kaart */
+    .count-box::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 2px;
+      background: var(--gradient);
+      opacity: .7;
+    }
+    .count-box .num {
+      display: block;
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      background: var(--gradient);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      will-change: transform;
+    }
+    /* Micro-animatie: cijfer schuift omhoog/fade-in als de waarde verandert */
+    @keyframes numTick {
+      from { transform: translateY(.55em); opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
+    }
+    .count-box .num.tick { animation: numTick .45s cubic-bezier(.22, 1, .36, 1); }
+    .count-box .lbl {
+      display: block;
+      margin-top: .5rem;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--c-muted);
+    }
+
+    /* ============================================================
+       ALGEMENE SECTIES
+       ============================================================ */
+    section { position: relative; }
+    .pad { padding-block: var(--section-y); }
+    .surface { background: var(--c-surface); }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+    .about-text p { color: var(--c-muted); font-size: 1.08rem; }
+    .facts {
+      display: grid;
+      gap: 1rem;
+    }
+    .fact {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 1.3rem 1.5rem;
+      border-radius: var(--radius);
+      background: var(--gradient-soft);
+      box-shadow: var(--shadow);
+    }
+    .fact .big { font-size: 2.2rem; font-weight: 800; line-height: 1; }
+    .fact .desc { font-size: .95rem; opacity: .92; }
+
+    @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+
+    /* Speakers */
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.6rem;
+    }
+    .speaker {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--c-surface-2);
+      border: 1px solid var(--c-line);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .speaker:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    /* Gradient-ring die verschijnt bij hover (mask-truc: alleen de rand kleurt) */
+    .speaker::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      padding: 2px;
+      background: var(--gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .speaker:hover::after { opacity: 1; }
+    .speaker .photo-wrap { position: relative; aspect-ratio: 1 / 1; overflow: hidden; }
+    .speaker img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .speaker:hover img { transform: scale(1.06); }
+    .speaker .photo-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,16,31,.8), transparent 55%);
+    }
+    .speaker .info { padding: 1.1rem 1.3rem 1.4rem; }
+    .speaker .name { font-weight: 700; font-size: 1.15rem; transition: color .3s ease; }
+    .speaker:hover .name { color: #f9a8d4; } /* naam verschuift naar accentkleur */
+    .speaker .role { color: #f9a8d4; font-size: .9rem; font-weight: 600; transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+    .speaker:hover .role { transform: translateX(4px); } /* rol schuift subtiel mee */
+    .speaker .company { color: var(--c-muted); font-size: .85rem; }
+
+    /* Schedule */
+    .day-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-weight: 700; font-size: .95rem;
+      padding: .5rem 1rem; border-radius: 100px;
+      background: var(--gradient); color: #fff;
+      margin-bottom: 1.8rem;
+    }
+    .schedule { display: grid; gap: 0; }
+    .slot {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1.5rem;
+      padding: 1.4rem .9rem;
+      margin-inline: -.9rem; /* highlight loopt iets buiten de tekst door */
+      border-radius: 14px;
+      border-bottom: 1px solid var(--c-line);
+      align-items: start;
+      transition: background .25s ease;
+    }
+    .slot:hover { background: rgba(255, 255, 255, 0.045); }
+    .slot:first-child { border-top: 1px solid var(--c-line); }
+    .slot .time {
+      font-weight: 700;
+      color: var(--c-accent);
+      font-variant-numeric: tabular-nums;
+      font-size: 1.05rem;
+    }
+    .slot .session h4 { font-size: var(--fs-h3); margin-bottom: .25rem; }
+    .slot .session p { color: var(--c-muted); margin: 0; font-size: .95rem; }
+    .slot .tag {
+      display: inline-block; margin-top: .5rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .25rem .65rem; border-radius: 100px;
+      background: rgba(139, 92, 246, 0.2); color: #c4b5fd;
+    }
+    @media (max-width: 600px) {
+      .slot { grid-template-columns: 1fr; gap: .4rem; }
+    }
+
+    /* Tickets */
+    .tickets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+      align-items: stretch;
+    }
+    .ticket {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.8rem 2.2rem;
+      border-radius: var(--radius-lg);
+      background: var(--c-surface-2);
+      border: 1px solid var(--c-line);
+      position: relative;
+      transition: transform .3s cubic-bezier(.22, 1, .36, 1), box-shadow .3s ease;
+    }
+    /* Hover: kaart komt omhoog met diepere schaduw */
+    .ticket:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+    .ticket.featured {
+      background: var(--gradient);
+      border: 0;
+      transform: scale(1.04);
+      box-shadow: var(--shadow-glow);
+      z-index: 2;
+    }
+    .ticket.featured:hover { transform: scale(1.04) translateY(-8px); box-shadow: var(--shadow-glow), var(--shadow); }
+    /* Featured tier: zachte gloed die langzaam pulseert (alleen opacity) */
+    .ticket.featured::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: inherit;
+      background: var(--gradient);
+      filter: blur(28px);
+      opacity: .35;
+      z-index: -1;
+      pointer-events: none;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .ticket.featured::before { animation: featuredGlow 3.4s ease-in-out infinite; }
+      @keyframes featuredGlow {
+        0%, 100% { opacity: .3; }
+        50%      { opacity: .65; }
+      }
+    }
+    /* Shine-sweep op de witte knop in de featured kaart: paarse tint i.p.v. wit */
+    .ticket.featured .btn-primary::after {
+      background: linear-gradient(115deg, transparent 32%, rgba(124, 58, 237, 0.18) 50%, transparent 68%);
+    }
+    .ticket .badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--c-accent); color: #3b2700;
+      font-weight: 800; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      padding: .4rem 1rem; border-radius: 100px;
+    }
+    .ticket .tier { font-weight: 700; font-size: 1.1rem; opacity: .9; }
+    .ticket .price { font-size: 2.6rem; font-weight: 800; margin: .4rem 0 .1rem; line-height: 1; }
+    .ticket .price small { font-size: .95rem; font-weight: 500; opacity: .75; }
+    .ticket .price-note { font-size: .85rem; opacity: .7; margin-bottom: 1.4rem; }
+    .ticket ul { display: grid; gap: .7rem; margin-bottom: 1.8rem; flex: 1; }
+    .ticket li { display: flex; gap: .6rem; font-size: .95rem; align-items: flex-start; }
+    .ticket li::before { content: '✓'; font-weight: 800; color: var(--c-accent); }
+    .ticket.featured li::before { color: #fff; }
+    .ticket .btn { width: 100%; }
+    .ticket.featured .btn-primary { background: #fff; color: var(--c-purple); box-shadow: none; }
+    .ticket.featured .btn-primary:hover { background: #f4f1fb; }
+
+    @media (max-width: 860px) {
+      .tickets-grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
+      .ticket.featured { transform: none; }
+    }
+
+    /* Sponsors */
+    .sponsors { text-align: center; }
+    .sponsors .label { color: var(--c-muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 2rem; }
+    .sponsor-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(1.5rem, 5vw, 3.5rem);
+    }
+    .sponsor-row span {
+      font-weight: 800;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      letter-spacing: -.02em;
+      color: var(--c-muted);
+      opacity: .65;
+      transition: opacity .25s ease, color .25s ease;
+    }
+    .sponsor-row span:hover { opacity: 1; color: var(--c-text); }
+
+    /* Location */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      align-items: stretch;
+    }
+    .venue-card {
+      background: var(--gradient-soft);
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 4vw, 3rem);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .venue-card h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+    .venue-card address { font-style: normal; font-size: 1.1rem; line-height: 1.7; opacity: .95; margin-bottom: 1.6rem; }
+    .venue-card .venue-extra { display: grid; gap: .6rem; }
+    .venue-card .venue-extra div { display: flex; gap: .6rem; align-items: center; opacity: .95; }
+    .map-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--c-line);
+      min-height: 340px;
+    }
+    .map-wrap iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; filter: grayscale(.2) contrast(1.05); }
+    @media (max-width: 800px) { .location-grid { grid-template-columns: 1fr; } }
+
+    /* CTA strip */
+    .cta-strip {
+      text-align: center;
+      background: var(--gradient);
+      border-radius: var(--radius-lg);
+      padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter);
+      box-shadow: var(--shadow-glow);
+    }
+    .cta-strip h2 { font-size: var(--fs-h2); }
+    .cta-strip p { font-size: 1.15rem; opacity: .92; max-width: 540px; margin-inline: auto; margin-bottom: 2rem; }
+
+    /* ============================================================
+       SCROLL REVEALS (klassen worden via JS toegevoegd)
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition:
+        opacity .7s ease var(--rd, 0ms),
+        transform .7s cubic-bezier(.22, 1, .36, 1) var(--rd, 0ms);
+      will-change: transform, opacity;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ============================================================
+       STICKY TICKET-CTA (verschijnt na de hero)
+       ============================================================ */
+    .sticky-cta {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      transform: translateY(140%);
+      opacity: 0;
+      visibility: hidden; /* niet focusbaar zolang verborgen */
+      transition: transform .45s cubic-bezier(.22, 1, .36, 1), opacity .45s ease, visibility 0s linear .45s;
+      pointer-events: none;
+    }
+    .sticky-cta.show { transform: translateY(0); opacity: 1; visibility: visible; transition-delay: 0s; pointer-events: auto; }
+    .sticky-cta .btn { box-shadow: 0 14px 40px -10px rgba(236, 72, 153, 0.6); }
+    .sticky-cta-close {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--c-line);
+      background: rgba(27, 20, 48, 0.92);
+      color: var(--c-muted);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease;
+    }
+    .sticky-cta-close:hover { color: var(--c-text); background: var(--c-surface-2); }
+    /* Mobiel: slanke balk over de volledige breedte */
+    @media (max-width: 640px) {
+      .sticky-cta {
+        right: 0; bottom: 0; left: 0;
+        padding: .7rem var(--gutter);
+        background: rgba(15, 10, 28, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid var(--c-line);
+      }
+      .sticky-cta .btn { flex: 1; }
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--c-ink);
+      border-top: 1px solid var(--c-line);
+      padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .footer-top p { color: var(--c-muted); max-width: 320px; }
+    .footer-col h4 { font-size: 1rem; margin-bottom: 1.1rem; }
+    .footer-col a { display: block; color: var(--c-muted); padding: .35rem 0; transition: color .2s ease; }
+    .footer-col a:hover { color: var(--c-text); }
+    .socials { display: flex; gap: .8rem; margin-top: 1.2rem; }
+    .socials a {
+      width: 42px; height: 42px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--c-line);
+      transition: background .2s ease, transform .2s ease;
+    }
+    .socials a:hover { background: var(--gradient); transform: translateY(-3px); }
+    .socials svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-bottom {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+      padding-top: 1.8rem; border-top: 1px solid var(--c-line);
+      color: var(--c-muted); font-size: .9rem;
+    }
+    @media (max-width: 720px) { .footer-top { grid-template-columns: 1fr; gap: 1.8rem; } }
+  </style>
+</head>
+
+<body>
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="#top" class="logo" aria-label="PULSE 2026, naar boven">
+          <span class="dot" aria-hidden="true"></span> PULSE<span class="gradient-text">26</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#programma">Programma</a></li>
+          <li><a href="#sprekers">Sprekers</a></li>
+          <li><a href="#tickets">Tickets</a></li>
+          <li><a href="#locatie">Locatie</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="#tickets" class="btn btn-primary btn-header">Tickets</a>
+          <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-controls="navLinks" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Decoratieve zwevende orbs (CSS-animatie, uit bij reduced motion) -->
+      <span class="orb orb-1" aria-hidden="true"></span>
+      <span class="orb orb-2" aria-hidden="true"></span>
+      <span class="orb orb-3" aria-hidden="true"></span>
+      <div class="container">
+        <div class="hero-inner">
+          <span class="eyebrow">Het festival voor makers, denkers &amp; doeners</span>
+          <h1 id="hero-title">PULSE <span class="gradient-text">2026</span></h1>
+          <p class="hero-tagline">Twee dagen vol inspiratie, technologie en creativiteit. Ontmoet de mensen die de toekomst vormgeven.</p>
+
+          <div class="hero-meta">
+            <div class="meta-item">
+              <span class="meta-icon" aria-hidden="true">📅</span>
+              <span>
+                <span class="meta-label">Datum</span><br>
+                <span class="meta-value">18 &amp; 19 september 2026</span>
+              </span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon" aria-hidden="true">📍</span>
+              <span>
+                <span class="meta-label">Locatie</span><br>
+                <span class="meta-value">TivoliVredenburg, Utrecht</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#tickets" class="btn btn-primary btn-lg">Koop tickets</a>
+            <a href="#programma" class="btn btn-ghost btn-lg">Bekijk programma</a>
+          </div>
+
+          <!-- Countdown -->
+          <div class="countdown" id="countdown" role="timer" aria-live="polite" aria-label="Aftellen tot PULSE 2026">
+            <div class="count-box"><span class="num" id="cd-days">00</span><span class="lbl">Dagen</span></div>
+            <div class="count-box"><span class="num" id="cd-hours">00</span><span class="lbl">Uren</span></div>
+            <div class="count-box"><span class="num" id="cd-mins">00</span><span class="lbl">Minuten</span></div>
+            <div class="count-box"><span class="num" id="cd-secs">00</span><span class="lbl">Seconden</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         OVER HET EVENT
+         ============================================================ -->
+    <section class="pad" id="over" aria-labelledby="over-title">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <span class="eyebrow">Over PULSE</span>
+            <h2 id="over-title">Waar ideeën <span class="gradient-text">tot leven komen</span></h2>
+            <p>PULSE 2026 brengt makers, ondernemers, ontwerpers en technologen samen voor twee onvergetelijke dagen. Verwacht prikkelende keynotes, hands-on workshops en volop ruimte om te netwerken met gelijkgestemden.</p>
+            <p>Van AI en design tot duurzaamheid en ondernemerschap: ons programma daagt je uit om anders te denken en verbindingen te leggen die blijven.</p>
+          </div>
+
+          <div class="facts" aria-label="Kerngegevens">
+            <div class="fact">
+              <span class="big">2</span>
+              <span class="desc"><strong>Dagen</strong><br>18 &amp; 19 september 2026</span>
+            </div>
+            <div class="fact">
+              <span class="big">8</span>
+              <span class="desc"><strong>Sprekers</strong><br>uit binnen- en buitenland</span>
+            </div>
+            <div class="fact">
+              <span class="big">1200+</span>
+              <span class="desc"><strong>Bezoekers</strong><br>in TivoliVredenburg, Utrecht</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SPREKERS
+         ============================================================ -->
+    <section class="pad surface" id="sprekers" aria-labelledby="sprekers-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">De line-up</span>
+          <h2 id="sprekers-title">Onze <span class="gradient-text">sprekers</span></h2>
+          <p>Acht inspirerende stemmen delen hun visie op de toekomst.</p>
+        </div>
+
+        <div class="speakers-grid">
+          <!-- Speaker cards -->
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Amira El Hadar" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Amira El Hadar</p>
+              <p class="role">Hoofd Innovatie</p>
+              <p class="company">FutureLab</p>
+            </div>
+          </article>
+
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Daan Visser" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Daan Visser</p>
+              <p class="role">Oprichter &amp; CEO</p>
+              <p class="company">Nova Studio</p>
+            </div>
+          </article>
+
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Sofia Lindgren" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Sofia Lindgren</p>
+              <p class="role">Design Director</p>
+              <p class="company">Studio Aurora</p>
+            </div>
+          </article>
+
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Marcus Boateng" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Marcus Boateng</p>
+              <p class="role">AI Onderzoeker</p>
+              <p class="company">DeepMind Labs</p>
+            </div>
+          </article>
+
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Lena Kowalski" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Lena Kowalski</p>
+              <p class="role">Duurzaamheidsstrateeg</p>
+              <p class="company">GreenShift</p>
+            </div>
+          </article>
+
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Tom Hendriks" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Tom Hendriks</p>
+              <p class="role">Product Lead</p>
+              <p class="company">Stipple</p>
+            </div>
+          </article>
+
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Yara Osei" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Yara Osei</p>
+              <p class="role">Creatief Directeur</p>
+              <p class="company">Brandwave</p>
+            </div>
+          </article>
+
+          <article class="speaker">
+            <div class="photo-wrap">
+              <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=500&q=70" alt="Portretfoto van Niels de Vries" loading="lazy" />
+            </div>
+            <div class="info">
+              <p class="name">Niels de Vries</p>
+              <p class="role">Tech Lead</p>
+              <p class="company">Quantum.io</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROGRAMMA
+         ============================================================ -->
+    <section class="pad" id="programma" aria-labelledby="programma-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Het programma</span>
+          <h2 id="programma-title">Dag 1 — <span class="gradient-text">18 september</span></h2>
+          <p>Een dag boordevol keynotes, workshops en momenten om te verbinden.</p>
+        </div>
+
+        <span class="day-tag">📍 Grote Zaal &amp; Workshopruimtes</span>
+
+        <div class="schedule">
+          <div class="slot">
+            <div class="time">09:00</div>
+            <div class="session">
+              <h4>Inloop &amp; ochtendkoffie</h4>
+              <p>Ontvangst met koffie, thee en versnaperingen.</p>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">09:45</div>
+            <div class="session">
+              <h4>Opening keynote: De toekomst is nu</h4>
+              <p>Amira El Hadar trapt af met haar visie op innovatie en technologie.</p>
+              <span class="tag">Keynote</span>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">11:00</div>
+            <div class="session">
+              <h4>Workshop: Design Thinking in de praktijk</h4>
+              <p>Hands-on sessie met Sofia Lindgren over creatieve probleemoplossing.</p>
+              <span class="tag">Workshop</span>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">12:30</div>
+            <div class="session">
+              <h4>Lunch &amp; netwerken</h4>
+              <p>Geniet van een verzorgde lunch en leg nieuwe contacten.</p>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">14:00</div>
+            <div class="session">
+              <h4>Panel: AI &amp; ethiek</h4>
+              <p>Marcus Boateng en Niels de Vries in gesprek over verantwoorde technologie.</p>
+              <span class="tag">Panel</span>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">15:30</div>
+            <div class="session">
+              <h4>Talk: Bouwen aan een duurzaam merk</h4>
+              <p>Lena Kowalski over impact maken met je organisatie.</p>
+              <span class="tag">Talk</span>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">17:00</div>
+            <div class="session">
+              <h4>Afsluiting &amp; borrel</h4>
+              <p>We sluiten de dag af met muziek, drankjes en goede gesprekken.</p>
+              <span class="tag">Netwerken</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TICKETS
+         ============================================================ -->
+    <section class="pad surface" id="tickets" aria-labelledby="tickets-title">
+      <div class="container">
+        <div class="section-head" style="margin-inline:auto; text-align:center;">
+          <span class="eyebrow">Tickets</span>
+          <h2 id="tickets-title">Kies je <span class="gradient-text">ticket</span></h2>
+          <p style="margin-inline:auto;">Veilig je plek reserveren. Alle prijzen zijn inclusief btw.</p>
+        </div>
+
+        <div class="tickets-grid">
+          <!-- Early Bird -->
+          <div class="ticket">
+            <p class="tier">Early Bird</p>
+            <p class="price">€&nbsp;89 <small>p.p.</small></p>
+            <p class="price-note">Beperkt aantal beschikbaar</p>
+            <ul>
+              <li>Toegang dag 1</li>
+              <li>Alle keynotes &amp; talks</li>
+              <li>Lunch &amp; koffie inbegrepen</li>
+              <li>Digitaal programmaboek</li>
+            </ul>
+            <a href="#" class="btn btn-ghost">Selecteer</a>
+          </div>
+
+          <!-- Standaard (featured) -->
+          <div class="ticket featured">
+            <span class="badge">Populairst</span>
+            <p class="tier">Standaard</p>
+            <p class="price">€&nbsp;149 <small>p.p.</small></p>
+            <p class="price-note">Beste keuze voor 2 dagen</p>
+            <ul>
+              <li>Toegang dag 1 &amp; 2</li>
+              <li>Alle keynotes, talks &amp; workshops</li>
+              <li>Lunch, koffie &amp; borrel</li>
+              <li>Digitaal programmaboek</li>
+              <li>Toegang tot netwerk-app</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Koop tickets</a>
+          </div>
+
+          <!-- VIP -->
+          <div class="ticket">
+            <p class="tier">VIP</p>
+            <p class="price">€&nbsp;299 <small>p.p.</small></p>
+            <p class="price-note">De complete ervaring</p>
+            <ul>
+              <li>Alles uit Standaard</li>
+              <li>VIP-lounge &amp; priority seating</li>
+              <li>Exclusief speaker-diner</li>
+              <li>Goodiebag t.w.v. €75</li>
+              <li>Toegang tot after-party</li>
+            </ul>
+            <a href="#" class="btn btn-ghost">Selecteer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SPONSORS
+         ============================================================ -->
+    <section class="pad sponsors" aria-labelledby="sponsors-title">
+      <div class="container">
+        <p class="label" id="sponsors-title">Mede mogelijk gemaakt door</p>
+        <div class="sponsor-row">
+          <span>NovaTech</span>
+          <span>Brightwave</span>
+          <span>Kanto</span>
+          <span>Studio Aurora</span>
+          <span>GreenShift</span>
+          <span>Quantum.io</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         LOCATIE
+         ============================================================ -->
+    <section class="pad surface" id="locatie" aria-labelledby="locatie-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">De locatie</span>
+          <h2 id="locatie-title">Waar je ons <span class="gradient-text">vindt</span></h2>
+        </div>
+
+        <div class="location-grid">
+          <div class="venue-card">
+            <h3>TivoliVredenburg</h3>
+            <address>
+              Vredenburgkade 11<br>
+              3511 WC Utrecht<br>
+              Nederland
+            </address>
+            <div class="venue-extra">
+              <div><span aria-hidden="true">🚆</span> 5 min. lopen vanaf Utrecht Centraal</div>
+              <div><span aria-hidden="true">🅿️</span> Parkeergarage Vredenburg om de hoek</div>
+              <div><span aria-hidden="true">♿</span> Volledig rolstoeltoegankelijk</div>
+            </div>
+          </div>
+
+          <div class="map-wrap">
+            <iframe
+              title="Kaart van TivoliVredenburg, Utrecht"
+              loading="lazy"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=5.111%2C52.088%2C5.121%2C52.094&layer=mapnik&marker=52.0910%2C5.1160">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA STRIP
+         ============================================================ -->
+    <section class="pad" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-strip">
+          <h2 id="cta-title">Klaar om erbij te zijn?</h2>
+          <p>Verzeker je van een plek bij het inspirerendste event van 2026. Tickets zijn beperkt beschikbaar.</p>
+          <a href="#tickets" class="btn btn-ghost btn-lg" style="background:#fff;color:var(--c-purple);">Koop nu je ticket</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#top" class="logo" style="margin-bottom:1rem;">
+            <span class="dot" aria-hidden="true"></span> PULSE<span class="gradient-text">26</span>
+          </a>
+          <p>Het festival voor makers, denkers en doeners. 18 &amp; 19 september 2026 in TivoliVredenburg, Utrecht.</p>
+          <div class="socials">
+            <a href="#" aria-label="Volg ons op X (Twitter)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="Volg ons op Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.68a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.4-10.4a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+            </a>
+            <a href="#" aria-label="Volg ons op LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Event</h4>
+          <a href="#programma">Programma</a>
+          <a href="#sprekers">Sprekers</a>
+          <a href="#tickets">Tickets</a>
+          <a href="#locatie">Locatie</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Info</h4>
+          <a href="#">Veelgestelde vragen</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacybeleid</a>
+          <a href="#">Algemene voorwaarden</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> PULSE Festival. Alle rechten voorbehouden.</span>
+        <span>Gemaakt met ❤️ in Utrecht</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       STICKY TICKET-CTA (verschijnt na scrollen voorbij de hero)
+       ============================================================ -->
+  <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <a href="#tickets" class="btn btn-primary">🎟 Koop tickets</a>
+    <button class="sticky-cta-close" id="stickyCtaClose" aria-label="Ticketbalk sluiten">&times;</button>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---- Mobiel menu (hamburger) ---- */
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+
+      function closeMenu() {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Menu openen');
+      }
+
+      hamburger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
+      });
+
+      // Sluit menu bij klik op een link
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Sluit menu met Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      /* ---- Voorkeur voor minder beweging? ---- */
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      /* ---- Countdown timer ---- */
+      // Vaste doeldatum: 18 september 2026, 09:00 (lokale tijd)
+      var target = new Date('2026-09-18T09:00:00').getTime();
+
+      var elDays = document.getElementById('cd-days');
+      var elHours = document.getElementById('cd-hours');
+      var elMins = document.getElementById('cd-mins');
+      var elSecs = document.getElementById('cd-secs');
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      // Zet een nieuwe waarde en speel de tick-animatie alleen als de
+      // waarde echt verandert (en reduced motion uit staat).
+      function setVal(el, value) {
+        if (el.textContent === value) return;
+        el.textContent = value;
+        if (reduceMotion.matches) return;
+        el.classList.remove('tick');
+        void el.offsetWidth; // forceer reflow zodat de animatie opnieuw start
+        el.classList.add('tick');
+      }
+
+      function updateCountdown() {
+        var now = Date.now();
+        var diff = target - now;
+
+        if (diff <= 0) {
+          setVal(elDays, '00');
+          setVal(elHours, '00');
+          setVal(elMins, '00');
+          setVal(elSecs, '00');
+          clearInterval(timer);
+          return;
+        }
+
+        var days = Math.floor(diff / 86400000);
+        var hours = Math.floor((diff % 86400000) / 3600000);
+        var mins = Math.floor((diff % 3600000) / 60000);
+        var secs = Math.floor((diff % 60000) / 1000);
+
+        setVal(elDays, pad(days));
+        setVal(elHours, pad(hours));
+        setVal(elMins, pad(mins));
+        setVal(elSecs, pad(secs));
+      }
+
+      updateCountdown();
+      var timer = setInterval(updateCountdown, 1000);
+
+      /* ---- Header: dekkende achtergrond na scrollen ---- */
+      var header = document.querySelector('.site-header');
+      function onScrollHeader() {
+        header.classList.toggle('scrolled', window.scrollY > 12);
+      }
+      onScrollHeader();
+      window.addEventListener('scroll', onScrollHeader, { passive: true });
+
+      /* ---- Scroll reveals met stagger (~70ms per item binnen een groep) ---- */
+      // Klassen worden via JS gezet: zonder JS blijft alles gewoon zichtbaar.
+      var revealGroups = [
+        '.facts .fact',
+        '.speakers-grid .speaker',
+        '.schedule .slot',
+        '.tickets-grid .ticket',
+        '.sponsor-row span'
+      ];
+      if ('IntersectionObserver' in window) {
+        var revealEls = [];
+        revealGroups.forEach(function (sel) {
+          document.querySelectorAll(sel).forEach(function (el, i) {
+            el.classList.add('reveal');
+            el.style.setProperty('--rd', (i * 70) + 'ms'); // stagger per groep
+            revealEls.push(el);
+          });
+        });
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target); // eenmalig onthullen
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        revealEls.forEach(function (el) { io.observe(el); });
+      }
+
+      /* ---- Sticky ticket-CTA: tonen na de hero, wegklikbaar per sessie ---- */
+      var stickyCta = document.getElementById('stickyCta');
+      var stickyClose = document.getElementById('stickyCtaClose');
+      var CTA_KEY = 'pulseCtaDismissed';
+      var ctaDismissed = false;
+      try { ctaDismissed = sessionStorage.getItem(CTA_KEY) === '1'; } catch (e) { /* privémodus o.i.d. */ }
+
+      function setCtaVisible(visible) {
+        stickyCta.classList.toggle('show', visible);
+        stickyCta.setAttribute('aria-hidden', String(!visible));
+      }
+
+      if (!ctaDismissed && 'IntersectionObserver' in window) {
+        var hero = document.querySelector('.hero');
+        var heroIo = new IntersectionObserver(function (entries) {
+          // Toon de CTA zodra de hero (grotendeels) uit beeld is
+          setCtaVisible(!entries[0].isIntersecting && !ctaDismissed);
+        }, { threshold: 0.05 });
+        heroIo.observe(hero);
+      }
+
+      stickyClose.addEventListener('click', function () {
+        ctaDismissed = true;
+        setCtaVisible(false);
+        try { sessionStorage.setItem(CTA_KEY, '1'); } catch (e) { /* negeer */ }
+      });
+
+      /* ---- Huidig jaar in footer ---- */
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

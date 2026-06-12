@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Vries Metselwerken — Metselwerk, voegwerk &amp; gevels | ZZP metselaar regio Utrecht</title>
+<meta name="description" content="De Vries Metselwerken: zelfstandig metselaar voor nieuwbouw, gevelrenovatie, voegwerk en tuinmuren in de regio Utrecht. 15+ jaar ervaring, strak en waterpas, vaste prijsafspraken.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DE VRIES METSELWERKEN — huisstijl: zwart / blauw / grijs
+   ============================================================ */
+:root{
+  --bg:#0d0f12;
+  --surface:#16191f;
+  --surface-2:#1f242c;
+  --line:rgba(150,170,200,.14);
+  --line-strong:rgba(150,170,200,.24);
+  --text:#e6e9ee;
+  --muted:#98a1ad;
+  --blue:#3b82f6;
+  --blue-bright:#5d9bff;
+  --blue-deep:#1d4ed8;
+  --blue-glow:rgba(59,130,246,.35);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font-head:"Archivo",sans-serif;
+  --font-body:"Inter",sans-serif;
+  --font-mono:"IBM Plex Mono",monospace;
+  --header-h:76px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--blue);color:#fff}
+
+/* Blueprint grid achtergrond */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(93,155,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(93,155,255,.045) 1px,transparent 1px),
+    linear-gradient(rgba(93,155,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(93,155,255,.018) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(1100px 600px at 75% -5%,rgba(59,130,246,.10),transparent 60%),
+             radial-gradient(900px 700px at -10% 110%,rgba(59,130,246,.06),transparent 60%);
+}
+
+.wrap{width:min(1200px,calc(100% - 48px));margin-inline:auto}
+@media (max-width:560px){.wrap{width:calc(100% - 36px)}}
+
+/* Micro-labels */
+.micro{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:500;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--blue-bright);
+  display:inline-flex;align-items:center;gap:14px;
+}
+.micro::before{content:"";width:34px;height:1px;background:var(--blue);flex:none}
+
+h1,h2,h3{font-family:var(--font-head);font-weight:700;letter-spacing:-.015em;line-height:1.08}
+.sec-title{font-size:clamp(1.9rem,4vw,2.9rem);margin:.85rem 0 1rem}
+.sec-intro{color:var(--muted);max-width:56ch}
+.sec-head{margin-bottom:clamp(2.2rem,5vw,3.6rem)}
+
+section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
+.hairline-top{border-top:1px solid var(--line)}
+
+/* Skip link */
+.skip-link{
+  position:absolute;left:16px;top:-60px;z-index:200;
+  background:var(--blue);color:#fff;font-weight:600;
+  padding:10px 18px;border-radius:6px;transition:top .25s var(--ease);
+}
+.skip-link:focus{top:14px}
+:focus-visible{outline:2px solid var(--blue-bright);outline-offset:3px;border-radius:2px}
+
+/* ====================== KNOPPEN ====================== */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-head);font-weight:600;font-size:.92rem;
+  letter-spacing:.04em;padding:14px 26px;border-radius:6px;
+  position:relative;overflow:hidden;white-space:nowrap;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),background-color .35s,border-color .35s,color .35s;
+}
+.btn svg{flex:none;transition:transform .45s var(--ease)}
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:#fff;
+  box-shadow:0 8px 26px -10px var(--blue-glow);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(59,130,246,.55)}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-ghost{
+  border:1px solid var(--line-strong);color:var(--text);background:rgba(255,255,255,.02);
+}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue-bright);transform:translateY(-2px)}
+
+/* ====================== HEADER ====================== */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:100;height:var(--header-h);
+  display:flex;align-items:center;
+  border-bottom:1px solid transparent;
+  transition:background-color .4s,border-color .4s,backdrop-filter .4s;
+}
+.site-header.scrolled{
+  background:rgba(13,15,18,.82);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:13px}
+.logo-mark{
+  width:38px;height:38px;flex:none;border-radius:7px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-deep));
+  display:grid;place-items:center;
+  box-shadow:0 6px 18px -6px var(--blue-glow);
+}
+.logo-mark svg{width:20px;height:20px}
+.logo-text{font-family:var(--font-head);font-weight:800;font-size:1.02rem;letter-spacing:.06em;line-height:1.1}
+.logo-text small{display:block;font-family:var(--font-mono);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.main-nav ul{display:flex;gap:34px}
+.main-nav a{
+  font-size:.88rem;font-weight:500;color:var(--muted);position:relative;padding:6px 0;
+  transition:color .3s;
+}
+.main-nav a::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+  background:var(--blue);transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.main-nav a:hover{color:var(--text)}
+.main-nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.header-cta{display:flex;align-items:center;gap:16px}
+.header-cta .btn{padding:11px 20px;font-size:.84rem}
+
+/* Mobile menu */
+.menu-toggle{display:none;width:44px;height:44px;position:relative;z-index:130}
+.menu-toggle span{
+  position:absolute;left:11px;width:22px;height:2px;background:var(--text);
+  transition:transform .45s var(--ease),opacity .3s,background-color .3s;
+}
+.menu-toggle span:nth-child(1){top:16px}
+.menu-toggle span:nth-child(2){top:22px}
+.menu-toggle span:nth-child(3){top:28px}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg);background:var(--blue-bright)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:var(--blue-bright)}
+.mobile-menu{
+  position:fixed;top:0;right:0;bottom:0;width:min(360px,86vw);z-index:120;
+  background:rgba(17,20,26,.97);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  border-left:1px solid var(--line);
+  padding:110px 36px 40px;
+  transform:translateX(102%);visibility:hidden;
+  transition:transform .55s var(--ease),visibility 0s .55s;
+  display:flex;flex-direction:column;
+}
+.mobile-menu.open{transform:translateX(0);visibility:visible;transition:transform .55s var(--ease)}
+.mobile-menu nav ul{display:flex;flex-direction:column;gap:6px}
+.mobile-menu nav a{
+  display:flex;align-items:baseline;gap:14px;
+  font-family:var(--font-head);font-weight:700;font-size:1.5rem;padding:10px 0;
+  border-bottom:1px solid var(--line);transition:color .3s;
+}
+.mobile-menu nav a:hover{color:var(--blue-bright)}
+.mobile-menu nav a .idx{font-family:var(--font-mono);font-size:.65rem;color:var(--blue);letter-spacing:.2em}
+.mobile-menu .btn{margin-top:auto;justify-content:center}
+html.js .mobile-menu nav li{opacity:0;transform:translateX(28px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+html.js .mobile-menu.open nav li{opacity:1;transform:none;transition-delay:var(--d,0s)}
+.menu-backdrop{
+  position:fixed;inset:0;z-index:110;background:rgba(8,9,11,.6);
+  opacity:0;visibility:hidden;transition:opacity .45s,visibility 0s .45s;
+}
+.menu-backdrop.open{opacity:1;visibility:visible;transition:opacity .45s}
+@media (max-width:880px){
+  .main-nav,.header-cta .btn{display:none}
+  .menu-toggle{display:block}
+}
+body.menu-locked{overflow:hidden}
+
+/* ====================== HERO ====================== */
+.hero{
+  min-height:100svh;display:flex;align-items:center;
+  padding:calc(var(--header-h) + 3.5rem) 0 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.4rem);margin:1.3rem 0 1.4rem;font-weight:800}
+.hero h1 .accent{color:var(--blue-bright)}
+.hero-sub{color:var(--muted);font-size:clamp(1rem,1.4vw,1.13rem);max-width:50ch;margin-bottom:2.2rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:16px}
+
+/* Masked line reveal */
+.line-mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.line-mask>span{display:block}
+html.js .line-mask>span{transform:translateY(112%);transition:transform 1s var(--ease);transition-delay:var(--d,0s)}
+html.js .hero.in .line-mask>span{transform:translateY(0)}
+html.js .hero .fade-up{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+html.js .hero.in .fade-up{opacity:1;transform:none}
+
+/* Stats strip */
+.hero-stats{
+  display:flex;gap:clamp(1.6rem,4vw,3.2rem);margin-top:3.2rem;
+  padding-top:1.8rem;border-top:1px solid var(--line);position:relative;
+}
+.hero-stats::before{
+  content:"";position:absolute;top:-1px;left:0;width:72px;height:1px;background:var(--blue);
+}
+.stat .num{
+  font-family:var(--font-head);font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);
+  color:var(--text);line-height:1;font-variant-numeric:tabular-nums;
+}
+.stat .num em{font-style:normal;color:var(--blue-bright)}
+.stat .lbl{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* ---------- TROFFEL — technische tekening ---------- */
+.hero-art{position:relative;display:flex;justify-content:center}
+.troffel-stage{position:relative;width:min(440px,100%)}
+.troffel-stage::before{ /* blueprint kader */
+  content:"";position:absolute;inset:-6%;border:1px dashed rgba(93,155,255,.18);border-radius:4px;
+}
+.troffel-stage::after{
+  content:"TEK. NR. 016-MW / SCHAAL 1:5";
+  position:absolute;left:0;bottom:-7.5%;
+  font-family:var(--font-mono);font-size:.58rem;letter-spacing:.24em;color:rgba(152,161,173,.7);
+}
+.troffel{width:100%;height:auto;display:block;overflow:visible}
+.troffel .bp{
+  fill:none;stroke:var(--blue);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+.troffel .bp.thin{stroke-width:1;stroke:rgba(93,155,255,.55)}
+.troffel .bp.dim{stroke-width:1;stroke:rgba(152,161,173,.65)}
+.troffel .bp.dash{stroke-dasharray:4 5;stroke-width:1;stroke:rgba(93,155,255,.5)}
+.troffel text{
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;
+  fill:rgba(152,161,173,.85);text-transform:uppercase;
+}
+/* draw-in: pathLength=1 op elk pad */
+html.js .troffel .bp{stroke-dasharray:1;stroke-dashoffset:1}
+html.js .troffel .bp.dash{stroke-dasharray:1;stroke-dashoffset:1} /* tijdens draw solide; dash na afloop */
+html.js .troffel.drawn .bp{
+  stroke-dashoffset:0;
+  transition:stroke-dashoffset 1.3s var(--ease);transition-delay:var(--d,0s);
+}
+html.js .troffel.drawn .bp.dash{stroke-dasharray:.012 .015}
+html.js .troffel text{opacity:0;transition:opacity .8s ease 1.6s}
+html.js .troffel.drawn text{opacity:1}
+/* idle troffel-beweging: zachte specie-strijkbeweging vanuit het heft */
+#troffelRock{transform-box:view-box;transform-origin:265px 150px}
+html.js .troffel.drawn #troffelRock{animation:troffelen 5.2s ease-in-out 2s infinite}
+@keyframes troffelen{
+  0%,100%{transform:rotate(0deg) translate(0,0)}
+  35%{transform:rotate(-2.8deg) translate(-6px,2px)}
+  65%{transform:rotate(2.4deg) translate(5px,-2px)}
+}
+/* speciespatjes bij het blad */
+.dust{fill:var(--blue-bright);opacity:0}
+html.js .troffel.drawn .dust{animation:dust-drift 4.6s ease-in-out infinite;animation-delay:var(--pd,2.4s)}
+@keyframes dust-drift{
+  0%,18%{opacity:0;transform:translate(0,0)}
+  30%{opacity:.85}
+  70%{opacity:0;transform:translate(var(--dx,8px),-46px)}
+  100%{opacity:0;transform:translate(var(--dx,8px),-46px)}
+}
+.hero-art-glow{
+  position:absolute;inset:12% 6%;z-index:-1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(59,130,246,.16),transparent 72%);
+}
+@media (max-width:880px){
+  .hero{min-height:0}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;margin-bottom:.5rem}
+  .troffel-stage{width:min(280px,72%)}
+  .troffel-stage::after{font-size:.5rem;bottom:-9%}
+  .hero-stats{flex-wrap:wrap}
+}
+
+/* ====================== REVEAL SYSTEEM ====================== */
+html.js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+html.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js .reveal,html.js .hero .fade-up,html.js .line-mask>span,
+  html.js .mobile-menu nav li{opacity:1!important;transform:none!important;transition:none!important}
+  html.js .troffel .bp{stroke-dashoffset:0!important;transition:none!important}
+  html.js .troffel .bp.dash{stroke-dasharray:4 5!important}
+  html.js .troffel text{opacity:1!important}
+  html.js .troffel.drawn #troffelRock,#troffelRock{animation:none!important}
+  html.js .troffel .dust{animation:none!important;opacity:0!important}
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+}
+
+/* ====================== DIENSTEN ====================== */
+.diensten-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.dienst{
+  display:grid;grid-template-columns:90px minmax(0,1fr) minmax(0,1.3fr) 56px;
+  align-items:center;gap:clamp(1rem,3vw,2.5rem);
+  padding:clamp(1.6rem,3vw,2.3rem) clamp(.4rem,2vw,1.4rem);
+  border-bottom:1px solid var(--line);position:relative;
+  transition:transform .55s var(--ease),background-color .45s;
+}
+.dienst::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--blue);
+  transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease);
+}
+.dienst:hover{transform:translateX(14px);background:rgba(59,130,246,.04)}
+.dienst:hover::before{transform:scaleY(1)}
+.dienst .nr{
+  font-family:var(--font-mono);font-size:.85rem;color:var(--muted);
+  letter-spacing:.12em;transition:color .35s;
+}
+.dienst:hover .nr{color:var(--blue-bright)}
+.dienst h3{font-size:clamp(1.2rem,2.2vw,1.55rem);font-weight:700}
+.dienst p{color:var(--muted);font-size:.95rem}
+.dienst .arrow{
+  width:42px;height:42px;border:1px solid var(--line-strong);border-radius:50%;
+  display:grid;place-items:center;color:var(--muted);
+  transition:border-color .35s,color .35s,background-color .35s,box-shadow .45s var(--ease);
+}
+.dienst:hover .arrow{border-color:var(--blue);color:#fff;background:var(--blue);box-shadow:0 0 24px -4px var(--blue-glow)}
+@media (max-width:760px){
+  .dienst{grid-template-columns:54px minmax(0,1fr) 44px;grid-template-areas:"nr title arrow" "nr desc arrow"}
+  .dienst .nr{grid-area:nr;align-self:start;padding-top:4px}
+  .dienst h3{grid-area:title}
+  .dienst p{grid-area:desc;margin-top:6px}
+  .dienst .arrow{grid-area:arrow}
+}
+
+/* ====================== PROJECTEN ====================== */
+.filterbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:2.4rem}
+.filter-btn{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line-strong);border-radius:99px;
+  padding:9px 20px;transition:color .3s,border-color .3s,background-color .3s,box-shadow .4s var(--ease);
+}
+.filter-btn:hover{color:var(--text);border-color:var(--blue)}
+.filter-btn[aria-pressed="true"]{
+  color:#fff;background:var(--blue);border-color:var(--blue);
+  box-shadow:0 6px 20px -8px var(--blue-glow);
+}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:980px){.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.project-grid{grid-template-columns:1fr}}
+.project{
+  position:relative;border-radius:10px;overflow:hidden;background:var(--surface);
+  border:1px solid var(--line);
+  transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .4s,box-shadow .5s var(--ease);
+}
+.project:hover{border-color:rgba(59,130,246,.5);box-shadow:0 18px 44px -18px rgba(0,0,0,.7),0 0 0 1px rgba(59,130,246,.25)}
+.project.is-leaving{opacity:0;transform:scale(.92)}
+.project.is-entering{opacity:0;transform:scale(.92)}
+.project figure{position:relative;aspect-ratio:4/3;overflow:hidden;margin:0}
+.project img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.project:hover img{transform:scale(1.07)}
+.project figure::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(13,15,18,.85));
+}
+.project .view-strip{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(90deg,var(--blue),var(--blue-deep));color:#fff;
+  font-family:var(--font-head);font-weight:600;font-size:.86rem;letter-spacing:.05em;
+  padding:11px 18px;transform:translateY(102%);
+  transition:transform .55s var(--ease);
+}
+.project:hover .view-strip,.project:focus-within .view-strip{transform:translateY(0)}
+.project-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:18px 20px}
+.project-meta h3{font-size:1.05rem;font-weight:700}
+.project-meta .place{font-size:.82rem;color:var(--muted);margin-top:3px}
+.project-meta .year{font-family:var(--font-mono);font-size:.72rem;color:var(--blue-bright);letter-spacing:.12em;flex:none}
+.project .tag{
+  position:absolute;top:14px;left:14px;z-index:2;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  background:rgba(13,15,18,.78);border:1px solid var(--line-strong);color:var(--text);
+  padding:5px 11px;border-radius:99px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+
+/* ---------- Voor/Na slider ---------- */
+.beforeafter-block{
+  margin-top:clamp(3rem,6vw,4.5rem);display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(1.6rem,4vw,3rem);align-items:center;
+}
+@media (max-width:880px){.beforeafter-block{grid-template-columns:1fr}}
+.ba-copy h3{font-size:clamp(1.4rem,2.6vw,1.9rem);margin:.8rem 0 .9rem}
+.ba-copy p{color:var(--muted)}
+.ba-copy .micro::before{width:24px}
+.beforeafter{
+  position:relative;border-radius:12px;overflow:hidden;
+  border:1px solid var(--line-strong);aspect-ratio:16/10;
+  background:var(--surface);user-select:none;-webkit-user-select:none;
+  touch-action:pan-y;
+}
+.beforeafter img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{clip-path:inset(0 0 0 var(--pos,50%))}
+.ba-handle{
+  position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;margin-left:-1px;
+  background:var(--blue);pointer-events:none;z-index:3;
+  box-shadow:0 0 18px var(--blue-glow);
+}
+.ba-handle::before{
+  content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:var(--blue);border:2px solid rgba(255,255,255,.85);
+  box-shadow:0 8px 24px -6px rgba(0,0,0,.6);
+}
+.ba-handle::after{
+  content:"◂ ▸";position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);
+  color:#fff;font-size:.78rem;letter-spacing:2px;
+}
+.ba-range{
+  position:absolute;inset:0;width:100%;height:100%;z-index:4;
+  opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;margin:0;
+}
+.ba-range:focus-visible ~ .ba-handle{outline:2px solid var(--blue-bright);outline-offset:4px}
+.ba-label{
+  position:absolute;top:16px;z-index:3;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  background:rgba(13,15,18,.8);border:1px solid var(--blue);color:var(--blue-bright);
+  padding:6px 13px;border-radius:99px;pointer-events:none;
+}
+.ba-label.voor{left:16px}
+.ba-label.na{right:16px}
+
+/* ====================== WERKWIJZE ====================== */
+.werkwijze{background:var(--surface);border-block:1px solid var(--line)}
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.4rem);margin-top:1rem}
+.steps-line{
+  position:absolute;top:27px;left:27px;right:8%;height:1px;
+  background:linear-gradient(90deg,var(--blue),rgba(59,130,246,.25));
+}
+html.js .steps-line{transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--ease) .2s}
+html.js .steps.in .steps-line{transform:scaleX(1)}
+.step{position:relative;padding-top:78px}
+.step .dot{
+  position:absolute;top:0;left:0;width:54px;height:54px;border-radius:50%;
+  border:1px solid var(--blue);display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:.78rem;color:var(--blue-bright);letter-spacing:.08em;
+  background:var(--surface);box-shadow:0 0 0 6px var(--surface),0 0 26px -6px var(--blue-glow);
+}
+.step h3{font-size:1.15rem;margin-bottom:.55rem}
+.step p{color:var(--muted);font-size:.93rem}
+@media (max-width:880px){
+  .steps{grid-template-columns:1fr;gap:2.2rem}
+  .steps-line{top:0;bottom:8%;left:27px;right:auto;width:1px;height:auto;
+    background:linear-gradient(180deg,var(--blue),rgba(59,130,246,.25))}
+  html.js .steps-line{transform:scaleY(0);transform-origin:top}
+  html.js .steps.in .steps-line{transform:scaleY(1)}
+  .step{padding-top:0;padding-left:80px;min-height:56px}
+}
+
+/* ====================== OVER ====================== */
+.over-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(2.2rem,5vw,4.5rem);align-items:center}
+@media (max-width:880px){.over-grid{grid-template-columns:1fr}}
+.over-photo{
+  position:relative;border-radius:12px;overflow:hidden;
+  border:1px solid var(--line-strong);aspect-ratio:4/5;
+}
+.over-photo img{width:100%;height:118%;object-fit:cover;will-change:transform}
+.over-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(200deg,rgba(59,130,246,.14),transparent 45%);
+  mix-blend-mode:screen;pointer-events:none;
+}
+.over-photo .corner{
+  position:absolute;width:34px;height:34px;border:0 solid var(--blue);z-index:2;
+}
+.over-photo .corner.tl{top:12px;left:12px;border-top-width:2px;border-left-width:2px}
+.over-photo .corner.br{bottom:12px;right:12px;border-bottom-width:2px;border-right-width:2px}
+.over-copy h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin:.85rem 0 1.2rem}
+.over-copy p{color:var(--muted);margin-bottom:1.1rem}
+.over-copy p strong{color:var(--text);font-weight:600}
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.8rem}
+.badge{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--line-strong);border-radius:6px;padding:10px 16px;color:var(--muted);
+  transition:border-color .35s,color .35s;
+}
+.badge:hover{border-color:var(--blue);color:var(--text)}
+.badge svg{color:var(--blue-bright);flex:none}
+
+/* ====================== REVIEWS ====================== */
+.reviews{background:linear-gradient(180deg,transparent,rgba(59,130,246,.035) 50%,transparent)}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:980px){.review-grid{grid-template-columns:1fr;max-width:640px}}
+.review{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:30px 28px;position:relative;display:flex;flex-direction:column;gap:18px;
+  transition:transform .55s var(--ease),border-color .4s,box-shadow .55s var(--ease);
+}
+.review:hover{transform:translateY(-6px);border-color:rgba(59,130,246,.45);box-shadow:0 22px 48px -22px rgba(0,0,0,.7)}
+.review::before{
+  content:"";position:absolute;top:0;left:28px;width:44px;height:2px;background:var(--blue);
+}
+.stars{display:flex;gap:5px}
+.stars svg{width:17px;height:17px;color:var(--blue-bright)}
+html.js .stars svg{opacity:0;transform:scale(.4);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+html.js .review.in .stars svg{opacity:1;transform:scale(1)}
+html.js .review.in .stars svg:nth-child(1){transition-delay:.15s}
+html.js .review.in .stars svg:nth-child(2){transition-delay:.27s}
+html.js .review.in .stars svg:nth-child(3){transition-delay:.39s}
+html.js .review.in .stars svg:nth-child(4){transition-delay:.51s}
+html.js .review.in .stars svg:nth-child(5){transition-delay:.63s}
+.review blockquote{font-size:.97rem;color:var(--text);line-height:1.7}
+.review .who{margin-top:auto;display:flex;flex-direction:column;gap:2px}
+.review .who b{font-family:var(--font-head);font-size:.92rem}
+.review .who span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* ====================== CONTACT ====================== */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2.2rem,5vw,4rem);align-items:start}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
+.contact-form{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:clamp(1.6rem,3.5vw,2.6rem);position:relative;overflow:hidden;
+}
+.contact-form::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),transparent 70%);
+}
+.field{margin-bottom:1.25rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media (max-width:560px){.field-row{grid-template-columns:1fr}}
+.field label{
+  display:block;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.55rem;
+}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;
+  color:var(--text);font:inherit;font-size:.95rem;padding:13px 16px;
+  transition:border-color .3s,box-shadow .3s;
+}
+.field textarea{resize:vertical;min-height:130px}
+.field select{
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235d9bff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,.22);
+}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#e0556a;box-shadow:0 0 0 3px rgba(224,85,106,.16)}
+.field .err{
+  display:none;font-size:.78rem;color:#ff8da0;margin-top:.45rem;
+}
+.field.invalid .err{display:block}
+.form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:1.6rem}
+.form-foot small{color:var(--muted);font-size:.78rem}
+.form-success{
+  position:absolute;inset:0;background:var(--surface);z-index:5;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  text-align:center;padding:2rem;opacity:0;visibility:hidden;
+  transition:opacity .6s var(--ease),visibility 0s .6s;
+}
+.contact-form.sent .form-success{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
+.form-success .check{
+  width:72px;height:72px;border-radius:50%;border:2px solid var(--blue);
+  display:grid;place-items:center;color:var(--blue-bright);
+  box-shadow:0 0 38px -8px var(--blue-glow);
+}
+html.js .form-success .check{transform:scale(.5);opacity:0;transition:transform .7s var(--ease) .2s,opacity .5s .2s}
+html.js .contact-form.sent .form-success .check{transform:scale(1);opacity:1}
+.form-success h3{font-size:1.4rem}
+.form-success p{color:var(--muted);max-width:34ch}
+.contact-aside h3{font-size:1.25rem;margin-bottom:1.4rem}
+.contact-lines{display:flex;flex-direction:column}
+.contact-lines a,.contact-lines div{
+  display:flex;align-items:center;gap:16px;padding:17px 4px;
+  border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease),color .3s;
+}
+.contact-lines a:hover{padding-left:12px;color:var(--blue-bright)}
+.contact-lines .ico{
+  width:40px;height:40px;flex:none;border:1px solid var(--line-strong);border-radius:8px;
+  display:grid;place-items:center;color:var(--blue-bright);
+}
+.contact-lines .lbl{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block}
+.contact-lines .val{font-weight:600;font-size:.95rem}
+.werkgebied-note{
+  margin-top:1.6rem;border:1px dashed rgba(93,155,255,.35);border-radius:10px;
+  padding:18px 20px;font-size:.88rem;color:var(--muted);
+}
+.werkgebied-note b{color:var(--blue-bright);font-family:var(--font-mono);font-weight:500;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+/* ====================== FOOTER ====================== */
+.site-footer{border-top:1px solid var(--line);padding:3rem 0 2.4rem;position:relative}
+.site-footer::before{
+  content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  width:160px;height:1px;background:var(--blue);
+}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-inner p{font-size:.82rem;color:var(--muted)}
+.footer-inner p b{color:var(--text);font-family:var(--font-head)}
+.socials{display:flex;gap:12px}
+.socials a{
+  width:40px;height:40px;border:1px solid var(--line-strong);border-radius:8px;
+  display:grid;place-items:center;color:var(--muted);
+  transition:color .3s,border-color .3s,transform .45s var(--ease),box-shadow .45s var(--ease);
+}
+.socials a:hover{color:#fff;border-color:var(--blue);transform:translateY(-3px);box-shadow:0 8px 22px -8px var(--blue-glow)}
+.footer-meta{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* meetlat-ticks decoratie */
+.ticks{
+  position:absolute;right:0;top:10%;bottom:10%;width:18px;pointer-events:none;opacity:.5;
+  background-image:repeating-linear-gradient(180deg,rgba(93,155,255,.4) 0 1px,transparent 1px 28px);
+}
+.ticks::before{content:"";position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(93,155,255,.25)}
+@media (max-width:880px){.ticks{display:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Direct naar inhoud</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="De Vries Metselwerken — naar boven">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19"/></svg>
+      </span>
+      <span class="logo-text">DE VRIES<small>metselwerken</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Hoofdmenu">
+      <ul>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#projecten">Projecten</a></li>
+        <li><a href="#werkwijze">Werkwijze</a></li>
+        <li><a href="#over">Over</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary" href="#contact">Vraag offerte aan
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu openen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobiel menu">
+  <nav aria-label="Mobiel hoofdmenu">
+    <ul>
+      <li style="--d:.08s"><a href="#diensten"><span class="idx">01</span>Diensten</a></li>
+      <li style="--d:.14s"><a href="#projecten"><span class="idx">02</span>Projecten</a></li>
+      <li style="--d:.20s"><a href="#werkwijze"><span class="idx">03</span>Werkwijze</a></li>
+      <li style="--d:.26s"><a href="#over"><span class="idx">04</span>Over</a></li>
+      <li style="--d:.32s"><a href="#contact"><span class="idx">05</span>Contact</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn-primary" href="#contact">Vraag offerte aan</a>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero" aria-label="Introductie">
+  <div class="ticks" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="micro fade-up" style="--d:.05s">ZZP metselaar — regio Utrecht</p>
+      <h1>
+        <span class="line-mask"><span style="--d:.15s">Metselwerk</span></span>
+        <span class="line-mask"><span style="--d:.27s">dat <span class="accent">staat</span>.</span></span>
+        <span class="line-mask"><span style="--d:.39s">Steen voor steen.</span></span>
+      </h1>
+      <p class="hero-sub fade-up" style="--d:.5s">Nieuwbouw, renovatie, voegwerk en gevels: strak in het verband, waterpas en tot in de laatste voeg afgewerkt — al meer dan vijftien jaar.</p>
+      <div class="hero-ctas fade-up" style="--d:.62s">
+        <a class="btn btn-primary" href="#contact">Vraag offerte aan
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#projecten">Bekijk projecten</a>
+      </div>
+      <div class="hero-stats fade-up" style="--d:.74s">
+        <div class="stat">
+          <div class="num"><span class="countup" data-target="15" data-suffix="+">0+</span></div>
+          <div class="lbl">Jaar ervaring</div>
+        </div>
+        <div class="stat">
+          <div class="num"><span class="countup" data-target="300" data-suffix="+">0+</span></div>
+          <div class="lbl">Gevels &amp; muren</div>
+        </div>
+        <div class="stat">
+          <div class="num"><em><span class="countup" data-target="9.4" data-decimals="1">0,0</span></em></div>
+          <div class="lbl">Gem. klantscore</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TROFFEL — geanimeerde technische tekening -->
+    <div class="hero-art fade-up" style="--d:.35s" aria-hidden="true">
+      <div class="hero-art-glow"></div>
+      <div class="troffel-stage">
+        <svg class="troffel" id="troffelSvg" viewBox="0 0 420 560" role="img" aria-label="Technische blauwdruk van een metselaarstroffel">
+          <g id="troffelRock">
+            <!-- heft (cilindrische houten handgreep) -->
+            <path class="bp" pathLength="1" style="--d:0s"   d="M312 46 L242 216"/>
+            <path class="bp" pathLength="1" style="--d:.12s" d="M284 34 L214 204"/>
+            <path class="bp" pathLength="1" style="--d:.24s" d="M284 34 Q300 16 312 46"/>
+            <!-- houtnerf suggestie -->
+            <path class="bp thin" pathLength="1" style="--d:.4s" d="M296 66 L260 154"/>
+            <path class="bp thin" pathLength="1" style="--d:.5s" d="M286 108 L264 162"/>
+            <!-- klemring / ferrule -->
+            <path class="bp" pathLength="1" style="--d:.55s" d="M208 200 L246 214 L240 232 L202 218 Z"/>
+            <!-- S-gebogen hals (tang) naar het blad -->
+            <path class="bp" pathLength="1" style="--d:.68s" d="M222 230 C210 252 230 274 210 298 Q198 312 190 324"/>
+            <!-- blad: gepunte ruit-/bladvorm -->
+            <path class="bp" pathLength="1" style="--d:.8s"  d="M126 291 Q196 316 254 369 Q205 462 95 488 Q92 378 126 291 Z"/>
+            <path class="bp thin" pathLength="1" style="--d:.95s" d="M188 334 L104 476"/>
+            <!-- speciespatjes bij het blad -->
+            <circle class="dust" cx="96"  cy="492" r="2.4" style="--pd:2.4s;--dx:-10px"/>
+            <circle class="dust" cx="150" cy="462" r="1.8" style="--pd:3.5s;--dx:6px"/>
+            <circle class="dust" cx="206" cy="430" r="2.1" style="--pd:4.7s;--dx:14px"/>
+            <circle class="dust" cx="120" cy="478" r="1.5" style="--pd:5.6s;--dx:-4px"/>
+          </g>
+          <!-- maatvoering (statisch, technische tekening) -->
+          <g class="dims">
+            <path class="bp dim" pathLength="1" style="--d:1.05s" d="M368 34 L368 488 M360 34 L376 34 M360 488 L376 488"/>
+            <path class="bp dim" pathLength="1" style="--d:1.2s"  d="M62 291 L62 488 M54 291 L70 291 M54 488 L70 488"/>
+            <path class="bp dash" pathLength="1" style="--d:1.3s" d="M190 324 m34 0 a34 34 0 1 0 -68 0 a34 34 0 1 0 68 0"/>
+            <path class="bp dim" pathLength="1" style="--d:1.35s" d="M190 324 L300 324"/>
+            <text x="382" y="238" transform="rotate(90 382 238)">TOT. 455 MM</text>
+            <text x="44" y="430" transform="rotate(-90 44 430)">L = 280 mm</text>
+            <text x="306" y="328">aanzet hals</text>
+            <text x="30" y="36">METSELTROFFEL — AMSTERDAMS MODEL</text>
+            <text x="100" y="528">RVS — gehard</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIENSTEN ============ -->
+<section id="diensten" class="hairline-top" aria-labelledby="diensten-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="micro">Diensten — 01</p>
+      <h2 class="sec-title" id="diensten-title">Eén metselaar,<br>al het steenwerk.</h2>
+      <p class="sec-intro">Van fundering tot rollaag: ik metsel, voeg en herstel het hele traject zelf — strak in het verband en waterpas tot de laatste steen.</p>
+    </div>
+    <div class="diensten-list">
+      <a class="dienst reveal" style="--d:0s" href="#contact">
+        <span class="nr">/ 01</span>
+        <h3>Metselwerk nieuwbouw</h3>
+        <p>Dragend en schoon metselwerk voor nieuwbouw en uitbouw — alle steenformaten en verbanden.</p>
+        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dienst reveal" style="--d:.08s" href="#contact">
+        <span class="nr">/ 02</span>
+        <h3>Voegwerk &amp; gevelrenovatie</h3>
+        <p>Oud voegwerk uithakken, de gevel reinigen en opnieuw voegen — uw muur weer als nieuw.</p>
+        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dienst reveal" style="--d:.16s" href="#contact">
+        <span class="nr">/ 03</span>
+        <h3>Gevels &amp; opritten</h3>
+        <p>Sierverbanden, tuinmuren, pilaren en erfafscheidingen — metselwerk dat het verschil maakt.</p>
+        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="dienst reveal" style="--d:.24s" href="#contact">
+        <span class="nr">/ 04</span>
+        <h3>Reparatie &amp; restauratie</h3>
+        <p>Scheurherstel, schoorstenen en monumentaal werk — met respect voor het oorspronkelijke metselwerk.</p>
+        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTEN ============ -->
+<section id="projecten" class="hairline-top" aria-labelledby="projecten-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="micro">Projecten — 02</p>
+      <h2 class="sec-title" id="projecten-title">Uitgelichte projecten</h2>
+      <p class="sec-intro">Een selectie van recent opgeleverd metselwerk in de regio Utrecht. Filter op type klus.</p>
+    </div>
+
+    <div class="filterbar reveal" role="group" aria-label="Projecten filteren">
+      <button class="filter-btn" data-filter="alles" aria-pressed="true">Alles</button>
+      <button class="filter-btn" data-filter="nieuwbouw" aria-pressed="false">Nieuwbouw</button>
+      <button class="filter-btn" data-filter="voegwerk" aria-pressed="false">Voegwerk</button>
+      <button class="filter-btn" data-filter="gevels" aria-pressed="false">Gevels</button>
+    </div>
+
+    <ul class="project-grid" id="projectGrid">
+      <li class="project reveal" data-cat="nieuwbouw" style="--d:0s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80" alt="Nieuwe uitbouw met schoon metselwerk in halfsteensverband" loading="lazy">
+        </figure>
+        <span class="tag">Nieuwbouw</span>
+        <div class="project-meta">
+          <div><h3>Uitbouw in halfsteensverband</h3><p class="place">Utrecht, Wittevrouwen</p></div>
+          <span class="year">2025</span>
+        </div>
+        <a class="view-strip" href="#contact">Bekijk project <span aria-hidden="true">→</span></a>
+      </li>
+      <li class="project reveal" data-cat="voegwerk" style="--d:.08s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Gerenoveerde bakstenen gevel van een jaren dertig woning" loading="lazy">
+        </figure>
+        <span class="tag">Voegwerk</span>
+        <div class="project-meta">
+          <div><h3>Gevelrenovatie jaren '30-woning</h3><p class="place">Amersfoort</p></div>
+          <span class="year">2024</span>
+        </div>
+        <a class="view-strip" href="#contact">Bekijk project <span aria-hidden="true">→</span></a>
+      </li>
+      <li class="project reveal" data-cat="gevels" style="--d:.16s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80" alt="Gemetselde tuinmuur van rode baksteen met rollaag" loading="lazy">
+        </figure>
+        <span class="tag">Gevels</span>
+        <div class="project-meta">
+          <div><h3>Tuinmuur met rollaag</h3><p class="place">Houten</p></div>
+          <span class="year">2025</span>
+        </div>
+        <a class="view-strip" href="#contact">Bekijk project <span aria-hidden="true">→</span></a>
+      </li>
+      <li class="project reveal" data-cat="nieuwbouw" style="--d:.24s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" alt="Nieuwbouw in aanbouw met steigers rond het metselwerk" loading="lazy">
+        </figure>
+        <span class="tag">Nieuwbouw</span>
+        <div class="project-meta">
+          <div><h3>Dragend metselwerk schuurwoning</h3><p class="place">De Bilt</p></div>
+          <span class="year">2024</span>
+        </div>
+        <a class="view-strip" href="#contact">Bekijk project <span aria-hidden="true">→</span></a>
+      </li>
+      <li class="project reveal" data-cat="voegwerk" style="--d:.32s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&w=900&q=80" alt="Klassieke bakstenen gevel met vernieuwd voegwerk" loading="lazy">
+        </figure>
+        <span class="tag">Voegwerk</span>
+        <div class="project-meta">
+          <div><h3>Opnieuw voegen klassieke gevel</h3><p class="place">Zeist</p></div>
+          <span class="year">2023</span>
+        </div>
+        <a class="view-strip" href="#contact">Bekijk project <span aria-hidden="true">→</span></a>
+      </li>
+      <li class="project reveal" data-cat="gevels" style="--d:.4s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80" alt="Erfafscheiding van metselwerk met gemetselde pilaren" loading="lazy">
+        </figure>
+        <span class="tag">Gevels</span>
+        <div class="project-meta">
+          <div><h3>Erfafscheiding met pilaren</h3><p class="place">Bunnik</p></div>
+          <span class="year">2023</span>
+        </div>
+        <a class="view-strip" href="#contact">Bekijk project <span aria-hidden="true">→</span></a>
+      </li>
+    </ul>
+
+    <!-- Voor/Na slider -->
+    <div class="beforeafter-block">
+      <div class="ba-copy reveal">
+        <p class="micro">Uitgelicht — voor / na</p>
+        <h3>Voegwerk-renovatie gevel, Utrecht-Oost</h3>
+        <p>Van uitgesleten, brokkelige voegen naar een gevel die er weer decennia tegen kan: oud voegwerk uitgehakt, de steen gereinigd en opnieuw gevoegd in een passende kleur. Doorlooptijd: twee weken. Sleep de schuif om het verschil te zien.</p>
+      </div>
+      <div class="beforeafter reveal" id="beforeAfter" style="--d:.12s">
+        <img class="ba-before" src="https://images.unsplash.com/photo-1495578942200-c5f5d2137def?auto=format&fit=crop&w=1600&q=80" alt="Situatie vóór de renovatie: verweerde bakstenen muur met beschadigd voegwerk">
+        <img class="ba-after" src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?auto=format&fit=crop&w=1600&q=80" alt="Situatie na de renovatie: strakke bakstenen gevel met nieuw voegwerk">
+        <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" step="1" aria-label="Vergelijk voor en na: schuif tussen oude en nieuwe situatie">
+        <div class="ba-handle" aria-hidden="true"></div>
+        <span class="ba-label voor" aria-hidden="true">Voor</span>
+        <span class="ba-label na" aria-hidden="true">Na</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WERKWIJZE ============ -->
+<section id="werkwijze" class="werkwijze" aria-labelledby="werkwijze-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="micro">Werkwijze — 03</p>
+      <h2 class="sec-title" id="werkwijze-title">Helder van offerte<br>tot oplevering.</h2>
+    </div>
+    <div class="steps" id="steps">
+      <div class="steps-line" aria-hidden="true"></div>
+      <div class="step reveal" style="--d:.15s">
+        <span class="dot">01</span>
+        <h3>Kennismaking</h3>
+        <p>We bekijken de klus samen op locatie. U vertelt wat u wilt, ik denk mee over wat slim en haalbaar is.</p>
+      </div>
+      <div class="step reveal" style="--d:.3s">
+        <span class="dot">02</span>
+        <h3>Offerte</h3>
+        <p>Binnen vijf werkdagen een heldere offerte: vaste prijs, duidelijke planning, geen kleine lettertjes.</p>
+      </div>
+      <div class="step reveal" style="--d:.45s">
+        <span class="dot">03</span>
+        <h3>Uitvoering</h3>
+        <p>Ik werk netjes, kom afspraken na en houd u dagelijks op de hoogte van de voortgang.</p>
+      </div>
+      <div class="step reveal" style="--d:.6s">
+        <span class="dot">04</span>
+        <h3>Oplevering</h3>
+        <p>We lopen alles samen na tot het klopt. Pas als u tevreden bent, is de klus voor mij klaar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OVER ============ -->
+<section id="over" aria-labelledby="over-title">
+  <div class="wrap over-grid">
+    <div class="over-photo reveal" id="overPhoto">
+      <span class="corner tl" aria-hidden="true"></span>
+      <span class="corner br" aria-hidden="true"></span>
+      <img id="parallaxImg" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" alt="Mark de Vries, zelfstandig metselaar, aan het werk op de steiger" loading="lazy">
+    </div>
+    <div class="over-copy">
+      <p class="micro reveal">Over — 04</p>
+      <h2 class="reveal" style="--d:.1s" id="over-title">Ik ben Mark de Vries.<br>Metselaar met hart voor het vak.</h2>
+      <p class="reveal" style="--d:.2s">Het vak leerde ik op de oude manier: jaren naast een leermeester op de steiger, tot elke laag <strong>strak, te lood en waterpas</strong> stond. In 2011 begon ik voor mezelf — omdat ik geloof dat het persoonlijker, strakker en eerlijker kan.</p>
+      <p class="reveal" style="--d:.3s">Goed metselwerk herken je aan de details: een zuiver verband, een gelijkmatige voeg, een rollaag die klopt. Bij mij krijgt u <strong>één vakman die zijn woord houdt</strong> — van de eerste steen tot de laatste voeg. Koffie drink ik zwart, afspraken kom ik na.</p>
+      <div class="badges reveal" style="--d:.4s">
+        <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>VCA gecertificeerd</span>
+        <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg>KvK 64829107</span>
+        <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>Volledig verzekerd</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews hairline-top" aria-labelledby="reviews-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="micro">Reviews — 05</p>
+      <h2 class="sec-title" id="reviews-title">Wat klanten zeggen</h2>
+    </div>
+    <div class="review-grid">
+      <article class="review reveal" style="--d:0s">
+        <div class="stars" role="img" aria-label="Beoordeling: 5 van 5 sterren">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <blockquote>“Mark heeft de gevel van onze jaren '30-woning opnieuw gevoegd. Strakke planning, dagelijks netjes opgeruimd en de gevel ziet er weer uit als nieuw. Een aanrader.”</blockquote>
+        <div class="who"><b>Sanne &amp; Joris van Dam</b><span>Gevelrenovatie — Amersfoort</span></div>
+      </article>
+      <article class="review reveal" style="--d:.12s">
+        <div class="stars" role="img" aria-label="Beoordeling: 5 van 5 sterren">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <blockquote>“Eerlijke offerte, geen meerwerk-verrassingen en de tuinmuur met rollaag is mooier geworden dan op de tekening. Communicatie via app verliep super snel.”</blockquote>
+        <div class="who"><b>Fatima el Idrissi</b><span>Tuinmuur — Nieuwegein</span></div>
+      </article>
+      <article class="review reveal" style="--d:.24s">
+        <div class="stars" role="img" aria-label="Beoordeling: 5 van 5 sterren">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <blockquote>“Het voegwerk van onze gevel is tot op de millimeter strak. Mark denkt mee, werkt secuur en levert precies op wanneer hij zegt. Daar betaal je graag voor.”</blockquote>
+        <div class="who"><b>Peter Brandsma</b><span>Voegwerk — Zeist</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="hairline-top" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="micro">Contact — 06</p>
+      <h2 class="sec-title" id="contact-title">Vertel over uw klus.</h2>
+      <p class="sec-intro">Vul het formulier in en u hoort binnen één werkdag van mij. Liever direct contact? Bel of mail gerust.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form reveal" id="offerteForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <p class="err" id="err-naam">Vul uw naam in.</p>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel" inputmode="tel" required>
+            <p class="err" id="err-tel">Vul een geldig telefoonnummer in.</p>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">E-mailadres</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <p class="err" id="err-email">Vul een geldig e-mailadres in.</p>
+          </div>
+          <div class="field">
+            <label for="f-type">Type klus</label>
+            <select id="f-type" name="type" required>
+              <option value="" selected>Maak een keuze…</option>
+              <option value="nieuwbouw">Metselwerk nieuwbouw</option>
+              <option value="voegwerk">Voegwerk</option>
+              <option value="gevelrenovatie">Gevelrenovatie</option>
+              <option value="reparatie">Reparatie</option>
+              <option value="anders">Iets anders</option>
+            </select>
+            <p class="err" id="err-type">Kies het type klus.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-msg">Omschrijving van de klus</label>
+          <textarea id="f-msg" name="omschrijving" required placeholder="Bijv. gevel van ±40 m² opnieuw voegen, gewenste start in september…"></textarea>
+          <p class="err" id="err-msg">Omschrijf kort wat u wilt laten doen.</p>
+        </div>
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit">Verstuur aanvraag
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          </button>
+          <small>Vrijblijvend — reactie binnen 1 werkdag.</small>
+        </div>
+        <div class="form-success" aria-hidden="true">
+          <span class="check"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+          <h3>Aanvraag verzonden!</h3>
+          <p>Bedankt voor uw bericht. Ik neem binnen één werkdag contact met u op.</p>
+        </div>
+        <p class="visually-hidden" id="formStatus" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></p>
+      </form>
+
+      <aside class="contact-aside reveal" style="--d:.15s">
+        <h3>Direct contact</h3>
+        <div class="contact-lines">
+          <a href="tel:+31612345678">
+            <span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <span><span class="lbl">Telefoon</span><span class="val">06 12 34 56 78</span></span>
+          </a>
+          <a href="mailto:info@devriesmetselwerken.nl">
+            <span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7L22 7"/></svg></span>
+            <span><span class="lbl">E-mail</span><span class="val">info@devriesmetselwerken.nl</span></span>
+          </a>
+          <div>
+            <span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span><span class="lbl">Werkgebied</span><span class="val">Utrecht &amp; omstreken (30 km)</span></span>
+          </div>
+          <div>
+            <span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg></span>
+            <span><span class="lbl">KvK</span><span class="val">64829107</span></span>
+          </div>
+        </div>
+        <div class="werkgebied-note">
+          <b>Spoedklus?</b>
+          Voor losliggende stenen, scheurvorming of stormschade aan de gevel ben ik op werkdagen tussen 07:00 en 18:00 telefonisch bereikbaar.
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><b>DE VRIES</b> metselwerken — Vakwerk in metselwerk &amp; voegwerk</p>
+    <div class="socials">
+      <a href="#top" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+      <a href="#top" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="#top" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v2a6 6 0 0 1 2-2z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+    </div>
+    <p class="footer-meta">© <span id="year">2026</span> De Vries Metselwerken · KvK 64829107 · Utrecht</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  document.documentElement.classList.add('js');
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Header scroll state ---------- */
+  var header = document.querySelector('.site-header');
+  var scrollTicking = false;
+  function onScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(function () {
+      header.classList.toggle('scrolled', window.scrollY > 12);
+      updateParallax();
+      scrollTicking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- Mobiel menu (slide-in, focus trap, Escape) ---------- */
+  var toggle = document.getElementById('menuToggle');
+  var menu = document.getElementById('mobileMenu');
+  var backdrop = document.getElementById('menuBackdrop');
+  var lastFocused = null;
+
+  function focusables() {
+    return menu.querySelectorAll('a[href], button:not([disabled])');
+  }
+  function openMenu() {
+    lastFocused = document.activeElement;
+    menu.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.classList.add('menu-locked');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Menu sluiten');
+    var f = focusables();
+    if (f.length) f[0].focus();
+  }
+  function closeMenu() {
+    menu.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.classList.remove('menu-locked');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Menu openen');
+    if (lastFocused) lastFocused.focus();
+  }
+  toggle.addEventListener('click', function () {
+    if (menu.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+  });
+  backdrop.addEventListener('click', closeMenu);
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) closeMenu();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeMenu(); return; }
+    if (e.key !== 'Tab') return;
+    var f = focusables();
+    if (!f.length) return;
+    var first = f[0];
+    var last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  /* ---------- IntersectionObserver reveals ---------- */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in');
+      if (entry.target.classList.contains('hero')) startCountups();
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+
+  document.querySelectorAll('.reveal, .review, #steps').forEach(function (el) {
+    io.observe(el);
+  });
+
+  /* Fallback: elementen die al in beeld staan direct tonen.
+     Vangt randgevallen op zoals laden op een anker (#projecten),
+     waar de observer-callback soms pas na de eerste paint komt. */
+  function revealInView() {
+    document.querySelectorAll('.reveal:not(.in), .review:not(.in), #steps:not(.in)').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.classList.add('in');
+        io.unobserve(el);
+      }
+    });
+  }
+  if (location.hash) {
+    setTimeout(revealInView, 120);
+    window.addEventListener('load', function () { setTimeout(revealInView, 60); });
+  }
+
+  /* Hero entrance op load */
+  var hero = document.getElementById('hero');
+  window.requestAnimationFrame(function () {
+    setTimeout(function () {
+      hero.classList.add('in');
+      startCountups();
+    }, 80);
+  });
+
+  /* ---------- Troffel: draw-in starten ---------- */
+  var troffel = document.getElementById('troffelSvg');
+  setTimeout(function () { troffel.classList.add('drawn'); }, reduceMotion ? 0 : 250);
+
+  /* ---------- Count-up stats ---------- */
+  var countupsStarted = false;
+  function formatNum(value, decimals) {
+    return decimals > 0
+      ? value.toFixed(decimals).replace('.', ',')
+      : String(Math.round(value));
+  }
+  function startCountups() {
+    if (countupsStarted) return;
+    countupsStarted = true;
+    document.querySelectorAll('.countup').forEach(function (el, i) {
+      var target = parseFloat(el.getAttribute('data-target'));
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (reduceMotion) {
+        el.textContent = formatNum(target, decimals) + suffix;
+        return;
+      }
+      var dur = 1600;
+      var startT = null;
+      function tick(t) {
+        if (startT === null) startT = t;
+        var p = Math.min((t - startT) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = formatNum(target * eased, decimals) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      setTimeout(function () { requestAnimationFrame(tick); }, 600 + i * 140);
+    });
+  }
+
+  /* ---------- Projectfilter ---------- */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var projects = Array.prototype.slice.call(document.querySelectorAll('#projectGrid .project'));
+  var filterBusy = false;
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (filterBusy || btn.getAttribute('aria-pressed') === 'true') return;
+      filterBusy = true;
+      filterBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      var cat = btn.getAttribute('data-filter');
+      var dur = reduceMotion ? 0 : 320;
+
+      projects.forEach(function (card) {
+        var show = cat === 'alles' || card.getAttribute('data-cat') === cat;
+        if (!show && !card.hidden) card.classList.add('is-leaving');
+      });
+
+      setTimeout(function () {
+        projects.forEach(function (card) {
+          var show = cat === 'alles' || card.getAttribute('data-cat') === cat;
+          card.classList.remove('is-leaving');
+          if (show && card.hidden) {
+            card.hidden = false;
+            card.classList.add('is-entering');
+          } else if (!show) {
+            card.hidden = true;
+          }
+        });
+        /* force reflow zodat de enter-transition speelt */
+        void document.getElementById('projectGrid').offsetHeight;
+        projects.forEach(function (card) { card.classList.remove('is-entering'); });
+        filterBusy = false;
+      }, dur);
+    });
+  });
+
+  /* ---------- Voor/Na slider ---------- */
+  var ba = document.getElementById('beforeAfter');
+  var baRange = document.getElementById('baRange');
+  function setBaPos(value) {
+    ba.style.setProperty('--pos', value + '%');
+  }
+  baRange.addEventListener('input', function () { setBaPos(baRange.value); });
+  /* pointer drag rechtstreeks op de container (touch + muis) */
+  function baFromEvent(e) {
+    var rect = ba.getBoundingClientRect();
+    var x = (e.clientX - rect.left) / rect.width;
+    var v = Math.round(Math.min(Math.max(x, 0), 1) * 100);
+    baRange.value = String(v);
+    setBaPos(v);
+  }
+  ba.addEventListener('pointerdown', function (e) {
+    if (e.target === baRange) return;
+    ba.setPointerCapture(e.pointerId);
+    baFromEvent(e);
+    function move(ev) { baFromEvent(ev); }
+    function up() {
+      ba.removeEventListener('pointermove', move);
+      ba.removeEventListener('pointerup', up);
+      ba.removeEventListener('pointercancel', up);
+    }
+    ba.addEventListener('pointermove', move);
+    ba.addEventListener('pointerup', up);
+    ba.addEventListener('pointercancel', up);
+  });
+  setBaPos(50);
+
+  /* ---------- Parallax op de over-foto ---------- */
+  var overPhoto = document.getElementById('overPhoto');
+  var parallaxImg = document.getElementById('parallaxImg');
+  function updateParallax() {
+    if (reduceMotion || !overPhoto) return;
+    var rect = overPhoto.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if (rect.bottom < 0 || rect.top > vh) return;
+    var progress = (rect.top + rect.height / 2 - vh / 2) / (vh / 2 + rect.height / 2);
+    var shift = progress * -7; /* procent */
+    parallaxImg.style.transform = 'translate3d(0,' + shift.toFixed(2) + '%,0)';
+  }
+  updateParallax();
+
+  /* ---------- Formulier validatie + succes ---------- */
+  var form = document.getElementById('offerteForm');
+  var statusEl = document.getElementById('formStatus');
+
+  function setInvalid(input, invalid) {
+    var field = input.closest('.field');
+    field.classList.toggle('invalid', invalid);
+    input.setAttribute('aria-invalid', invalid ? 'true' : 'false');
+  }
+  function validateField(input) {
+    var v = input.value.trim();
+    var ok = true;
+    if (input.id === 'f-email') {
+      ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    } else if (input.id === 'f-tel') {
+      ok = /^[+\d][\d\s\-()]{7,}$/.test(v);
+    } else {
+      ok = v.length > 0;
+    }
+    setInvalid(input, !ok);
+    return ok;
+  }
+  var formInputs = form.querySelectorAll('input, select, textarea');
+  formInputs.forEach(function (input) {
+    input.addEventListener('blur', function () { validateField(input); });
+    input.addEventListener('input', function () {
+      if (input.closest('.field').classList.contains('invalid')) validateField(input);
+    });
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var allOk = true;
+    var firstBad = null;
+    formInputs.forEach(function (input) {
+      if (!validateField(input)) {
+        allOk = false;
+        if (!firstBad) firstBad = input;
+      }
+    });
+    if (!allOk) {
+      statusEl.textContent = 'Het formulier bevat fouten. Controleer de gemarkeerde velden.';
+      if (firstBad) firstBad.focus();
+      return;
+    }
+    form.classList.add('sent');
+    form.querySelector('.form-success').setAttribute('aria-hidden', 'false');
+    statusEl.textContent = 'Aanvraag verzonden. U hoort binnen één werkdag van ons.';
+  });
+
+  /* ---------- Footer jaar ---------- */
+  document.getElementById('year').textContent = String(new Date().getFullYear());
+})();
+</script>
+</body>
+</html>

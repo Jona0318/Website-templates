@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAISON ELVE — Collectie Nº4, Herfst 2026</title>
+<meta name="description" content="MAISON ELVE — een Amsterdams modehuis. Stille luxe, compromisloos vakmanschap. Ontdek Collectie Nº4, Herfst 2026.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script>
+/* Vroege gating: js-klasse + entree-beslissing vóór eerste paint */
+(function () {
+  var html = document.documentElement;
+  html.classList.add('js');
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var seen = false;
+  try { seen = sessionStorage.getItem('elve-intro') === '1'; } catch (e) {}
+  if (reduce || seen) {
+    html.classList.add('intro-skip', 'intro-done');
+  } else {
+    html.classList.add('intro-play');
+    try { sessionStorage.setItem('elve-intro', '1'); } catch (e) {}
+  }
+})();
+</script>
+
+<style>
+/* ============================================================
+   MAISON ELVE — haute couture minimalisme
+   ============================================================ */
+:root {
+  --bone: #f4f2ee;
+  --bone-deep: #ebe7df;
+  --ink: #161412;
+  --ink-soft: #3c3833;
+  --taupe: #8d8276;
+  --hairline: rgba(22, 20, 18, .16);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --serif: "Cormorant Garamond", "Times New Roman", serif;
+  --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --pad: clamp(20px, 5vw, 96px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.menu-open { overflow: hidden; }
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--ink); color: var(--bone); }
+
+:focus { outline: none; }
+:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 5px;
+}
+
+/* —— typografische atomen —— */
+.caps {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: .66rem;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+}
+
+.caps--taupe { color: var(--taupe); }
+
+.serif-num {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(5rem, 11vw, 11rem);
+  line-height: .8;
+  color: var(--taupe);
+  opacity: .45;
+  user-select: none;
+}
+
+.u-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: .45em;
+}
+.u-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform-origin: right center;
+  transition: transform .9s var(--ease);
+}
+.u-link:hover::after,
+.u-link:focus-visible::after {
+  transform: scaleX(.35);
+  transform-origin: left center;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px; left: 12px;
+  z-index: 300;
+  background: var(--ink);
+  color: var(--bone);
+  font-size: .7rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  padding: .9em 1.6em;
+  transform: translateY(-220%);
+  transition: transform .4s var(--ease);
+}
+.skip-link:focus-visible { transform: translateY(0); outline-offset: -6px; outline-color: var(--bone); }
+
+/* ============================================================
+   1 · ENTREE — gordijn
+   ============================================================ */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  pointer-events: none;
+}
+html.intro-play .curtain { display: block; }
+.curtain__panel {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 50.5%;
+  background: var(--ink);
+}
+.curtain__panel--left  { left: 0; }
+.curtain__panel--right { right: 0; }
+.curtain__mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--bone);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  letter-spacing: .2em;
+  animation: curtainMark 1s var(--ease) forwards;
+}
+html.intro-play .curtain__panel--left  { animation: curtainLeft 1.1s var(--ease) .35s forwards; }
+html.intro-play .curtain__panel--right { animation: curtainRight 1.1s var(--ease) .35s forwards; }
+
+@keyframes curtainLeft  { to { transform: translateX(-101%); } }
+@keyframes curtainRight { to { transform: translateX(101%); } }
+@keyframes curtainMark  { 0% { opacity: 0; } 35% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: clamp(18px, 3vw, 30px) var(--pad);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  transition: background .6s var(--ease), padding .6s var(--ease), box-shadow .6s var(--ease);
+}
+.site-header.is-scrolled {
+  background: var(--bone);
+  padding-top: 14px;
+  padding-bottom: 14px;
+  box-shadow: 0 1px 0 var(--hairline);
+}
+
+.brand {
+  grid-column: 2;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(.78rem, 1.4vw, .95rem);
+  letter-spacing: .52em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-indent: .52em; /* optische centrering van tracking */
+}
+
+.header-nav { display: flex; gap: clamp(18px, 3vw, 44px); }
+.header-nav--left  { grid-column: 1; justify-self: start; }
+.header-nav--right { grid-column: 3; justify-self: end; align-items: center; }
+.header-nav a {
+  font-size: .64rem;
+  font-weight: 400;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  padding: .4em 0;
+  position: relative;
+}
+.header-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .7s var(--ease);
+}
+.header-nav a:hover::after,
+.header-nav a:focus-visible::after { transform: scaleX(1); }
+
+.menu-btn {
+  grid-column: 3;
+  justify-self: end;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 44px; height: 44px;
+  padding: 10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.menu-btn span {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: var(--ink);
+  transition: transform .6s var(--ease);
+}
+.menu-btn[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:last-child  { transform: translateY(-4px) rotate(-45deg); }
+
+html:not(.js) .menu-btn { display: none !important; }
+
+@media (max-width: 860px) {
+  .header-nav { display: none; }
+  .menu-btn { display: flex; }
+  .brand { grid-column: 1; justify-self: start; text-indent: 0; }
+}
+
+/* —— mobiel menu: volledig wit scherm —— */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: var(--bone);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--pad);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .7s var(--ease), visibility 0s linear .7s;
+}
+.menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .7s var(--ease);
+}
+.menu-overlay__close {
+  position: absolute;
+  top: clamp(14px, 3vw, 26px);
+  right: var(--pad);
+  width: 44px; height: 44px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: .62rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.menu-overlay nav ul { list-style: none; }
+.menu-overlay nav li { overflow: hidden; }
+.menu-overlay nav a {
+  display: inline-block;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2.4rem, 9vw, 4.6rem);
+  line-height: 1.35;
+  transform: translateY(110%);
+  transition: transform 1s var(--ease);
+}
+.menu-overlay.is-open nav li:nth-child(1) a { transition-delay: .10s; }
+.menu-overlay.is-open nav li:nth-child(2) a { transition-delay: .18s; }
+.menu-overlay.is-open nav li:nth-child(3) a { transition-delay: .26s; }
+.menu-overlay.is-open nav li:nth-child(4) a { transition-delay: .34s; }
+.menu-overlay.is-open nav li:nth-child(5) a { transition-delay: .42s; }
+.menu-overlay.is-open nav a { transform: translateY(0); }
+.menu-overlay__foot {
+  margin-top: clamp(28px, 6vh, 64px);
+  opacity: 0;
+  transition: opacity .9s var(--ease) .5s;
+}
+.menu-overlay.is-open .menu-overlay__foot { opacity: 1; }
+
+/* ============================================================
+   2 · HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.hero__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  animation: kenburns 22s var(--ease) infinite alternate;
+}
+@keyframes kenburns {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.1) translate3d(1.5%, -1.5%, 0); }
+}
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(244,242,238,.18) 0%, rgba(22,20,18,.08) 45%, rgba(22,20,18,.34) 100%);
+}
+.hero__inner {
+  text-align: center;
+  color: var(--bone);
+  padding: 0 var(--pad);
+}
+.hero__title {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 5.6vw, 4.2rem);
+  letter-spacing: .42em;
+  text-indent: .42em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+html.js .hero__title {
+  opacity: 0;
+  letter-spacing: 1.05em;
+  text-indent: 1.05em;
+  transition: opacity 1.6s var(--ease) .25s, letter-spacing 1.8s var(--ease) .25s, text-indent 1.8s var(--ease) .25s;
+}
+html.intro-done .hero__title { opacity: 1; letter-spacing: .42em; text-indent: .42em; }
+
+.hero__label, .hero__cta { margin-top: clamp(18px, 3vh, 34px); }
+html.js .hero__label,
+html.js .hero__cta {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+}
+html.js .hero__label { transition-delay: 1.15s; }
+html.js .hero__cta   { transition-delay: 1.45s; }
+html.intro-done .hero__label,
+html.intro-done .hero__cta { opacity: 1; transform: none; }
+
+.hero__cta a { font-size: .68rem; letter-spacing: .34em; text-transform: uppercase; font-weight: 400; }
+
+.hero__scroll {
+  position: absolute;
+  bottom: clamp(18px, 4vh, 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--bone);
+  font-size: .58rem;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.hero__scroll::after {
+  content: "";
+  width: 1px; height: 44px;
+  background: currentColor;
+  opacity: .7;
+  animation: scrollHint 2.6s var(--ease) infinite;
+  transform-origin: top center;
+}
+@keyframes scrollHint {
+  0% { transform: scaleY(0); transform-origin: top center; }
+  45% { transform: scaleY(1); transform-origin: top center; }
+  55% { transform: scaleY(1); transform-origin: bottom center; }
+  100% { transform: scaleY(0); transform-origin: bottom center; }
+}
+html.js .hero__scroll { opacity: 0; transition: opacity 1.4s var(--ease) 1.9s; }
+html.intro-done .hero__scroll { opacity: 1; }
+
+/* ============================================================
+   3 · MARQUEE
+   ============================================================ */
+.marquee {
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  overflow: hidden;
+  padding: 1.05em 0;
+  background: var(--bone);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 42s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__seq {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.marquee__seq span {
+  font-size: .62rem;
+  font-weight: 400;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0 1.4em;
+}
+.marquee__seq i {
+  font-style: normal;
+  color: var(--taupe);
+  font-family: var(--serif);
+  font-size: .8rem;
+}
+@keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
+
+/* ============================================================
+   Algemene reveal-choreografie
+   ============================================================ */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(38px);
+  transition: opacity 1.1s var(--ease) var(--d, 0s), transform 1.1s var(--ease) var(--d, 0s);
+}
+html.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* media-reveal (clip) — eigen regie, geen translate op wrapper */
+html.js [data-reveal="clip"] { opacity: 1; transform: none; }
+
+section { position: relative; }
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 40px);
+  padding: 0 var(--pad);
+  margin-bottom: clamp(40px, 8vh, 96px);
+}
+.sec-head .serif-num { flex-shrink: 0; }
+.sec-head__meta { display: flex; flex-direction: column; gap: .8em; }
+.sec-head__rule { width: clamp(60px, 8vw, 140px); height: 1px; background: var(--ink); }
+
+/* ============================================================
+   4 · COLLECTIE — asymmetrisch redactioneel grid
+   ============================================================ */
+.collectie { padding: clamp(90px, 16vh, 190px) 0 clamp(70px, 12vh, 150px); }
+
+.collectie__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(16px, 3vw, 56px);
+  row-gap: clamp(70px, 12vh, 150px);
+  align-items: start;
+  padding: 0 var(--pad);
+}
+
+.look { position: relative; }
+.look__frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--bone-deep);
+}
+.look__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+.look--1 .look__frame { aspect-ratio: 4 / 5; }
+.look--2 .look__frame { aspect-ratio: 3 / 4; }
+.look--3 .look__frame { aspect-ratio: 3 / 4; }
+.look--4 .look__frame { aspect-ratio: 7 / 8; }
+.look--5 .look__frame { aspect-ratio: 4 / 5; }
+.look--6 .look__frame { aspect-ratio: 3 / 4; }
+
+.look--1 { grid-column: 1 / 8; }
+.look--2 { grid-column: 9 / 13; margin-top: clamp(80px, 22vh, 260px); }
+.look--3 { grid-column: 2 / 6; margin-top: clamp(40px, 12vh, 150px); }
+.look--4 { grid-column: 7 / 13; }
+.look--5 { grid-column: 1 / 7; }
+.look--6 { grid-column: 8 / 13; margin-top: clamp(70px, 18vh, 220px); }
+
+.look__num {
+  position: absolute;
+  top: -1.1em;
+  left: -0.06em;
+  z-index: 2;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  color: var(--ink);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* clip-reveal + trage zoom */
+html.js .look .look__frame {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.2s var(--ease) var(--d, 0s);
+}
+html.js .look .look__frame img {
+  transform: scale(1.14);
+  transition: transform 1.8s var(--ease) var(--d, 0s);
+}
+html.js .look.is-in .look__frame { clip-path: inset(0 0 0 0); }
+html.js .look.is-in .look__frame img { transform: scale(1); }
+
+/* hover: trage zoom + onderschrift schuift omhoog */
+.look.is-in:hover .look__frame img,
+.look.is-in:focus-within .look__frame img { transform: scale(1.055); transition-delay: 0s; }
+html:not(.js) .look:hover .look__frame img,
+html:not(.js) .look:focus-within .look__frame img { transform: scale(1.055); }
+
+.look__cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  padding: 1.1em 1.4em;
+  background: var(--bone);
+  transform: translateY(101%);
+  transition: transform .9s var(--ease);
+}
+.look:hover .look__cap,
+.look:focus-within .look__cap { transform: translateY(0); }
+@media (hover: none) {
+  .look__cap { transform: translateY(0); }
+}
+.look__name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.15rem;
+  letter-spacing: .02em;
+}
+.look__price {
+  font-size: .66rem;
+  font-weight: 400;
+  letter-spacing: .26em;
+  white-space: nowrap;
+}
+.look__tag {
+  margin-top: 1.1em;
+  display: block;
+}
+
+.collectie__all {
+  margin-top: clamp(60px, 10vh, 120px);
+  text-align: center;
+}
+.collectie__all a { font-size: .68rem; font-weight: 400; letter-spacing: .34em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .collectie__grid { grid-template-columns: 1fr; row-gap: clamp(56px, 9vh, 90px); }
+  .look--1, .look--2, .look--3, .look--4, .look--5, .look--6 {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+  .look--2, .look--6 { width: 82%; margin-left: auto; }
+  .look--3, .look--5 { width: 82%; }
+}
+
+/* ============================================================
+   5 · CAMPAGNE — sticky tekst / parallax beeldkolom
+   ============================================================ */
+.campagne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--ink);
+  color: var(--bone);
+}
+.campagne__text {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(24px, 4vh, 44px);
+  padding: clamp(80px, 14vh, 160px) var(--pad);
+}
+.campagne__statement {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.1rem, 4.6vw, 4.4rem);
+  line-height: 1.18;
+  letter-spacing: .01em;
+}
+.campagne__statement em { font-style: italic; color: var(--taupe); }
+.campagne__statement .line { display: block; overflow: hidden; }
+.campagne__statement .line > span { display: inline-block; }
+html.js .campagne__statement .line > span {
+  transform: translateY(112%);
+  transition: transform 1.15s var(--ease);
+}
+html.js .campagne__statement.is-in .line:nth-child(1) > span { transition-delay: .05s; }
+html.js .campagne__statement.is-in .line:nth-child(2) > span { transition-delay: .17s; }
+html.js .campagne__statement.is-in .line:nth-child(3) > span { transition-delay: .29s; }
+html.js .campagne__statement.is-in .line:nth-child(4) > span { transition-delay: .41s; }
+html.js .campagne__statement.is-in .line > span { transform: translateY(0); }
+
+.campagne__body {
+  max-width: 36ch;
+  color: rgba(244, 242, 238, .72);
+  font-size: .92rem;
+}
+.campagne__images {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 8vh, 110px);
+  padding: clamp(80px, 14vh, 180px) var(--pad) clamp(80px, 14vh, 180px) 0;
+}
+.campagne__imgwrap {
+  overflow: hidden;
+  background: #211e1b;
+}
+.campagne__imgwrap:nth-child(2) { width: 78%; align-self: flex-end; }
+.campagne__imgwrap img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transform: scale(1.16);
+  will-change: transform;
+}
+.campagne__imgwrap:nth-child(2) img { aspect-ratio: 2 / 3; }
+
+@media (max-width: 900px) {
+  .campagne { grid-template-columns: 1fr; }
+  .campagne__text { position: static; min-height: 0; }
+  .campagne__images { padding: 0 var(--pad) clamp(70px, 12vh, 120px); }
+}
+
+/* ============================================================
+   6 · LOOKBOOK — horizontale scroll-snap strook
+   ============================================================ */
+.lookbook { padding: clamp(90px, 16vh, 190px) 0; }
+.lookbook__bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 0 var(--pad);
+  margin-bottom: clamp(36px, 6vh, 70px);
+}
+.lookbook__nav { display: flex; gap: 14px; }
+.lookbook__btn {
+  width: 52px; height: 52px;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  transition: background .6s var(--ease), color .6s var(--ease), opacity .5s var(--ease), border-color .6s var(--ease);
+}
+.lookbook__btn:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+.lookbook__btn:disabled { opacity: .25; pointer-events: none; }
+.lookbook__btn svg { width: 18px; height: 10px; }
+
+.lookbook__track {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 40px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 var(--pad) 26px;
+  cursor: grab;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink) transparent;
+}
+.lookbook__track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.lookbook__track.is-dragging * { pointer-events: none; }
+.lookbook__track::-webkit-scrollbar { height: 2px; }
+.lookbook__track::-webkit-scrollbar-track { background: var(--hairline); }
+.lookbook__track::-webkit-scrollbar-thumb { background: var(--ink); }
+.lookbook__item {
+  flex: 0 0 auto;
+  width: min(72vw, 460px);
+  scroll-snap-align: start;
+}
+.lookbook__item figure { overflow: hidden; background: var(--bone-deep); }
+.lookbook__item img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 1.8s var(--ease);
+}
+.lookbook__item:hover img { transform: scale(1.05); }
+.lookbook__item figcaption { margin-top: 1.1em; }
+
+/* ============================================================
+   7 · ATELIER — verhaal met overlappend beeldpaar
+   ============================================================ */
+.atelier {
+  padding: clamp(90px, 16vh, 200px) var(--pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(48px, 7vw, 120px);
+  align-items: center;
+  border-top: 1px solid var(--hairline);
+}
+.atelier__media {
+  position: relative;
+  min-height: clamp(380px, 60vh, 700px);
+}
+.atelier__img {
+  position: absolute;
+  overflow: hidden;
+  background: var(--bone-deep);
+}
+.atelier__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.18);
+  will-change: transform;
+}
+.atelier__img--back {
+  top: 0; left: 0;
+  width: 74%; height: 82%;
+}
+.atelier__img--front {
+  bottom: 0; right: 0;
+  width: 52%; height: 56%;
+  box-shadow: 0 0 0 clamp(10px, 1.4vw, 22px) var(--bone);
+}
+html.js .atelier__img {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.25s var(--ease) var(--d, 0s);
+  opacity: 1; transform: none;
+}
+html.js .atelier__img.is-in { clip-path: inset(0); }
+
+.atelier__text { max-width: 52ch; }
+.atelier__text h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  line-height: 1.22;
+  margin: .7em 0 .8em;
+}
+.atelier__text h2 em { font-style: italic; color: var(--taupe); }
+.atelier__text p { color: var(--ink-soft); font-size: .94rem; max-width: 44ch; }
+.atelier__text p + p { margin-top: 1.2em; }
+
+.draw-line {
+  display: block;
+  height: 1px;
+  background: var(--ink);
+  margin: clamp(28px, 4vh, 48px) 0;
+  width: 100%;
+  max-width: 320px;
+}
+html.js .draw-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.3s var(--ease) var(--d, 0s);
+  opacity: 1;
+}
+html.js .draw-line.is-in { transform: scaleX(1); }
+
+.atelier__facts {
+  margin-top: clamp(28px, 4vh, 48px);
+  display: flex;
+  gap: clamp(28px, 4vw, 64px);
+}
+.atelier__facts dt {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  line-height: 1;
+}
+.atelier__facts dd { margin-top: .9em; }
+
+@media (max-width: 900px) {
+  .atelier { grid-template-columns: 1fr; }
+  .atelier__media { min-height: clamp(340px, 56vh, 520px); order: 2; }
+  .atelier__text { order: 1; }
+}
+
+/* ============================================================
+   8 · NIEUWSBRIEF
+   ============================================================ */
+.nieuwsbrief {
+  padding: clamp(100px, 18vh, 220px) var(--pad);
+  text-align: center;
+  border-top: 1px solid var(--hairline);
+}
+.nieuwsbrief h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.9rem, 3.6vw, 3.2rem);
+  line-height: 1.25;
+  margin: 1em auto 1.6em;
+  max-width: 22ch;
+}
+.nieuwsbrief h2 em { font-style: italic; color: var(--taupe); }
+
+.nb-form {
+  max-width: 520px;
+  margin: 0 auto;
+  transition: opacity .8s var(--ease), visibility 0s linear .8s;
+}
+.nb-form.is-sent { opacity: 0; visibility: hidden; pointer-events: none; }
+.nb-form__field {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 1em;
+  padding-bottom: .9em;
+}
+.nb-form__field::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--hairline);
+}
+.nb-form__field::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .9s var(--ease);
+}
+.nb-form__field:focus-within::after { transform: scaleX(1); }
+.nb-form input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: var(--ink);
+  padding: .4em 0;
+}
+.nb-form input::placeholder { color: var(--taupe); opacity: .85; }
+.nb-form input:focus { outline: none; }
+.nb-form button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: .64rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  padding: .8em 0;
+}
+.nb-form button:hover { color: var(--taupe); transition: color .5s var(--ease); }
+
+.nb-thanks {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1.1s var(--ease) .4s, transform 1.1s var(--ease) .4s;
+  margin-top: -2.4em;
+  pointer-events: none;
+}
+.nb-thanks.is-visible { opacity: 1; transform: none; }
+
+/* ============================================================
+   9 · FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--hairline);
+  padding: clamp(56px, 9vh, 110px) var(--pad) clamp(28px, 4vh, 48px);
+}
+.site-footer__brand {
+  text-align: center;
+  font-weight: 400;
+  font-size: clamp(.85rem, 1.6vw, 1.05rem);
+  letter-spacing: .52em;
+  text-indent: .52em;
+  text-transform: uppercase;
+  margin-bottom: clamp(40px, 7vh, 80px);
+}
+.site-footer__cols {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 56px);
+  margin-bottom: clamp(40px, 7vh, 80px);
+}
+.site-footer__cols a {
+  font-size: .62rem;
+  font-weight: 400;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: .5em;
+}
+.site-footer__cols a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .7s var(--ease);
+}
+.site-footer__cols a:hover::after,
+.site-footer__cols a:focus-visible::after { transform: scaleX(1); }
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.6em;
+  font-size: .6rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/* ============================================================
+   Reduced motion — alles stil, alles zichtbaar
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001s !important;
+    transition-delay: 0s !important;
+  }
+  .marquee__track { animation: none !important; transform: none !important; }
+  .hero__media img { animation: none !important; transform: none !important; }
+  html.js [data-reveal],
+  html.js .hero__title,
+  html.js .hero__label,
+  html.js .hero__cta,
+  html.js .hero__scroll { opacity: 1 !important; transform: none !important; }
+  html.js .hero__title { letter-spacing: .42em !important; text-indent: .42em !important; }
+  html.js .look .look__frame,
+  html.js .atelier__img { clip-path: none !important; }
+  html.js .look .look__frame img { transform: none !important; }
+  html.js .campagne__statement .line > span { transform: none !important; }
+  html.js .draw-line { transform: scaleX(1) !important; }
+  .campagne__imgwrap img,
+  .atelier__img img { transform: none !important; }
+  .look__cap { transform: translateY(0) !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- 1 · Entree-gordijn -->
+<div class="curtain" aria-hidden="true">
+  <div class="curtain__mark">Maison&nbsp;Elve</div>
+  <div class="curtain__panel curtain__panel--left"></div>
+  <div class="curtain__panel curtain__panel--right"></div>
+</div>
+
+<a class="skip-link" href="#hoofd">Direct naar de inhoud</a>
+
+<!-- 10 · Header -->
+<header class="site-header" id="siteHeader">
+  <nav class="header-nav header-nav--left" aria-label="Hoofdmenu links">
+    <a href="#collectie">Collectie</a>
+    <a href="#campagne">Campagne</a>
+  </nav>
+  <a class="brand" href="#hoofd" aria-label="Maison Elve — naar boven">Maison&nbsp;Elve</a>
+  <nav class="header-nav header-nav--right" aria-label="Hoofdmenu rechts">
+    <a href="#lookbook">Lookbook</a>
+    <a href="#atelier">Atelier</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu openen">
+    <span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobiel menu -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Navigatie" hidden>
+  <button class="menu-overlay__close" id="menuClose" type="button">Sluiten</button>
+  <nav aria-label="Mobiel menu">
+    <ul>
+      <li><a href="#collectie">Collectie</a></li>
+      <li><a href="#campagne">Campagne</a></li>
+      <li><a href="#lookbook">Lookbook</a></li>
+      <li><a href="#atelier">Atelier</a></li>
+      <li><a href="#nieuwsbrief">Nieuwsbrief</a></li>
+    </ul>
+  </nav>
+  <p class="menu-overlay__foot caps caps--taupe">Amsterdam — Parijs &nbsp;·&nbsp; Collectie Nº4, Herfst 2026</p>
+</div>
+
+<main id="hoofd">
+
+  <!-- 2 · Hero -->
+  <section class="hero" aria-label="Introductie">
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop"
+           alt="Editorial campagnebeeld: model in een vloeiende mantel van Maison Elve, gefotografeerd in zacht natuurlijk licht." fetchpriority="high">
+    </div>
+    <div class="hero__inner">
+      <h1 class="hero__title">Maison&nbsp;Elve</h1>
+      <p class="hero__label caps">Collectie Nº4 — Herfst 2026</p>
+      <p class="hero__cta"><a class="u-link" href="#collectie">Ontdek de collectie</a></p>
+    </div>
+    <p class="hero__scroll" aria-hidden="true">Scroll</p>
+  </section>
+
+  <!-- 3 · Marquee -->
+  <div class="marquee" aria-label="Mededelingen">
+    <div class="marquee__track">
+      <div class="marquee__seq">
+        <span>Nieuwe collectie Nº4</span><i>&#9670;</i>
+        <span>Gratis verzending binnen de EU</span><i>&#9670;</i>
+        <span>Maison Elve</span><i>&#9670;</i>
+        <span>Amsterdam — Parijs</span><i>&#9670;</i>
+        <span>Atelier-gemaakt, in beperkte oplage</span><i>&#9670;</i>
+      </div>
+      <div class="marquee__seq" aria-hidden="true">
+        <span>Nieuwe collectie Nº4</span><i>&#9670;</i>
+        <span>Gratis verzending binnen de EU</span><i>&#9670;</i>
+        <span>Maison Elve</span><i>&#9670;</i>
+        <span>Amsterdam — Parijs</span><i>&#9670;</i>
+        <span>Atelier-gemaakt, in beperkte oplage</span><i>&#9670;</i>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 · Collectie -->
+  <section class="collectie" id="collectie" aria-labelledby="collectie-titel">
+    <header class="sec-head">
+      <span class="serif-num" aria-hidden="true">4</span>
+      <div class="sec-head__meta" data-reveal>
+        <p class="caps caps--taupe">Collectie Nº4 — Herfst 2026</p>
+        <h2 id="collectie-titel" class="caps" style="font-size:.8rem;">Zes looks, zes stiltes</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <div class="collectie__grid">
+
+      <article class="look look--1" data-reveal="clip">
+        <span class="look__num" aria-hidden="true">01</span>
+        <a href="#" aria-label="Look 01 — Zijden blouse Aube, 290 euro">
+          <div class="look__frame">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=900&auto=format&fit=crop" loading="lazy"
+                 alt="Look 01: model draagt de zijden blouse Aube in gebroken wit, gefotografeerd buiten in tegenlicht.">
+            <div class="look__cap">
+              <span class="look__name">Zijden blouse <em>Aube</em></span>
+              <span class="look__price">&euro; 290</span>
+            </div>
+          </div>
+        </a>
+        <span class="look__tag caps caps--taupe">Zijde — Como, Italië</span>
+      </article>
+
+      <article class="look look--2" data-reveal="clip" style="--d:.15s">
+        <span class="look__num" aria-hidden="true">02</span>
+        <a href="#" aria-label="Look 02 — Wollen mantel Hiver, 690 euro">
+          <div class="look__frame">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=900&auto=format&fit=crop" loading="lazy"
+                 alt="Look 02: model in de wollen mantel Hiver met hoge kraag, vastgelegd in een sober straatbeeld.">
+            <div class="look__cap">
+              <span class="look__name">Wollen mantel <em>Hiver</em></span>
+              <span class="look__price">&euro; 690</span>
+            </div>
+          </div>
+        </a>
+        <span class="look__tag caps caps--taupe">Dubbelzijdige wol</span>
+      </article>
+
+      <article class="look look--3" data-reveal="clip">
+        <span class="look__num" aria-hidden="true">03</span>
+        <a href="#" aria-label="Look 03 — Plooirok Camille, 340 euro">
+          <div class="look__frame">
+            <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=900&auto=format&fit=crop" loading="lazy"
+                 alt="Look 03: detail van de geplooide rok Camille in beendertinten, met bloemen als stilleven.">
+            <div class="look__cap">
+              <span class="look__name">Plooirok <em>Camille</em></span>
+              <span class="look__price">&euro; 340</span>
+            </div>
+          </div>
+        </a>
+        <span class="look__tag caps caps--taupe">Handgeplooid</span>
+      </article>
+
+      <article class="look look--4" data-reveal="clip" style="--d:.15s">
+        <span class="look__num" aria-hidden="true">04</span>
+        <a href="#" aria-label="Look 04 — Cashmere coltrui Noor, 380 euro">
+          <div class="look__frame">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=900&auto=format&fit=crop" loading="lazy"
+                 alt="Look 04: model in de cashmere coltrui Noor, portret met zachte schaduwen.">
+            <div class="look__cap">
+              <span class="look__name">Cashmere coltrui <em>Noor</em></span>
+              <span class="look__price">&euro; 380</span>
+            </div>
+          </div>
+        </a>
+        <span class="look__tag caps caps--taupe">Mongoolse cashmere</span>
+      </article>
+
+      <article class="look look--5" data-reveal="clip">
+        <span class="look__num" aria-hidden="true">05</span>
+        <a href="#" aria-label="Look 05 — Pantalon Ines, 320 euro">
+          <div class="look__frame">
+            <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?q=80&w=900&auto=format&fit=crop" loading="lazy"
+                 alt="Look 05: de getailleerde pantalon Ines, minimalistisch gestyled tegen een lichte achtergrond.">
+            <div class="look__cap">
+              <span class="look__name">Pantalon <em>Ines</em></span>
+              <span class="look__price">&euro; 320</span>
+            </div>
+          </div>
+        </a>
+        <span class="look__tag caps caps--taupe">Hoge taille, rechte pijp</span>
+      </article>
+
+      <article class="look look--6" data-reveal="clip" style="--d:.15s">
+        <span class="look__num" aria-hidden="true">06</span>
+        <a href="#" aria-label="Look 06 — Avondjurk Solène, 890 euro">
+          <div class="look__frame">
+            <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=900&auto=format&fit=crop" loading="lazy"
+                 alt="Look 06: model in de avondjurk Solène, editorial beeld met sterke compositie.">
+            <div class="look__cap">
+              <span class="look__name">Avondjurk <em>Solène</em></span>
+              <span class="look__price">&euro; 890</span>
+            </div>
+          </div>
+        </a>
+        <span class="look__tag caps caps--taupe">Beperkte oplage — 40 stuks</span>
+      </article>
+
+    </div>
+
+    <p class="collectie__all" data-reveal><a class="u-link" href="#">Bekijk de volledige collectie</a></p>
+  </section>
+
+  <!-- 5 · Campagne -->
+  <section class="campagne" id="campagne" aria-labelledby="campagne-titel">
+    <div class="campagne__text">
+      <p class="caps caps--taupe" data-reveal>Campagne — Herfst 2026</p>
+      <h2 class="campagne__statement" id="campagne-titel" data-reveal="clip">
+        <span class="line"><span>Stilte is</span></span>
+        <span class="line"><span>de hoogste</span></span>
+        <span class="line"><span>vorm van</span></span>
+        <span class="line"><span><em>luxe.</em></span></span>
+      </h2>
+      <p class="campagne__body" data-reveal style="--d:.45s">
+        Geen logo&rsquo;s, geen ruis. Alleen vorm, val en materiaal.
+        Collectie Nº4 is gefotografeerd in de duinen van Noord-Holland,
+        bij het eerste licht van september.
+      </p>
+      <p data-reveal style="--d:.6s"><a class="u-link caps" href="#lookbook" style="color:var(--bone);">Bekijk het lookbook</a></p>
+    </div>
+    <div class="campagne__images">
+      <div class="campagne__imgwrap">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1600&auto=format&fit=crop" loading="lazy"
+             data-parallax="0.5"
+             alt="Campagnebeeld één: model in volledige look van Maison Elve, ten voeten uit gefotografeerd.">
+      </div>
+      <div class="campagne__imgwrap">
+        <img src="https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?q=80&w=1600&auto=format&fit=crop" loading="lazy"
+             data-parallax="0.8"
+             alt="Campagnebeeld twee: close-up van textuur en silhouet in avondlicht.">
+      </div>
+      <div class="campagne__imgwrap">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600&auto=format&fit=crop" loading="lazy"
+             data-parallax="0.6"
+             alt="Campagnebeeld drie: model in beweging, mantel waaiend in de wind.">
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Lookbook -->
+  <section class="lookbook" id="lookbook" aria-labelledby="lookbook-titel">
+    <div class="lookbook__bar">
+      <div class="sec-head__meta" data-reveal>
+        <p class="caps caps--taupe">Lookbook</p>
+        <h2 id="lookbook-titel" class="caps" style="font-size:.8rem;">Gedragen, niet geposeerd</h2>
+      </div>
+      <div class="lookbook__nav" data-reveal style="--d:.2s">
+        <button class="lookbook__btn" id="lbPrev" type="button" aria-label="Vorige beelden">
+          <svg viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M17 5H1M5 1 1 5l4 4" stroke="currentColor" stroke-width="1"/></svg>
+        </button>
+        <button class="lookbook__btn" id="lbNext" type="button" aria-label="Volgende beelden">
+          <svg viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16M13 1l4 4-4 4" stroke="currentColor" stroke-width="1"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="lookbook__track" id="lbTrack" tabindex="0" role="group" aria-label="Lookbookbeelden, horizontaal scrollbaar">
+      <div class="lookbook__item" data-reveal>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?q=80&w=900&auto=format&fit=crop" loading="lazy"
+               alt="Lookbookbeeld I: accessoires en silhouet in beendertinten.">
+        </figure>
+        <figcaption class="caps caps--taupe">Beeld I — Duinen, 06:40</figcaption>
+      </div>
+      <div class="lookbook__item" data-reveal style="--d:.1s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=900&auto=format&fit=crop" loading="lazy"
+               alt="Lookbookbeeld II: model leunt tegen een muur in een lange mantel.">
+        </figure>
+        <figcaption class="caps caps--taupe">Beeld II — Duinen, 07:15</figcaption>
+      </div>
+      <div class="lookbook__item" data-reveal style="--d:.2s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop" loading="lazy"
+               alt="Lookbookbeeld III: portret met zachte ochtendschaduw.">
+        </figure>
+        <figcaption class="caps caps--taupe">Beeld III — Strand, 08:02</figcaption>
+      </div>
+      <div class="lookbook__item" data-reveal style="--d:.3s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=900&auto=format&fit=crop" loading="lazy"
+               alt="Lookbookbeeld IV: model in laagjes wol, blik richting zee.">
+        </figure>
+        <figcaption class="caps caps--taupe">Beeld IV — Strand, 08:30</figcaption>
+      </div>
+      <div class="lookbook__item" data-reveal style="--d:.4s">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=900&auto=format&fit=crop" loading="lazy"
+               alt="Lookbookbeeld V: avondsilhouet, de laatste opname van de dag.">
+        </figure>
+        <figcaption class="caps caps--taupe">Beeld V — Avond, 19:55</figcaption>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Atelier -->
+  <section class="atelier" id="atelier" aria-labelledby="atelier-titel">
+    <div class="atelier__media">
+      <div class="atelier__img atelier__img--back" data-reveal="clip">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=900&auto=format&fit=crop" loading="lazy"
+             data-parallax="0.35"
+             alt="Het atelier van Maison Elve: stoffen, patronen en garen op de werktafel.">
+      </div>
+      <div class="atelier__img atelier__img--front" data-reveal="clip" style="--d:.25s">
+        <img src="https://images.unsplash.com/photo-1537832816519-689ad163238b?q=80&w=900&auto=format&fit=crop" loading="lazy"
+             data-parallax="0.6"
+             alt="Handen aan het werk achter de naaimachine in het atelier.">
+      </div>
+    </div>
+    <div class="atelier__text">
+      <p class="caps caps--taupe" data-reveal>Het maison</p>
+      <h2 id="atelier-titel" data-reveal style="--d:.1s">Eén atelier. <em>Veertig handen.</em> Geen haast.</h2>
+      <span class="draw-line" data-reveal="clip" aria-hidden="true"></span>
+      <p data-reveal style="--d:.2s">
+        Maison Elve werd in 2019 opgericht aan een Amsterdamse gracht, met één overtuiging:
+        een kledingstuk hoort langer mee te gaan dan de herinnering aan zijn prijs.
+        Elke look wordt in eigen atelier gesneden, gespeld en met de hand afgewerkt.
+      </p>
+      <p data-reveal style="--d:.3s">
+        We werken met wevers in Como, spinners in Biella en één plooier in Lyon
+        — de laatste van zijn soort. Per seizoen maken we precies zes silhouetten.
+        Niet meer. Soms minder.
+      </p>
+      <dl class="atelier__facts" data-reveal style="--d:.4s">
+        <div>
+          <dt>6</dt>
+          <dd class="caps caps--taupe">Silhouetten per seizoen</dd>
+        </div>
+        <div>
+          <dt>72<span style="font-size:.5em;">u</span></dt>
+          <dd class="caps caps--taupe">Handwerk per mantel</dd>
+        </div>
+        <div>
+          <dt>1</dt>
+          <dd class="caps caps--taupe">Atelier, Amsterdam</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 8 · Nieuwsbrief -->
+  <section class="nieuwsbrief" id="nieuwsbrief" aria-labelledby="nb-titel">
+    <p class="caps caps--taupe" data-reveal>Salonpresentaties</p>
+    <h2 id="nb-titel" data-reveal style="--d:.1s">Schrijf je in voor de <em>salonpresentaties</em></h2>
+    <form class="nb-form" id="nbForm" data-reveal style="--d:.2s" novalidate>
+      <label class="caps caps--taupe" for="nbEmail" style="display:block;margin-bottom:1.6em;">Twee keer per jaar. Nooit vaker.</label>
+      <div class="nb-form__field">
+        <input type="email" id="nbEmail" name="email" placeholder="uw e-mailadres" autocomplete="email" required>
+        <button type="submit">Inschrijven</button>
+      </div>
+    </form>
+    <p class="nb-thanks" id="nbThanks" role="status" aria-live="polite"></p>
+  </section>
+
+</main>
+
+<!-- 9 · Footer -->
+<footer class="site-footer">
+  <p class="site-footer__brand">Maison&nbsp;Elve</p>
+  <nav class="site-footer__cols" aria-label="Footernavigatie">
+    <a href="#collectie">Collectie</a>
+    <a href="#campagne">Campagne</a>
+    <a href="#lookbook">Lookbook</a>
+    <a href="#atelier">Atelier</a>
+    <a href="#">Instagram</a>
+    <a href="#">Pinterest</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="site-footer__legal">
+    <span>&copy; <span id="jaar">2026</span> Maison Elve — Amsterdam</span>
+    <span>Privacybeleid &nbsp;·&nbsp; Algemene voorwaarden</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var html = document.documentElement;
+  var mq = null;
+  try { mq = window.matchMedia('(prefers-reduced-motion: reduce)'); } catch (e) {}
+  var reduceMotion = !!(mq && mq.matches);
+
+  /* —— Entree: na het gordijn de hero-choreografie starten —— */
+  if (html.classList.contains('intro-play')) {
+    window.setTimeout(function () { html.classList.add('intro-done'); }, 1250);
+    window.setTimeout(function () {
+      var curtain = document.querySelector('.curtain');
+      if (curtain && curtain.parentNode) { curtain.parentNode.removeChild(curtain); }
+    }, 2600);
+  }
+
+  /* —— Header: transparant → been-wit met haarlijn —— */
+  var header = document.getElementById('siteHeader');
+  var headerTick = false;
+  function updateHeader() {
+    headerTick = false;
+    if (!header) { return; }
+    header.classList.toggle('is-scrolled', window.scrollY > 28);
+  }
+  window.addEventListener('scroll', function () {
+    if (!headerTick) {
+      headerTick = true;
+      window.requestAnimationFrame(updateHeader);
+    }
+  }, { passive: true });
+  updateHeader();
+
+  /* —— Scroll-reveals met stagger (IntersectionObserver) —— */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* —— Parallax via requestAnimationFrame —— */
+  var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  var parallaxActive = false;
+  var parallaxQueued = false;
+
+  function parallaxFrame() {
+    parallaxQueued = false;
+    if (!parallaxActive) { return; }
+    var vh = window.innerHeight;
+    parallaxEls.forEach(function (img) {
+      var host = img.parentElement || img;
+      var rect = host.getBoundingClientRect();
+      if (rect.bottom < -160 || rect.top > vh + 160) { return; }
+      var speed = parseFloat(img.getAttribute('data-parallax')) || 0.5;
+      var progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+      var y = Math.round(progress * speed * -90);
+      img.style.transform = 'scale(1.16) translate3d(0,' + y + 'px,0)';
+    });
+  }
+  function queueParallax() {
+    if (parallaxActive && !parallaxQueued) {
+      parallaxQueued = true;
+      window.requestAnimationFrame(parallaxFrame);
+    }
+  }
+  function setParallaxState() {
+    parallaxActive = !reduceMotion && window.innerWidth >= 760 && parallaxEls.length > 0;
+    if (!parallaxActive) {
+      parallaxEls.forEach(function (img) { img.style.transform = ''; });
+    } else {
+      queueParallax();
+    }
+  }
+  window.addEventListener('scroll', queueParallax, { passive: true });
+  window.addEventListener('resize', setParallaxState, { passive: true });
+  setParallaxState();
+
+  /* —— Lookbook: pijlen + drag-to-scroll —— */
+  var track = document.getElementById('lbTrack');
+  var btnPrev = document.getElementById('lbPrev');
+  var btnNext = document.getElementById('lbNext');
+
+  function lbStep() {
+    var item = track ? track.querySelector('.lookbook__item') : null;
+    if (!item) { return 320; }
+    var style = window.getComputedStyle(track);
+    var gap = parseFloat(style.columnGap || style.gap) || 24;
+    return item.getBoundingClientRect().width + gap;
+  }
+  function lbUpdateButtons() {
+    if (!track || !btnPrev || !btnNext) { return; }
+    var max = track.scrollWidth - track.clientWidth - 2;
+    btnPrev.disabled = track.scrollLeft <= 2;
+    btnNext.disabled = track.scrollLeft >= max;
+  }
+  if (track && btnPrev && btnNext) {
+    btnPrev.addEventListener('click', function () {
+      track.scrollBy({ left: -lbStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+    btnNext.addEventListener('click', function () {
+      track.scrollBy({ left: lbStep(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+    track.addEventListener('scroll', function () {
+      window.requestAnimationFrame(lbUpdateButtons);
+    }, { passive: true });
+    window.addEventListener('resize', lbUpdateButtons, { passive: true });
+    lbUpdateButtons();
+
+    /* drag-to-scroll (alleen muis; touch scrollt native) */
+    var dragging = false;
+    var dragMoved = false;
+    var dragStartX = 0;
+    var dragStartScroll = 0;
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') { return; }
+      dragging = true;
+      dragMoved = false;
+      dragStartX = e.clientX;
+      dragStartScroll = track.scrollLeft;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) { return; }
+      var dx = e.clientX - dragStartX;
+      if (Math.abs(dx) > 4 && !dragMoved) {
+        dragMoved = true;
+        track.classList.add('is-dragging');
+      }
+      if (dragMoved) { track.scrollLeft = dragStartScroll - dx; }
+    }, { passive: true });
+    window.addEventListener('pointerup', function () {
+      if (!dragging) { return; }
+      dragging = false;
+      window.setTimeout(function () { track.classList.remove('is-dragging'); }, 40);
+    }, { passive: true });
+    track.addEventListener('click', function (e) {
+      if (dragMoved) { e.preventDefault(); }
+    }, true);
+  }
+
+  /* —— Mobiel menu: overlay, focus trap, Escape —— */
+  var menuBtn = document.getElementById('menuBtn');
+  var overlay = document.getElementById('menuOverlay');
+  var menuClose = document.getElementById('menuClose');
+  var menuOpen = false;
+  var lastFocused = null;
+
+  function focusables() {
+    return Array.prototype.slice.call(
+      overlay.querySelectorAll('a[href], button:not([disabled])')
+    );
+  }
+  function openMenu() {
+    if (menuOpen) { return; }
+    menuOpen = true;
+    lastFocused = document.activeElement;
+    overlay.hidden = false;
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        overlay.classList.add('is-open');
+      });
+    });
+    document.body.classList.add('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-label', 'Menu sluiten');
+    window.setTimeout(function () { menuClose.focus(); }, reduceMotion ? 0 : 350);
+    document.addEventListener('keydown', onMenuKeydown);
+  }
+  function closeMenu() {
+    if (!menuOpen) { return; }
+    menuOpen = false;
+    overlay.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Menu openen');
+    document.removeEventListener('keydown', onMenuKeydown);
+    window.setTimeout(function () {
+      if (!menuOpen) { overlay.hidden = true; }
+    }, reduceMotion ? 0 : 720);
+    if (lastFocused && lastFocused.focus) { lastFocused.focus(); }
+  }
+  function onMenuKeydown(e) {
+    if (e.key === 'Escape') {
+      closeMenu();
+      return;
+    }
+    if (e.key !== 'Tab') { return; }
+    var els = focusables();
+    if (els.length === 0) { return; }
+    var first = els[0];
+    var last = els[els.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+  if (menuBtn && overlay && menuClose) {
+    menuBtn.addEventListener('click', function () {
+      if (menuOpen) { closeMenu(); } else { openMenu(); }
+    });
+    menuClose.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(overlay.querySelectorAll('nav a'), function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  /* —— Nieuwsbrief —— */
+  var nbForm = document.getElementById('nbForm');
+  var nbEmail = document.getElementById('nbEmail');
+  var nbThanks = document.getElementById('nbThanks');
+  if (nbForm && nbEmail && nbThanks) {
+    nbForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var value = nbEmail.value.trim();
+      if (!value || value.indexOf('@') < 1 || value.indexOf('.') < 0) {
+        nbEmail.focus();
+        return;
+      }
+      nbForm.classList.add('is-sent');
+      nbThanks.textContent = 'Merci. U hoort van ons — zodra de salon zich opent.';
+      window.setTimeout(function () {
+        nbThanks.classList.add('is-visible');
+      }, reduceMotion ? 0 : 350);
+    });
+  }
+
+  /* —— Jaar in footer —— */
+  var jaar = document.getElementById('jaar');
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+})();
+</script>
+
+</body>
+</html>

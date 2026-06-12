@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio van Mila Vos — creatief designer & developer. Werk, diensten en contact." />
+  <title>Mila Vos — Designer &amp; Developer</title>
+
+  <!-- Google Fonts: Space Grotesk (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       Design tokens
+       ============================================================ */
+    :root {
+      --bg:           #0d0d0f;   /* near-black background      */
+      --bg-elev:      #16161a;   /* elevated surfaces / cards  */
+      --bg-elev-2:    #1d1d22;   /* hover surfaces             */
+      --text:         #f4f4f5;   /* primary light text         */
+      --text-muted:   #a1a1aa;   /* secondary text             */
+      --border:       #2a2a30;   /* hairline borders           */
+      --accent:       #c4f042;   /* vibrant lime accent        */
+      --accent-ink:   #0d0d0f;   /* text on accent surfaces    */
+
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-body:    "Inter", system-ui, -apple-system, sans-serif;
+
+      --radius:   16px;
+      --radius-sm: 10px;
+      --maxw:     1180px;
+      --gutter:   clamp(1.25rem, 4vw, 2.5rem);
+      --ease:     cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ============================================================
+       Reset & base
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    /* Layout helper */
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    section { padding-block: clamp(4rem, 9vw, 8rem); }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+    .section-head h2 { font-size: clamp(1.9rem, 5vw, 3rem); }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* ============================================================
+       Buttons
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      transition: transform 0.35s var(--ease), background 0.25s var(--ease),
+                  color 0.25s var(--ease), border-color 0.25s var(--ease);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+    .btn-primary:hover { transform: translateY(-3px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .btn .arrow { transition: transform 0.35s var(--ease); }
+    .btn:hover .arrow { transform: translate(3px, -3px); }
+
+    /* ============================================================
+       Header / navigation
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+    /* Premium: subtielere header die pas "landt" zodra je scrolt */
+    .site-header.is-scrolled {
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border-bottom-color: var(--border);
+      box-shadow: 0 14px 40px -22px rgba(0, 0, 0, 0.85);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      height: 72px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo .dot { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      position: relative;
+      padding-block: 0.25rem;
+      transition: color 0.25s var(--ease);
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%;
+      height: 1.5px;
+      background: var(--accent);
+      transform: scaleX(0);
+      /* Premium: lijn komt van links binnen en verlaat naar rechts */
+      transform-origin: right;
+      transition: transform 0.35s var(--ease);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    /* Hamburger toggle (hidden on desktop) */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin-inline: auto;
+      background: var(--text);
+      transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    .hero {
+      padding-block: clamp(3.5rem, 10vw, 7rem) clamp(4rem, 9vw, 8rem);
+      position: relative;
+    }
+    .hero::after {
+      /* soft accent glow */
+      content: "";
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 50vw; height: 50vw;
+      max-width: 620px; max-height: 620px;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%);
+      filter: blur(40px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      margin-bottom: 1.75rem;
+    }
+    .hero-status .pulse {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
+      animation: pulse 2.4s infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+      70%  { box-shadow: 0 0 0 12px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    .hero h1 {
+      font-size: clamp(2.7rem, 9vw, 6.5rem);
+      font-weight: 700;
+      max-width: 14ch;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      color: var(--text-muted);
+      max-width: 52ch;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* ============================================================
+       Work grid
+       ============================================================ */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: clamp(1.25rem, 3vw, 2rem);
+    }
+    .project {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      transition: transform 0.5s var(--ease), border-color 0.4s var(--ease), box-shadow 0.5s var(--ease);
+    }
+    /* Premium: zachte lime-gloed + accentrand bij hover */
+    .project:hover {
+      transform: translateY(-6px);
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      box-shadow: 0 18px 48px -20px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+    .project-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    .project-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      /* Premium: subtiele, tragere zoom */
+      transition: transform 0.9s var(--ease), filter 0.5s var(--ease);
+      filter: grayscale(25%);
+    }
+    .project:hover .project-media img { transform: scale(1.04); filter: grayscale(0%); }
+    /* Premium: donkere verloop-overlay voor leesbaarheid van de hover-hint */
+    .project-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 13, 15, 0.65), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.45s var(--ease);
+      pointer-events: none;
+    }
+    /* Premium: "Bekijk project →" schuift in bij hover */
+    .project-media::after {
+      content: "Bekijk project \2192";
+      position: absolute;
+      left: 1.1rem; bottom: 1rem;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--accent-ink);
+      background: var(--accent);
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s var(--ease), transform 0.5s var(--ease);
+      transition-delay: 0.05s;
+      pointer-events: none;
+    }
+    .project:hover .project-media::before,
+    .project:focus-within .project-media::before { opacity: 1; }
+    .project:hover .project-media::after,
+    .project:focus-within .project-media::after { opacity: 1; transform: translateY(0); }
+    .project-body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.4rem 1.5rem;
+    }
+    .project-body h3 { font-size: 1.3rem; margin-bottom: 0.35rem; }
+    .project-body p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+    .tag {
+      flex: none;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    /* full-card clickable overlay */
+    .project .stretched { position: absolute; inset: 0; }
+
+    /* ============================================================
+       About
+       ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+    .about-text p { color: var(--text-muted); font-size: clamp(1rem, 1.6vw, 1.15rem); margin-block: 0 1.25rem; }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+    .about-portrait {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4 / 5;
+    }
+    .about-portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); }
+
+    .skills {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .skills li {
+      font-size: 0.85rem;
+      color: var(--text);
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+    }
+    .skills li:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ============================================================
+       Services
+       ============================================================ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.25rem, 3vw, 2rem);
+    }
+    .service {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      transition: transform 0.4s var(--ease), background 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+    .service:hover { transform: translateY(-6px); background: var(--bg-elev-2); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+    .service-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .service h3 { font-size: 1.4rem; margin-bottom: 0.7rem; }
+    .service p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+    /* ============================================================
+       Contact CTA
+       ============================================================ */
+    .contact {
+      text-align: center;
+    }
+    .contact-inner {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: clamp(20px, 4vw, 32px);
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-inner::before {
+      content: "";
+      position: absolute;
+      inset: auto 50% -40% 50%;
+      transform: translateX(-50%);
+      width: 70%; height: 60%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+    .contact h2 { font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 1rem; }
+    .contact p { color: var(--text-muted); max-width: 46ch; margin: 0 auto 2.25rem; }
+    .contact .email-link {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+      font-weight: 600;
+      color: var(--accent);
+      padding-bottom: 4px;
+      /* Premium: onderstreping groeit van links naar rechts (background-size-truc) */
+      background-image: linear-gradient(currentColor, currentColor);
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 0% 2px;
+      transition: background-size 0.45s var(--ease);
+    }
+    .contact .email-link:hover,
+    .contact .email-link:focus-visible { background-size: 100% 2px; }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding-block: 2.5rem;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .footer-inner small { color: var(--text-muted); font-size: 0.85rem; }
+    .social {
+      display: flex;
+      gap: 0.6rem;
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: color 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.3s var(--ease);
+    }
+    .social a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+    .social svg { width: 18px; height: 18px; }
+
+    /* ============================================================
+       Premium: motion & details
+       (alle verborgen begintoestanden zijn gegate achter html.anim-ok,
+       die alleen via JS wordt gezet als reduced motion uit staat —
+       zonder JS of met reduced motion blijft alles direct zichtbaar)
+       ============================================================ */
+
+    /* Tekstselectie in accentkleur */
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+
+    /* --- Hero: gefaseerde woord-reveal --- */
+    html.anim-ok .reveal-word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+      /* compensatie zodat staartletters (g, j, p) niet worden afgeknipt */
+      padding-bottom: 0.12em;
+      margin-bottom: -0.12em;
+    }
+    html.anim-ok .reveal-word > .reveal-word-inner {
+      display: inline-block;
+      transform: translateY(110%);
+      opacity: 0;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.5s ease;
+      transition-delay: var(--d, 0s);
+    }
+    html.anim-ok .hero.is-in .reveal-word > .reveal-word-inner {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    /* Status, tagline en CTA's volgen iets later */
+    html.anim-ok .hero .hero-status,
+    html.anim-ok .hero .hero-tagline,
+    html.anim-ok .hero .hero-cta {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s),
+                  opacity 0.6s ease var(--d, 0s);
+    }
+    html.anim-ok .hero.is-in .hero-status,
+    html.anim-ok .hero.is-in .hero-tagline,
+    html.anim-ok .hero.is-in .hero-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Scroll-reveals (IntersectionObserver zet .is-in) --- */
+    html.anim-ok [data-reveal] {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s),
+                  opacity 0.6s ease var(--d, 0s);
+    }
+    html.anim-ok [data-reveal].is-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Custom cursor: subtiele lime ring (alleen desktop pointer) --- */
+    .cursor-ring {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 28px; height: 28px;
+      margin: -14px 0 0 -14px;
+      border: 1.5px solid color-mix(in srgb, var(--accent) 70%, transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0;
+      will-change: transform;
+      /* positie/schaal komt via JS (rAF-lerp); CSS doet alleen kleur/opacity */
+      transition: opacity 0.3s ease, background 0.3s ease;
+    }
+    html.anim-ok.has-fine-pointer .cursor-ring { display: block; }
+    .cursor-ring.is-visible { opacity: 0.7; }
+    .cursor-ring.is-active {
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+
+    /* ============================================================
+       Accessibility: focus states & reduced motion
+       ============================================================ */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+      transition: outline-offset 0.15s ease;
+    }
+    .skip-link {
+      position: absolute;
+      left: 1rem; top: -100px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      z-index: 100;
+      transition: top 0.2s var(--ease);
+    }
+    .skip-link:focus { top: 1rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 880px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-portrait { max-width: 420px; order: -1; }
+    }
+
+    @media (max-width: 720px) {
+      /* Mobile nav: hamburger + slide-down panel */
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 1rem var(--gutter) 1.5rem;
+        background: var(--bg-elev);
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-130%);
+        transition: transform 0.4s var(--ease);
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.85rem 0;
+        font-size: 1.1rem;
+        color: var(--text);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links li:last-child a { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direct naar inhoud</a>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Hoofdnavigatie">
+      <a class="logo" href="#top" aria-label="Mila Vos, naar boven">
+        Mila Vos<span class="dot">.</span>
+      </a>
+
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#werk">Werk</a></li>
+        <li><a href="#over">Over</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="nav-toggle"
+              aria-label="Menu openen" aria-controls="nav-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-status">
+          <span class="pulse" aria-hidden="true"></span>
+          Beschikbaar voor nieuwe projecten
+        </span>
+
+        <h1>Hoi, ik ben Mila — <span class="accent">designer &amp; developer</span>.</h1>
+
+        <p class="hero-tagline">
+          Ik ontwerp en bouw digitale producten die er scherp uitzien én soepel werken.
+          Van merkidentiteit tot interactieve websites: doordacht, eigenzinnig en altijd met aandacht voor detail.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#werk">
+            Bekijk mijn werk <span class="arrow" aria-hidden="true">&#8599;</span>
+          </a>
+          <a class="btn btn-ghost" href="#contact">Neem contact op</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ WERK ============================ -->
+    <section id="werk">
+      <div class="container">
+        <div class="section-head">
+          <h2>Geselecteerd werk</h2>
+          <span class="eyebrow">Recente projecten</span>
+        </div>
+
+        <div class="work-grid">
+          <!-- Project 1 -->
+          <article class="project">
+            <div class="project-media">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80"
+                   alt="Mockup van de Nova merkidentiteit op een laptopscherm" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Nova Studio</h3>
+                <p>Merkidentiteit &amp; website voor een ontwerpbureau.</p>
+              </div>
+              <span class="tag">Branding</span>
+            </div>
+            <a class="stretched" href="#werk" aria-label="Bekijk project Nova Studio"></a>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project">
+            <div class="project-media">
+              <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=800&q=80"
+                   alt="Dashboard-interface van de Pulse app op een tablet" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Pulse App</h3>
+                <p>UX &amp; frontend voor een fitness-dashboard.</p>
+              </div>
+              <span class="tag">Product</span>
+            </div>
+            <a class="stretched" href="#werk" aria-label="Bekijk project Pulse App"></a>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project">
+            <div class="project-media">
+              <img src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&w=800&q=80"
+                   alt="Webshop met heldere productfotografie op een laptop" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Bloomlabel</h3>
+                <p>E-commerce ervaring voor een duurzaam modemerk.</p>
+              </div>
+              <span class="tag">Webshop</span>
+            </div>
+            <a class="stretched" href="#werk" aria-label="Bekijk project Bloomlabel"></a>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project">
+            <div class="project-media">
+              <img src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?auto=format&fit=crop&w=800&q=80"
+                   alt="Editorial layout van het Atlas magazine op papier" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Atlas Magazine</h3>
+                <p>Art direction &amp; digitale editie voor een reisblad.</p>
+              </div>
+              <span class="tag">Editorial</span>
+            </div>
+            <a class="stretched" href="#werk" aria-label="Bekijk project Atlas Magazine"></a>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project">
+            <div class="project-media">
+              <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=800&q=80"
+                   alt="Mobiele app-schermen van Orbit op een donkere achtergrond" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Orbit</h3>
+                <p>Design system &amp; mobiele app voor een fintech-startup.</p>
+              </div>
+              <span class="tag">Design System</span>
+            </div>
+            <a class="stretched" href="#werk" aria-label="Bekijk project Orbit"></a>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project">
+            <div class="project-media">
+              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
+                   alt="Abstracte 3D-visual voor het Form festival" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div>
+                <h3>Form Festival</h3>
+                <p>Visuele identiteit &amp; interactieve landingspagina.</p>
+              </div>
+              <span class="tag">Campagne</span>
+            </div>
+            <a class="stretched" href="#werk" aria-label="Bekijk project Form Festival"></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ OVER ============================ -->
+    <section id="over">
+      <div class="container">
+        <div class="section-head">
+          <h2>Over mij</h2>
+          <span class="eyebrow">Wie ben ik</span>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              Ik ben <strong>Mila Vos</strong>, een designer en developer uit Utrecht met meer dan
+              acht jaar ervaring op het snijvlak van vormgeving en code. Ik geloof dat goed design
+              onzichtbaar is: het voelt vanzelfsprekend en lost een echt probleem op.
+            </p>
+            <p>
+              Of ik nu werk aan een merk, een interface of een complete website — ik combineer
+              <strong>strategie, esthetiek en techniek</strong> tot een resultaat waar mijn klanten
+              trots op zijn. Buiten het scherm vind je me op de racefiets of achter een espresso.
+            </p>
+
+            <ul class="skills" aria-label="Vaardigheden en tools">
+              <li>UX/UI Design</li>
+              <li>Figma</li>
+              <li>HTML &amp; CSS</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Webflow</li>
+              <li>Branding</li>
+              <li>Art Direction</li>
+              <li>Motion</li>
+              <li>Design Systems</li>
+            </ul>
+          </div>
+
+          <div class="about-portrait">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
+                 alt="Portret van Mila Vos, designer en developer" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== DIENSTEN ========================== -->
+    <section id="diensten">
+      <div class="container">
+        <div class="section-head">
+          <h2>Wat ik doe</h2>
+          <span class="eyebrow">Diensten</span>
+        </div>
+
+        <div class="services-grid">
+          <article class="service">
+            <span class="service-num">01</span>
+            <h3>Design</h3>
+            <p>
+              Van wireframe tot pixel-perfecte interface. Ik ontwerp heldere, toegankelijke
+              ervaringen met oog voor merk, ritme en detail.
+            </p>
+          </article>
+
+          <article class="service">
+            <span class="service-num">02</span>
+            <h3>Development</h3>
+            <p>
+              Schone, performante frontend-code die op elk scherm werkt. Responsief,
+              toegankelijk en gebouwd om te onderhouden.
+            </p>
+          </article>
+
+          <article class="service">
+            <span class="service-num">03</span>
+            <h3>Branding</h3>
+            <p>
+              Een visuele identiteit die blijft hangen. Logo, kleur, typografie en richtlijnen
+              die je merk consistent en herkenbaar maken.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== CONTACT ========================== -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-inner">
+          <h2>Laten we iets moois bouwen.</h2>
+          <p>
+            Heb je een project in gedachten of gewoon een goed idee? Ik hoor het graag —
+            stuur me een bericht en ik reageer binnen 24 uur.
+          </p>
+          <a class="email-link" href="mailto:hallo@milavos.nl">hallo@milavos.nl</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>&copy; <span id="year"></span> Mila Vos — Gemaakt met liefde &amp; koffie.</small>
+
+      <ul class="social" aria-label="Sociale media">
+        <li>
+          <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://dribbble.com" aria-label="Dribbble" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/>
+              <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/>
+              <path d="M8.56 2.75c4.37 6 6 9.42 8 17.72"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Mobiel menu: hamburger-toggle ----
+    (function () {
+      var toggle = document.querySelector('#nav-toggle');
+      var menu   = document.querySelector('#nav-menu');
+
+      function closeMenu() {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Menu openen');
+      }
+
+      toggle.addEventListener('click', function () {
+        var isOpen = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
+      });
+
+      // Sluit het menu na het klikken op een link (handig op mobiel)
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Sluit met Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
+
+    // ---- Huidig jaartal in de footer ----
+    document.querySelector('#year').textContent = new Date().getFullYear();
+
+    /* ============================================================
+       Premium motion-laag
+       Alles hieronder is puur progressieve verbetering:
+       - draait alleen zonder prefers-reduced-motion (anim-ok)
+       - alleen transform/opacity, passive listeners
+       - zonder JS blijft de pagina volledig zichtbaar en werkend
+       ============================================================ */
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      // ---- Header: schaduw/achtergrond zodra er gescrold is ----
+      var header = document.querySelector('.site-header');
+      function onScroll() {
+        header.classList.toggle('is-scrolled', window.scrollY > 8);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      if (reduceMotion) return; // de rest is enkel beweging
+      document.documentElement.classList.add('anim-ok');
+      if (finePointer) document.documentElement.classList.add('has-fine-pointer');
+
+      // ---- Hero: woorden van de kop in spans wikkelen voor de reveal ----
+      var heroEl = document.querySelector('.hero');
+      var heroH1 = heroEl.querySelector('h1');
+
+      function wrapWords(el) {
+        Array.prototype.slice.call(el.childNodes).forEach(function (node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            var frag = document.createDocumentFragment();
+            node.textContent.split(/(\s+)/).forEach(function (part) {
+              if (!part) return;
+              if (/^\s+$/.test(part)) {
+                frag.appendChild(document.createTextNode(part));
+              } else {
+                var outer = document.createElement('span');
+                outer.className = 'reveal-word';
+                var inner = document.createElement('span');
+                inner.className = 'reveal-word-inner';
+                inner.textContent = part;
+                outer.appendChild(inner);
+                frag.appendChild(outer);
+              }
+            });
+            el.replaceChild(frag, node);
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            wrapWords(node); // behoudt bv. de <span class="accent">
+          }
+        });
+      }
+      wrapWords(heroH1);
+
+      // Stagger: elk woord ~80 ms na het vorige; status eerst, tekst en CTA's erna
+      var words = heroH1.querySelectorAll('.reveal-word-inner');
+      words.forEach(function (w, i) {
+        w.style.setProperty('--d', (0.15 + i * 0.08).toFixed(2) + 's');
+      });
+      var lastWordDelay = 0.15 + words.length * 0.08;
+      heroEl.querySelector('.hero-status').style.setProperty('--d', '0.05s');
+      heroEl.querySelector('.hero-tagline').style.setProperty('--d', lastWordDelay.toFixed(2) + 's');
+      heroEl.querySelector('.hero-cta').style.setProperty('--d', (lastWordDelay + 0.12).toFixed(2) + 's');
+
+      // Start de hero-reveal net na de eerste paint
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          heroEl.classList.add('is-in');
+        });
+      });
+
+      // ---- Scroll-reveals met IntersectionObserver ----
+      // Doelen krijgen hier hun data-reveal-attribuut (geen HTML-wijziging nodig)
+      var revealTargets = document.querySelectorAll(
+        '.section-head, .project, .about-text, .about-portrait, .service, .skills li, .contact-inner'
+      );
+      revealTargets.forEach(function (el) { el.setAttribute('data-reveal', ''); });
+
+      // Stagger tussen siblings binnen dezelfde ouder (~80 ms per kaart/skill)
+      document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        var siblings = Array.prototype.filter.call(
+          el.parentElement.children,
+          function (c) { return c.hasAttribute('data-reveal'); }
+        );
+        var idx = siblings.indexOf(el);
+        if (idx > 0) el.style.setProperty('--d', (idx * 0.08).toFixed(2) + 's');
+      });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.classList.add('is-in');
+          io.unobserve(el);
+          // Na de reveal het attribuut opruimen, zodat hover-transforms
+          // (bv. .project:hover) en hun timing niet meer botsen
+          var delay = parseFloat(el.style.getPropertyValue('--d')) || 0;
+          window.setTimeout(function () {
+            el.removeAttribute('data-reveal');
+            el.classList.remove('is-in');
+            el.style.removeProperty('--d');
+          }, 1000 + delay * 1000);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+
+      // De rest is alleen zinvol met muis/trackpad
+      if (!finePointer) return;
+
+      // ---- Magnetische knoppen: CTA volgt de cursor subtiel (max ~6px) ----
+      document.querySelectorAll('.btn').forEach(function (btn) {
+        btn.addEventListener('mousemove', function (e) {
+          var r = btn.getBoundingClientRect();
+          var x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+          var y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+          // bestaande .btn-transition op transform zorgt voor de veerbeweging
+          btn.style.transform = 'translate(' + (x * 6).toFixed(1) + 'px, ' + (y * 6).toFixed(1) + 'px)';
+        }, { passive: true });
+        btn.addEventListener('mouseleave', function () {
+          btn.style.transform = ''; // veert terug via de CSS-transition
+        });
+      });
+
+      // ---- Custom cursor: lime ring die meedrijft en groeit boven links ----
+      var ring = document.createElement('div');
+      ring.className = 'cursor-ring';
+      ring.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(ring);
+
+      var mx = -100, my = -100;   // doelpositie (muis)
+      var rx = -100, ry = -100;   // huidige ringpositie (lerp)
+      var scale = 1, targetScale = 1;
+      var rafId = null;
+
+      function tick() {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        scale += (targetScale - scale) * 0.18;
+        ring.style.transform =
+          'translate3d(' + rx.toFixed(1) + 'px, ' + ry.toFixed(1) + 'px, 0) scale(' + scale.toFixed(3) + ')';
+        rafId = requestAnimationFrame(tick);
+      }
+
+      document.addEventListener('mousemove', function (e) {
+        mx = e.clientX; my = e.clientY;
+        ring.classList.add('is-visible');
+        if (rafId === null) { rx = mx; ry = my; rafId = requestAnimationFrame(tick); }
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', function () {
+        ring.classList.remove('is-visible');
+      });
+
+      // Groei boven interactieve elementen
+      document.addEventListener('mouseover', function (e) {
+        var interactive = e.target.closest('a, button');
+        targetScale = interactive ? 1.6 : 1;
+        ring.classList.toggle('is-active', !!interactive);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stilte Spa &amp; Retreat — Rust voor lichaam en geest</title>
+<meta name="description" content="Stilte Spa & Retreat: een serene wellnessbestemming aan de rand van het bos. Massages, sauna-rituelen, yoga en meerdaagse retreats.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   STILTE SPA & RETREAT — calm luxury
+   ============================================================ */
+:root{
+  --sand:#ece5da;
+  --sand-soft:#f3eee6;
+  --sand-deep:#e2d9ca;
+  --sage:#9aa88f;
+  --sage-soft:#c3cdb9;
+  --sage-mist:#dde3d6;
+  --moss:#3a4438;
+  --moss-deep:#2e3630;
+  --stone:#2e2a25;
+  --stone-soft:#6b6258;
+  --line:rgba(46,42,37,.12);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-soft:cubic-bezier(.25,.8,.25,1);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--sans);
+  font-weight:300;
+  color:var(--stone);
+  background:var(--sand);
+  line-height:1.75;
+  font-size:1.0625rem;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--sage-soft);color:var(--moss-deep)}
+
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15;color:var(--stone)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.9rem;
+  font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--sage);font-weight:400;
+}
+.eyebrow::before{content:"";width:2.4rem;height:1px;background:var(--sage);opacity:.7}
+.section-title{font-size:clamp(2.1rem,4.5vw,3.4rem);font-weight:300;margin:.9rem 0 1.2rem}
+.section-title em{font-style:italic;color:var(--moss)}
+.lead{max-width:36rem;color:var(--stone-soft)}
+
+.container{width:min(1180px,100% - 3rem);margin-inline:auto}
+section{padding:clamp(5rem,10vw,8.5rem) 0;position:relative}
+
+/* skip link */
+.skip-link{
+  position:absolute;left:1rem;top:-4rem;z-index:200;
+  background:var(--moss);color:var(--sand);padding:.7rem 1.4rem;
+  border-radius:999px;text-decoration:none;font-size:.9rem;letter-spacing:.06em;
+  transition:top .3s var(--ease);
+}
+.skip-link:focus{top:1rem}
+
+/* focus */
+:focus-visible{outline:2px solid var(--moss);outline-offset:3px;border-radius:4px}
+
+/* ============ buttons ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--sans);font-size:.82rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;text-decoration:none;
+  padding:1.05rem 2.3rem;border-radius:999px;border:1px solid transparent;
+  cursor:pointer;
+  transition:background-color .9s var(--ease),color .9s var(--ease),border-color .9s var(--ease),transform .9s var(--ease),box-shadow .9s var(--ease);
+}
+.btn-solid{background:var(--moss);color:var(--sand-soft)}
+.btn-solid:hover{background:var(--moss-deep);transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(58,68,56,.55)}
+.btn-ghost{border-color:rgba(46,42,37,.3);color:var(--stone)}
+.btn-ghost:hover{border-color:var(--moss);background:rgba(154,168,143,.14);transform:translateY(-3px)}
+.btn .arrow{transition:transform .9s var(--ease)}
+.btn:hover .arrow{transform:translateX(5px)}
+
+/* ============ header ============ */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  transition:background-color .8s var(--ease),box-shadow .8s var(--ease),backdrop-filter .8s var(--ease);
+}
+.site-header .container{
+  display:flex;align-items:center;justify-content:space-between;
+  height:5.2rem;
+}
+.site-header.scrolled{
+  background:rgba(236,229,218,.92);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);
+}
+.brand{
+  font-family:var(--serif);font-size:1.5rem;letter-spacing:.04em;
+  text-decoration:none;color:var(--stone);display:flex;align-items:center;gap:.7rem;
+}
+.brand-mark{
+  width:2.1rem;height:2.1rem;border-radius:50% 50% 50% 4px;
+  background:linear-gradient(135deg,var(--sage),var(--moss));
+  flex:none;
+}
+.brand small{font-family:var(--sans);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--sage);display:block;line-height:1}
+.main-nav ul{display:flex;gap:2.4rem;list-style:none}
+.main-nav a{
+  font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;
+  color:var(--stone-soft);padding:.4rem 0;position:relative;transition:color .7s var(--ease);
+}
+.main-nav a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--moss);transform:scaleX(0);transform-origin:left;
+  transition:transform .8s var(--ease);
+}
+.main-nav a:hover{color:var(--moss-deep)}
+.main-nav a:hover::after{transform:scaleX(1)}
+.header-cta{display:inline-flex}
+.menu-toggle{
+  display:none;background:none;border:1px solid rgba(46,42,37,.25);border-radius:999px;
+  padding:.65rem 1.2rem;cursor:pointer;font-family:var(--sans);font-size:.74rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--stone);gap:.6rem;align-items:center;
+  transition:background-color .7s var(--ease),border-color .7s var(--ease);
+}
+.menu-toggle:hover{background:rgba(154,168,143,.16);border-color:var(--sage)}
+.menu-toggle .bars{display:inline-flex;flex-direction:column;gap:4px;width:16px}
+.menu-toggle .bars span{height:1px;background:var(--stone);transition:transform .6s var(--ease),opacity .6s var(--ease)}
+.menu-toggle[aria-expanded="true"] .bars span:nth-child(1){transform:translateY(2.5px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] .bars span:nth-child(2){transform:translateY(-2.5px) rotate(-45deg)}
+
+/* mobile panel */
+.mobile-panel{
+  position:fixed;inset:5.2rem 0 auto 0;z-index:99;
+  background:rgba(243,238,230,.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  padding:1.5rem 1.5rem 2.5rem;
+  visibility:hidden;opacity:0;transform:translateY(-12px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease),visibility 0s linear .8s;
+}
+.mobile-panel.open{visibility:visible;opacity:1;transform:translateY(0);transition-delay:0s}
+.mobile-panel ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.mobile-panel a{
+  display:block;text-decoration:none;font-family:var(--serif);font-size:1.7rem;
+  padding:.55rem .4rem;color:var(--stone);border-radius:.6rem;
+  transition:background-color .6s var(--ease),padding-left .6s var(--ease);
+}
+.mobile-panel a:hover{background:rgba(154,168,143,.14);padding-left:1rem}
+html.js .mobile-panel li{opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+html.js .mobile-panel.open li{opacity:1;transform:translateY(0)}
+.mobile-panel.open li:nth-child(1){transition-delay:.08s}
+.mobile-panel.open li:nth-child(2){transition-delay:.16s}
+.mobile-panel.open li:nth-child(3){transition-delay:.24s}
+.mobile-panel.open li:nth-child(4){transition-delay:.32s}
+.mobile-panel.open li:nth-child(5){transition-delay:.40s}
+.mobile-panel.open li:nth-child(6){transition-delay:.48s}
+.mobile-panel .panel-cta{margin-top:1.4rem}
+
+@media (max-width:880px){
+  .main-nav,.header-cta{display:none}
+  .menu-toggle{display:inline-flex}
+}
+
+/* ============ hero ============ */
+.hero{
+  min-height:100svh;display:grid;align-items:center;
+  padding:8.5rem 0 4rem;overflow:hidden;
+  background:
+    radial-gradient(60rem 40rem at 85% -10%,rgba(195,205,185,.4),transparent 60%),
+    radial-gradient(50rem 36rem at -10% 110%,rgba(226,217,202,.9),transparent 60%),
+    var(--sand);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2.5rem,6vw,6rem);
+  align-items:center;
+}
+.hero-copy{position:relative;z-index:2}
+.hero-title{
+  font-size:clamp(2.9rem,6.4vw,5.4rem);font-weight:300;
+  letter-spacing:-.01em;margin:1.3rem 0 1.6rem;max-width:13ch;
+}
+.hero-title em{font-style:italic;color:var(--moss)}
+.hero-title .w{display:inline-block}
+html.js .hero-title .w{opacity:0;transform:translateY(.6em)}
+html.js .hero-title.in .w{
+  opacity:1;transform:translateY(0);
+  transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);
+  transition-delay:var(--d,0s);
+}
+.hero-sub{max-width:30rem;color:var(--stone-soft);margin-bottom:2.4rem}
+html.js .hero-fade{opacity:0;transform:translateY(20px);transition:opacity 1.3s var(--ease) .9s,transform 1.3s var(--ease) .9s}
+html.js .hero-copy.in .hero-fade{opacity:1;transform:translateY(0)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.hero-meta{
+  display:flex;gap:2.6rem;margin-top:3.2rem;padding-top:2rem;
+  border-top:1px solid var(--line);
+}
+.hero-meta div strong{font-family:var(--serif);font-size:1.55rem;font-weight:500;display:block;color:var(--moss-deep)}
+.hero-meta div span{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--stone-soft)}
+
+.hero-visual{position:relative}
+.hero-arch{
+  border-radius:999px 999px 28px 28px;overflow:hidden;
+  aspect-ratio:4/5.1;
+  box-shadow:0 40px 80px -40px rgba(46,42,37,.45);
+  position:relative;z-index:2;
+}
+.hero-arch img{width:100%;height:100%;object-fit:cover}
+html.js .hero-arch{clip-path:inset(0 0 100% 0 round 999px 999px 28px 28px);transition:clip-path 1.6s var(--ease) .3s}
+html.js .hero-visual.in .hero-arch{clip-path:inset(0 0 0 0 round 999px 999px 28px 28px)}
+.breath-deco{
+  position:absolute;z-index:1;width:13rem;height:13rem;border-radius:50%;
+  border:1px solid rgba(154,168,143,.7);
+  right:-3.5rem;top:7%;
+}
+.breath-deco::after{
+  content:"";position:absolute;inset:18%;border-radius:50%;
+  background:radial-gradient(circle,rgba(195,205,185,.55),rgba(195,205,185,0) 70%);
+}
+.blob-deco{
+  position:absolute;z-index:0;left:-4rem;bottom:-3rem;width:15rem;height:14rem;
+  background:linear-gradient(150deg,var(--sage-mist),rgba(221,227,214,0));
+  border-radius:62% 38% 55% 45% / 55% 62% 38% 45%;
+}
+.hero-badge{
+  position:absolute;z-index:3;left:-1.8rem;bottom:2.6rem;
+  background:rgba(243,238,230,.94);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:1.2rem;
+  padding:1rem 1.5rem;display:flex;align-items:center;gap:.95rem;
+  box-shadow:0 24px 50px -30px rgba(46,42,37,.4);
+}
+.hero-badge .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--sage);flex:none}
+.hero-badge p{font-size:.85rem;line-height:1.45;color:var(--stone-soft)}
+.hero-badge p strong{display:block;font-weight:500;color:var(--stone);letter-spacing:.04em}
+
+@keyframes breathe{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.16)}
+}
+.breathing{animation:breathe 6s var(--ease-soft) infinite}
+
+.scroll-hint{
+  position:absolute;left:50%;bottom:1.8rem;transform:translateX(-50%);
+  font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--stone-soft);
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;text-decoration:none;
+}
+.scroll-hint::after{content:"";width:1px;height:2.6rem;background:linear-gradient(var(--stone-soft),transparent)}
+@media (max-width:980px){
+  .hero{min-height:auto}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{max-width:30rem;margin-inline:auto;width:100%}
+  .hero-badge{left:.5rem}
+  .scroll-hint{display:none}
+}
+
+/* ============ reveal system ============ */
+html.js .reveal{opacity:0;transform:translateY(34px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+html.js .reveal.in{opacity:1;transform:translateY(0)}
+html.js .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+html.js .reveal-right{opacity:0;transform:translateX(40px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+html.js .reveal-left.in,html.js .reveal-right.in{opacity:1;transform:translateX(0)}
+html.js [data-stagger] > *{opacity:0;transform:translateY(30px);transition:opacity 1.15s var(--ease),transform 1.15s var(--ease)}
+html.js [data-stagger].in > *{opacity:1;transform:translateY(0)}
+html.js [data-stagger].in > *:nth-child(1){transition-delay:.05s}
+html.js [data-stagger].in > *:nth-child(2){transition-delay:.2s}
+html.js [data-stagger].in > *:nth-child(3){transition-delay:.35s}
+html.js [data-stagger].in > *:nth-child(4){transition-delay:.5s}
+html.js .line-reveal .line{display:block;overflow:hidden}
+html.js .line-reveal .line > span{display:block;transform:translateY(110%);transition:transform 1.3s var(--ease)}
+html.js .line-reveal.in .line:nth-child(1) > span{transition-delay:.05s}
+html.js .line-reveal.in .line:nth-child(2) > span{transition-delay:.22s}
+html.js .line-reveal.in .line:nth-child(3) > span{transition-delay:.39s}
+html.js .line-reveal.in .line:nth-child(4) > span{transition-delay:.56s}
+html.js .line-reveal.in .line > span{transform:translateY(0)}
+
+/* ============ breathing widget ============ */
+.breath-section{
+  background:linear-gradient(180deg,var(--sand) 0%,var(--sage-mist) 50%,var(--sand) 100%);
+  text-align:center;
+}
+.breath-stage{
+  position:relative;width:min(21rem,72vw);aspect-ratio:1;
+  margin:3rem auto 2.2rem;display:grid;place-items:center;
+}
+.breath-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:1px solid rgba(58,68,56,.25);
+}
+.breath-circle{
+  width:62%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#cdd6c3,var(--sage) 78%);
+  box-shadow:0 30px 70px -30px rgba(58,68,56,.55),inset 0 0 0 1px rgba(255,255,255,.25);
+  display:grid;place-items:center;
+}
+@keyframes breath-cycle{
+  0%{transform:scale(.84)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(.84)}
+}
+@keyframes breath-ring-cycle{
+  0%{transform:scale(.92);opacity:.45}
+  50%{transform:scale(1.04);opacity:.9}
+  100%{transform:scale(.92);opacity:.45}
+}
+html.js .breath-circle.live{animation:breath-cycle 8s var(--ease-soft) infinite}
+html.js .breath-ring.live{animation:breath-ring-cycle 8s var(--ease-soft) infinite}
+.breath-label{
+  font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,3vw,1.8rem);
+  color:var(--moss-deep);transition:opacity 1.1s var(--ease-soft);
+}
+.breath-label.fading{opacity:0}
+.breath-note{font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--stone-soft)}
+
+/* ============ filosofie ============ */
+.philosophy{background:var(--sand)}
+.philosophy-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(3rem,7vw,6.5rem);align-items:center;
+}
+.statement{font-size:clamp(1.7rem,3.2vw,2.6rem);font-family:var(--serif);font-weight:300;line-height:1.4;margin:1.2rem 0 1.8rem}
+.statement em{font-style:italic;color:var(--moss)}
+.philosophy-visual{position:relative;min-height:30rem}
+.ph-img{position:absolute;overflow:hidden;box-shadow:0 36px 70px -36px rgba(46,42,37,.5)}
+.ph-img img{width:100%;height:100%;object-fit:cover}
+.ph-img-1{
+  width:62%;aspect-ratio:3/4.1;left:0;top:0;
+  border-radius:999px 999px 24px 24px;z-index:2;
+}
+.ph-img-2{
+  width:52%;aspect-ratio:3/3.6;right:0;bottom:0;
+  border-radius:24px 24px 999px 999px;z-index:3;
+  border:6px solid var(--sand);
+}
+.ph-ring{
+  position:absolute;right:6%;top:4%;width:9rem;height:9rem;border-radius:50%;
+  border:1px solid rgba(154,168,143,.8);z-index:1;
+}
+.philosophy-points{list-style:none;display:grid;gap:1rem;margin-top:1.4rem}
+.philosophy-points li{display:flex;gap:1rem;align-items:baseline;color:var(--stone-soft)}
+.philosophy-points li::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--sage);flex:none;transform:translateY(-.1rem)}
+@media (max-width:980px){
+  .philosophy-grid{grid-template-columns:1fr}
+  .philosophy-visual{min-height:24rem;max-width:28rem}
+}
+
+/* ============ behandelingen ============ */
+.treatments{background:linear-gradient(180deg,var(--sand),var(--sand-soft))}
+.treatments-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-bottom:3.2rem}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.card{
+  background:var(--sand-soft);border:1px solid var(--line);border-radius:1.4rem 1.4rem 1.4rem 1.4rem;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform 1s var(--ease),box-shadow 1s var(--ease);
+}
+.card:hover{transform:translateY(-9px);box-shadow:0 36px 70px -38px rgba(46,42,37,.45)}
+.card-img{overflow:hidden;aspect-ratio:4/3;border-radius:1.4rem 1.4rem 999px 999px / 1.4rem 1.4rem 30% 30%}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease-soft)}
+.card:hover .card-img img{transform:scale(1.03)}
+.card-body{padding:1.6rem 1.5rem 1.7rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+.card-body h3{font-size:1.45rem;font-weight:500}
+.card-body p{font-size:.93rem;color:var(--stone-soft);flex:1}
+.card-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:.8rem;padding-top:.9rem;border-top:1px solid var(--line);
+}
+.card-meta .price{font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--moss-deep)}
+.card-meta .dur{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--stone-soft)}
+@media (max-width:1080px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+
+/* ============ dagprogramma timeline ============ */
+.day{background:var(--moss);color:var(--sand-soft)}
+.day .eyebrow{color:var(--sage-soft)}
+.day .eyebrow::before{background:var(--sage-soft)}
+.day .section-title{color:var(--sand-soft)}
+.day .section-title em{color:var(--sage-soft)}
+.day .lead{color:rgba(243,238,230,.72);margin-inline:auto}
+.day-head{text-align:center;max-width:42rem;margin:0 auto 4rem}
+.day-head .eyebrow::before{display:none}
+.timeline{position:relative;max-width:48rem;margin:0 auto;padding:1rem 0}
+.timeline-line{
+  position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:rgba(243,238,230,.18);transform:translateX(-50%);
+}
+.timeline-line i{
+  position:absolute;inset:0;background:var(--sage-soft);
+  transform:scaleY(0);transform-origin:top;display:block;
+}
+html:not(.js) .timeline-line i,
+.timeline-line.no-anim i{transform:scaleY(1)}
+.t-item{
+  position:relative;width:calc(50% - 2.6rem);padding:1.4rem 1.6rem;
+  background:rgba(243,238,230,.06);border:1px solid rgba(243,238,230,.14);
+  border-radius:1.1rem;margin-bottom:2.2rem;
+  backdrop-filter:blur(4px);
+}
+.t-item:nth-child(odd){margin-left:auto}
+.t-item::before{
+  content:"";position:absolute;top:1.9rem;width:.7rem;height:.7rem;border-radius:50%;
+  background:var(--sage-soft);box-shadow:0 0 0 6px rgba(195,205,185,.16);
+}
+.t-item:nth-child(odd)::before{left:-3rem;transform:translateX(-50%)}
+.t-item:nth-child(even)::before{right:-3rem;transform:translateX(50%)}
+.t-time{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sage-soft)}
+.t-item h3{font-size:1.45rem;color:var(--sand-soft);margin:.25rem 0 .35rem;font-weight:500}
+.t-item p{font-size:.92rem;color:rgba(243,238,230,.68)}
+@media (max-width:720px){
+  .timeline-line{left:1rem}
+  .t-item{width:calc(100% - 3.4rem);margin-left:3.4rem !important}
+  .t-item::before{left:-2.4rem !important;right:auto !important;transform:translateX(-50%) !important}
+}
+
+/* ============ arrangementen ============ */
+.packages{background:var(--sand)}
+.packages-head{text-align:center;max-width:40rem;margin:0 auto 3.6rem}
+.packages-head .eyebrow::before{display:none}
+.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;align-items:stretch}
+.pack{
+  background:var(--sand-soft);border:1px solid var(--line);border-radius:1.6rem;
+  padding:2.6rem 2.2rem;display:flex;flex-direction:column;gap:1.1rem;
+  transition:transform 1s var(--ease),box-shadow 1s var(--ease);
+}
+.pack:hover{transform:translateY(-8px);box-shadow:0 36px 70px -40px rgba(46,42,37,.4)}
+.pack h3{font-size:1.8rem;font-weight:500}
+.pack .pack-tag{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage)}
+.pack .pack-price{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--moss-deep)}
+.pack .pack-price small{font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-soft)}
+.pack ul{list-style:none;display:grid;gap:.65rem;flex:1;padding:1.1rem 0;border-top:1px solid var(--line)}
+.pack li{display:flex;gap:.8rem;align-items:baseline;font-size:.95rem;color:var(--stone-soft)}
+.pack li::before{content:"—";color:var(--sage);flex:none}
+.pack-featured{
+  background:linear-gradient(170deg,#f6f3ec,var(--sage-mist));
+  border-color:rgba(154,168,143,.55);
+  box-shadow:0 0 0 1px rgba(154,168,143,.35),0 40px 90px -45px rgba(58,68,56,.55),0 0 70px -12px rgba(154,168,143,.45);
+  position:relative;
+}
+.pack-featured::before{
+  content:"Meest gekozen";position:absolute;top:-0.85rem;left:50%;transform:translateX(-50%);
+  background:var(--moss);color:var(--sand-soft);font-size:.64rem;letter-spacing:.26em;
+  text-transform:uppercase;padding:.42rem 1.2rem;border-radius:999px;white-space:nowrap;
+}
+@media (max-width:980px){.pack-grid{grid-template-columns:1fr;max-width:30rem;margin-inline:auto}}
+
+/* ============ testimonials ============ */
+.voices{background:linear-gradient(180deg,var(--sand),var(--sage-mist) 120%);text-align:center}
+.voices .eyebrow::before{display:none}
+.quote-stage{position:relative;max-width:46rem;margin:2.6rem auto 1.8rem;min-height:13.5rem}
+.quote{
+  position:absolute;inset:0;opacity:0;visibility:hidden;
+  transition:opacity 1.4s var(--ease-soft),visibility 0s linear 1.4s;
+  display:flex;flex-direction:column;gap:1.4rem;justify-content:center;
+}
+.quote.active{opacity:1;visibility:visible;transition-delay:0s}
+html:not(.js) .quote{position:static;opacity:1;visibility:visible;margin-bottom:2.5rem}
+html:not(.js) .quote-stage{min-height:0}
+.quote blockquote p{
+  font-family:var(--serif);font-style:italic;font-weight:300;
+  font-size:clamp(1.4rem,2.9vw,2rem);line-height:1.5;color:var(--stone);
+}
+.quote figcaption{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone-soft)}
+.quote-dots{display:flex;gap:.7rem;justify-content:center}
+html:not(.js) .quote-dots{display:none}
+.quote-dots button{
+  width:.65rem;height:.65rem;border-radius:50%;border:1px solid var(--sage);
+  background:transparent;cursor:pointer;padding:0;
+  transition:background-color .8s var(--ease),transform .8s var(--ease);
+}
+.quote-dots button[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);transform:scale(1.25)}
+
+/* ============ locatie ============ */
+.visit{background:var(--sand-soft)}
+.visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.visit dl{display:grid;gap:1.5rem;margin:2rem 0 2.4rem}
+.visit dt{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);margin-bottom:.3rem}
+.visit dd{color:var(--stone-soft)}
+.visit dd a{color:var(--moss-deep);text-decoration:none;border-bottom:1px solid rgba(58,68,56,.3);transition:border-color .7s var(--ease)}
+.visit dd a:hover{border-color:var(--moss-deep)}
+.map-frame{
+  border-radius:999px 999px 28px 28px;overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 36px 70px -40px rgba(46,42,37,.45);
+  aspect-ratio:4/4.4;position:relative;background:var(--sage-mist);
+}
+.map-frame iframe{
+  width:100%;height:100%;border:0;display:block;
+  filter:grayscale(.85) sepia(.18) saturate(.85) brightness(1.02);
+}
+@media (max-width:880px){.visit-grid{grid-template-columns:1fr}.map-frame{max-width:28rem}}
+
+/* ============ footer ============ */
+.site-footer{background:var(--moss-deep);color:rgba(243,238,230,.78);padding:4.5rem 0 2.4rem}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:2.6rem;margin-bottom:3.4rem}
+.site-footer h3{font-size:1.5rem;color:var(--sand-soft);margin-bottom:.8rem;font-weight:400}
+.site-footer h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sage-soft);font-weight:400;margin-bottom:1.1rem}
+.site-footer ul{list-style:none;display:grid;gap:.55rem}
+.site-footer a{color:rgba(243,238,230,.78);text-decoration:none;transition:color .7s var(--ease)}
+.site-footer a:hover{color:#fff}
+.site-footer p{font-size:.95rem}
+.newsletter{display:flex;margin-top:1.2rem;border:1px solid rgba(243,238,230,.25);border-radius:999px;overflow:hidden;transition:border-color .7s var(--ease),box-shadow .7s var(--ease)}
+.newsletter:focus-within{border-color:var(--sage-soft);box-shadow:0 0 0 4px rgba(195,205,185,.18)}
+.newsletter input{
+  flex:1;min-width:0;background:transparent;border:0;color:var(--sand-soft);
+  padding:.95rem 1.4rem;font-family:var(--sans);font-size:.95rem;
+}
+.newsletter input::placeholder{color:rgba(243,238,230,.45)}
+.newsletter input:focus{outline:none}
+.newsletter button{
+  background:var(--sage);color:var(--moss-deep);border:0;cursor:pointer;
+  font-family:var(--sans);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:0 1.5rem;transition:background-color .7s var(--ease);
+}
+.newsletter button:hover{background:var(--sage-soft)}
+.news-msg{font-size:.85rem;color:var(--sage-soft);margin-top:.7rem;min-height:1.4em}
+.footer-bottom{
+  border-top:1px solid rgba(243,238,230,.14);padding-top:1.8rem;
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+  font-size:.82rem;color:rgba(243,238,230,.5);
+}
+@media (max-width:880px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.footer-grid{grid-template-columns:1fr}}
+
+/* ============ reduced motion ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  html.js .reveal,html.js .reveal-left,html.js .reveal-right,
+  html.js [data-stagger] > *,html.js .hero-title .w,html.js .hero-fade{
+    opacity:1 !important;transform:none !important;
+  }
+  html.js .line-reveal .line > span{transform:none !important}
+  html.js .hero-arch{clip-path:none !important}
+  .breathing,.breath-circle.live,.breath-ring.live{animation:none !important}
+  .timeline-line i{transform:scaleY(1) !important}
+  [data-parallax]{transform:none !important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Direct naar inhoud</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="top">
+  <div class="container">
+    <a class="brand" href="#top" aria-label="Stilte Spa en Retreat — naar boven">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Stilte<small>Spa &amp; Retreat</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Hoofdnavigatie">
+      <ul>
+        <li><a href="#filosofie">Filosofie</a></li>
+        <li><a href="#behandelingen">Behandelingen</a></li>
+        <li><a href="#dagprogramma">Dagprogramma</a></li>
+        <li><a href="#arrangementen">Arrangementen</a></li>
+        <li><a href="#locatie">Locatie</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-solid header-cta" href="#arrangementen">Boek een retreat</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel">
+      <span class="bars" aria-hidden="true"><span></span><span></span></span>
+      Menu
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobile-panel" hidden>
+    <nav aria-label="Mobiele navigatie">
+      <ul>
+        <li><a href="#filosofie">Filosofie</a></li>
+        <li><a href="#behandelingen">Behandelingen</a></li>
+        <li><a href="#dagprogramma">Dagprogramma</a></li>
+        <li><a href="#arrangementen">Arrangementen</a></li>
+        <li><a href="#locatie">Locatie</a></li>
+        <li class="panel-cta"><a class="btn btn-solid" href="#arrangementen" style="font-size:.78rem">Boek een retreat</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow hero-fade" style="opacity:1;transform:none">Wellnessresort aan de bosrand</p>
+      <h1 class="hero-title" id="hero-title">
+        <span class="w">Waar</span> <span class="w">de</span> <span class="w">tijd</span>
+        <span class="w"><em>vertraagt</em></span> <span class="w">en</span> <span class="w">jij</span>
+        <span class="w">weer</span> <span class="w"><em>ademt</em></span>
+      </h1>
+      <p class="hero-sub hero-fade">Stilte is een ervaring. Tussen dennen en duinen vind je warmwaterbaden, sauna-rituelen en kamers zonder klok — een plek om volledig tot rust te komen.</p>
+      <div class="hero-actions hero-fade">
+        <a class="btn btn-solid" href="#arrangementen">Boek een retreat <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#behandelingen">Bekijk behandelingen</a>
+      </div>
+      <div class="hero-meta hero-fade">
+        <div><strong>12 ha</strong><span>privébos</span></div>
+        <div><strong>6</strong><span>sauna's</span></div>
+        <div><strong>Sinds 1998</strong><span>familiebedrijf</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="breath-deco breathing" aria-hidden="true"></div>
+      <div class="blob-deco" aria-hidden="true"></div>
+      <div class="hero-arch" data-parallax="-0.05">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1100&q=80&auto=format&fit=crop" alt="Spa-stilleven met handdoeken, orchidee en warme stenen in zacht licht" width="880" height="1122" fetchpriority="high">
+      </div>
+      <div class="hero-badge">
+        <span class="dot" aria-hidden="true"></span>
+        <p><strong>Vandaag geopend</strong>09:00 – 22:00 uur</p>
+      </div>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#adem" aria-label="Scroll naar het ademmoment">Scroll</a>
+</section>
+
+<!-- ================= ADEM-WIDGET ================= -->
+<section class="breath-section" id="adem" aria-labelledby="adem-title">
+  <div class="container">
+    <p class="eyebrow reveal" style="justify-content:center">Een moment voor jou</p>
+    <h2 class="section-title reveal" id="adem-title">Adem <em>mee</em></h2>
+    <p class="lead reveal" style="margin-inline:auto;text-align:center">Vier tellen in, vier tellen uit. Volg de cirkel en voel hoe je schouders zakken — dit is hoe elk verblijf bij ons begint.</p>
+    <div class="breath-stage">
+      <div class="breath-ring" aria-hidden="true"></div>
+      <div class="breath-circle">
+        <p class="breath-label" id="breath-label">Adem in — adem uit</p>
+      </div>
+    </div>
+    <p class="breath-note">4 seconden in · 4 seconden uit</p>
+    <p class="visually-hidden" aria-live="off"></p>
+  </div>
+</section>
+
+<!-- ================= FILOSOFIE ================= -->
+<section class="philosophy" id="filosofie" aria-labelledby="filosofie-title">
+  <div class="container philosophy-grid">
+    <div>
+      <p class="eyebrow reveal">Onze filosofie</p>
+      <h2 class="visually-hidden-title" id="filosofie-title" hidden>Onze filosofie</h2>
+      <p class="statement line-reveal" aria-label="Rust is geen luxe. Het is de basis van een helder hoofd, een zacht lichaam en een open hart.">
+        <span class="line" aria-hidden="true"><span>Rust is geen luxe.</span></span>
+        <span class="line" aria-hidden="true"><span>Het is de basis van een <em>helder hoofd</em>,</span></span>
+        <span class="line" aria-hidden="true"><span>een zacht lichaam</span></span>
+        <span class="line" aria-hidden="true"><span>en een <em>open hart</em>.</span></span>
+      </p>
+      <p class="lead reveal">Geen schermen, geen haast, geen programma dat móét. Wij geloven in warmte, water, stilte en aandacht — de oudste vormen van herstel die er bestaan.</p>
+      <ul class="philosophy-points" data-stagger>
+        <li>Stiltezones in het hele resort, telefoons blijven in de locker</li>
+        <li>Producten op basis van kruiden uit onze eigen tuin</li>
+        <li>Maximaal veertig gasten per dag, ruimte gegarandeerd</li>
+      </ul>
+    </div>
+    <div class="philosophy-visual reveal" aria-hidden="false">
+      <div class="ph-ring" aria-hidden="true"></div>
+      <div class="ph-img ph-img-1" data-parallax="-0.07">
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=80&auto=format&fit=crop" alt="Zonlicht valt door hoge groene bomen in het bos" loading="lazy" width="720" height="984">
+      </div>
+      <div class="ph-img ph-img-2" data-parallax="0.06">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80&auto=format&fit=crop" alt="Vrouw ontspant tijdens een rustige spabehandeling" loading="lazy" width="640" height="768">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEHANDELINGEN ================= -->
+<section class="treatments" id="behandelingen" aria-labelledby="behandelingen-title">
+  <div class="container">
+    <div class="treatments-head">
+      <div>
+        <p class="eyebrow reveal">Behandelingen</p>
+        <h2 class="section-title reveal" id="behandelingen-title">Met aandacht, <em>zonder haast</em></h2>
+      </div>
+      <p class="lead reveal" style="max-width:26rem">Elke behandeling begint met thee en een kort gesprek, en eindigt in onze rustruimte met uitzicht op het bos.</p>
+    </div>
+    <div class="cards" data-stagger>
+      <article class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80&auto=format&fit=crop" alt="Ontspannende rugmassage met warme olie" loading="lazy" width="640" height="480">
+        </div>
+        <div class="card-body">
+          <h3>Massages</h3>
+          <p>Van klassiek ontspannend tot hot-stone en zwangerschapsmassage, afgestemd op jouw lichaam.</p>
+          <div class="card-meta"><span class="price">vanaf € 85</span><span class="dur">60 min</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1583416750470-965b2707b355?w=800&q=80&auto=format&fit=crop" alt="Warme houten sauna met zacht licht" loading="lazy" width="640" height="480">
+        </div>
+        <div class="card-body">
+          <h3>Sauna-ritueel</h3>
+          <p>Een begeleid aufguss-ritueel met eucalyptus en berkenhout, gevolgd door een koud dompelbad.</p>
+          <div class="card-meta"><span class="price">vanaf € 45</span><span class="dur">75 min</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80&auto=format&fit=crop" alt="Vrouw mediteert in lotushouding bij zonsopgang" loading="lazy" width="640" height="480">
+        </div>
+        <div class="card-body">
+          <h3>Yoga &amp; meditatie</h3>
+          <p>Zachte hatha en geleide meditatie in het paviljoen, elke ochtend en avond, voor elk niveau.</p>
+          <div class="card-meta"><span class="price">vanaf € 25</span><span class="dur">60 min</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80&auto=format&fit=crop" alt="Kalmerende gezichtsbehandeling met natuurlijke producten" loading="lazy" width="640" height="480">
+        </div>
+        <div class="card-body">
+          <h3>Gezichtsbehandelingen</h3>
+          <p>Botanische gezichtsrituelen met kamille en rozenblad uit eigen tuin, voor een rustige huid.</p>
+          <div class="card-meta"><span class="price">vanaf € 95</span><span class="dur">75 min</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DAGPROGRAMMA ================= -->
+<section class="day" id="dagprogramma" aria-labelledby="dag-title">
+  <div class="container">
+    <div class="day-head">
+      <p class="eyebrow reveal">Een dag bij Stilte</p>
+      <h2 class="section-title reveal" id="dag-title">Het ritme van <em>een retreatdag</em></h2>
+      <p class="lead reveal">Niets is verplicht, alles mag. Dit is hoe een dag eruit kan zien.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-line" aria-hidden="true"><i></i></div>
+      <article class="t-item reveal-right">
+        <p class="t-time">08:00</p>
+        <h3>Ochtendyoga</h3>
+        <p>Zachte zonnegroeten in het glazen paviljoen, terwijl het bos wakker wordt.</p>
+      </article>
+      <article class="t-item reveal-left">
+        <p class="t-time">10:00</p>
+        <h3>Sauna-ritueel</h3>
+        <p>Begeleid aufguss met berkenhout en eucalyptus, gevolgd door het dompelbad.</p>
+      </article>
+      <article class="t-item reveal-right">
+        <p class="t-time">12:30</p>
+        <h3>Botanische lunch</h3>
+        <p>Seizoensgroenten uit eigen tuin, geserveerd in stilte of aan de gezamenlijke tafel.</p>
+      </article>
+      <article class="t-item reveal-left">
+        <p class="t-time">14:00</p>
+        <h3>Behandeling naar keuze</h3>
+        <p>Massage, gezichtsritueel of een wandeling met de boswachter — jij kiest.</p>
+      </article>
+      <article class="t-item reveal-right">
+        <p class="t-time">17:30</p>
+        <h3>Warmwaterbaden</h3>
+        <p>Drijven in het buitenbad van 38 graden terwijl de schemering invalt.</p>
+      </article>
+      <article class="t-item reveal-left">
+        <p class="t-time">20:00</p>
+        <h3>Avondmeditatie</h3>
+        <p>Geleide bodyscan bij kaarslicht, als zachte landing voor de nacht.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ARRANGEMENTEN ================= -->
+<section class="packages" id="arrangementen" aria-labelledby="pakketten-title">
+  <div class="container">
+    <div class="packages-head">
+      <p class="eyebrow reveal" style="justify-content:center">Arrangementen</p>
+      <h2 class="section-title reveal" id="pakketten-title">Kies jouw <em>tempo van rust</em></h2>
+      <p class="lead reveal" style="margin-inline:auto">Alle arrangementen zijn inclusief badjas, slippers, thee-bar en toegang tot baden, sauna's en stiltetuin.</p>
+    </div>
+    <div class="pack-grid" data-stagger>
+      <article class="pack">
+        <p class="pack-tag">Eén dag</p>
+        <h3>Dagretreat</h3>
+        <p class="pack-price">€ 129 <small>per persoon</small></p>
+        <ul>
+          <li>Toegang van 09:00 tot 22:00</li>
+          <li>Eén sauna-ritueel naar keuze</li>
+          <li>Botanische lunch</li>
+          <li>Ochtend- of avondyoga</li>
+        </ul>
+        <a class="btn btn-ghost" href="#locatie" style="justify-content:center">Reserveer een dag</a>
+      </article>
+      <article class="pack pack-featured">
+        <p class="pack-tag">Twee nachten</p>
+        <h3>Weekendretreat</h3>
+        <p class="pack-price">€ 495 <small>per persoon</small></p>
+        <ul>
+          <li>Boskamer met vrijstaand bad</li>
+          <li>Volpension, plantaardig &amp; lokaal</li>
+          <li>Twee behandelingen naar keuze</li>
+          <li>Dagelijks yoga &amp; meditatie</li>
+          <li>Privé-saunamoment bij zonsondergang</li>
+        </ul>
+        <a class="btn btn-solid" href="#locatie" style="justify-content:center">Boek het weekend</a>
+      </article>
+      <article class="pack">
+        <p class="pack-tag">Zeven nachten</p>
+        <h3>Volledige week</h3>
+        <p class="pack-price">€ 1.450 <small>per persoon</small></p>
+        <ul>
+          <li>Suite met bosveranda</li>
+          <li>Persoonlijk rustprogramma op maat</li>
+          <li>Vijf behandelingen naar keuze</li>
+          <li>Stiltewandelingen met gids</li>
+        </ul>
+        <a class="btn btn-ghost" href="#locatie" style="justify-content:center">Plan een week</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="voices" aria-labelledby="voices-title">
+  <div class="container">
+    <p class="eyebrow reveal" style="justify-content:center">Gasten over Stilte</p>
+    <h2 class="section-title reveal" id="voices-title">Wat blijft <em>hangen</em></h2>
+    <div class="quote-stage reveal" id="quote-stage">
+      <figure class="quote active">
+        <blockquote><p>“Voor het eerst in jaren heb ik drie dagen niet op mijn telefoon gekeken. Ik kwam thuis als een zachter mens.”</p></blockquote>
+        <figcaption>Marieke — Weekendretreat, maart</figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote><p>“Het sauna-ritueel bij zonsondergang is iets wat ik iedereen gun. De rust hier zit in elk detail.”</p></blockquote>
+        <figcaption>Thomas &amp; Lieke — Dagretreat, mei</figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote><p>“Een week zonder agenda klonk eng. Het werd de meest waardevolle week van mijn jaar.”</p></blockquote>
+        <figcaption>Annelies — Volledige week, januari</figcaption>
+      </figure>
+    </div>
+    <div class="quote-dots" id="quote-dots" role="group" aria-label="Kies een citaat">
+      <button type="button" aria-pressed="true" aria-label="Citaat 1"></button>
+      <button type="button" aria-pressed="false" aria-label="Citaat 2"></button>
+      <button type="button" aria-pressed="false" aria-label="Citaat 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOCATIE & CONTACT ================= -->
+<section class="visit" id="locatie" aria-labelledby="locatie-title">
+  <div class="container visit-grid">
+    <div>
+      <p class="eyebrow reveal">Locatie &amp; contact</p>
+      <h2 class="section-title reveal" id="locatie-title">Aan de rand van <em>het bos</em></h2>
+      <p class="lead reveal">Op een half uur van Utrecht, midden in twaalf hectare eigen bos. Parkeren tussen de bomen, daarna alleen nog voetpaden.</p>
+      <dl class="reveal">
+        <div>
+          <dt>Adres</dt>
+          <dd>Boslaan 12, 3911 KD Rhenen</dd>
+        </div>
+        <div>
+          <dt>Openingstijden</dt>
+          <dd>Dagelijks 09:00 – 22:00 · Stilte-ochtend op zondag vanaf 08:00</dd>
+        </div>
+        <div>
+          <dt>Reserveren</dt>
+          <dd><a href="tel:+31317200100">+31 (0)317 200 100</a> · <a href="mailto:welkom@stiltespa.nl">welkom@stiltespa.nl</a></dd>
+        </div>
+      </dl>
+      <a class="btn btn-solid reveal" href="mailto:welkom@stiltespa.nl">Plan je bezoek <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <div class="map-frame reveal">
+      <iframe title="Kaart met de locatie van Stilte Spa en Retreat in Rhenen" src="https://www.openstreetmap.org/export/embed.html?bbox=5.5258%2C51.9466%2C5.6258%2C51.9866&amp;layer=mapnik&amp;marker=51.9666%2C5.5758" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>Stilte</h3>
+        <p>Spa &amp; retreat aan de bosrand. Warmte, water, stilte en aandacht — sinds 1998.</p>
+      </div>
+      <nav aria-label="Footer navigatie">
+        <h4>Ontdek</h4>
+        <ul>
+          <li><a href="#filosofie">Filosofie</a></li>
+          <li><a href="#behandelingen">Behandelingen</a></li>
+          <li><a href="#dagprogramma">Dagprogramma</a></li>
+          <li><a href="#arrangementen">Arrangementen</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h4>Bezoek</h4>
+        <ul>
+          <li>Boslaan 12, Rhenen</li>
+          <li>Dagelijks 09:00 – 22:00</li>
+          <li><a href="tel:+31317200100">+31 (0)317 200 100</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stiltepost</h4>
+        <p style="font-size:.92rem">Eén rustige mail per maand, met seizoensrituelen en vroege toegang tot retreats.</p>
+        <form class="newsletter" id="newsletter">
+          <label class="visually-hidden" for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+          <input type="email" id="news-email" name="email" placeholder="jouw@email.nl" required autocomplete="email">
+          <button type="submit">Schrijf in</button>
+        </form>
+        <p class="news-msg" id="news-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> Stilte Spa &amp; Retreat · Rhenen</p>
+      <p>Met rust gemaakt, in Nederland.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  document.documentElement.classList.add('js');
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- header ---------- */
+  var header = document.querySelector('.site-header');
+  function onHeaderScroll() {
+    header.classList.toggle('scrolled', window.scrollY > 24);
+  }
+  window.addEventListener('scroll', onHeaderScroll, { passive: true });
+  onHeaderScroll();
+
+  /* ---------- mobile menu (slide-down, focus trap, escape) ---------- */
+  var toggle = document.querySelector('.menu-toggle');
+  var panel = document.getElementById('mobile-panel');
+  var panelOpen = false;
+
+  function setMenu(open) {
+    panelOpen = open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+      panel.hidden = false;
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { panel.classList.add('open'); });
+      });
+      var first = panel.querySelector('a');
+      if (first) { first.focus(); }
+    } else {
+      panel.classList.remove('open');
+      window.setTimeout(function () { if (!panelOpen) { panel.hidden = true; } }, prefersReduced ? 0 : 800);
+    }
+  }
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', function () { setMenu(!panelOpen); });
+
+    panel.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (link) { setMenu(false); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!panelOpen) { return; }
+      if (e.key === 'Escape') {
+        setMenu(false);
+        toggle.focus();
+        return;
+      }
+      if (e.key === 'Tab') {
+        var focusables = [toggle].concat(Array.prototype.slice.call(panel.querySelectorAll('a')));
+        var firstEl = focusables[0];
+        var lastEl = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        } else if (!e.shiftKey && document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
+    });
+  }
+
+  /* ---------- hero entrance ---------- */
+  var heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    var words = heroTitle.querySelectorAll('.w');
+    for (var i = 0; i < words.length; i++) {
+      words[i].style.setProperty('--d', (0.12 + i * 0.11).toFixed(2) + 's');
+    }
+  }
+  window.setTimeout(function () {
+    if (heroTitle) { heroTitle.classList.add('in'); }
+    var copy = document.querySelector('.hero-copy');
+    var visual = document.querySelector('.hero-visual');
+    if (copy) { copy.classList.add('in'); }
+    if (visual) { visual.classList.add('in'); }
+  }, 120);
+
+  /* ---------- scroll reveals ---------- */
+  var revealTargets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .line-reveal, [data-stagger]');
+  if ('IntersectionObserver' in window && !prefersReduced) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+    revealTargets.forEach(function (el) { io.observe(el); });
+  } else {
+    revealTargets.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- breathing widget: 4s in / 4s uit, synced ---------- */
+  var breathCircle = document.querySelector('.breath-circle');
+  var breathRing = document.querySelector('.breath-ring');
+  var breathLabel = document.getElementById('breath-label');
+
+  if (breathCircle && breathLabel && !prefersReduced) {
+    var phases = ['Adem in', 'Adem uit'];
+    var phaseIndex = 0;
+
+    function setLabel(text) {
+      breathLabel.classList.add('fading');
+      window.setTimeout(function () {
+        breathLabel.textContent = text;
+        breathLabel.setAttribute('aria-hidden', 'true');
+        breathLabel.classList.remove('fading');
+      }, 550);
+    }
+
+    // start CSS animation and text cycle on the same tick
+    breathCircle.classList.add('live');
+    if (breathRing) { breathRing.classList.add('live'); }
+    breathLabel.textContent = phases[0];
+    breathLabel.setAttribute('aria-hidden', 'true');
+
+    window.setInterval(function () {
+      phaseIndex = (phaseIndex + 1) % phases.length;
+      setLabel(phases[phaseIndex]);
+    }, 4000);
+  }
+  // reduced motion / no match: label keeps static "Adem in — adem uit"
+
+  /* ---------- gentle rAF parallax ---------- */
+  var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  if (parallaxEls.length && !prefersReduced && window.innerWidth > 760) {
+    var ticking = false;
+    function applyParallax() {
+      ticking = false;
+      var vh = window.innerHeight;
+      parallaxEls.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.bottom < -100 || rect.top > vh + 100) { return; }
+        var speed = parseFloat(el.getAttribute('data-parallax')) || 0;
+        var center = rect.top + rect.height / 2 - vh / 2;
+        el.style.transform = 'translateY(' + (center * speed).toFixed(1) + 'px)';
+      });
+    }
+    function requestParallax() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(applyParallax);
+      }
+    }
+    window.addEventListener('scroll', requestParallax, { passive: true });
+    window.addEventListener('resize', requestParallax, { passive: true });
+    applyParallax();
+  }
+
+  /* ---------- timeline line draw ---------- */
+  var timeline = document.querySelector('.timeline');
+  var timelineLine = document.querySelector('.timeline-line i');
+  if (timeline && timelineLine) {
+    if (prefersReduced) {
+      timeline.querySelector('.timeline-line').classList.add('no-anim');
+    } else {
+      var tlTicking = false;
+      function drawLine() {
+        tlTicking = false;
+        var rect = timeline.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var progress = (vh * 0.8 - rect.top) / rect.height;
+        progress = Math.max(0, Math.min(1, progress));
+        timelineLine.style.transform = 'scaleY(' + progress.toFixed(3) + ')';
+      }
+      function requestLine() {
+        if (!tlTicking) {
+          tlTicking = true;
+          requestAnimationFrame(drawLine);
+        }
+      }
+      window.addEventListener('scroll', requestLine, { passive: true });
+      drawLine();
+    }
+  }
+
+  /* ---------- testimonial rotation ---------- */
+  var stage = document.getElementById('quote-stage');
+  var dotsWrap = document.getElementById('quote-dots');
+  if (stage && dotsWrap) {
+    var quotes = Array.prototype.slice.call(stage.querySelectorAll('.quote'));
+    var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('button'));
+    var current = 0;
+    var quoteTimer = null;
+    var paused = false;
+
+    function showQuote(index) {
+      current = (index + quotes.length) % quotes.length;
+      quotes.forEach(function (q, qi) { q.classList.toggle('active', qi === current); });
+      dots.forEach(function (d, di) { d.setAttribute('aria-pressed', String(di === current)); });
+    }
+    function startQuotes() {
+      if (prefersReduced) { return; }
+      stopQuotes();
+      quoteTimer = window.setInterval(function () {
+        if (!paused) { showQuote(current + 1); }
+      }, 6000);
+    }
+    function stopQuotes() {
+      if (quoteTimer) { window.clearInterval(quoteTimer); quoteTimer = null; }
+    }
+
+    dots.forEach(function (dot, di) {
+      dot.addEventListener('click', function () {
+        showQuote(di);
+        startQuotes();
+      });
+    });
+
+    ['mouseenter', 'focusin'].forEach(function (ev) {
+      stage.addEventListener(ev, function () { paused = true; });
+    });
+    ['mouseleave', 'focusout'].forEach(function (ev) {
+      stage.addEventListener(ev, function () { paused = false; });
+    });
+
+    startQuotes();
+  }
+
+  /* ---------- newsletter ---------- */
+  var newsForm = document.getElementById('newsletter');
+  var newsMsg = document.getElementById('news-msg');
+  if (newsForm && newsMsg) {
+    newsForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('news-email');
+      if (email && email.value) {
+        newsMsg.textContent = 'Dank je wel — de eerste Stiltepost is onderweg.';
+        newsForm.reset();
+      }
+    });
+  }
+
+  /* ---------- year ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
+})();
+</script>
+</body>
+</html>

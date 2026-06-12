@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sophie Bakker — Front-end Developer | CV</title>
+  <meta name="description" content="Persoonlijk CV en online visitekaartje van Sophie Bakker, Front-end Developer uit Utrecht." />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+       ============================================================ */
+    :root {
+      /* Accent + neutrals */
+      --accent: #0d9488;          /* teal */
+      --accent-dark: #0f766e;
+      --accent-soft: #ccfbf1;
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --sidebar-bg: #0f172a;      /* deep navy sidebar */
+      --sidebar-fg: #e2e8f0;
+      --sidebar-muted: #94a3b8;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+
+      /* Fluid type */
+      --fs-hero: clamp(1.9rem, 1.2rem + 3vw, 3rem);
+      --fs-h2: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem);
+      --fs-base: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+
+      /* Misc */
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.18);
+      --shadow-sm: 0 4px 14px -8px rgba(15, 23, 42, 0.2);
+      --maxw: 1120px;
+      --gap: clamp(1.2rem, 0.8rem + 1.5vw, 2.2rem);
+    }
+
+    /* ============================================================
+       RESET / BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; /* ruimte voor sticky nav bij ankerlinks */ }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: var(--fs-base);
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { line-height: 1.2; margin: 0 0 0.5em; font-weight: 700; }
+    p { margin: 0 0 1em; }
+    a { color: var(--accent-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    /* Visible keyboard focus everywhere */
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    /* ============================================================
+       STICKY NAV
+       ============================================================ */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav__inner {
+      max-width: var(--maxw); margin: 0 auto;
+      padding: 0.7rem clamp(1rem, 4vw, 2rem);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .nav__brand {
+      font-weight: 800; font-size: 1.05rem; color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .nav__brand span { color: var(--accent); }
+    .nav__links {
+      display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center;
+    }
+    .nav__links a {
+      color: var(--text-muted); font-weight: 500; font-size: 0.95rem;
+      padding: 0.4rem 0.7rem; border-radius: 8px;
+    }
+    .nav__links a:hover { color: var(--accent-dark); background: var(--accent-soft); text-decoration: none; }
+    /* Scroll-spy: actieve sectie in de nav */
+    .nav__links a.is-active { color: var(--accent-dark); background: var(--accent-soft); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: #fff; font-weight: 600;
+      padding: 0.6rem 1.1rem; border-radius: 999px;
+      border: none; cursor: pointer; font-size: 0.95rem;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      background: var(--accent-dark); text-decoration: none; transform: translateY(-1px);
+      box-shadow: 0 10px 22px -10px rgba(13, 148, 136, 0.55); /* subtiele schaduw-lift */
+    }
+    /* Download-icoon duwt zachtjes omlaag bij hover */
+    .btn svg { transition: transform 0.2s ease; }
+    .btn:hover svg { transform: translateY(2px); }
+    .btn--ghost {
+      background: transparent; color: var(--accent-dark);
+      border: 1.5px solid var(--accent);
+    }
+    .btn--ghost:hover { background: var(--accent-soft); color: var(--accent-dark); }
+
+    /* ============================================================
+       LAYOUT SHELL
+       ============================================================ */
+    .shell { max-width: var(--maxw); margin: 0 auto; padding: clamp(1.2rem, 4vw, 2.5rem); }
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    /* ============================================================
+       SIDEBAR (left column)
+       ============================================================ */
+    .sidebar {
+      background: var(--sidebar-bg);
+      color: var(--sidebar-fg);
+      border-radius: var(--radius);
+      padding: 2rem 1.6rem;
+      box-shadow: var(--shadow);
+      position: sticky; top: 80px;
+    }
+    .sidebar__photo {
+      width: 150px; height: 150px; border-radius: 50%;
+      object-fit: cover; margin: 0 auto 1.2rem;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
+    }
+    .sidebar__name { text-align: center; font-size: 1.5rem; margin-bottom: 0.2rem; color: #fff; }
+    .sidebar__role {
+      text-align: center; color: var(--accent-soft);
+      font-weight: 600; font-size: 0.95rem; margin-bottom: 1.4rem;
+      letter-spacing: 0.02em;
+      min-height: 1.6em; /* voorkomt layout-verschuiving tijdens typen */
+    }
+    /* Knipperende caret voor het typewriter-effect */
+    .typed-caret {
+      display: inline-block; width: 2px; height: 1.05em;
+      margin-left: 3px; vertical-align: text-bottom;
+      background: var(--accent-soft);
+      animation: caret-blink 1s steps(2, start) infinite;
+    }
+    @keyframes caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+    /* --- Sidebar-entree: foto, naam, rol en groepen verschijnen getrapt --- */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .anim-ok .sidebar > * { animation: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .anim-ok .sidebar > *:nth-child(1) { animation-delay: 0ms; }
+    .anim-ok .sidebar > *:nth-child(2) { animation-delay: 80ms; }
+    .anim-ok .sidebar > *:nth-child(3) { animation-delay: 160ms; }
+    .anim-ok .sidebar > *:nth-child(4) { animation-delay: 240ms; }
+    .anim-ok .sidebar > *:nth-child(5) { animation-delay: 320ms; }
+    .anim-ok .sidebar > *:nth-child(6) { animation-delay: 400ms; }
+    .anim-ok .sidebar > *:nth-child(7) { animation-delay: 480ms; }
+    /* Contactregels binnen hun groep nog eens licht getrapt */
+    .anim-ok .contact-list li { animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .anim-ok .contact-list li:nth-child(1) { animation-delay: 400ms; }
+    .anim-ok .contact-list li:nth-child(2) { animation-delay: 480ms; }
+    .anim-ok .contact-list li:nth-child(3) { animation-delay: 560ms; }
+
+    .sidebar__group { margin-top: 1.6rem; }
+    .sidebar__title {
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--sidebar-muted); margin-bottom: 0.8rem; font-weight: 700;
+    }
+    .contact-list li {
+      display: flex; gap: 0.7rem; align-items: center; margin-bottom: 0.7rem; font-size: 0.92rem;
+      transition: transform 0.2s ease; /* micro-interactie: regel schuift mee */
+    }
+    .contact-list li:hover { transform: translateX(4px); }
+    .contact-list li:hover .ico { background: var(--accent); color: #fff; }
+    .contact-list a { color: var(--sidebar-fg); }
+    .contact-list a:hover { color: var(--accent-soft); }
+    .ico {
+      flex: none; width: 30px; height: 30px; border-radius: 8px;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,0.08); color: var(--accent-soft);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .ico svg { width: 16px; height: 16px; }
+
+    .socials { display: flex; gap: 0.6rem; }
+    .socials a {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,0.08); color: var(--sidebar-fg);
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .socials a:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+    .socials svg { width: 18px; height: 18px; }
+
+    /* Skills (in sidebar) */
+    .skill { margin-bottom: 1rem; }
+    .skill__head { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.35rem; }
+    .skill__head span:last-child { color: var(--accent-soft); font-weight: 600; }
+    .bar {
+      height: 8px; border-radius: 999px;
+      background: rgba(255,255,255,0.12); overflow: hidden;
+    }
+    .bar__fill {
+      height: 100%; width: 0;
+      background: linear-gradient(90deg, var(--accent), #2dd4bf);
+      border-radius: 999px;
+      transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .lang-list li { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .lang-list span:last-child { color: var(--accent-soft); }
+
+    /* ============================================================
+       MAIN CONTENT (right column)
+       ============================================================ */
+    .main { display: flex; flex-direction: column; gap: var(--gap); }
+    .card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: clamp(1.4rem, 1rem + 1.5vw, 2.4rem);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    .section-head {
+      display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.3rem;
+    }
+    .section-head h2 { font-size: var(--fs-h2); margin: 0; letter-spacing: -0.01em; }
+    /* Accent-streepje onder elke sectiekop; groeit open (scaleX) bij reveal */
+    .section-head h2::after {
+      content: ""; display: block; width: 2.4rem; height: 3px;
+      margin-top: 0.35rem; border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), #2dd4bf);
+      transform-origin: left;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+    }
+    .anim-ok .section-head h2::after { transform: scaleX(0); }
+    .anim-ok .section-head.is-visible h2::after { transform: scaleX(1); }
+    .section-head .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); flex: none;
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .hero-pitch {
+      font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem);
+      color: var(--text); font-weight: 500;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag {
+      background: var(--accent-soft); color: var(--accent-dark);
+      font-size: 0.82rem; font-weight: 600;
+      padding: 0.35rem 0.8rem; border-radius: 999px;
+    }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 1.8rem; }
+    .timeline::before {
+      content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px;
+      width: 2px; background: var(--border);
+    }
+    /* De lijn "tekent" zichzelf van boven naar beneden bij reveal */
+    .anim-ok .timeline::before {
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+    }
+    .anim-ok .timeline.is-visible::before { transform: scaleY(1); }
+    .tl-item { position: relative; padding-bottom: 1.7rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    /* Items schuiven één voor één vanaf links in beeld */
+    .anim-ok .tl-item {
+      opacity: 0; transform: translateX(-18px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .anim-ok .tl-item.is-visible { opacity: 1; transform: none; }
+    .tl-item::before {
+      content: ""; position: absolute; left: -1.8rem; top: 4px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--surface); border: 3px solid var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    /* Stip "popt" (licht overshoot) zodra het item zichtbaar wordt */
+    .anim-ok .tl-item::before {
+      transform: scale(0);
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+    }
+    .anim-ok .tl-item.is-visible::before { transform: scale(1); }
+    .tl-period {
+      display: inline-block; font-size: 0.78rem; font-weight: 700;
+      color: var(--accent-dark); background: var(--accent-soft);
+      padding: 0.2rem 0.6rem; border-radius: 6px; margin-bottom: 0.4rem;
+    }
+    .tl-role { font-size: 1.08rem; margin-bottom: 0.1rem; }
+    .tl-company { color: var(--text-muted); font-weight: 600; font-size: 0.92rem; margin-bottom: 0.5rem; }
+    .tl-item p { color: var(--text-muted); margin: 0; font-size: 0.95rem; }
+
+    /* Education grid */
+    .edu-grid { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+    .edu {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 1.1rem 1.2rem; background: #fbfcfd;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* subtiele lift bij hover */
+    }
+    .edu:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .edu .yr { font-size: 0.8rem; color: var(--accent-dark); font-weight: 700; }
+    .edu h3 { font-size: 1.02rem; margin: 0.2rem 0 0.1rem; }
+    .edu p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+
+    /* Services / Wat ik bied */
+    .services-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .service {
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 1.2rem; background: #fbfcfd;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .service:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .service__ico {
+      width: 44px; height: 44px; border-radius: 12px; margin-bottom: 0.8rem;
+      display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent-dark);
+    }
+    .service__ico svg { width: 22px; height: 22px; }
+    .service h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+    .service p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+
+    /* Contact */
+    .contact-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr 1.2fr; align-items: start; }
+    .contact-info li { display: flex; gap: 0.8rem; align-items: center; margin-bottom: 1rem; }
+    .contact-info .ico { background: var(--accent-soft); color: var(--accent-dark); }
+    .contact-info strong { display: block; font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .contact-info a, .contact-info span:not(.ico):not(strong) { color: var(--text); font-weight: 500; }
+
+    form { display: grid; gap: 0.9rem; }
+    .field label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--text); }
+    .field input, .field textarea {
+      width: 100%; padding: 0.7rem 0.85rem;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font: inherit; font-size: 0.95rem; background: #fff; color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .field input:focus, .field textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft); /* verfijnde focusring */
+    }
+    .field textarea { resize: vertical; min-height: 120px; }
+    .form-note { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+    /* Succesmelding: vloeit zachtjes omhoog in beeld */
+    .form-note--ok {
+      color: var(--accent-dark); font-weight: 600;
+      animation: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      text-align: center; padding: 2rem 1rem 2.5rem;
+      color: var(--text-muted); font-size: 0.9rem;
+    }
+    .footer a { color: var(--accent-dark); font-weight: 600; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .edu-grid { grid-template-columns: 1fr; }
+      .nav__links { display: none; }          /* keep nav tidy on tiny screens */
+      .nav__links.is-open { display: flex; width: 100%; }
+      .nav__toggle { display: inline-flex; }
+    }
+
+    /* Hamburger toggle — hidden on desktop */
+    .nav__toggle {
+      display: none; background: none; border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 0.45rem 0.6rem; cursor: pointer; color: var(--text);
+    }
+
+    /* ============================================================
+       REDUCED MOTION — skip animations
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      /* Vangnet: alle reveal-/entree-states meteen op hun eindwaarde */
+      .anim-ok .tl-item, .anim-ok .sidebar > *, .anim-ok .contact-list li { opacity: 1 !important; transform: none !important; }
+      .anim-ok .timeline::before, .anim-ok .tl-item::before,
+      .anim-ok .section-head h2::after { transform: none !important; }
+      .typed-caret { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== STICKY NAV ===================== -->
+  <header class="nav">
+    <nav class="nav__inner" aria-label="Hoofdnavigatie">
+      <a href="#top" class="nav__brand">Sophie <span>Bakker</span></a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="navlinks" aria-label="Menu openen">☰</button>
+
+      <div class="nav__links" id="navlinks">
+        <a href="#over">Over</a>
+        <a href="#ervaring">Ervaring</a>
+        <a href="#vaardigheden">Vaardigheden</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="btn" download>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+          Download CV
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell" id="top">
+    <div class="layout">
+
+      <!-- ===================== SIDEBAR ===================== -->
+      <aside class="sidebar">
+        <img class="sidebar__photo"
+             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80"
+             alt="Portretfoto van Sophie Bakker, glimlachend." />
+        <h1 class="sidebar__name">Sophie Bakker</h1>
+        <!-- Typewriter: screenreaders krijgen de vaste titel, het typen is decoratief -->
+        <p class="sidebar__role">
+          <span class="visually-hidden">Front-end Developer</span>
+          <span id="typed-role" aria-hidden="true">Front-end Developer</span><span class="typed-caret" aria-hidden="true"></span>
+        </p>
+
+        <!-- Socials -->
+        <div class="socials" aria-label="Sociale media">
+          <a href="#" aria-label="LinkedIn-profiel">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4 0 4.74 2.5 4.74 5.8V21h-4v-5.3c0-1.27-.02-2.9-1.78-2.9-1.78 0-2.05 1.38-2.05 2.8V21H9z"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub-profiel">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="Persoonlijke website">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          </a>
+        </div>
+
+        <!-- Contact -->
+        <div class="sidebar__group">
+          <p class="sidebar__title">Contact</p>
+          <ul class="contact-list">
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+              <a href="mailto:sophie.bakker@example.nl">sophie.bakker@example.nl</a>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+              <a href="tel:+31612345678">+31 6 1234 5678</a>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <span>Utrecht, Nederland</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Skills with animated bars -->
+        <div class="sidebar__group" id="vaardigheden">
+          <p class="sidebar__title">Vaardigheden</p>
+
+          <div class="skill">
+            <div class="skill__head"><span>HTML &amp; CSS</span><span>95%</span></div>
+            <div class="bar"><div class="bar__fill" data-width="95%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill__head"><span>JavaScript &amp; TypeScript</span><span>90%</span></div>
+            <div class="bar"><div class="bar__fill" data-width="90%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill__head"><span>React &amp; Vue</span><span>88%</span></div>
+            <div class="bar"><div class="bar__fill" data-width="88%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill__head"><span>Toegankelijkheid (a11y)</span><span>85%</span></div>
+            <div class="bar"><div class="bar__fill" data-width="85%"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill__head"><span>UI/UX &amp; Figma</span><span>80%</span></div>
+            <div class="bar"><div class="bar__fill" data-width="80%"></div></div>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="sidebar__group">
+          <p class="sidebar__title">Talen</p>
+          <ul class="lang-list">
+            <li><span>Nederlands</span><span>Moedertaal</span></li>
+            <li><span>Engels</span><span>Vloeiend</span></li>
+            <li><span>Duits</span><span>Goed</span></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- ===================== MAIN CONTENT ===================== -->
+      <div class="main">
+
+        <!-- Hero / intro -->
+        <section class="card" id="over" aria-labelledby="over-title">
+          <div class="section-head"><span class="dot" aria-hidden="true"></span><h2 id="over-title">Over mij</h2></div>
+          <p class="hero-pitch">Ik bouw snelle, toegankelijke en mooie webinterfaces — met oog voor detail en de gebruiker voorop.</p>
+          <p>
+            Mijn naam is Sophie Bakker en ik ben een gepassioneerde Front-end Developer met ruim zeven jaar
+            ervaring in het bouwen van moderne webapplicaties. Ik vertaal complexe ontwerpen naar pixel-perfecte,
+            performante interfaces en geloof sterk in schone code, toegankelijkheid en nauwe samenwerking met
+            designers en backend-developers. In mijn vrije tijd draag ik bij aan open-source projecten en geef ik
+            workshops over moderne CSS.
+          </p>
+          <div class="hero-tags" aria-label="Kernwoorden">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Toegankelijkheid</span>
+            <span class="tag">Design Systems</span>
+            <span class="tag">Performance</span>
+          </div>
+        </section>
+
+        <!-- Experience timeline -->
+        <section class="card" id="ervaring" aria-labelledby="erv-title">
+          <div class="section-head"><span class="dot" aria-hidden="true"></span><h2 id="erv-title">Werkervaring</h2></div>
+          <div class="timeline">
+            <div class="tl-item">
+              <span class="tl-period">2022 — Heden</span>
+              <h3 class="tl-role">Senior Front-end Developer</h3>
+              <p class="tl-company">Coolblue · Rotterdam</p>
+              <p>Leid de ontwikkeling van het herbruikbare design system en begeleid junior developers. Verbeterde de laadtijd van de checkout met 40% door slimme code-splitting en image-optimalisatie.</p>
+            </div>
+            <div class="tl-item">
+              <span class="tl-period">2019 — 2022</span>
+              <h3 class="tl-role">Front-end Developer</h3>
+              <p class="tl-company">Mollie · Amsterdam</p>
+              <p>Ontwikkelde dashboards en betaalcomponenten in React &amp; TypeScript. Werkte nauw samen met UX om WCAG-conforme, internationaal bruikbare interfaces te realiseren.</p>
+            </div>
+            <div class="tl-item">
+              <span class="tl-period">2017 — 2019</span>
+              <h3 class="tl-role">Web Developer</h3>
+              <p class="tl-company">Digital Natives · Utrecht</p>
+              <p>Bouwde maatwerk websites en webshops voor uiteenlopende klanten met een focus op responsive design, SEO en onderhoudbare code.</p>
+            </div>
+            <div class="tl-item">
+              <span class="tl-period">2016 — 2017</span>
+              <h3 class="tl-role">Junior Developer (stage)</h3>
+              <p class="tl-company">Bakkers Digital · Utrecht</p>
+              <p>Eerste stappen in de webwereld: HTML, CSS en JavaScript voor kleine ondernemers, plus ondersteuning bij het opzetten van een component-bibliotheek.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="card" aria-labelledby="edu-title">
+          <div class="section-head"><span class="dot" aria-hidden="true"></span><h2 id="edu-title">Opleiding</h2></div>
+          <div class="edu-grid">
+            <div class="edu">
+              <span class="yr">2013 — 2016</span>
+              <h3>HBO Communication &amp; Multimedia Design</h3>
+              <p>Hogeschool Utrecht · Bachelor (cum laude)</p>
+            </div>
+            <div class="edu">
+              <span class="yr">2020</span>
+              <h3>Certificering Web Accessibility</h3>
+              <p>Deque University · WCAG 2.1 Specialist</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services / Wat ik bied -->
+        <section class="card" aria-labelledby="svc-title">
+          <div class="section-head"><span class="dot" aria-hidden="true"></span><h2 id="svc-title">Wat ik bied</h2></div>
+          <div class="services-grid">
+            <div class="service">
+              <div class="service__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 8-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/></svg></div>
+              <h3>Webontwikkeling</h3>
+              <p>Moderne, schaalbare front-ends met React, Vue of vanilla JS — schoon en onderhoudbaar.</p>
+            </div>
+            <div class="service">
+              <div class="service__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+              <h3>Performance</h3>
+              <p>Snelle laadtijden en hoge Lighthouse-scores door optimalisatie van assets en code.</p>
+            </div>
+            <div class="service">
+              <div class="service__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></div>
+              <h3>Toegankelijkheid</h3>
+              <p>WCAG-conforme interfaces die voor iedereen werken, getest met echte hulpmiddelen.</p>
+            </div>
+            <div class="service">
+              <div class="service__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+              <h3>Design Systems</h3>
+              <p>Consistente component-bibliotheken die teams sneller en uniformer laten bouwen.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="card" id="contact" aria-labelledby="con-title">
+          <div class="section-head"><span class="dot" aria-hidden="true"></span><h2 id="con-title">Neem contact op</h2></div>
+          <div class="contact-grid">
+            <ul class="contact-info">
+              <li>
+                <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+                <span><strong>E-mail</strong><a href="mailto:sophie.bakker@example.nl">sophie.bakker@example.nl</a></span>
+              </li>
+              <li>
+                <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+                <span><strong>Telefoon</strong><a href="tel:+31612345678">+31 6 1234 5678</a></span>
+              </li>
+              <li>
+                <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+                <span><strong>Locatie</strong><span>Utrecht, Nederland</span></span>
+              </li>
+            </ul>
+
+            <form id="contact-form" novalidate>
+              <div class="field">
+                <label for="naam">Naam</label>
+                <input type="text" id="naam" name="naam" autocomplete="name" placeholder="Jouw naam" required />
+              </div>
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="jouw@email.nl" required />
+              </div>
+              <div class="field">
+                <label for="bericht">Bericht</label>
+                <textarea id="bericht" name="bericht" placeholder="Waarmee kan ik je helpen?" required></textarea>
+              </div>
+              <button type="submit" class="btn">Verstuur bericht</button>
+              <p class="form-note" id="form-status" role="status" aria-live="polite">Dit formulier is een demonstratie en verstuurt geen gegevens.</p>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <p>© <span id="year"></span> Sophie Bakker · Gemaakt met liefde voor het web ·
+      <a href="#top">Terug naar boven ↑</a></p>
+  </footer>
+
+  <script>
+    /* ============================================================
+       0. Animatie-opt-in
+          Alleen zonder 'prefers-reduced-motion' krijgt de pagina
+          de .anim-ok klasse; alle reveal-/entree-styles hangen
+          daaraan, zodat alles zonder animatie gewoon zichtbaar is.
+       ============================================================ */
+    var PREFERS_REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!PREFERS_REDUCE) document.documentElement.classList.add("anim-ok");
+
+    /* ============================================================
+       1. Footer year
+       ============================================================ */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ============================================================
+       1b. Typewriter-effect voor de professionele titel
+           Typt afwisselend drie titels in een rustige loop.
+           Reduced motion: statische eerste titel, geen caret.
+       ============================================================ */
+    (function () {
+      var el = document.getElementById("typed-role");
+      var caret = document.querySelector(".typed-caret");
+      if (!el) return;
+
+      var titles = ["Front-end Developer", "UI Engineer", "Design System Specialist"];
+
+      if (PREFERS_REDUCE) {
+        el.textContent = titles[0];
+        if (caret) caret.style.display = "none";
+        return;
+      }
+
+      var titleIdx = 0, charIdx = el.textContent.length, deleting = true;
+
+      function step() {
+        var word = titles[titleIdx];
+        if (!deleting) {
+          charIdx++;
+          el.textContent = word.slice(0, charIdx);
+          if (charIdx === word.length) {        // klaar met typen → pauze
+            deleting = true;
+            setTimeout(step, 2000);
+          } else {
+            setTimeout(step, 70);
+          }
+        } else {
+          charIdx--;
+          el.textContent = word.slice(0, charIdx);
+          if (charIdx === 0) {                  // leeg → volgende titel
+            deleting = false;
+            titleIdx = (titleIdx + 1) % titles.length;
+            setTimeout(step, 450);
+          } else {
+            setTimeout(step, 40);
+          }
+        }
+      }
+      // Start met de bestaande titel in beeld; na een pauze begint de loop.
+      setTimeout(step, 2200);
+    })();
+
+    /* ============================================================
+       2. Mobile nav toggle (hamburger)
+       ============================================================ */
+    (function () {
+      var toggle = document.querySelector(".nav__toggle");
+      var links = document.getElementById("navlinks");
+      if (!toggle || !links) return;
+      toggle.addEventListener("click", function () {
+        var open = links.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+      });
+      // Close menu after clicking a link (mobile)
+      links.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          links.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    })();
+
+    /* ============================================================
+       3. Animated skill bars via IntersectionObserver
+          (respects prefers-reduced-motion)
+       ============================================================ */
+    (function () {
+      var fills = document.querySelectorAll(".bar__fill");
+
+      // Reduced motion of geen IO: breedtes en percentages staan
+      // direct op hun eindwaarde (de labels bevatten die al).
+      if (PREFERS_REDUCE || !("IntersectionObserver" in window)) {
+        fills.forEach(function (f) { f.style.width = f.getAttribute("data-width"); });
+        return;
+      }
+
+      // Percentage telt op via rAF, parallel aan de balkvulling.
+      function countUp(label, target, delay, duration) {
+        var start = null;
+        function tick(now) {
+          if (start === null) start = now;
+          var t = (now - start - delay) / duration;
+          if (t < 0) { requestAnimationFrame(tick); return; }   // wacht op stagger-delay
+          if (t > 1) t = 1;
+          var eased = 1 - Math.pow(1 - t, 5);                   // easeOutQuint, sluit aan op de balk
+          label.textContent = Math.round(eased * target) + "%";
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      var observer = new IntersectionObserver(function (entries, obs) {
+        // Balken die samen in beeld komen krijgen ~100ms stagger.
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (entry, i) {
+          var el = entry.target;
+          var delay = i * 100;
+          el.style.transitionDelay = delay + "ms";
+          el.style.width = el.getAttribute("data-width");
+
+          var skill = el.closest(".skill");
+          var label = skill && skill.querySelector(".skill__head span:last-child");
+          var target = parseInt(el.getAttribute("data-width"), 10);
+          if (label && !isNaN(target)) countUp(label, target, delay, 1100);
+
+          obs.unobserve(el); // animate once
+        });
+      }, { threshold: 0.4 });
+
+      fills.forEach(function (f) { observer.observe(f); });
+    })();
+
+    /* ============================================================
+       4. Demo contact form handling (non-functional)
+       ============================================================ */
+    (function () {
+      var form = document.getElementById("contact-form");
+      var status = document.getElementById("form-status");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          status.classList.remove("form-note--ok");
+          status.textContent = "Vul alle velden in om door te gaan.";
+          return;
+        }
+        status.textContent = "Bedankt voor je bericht! Ik neem snel contact met je op. (demo)";
+        // Herstart de fade-up animatie bij herhaald versturen
+        status.classList.remove("form-note--ok");
+        void status.offsetWidth; // reflow → animatie opnieuw
+        status.classList.add("form-note--ok");
+        form.reset();
+      });
+    })();
+
+    /* ============================================================
+       5. Scroll-reveals: tijdlijn-items, lijn en sectiekoppen
+          (transform/opacity-only; één keer per element)
+       ============================================================ */
+    (function () {
+      if (PREFERS_REDUCE || !("IntersectionObserver" in window)) return;
+
+      var targets = document.querySelectorAll(".timeline, .tl-item, .section-head");
+      var observer = new IntersectionObserver(function (entries, obs) {
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (entry, i) {
+          // Items die tegelijk in beeld komen, verschijnen licht getrapt.
+          if (entry.target.classList.contains("tl-item")) {
+            entry.target.style.transitionDelay = (i * 110) + "ms";
+          }
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target); // reveal once
+        });
+      }, { threshold: 0.15 });
+
+      targets.forEach(function (t) { observer.observe(t); });
+    })();
+
+    /* ============================================================
+       6. Scroll-spy: navigatielink van de zichtbare sectie oplichten
+          (sidebar-sectie telt alleen mee als de sidebar niet sticky
+          is, d.w.z. op smalle schermen — anders zou die altijd winnen)
+       ============================================================ */
+    (function () {
+      if (!("IntersectionObserver" in window)) return;
+
+      var links = document.querySelectorAll('.nav__links a[href^="#"]:not(.btn)');
+      var map = {};       // sectie-id → navlink
+      var sections = [];
+      links.forEach(function (a) {
+        var id = a.getAttribute("href").slice(1);
+        var sec = id && document.getElementById(id);
+        if (sec) { map[id] = a; sections.push(sec); }
+      });
+      if (!sections.length) return;
+
+      var inView = {};    // sectie-id → momenteel in de "kijkband"
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { inView[entry.target.id] = entry.isIntersecting; });
+
+        var narrow = window.matchMedia("(max-width: 900px)").matches;
+        var activeId = null;
+        sections.forEach(function (sec) {
+          if (!inView[sec.id] || activeId) return;
+          var inSidebar = sec.closest(".sidebar") !== null;
+          if (inSidebar && !narrow) return;   // sticky sidebar overslaan op desktop
+          activeId = sec.id;
+        });
+        if (!activeId) return;                 // niets in band: huidige markering behouden
+
+        links.forEach(function (a) { a.classList.toggle("is-active", map[activeId] === a); });
+      }, { rootMargin: "-30% 0px -55% 0px" });
+
+      sections.forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
+</body>
+</html>

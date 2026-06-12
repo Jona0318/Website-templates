@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUMO — Online Webshop voor Mode & Lifestyle</title>
+  <meta name="description" content="Ontdek de nieuwe collectie bij LUMO. Gratis verzending vanaf €50, 30 dagen retour en veilig betalen." />
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+       ============================================================ */
+    :root {
+      --color-bg: #ffffff;
+      --color-surface: #f7f7f8;
+      --color-ink: #111111;
+      --color-ink-soft: #555555;
+      --color-line: #e6e6e8;
+      --color-accent: #ff4d4d;      /* sale / pop color */
+      --color-accent-ink: #ffffff;
+      --color-btn: #111111;          /* strong black buttons */
+      --color-btn-ink: #ffffff;
+
+      --font-sans: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.10);
+
+      --maxw: 1240px;
+      --gap: clamp(1rem, 2.5vw, 2rem);
+
+      /* fluid type scale */
+      --fs-xs: clamp(0.72rem, 0.7rem + 0.2vw, 0.8rem);
+      --fs-sm: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+      --fs-base: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+      --fs-lg: clamp(1.15rem, 1rem + 0.7vw, 1.4rem);
+      --fs-xl: clamp(1.6rem, 1.2rem + 2vw, 2.6rem);
+      --fs-2xl: clamp(2.2rem, 1.5rem + 4vw, 4.2rem);
+    }
+
+    /* ============================================================
+       RESET / BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--fs-base);
+      line-height: 1.6;
+      color: var(--color-ink);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3 { line-height: 1.15; margin: 0 0 0.4em; font-weight: 600; }
+
+    ul { list-style: none; margin: 0; padding: 0; }
+
+    button { font-family: inherit; cursor: pointer; }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 4vw, 2.5rem);
+    }
+
+    /* Accessible focus state */
+    :focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap; border: 0;
+    }
+
+    .section { padding-block: clamp(2.5rem, 6vw, 5rem); }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+      flex-wrap: wrap;
+    }
+    .section-head h2 { font-size: var(--fs-xl); margin: 0; }
+    .section-head a { font-size: var(--fs-sm); color: var(--color-ink-soft); border-bottom: 1px solid var(--color-line); }
+    .section-head a:hover { color: var(--color-ink); border-color: var(--color-ink); }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      border: 1px solid var(--color-btn);
+      border-radius: 999px;
+      background: var(--color-btn);
+      color: var(--color-btn-ink);
+      transition: transform .15s ease, background .2s ease, color .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--color-ink);
+      border-color: var(--color-ink);
+    }
+    .btn--ghost:hover { background: var(--color-ink); color: #fff; }
+    .btn--block { width: 100%; }
+
+    /* ============================================================
+       ANNOUNCEMENT BAR
+       ============================================================ */
+    .announce {
+      background: var(--color-ink);
+      color: #fff;
+      text-align: center;
+      font-size: var(--fs-xs);
+      letter-spacing: .03em;
+      padding: 0.55rem 1rem;
+    }
+    .announce strong { color: var(--color-accent); }
+    /* Rotating USP message: fades out/in on swap (JS) */
+    .announce-msg { display: inline-block; transition: opacity .35s ease; }
+    .announce-msg.fading { opacity: 0; }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-line);
+      transition: box-shadow .3s ease;
+    }
+    /* Soft shadow once the page is scrolled (JS toggles .scrolled) */
+    .site-header.scrolled { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-height: 68px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.45rem;
+      letter-spacing: .12em;
+      margin-right: auto;
+    }
+    .logo span { color: var(--color-accent); }
+
+    .main-nav ul {
+      display: flex;
+      gap: clamp(1rem, 2.5vw, 2.2rem);
+    }
+    .main-nav a {
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      padding: 0.4rem 0;
+      position: relative;
+    }
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 2px;
+      background: var(--color-ink);
+      transition: width .25s ease;
+    }
+    .main-nav a:hover::after { width: 100%; }
+    .main-nav .sale-link { color: var(--color-accent); }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-left: auto;
+    }
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px; height: 42px;
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+      color: var(--color-ink);
+      position: relative;
+      transition: background .2s ease;
+    }
+    .icon-btn:hover { background: var(--color-surface); }
+    .icon-btn svg { width: 22px; height: 22px; transition: transform .2s cubic-bezier(.34,1.56,.64,1); }
+    /* Cart icon micro-interaction on hover */
+    .icon-btn:hover svg { transform: translateY(-2px) scale(1.08); }
+
+    /* Cart badge */
+    .cart-badge {
+      position: absolute;
+      top: 4px; right: 2px;
+      min-width: 18px; height: 18px;
+      padding: 0 4px;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 18px;
+      text-align: center;
+      border-radius: 999px;
+      transform: scale(1);
+    }
+    /* Pop/bounce keyframe: badge always settles back to scale(1) */
+    .cart-badge.bump { animation: cartPop .5s cubic-bezier(.34,1.56,.64,1); }
+    @keyframes cartPop {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+
+    /* Flying dot: product → cart (created/removed by JS, transform-only) */
+    .fly-dot {
+      position: fixed;
+      width: 14px; height: 14px;
+      margin: -7px 0 0 -7px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      z-index: 100;
+      pointer-events: none;
+      will-change: transform;
+      transition: transform .6s cubic-bezier(.22,.61,.36,1), opacity .6s ease;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      width: 42px; height: 42px;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+    }
+    .hamburger:hover { background: var(--color-surface); }
+    .hamburger svg { width: 24px; height: 24px; }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      position: relative;
+      min-height: clamp(420px, 60vh, 640px);
+      display: grid;
+      align-items: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 60%, transparent 100%),
+        url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      z-index: 0;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-content { max-width: 560px; }
+
+    /* Hero entrance: image slow zoom-out + staggered fade-up content */
+    .hero::before { animation: heroZoom 12s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes heroZoom {
+      from { transform: scale(1.08); }
+      to   { transform: scale(1); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow,
+    .hero h1,
+    .hero p,
+    .hero-content .btn { animation: fadeUp .7s cubic-bezier(.22,1,.36,1) backwards; }
+    .hero h1            { animation-delay: .12s; }
+    .hero p             { animation-delay: .24s; }
+    .hero-content .btn  { animation-delay: .36s; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: var(--fs-xs);
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      background: var(--color-accent);
+      color: #fff;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .hero p {
+      font-size: var(--fs-lg);
+      font-weight: 300;
+      margin-bottom: 1.6rem;
+      max-width: 42ch;
+    }
+
+    /* ============================================================
+       CATEGORY TILES
+       ============================================================ */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--gap);
+    }
+    .cat-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      box-shadow: var(--shadow-sm);
+      isolation: isolate;
+    }
+    .cat-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .cat-card:hover img { transform: scale(1.06); }
+    .cat-card::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,0) 55%);
+    }
+    .cat-card .cat-label {
+      position: absolute;
+      left: 1rem; bottom: 1rem;
+      z-index: 1;
+      color: #fff;
+      transition: transform .35s ease;
+    }
+    /* Label lifts slightly + accent underline slides in on hover */
+    .cat-card:hover .cat-label { transform: translateY(-4px); }
+    .cat-card .cat-label strong {
+      display: block;
+      font-size: var(--fs-lg);
+      font-weight: 600;
+      position: relative;
+      width: max-content;
+      padding-bottom: 2px;
+    }
+    .cat-card .cat-label strong::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 2px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .cat-card:hover .cat-label strong::after { transform: scaleX(1); }
+    .cat-card .cat-label span {
+      font-size: var(--fs-xs);
+      opacity: .9;
+    }
+
+    /* ============================================================
+       PRODUCT GRID
+       ============================================================ */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--gap);
+    }
+    .product-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .product-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+
+    .product-media {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: var(--color-surface);
+      overflow: hidden;
+    }
+    .product-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .product-card:hover .product-media img { transform: scale(1.05); }
+
+    /* Quick-add bar: slides up over the image bottom on hover.
+       Desktop (precise hover) only — on touch the normal button stays. */
+    .quick-add {
+      position: absolute;
+      left: 10px; right: 10px; bottom: 10px;
+      z-index: 2;
+      display: none;
+      padding: 0.65rem 1rem;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      border: none;
+      border-radius: 999px;
+      background: rgba(17, 17, 17, 0.92);
+      color: #fff;
+      opacity: 0;
+      transform: translateY(130%);
+      transition: transform .3s cubic-bezier(.22,1,.36,1), opacity .3s ease, background .2s ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .quick-add { display: block; }
+    }
+    .product-card:hover .quick-add { transform: translateY(0); opacity: 1; }
+    .quick-add:hover { background: var(--color-accent); }
+
+    .badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      letter-spacing: .03em;
+    }
+    .badge--new {
+      background: var(--color-ink);
+    }
+    /* Gentle pulse on sale badges only (not "Nieuw") */
+    .badge:not(.badge--new) { animation: badgePulse 2s ease-in-out infinite; }
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.06); }
+    }
+
+    .product-body {
+      padding: 0.9rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      flex: 1;
+    }
+    .product-cat {
+      font-size: var(--fs-xs);
+      color: var(--color-ink-soft);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .product-name {
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      margin: 0;
+    }
+    .product-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+    .price-now { font-weight: 600; font-size: var(--fs-base); }
+    .price-now.sale { color: var(--color-accent); }
+    .price-old {
+      color: var(--color-ink-soft);
+      text-decoration: line-through;
+      font-size: var(--fs-sm);
+    }
+    .add-btn {
+      margin-top: 0.4rem;
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      border: none;
+      border-radius: 999px;
+      background: var(--color-btn);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: background .2s ease, transform .15s ease;
+    }
+    .add-btn:hover { background: var(--color-accent); transform: translateY(-2px); }
+    .add-btn svg { width: 16px; height: 16px; }
+    /* Success flash after adding to cart (JS toggles .added for ~1.2s) */
+    .add-btn.added,
+    .add-btn.added:hover,
+    .quick-add.added,
+    .quick-add.added:hover { background: #1f9d55; color: #fff; }
+
+    /* ============================================================
+       USP STRIP
+       ============================================================ */
+    .usp {
+      background: var(--color-surface);
+      border-block: 1px solid var(--color-line);
+    }
+    .usp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--gap);
+    }
+    .usp-item {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .usp-item svg {
+      width: 34px; height: 34px;
+      flex: none;
+      color: var(--color-ink);
+      transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+    }
+    /* Subtle icon bounce on hover */
+    .usp-item:hover svg { transform: translateY(-4px) scale(1.08); }
+    .usp-item strong { display: block; font-size: var(--fs-sm); }
+    .usp-item span { font-size: var(--fs-xs); color: var(--color-ink-soft); }
+
+    /* ============================================================
+       NEWSLETTER
+       ============================================================ */
+    .newsletter {
+      background: var(--color-ink);
+      color: #fff;
+      text-align: center;
+    }
+    .newsletter h2 { font-size: var(--fs-xl); }
+    .newsletter p { color: #cfcfcf; max-width: 50ch; margin-inline: auto; }
+    .news-form {
+      display: flex;
+      gap: 0.6rem;
+      max-width: 480px;
+      margin: 1.6rem auto 0;
+      flex-wrap: wrap;
+    }
+    .news-form input {
+      flex: 1 1 220px;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid #444;
+      background: #1c1c1c;
+      color: #fff;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: var(--fs-sm);
+    }
+    .news-form input::placeholder { color: #999; }
+    .news-form .btn {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+    .news-note {
+      font-size: var(--fs-xs);
+      color: #9a9a9a;
+      margin-top: 0.8rem;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-line);
+      padding-block: clamp(2.5rem, 5vw, 4rem) 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: var(--gap);
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .logo { display: inline-block; margin-bottom: 0.6rem; }
+    .footer-brand p { font-size: var(--fs-sm); color: var(--color-ink-soft); max-width: 32ch; }
+    .footer-col h3 {
+      font-size: var(--fs-sm);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 0.9rem;
+    }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a {
+      font-size: var(--fs-sm);
+      color: var(--color-ink-soft);
+    }
+    .footer-col a:hover { color: var(--color-ink); }
+
+    .socials {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .socials a {
+      width: 38px; height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-line);
+      border-radius: 50%;
+      color: var(--color-ink);
+      transition: background .2s ease, color .2s ease;
+    }
+    .socials a:hover { background: var(--color-ink); color: #fff; }
+    .socials svg { width: 18px; height: 18px; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-line);
+    }
+    .footer-bottom p { font-size: var(--fs-xs); color: var(--color-ink-soft); margin: 0; }
+    .pay-methods {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .pay-methods span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: 0.35rem 0.6rem;
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-sm);
+      color: var(--color-ink-soft);
+      background: var(--color-surface);
+    }
+
+    /* ============================================================
+       MOBILE NAV / RESPONSIVE
+       ============================================================ */
+    @media (max-width: 860px) {
+      .hamburger { display: inline-flex; }
+      .main-nav {
+        position: fixed;
+        inset: 0 0 0 auto;
+        width: min(78vw, 320px);
+        background: #fff;
+        box-shadow: var(--shadow-md);
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        padding: 5rem 1.5rem 2rem;
+        z-index: 60;
+      }
+      .main-nav.open { transform: translateX(0); }
+      .main-nav ul { flex-direction: column; gap: 0.4rem; }
+      .main-nav a { display: block; font-size: var(--fs-lg); padding: 0.6rem 0; border-bottom: 1px solid var(--color-line); }
+      .main-nav a::after { display: none; }
+
+      .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.4);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s ease;
+        z-index: 55;
+      }
+      .nav-overlay.show { opacity: 1; visibility: visible; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 540px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       SCROLL REVEALS
+       .reveal is added by JS only (no-JS / reduced-motion users see
+       everything immediately). --rd carries the per-item stagger.
+       ============================================================ */
+    .reveal { opacity: 0; }
+    .reveal.in {
+      opacity: 1;
+      animation: fadeUp .6s cubic-bezier(.22,1,.36,1) var(--rd, 0s) backwards;
+    }
+
+    /* ============================================================
+       MOTION PREFERENCES
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== ANNOUNCEMENT BAR ===================== -->
+  <div class="announce" role="region" aria-label="Aanbieding">
+    <!-- Rotates between USP messages (JS), pauses on hover -->
+    <span class="announce-msg" id="announceMsg">🚚 <strong>Gratis verzending</strong> vanaf €50</span>
+  </div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="LUMO homepagina">LU<span>MO</span></a>
+
+      <!-- Primary navigation -->
+      <nav class="main-nav" id="mainNav" aria-label="Hoofdmenu">
+        <ul>
+          <li><a href="#">Dames</a></li>
+          <li><a href="#">Heren</a></li>
+          <li><a href="#">Nieuw</a></li>
+          <li><a href="#" class="sale-link">Sale</a></li>
+        </ul>
+      </nav>
+
+      <!-- Icon actions -->
+      <div class="header-icons">
+        <button class="icon-btn" aria-label="Zoeken">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+        <button class="icon-btn" aria-label="Mijn account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="cartBtn" aria-label="Winkelmand, 0 producten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/>
+          </svg>
+          <span class="cart-badge" id="cartBadge" aria-hidden="true">0</span>
+        </button>
+
+        <!-- Mobile hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mainNav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="navOverlay" hidden></div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-label="Promotie nieuwe collectie">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Lente / Zomer 2026</span>
+        <h1>Nieuwe collectie</h1>
+        <p>Tijdloze essentials en frisse statement pieces. Ontdek de stijlen die dit seizoen het verschil maken.</p>
+        <a href="#producten" class="btn">Shop nu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CATEGORY TILES ===================== -->
+  <section class="section container" aria-label="Categorieën">
+    <div class="section-head">
+      <h2>Shop per categorie</h2>
+      <a href="#">Alle categorieën</a>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card" href="#">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80" alt="Damesmode collectie" loading="lazy" />
+        <span class="cat-label"><strong>Dames</strong><span>240+ artikelen</span></span>
+      </a>
+      <a class="cat-card" href="#">
+        <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=600&q=80" alt="Herenmode collectie" loading="lazy" />
+        <span class="cat-label"><strong>Heren</strong><span>180+ artikelen</span></span>
+      </a>
+      <a class="cat-card" href="#">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Accessoires collectie" loading="lazy" />
+        <span class="cat-label"><strong>Accessoires</strong><span>95+ artikelen</span></span>
+      </a>
+      <a class="cat-card" href="#">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Schoenen collectie" loading="lazy" />
+        <span class="cat-label"><strong>Schoenen</strong><span>120+ artikelen</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== PRODUCT GRID ===================== -->
+  <section class="section container" id="producten" aria-label="Uitgelichte producten">
+    <div class="section-head">
+      <h2>Populair deze week</h2>
+      <a href="#">Bekijk alles</a>
+    </div>
+    <div class="product-grid" id="productGrid">
+
+      <!-- Product 1 (sale) -->
+      <article class="product-card">
+        <div class="product-media">
+          <span class="badge">Sale</span>
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80" alt="Wit basic T-shirt van biologisch katoen" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Dames</span>
+          <h3 class="product-name">Basic T-shirt — Wit</h3>
+          <div class="product-price">
+            <span class="price-now sale">€19,95</span>
+            <span class="price-old">€29,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Basic T-shirt Wit in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+      <!-- Product 2 (new) -->
+      <article class="product-card">
+        <div class="product-media">
+          <span class="badge badge--new">Nieuw</span>
+          <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80" alt="Denim jas in lichtblauwe wassing" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Heren</span>
+          <h3 class="product-name">Denim Jas — Lichtblauw</h3>
+          <div class="product-price">
+            <span class="price-now">€89,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Denim Jas Lichtblauw in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="product-card">
+        <div class="product-media">
+          <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=500&q=80" alt="Slim fit jeans in donkere wassing" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Heren</span>
+          <h3 class="product-name">Slim Fit Jeans</h3>
+          <div class="product-price">
+            <span class="price-now">€59,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Slim Fit Jeans in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+      <!-- Product 4 (sale) -->
+      <article class="product-card">
+        <div class="product-media">
+          <span class="badge">Sale</span>
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=500&q=80" alt="Gebreide trui in beige" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Dames</span>
+          <h3 class="product-name">Gebreide Trui — Beige</h3>
+          <div class="product-price">
+            <span class="price-now sale">€34,95</span>
+            <span class="price-old">€49,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Gebreide Trui Beige in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+      <!-- Product 5 -->
+      <article class="product-card">
+        <div class="product-media">
+          <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80" alt="Witte sneakers met minimalistisch design" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Schoenen</span>
+          <h3 class="product-name">Minimal Sneakers — Wit</h3>
+          <div class="product-price">
+            <span class="price-now">€79,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Minimal Sneakers Wit in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+      <!-- Product 6 (new) -->
+      <article class="product-card">
+        <div class="product-media">
+          <span class="badge badge--new">Nieuw</span>
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80" alt="Leren schoudertas in cognac" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Accessoires</span>
+          <h3 class="product-name">Leren Tas — Cognac</h3>
+          <div class="product-price">
+            <span class="price-now">€119,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Leren Tas Cognac in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+      <!-- Product 7 (sale) -->
+      <article class="product-card">
+        <div class="product-media">
+          <span class="badge">Sale</span>
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=500&q=80" alt="Zomerjurk met bloemenprint" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Dames</span>
+          <h3 class="product-name">Zomerjurk — Bloemen</h3>
+          <div class="product-price">
+            <span class="price-now sale">€44,95</span>
+            <span class="price-old">€64,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Zomerjurk Bloemen in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+      <!-- Product 8 -->
+      <article class="product-card">
+        <div class="product-media">
+          <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=500&q=80" alt="Klassiek wit overhemd" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Heren</span>
+          <h3 class="product-name">Klassiek Overhemd — Wit</h3>
+          <div class="product-price">
+            <span class="price-now">€49,95</span>
+          </div>
+          <button class="add-btn" data-add aria-label="Klassiek Overhemd Wit in winkelmand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            In winkelmand
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== USP STRIP ===================== -->
+  <section class="usp section" aria-label="Onze voordelen">
+    <div class="container usp-grid">
+      <div class="usp-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="1" y="6" width="14" height="11" rx="1"/><path d="M15 9h4l3 3v5h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>
+        <div><strong>Gratis verzending</strong><span>Vanaf €50 in NL &amp; BE</span></div>
+      </div>
+      <div class="usp-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg>
+        <div><strong>30 dagen retour</strong><span>Gratis &amp; eenvoudig</span></div>
+      </div>
+      <div class="usp-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div><strong>Veilig betalen</strong><span>iDEAL, creditcard &amp; meer</span></div>
+      </div>
+      <div class="usp-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v11H7l-3 3z"/><path d="M8 9h8M8 12h5"/></svg>
+        <div><strong>Klantenservice</strong><span>7 dagen per week</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section class="newsletter section" aria-label="Nieuwsbrief">
+    <div class="container">
+      <h2>Blijf op de hoogte</h2>
+      <p>Meld je aan voor onze nieuwsbrief en ontvang <strong>10% korting</strong> op je eerste bestelling, plus exclusieve aanbiedingen.</p>
+      <form class="news-form" id="newsForm" novalidate>
+        <label class="visually-hidden" for="newsEmail">E-mailadres</label>
+        <input type="email" id="newsEmail" name="email" placeholder="Jouw e-mailadres" required autocomplete="email" />
+        <button type="submit" class="btn">Aanmelden</button>
+      </form>
+      <p class="news-note" id="newsNote" role="status">Geen spam. Je kunt je altijd uitschrijven.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" aria-label="LUMO homepagina">LU<span>MO</span></a>
+          <p>Tijdloze mode &amp; lifestyle voor elke dag. Bewust gemaakt, eerlijk geprijsd.</p>
+          <div class="socials">
+            <a href="#" aria-label="LUMO op Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+            <a href="#" aria-label="LUMO op Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3.2V11H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.4.2-.5.6-.5z"/></svg>
+            </a>
+            <a href="#" aria-label="LUMO op TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 3c.3 2.2 1.7 3.8 3.9 4v3c-1.5 0-2.9-.5-4-1.3V16a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1v3.1a2.5 2.5 0 1 0 1.7 2.4V3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="#">Dames</a></li>
+            <li><a href="#">Heren</a></li>
+            <li><a href="#">Nieuw binnen</a></li>
+            <li><a href="#">Sale</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Service</h3>
+          <ul>
+            <li><a href="#">Verzending</a></li>
+            <li><a href="#">Retourneren</a></li>
+            <li><a href="#">Maattabel</a></li>
+            <li><a href="#">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Over LUMO</h3>
+          <ul>
+            <li><a href="#">Ons verhaal</a></li>
+            <li><a href="#">Duurzaamheid</a></li>
+            <li><a href="#">Werken bij</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> LUMO. Alle rechten voorbehouden.</p>
+        <div class="pay-methods" aria-label="Betaalmethoden">
+          <span>iDEAL</span>
+          <span>VISA</span>
+          <span>Mastercard</span>
+          <span>PayPal</span>
+          <span>Klarna</span>
+          <span>Apple&nbsp;Pay</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       1. MOBILE NAV TOGGLE
+       ============================================================ */
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var nav = document.getElementById('mainNav');
+      var overlay = document.getElementById('navOverlay');
+
+      function openNav() {
+        nav.classList.add('open');
+        overlay.hidden = false;
+        // allow display before transitioning opacity
+        requestAnimationFrame(function () { overlay.classList.add('show'); });
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Menu sluiten');
+      }
+      function closeNav() {
+        nav.classList.remove('open');
+        overlay.classList.remove('show');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Menu openen');
+        // hide overlay after transition
+        window.setTimeout(function () { overlay.hidden = true; }, 300);
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (nav.classList.contains('open')) { closeNav(); } else { openNav(); }
+      });
+      overlay.addEventListener('click', closeNav);
+
+      // Close menu when a nav link is clicked (mobile)
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') { closeNav(); }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('open')) { closeNav(); }
+      });
+    })();
+
+    /* ============================================================
+       1b. QUICK-ADD BAR — generate a hover "In winkelmand" button
+       over each product image. Runs BEFORE the cart script so the
+       new buttons are picked up by the same [data-add] handler.
+       (CSS only shows these on hover-capable desktop devices.)
+       ============================================================ */
+    (function () {
+      document.querySelectorAll('.product-card').forEach(function (card) {
+        var media = card.querySelector('.product-media');
+        var mainBtn = card.querySelector('.add-btn[data-add]');
+        if (!media || !mainBtn) return;
+        var quick = document.createElement('button');
+        quick.type = 'button';
+        quick.className = 'quick-add';
+        quick.setAttribute('data-add', '');
+        quick.setAttribute('aria-label', mainBtn.getAttribute('aria-label') || 'In winkelmand');
+        quick.setAttribute('tabindex', '-1'); // keyboard users use the always-visible button
+        quick.textContent = 'In winkelmand';
+        media.appendChild(quick);
+      });
+    })();
+
+    /* ============================================================
+       2. CART BADGE — increment on "In winkelmand"
+       (count logic unchanged; success state + fly-to-cart added)
+       ============================================================ */
+    (function () {
+      var count = 0;
+      var badge = document.getElementById('cartBadge');
+      var cartBtn = document.getElementById('cartBtn');
+      var buttons = document.querySelectorAll('[data-add]');
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Brief "✓ Toegevoegd" success flash on the clicked button (~1.2s)
+      function showAdded(btn) {
+        if (btn._resetTimer) { window.clearTimeout(btn._resetTimer); }
+        if (!btn._originalHTML) { btn._originalHTML = btn.innerHTML; }
+        btn.classList.add('added');
+        btn.innerHTML = '✓ Toegevoegd';
+        btn._resetTimer = window.setTimeout(function () {
+          btn.innerHTML = btn._originalHTML;
+          btn.classList.remove('added');
+          btn._resetTimer = null;
+        }, 1200);
+      }
+
+      // Small dot flies from the product image to the cart icon
+      function flyToCart(btn) {
+        if (reducedMotion) return;
+        var card = btn.closest ? btn.closest('.product-card') : null;
+        var source = (card && card.querySelector('.product-media')) || btn;
+        var from = source.getBoundingClientRect();
+        var to = cartBtn.getBoundingClientRect();
+        var startX = from.left + from.width / 2;
+        var startY = from.top + from.height / 2;
+        var dot = document.createElement('span');
+        dot.className = 'fly-dot';
+        dot.setAttribute('aria-hidden', 'true');
+        dot.style.left = startX + 'px';
+        dot.style.top = startY + 'px';
+        document.body.appendChild(dot);
+        // double rAF so the start position paints before transitioning
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            dot.style.transform = 'translate(' +
+              (to.left + to.width / 2 - startX) + 'px, ' +
+              (to.top + to.height / 2 - startY) + 'px) scale(0.3)';
+            dot.style.opacity = '0.4';
+          });
+        });
+        window.setTimeout(function () {
+          if (dot.parentNode) { dot.parentNode.removeChild(dot); }
+        }, 700);
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          count += 1;
+          badge.textContent = count;
+          // accessible label update
+          cartBtn.setAttribute('aria-label', 'Winkelmand, ' + count + ' product' + (count === 1 ? '' : 'en'));
+          // little bump animation
+          badge.classList.remove('bump');
+          // force reflow so the animation can replay
+          void badge.offsetWidth;
+          badge.classList.add('bump');
+          // premium feedback
+          showAdded(btn);
+          flyToCart(btn);
+        });
+      });
+    })();
+
+    /* ============================================================
+       3. NEWSLETTER — simple validation feedback
+       ============================================================ */
+    (function () {
+      var form = document.getElementById('newsForm');
+      var input = document.getElementById('newsEmail');
+      var note = document.getElementById('newsNote');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (input.validity.valid && input.value.trim() !== '') {
+          note.textContent = 'Bedankt! Je bent aangemeld. ✓';
+          form.reset();
+        } else {
+          note.textContent = 'Vul een geldig e-mailadres in.';
+          input.focus();
+        }
+      });
+    })();
+
+    /* ============================================================
+       4. ANNOUNCEMENT BAR — rotate USP messages every 4s
+       (fade swap, pauses on hover; fade is disabled automatically
+       by the prefers-reduced-motion CSS rule)
+       ============================================================ */
+    (function () {
+      var msg = document.getElementById('announceMsg');
+      if (!msg) return;
+      var messages = [
+        msg.innerHTML, // initial message from the HTML
+        '↩️ <strong>30 dagen bedenktijd</strong> — gratis retourneren',
+        '⚡ Voor <strong>22:00 besteld</strong>, morgen in huis'
+      ];
+      var index = 0;
+      var paused = false;
+      var bar = msg.parentElement;
+
+      bar.addEventListener('mouseenter', function () { paused = true; }, { passive: true });
+      bar.addEventListener('mouseleave', function () { paused = false; }, { passive: true });
+
+      window.setInterval(function () {
+        if (paused) return;
+        index = (index + 1) % messages.length;
+        msg.classList.add('fading');
+        window.setTimeout(function () {
+          msg.innerHTML = messages[index];
+          msg.classList.remove('fading');
+        }, 350);
+      }, 4000);
+    })();
+
+    /* ============================================================
+       5. HEADER SHADOW ON SCROLL (passive listener)
+       ============================================================ */
+    (function () {
+      var header = document.querySelector('.site-header');
+      var isScrolled = false;
+      function onScroll() {
+        var shouldShadow = window.scrollY > 8;
+        if (shouldShadow !== isScrolled) {
+          isScrolled = shouldShadow;
+          header.classList.toggle('scrolled', shouldShadow);
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    /* ============================================================
+       6. SCROLL REVEALS — category tiles, product cards & USP items
+       fade-up with a 60ms stagger per row group. The .reveal class
+       is only added here, so without JS (or with reduced motion)
+       everything stays visible.
+       ============================================================ */
+    (function () {
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion || !('IntersectionObserver' in window)) return;
+
+      var items = document.querySelectorAll('.cat-card, .product-card, .usp-item');
+      items.forEach(function (el) {
+        // stagger by position within the parent grid (60ms steps)
+        var siblingIndex = Array.prototype.indexOf.call(el.parentElement.children, el);
+        el.style.setProperty('--rd', (siblingIndex * 60) + 'ms');
+        el.classList.add('reveal');
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      items.forEach(function (el) { observer.observe(el); });
+    })();
+
+    /* ============================================================
+       7. CURRENT YEAR IN FOOTER
+       ============================================================ */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

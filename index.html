@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template Galerij — 16 kant-en-klare websites</title>
+  <meta name="description" content="Een verzameling van 16 kant-en-klare, responsive website-templates — waaronder 6 premium designs. Klik om elke template te bekijken." />
+  <link rel="icon" href="templates/01-business/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-card: #141a2e;
+      --text: #f3f4f6;
+      --muted: #9aa3b8;
+      --border: #26304b;
+      --accent: #6366f1;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background:
+        radial-gradient(60% 50% at 80% -10%, rgba(99,102,241,0.25), transparent),
+        radial-gradient(50% 50% at 0% 0%, rgba(6,182,212,0.18), transparent),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+
+    header.top { padding: 5rem 0 3rem; text-align: center; }
+    .badge {
+      display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: #c7d2fe;
+      background: rgba(99,102,241,.15); border: 1px solid var(--border);
+      padding: .4rem 1rem; border-radius: 999px; margin-bottom: 1.5rem;
+    }
+    header.top h1 {
+      font-size: clamp(2.2rem, 6vw, 3.75rem); font-weight: 900; line-height: 1.05;
+      letter-spacing: -.02em; margin-bottom: 1rem;
+    }
+    header.top h1 span {
+      background: linear-gradient(120deg, #818cf8, #22d3ee);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    header.top p { color: var(--muted); font-size: 1.15rem; max-width: 56ch; margin: 0 auto; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      padding-bottom: 4rem;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      display: flex; flex-direction: column;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      text-decoration: none; color: inherit;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    }
+    .thumb {
+      aspect-ratio: 16 / 10; display: grid; place-items: center;
+      position: relative; overflow: hidden;
+    }
+    .thumb .emoji { font-size: 2.75rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,.35)); }
+    .thumb .num {
+      position: absolute; top: .75rem; left: .85rem;
+      font-size: .8rem; font-weight: 800; color: rgba(255,255,255,.85);
+      background: rgba(0,0,0,.3); padding: .2rem .6rem; border-radius: 999px;
+      backdrop-filter: blur(4px);
+    }
+    .thumb .premium {
+      position: absolute; top: .75rem; right: .85rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+      color: #1a1a1a; background: linear-gradient(120deg, #f6d365, #fda085);
+      padding: .22rem .65rem; border-radius: 999px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.35);
+    }
+    .card-body { padding: 1.25rem 1.35rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
+    .card-body h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .3rem; }
+    .card-body p { color: var(--muted); font-size: .92rem; flex: 1; }
+    .tag {
+      display: inline-block; align-self: flex-start; margin-top: 1rem;
+      font-size: .8rem; font-weight: 600; color: #c7d2fe;
+      border: 1px solid var(--border); padding: .35rem .85rem; border-radius: 8px;
+      transition: background .2s ease, color .2s ease;
+    }
+    .card:hover .tag { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    footer.bottom {
+      border-top: 1px solid var(--border); padding: 2rem 0; text-align: center;
+      color: var(--muted); font-size: .9rem;
+    }
+    footer.bottom code {
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: .15rem .45rem; border-radius: 6px; color: #c7d2fe; font-size: .85rem;
+    }
+    a.src { color: #818cf8; text-decoration: none; }
+    a.src:hover { text-decoration: underline; }
+    :focus-visible { outline: 3px solid #22d3ee; outline-offset: 3px; }
+    ::selection { background: rgba(99,102,241,.45); color: #fff; }
+
+    /* --- Premium entrance & micro-interacties --- */
+    /* Header-elementen faden getrapt in bij laden */
+    .badge, header.top h1, header.top p {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise .8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    header.top h1 { animation-delay: .12s; }
+    header.top p  { animation-delay: .24s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+    /* Gradient in de titel verschuift langzaam */
+    header.top h1 span {
+      background-size: 200% 200%;
+      animation: rise .8s cubic-bezier(0.22,1,0.36,1) .12s forwards, gradientShift 8s ease-in-out 1s infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Kaarten onthullen met stagger zodra ze in beeld komen (JS zet .in) */
+    .card.reveal { opacity: 0; transform: translateY(26px); }
+    .card.reveal.in {
+      opacity: 1; transform: translateY(0);
+      transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
+      transition-delay: var(--d, 0s);
+    }
+    /* Hover-transform los van reveal-transitie houden */
+    .card.in { transition: transform .25s cubic-bezier(0.22,1,0.36,1), box-shadow .25s ease, border-color .25s ease; }
+
+    /* Emoji wiebelt subtiel bij hover van de kaart */
+    .thumb .emoji { transition: transform .35s cubic-bezier(0.34,1.56,0.64,1); }
+    .card:hover .thumb .emoji { transform: scale(1.18) rotate(-6deg); }
+
+    /* Pijl in de tag schuift bij hover */
+    .tag::after { content: ""; }
+    .card .tag { position: relative; }
+    .card:hover .tag { padding-right: 1.05rem; }
+
+    /* Glanzende sweep over de thumbnail bij hover */
+    .thumb::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%);
+      transform: translateX(-120%);
+      transition: transform .7s cubic-bezier(0.22,1,0.36,1);
+      pointer-events: none;
+    }
+    .card:hover .thumb::after { transform: translateX(120%); }
+
+    /* Reduced motion: alles direct zichtbaar, geen beweging */
+    @media (prefers-reduced-motion: reduce) {
+      .badge, header.top h1, header.top p, header.top h1 span { animation: none; opacity: 1; transform: none; }
+      .card.reveal { opacity: 1; transform: none; transition: none; }
+      .thumb::after { display: none; }
+      .thumb .emoji { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <span class="badge">16 kant-en-klare templates</span>
+      <h1>Template <span>Galerij</span></h1>
+      <p>Een verzameling complete, responsive website-templates — elk met een eigen stijl. Klik op een kaart om de template in een nieuw tabblad te openen.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+
+      <a class="card" href="templates/01-business/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#4f46e5,#06b6d4);">
+          <span class="num">01</span><span class="emoji">🏢</span>
+        </div>
+        <div class="card-body">
+          <h3>Bedrijf / Corporate</h3>
+          <p>Meerdere pagina's: home, over ons, diensten, contact. Met dark mode, prijzen en FAQ.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/02-portfolio/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#0d0d0f,#2a2a18);">
+          <span class="num">02</span><span class="emoji">🎨</span>
+        </div>
+        <div class="card-body">
+          <h3>Portfolio</h3>
+          <p>Donker, creatief portfolio voor een designer of developer met projectgrid.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/03-saas/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#7c3aed,#2563eb);">
+          <span class="num">03</span><span class="emoji">🚀</span>
+        </div>
+        <div class="card-body">
+          <h3>SaaS / Software</h3>
+          <p>Productlanding met functies, prijzen (maand/jaar-schakelaar) en FAQ-accordion.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/04-restaurant/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#1f3d2b,#c1572c);">
+          <span class="num">04</span><span class="emoji">🍽️</span>
+        </div>
+        <div class="card-body">
+          <h3>Restaurant</h3>
+          <p>Warme, elegante restaurantsite met menu, galerij en reserveringsformulier.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/05-agency/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#0a0a0a,#2b50ff);">
+          <span class="num">05</span><span class="emoji">⚡</span>
+        </div>
+        <div class="card-body">
+          <h3>Agency / Studio</h3>
+          <p>Bold, high-contrast bureausite met grote typografie, cases en statistieken.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/06-blog/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#d6334c,#7c1d2b);">
+          <span class="num">06</span><span class="emoji">📰</span>
+        </div>
+        <div class="card-body">
+          <h3>Blog / Magazine</h3>
+          <p>Redactionele homepage met uitgelicht artikel, artikelgrid en nieuwsbrief.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/07-webshop/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#111827,#ff4d4d);">
+          <span class="num">07</span><span class="emoji">🛍️</span>
+        </div>
+        <div class="card-body">
+          <h3>Webshop</h3>
+          <p>E-commerce homepage met productgrid, categorieën en werkende winkelmand-teller.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/08-fotografie/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#1a1a1a,#555);">
+          <span class="num">08</span><span class="emoji">📷</span>
+        </div>
+        <div class="card-body">
+          <h3>Fotografie</h3>
+          <p>Minimalistisch fotografieportfolio met galerij en categorie-filter.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/09-event/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#6d28d9,#ec4899);">
+          <span class="num">09</span><span class="emoji">🎟️</span>
+        </div>
+        <div class="card-body">
+          <h3>Event / Congres</h3>
+          <p>Energieke eventlanding met countdown, sprekers, programma en tickets.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/10-cv/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#0d9488,#0f766e);">
+          <span class="num">10</span><span class="emoji">👤</span>
+        </div>
+        <div class="card-body">
+          <h3>CV / Resumé</h3>
+          <p>Persoonlijke one-page CV met animerende vaardigheidsbalken en tijdlijn.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/11-architectuur/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#1a1816,#a67c52);">
+          <span class="num">11</span><span class="premium">★ Premium</span><span class="emoji">🏛️</span>
+        </div>
+        <div class="card-body">
+          <h3>Architectuur Studio</h3>
+          <p>Editorial design met preloader, parallax, scroll-gedreven tekst en magnetische knop.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/12-hotel/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#101713,#b89b5e);">
+          <span class="num">12</span><span class="premium">★ Premium</span><span class="emoji">🛎️</span>
+        </div>
+        <div class="card-body">
+          <h3>Boutique Hotel</h3>
+          <p>Vijfsterren-uitstraling met boekingsbalk, gouden details en quote-carrousel.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/13-fintech/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#0a0c10,#00e389);">
+          <span class="num">13</span><span class="premium">★ Premium</span><span class="emoji">💳</span>
+        </div>
+        <div class="card-body">
+          <h3>Fintech / Bank</h3>
+          <p>3D-tilt bankpas, live transactiefeed, bento-grid en glasmorfisme.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/14-fashion/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#f4f2ee,#1a1a1a);">
+          <span class="num">14</span><span class="premium">★ Premium</span><span class="emoji">🕊️</span>
+        </div>
+        <div class="card-body">
+          <h3>Fashion / Maison</h3>
+          <p>Haute couture-minimalisme met curtain-reveal, lookbook en asymmetrisch grid.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/15-wellness/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#9aa88f,#3a4438);">
+          <span class="num">15</span><span class="premium">★ Premium</span><span class="emoji">🌿</span>
+        </div>
+        <div class="card-body">
+          <h3>Wellness / Spa</h3>
+          <p>Serene luxe met adem-widget, boogvormige maskers en tekenende tijdlijn.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+      <a class="card" href="templates/16-bouw/index.html" target="_blank" rel="noopener">
+        <div class="thumb" style="background:linear-gradient(135deg,#0d0f12,#3b82f6);">
+          <span class="num">16</span><span class="premium">★ Premium</span><span class="emoji">🧱</span>
+        </div>
+        <div class="card-body">
+          <h3>ZZP Metselaar</h3>
+          <p>Blueprint-stijl met zelftekenende troffel, voor/na-slider en projectfilter.</p>
+          <span class="tag">Bekijk template →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap">
+      <p>Alle templates zijn responsive en kant-en-klaar. Elke template staat in zijn eigen map onder <code>templates/</code>.</p>
+      <p style="margin-top:.5rem;">&copy; <span id="year">2026</span> — Template Galerij</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Kaarten getrapt onthullen bij scrollen (overslaan bij reduced motion)
+    (function () {
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
+      if (reduced || !("IntersectionObserver" in window)) return;
+
+      cards.forEach(function (card) { card.classList.add("reveal"); });
+
+      var observer = new IntersectionObserver(function (entries) {
+        // Stagger per batch die tegelijk in beeld komt
+        var visible = entries.filter(function (e) { return e.isIntersecting; });
+        visible.forEach(function (entry, i) {
+          entry.target.style.setProperty("--d", (i * 80) + "ms");
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+
+      cards.forEach(function (card) { observer.observe(card); });
+    })();
+  </script>
+</body>
+</html>
