@@ -26,7 +26,7 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 16 | `templates/16-bouw/` | ★ ZZP Metselaar | Zwart/blauw/grijs blueprint-stijl, zelftekenende troffel-SVG, voor/na-slider, projectfilter |
 | 17 | `templates/17-koffie/` | ★ Koffiebranderij | Crème/karamel-huisstijl, stoom-animaties, brandgraad-meters, zelftekenende procestijdlijn, abonnement-toggle |
 | 18 | `templates/18-gym/` | ★ Boxing Gym | Zwart/acid-geel, knallende stapeltypografie, dubbele kinetische marquee, duotone-foto's, lesrooster-tabs met ARIA |
-| 19 | `templates/19-studio/` | ✦ **Flagship** — Studio Kaap | Combineert de sterkste features: preloader, custom cursor, scroll-gedreven manifest, bento-grid, 3D-tilt, voor/na-slider, tekenende tijdlijn, duotone-team, prijs-toggle, carrousel |
+| 19 | `templates/19-studio/` | ✦ **Flagship** — Studio Kaap | Combineert de sterkste features: preloader, scroll-gedreven manifest, bento-grid, 3D-tilt, voor/na-slider, tekenende tijdlijn, snelheidsreactieve marquee, FAQ-accordion, live studioklok, filmkorrel, duotone-team, prijs-toggle, carrousel |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 
