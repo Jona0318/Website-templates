@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Branderij Oost — Specialty koffiebranderij, Amsterdam | Vers gebrande single origins</title>
+<meta name="description" content="Branderij Oost brandt sinds 2016 specialty koffie in Amsterdam-Oost. Single origins, direct trade, binnen 48 uur van trommel tot brievenbus. Bestel bonen of boek een proeverij.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,560;1,9..144,340;1,9..144,420&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BRANDERIJ OOST — warm papier / espresso / karamel & koper
+   ============================================================ */
+:root{
+  --paper:#f6f1e7;
+  --paper-soft:#fbf7ef;
+  --paper-deep:#ece3d2;
+  --espresso:#221610;
+  --espresso-soft:#2f2017;
+  --espresso-line:rgba(246,241,231,.14);
+  --ink:#2b1c12;
+  --muted:#7c6a59;
+  --muted-light:#b3a08d;
+  --caramel:#c47a3d;
+  --caramel-deep:#a35f28;
+  --copper:#b06b45;
+  --cream:#f6f1e7;
+  --line:rgba(43,28,18,.13);
+  --line-strong:rgba(43,28,18,.24);
+  --shadow:0 24px 60px -28px rgba(43,28,18,.35);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font-display:"Fraunces","Georgia",serif;
+  --font-body:"Outfit","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"DM Mono","Courier New",monospace;
+  --header-h:80px;
+  --radius:18px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-weight:400;
+  font-size:16.5px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--caramel);color:var(--paper-soft)}
+
+/* Custom scrollbar (alleen waar ondersteund, subtiel) */
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--paper-deep)}
+::-webkit-scrollbar-thumb{background:#c9b89e;border-radius:8px;border:3px solid var(--paper-deep)}
+::-webkit-scrollbar-thumb:hover{background:var(--caramel)}
+
+/* Subtiele papier-textuur over alles */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(43,28,18,.05) 1px,transparent 1px);
+  background-size:5px 5px;
+}
+
+.wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+@media (max-width:560px){.wrap{width:calc(100% - 36px)}}
+
+h1,h2,h3{
+  font-family:var(--font-display);
+  font-weight:420;
+  font-optical-sizing:auto;
+  letter-spacing:-.01em;
+  line-height:1.08;
+  color:var(--ink);
+}
+h1 em,h2 em,h3 em{font-style:italic;font-weight:340;color:var(--caramel-deep)}
+
+/* Micro-labels in DM Mono */
+.micro{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:500;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--copper);
+  display:inline-flex;align-items:center;gap:14px;
+}
+.micro::before{content:"";width:32px;height:1px;background:var(--caramel);flex:none}
+.micro.centered{justify-content:center}
+.micro.centered::after{content:"";width:32px;height:1px;background:var(--caramel);flex:none}
+
+.sec-title{font-size:clamp(2rem,4.4vw,3.2rem);margin:.9rem 0 1.1rem}
+.sec-intro{color:var(--muted);max-width:54ch;font-size:1.05rem}
+.sec-head{margin-bottom:clamp(2.4rem,5vw,3.8rem)}
+.sec-head.centered{text-align:center}
+.sec-head.centered .sec-intro{margin-inline:auto}
+
+section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
+
+/* Skip link + focus */
+.skip-link{
+  position:absolute;left:16px;top:-64px;z-index:300;
+  background:var(--espresso);color:var(--cream);font-weight:500;
+  padding:11px 20px;border-radius:999px;transition:top .3s var(--ease);
+}
+.skip-link:focus{top:14px}
+:focus-visible{outline:2px solid var(--caramel-deep);outline-offset:3px;border-radius:3px}
+
+/* ====================== KNOPPEN ====================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:500;font-size:.93rem;letter-spacing:.02em;
+  padding:15px 28px;border-radius:999px;white-space:nowrap;
+  position:relative;overflow:hidden;min-height:48px;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),background-color .35s,border-color .35s,color .35s;
+}
+.btn svg{flex:none;transition:transform .5s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-primary{
+  background:var(--espresso);color:var(--cream);
+  box-shadow:0 12px 28px -14px rgba(34,22,16,.55);
+}
+.btn-primary:hover{transform:translateY(-2px);background:#1a100b;box-shadow:0 18px 36px -14px rgba(34,22,16,.6)}
+.btn-caramel{
+  background:linear-gradient(135deg,var(--caramel),var(--caramel-deep));color:#fff;
+  box-shadow:0 12px 30px -12px rgba(196,122,61,.55);
+}
+.btn-caramel:hover{transform:translateY(-2px);box-shadow:0 18px 38px -12px rgba(196,122,61,.6)}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--ink);background:rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:var(--caramel);color:var(--caramel-deep);transform:translateY(-2px)}
+.btn-light{background:var(--cream);color:var(--espresso)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(0,0,0,.45)}
+
+/* ====================== HEADER ====================== */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:100;height:var(--header-h);
+  display:flex;align-items:center;
+  border-bottom:1px solid transparent;
+  transition:background-color .45s,border-color .45s,box-shadow .45s,backdrop-filter .45s;
+}
+.site-header.scrolled{
+  background:rgba(246,241,231,.86);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+  box-shadow:0 10px 30px -22px rgba(43,28,18,.3);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:13px;position:relative;z-index:130}
+.logo-mark{
+  width:42px;height:42px;flex:none;border-radius:50% 50% 50% 8px;
+  background:linear-gradient(135deg,var(--caramel),var(--caramel-deep));
+  display:grid;place-items:center;
+  box-shadow:0 8px 20px -8px rgba(196,122,61,.6);
+  transition:transform .6s var(--ease);
+}
+.logo:hover .logo-mark{transform:rotate(-10deg)}
+.logo-mark svg{width:22px;height:22px}
+.logo-text{font-family:var(--font-display);font-weight:560;font-size:1.12rem;line-height:1.05;letter-spacing:.01em}
+.logo-text small{
+  display:block;font-family:var(--font-mono);font-weight:400;font-size:.56rem;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:3px;
+}
+.main-nav ul{display:flex;gap:32px}
+.main-nav a{
+  font-size:.9rem;font-weight:500;color:var(--muted);position:relative;padding:8px 0;
+  transition:color .3s;
+}
+.main-nav a::after{
+  content:"";position:absolute;left:0;bottom:2px;width:100%;height:1px;
+  background:var(--caramel);transform:scaleX(0);transform-origin:right;
+  transition:transform .5s var(--ease);
+}
+.main-nav a:hover{color:var(--ink)}
+.main-nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.header-cta{display:flex;align-items:center;gap:14px}
+.header-cta .btn{padding:11px 22px;font-size:.85rem;min-height:44px}
+
+/* Hamburger */
+.menu-toggle{display:none;width:48px;height:48px;position:relative;z-index:130;border-radius:50%}
+.menu-toggle span{
+  position:absolute;left:13px;width:22px;height:2px;background:var(--ink);border-radius:2px;
+  transition:transform .5s var(--ease),opacity .3s,background-color .3s;
+}
+.menu-toggle span:nth-child(1){top:18px}
+.menu-toggle span:nth-child(2){top:24px}
+.menu-toggle span:nth-child(3){top:30px}
+.menu-toggle[aria-expanded="true"] span{background:var(--cream)}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.site-header.menu-open .logo-text,.site-header.menu-open .logo-text small{color:var(--cream)}
+
+/* Fullscreen overlay-menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:120;
+  background:linear-gradient(160deg,var(--espresso) 0%,#190f0a 100%);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:110px clamp(28px,8vw,64px) 48px;
+  opacity:0;visibility:hidden;
+  transition:opacity .5s var(--ease),visibility 0s .5s;
+}
+.mobile-menu.open{opacity:1;visibility:visible;transition:opacity .5s var(--ease)}
+.mobile-menu nav ul{display:flex;flex-direction:column;gap:4px}
+.mobile-menu nav a{
+  display:flex;align-items:baseline;gap:16px;
+  font-family:var(--font-display);font-weight:420;font-size:clamp(1.7rem,6vw,2.4rem);
+  color:var(--cream);padding:12px 0;border-bottom:1px solid var(--espresso-line);
+  transition:color .3s,padding-left .45s var(--ease);
+}
+.mobile-menu nav a:hover{color:var(--caramel);padding-left:10px}
+.mobile-menu nav a .idx{font-family:var(--font-mono);font-size:.65rem;color:var(--caramel);letter-spacing:.22em}
+.mobile-menu .menu-foot{margin-top:2.4rem;display:flex;flex-direction:column;gap:1.2rem}
+.mobile-menu .menu-foot .btn{justify-content:center}
+.mobile-menu .menu-meta{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;color:var(--muted-light);text-transform:uppercase}
+html.js .mobile-menu nav li{opacity:0;transform:translateY(22px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+html.js .mobile-menu.open nav li{opacity:1;transform:none;transition-delay:var(--d,0s)}
+@media (max-width:920px){
+  .main-nav{display:none}
+  .header-cta .btn{display:none}
+  .menu-toggle{display:block}
+}
+body.menu-locked{overflow:hidden}
+
+/* ====================== HERO ====================== */
+.hero{
+  min-height:100svh;display:flex;align-items:center;
+  padding:calc(var(--header-h) + 2.5rem) 0 3.5rem;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+  gap:clamp(2.4rem,5vw,4.5rem);align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--caramel-deep);background:rgba(196,122,61,.1);
+  border:1px solid rgba(196,122,61,.32);
+  padding:9px 18px;border-radius:999px;
+}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--caramel);flex:none}
+html.js .hero-badge .dot{animation:pulseDot 2.4s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(196,122,61,.5)}55%{box-shadow:0 0 0 7px rgba(196,122,61,0)}}
+.hero h1{
+  font-size:clamp(2.7rem,6.2vw,4.7rem);
+  margin:1.5rem 0 1.5rem;font-weight:420;line-height:1.04;
+}
+/* Woord-voor-woord reveal */
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em}
+.hero h1 .word>span{display:inline-block}
+html.js .hero h1 .word>span{transform:translateY(112%);transition:transform .9s var(--ease);transition-delay:var(--d,0s)}
+html.js .hero.in h1 .word>span{transform:translateY(0)}
+html.js .hero .fade-up{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+html.js .hero.in .fade-up{opacity:1;transform:none}
+.hero-sub{color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:46ch;margin-bottom:2.4rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:3rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(1.4rem,3vw,2.6rem)}
+.hero-meta .item{display:flex;flex-direction:column;gap:2px}
+.hero-meta .item b{font-family:var(--font-display);font-weight:560;font-size:1.2rem;color:var(--ink)}
+.hero-meta .item span{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+
+/* Hero-foto met Ken Burns */
+.hero-visual{position:relative}
+.hero-photo{
+  position:relative;border-radius:26px 26px 26px 90px;overflow:hidden;
+  aspect-ratio:4/4.7;box-shadow:var(--shadow);
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+html.js .hero-photo img{transform:scale(1.12);transition:transform 9s var(--ease)}
+html.js .hero.in .hero-photo img{transform:scale(1.02)}
+.hero-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(200deg,transparent 55%,rgba(34,22,16,.34));
+  pointer-events:none;
+}
+/* Stoomkaartje met getekende kop */
+.steam-card{
+  position:absolute;left:-26px;bottom:34px;z-index:2;
+  background:var(--paper-soft);border:1px solid var(--line);
+  border-radius:16px;padding:16px 22px 14px;
+  display:flex;align-items:center;gap:16px;
+  box-shadow:0 18px 44px -20px rgba(43,28,18,.4);
+}
+html.js .steam-card{opacity:0;transform:translateY(20px);transition:opacity 1s var(--ease) .9s,transform 1s var(--ease) .9s}
+html.js .hero.in .steam-card{opacity:1;transform:none}
+.steam-card .label b{display:block;font-family:var(--font-display);font-weight:560;font-size:.98rem}
+.steam-card .label span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cup-svg{width:64px;height:64px;flex:none;overflow:visible}
+.cup-svg .cup-line{fill:none;stroke:var(--espresso);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cup-svg .steam{fill:none;stroke:var(--caramel);stroke-width:2.2;stroke-linecap:round;opacity:0}
+html.js .cup-svg .steam{
+  stroke-dasharray:36;stroke-dashoffset:36;
+  animation:steamRise 3.6s ease-in-out infinite;
+  animation-delay:var(--sd,0s);
+}
+@keyframes steamRise{
+  0%{stroke-dashoffset:36;opacity:0;transform:translateY(3px)}
+  18%{opacity:.85}
+  60%{stroke-dashoffset:0;opacity:.5}
+  100%{stroke-dashoffset:-36;opacity:0;transform:translateY(-4px)}
+}
+/* Scroll-indicator */
+.scroll-hint{
+  position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+}
+.scroll-hint .pill{width:24px;height:38px;border:1.6px solid var(--line-strong);border-radius:999px;position:relative}
+.scroll-hint .pill::after{
+  content:"";position:absolute;left:50%;top:7px;width:4px;height:7px;margin-left:-2px;
+  border-radius:4px;background:var(--caramel);
+}
+html.js .scroll-hint .pill::after{animation:scrollDrop 2.1s var(--ease) infinite}
+@keyframes scrollDrop{0%{transform:translateY(0);opacity:1}70%{transform:translateY(13px);opacity:0}100%{transform:translateY(0);opacity:0}}
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-photo{aspect-ratio:16/11;border-radius:22px 22px 22px 64px}
+  .steam-card{left:14px;bottom:-22px}
+  .scroll-hint{display:none}
+}
+
+/* ====================== MARQUEE ====================== */
+.marquee{
+  padding:0;border-block:1px solid var(--line);
+  background:var(--paper-deep);overflow:hidden;
+}
+.marquee-track{
+  display:flex;width:max-content;
+  padding:18px 0;
+}
+html.js .marquee-track{animation:marqueeMove 30s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-set{display:flex;align-items:center;flex:none}
+.marquee-set span{
+  font-family:var(--font-display);font-style:italic;font-weight:340;
+  font-size:1.05rem;color:var(--ink);white-space:nowrap;padding:0 1.4rem;
+}
+.marquee-set .bean{width:16px;height:16px;flex:none;opacity:.8}
+
+/* ====================== ASSORTIMENT ====================== */
+.assortiment{background:var(--paper)}
+.koffie-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(1.2rem,2.4vw,1.8rem);
+}
+.koffie-card{
+  background:var(--paper-soft);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;position:relative;
+  display:flex;flex-direction:column;
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s;
+}
+.koffie-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:rgba(196,122,61,.4)}
+.koffie-card.featured{border-color:rgba(196,122,61,.55);box-shadow:0 18px 50px -26px rgba(196,122,61,.5)}
+.koffie-card .ribbon{
+  position:absolute;top:14px;left:14px;z-index:3;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  background:var(--caramel);color:#fff;padding:7px 14px;border-radius:999px;
+  box-shadow:0 8px 20px -8px rgba(196,122,61,.7);
+}
+.koffie-photo{aspect-ratio:16/10;overflow:hidden;position:relative}
+.koffie-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.koffie-card:hover .koffie-photo img{transform:scale(1.07)}
+.koffie-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(34,22,16,.28));
+}
+.koffie-body{padding:1.5rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.9rem;flex:1}
+.koffie-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.koffie-top h3{font-size:1.32rem;font-weight:560}
+.koffie-prijs{font-family:var(--font-mono);font-size:1rem;font-weight:500;color:var(--caramel-deep);white-space:nowrap}
+.koffie-prijs small{font-size:.66rem;color:var(--muted);display:block;text-align:right;letter-spacing:.06em}
+.koffie-origin{
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:8px;
+}
+.koffie-origin svg{width:13px;height:13px;flex:none;color:var(--copper)}
+.koffie-notes{display:flex;flex-wrap:wrap;gap:7px}
+.koffie-notes span{
+  font-size:.74rem;font-weight:500;letter-spacing:.03em;color:var(--ink);
+  background:rgba(196,122,61,.1);border:1px solid rgba(196,122,61,.22);
+  padding:4px 12px;border-radius:999px;
+}
+/* Brandgraad-meter */
+.brandgraad{margin-top:auto;padding-top:.9rem;border-top:1px dashed var(--line)}
+.brandgraad .bg-label{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:8px;
+}
+.brandgraad .bg-dots{display:flex;gap:6px}
+.brandgraad .bg-dots i{
+  width:14px;height:14px;border-radius:50%;flex:none;
+  border:1.5px solid var(--line-strong);background:transparent;
+  transition:transform .4s var(--ease);
+}
+.koffie-card:hover .bg-dots i{transform:scale(1.08)}
+.brandgraad .bg-dots i.f1{background:#e4c9a4;border-color:#e4c9a4}
+.brandgraad .bg-dots i.f2{background:#c79a62;border-color:#c79a62}
+.brandgraad .bg-dots i.f3{background:#9a6b3a;border-color:#9a6b3a}
+.brandgraad .bg-dots i.f4{background:#5e3a1e;border-color:#5e3a1e}
+.brandgraad .bg-dots i.f5{background:#2c1a0e;border-color:#2c1a0e}
+@media (max-width:1024px){.koffie-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.koffie-grid{grid-template-columns:1fr}}
+
+/* ====================== BRANDPROCES ====================== */
+.proces{background:var(--paper-deep);border-block:1px solid var(--line)}
+.proces-flow{position:relative;max-width:760px;margin-inline:auto;padding-left:56px}
+.proces-flow::before{
+  content:"";position:absolute;left:17px;top:8px;bottom:8px;width:2px;
+  background:var(--line);border-radius:2px;
+}
+.proces-line{
+  position:absolute;left:17px;top:8px;width:2px;height:0;
+  background:linear-gradient(180deg,var(--caramel),var(--caramel-deep));
+  border-radius:2px;z-index:1;
+}
+html.no-js .proces-line,html.rm .proces-line{height:100% !important}
+.proces-stap{position:relative;padding:0 0 clamp(2.2rem,5vw,3.4rem)}
+.proces-stap:last-child{padding-bottom:0}
+.proces-dot{
+  position:absolute;left:-56px;top:4px;width:38px;height:38px;border-radius:50%;
+  background:var(--paper-soft);border:2px solid var(--line-strong);
+  display:grid;place-items:center;z-index:2;
+  font-family:var(--font-mono);font-size:.72rem;font-weight:500;color:var(--muted);
+  transition:background-color .5s,border-color .5s,color .5s,transform .6s var(--ease);
+}
+html.js .proces-stap{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+html.js .proces-stap.in{opacity:1;transform:none}
+html.rm .proces-stap{opacity:1 !important;transform:none !important}
+.proces-stap.in .proces-dot{
+  background:var(--caramel);border-color:var(--caramel);color:#fff;
+  transform:scale(1.06);
+}
+.proces-stap h3{font-size:1.35rem;font-weight:560;margin-bottom:.4rem;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.proces-stap h3 .tijd{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--copper)}
+.proces-stap p{color:var(--muted);max-width:54ch}
+@media (max-width:560px){
+  .proces-flow{padding-left:48px}
+  .proces-dot{left:-48px;width:34px;height:34px}
+}
+
+/* ====================== STATS ====================== */
+.stats{background:var(--espresso);color:var(--cream);padding:clamp(3.6rem,7vw,5.5rem) 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.5rem);text-align:center}
+.stat b{
+  display:block;font-family:var(--font-display);font-weight:560;
+  font-size:clamp(2.2rem,4.6vw,3.4rem);line-height:1.05;color:var(--paper-soft);
+  font-variant-numeric:tabular-nums;
+}
+.stat b .accent{color:var(--caramel)}
+.stat span{
+  display:block;margin-top:.5rem;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-light);
+}
+.stat{position:relative;padding:.4rem 0}
+.stat + .stat::before{
+  content:"";position:absolute;left:-12px;top:15%;bottom:15%;width:1px;background:var(--espresso-line);
+}
+@media (max-width:760px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:2.4rem}
+  .stat:nth-child(3)::before{display:none}
+}
+
+/* ====================== ABONNEMENT ====================== */
+.abonnement{background:var(--paper)}
+.period-toggle{
+  display:inline-flex;align-items:center;gap:0;margin:0 auto 3rem;
+  background:var(--paper-deep);border:1px solid var(--line);border-radius:999px;padding:5px;
+  position:relative;
+}
+.toggle-wrap{display:flex;justify-content:center}
+.period-toggle button{
+  position:relative;z-index:2;padding:11px 26px;border-radius:999px;
+  font-size:.88rem;font-weight:500;color:var(--muted);min-height:44px;
+  transition:color .35s;
+}
+.period-toggle button[aria-pressed="true"]{color:var(--paper-soft)}
+.period-toggle .toggle-pill{
+  position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);
+  background:var(--espresso);border-radius:999px;z-index:1;
+  transition:transform .55s var(--ease);
+}
+.period-toggle.kwartaal .toggle-pill{transform:translateX(100%)}
+.period-toggle .korting{
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;
+  color:var(--caramel);margin-left:6px;
+}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,1.8rem);align-items:stretch}
+.tier{
+  background:var(--paper-soft);border:1px solid var(--line);border-radius:var(--radius);
+  padding:2.2rem 2rem;display:flex;flex-direction:column;gap:1.3rem;position:relative;
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s;
+}
+.tier:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.tier.uitgelicht{
+  background:var(--espresso);color:var(--cream);border-color:var(--espresso);
+  box-shadow:0 30px 70px -30px rgba(34,22,16,.55);
+}
+.tier.uitgelicht h3{color:var(--paper-soft)}
+.tier .tier-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--caramel),var(--caramel-deep));color:#fff;
+  padding:7px 16px;border-radius:999px;white-space:nowrap;
+}
+.tier h3{font-size:1.4rem;font-weight:560}
+.tier .tier-sub{font-size:.88rem;color:var(--muted);margin-top:.2rem}
+.tier.uitgelicht .tier-sub{color:var(--muted-light)}
+.tier-prijs{
+  font-family:var(--font-mono);display:flex;align-items:baseline;gap:6px;
+  padding-bottom:1.2rem;border-bottom:1px dashed var(--line);
+}
+.tier.uitgelicht .tier-prijs{border-bottom-color:var(--espresso-line)}
+.tier-prijs .bedrag{font-size:2.3rem;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tier-prijs .euro{font-size:1.1rem;color:var(--caramel-deep)}
+.tier.uitgelicht .tier-prijs .euro{color:var(--caramel)}
+.tier-prijs .per{font-size:.74rem;color:var(--muted)}
+.tier.uitgelicht .tier-prijs .per{color:var(--muted-light)}
+html.js .tier-prijs .bedrag{transition:opacity .25s ease,transform .25s ease}
+.tier-prijs .bedrag.switching{opacity:0;transform:translateY(8px)}
+.tier ul{display:flex;flex-direction:column;gap:.7rem;flex:1}
+.tier ul li{display:flex;gap:11px;font-size:.93rem;color:var(--muted);align-items:flex-start}
+.tier.uitgelicht ul li{color:#d8cbbc}
+.tier ul li svg{flex:none;width:17px;height:17px;color:var(--caramel);margin-top:4px}
+.tier .btn{justify-content:center;width:100%}
+@media (max-width:920px){
+  .tiers{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+  .tier.uitgelicht{order:-1}
+}
+
+/* ====================== OVER ====================== */
+.over{background:var(--paper-deep);border-block:1px solid var(--line)}
+.over-grid{
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(2.4rem,6vw,5rem);align-items:center;
+}
+.over-photo{
+  position:relative;border-radius:90px 24px 24px 24px;overflow:hidden;
+  aspect-ratio:4/4.8;box-shadow:var(--shadow);
+}
+.over-photo img{width:100%;height:100%;object-fit:cover}
+.over-photo .jaar-stempel{
+  position:absolute;right:18px;bottom:18px;width:96px;height:96px;border-radius:50%;
+  background:var(--espresso);color:var(--cream);display:grid;place-items:center;text-align:center;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  line-height:1.5;padding:10px;box-shadow:0 14px 34px -14px rgba(0,0,0,.55);
+}
+html.js .jaar-stempel{animation:stempelDraai 26s linear infinite}
+@keyframes stempelDraai{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.over-body .quote{
+  font-family:var(--font-display);font-style:italic;font-weight:340;
+  font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.45;color:var(--ink);
+  border-left:3px solid var(--caramel);padding-left:1.4rem;margin:1.8rem 0;
+}
+.over-body p{color:var(--muted);margin-bottom:1.1rem;max-width:56ch}
+.handtekening{display:flex;align-items:center;gap:16px;margin-top:1.8rem}
+.handtekening .naam{
+  font-family:var(--font-display);font-style:italic;font-weight:420;font-size:1.5rem;color:var(--ink);
+  transform:rotate(-2.5deg);
+}
+.handtekening .functie{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:920px){
+  .over-grid{grid-template-columns:1fr}
+  .over-photo{aspect-ratio:16/11;border-radius:64px 20px 20px 20px}
+}
+
+/* ====================== REVIEWS ====================== */
+.reviews{background:var(--paper)}
+.review-stage{position:relative;max-width:780px;margin-inline:auto;overflow:hidden}
+.review-track{display:flex;transition:transform .7s var(--ease)}
+html.rm .review-track{transition:none}
+.review-slide{flex:0 0 100%;padding:0 8px;text-align:center}
+.review-sterren{display:inline-flex;gap:4px;margin-bottom:1.4rem;color:var(--caramel)}
+.review-sterren svg{width:18px;height:18px}
+.review-slide blockquote{
+  font-family:var(--font-display);font-style:italic;font-weight:340;
+  font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.5;color:var(--ink);
+  max-width:60ch;margin-inline:auto;
+}
+.review-slide figcaption{margin-top:1.6rem}
+.review-slide figcaption b{display:block;font-weight:600;font-size:.95rem}
+.review-slide figcaption span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.review-nav{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:2.6rem}
+.review-btn{
+  width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);
+  display:grid;place-items:center;color:var(--ink);
+  transition:border-color .35s,background-color .35s,color .35s,transform .45s var(--ease);
+}
+.review-btn:hover{border-color:var(--caramel);color:var(--caramel-deep);transform:translateY(-2px)}
+.review-dots{display:flex;gap:9px}
+.review-dots button{
+  width:10px;height:10px;border-radius:50%;background:var(--line-strong);padding:0;
+  transition:background-color .35s,transform .35s var(--ease);
+}
+.review-dots button[aria-current="true"]{background:var(--caramel);transform:scale(1.3)}
+.review-dots button{position:relative}
+.review-dots button::after{content:"";position:absolute;inset:-8px}
+
+/* ====================== BEZOEK ====================== */
+.bezoek{background:var(--paper-deep);border-top:1px solid var(--line)}
+.bezoek-grid{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(2.2rem,5vw,4rem);align-items:stretch;margin-bottom:clamp(3rem,6vw,4.5rem);
+}
+.bezoek-foto{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);min-height:320px}
+.bezoek-foto img{width:100%;height:100%;object-fit:cover}
+.bezoek-info{display:flex;flex-direction:column;gap:1.6rem;justify-content:center}
+.info-blok{
+  background:var(--paper-soft);border:1px solid var(--line);border-radius:14px;
+  padding:1.4rem 1.6rem;display:flex;gap:18px;align-items:flex-start;
+}
+.info-blok .ico{
+  width:42px;height:42px;flex:none;border-radius:12px;
+  background:rgba(196,122,61,.13);display:grid;place-items:center;color:var(--caramel-deep);
+}
+.info-blok .ico svg{width:20px;height:20px}
+.info-blok h3{font-size:1.05rem;font-weight:560;margin-bottom:.3rem}
+.info-blok p{color:var(--muted);font-size:.93rem}
+.info-blok .tijden{display:grid;grid-template-columns:auto 1fr;gap:2px 22px;font-size:.9rem;color:var(--muted)}
+.info-blok .tijden b{font-weight:500;color:var(--ink)}
+.info-blok .tijden .mono{font-family:var(--font-mono);font-size:.82rem}
+
+/* CTA-banner met drijvende bonen */
+.proef-banner{
+  position:relative;overflow:hidden;border-radius:24px;
+  background:linear-gradient(150deg,var(--espresso) 0%,#1a100a 100%);
+  color:var(--cream);padding:clamp(2.8rem,6vw,4.5rem) clamp(1.8rem,5vw,4rem);
+  text-align:center;
+}
+.proef-banner h2{color:var(--paper-soft);font-size:clamp(1.8rem,4vw,2.8rem);margin:.8rem 0 1rem}
+.proef-banner h2 em{color:var(--caramel)}
+.proef-banner p{color:var(--muted-light);max-width:48ch;margin:0 auto 2.2rem}
+.proef-banner .micro{color:var(--caramel)}
+.proef-banner .micro::before,.proef-banner .micro::after{background:var(--caramel)}
+.banner-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;position:relative;z-index:2}
+.bonen-veld{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.bonen-veld svg{position:absolute;color:rgba(196,122,61,.2)}
+html.js .bonen-veld svg{animation:boonZweef var(--bt,16s) ease-in-out infinite;animation-delay:var(--bd,0s)}
+@keyframes boonZweef{
+  0%,100%{transform:translateY(0) rotate(var(--br,0deg))}
+  50%{transform:translateY(-26px) rotate(calc(var(--br,0deg) + 14deg))}
+}
+@media (max-width:880px){.bezoek-grid{grid-template-columns:1fr}.bezoek-foto{min-height:260px}}
+
+/* ====================== FOOTER ====================== */
+.site-footer{background:var(--espresso);color:var(--muted-light);padding:clamp(3.6rem,7vw,5.5rem) 0 2rem}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1.5fr;
+  gap:clamp(2rem,4vw,3.5rem);padding-bottom:3rem;
+  border-bottom:1px solid var(--espresso-line);
+}
+.footer-brand .logo-text{color:var(--paper-soft)}
+.footer-brand p{font-size:.92rem;margin-top:1.1rem;max-width:30ch}
+.footer-col h3{
+  font-family:var(--font-mono);font-size:.68rem;font-weight:500;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--paper-soft);margin-bottom:1.2rem;
+}
+.footer-col ul{display:flex;flex-direction:column;gap:.6rem}
+.footer-col a{font-size:.92rem;transition:color .3s;display:inline-block;padding:2px 0}
+.footer-col a:hover{color:var(--caramel)}
+.nieuwsbrief p{font-size:.92rem;margin-bottom:1.2rem}
+.nb-form{display:flex;gap:0;position:relative}
+.nb-form input{
+  flex:1;min-width:0;background:rgba(246,241,231,.06);border:1px solid var(--espresso-line);
+  border-radius:999px;padding:14px 130px 14px 22px;color:var(--cream);
+  font:inherit;font-size:.92rem;transition:border-color .35s,background-color .35s;
+}
+.nb-form input::placeholder{color:#8a7763}
+.nb-form input:focus{outline:none;border-color:var(--caramel);background:rgba(246,241,231,.09)}
+.nb-form button{
+  position:absolute;right:5px;top:5px;bottom:5px;
+  background:var(--caramel);color:#fff;border-radius:999px;padding:0 22px;
+  font-size:.85rem;font-weight:500;transition:background-color .35s,transform .4s var(--ease);
+}
+.nb-form button:hover{background:var(--caramel-deep)}
+.nb-dank{
+  display:none;align-items:center;gap:10px;font-size:.92rem;color:var(--paper-soft);
+  background:rgba(196,122,61,.14);border:1px solid rgba(196,122,61,.4);
+  border-radius:14px;padding:14px 18px;
+}
+.nb-dank svg{flex:none;color:var(--caramel)}
+.nb-wrap.sent .nb-form{display:none}
+.nb-wrap.sent .nb-dank{display:flex}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding-top:1.8rem;font-size:.82rem;
+}
+.footer-bottom .mono{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em}
+.socials{display:flex;gap:10px}
+.socials a{
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--espresso-line);
+  display:grid;place-items:center;color:var(--muted-light);
+  transition:border-color .35s,color .35s,transform .45s var(--ease);
+}
+.socials a:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-3px)}
+.socials svg{width:17px;height:17px}
+@media (max-width:920px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.footer-grid{grid-template-columns:1fr}}
+
+/* ====================== REVEAL-SYSTEEM ====================== */
+html.js [data-reveal]{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+  transition-delay:var(--d,0s);
+}
+html.js [data-reveal="left"]{transform:translateX(-36px)}
+html.js [data-reveal="right"]{transform:translateX(36px)}
+html.js [data-reveal="scale"]{transform:scale(.94)}
+html.js [data-reveal].in{opacity:1;transform:none}
+/* Reduced motion: alles direct zichtbaar, geen bewegende decoraties */
+@media (prefers-reduced-motion:reduce){
+  html.js [data-reveal],
+  html.js .hero h1 .word>span,
+  html.js .hero .fade-up,
+  html.js .steam-card,
+  html.js .proces-stap,
+  html.js .mobile-menu nav li{
+    opacity:1 !important;transform:none !important;transition:none !important;
+  }
+  html.js .hero-photo img{transform:scale(1.02) !important;transition:none !important}
+  html.js .marquee-track,
+  html.js .cup-svg .steam,
+  html.js .jaar-stempel,
+  html.js .bonen-veld svg,
+  html.js .hero-badge .dot,
+  html.js .scroll-hint .pill::after{animation:none !important}
+  html.js .cup-svg .steam{opacity:.55;stroke-dashoffset:0}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* ====================== RESPONSIVE EXTRA ====================== */
+@media (max-width:768px){
+  section{padding:4rem 0}
+  .hero{padding-top:calc(var(--header-h) + 1.6rem)}
+  .hero-ctas .btn{flex:1;min-width:200px}
+}
+@media (max-width:480px){
+  body{font-size:15.5px}
+  .hero h1{font-size:clamp(2.2rem,9.5vw,2.7rem)}
+  .hero-meta{gap:1.2rem 1.6rem}
+  .steam-card{padding:12px 16px;gap:12px}
+  .cup-svg{width:52px;height:52px}
+  .tier{padding:1.8rem 1.4rem}
+  .nb-form input{padding-right:112px}
+  .nb-form button{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Direct naar inhoud</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="Branderij Oost — naar boven">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.6c4.4 0 7.4 4.1 7.4 9.4s-3 9.4-7.4 9.4-7.4-4.1-7.4-9.4S7.6 2.6 12 2.6Z" stroke="#f6f1e7" stroke-width="1.7"/>
+          <path d="M12 3c-2.2 2.6-2.8 5.4-1.4 9s1 6.6-1.2 9" stroke="#f6f1e7" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="logo-text">Branderij Oost<small>Specialty koffie · A'dam</small></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Hoofdnavigatie">
+      <ul>
+        <li><a href="#koffie">Assortiment</a></li>
+        <li><a href="#proces">Brandproces</a></li>
+        <li><a href="#abonnement">Abonnement</a></li>
+        <li><a href="#over">Over ons</a></li>
+        <li><a href="#bezoek">Bezoek</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a class="btn btn-caramel" href="#koffie">
+        Bestel bonen
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu openen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Fullscreen overlay-menu (mobiel) -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav aria-label="Mobiele navigatie">
+    <ul>
+      <li style="--d:.06s"><a href="#koffie"><span class="idx">01</span>Assortiment</a></li>
+      <li style="--d:.12s"><a href="#proces"><span class="idx">02</span>Brandproces</a></li>
+      <li style="--d:.18s"><a href="#abonnement"><span class="idx">03</span>Abonnement</a></li>
+      <li style="--d:.24s"><a href="#over"><span class="idx">04</span>Over ons</a></li>
+      <li style="--d:.30s"><a href="#bezoek"><span class="idx">05</span>Bezoek</a></li>
+    </ul>
+  </nav>
+  <div class="menu-foot">
+    <a class="btn btn-caramel" href="#koffie">Bestel bonen</a>
+    <p class="menu-meta">Czaar Peterstraat 41 · Amsterdam-Oost<br>wo t/m zo geopend</p>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="top" aria-label="Introductie">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge fade-up" style="--d:.05s"><span class="dot" aria-hidden="true"></span>Sinds 2016 · Eigen branderij</span>
+      <h1>
+        <span class="word"><span style="--d:.15s">Koffie</span></span>
+        <span class="word"><span style="--d:.23s">met</span></span>
+        <span class="word"><span style="--d:.31s">een</span></span><br>
+        <span class="word"><span style="--d:.39s"><em>eerlijk</em></span></span>
+        <span class="word"><span style="--d:.47s">verhaal,</span></span><br>
+        <span class="word"><span style="--d:.55s">vers</span></span>
+        <span class="word"><span style="--d:.63s">uit</span></span>
+        <span class="word"><span style="--d:.71s">de</span></span>
+        <span class="word"><span style="--d:.79s"><em>trommel.</em></span></span>
+      </h1>
+      <p class="hero-sub fade-up" style="--d:.7s">
+        Wij branden elke dinsdag en donderdag kleine batches single origin
+        in onze werkplaats in Amsterdam-Oost. Direct ingekocht bij veertien
+        boerderijen, binnen 48 uur bij jou op de mat.
+      </p>
+      <div class="hero-ctas fade-up" style="--d:.82s">
+        <a class="btn btn-primary" href="#koffie">
+          Ontdek het assortiment
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#proces">Zo branden wij</a>
+      </div>
+      <div class="hero-meta fade-up" style="--d:.94s">
+        <div class="item"><b>100% arabica</b><span>specialty grade 84+</span></div>
+        <div class="item"><b>Direct trade</b><span>zonder tussenhandel</span></div>
+        <div class="item"><b>Brievenbuspost</b><span>gratis vanaf €25</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <figure class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1100&q=80&auto=format&fit=crop" alt="Barista schenkt met zorg een filterkoffie op in de branderij" width="1100" height="1290">
+      </figure>
+      <div class="steam-card">
+        <svg class="cup-svg" viewBox="0 0 64 64" aria-hidden="true">
+          <!-- getekende kop -->
+          <path class="cup-line" d="M14 34h30v6c0 8-6.7 14-15 14s-15-6-15-14v-6Z"/>
+          <path class="cup-line" d="M44 36h4a6 6 0 0 1 0 12h-5"/>
+          <path class="cup-line" d="M11 58h36"/>
+          <!-- stoomslierten -->
+          <path class="steam" style="--sd:0s"   d="M22 28c-3-4 3-6 0-10s3-6 0-9"/>
+          <path class="steam" style="--sd:1.2s" d="M30 28c-3-4 3-6 0-10s3-6 0-9"/>
+          <path class="steam" style="--sd:2.4s" d="M38 28c-3-4 3-6 0-10s3-6 0-9"/>
+        </svg>
+        <div class="label">
+          <b>Vers gebrand</b>
+          <span>elke di &amp; do</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span class="pill"></span>
+    Scroll
+  </div>
+</section>
+
+<!-- ============================================================
+     MARQUEE
+     ============================================================ -->
+<div class="marquee" aria-label="Kernwaarden van Branderij Oost">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-set">
+      <span>Single origin</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Vers gebrand</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Direct trade</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Kleine batches</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>48u van trommel tot bus</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Amsterdam-Oost</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </div>
+    <!-- tweede set voor naadloze loop -->
+    <div class="marquee-set" aria-hidden="true">
+      <span>Single origin</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Vers gebrand</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Direct trade</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Kleine batches</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>48u van trommel tot bus</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Amsterdam-Oost</span>
+      <svg class="bean" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="#c47a3d" stroke-width="1.6"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="#c47a3d" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ASSORTIMENT
+     ============================================================ -->
+<section class="assortiment" id="koffie">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Assortiment</span>
+      <h2 class="sec-title">Zes origins, <em>elk seizoen</em> opnieuw gecupt</h2>
+      <p class="sec-intro">
+        We kopen rechtstreeks in bij boerderijen die we kennen en bezoeken.
+        Elke oogst proeven we blind aan de cuppingtafel — alleen wat ons
+        verrast, halen we naar Amsterdam.
+      </p>
+    </div>
+
+    <div class="koffie-grid">
+
+      <!-- Kaart 1 -->
+      <article class="koffie-card" data-reveal style="--d:.0s">
+        <div class="koffie-photo">
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80&auto=format&fit=crop" alt="Vers gebrande koffiebonen naast een kop koffie op een houten tafel" loading="lazy" width="800" height="500">
+        </div>
+        <div class="koffie-body">
+          <div class="koffie-top">
+            <h3>Finca La Loma</h3>
+            <p class="koffie-prijs">€13,50<small>250 g</small></p>
+          </div>
+          <p class="koffie-origin">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Huila, Colombia · 1.750 m
+          </p>
+          <div class="koffie-notes" aria-label="Smaaknotities">
+            <span>Rode appel</span><span>Karamel</span><span>Sinaasappel</span>
+          </div>
+          <div class="brandgraad">
+            <div class="bg-label"><span>Brandgraad</span><span>licht-medium</span></div>
+            <div class="bg-dots" role="img" aria-label="Brandgraad 2 van 5: licht-medium">
+              <i class="f1"></i><i class="f2"></i><i></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kaart 2 — Brander's keuze -->
+      <article class="koffie-card featured" data-reveal style="--d:.08s">
+        <span class="ribbon">Brander's keuze</span>
+        <div class="koffie-photo">
+          <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80&auto=format&fit=crop" alt="Glanzende donkergebrande koffiebonen van dichtbij" loading="lazy" width="800" height="500">
+        </div>
+        <div class="koffie-body">
+          <div class="koffie-top">
+            <h3>Yirgacheffe Aricha</h3>
+            <p class="koffie-prijs">€15,00<small>250 g</small></p>
+          </div>
+          <p class="koffie-origin">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Gedeb, Ethiopië · 2.100 m
+          </p>
+          <div class="koffie-notes" aria-label="Smaaknotities">
+            <span>Jasmijn</span><span>Bergamot</span><span>Perzik</span>
+          </div>
+          <div class="brandgraad">
+            <div class="bg-label"><span>Brandgraad</span><span>licht</span></div>
+            <div class="bg-dots" role="img" aria-label="Brandgraad 1 van 5: licht">
+              <i class="f1"></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kaart 3 -->
+      <article class="koffie-card" data-reveal style="--d:.16s">
+        <div class="koffie-photo">
+          <img src="https://images.unsplash.com/photo-1524350876685-274059332603?w=800&q=80&auto=format&fit=crop" alt="Filterkoffie wordt langzaam opgeschonken met een zwanenhalsketel" loading="lazy" width="800" height="500">
+        </div>
+        <div class="koffie-body">
+          <div class="koffie-top">
+            <h3>Cerrado Mineiro</h3>
+            <p class="koffie-prijs">€12,00<small>250 g</small></p>
+          </div>
+          <p class="koffie-origin">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Minas Gerais, Brazilië · 1.100 m
+          </p>
+          <div class="koffie-notes" aria-label="Smaaknotities">
+            <span>Hazelnoot</span><span>Melkchocolade</span><span>Rietsuiker</span>
+          </div>
+          <div class="brandgraad">
+            <div class="bg-label"><span>Brandgraad</span><span>medium</span></div>
+            <div class="bg-dots" role="img" aria-label="Brandgraad 3 van 5: medium">
+              <i class="f1"></i><i class="f2"></i><i class="f3"></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kaart 4 -->
+      <article class="koffie-card" data-reveal style="--d:.0s">
+        <div class="koffie-photo">
+          <img src="https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?w=800&q=80&auto=format&fit=crop" alt="Rauwe en gebrande koffiebonen door elkaar" loading="lazy" width="800" height="500">
+        </div>
+        <div class="koffie-body">
+          <div class="koffie-top">
+            <h3>Kii AB Kirinyaga</h3>
+            <p class="koffie-prijs">€14,50<small>250 g</small></p>
+          </div>
+          <p class="koffie-origin">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Kirinyaga, Kenia · 1.800 m
+          </p>
+          <div class="koffie-notes" aria-label="Smaaknotities">
+            <span>Zwarte bes</span><span>Tomaat</span><span>Bruine suiker</span>
+          </div>
+          <div class="brandgraad">
+            <div class="bg-label"><span>Brandgraad</span><span>licht-medium</span></div>
+            <div class="bg-dots" role="img" aria-label="Brandgraad 2 van 5: licht-medium">
+              <i class="f1"></i><i class="f2"></i><i></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kaart 5 -->
+      <article class="koffie-card" data-reveal style="--d:.08s">
+        <div class="koffie-photo">
+          <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=800&q=80&auto=format&fit=crop" alt="Zwarte koffie in een kop, van bovenaf gefotografeerd" loading="lazy" width="800" height="500">
+        </div>
+        <div class="koffie-body">
+          <div class="koffie-top">
+            <h3>Oost Espresso</h3>
+            <p class="koffie-prijs">€11,50<small>250 g</small></p>
+          </div>
+          <p class="koffie-origin">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Blend · Brazilië &amp; Guatemala
+          </p>
+          <div class="koffie-notes" aria-label="Smaaknotities">
+            <span>Pure chocolade</span><span>Toffee</span><span>Walnoot</span>
+          </div>
+          <div class="brandgraad">
+            <div class="bg-label"><span>Brandgraad</span><span>medium-donker</span></div>
+            <div class="bg-dots" role="img" aria-label="Brandgraad 4 van 5: medium-donker">
+              <i class="f1"></i><i class="f2"></i><i class="f3"></i><i class="f4"></i><i></i>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kaart 6 -->
+      <article class="koffie-card" data-reveal style="--d:.16s">
+        <div class="koffie-photo">
+          <img src="https://images.unsplash.com/photo-1500630417200-63156e226754?w=800&q=80&auto=format&fit=crop" alt="Twee handen vol vers gebrande koffiebonen" loading="lazy" width="800" height="500">
+        </div>
+        <div class="koffie-body">
+          <div class="koffie-top">
+            <h3>Santa Ana Pacamara</h3>
+            <p class="koffie-prijs">€16,50<small>250 g</small></p>
+          </div>
+          <p class="koffie-origin">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Santa Ana, El Salvador · 1.600 m
+          </p>
+          <div class="koffie-notes" aria-label="Smaaknotities">
+            <span>Pruim</span><span>Honing</span><span>Amandel</span>
+          </div>
+          <div class="brandgraad">
+            <div class="bg-label"><span>Brandgraad</span><span>medium</span></div>
+            <div class="bg-dots" role="img" aria-label="Brandgraad 3 van 5: medium">
+              <i class="f1"></i><i class="f2"></i><i class="f3"></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BRANDPROCES
+     ============================================================ -->
+<section class="proces" id="proces">
+  <div class="wrap">
+    <div class="sec-head centered" data-reveal>
+      <span class="micro centered">Van boon tot bus</span>
+      <h2 class="sec-title">Vijf stappen, <em>nul haast</em></h2>
+      <p class="sec-intro">
+        Goede koffie laat zich niet opjagen. Dit is de route die elke
+        batch aflegt voordat hij bij jou door de brievenbus past.
+      </p>
+    </div>
+
+    <div class="proces-flow" id="procesFlow">
+      <div class="proces-line" id="procesLine" aria-hidden="true"></div>
+
+      <div class="proces-stap" style="--d:.0s">
+        <span class="proces-dot" aria-hidden="true">01</span>
+        <h3>Groene boon <span class="tijd">dag 0</span></h3>
+        <p>
+          De ongebande bonen komen per zeilvracht of geconsolideerde container
+          binnen. We controleren vochtgehalte en dichtheid en slaan ze koel
+          en donker op in juten zakken met GrainPro-voering.
+        </p>
+      </div>
+
+      <div class="proces-stap" style="--d:.1s">
+        <span class="proces-dot" aria-hidden="true">02</span>
+        <h3>Branden <span class="tijd">± 11 minuten</span></h3>
+        <p>
+          In onze 15-kilo Giesen draaien we kleine batches. Elke origin heeft
+          een eigen profiel: temperatuurcurve, luchtstroom en de seconde
+          waarop we lossen. Alles wordt gelogd en nageproefd.
+        </p>
+      </div>
+
+      <div class="proces-stap" style="--d:.2s">
+        <span class="proces-dot" aria-hidden="true">03</span>
+        <h3>Rusten &amp; ontgassen <span class="tijd">24–72 uur</span></h3>
+        <p>
+          Vers gebrande bonen geven CO₂ af. We laten elke batch minimaal een
+          etmaal rusten met eenrichtingsventiel, zodat de smaak zich zet
+          voordat er ook maar iets de deur uit gaat.
+        </p>
+      </div>
+
+      <div class="proces-stap" style="--d:.3s">
+        <span class="proces-dot" aria-hidden="true">04</span>
+        <h3>Cuppen <span class="tijd">elke batch</span></h3>
+        <p>
+          Geen batch verlaat de branderij zonder cupping. Wijkt het profiel
+          af van onze referentie, dan gaat de batch niet in de verkoop —
+          maar in de personeelspot. Zo simpel is het.
+        </p>
+      </div>
+
+      <div class="proces-stap" style="--d:.4s">
+        <span class="proces-dot" aria-hidden="true">05</span>
+        <h3>Verzenden <span class="tijd">binnen 48 uur</span></h3>
+        <p>
+          Gesealed met branddatum op het etiket en als brievenbuspakket op
+          weg. Bestel je vóór dinsdag- of donderdagochtend, dan krijg je
+          bonen van diezelfde brandronde.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+<section class="stats" id="stats" aria-label="Kerncijfers">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat" data-reveal style="--d:.0s">
+        <b><span class="countup" data-target="180" data-decimals="0">0</span><span class="accent">+</span></b>
+        <span>ton gebrand sinds 2016</span>
+      </div>
+      <div class="stat" data-reveal style="--d:.08s">
+        <b><span class="countup" data-target="14" data-decimals="0">0</span></b>
+        <span>boerderijen, direct trade</span>
+      </div>
+      <div class="stat" data-reveal style="--d:.16s">
+        <b><span class="countup" data-target="9.2" data-decimals="1">0</span></b>
+        <span>gemiddelde reviewscore</span>
+      </div>
+      <div class="stat" data-reveal style="--d:.24s">
+        <b><span class="countup" data-target="48" data-decimals="0">0</span><span class="accent">u</span></b>
+        <span>van brander tot brievenbus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABONNEMENT
+     ============================================================ -->
+<section class="abonnement" id="abonnement">
+  <div class="wrap">
+    <div class="sec-head centered" data-reveal>
+      <span class="micro centered">Abonnement</span>
+      <h2 class="sec-title">Nooit meer <em>zonder bonen</em> zitten</h2>
+      <p class="sec-intro">
+        Kies je ritme, wij kiezen de mooiste oogst van het moment.
+        Pauzeren of wisselen kan altijd — geen kleine lettertjes.
+      </p>
+    </div>
+
+    <div class="toggle-wrap" data-reveal>
+      <div class="period-toggle" id="periodToggle" role="group" aria-label="Kies factuurperiode">
+        <span class="toggle-pill" aria-hidden="true"></span>
+        <button type="button" data-period="maand" aria-pressed="true">Per maand</button>
+        <button type="button" data-period="kwartaal" aria-pressed="false">Per kwartaal<span class="korting">−10%</span></button>
+      </div>
+    </div>
+
+    <div class="tiers">
+
+      <article class="tier" data-reveal style="--d:.0s">
+        <header>
+          <h3>Proef</h3>
+          <p class="tier-sub">Voor de nieuwsgierige drinker</p>
+        </header>
+        <p class="tier-prijs">
+          <span class="euro">€</span>
+          <span class="bedrag" data-maand="9,50" data-kwartaal="25,50">9,50</span>
+          <span class="per" data-maand="/ maand" data-kwartaal="/ kwartaal">/ maand</span>
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>1 × 250 g per levering</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Wisselende single origin</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Smaakkaart bij elke zending</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gratis brievenbusbezorging</li>
+        </ul>
+        <a class="btn btn-ghost" href="#bezoek">Start met proeven</a>
+      </article>
+
+      <article class="tier uitgelicht" data-reveal style="--d:.1s">
+        <span class="tier-badge">Meest gekozen</span>
+        <header>
+          <h3>Vaste Prik</h3>
+          <p class="tier-sub">Voor het dagelijkse ritueel</p>
+        </header>
+        <p class="tier-prijs">
+          <span class="euro">€</span>
+          <span class="bedrag" data-maand="16,50" data-kwartaal="44,50">16,50</span>
+          <span class="per" data-maand="/ maand" data-kwartaal="/ kwartaal">/ maand</span>
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>2 × 250 g per levering</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Zelf origins kiezen of verrassing</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Maalgraad naar wens</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>10% korting in de winkel</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Pauzeren wanneer je wilt</li>
+        </ul>
+        <a class="btn btn-caramel" href="#bezoek">Kies Vaste Prik</a>
+      </article>
+
+      <article class="tier" data-reveal style="--d:.2s">
+        <header>
+          <h3>Connaisseur</h3>
+          <p class="tier-sub">Voor wie het naadje wil weten</p>
+        </header>
+        <p class="tier-prijs">
+          <span class="euro">€</span>
+          <span class="bedrag" data-maand="27,50" data-kwartaal="74,00">27,50</span>
+          <span class="per" data-maand="/ maand" data-kwartaal="/ kwartaal">/ maand</span>
+        </p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>3 × 250 g, ook micro-lots</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Eerste toegang tot nieuwe oogsten</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Brandprofiel &amp; oogstdossier</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Jaarlijks gratis proeverij voor 2</li>
+        </ul>
+        <a class="btn btn-ghost" href="#bezoek">Word connaisseur</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     OVER DE BRANDERIJ
+     ============================================================ -->
+<section class="over" id="over">
+  <div class="wrap over-grid">
+    <figure class="over-photo" data-reveal="left">
+      <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=900&q=80&auto=format&fit=crop" alt="De werkplaats van de branderij met espressomachine en barista aan het werk" loading="lazy" width="900" height="1080">
+      <span class="jaar-stempel" aria-hidden="true">est.<br>· 2016 ·<br>A'dam</span>
+    </figure>
+    <div class="over-body" data-reveal="right" style="--d:.1s">
+      <span class="micro">Over de branderij</span>
+      <h2 class="sec-title">Begonnen met één trommel <em>en te veel koppigheid</em></h2>
+      <p>
+        Branderij Oost begon in 2016 in een voormalige fietsenstalling aan de
+        Czaar Peterstraat: één tweedehands trommel van vijf kilo, een
+        cuppingtafel van steigerhout en het stellige idee dat koffie beter
+        kon — eerlijker ingekocht, lichter gebrand, zonder poespas.
+      </p>
+      <blockquote class="quote">
+        „Wij verkopen geen branding, wij verkopen brandwerk. Het verschil
+        proef je in het kopje — en de boer merkt het op zijn rekening."
+      </blockquote>
+      <p>
+        Inmiddels branden we op een Giesen van vijftien kilo en werken we
+        samen met veertien boerderijen in zeven landen. Wat niet veranderde:
+        elke batch wordt nog steeds door ons eigen team gecupt, en we kennen
+        de voornaam van iedere boer op het etiket.
+      </p>
+      <div class="handtekening">
+        <span class="naam">Mara &amp; Jelle</span>
+        <span class="functie">Oprichters &amp; hoofdbranders</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REVIEWS
+     ============================================================ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head centered" data-reveal>
+      <span class="micro centered">Wat drinkers zeggen</span>
+      <h2 class="sec-title">Liefde gaat door <em>de bonen</em></h2>
+    </div>
+
+    <div class="review-stage" data-reveal id="reviewStage">
+      <div class="review-track" id="reviewTrack">
+
+        <figure class="review-slide">
+          <div class="review-sterren" role="img" aria-label="5 van 5 sterren">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+          </div>
+          <blockquote>
+            De Yirgacheffe ruikt als een bloemenstal en smaakt als perzikthee.
+            Ik dacht dat ik geen lichte branding lustte — bleek dat ik gewoon
+            nooit goede had gehad.
+          </blockquote>
+          <figcaption><b>Sanne de Boer</b><span>Abonnee sinds 2021 · Utrecht</span></figcaption>
+        </figure>
+
+        <figure class="review-slide">
+          <div class="review-sterren" role="img" aria-label="5 van 5 sterren">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+          </div>
+          <blockquote>
+            Branddatum op het etiket, de boer met naam en toenaam erbij,
+            en binnen twee dagen in de bus. Zo hoort het. Onze zaak draait
+            al drie jaar volledig op de Oost Espresso.
+          </blockquote>
+          <figcaption><b>Tarik el Amrani</b><span>Eigenaar lunchcafé Vondel &amp; Co</span></figcaption>
+        </figure>
+
+        <figure class="review-slide">
+          <div class="review-sterren" role="img" aria-label="5 van 5 sterren">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.7 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.5l-5.8 3 1.1-6.4L2.6 9.5l6.5-.9L12 2.7Z"/></svg>
+          </div>
+          <blockquote>
+            De proeverij was het leukste uitje van het jaar: twee uur ruiken,
+            slurpen en eindelijk snappen waarom mijn koffie thuis altijd
+            bitter was. Met betere bonen én een beter recept naar huis.
+          </blockquote>
+          <figcaption><b>Hannah Visser</b><span>Proeverij-bezoeker · Haarlem</span></figcaption>
+        </figure>
+
+      </div>
+
+      <div class="review-nav">
+        <button class="review-btn" id="reviewPrev" aria-label="Vorige review">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="review-dots" id="reviewDots" role="tablist" aria-label="Kies review"></div>
+        <button class="review-btn" id="reviewNext" aria-label="Volgende review">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6 6 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BEZOEK ONS
+     ============================================================ -->
+<section class="bezoek" id="bezoek">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="micro">Bezoek ons</span>
+      <h2 class="sec-title">De deur staat open, <em>de pot staat aan</em></h2>
+      <p class="sec-intro">
+        Kom langs voor een kop, een zak bonen of gewoon om de trommel te
+        horen draaien. Op brandagen ruik je ons al vanaf de tramhalte.
+      </p>
+    </div>
+
+    <div class="bezoek-grid">
+      <figure class="bezoek-foto" data-reveal="left">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1000&q=80&auto=format&fit=crop" alt="De koffiebar van Branderij Oost met espressomachine en kruk aan het raam" loading="lazy" width="1000" height="700">
+      </figure>
+
+      <div class="bezoek-info" data-reveal="right" style="--d:.1s">
+        <div class="info-blok">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+          <div>
+            <h3>Adres</h3>
+            <p>Czaar Peterstraat 41-H<br>1018 NW Amsterdam<br><span style="font-family:var(--font-mono);font-size:.8rem">tram 7 · halte 1e Leeghwaterstraat</span></p>
+          </div>
+        </div>
+
+        <div class="info-blok">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h3>Openingstijden</h3>
+            <div class="tijden">
+              <b>wo – vr</b><span class="mono">08.30 – 17.00</span>
+              <b>za</b><span class="mono">09.00 – 18.00</span>
+              <b>zo</b><span class="mono">10.00 – 16.00</span>
+              <b>ma – di</b><span class="mono">brandagen · gesloten</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-blok">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h3>Contact</h3>
+            <p>hallo@branderijoost.nl<br><span style="font-family:var(--font-mono);font-size:.8rem">020 – 123 45 67</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA-banner: proeverij -->
+    <div class="proef-banner" data-reveal="scale">
+      <div class="bonen-veld" aria-hidden="true">
+        <svg style="left:6%;top:18%;width:34px;--bt:14s;--bd:0s;--br:-18deg" viewBox="0 0 24 24" fill="none"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg style="left:16%;bottom:14%;width:24px;--bt:18s;--bd:2s;--br:24deg" viewBox="0 0 24 24" fill="none"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg style="right:9%;top:22%;width:28px;--bt:16s;--bd:1s;--br:40deg" viewBox="0 0 24 24" fill="none"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg style="right:20%;bottom:12%;width:38px;--bt:20s;--bd:3s;--br:-32deg" viewBox="0 0 24 24" fill="none"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg style="left:44%;top:8%;width:20px;--bt:15s;--bd:4s;--br:12deg" viewBox="0 0 24 24" fill="none"><path d="M12 3c4 0 6.8 3.8 6.8 9s-2.8 9-6.8 9-6.8-3.8-6.8-9 2.8-9 6.8-9Z" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.4c-2 2.4-2.5 5-1.2 8.3s.9 6-1.1 8.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
+      <span class="micro centered">Proeverij · elke zaterdag</span>
+      <h2>Twee uur slurpen aan <em>de cuppingtafel</em></h2>
+      <p>
+        Proef zes origins naast elkaar, leer thuis beter zetten en neem een
+        zak van je favoriet mee. Max. acht personen, inclusief koffie en
+        iets lekkers erbij — €27,50 p.p.
+      </p>
+      <div class="banner-ctas">
+        <a class="btn btn-light" href="mailto:hallo@branderijoost.nl?subject=Proeverij%20boeken">
+          Proeverij boeken
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#koffie" style="border-color:rgba(246,241,231,.3);color:var(--cream)">Liever eerst thuis proeven?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a class="logo" href="#top" aria-label="Branderij Oost — naar boven">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.6c4.4 0 7.4 4.1 7.4 9.4s-3 9.4-7.4 9.4-7.4-4.1-7.4-9.4S7.6 2.6 12 2.6Z" stroke="#f6f1e7" stroke-width="1.7"/>
+              <path d="M12 3c-2.2 2.6-2.8 5.4-1.4 9s1 6.6-1.2 9" stroke="#f6f1e7" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">Branderij Oost<small style="color:#8a7763">Specialty koffie · A'dam</small></span>
+        </a>
+        <p>
+          Kleine-batch specialty koffie, sinds 2016 gebrand aan de
+          Czaar Peterstraat in Amsterdam-Oost.
+        </p>
+      </div>
+
+      <nav class="footer-col" aria-label="Footer navigatie">
+        <h3>Navigatie</h3>
+        <ul>
+          <li><a href="#koffie">Assortiment</a></li>
+          <li><a href="#proces">Brandproces</a></li>
+          <li><a href="#abonnement">Abonnement</a></li>
+          <li><a href="#over">Over ons</a></li>
+          <li><a href="#bezoek">Bezoek &amp; proeverij</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Praktische links">
+        <h3>Praktisch</h3>
+        <ul>
+          <li><a href="#bezoek">Verzending &amp; retour</a></li>
+          <li><a href="#bezoek">Zakelijk &amp; horeca</a></li>
+          <li><a href="#bezoek">Cadeaubonnen</a></li>
+          <li><a href="#bezoek">Veelgestelde vragen</a></li>
+          <li><a href="#bezoek">Privacy &amp; voorwaarden</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col nieuwsbrief">
+        <h3>De Oogstbrief</h3>
+        <p>
+          Eén mail per maand: nieuwe oogsten, brandtips en als eerste weten
+          wanneer micro-lots binnenkomen. Geen ruis, beloofd.
+        </p>
+        <div class="nb-wrap" id="nbWrap">
+          <form class="nb-form" id="nbForm" novalidate>
+            <label class="sr-only" for="nbEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+            <input type="email" id="nbEmail" name="email" placeholder="jouw@mailadres.nl" autocomplete="email" required>
+            <button type="submit">Inschrijven</button>
+          </form>
+          <p class="nb-dank" role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Dank je wel! De eerstvolgende Oogstbrief valt bij je op de mat.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="mono">© <span id="year">2026</span> Branderij Oost · KvK 66.123.456 · Amsterdam</p>
+      <div class="socials">
+        <a href="#top" aria-label="Instagram van Branderij Oost">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg>
+        </a>
+        <a href="#top" aria-label="Facebook van Branderij Oost">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V2.8h-2.3A4 4 0 0 0 10.7 6.8v1.7H8.5V12h2.2v9h3.3v-9h2.4l.5-3.5H14Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#top" aria-label="Spotify-afspeellijst van de branderij">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M7.5 10.2c3-1 6.6-.7 9 .9M8 13.2c2.4-.8 5.2-.5 7.2.8M8.6 16c1.8-.6 3.8-.4 5.3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+      <p class="mono">Gebrand op smaak, niet op haast.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  document.documentElement.classList.add('js');
+
+  var reduceMotion = false;
+  try {
+    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    reduceMotion = mq.matches;
+    if (mq.addEventListener) {
+      mq.addEventListener('change', function (e) {
+        reduceMotion = e.matches;
+        if (reduceMotion) document.documentElement.classList.add('rm');
+      });
+    }
+  } catch (err) { /* matchMedia niet beschikbaar: ga uit van animaties */ }
+  if (reduceMotion) document.documentElement.classList.add('rm');
+
+  /* ---------- Header: achtergrond bij scroll ---------- */
+  var header = document.getElementById('siteHeader');
+  var lastScrolled = null;
+  function onScrollHeader() {
+    var scrolled = window.scrollY > 24;
+    if (scrolled !== lastScrolled && header) {
+      header.classList.toggle('scrolled', scrolled);
+      lastScrolled = scrolled;
+    }
+  }
+  window.addEventListener('scroll', onScrollHeader, { passive: true });
+  onScrollHeader();
+
+  /* ---------- Mobiel overlay-menu ---------- */
+  var toggle = document.getElementById('menuToggle');
+  var menu = document.getElementById('mobileMenu');
+  var lastFocus = null;
+
+  function openMenu() {
+    if (!menu || !toggle) return;
+    lastFocus = document.activeElement;
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Menu sluiten');
+    header.classList.add('menu-open');
+    document.body.classList.add('menu-locked');
+    var firstLink = menu.querySelector('a');
+    if (firstLink) firstLink.focus();
+  }
+  function closeMenu(returnFocus) {
+    if (!menu || !toggle) return;
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Menu openen');
+    header.classList.remove('menu-open');
+    document.body.classList.remove('menu-locked');
+    if (returnFocus && lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      if (isOpen) { closeMenu(true); } else { openMenu(); }
+    });
+    /* Sluit bij klik op een link */
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { closeMenu(false); });
+    });
+    /* Escape sluit het menu */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu(true);
+      }
+    });
+    /* Eenvoudige focus-cyclus binnen het open menu */
+    menu.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !menu.classList.contains('open')) return;
+      var focusables = menu.querySelectorAll('a, button');
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        if (toggle) toggle.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        if (toggle) toggle.focus();
+      }
+    });
+  }
+
+  /* ---------- Reveal-systeem (één IntersectionObserver) ---------- */
+  var revealTargets = [].slice.call(document.querySelectorAll('[data-reveal], .proces-stap'));
+  var statsSection = document.getElementById('stats');
+  var procesFlow = document.getElementById('procesFlow');
+
+  function showAllReveals() {
+    revealTargets.forEach(function (el) { el.classList.add('in'); });
+    startCountups();
+  }
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    showAllReveals();
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        if (entry.target === statsSection) startCountups();
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+
+    revealTargets.forEach(function (el) { io.observe(el); });
+    if (statsSection) io.observe(statsSection);
+
+    /* Vangnet: content nooit verborgen laten als de observer
+       om wat voor reden dan ook niet vuurt */
+    setTimeout(function () {
+      revealTargets.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0 && !el.classList.contains('in')) {
+          el.classList.add('in');
+        }
+      });
+    }, 900);
+  }
+
+  /* ---------- Hero entrance bij load ---------- */
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    window.requestAnimationFrame(function () {
+      setTimeout(function () { hero.classList.add('in'); }, reduceMotion ? 0 : 90);
+    });
+  }
+
+  /* ---------- Brandproces: lijn groeit mee met scroll ---------- */
+  var procesLine = document.getElementById('procesLine');
+  var lineTicking = false;
+  function updateProcesLine() {
+    lineTicking = false;
+    if (!procesLine || !procesFlow || reduceMotion) return;
+    var rect = procesFlow.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    /* progress: 0 als de top van de flow op 80% viewport staat,
+       1 als de bodem op 45% viewport staat */
+    var start = vh * 0.8;
+    var end = vh * 0.45;
+    var total = rect.height + (start - end);
+    var passed = start - rect.top;
+    var p = Math.min(Math.max(passed / total, 0), 1);
+    procesLine.style.height = (p * 100).toFixed(2) + '%';
+  }
+  function requestLineUpdate() {
+    if (!lineTicking) {
+      lineTicking = true;
+      window.requestAnimationFrame(updateProcesLine);
+    }
+  }
+  if (procesLine && procesFlow) {
+    if (reduceMotion) {
+      procesLine.style.height = '100%';
+    } else {
+      window.addEventListener('scroll', requestLineUpdate, { passive: true });
+      window.addEventListener('resize', requestLineUpdate);
+      updateProcesLine();
+    }
+  }
+
+  /* ---------- Count-up stats ---------- */
+  var countupsStarted = false;
+  function formatNum(value, decimals) {
+    return decimals > 0
+      ? value.toFixed(decimals).replace('.', ',')
+      : String(Math.round(value));
+  }
+  function startCountups() {
+    if (countupsStarted) return;
+    countupsStarted = true;
+    [].slice.call(document.querySelectorAll('.countup')).forEach(function (el, i) {
+      var target = parseFloat(el.getAttribute('data-target'));
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      if (isNaN(target)) return;
+      if (reduceMotion) {
+        el.textContent = formatNum(target, decimals);
+        return;
+      }
+      var dur = 1700;
+      var startT = null;
+      function tick(t) {
+        if (startT === null) startT = t;
+        var p = Math.min((t - startT) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = formatNum(target * eased, decimals);
+        if (p < 1) window.requestAnimationFrame(tick);
+      }
+      setTimeout(function () { window.requestAnimationFrame(tick); }, 150 + i * 130);
+    });
+  }
+
+  /* ---------- Abonnement: maand/kwartaal-toggle ---------- */
+  var periodToggle = document.getElementById('periodToggle');
+  if (periodToggle) {
+    var periodBtns = [].slice.call(periodToggle.querySelectorAll('button[data-period]'));
+    var bedragen = [].slice.call(document.querySelectorAll('.tier-prijs .bedrag'));
+    var perLabels = [].slice.call(document.querySelectorAll('.tier-prijs .per'));
+    var switching = false;
+
+    function setPeriod(period) {
+      if (switching) return;
+      switching = true;
+      periodToggle.classList.toggle('kwartaal', period === 'kwartaal');
+      periodBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-period') === period ? 'true' : 'false');
+      });
+      var dur = reduceMotion ? 0 : 240;
+      bedragen.forEach(function (el) { el.classList.add('switching'); });
+      setTimeout(function () {
+        bedragen.forEach(function (el) {
+          var next = el.getAttribute('data-' + period);
+          if (next) el.textContent = next;
+          el.classList.remove('switching');
+        });
+        perLabels.forEach(function (el) {
+          var next = el.getAttribute('data-' + period);
+          if (next) el.textContent = next;
+        });
+        switching = false;
+      }, dur);
+    }
+    periodBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.getAttribute('aria-pressed') === 'true') return;
+        setPeriod(btn.getAttribute('data-period'));
+      });
+    });
+  }
+
+  /* ---------- Reviews-carrousel ---------- */
+  var track = document.getElementById('reviewTrack');
+  var dotsWrap = document.getElementById('reviewDots');
+  var prevBtn = document.getElementById('reviewPrev');
+  var nextBtn = document.getElementById('reviewNext');
+  if (track && dotsWrap) {
+    var slides = [].slice.call(track.children);
+    var current = 0;
+    var autoTimer = null;
+
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Review ' + (i + 1) + ' van ' + slides.length);
+      dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', function () { goTo(i, true); });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = [].slice.call(dotsWrap.children);
+
+    function goTo(index, manual) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) {
+        d.setAttribute('aria-current', i === current ? 'true' : 'false');
+      });
+      if (manual) restartAuto();
+    }
+    function restartAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+      if (reduceMotion) return;
+      autoTimer = setInterval(function () { goTo(current + 1, false); }, 6500);
+    }
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1, true); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1, true); });
+
+    var stage = document.getElementById('reviewStage');
+    if (stage) {
+      stage.addEventListener('mouseenter', function () { if (autoTimer) clearInterval(autoTimer); });
+      stage.addEventListener('mouseleave', restartAuto);
+      stage.addEventListener('focusin', function () { if (autoTimer) clearInterval(autoTimer); });
+      stage.addEventListener('focusout', restartAuto);
+    }
+    restartAuto();
+  }
+
+  /* ---------- Nieuwsbrief: fake submit ---------- */
+  var nbForm = document.getElementById('nbForm');
+  var nbWrap = document.getElementById('nbWrap');
+  var nbEmail = document.getElementById('nbEmail');
+  if (nbForm && nbWrap && nbEmail) {
+    nbForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = nbEmail.value.trim();
+      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      if (!ok) {
+        nbEmail.focus();
+        nbEmail.setAttribute('aria-invalid', 'true');
+        nbEmail.style.borderColor = '#c0563a';
+        return;
+      }
+      nbWrap.classList.add('sent');
+    });
+    nbEmail.addEventListener('input', function () {
+      nbEmail.removeAttribute('aria-invalid');
+      nbEmail.style.borderColor = '';
+    });
+  }
+
+  /* ---------- Footer jaar ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+})();
+</script>
+</body>
+</html>

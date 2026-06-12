@@ -1,6 +1,6 @@
-# Template Galerij — 16 kant-en-klare websites
+# Template Galerij — 18 kant-en-klare websites
 
-Een verzameling van **16 complete, responsive website-templates**, elk met een eigen stijl — waaronder **6 premium designs** met volledige animatie-choreografie. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **18 complete, responsive website-templates**, elk met een eigen stijl — waaronder **8 premium designs** met volledige animatie-choreografie. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -24,6 +24,8 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 14 | `templates/14-fashion/` | ★ Fashion / Maison | Curtain-reveal, asymmetrisch grid, lookbook met scroll-snap |
 | 15 | `templates/15-wellness/` | ★ Wellness / Spa | Adem-widget, boogmaskers, tekenende tijdlijn, serene animaties |
 | 16 | `templates/16-bouw/` | ★ ZZP Metselaar | Zwart/blauw/grijs blueprint-stijl, zelftekenende troffel-SVG, voor/na-slider, projectfilter |
+| 17 | `templates/17-koffie/` | ★ Koffiebranderij | Crème/karamel-huisstijl, stoom-animaties, brandgraad-meters, zelftekenende procestijdlijn, abonnement-toggle |
+| 18 | `templates/18-gym/` | ★ Boxing Gym | Zwart/acid-geel, knallende stapeltypografie, dubbele kinetische marquee, duotone-foto's, lesrooster-tabs met ARIA |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 
@@ -50,7 +52,7 @@ template/
 ```
 
 > Template 01 (Bedrijf) bestaat uit meerdere pagina's met losse CSS/JS-bestanden.
-> Templates 02 t/m 10 zijn elk **één zelfstandig `index.html`-bestand** (CSS en JS inline) — makkelijk te kopiëren en hergebruiken.
+> Templates 02 t/m 18 zijn elk **één zelfstandig `index.html`-bestand** (CSS en JS inline) — makkelijk te kopiëren en hergebruiken.
 
 ## 🚀 Lokaal bekijken
 
