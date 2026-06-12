@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="nl" class="js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buitenplaats — tuin- &amp; landschapsarchitectuur, Utrecht</title>
+<meta name="description" content="Buitenplaats ontwerpt en bouwt tuinen in en rond Utrecht. Tuinontwerp, aanleg, beplantingsplannen en seizoensonderhoud — voor buitenruimtes die elk jaar mooier worden.">
+<meta name="theme-color" content="#f3f1ea">
+<meta property="og:title" content="Buitenplaats — tuin- &amp; landschapsarchitectuur">
+<meta property="og:description" content="Tuinontwerp, aanleg, beplanting en onderhoud uit Utrecht. Tuinen die wortelen en elk jaar mooier worden.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  /* Opt-in voor animaties + intro-gating VÓÓR de eerste paint.
+     Zonder JS blijft alles zichtbaar (html.no-anim eindstaten);
+     het entreegordijn speelt één keer per sessie en nooit bij reduced-motion. */
+  (function () {
+    var h = document.documentElement;
+    h.classList.remove('no-js');
+    var reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (!reduce) {
+      h.classList.remove('no-anim');
+      h.classList.add('anim-ok');
+    }
+    var seen = false;
+    try { seen = sessionStorage.getItem('buitenplaats-intro') === '1'; } catch (e) {}
+    if (reduce || seen) {
+      h.classList.add('intro-skip');
+    } else {
+      h.classList.add('intro-play');
+      try { sessionStorage.setItem('buitenplaats-intro', '1'); } catch (e) {}
+    }
+  })();
+</script>
+<style>
+/* ============================================================
+   BUITENPLAATS — flagship one-page template (licht, serif)
+   tuin- & landschapsarchitectuur · Utrecht
+   ============================================================ */
+:root{
+  --paper:#f3f1ea; --paper-2:#eae6db;
+  --ink:#171c17; --ink-soft:#2a322a;
+  --text:#1d231d; --muted:#5e665c; --muted-2:#8a9186;
+  --groen:#2e5b3f; --groen-licht:#4a7d5d; --oker:#c08a2d;
+  --line:rgba(23,28,23,.12); --line-strong:rgba(23,28,23,.2);
+  --ease:cubic-bezier(.22,1,.36,1); --ease-hard:cubic-bezier(.7,0,.2,1);
+  --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --header-h:80px;
+  --gutter:clamp(1.25rem, 4.5vw, 5rem);
+  --maxw:1480px;
+  --radius:14px;
+}
+@property --ang{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px);-webkit-text-size-adjust:100%}
+html.no-anim{scroll-behavior:auto}
+body{
+  background:var(--paper);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--groen);color:#f3f1ea}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--paper-2)}
+::-webkit-scrollbar-thumb{background:#c8c2b2;border-radius:99px;border:3px solid var(--paper-2)}
+::-webkit-scrollbar-thumb:hover{background:var(--groen)}
+:focus-visible{outline:2px solid var(--groen);outline-offset:3px;border-radius:3px}
+
+/* papierkorrel — subtiele textuur over de hele pagina */
+body::after{
+  content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+/* pulserende status-stip */
+.dot-pulse{width:9px;height:9px;border-radius:50%;background:var(--groen);position:relative;flex:none}
+.dot-pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--groen)}
+html.anim-ok .dot-pulse::after{animation:pulse 2s var(--ease) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.7);opacity:0}}
+
+.container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(4.5rem, 9vw, 8.5rem)}
+.muted{color:var(--muted)}
+
+/* donkere secties: eigen kleur- en lijnvariabelen */
+.dark{
+  background:var(--ink);color:#e9eae4;
+  --line:rgba(233,234,228,.12); --line-strong:rgba(233,234,228,.22);
+}
+.dark .muted{color:#a7ad9f}
+
+/* ---------- typografie ---------- */
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.06;letter-spacing:-.01em}
+em.accent{font-style:italic;font-weight:400;color:var(--groen)}
+em.accent-oker{font-style:italic;font-weight:400;color:var(--oker)}
+.dark em.accent{color:var(--groen-licht)}
+.mono{font-family:var(--font-mono)}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:400;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--muted);
+  display:inline-flex;align-items:center;gap:.6rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--groen)}
+.dark .eyebrow{color:var(--muted-2)}
+.dark .eyebrow::before{background:var(--oker)}
+.section-head{max-width:48rem;margin-bottom:clamp(2.4rem,5vw,4rem)}
+.section-head h2{font-size:clamp(2.1rem,5.2vw,3.7rem);margin:1rem 0 .9rem}
+.section-head p{color:var(--muted);font-size:clamp(1rem,1.4vw,1.12rem);max-width:44rem}
+
+/* ---------- knoppen ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:1rem 1.6rem;border-radius:99px;border:1px solid var(--line-strong);
+  transition:transform .5s var(--ease),background-color .35s,color .35s,border-color .35s;
+  will-change:transform;
+}
+.btn svg{width:15px;height:15px}
+.btn-primary{background:var(--groen);color:#f3f1ea;border-color:var(--groen)}
+.btn-primary:hover{background:var(--groen-licht);border-color:var(--groen-licht)}
+.btn-ghost{color:var(--text)}
+.btn-ghost:hover{border-color:var(--groen);color:var(--groen)}
+.dark .btn-ghost{color:#e9eae4}
+.dark .btn-ghost:hover{border-color:var(--oker);color:var(--oker)}
+
+/* skip link */
+.skip-link{
+  position:fixed;top:0;left:0;z-index:400;
+  background:var(--groen);color:#f3f1ea;padding:.8rem 1.3rem;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  transform:translateY(-120%);transition:transform .3s var(--ease);
+}
+.skip-link:focus{transform:translateY(0)}
+
+/* ============================================================
+   1 · ENTREE — gordijn (verticaal openwijkende papier-panelen)
+   ============================================================ */
+.curtain{position:fixed;inset:0;z-index:300;display:none;pointer-events:none}
+html.intro-play .curtain{display:block}
+.curtain__panel{position:absolute;left:0;right:0;height:50.5%;background:var(--paper-2)}
+.curtain__panel--top{top:0;border-bottom:1px solid var(--line)}
+.curtain__panel--bottom{bottom:0;border-top:1px solid var(--line)}
+.curtain__mark{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;
+  color:var(--ink);
+}
+.curtain__mark .naam{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:clamp(1.5rem,4vw,2.6rem);letter-spacing:.04em}
+.curtain__mark .jaar{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+html.intro-play .curtain__mark{animation:curtainMark 1.15s var(--ease) forwards}
+html.intro-play .curtain__panel--top{animation:curtainUp 1.05s var(--ease-hard) .55s forwards}
+html.intro-play .curtain__panel--bottom{animation:curtainDown 1.05s var(--ease-hard) .55s forwards}
+@keyframes curtainUp{to{transform:translateY(-102%)}}
+@keyframes curtainDown{to{transform:translateY(102%)}}
+@keyframes curtainMark{0%{opacity:0}30%{opacity:1}70%{opacity:1}100%{opacity:0}}
+
+/* ============================================================
+   2 · HEADER + scroll-progress + overlay-menu
+   ============================================================ */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:200;
+  background:linear-gradient(90deg,var(--groen),var(--groen-licht));
+  transform:scaleX(0);transform-origin:left center;
+}
+html.no-anim .scroll-progress{display:none}
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  transition:transform .5s var(--ease),background-color .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+.header.is-hidden{transform:translateY(-101%)}
+.header.is-solid{
+  background:rgba(243,241,234,.82);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+}
+.header-bar{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--font-display);font-weight:500;font-size:1.12rem;letter-spacing:.01em}
+.brand .logo{width:34px;height:34px;flex:none}
+.brand .logo path{fill:none;stroke:var(--groen);stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round}
+html.anim-ok .brand .logo path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s var(--ease) .25s}
+html.anim-ok.blad-getekend .brand .logo path{stroke-dashoffset:0}
+.brand small{display:block;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:2px}
+.header-nav{display:flex;align-items:center;gap:2rem}
+.header-links{display:flex;gap:1.7rem}
+.header-links a{font-size:.88rem;font-weight:500;color:var(--muted);transition:color .3s}
+.header-links a:hover{color:var(--ink)}
+.header-actions{display:flex;align-items:center;gap:.9rem}
+.menu-toggle{
+  width:46px;height:46px;border:1px solid var(--line-strong);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;
+  transition:border-color .3s;
+}
+.menu-toggle:hover{border-color:var(--groen)}
+.menu-toggle span{display:block;width:18px;height:1.5px;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
+@media (max-width:1100px){
+  .header-links{display:none}
+}
+@media (max-width:560px){
+  .header-actions .btn-cta-text{display:none}
+}
+
+/* ---------- fullscreen overlay menu (paper) ---------- */
+.menu-overlay{
+  position:fixed;inset:0;z-index:160;
+  background:var(--paper-2);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--header-h) + 2rem) var(--gutter) var(--gutter);
+  opacity:0;visibility:hidden;
+  transition:opacity .55s var(--ease),visibility 0s linear .55s;
+}
+.menu-overlay.is-open{opacity:1;visibility:visible;transition:opacity .55s var(--ease)}
+.menu-overlay__close{
+  position:absolute;top:calc((var(--header-h) - 46px)/2);right:var(--gutter);
+  width:46px;height:46px;border:1px solid var(--line-strong);border-radius:50%;
+  display:grid;place-items:center;color:var(--ink);transition:border-color .3s,transform .4s var(--ease);
+}
+.menu-overlay__close:hover{border-color:var(--groen);transform:rotate(90deg)}
+.menu-overlay__close::before,.menu-overlay__close::after{content:"";position:absolute;width:18px;height:1.5px;background:currentColor}
+.menu-overlay__close::before{transform:rotate(45deg)}
+.menu-overlay__close::after{transform:rotate(-45deg)}
+.menu-list li{overflow:hidden;padding-block:.12rem;border-bottom:1px solid var(--line)}
+.menu-list li:first-child{border-top:1px solid var(--line)}
+.menu-list a{
+  display:inline-flex;align-items:baseline;gap:1.1rem;padding-block:.35rem;
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2rem,7vw,3.9rem);line-height:1.22;letter-spacing:0;color:var(--ink);
+  transform:translateY(115%);transition:transform .85s var(--ease),color .3s,font-style .3s;
+}
+.menu-list a .idx{font-family:var(--font-mono);font-size:.74rem;font-weight:400;color:var(--oker);letter-spacing:.12em}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(1) a{transition-delay:.07s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(2) a{transition-delay:.13s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(3) a{transition-delay:.19s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(4) a{transition-delay:.25s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(5) a{transition-delay:.31s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(6) a{transition-delay:.37s}
+.menu-overlay.is-open .menu-list a{transform:translateY(0)}
+.menu-list a:hover{color:var(--groen);font-style:italic}
+.menu-foot{margin-top:clamp(2rem,5vh,3.5rem);display:flex;gap:2rem;flex-wrap:wrap;opacity:0;transition:opacity .8s var(--ease) .45s}
+.menu-overlay.is-open .menu-foot{opacity:1}
+.menu-foot a{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.12em;color:var(--muted)}
+.menu-foot a:hover{color:var(--groen)}
+html.no-anim .menu-list a{transform:none}
+html.no-anim .menu-foot{opacity:1}
+
+/* ============================================================
+   3 · HERO — woord-voor-woord reveal + boogbeeld (kerkraam)
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:calc(var(--header-h) + 2.5rem);padding-bottom:clamp(4rem,8vh,6rem);
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(2rem,5vw,5rem);align-items:center;
+}
+.hero .eyebrow{margin-bottom:1.6rem}
+.hero h1{font-size:clamp(2.7rem,6.6vw,5.4rem);font-weight:500;max-width:14ch;letter-spacing:-.015em}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--groen)}
+/* woord-voor-woord onthulling */
+.hw{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em}
+.hw-i{display:inline-block}
+html.anim-ok .hw-i{transform:translateY(112%);transition:transform .9s var(--ease);transition-delay:var(--wd,0s)}
+html.anim-ok.ready .hw-i{transform:translateY(0)}
+.hero-sub{margin-top:1.8rem;max-width:38ch;color:var(--muted);font-size:clamp(1rem,1.5vw,1.15rem)}
+.hero-cta{margin-top:2.2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.hero-status{
+  margin-top:2.6rem;display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+html.anim-ok .hero .eyebrow,html.anim-ok .hero-sub,html.anim-ok .hero-cta,html.anim-ok .hero-status{
+  opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease);
+}
+html.anim-ok.ready .hero .eyebrow{transition-delay:.15s;opacity:1;transform:none}
+html.anim-ok.ready .hero-sub{transition-delay:.75s;opacity:1;transform:none}
+html.anim-ok.ready .hero-cta{transition-delay:.9s;opacity:1;transform:none}
+html.anim-ok.ready .hero-status{transition-delay:1.05s;opacity:1;transform:none}
+
+/* boogvormig herobeeld — clip op BINNENSTE wrapper, radius op buitenste */
+.hero-visual{position:relative}
+.hero-arch{
+  position:relative;border-radius:999px 999px 18px 18px;overflow:hidden;
+  aspect-ratio:4/5.1;background:var(--paper-2);
+  box-shadow:0 44px 90px -48px rgba(23,28,23,.45);
+}
+.hero-arch-clip{position:absolute;inset:0}
+html.anim-ok .hero-arch-clip{clip-path:inset(0 0 100% 0);transition:clip-path 1.5s var(--ease) .35s}
+html.anim-ok.ready .hero-arch-clip{clip-path:inset(0 0 0 0)}
+.hero-arch img{position:absolute;inset:-4% -3%;width:106%;height:108%;object-fit:cover}
+html.anim-ok .hero-arch img{animation:kenburns 30s ease-in-out 1.6s infinite alternate}
+@keyframes kenburns{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(1.4%,-1.8%)}}
+.hero-arch-cap{
+  position:absolute;right:-.6rem;bottom:1.8rem;z-index:3;
+  background:rgba(243,241,234,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:12px;padding:.8rem 1.1rem;
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+html.anim-ok .hero-arch-cap{opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease) 1.3s,transform .8s var(--ease) 1.3s}
+html.anim-ok.ready .hero-arch-cap{opacity:1;transform:none}
+.scroll-cue{
+  position:absolute;left:var(--gutter);bottom:1.6rem;z-index:2;
+  display:flex;align-items:center;gap:.7rem;
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.scroll-cue .drip{position:relative;width:1px;height:42px;background:var(--line-strong);overflow:hidden}
+.scroll-cue .drip::after{content:"";position:absolute;top:0;left:0;width:100%;height:40%;background:var(--groen)}
+html.anim-ok .scroll-cue .drip::after{animation:drip 2.2s var(--ease) infinite}
+@keyframes drip{0%{transform:translateY(-110%)}60%,100%{transform:translateY(260%)}}
+@media (max-width:1100px){
+  .hero h1{font-size:clamp(2.5rem,7.5vw,4.4rem)}
+}
+@media (max-width:820px){
+  .hero{justify-content:flex-start;padding-bottom:5.5rem}
+  .hero-grid{grid-template-columns:1fr;gap:2.6rem}
+  .hero-visual{max-width:420px}
+}
+@media (max-width:560px){.scroll-cue{display:none}.hero-arch-cap{right:.6rem}}
+
+/* ============================================================
+   4 · MARQUEE — één elegante italic serif-band
+   ============================================================ */
+.marquee-band{border-block:1px solid var(--line);background:var(--paper-2);overflow:hidden}
+.marquee-row{display:flex;overflow:hidden;user-select:none;-webkit-user-select:none}
+.marquee-track{display:flex;flex:none;align-items:center;will-change:transform}
+html.anim-ok .marquee-track{animation:marqueeL 44s linear infinite}
+html.anim-ok .marquee-band:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{
+  display:flex;align-items:center;gap:2rem;flex:none;
+  font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.5rem,3.4vw,2.6rem);color:var(--ink-soft);
+  padding:1.1rem 1rem;line-height:1;white-space:nowrap;
+}
+.marquee-track span i{font-style:normal;color:var(--oker);font-size:.6em;transform:translateY(-.08em)}
+@keyframes marqueeL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================================================
+   5 · MANIFEST (donker · scroll-gedreven woord-oplichting)
+   ============================================================ */
+.manifest .manifest-text{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.8rem,4.6vw,3.4rem);line-height:1.3;letter-spacing:0;
+  max-width:26ch;
+}
+html.anim-ok .manifest .manifest-text .w{color:rgba(233,234,228,.16);transition:color .45s var(--ease)}
+html.anim-ok .manifest .manifest-text .w.lit{color:#e9eae4}
+html.anim-ok .manifest .manifest-text .w.accent.lit{color:var(--oker);font-style:italic}
+.manifest .manifest-sign{margin-top:2.6rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
+
+/* ============================================================
+   reveal-systeem (één IntersectionObserver, data-rv + --d)
+   ============================================================ */
+html.anim-ok [data-rv]{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok [data-rv].in-view{opacity:1;transform:none}
+/* clip-variant: clip op BINNENSTE .clip-i — nooit op het geobserveerde element
+   zelf (een element met inset(0 0 100%) rapporteert intersectionRatio 0). */
+/* het kaart-element zelf blijft zichtbaar; opacity/transform-transitie blijft
+   beschikbaar voor de filter-animaties (is-leaving / is-entering) */
+html.anim-ok [data-rv="clip"]{opacity:1;transform:none;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+html.anim-ok [data-rv="clip"] .clip-i{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok [data-rv="clip"].in-view .clip-i{clip-path:inset(0 0 0 0)}
+
+/* ============================================================
+   6 · DIENSTEN — redactionele rijen + meeschuivende preview
+   ============================================================ */
+.diensten{position:relative}
+.dienst-rows{border-top:1px solid var(--line)}
+.dienst-row{
+  position:relative;display:grid;gap:.4rem 2rem;
+  grid-template-columns:minmax(0,1fr);
+  padding:clamp(1.5rem,3vw,2.3rem) 0;border-bottom:1px solid var(--line);
+  transition:transform .6s var(--ease);
+}
+.dienst-num{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;color:var(--oker);transition:color .4s}
+.dienst-row h3{font-size:clamp(1.5rem,3.4vw,2.4rem);font-weight:500;display:flex;align-items:center;gap:1rem}
+.dienst-row h3 .pijl{flex:none;width:30px;height:30px;color:var(--muted-2);transition:transform .5s var(--ease),color .4s}
+.dienst-row p{color:var(--muted);max-width:52ch;font-size:.96rem}
+@media (min-width:1101px){
+  .dienst-row{grid-template-columns:5.5rem minmax(0,22rem) minmax(0,1fr);align-items:baseline}
+  .dienst-row:hover,.dienst-row:focus-within{transform:translateX(1.2rem)}
+  .dienst-row:hover .dienst-num{color:var(--groen)}
+  .dienst-row:hover h3 .pijl{transform:translateX(8px) rotate(-45deg);color:var(--groen)}
+}
+/* preview-afbeelding die het rijmidden volgt (alleen fine pointer) */
+.dienst-preview{
+  display:none;pointer-events:none;
+  position:absolute;right:clamp(1.5rem,5vw,6rem);top:0;
+  width:clamp(220px,19vw,310px);aspect-ratio:3/4;z-index:3;
+  border-radius:999px 999px 14px 14px;overflow:hidden;
+  box-shadow:0 36px 70px -36px rgba(23,28,23,.5);
+  opacity:0;transform:translateY(var(--py,0)) scale(.96);
+  transition:opacity .45s var(--ease),transform .7s var(--ease);
+}
+.dienst-preview.is-on{opacity:1;transform:translateY(var(--py,0)) scale(1)}
+.dienst-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+.dienst-preview img.is-active{opacity:1}
+@media (hover:hover) and (pointer:fine) and (min-width:1101px){
+  html.anim-ok .dienst-preview{display:block}
+}
+
+/* ============================================================
+   7 · PROJECTEN — filter + clip-reveal kaarten
+   ============================================================ */
+.projecten{background:var(--paper-2);border-block:1px solid var(--line)}
+.filterbar{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:clamp(2rem,4vw,3rem)}
+.filter-btn{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.6rem 1.15rem;border-radius:99px;border:1px solid var(--line-strong);color:var(--muted);
+  transition:background-color .35s,color .35s,border-color .35s;
+}
+.filter-btn:hover{border-color:var(--groen);color:var(--groen)}
+.filter-btn[aria-pressed="true"]{background:var(--groen);border-color:var(--groen);color:#f3f1ea}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,2rem)}
+@media (max-width:1100px){.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.project-grid{grid-template-columns:1fr}}
+.pc{transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.pc.is-leaving,.pc.is-entering{opacity:0;transform:scale(.93)}
+.pc-media{position:relative;overflow:hidden;border-radius:var(--radius);aspect-ratio:4/5;background:#dcd7c9}
+.pc.is-arch .pc-media{border-radius:999px 999px var(--radius) var(--radius)}
+.pc-media .clip-i{position:absolute;inset:0;overflow:hidden}
+.pc-media img{
+  position:absolute;inset:0;width:100%;height:106%;object-fit:cover;
+  filter:sepia(.28) saturate(.82) contrast(1.02);
+  transition:filter .7s var(--ease);will-change:transform;
+}
+.pc:hover .pc-media img{filter:sepia(0) saturate(1)}
+.pc-cap{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1rem .2rem 0}
+.pc-cap h3{font-size:1.18rem;font-weight:500}
+.pc-cap h3 a{transition:color .3s}
+.pc-cap h3 a:hover{color:var(--groen);font-style:italic}
+.pc-cap .waar{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);flex:none}
+.pc-cap .waar b{color:var(--oker);font-weight:400}
+.pc-tag{
+  position:absolute;top:14px;left:14px;z-index:2;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  background:rgba(243,241,234,.88);border:1px solid var(--line);color:var(--ink-soft);
+  padding:.35rem .75rem;border-radius:99px;
+}
+.pc.is-arch .pc-tag{top:auto;bottom:14px}
+
+/* ============================================================
+   8 · VOOR/NA — sleepbare reveal
+   ============================================================ */
+.ba-block{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);gap:clamp(1.6rem,4vw,3rem);align-items:center}
+@media (max-width:880px){.ba-block{grid-template-columns:1fr}}
+.ba-copy h3{font-size:clamp(1.6rem,3.2vw,2.3rem);margin:1rem 0 1rem;font-weight:500}
+.ba-copy h3 em{font-style:italic;font-weight:400;color:var(--groen)}
+.ba-copy p{color:var(--muted);margin-bottom:1.4rem}
+.ba-copy ul{display:flex;flex-direction:column;gap:.7rem}
+.ba-copy ul li{display:flex;gap:.7rem;align-items:baseline;color:var(--muted);font-size:.94rem}
+.ba-copy ul li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--oker);flex:none;transform:translateY(-2px)}
+.beforeafter{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line-strong);aspect-ratio:16/10;background:var(--paper-2);
+  user-select:none;-webkit-user-select:none;touch-action:pan-y;
+}
+.beforeafter img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{clip-path:inset(0 0 0 var(--pos,50%))}
+.ba-handle{
+  position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;margin-left:-1px;
+  background:var(--groen);pointer-events:none;z-index:3;
+  box-shadow:0 0 16px rgba(46,91,63,.55);
+}
+.ba-handle::before{
+  content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:var(--groen);border:2px solid rgba(243,241,234,.92);
+  box-shadow:0 8px 24px -6px rgba(23,28,23,.5);
+}
+.ba-handle::after{content:"\2039 \203A";position:absolute;top:50%;left:50%;transform:translate(-50%,-54%);color:#f3f1ea;font-size:.95rem;letter-spacing:2px;font-family:var(--font-mono)}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;z-index:4;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;margin:0}
+.ba-range:focus-visible ~ .ba-handle{outline:2px solid var(--oker);outline-offset:4px}
+.ba-label{
+  position:absolute;top:14px;z-index:3;
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  background:rgba(243,241,234,.88);border:1px solid var(--groen);color:var(--groen);
+  padding:.4rem .8rem;border-radius:99px;pointer-events:none;
+}
+.ba-label.voor{left:14px}
+.ba-label.na{right:14px}
+
+/* ============================================================
+   9 · PROCES — groeiende seizoenstijdlijn
+   ============================================================ */
+.proces-flow{position:relative;max-width:760px;margin-inline:auto;padding-left:62px}
+.proces-flow::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:var(--line);border-radius:2px}
+.proces-line{position:absolute;left:19px;top:8px;width:2px;height:0;background:linear-gradient(180deg,var(--groen),var(--groen-licht));border-radius:2px;z-index:1}
+html.no-anim .proces-line{height:100% !important}
+.proces-stap{position:relative;padding:0 0 clamp(2.2rem,5vw,3.4rem)}
+.proces-stap:last-child{padding-bottom:0}
+.proces-dot{
+  position:absolute;left:-62px;top:0;width:40px;height:40px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--line-strong);display:grid;place-items:center;z-index:2;
+  font-family:var(--font-mono);font-size:.72rem;color:var(--muted);
+  transition:background-color .5s,border-color .5s,color .5s,transform .6s var(--ease);
+}
+.proces-stap.in-view .proces-dot{background:var(--groen);border-color:var(--groen);color:#f3f1ea;transform:scale(1.06)}
+.proces-stap h3{font-size:clamp(1.35rem,2.6vw,1.8rem);margin-bottom:.5rem;display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;font-weight:500}
+.proces-stap h3 .tijd{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--oker)}
+.proces-stap p{color:var(--muted);max-width:54ch}
+@media (max-width:560px){.proces-flow{padding-left:52px}.proces-dot{left:-52px;width:36px;height:36px}}
+
+/* ============================================================
+   10 · STATS — tellers met NL-notatie (donkere band)
+   ============================================================ */
+.stats{border-block:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.6rem);text-align:center}
+.stat .num{font-family:var(--font-display);font-weight:500;font-size:clamp(2.4rem,6vw,4.1rem);line-height:1;letter-spacing:-.01em}
+.stat .num em{font-style:italic;font-weight:400;color:var(--oker)}
+.stat .lbl{margin-top:.7rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+@media (max-width:680px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:2.4rem}}
+
+/* ============================================================
+   11 · TEAM — boogportretten met groene duotone
+   ============================================================ */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,3vw,2.4rem);max-width:1080px;margin-inline:auto}
+@media (max-width:820px){.team-grid{grid-template-columns:1fr;max-width:380px}}
+.member{text-align:center}
+.member-photo{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:999px 999px 16px 16px;background:var(--paper-2)}
+.member-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .7s var(--ease),transform .8s var(--ease)}
+.member-photo::after{content:"";position:absolute;inset:0;background:var(--groen);mix-blend-mode:multiply;opacity:.42;transition:opacity .7s var(--ease)}
+.member:hover .member-photo img{filter:grayscale(0);transform:scale(1.04)}
+.member:hover .member-photo::after{opacity:0}
+.member h3{font-size:1.25rem;margin-top:1.1rem;font-weight:500}
+.member .role{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+.member .quote{margin-top:.7rem;font-family:var(--font-display);font-style:italic;color:var(--muted);font-size:.95rem;max-width:26ch;margin-inline:auto}
+
+/* ============================================================
+   12 · PAKKETTEN — toggle + conic-gradient rand
+   ============================================================ */
+.period-toggle{display:inline-flex;align-items:center;gap:.3rem;border:1px solid var(--line-strong);border-radius:99px;padding:.3rem;margin-bottom:clamp(2rem,4vw,3rem)}
+.period-toggle button{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.6rem 1.1rem;border-radius:99px;color:var(--muted);
+  transition:background-color .3s,color .3s;
+}
+.period-toggle button[aria-pressed="true"]{background:var(--groen);color:#f3f1ea}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+@media (max-width:980px){.plans{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+.plan{
+  position:relative;border:1px solid var(--line);border-radius:20px;
+  padding:clamp(1.6rem,2.6vw,2.2rem);background:#f7f5ef;
+  display:flex;flex-direction:column;
+}
+.plan-featured{background:#fbfaf6;isolation:isolate;border-color:transparent;box-shadow:0 30px 70px -38px rgba(46,91,63,.4)}
+.plan-featured::before{
+  content:"";position:absolute;inset:-1px;border-radius:21px;padding:1.5px;
+  background:conic-gradient(from var(--ang),
+    rgba(46,91,63,0) 0deg,rgba(46,91,63,.85) 55deg,rgba(192,138,45,.8) 95deg,
+    rgba(46,91,63,0) 155deg,rgba(46,91,63,0) 215deg,rgba(192,138,45,.6) 285deg,rgba(46,91,63,0) 345deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;pointer-events:none;z-index:-1;
+}
+html.anim-ok .plan-featured::before{animation:spinBorder 8s linear infinite}
+@keyframes spinBorder{to{--ang:360deg}}
+.plan-tag{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--groen);color:#f3f1ea;font-family:var(--font-mono);
+  font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.35rem .85rem;border-radius:99px;white-space:nowrap;
+}
+.plan h3{font-size:1.45rem;margin-bottom:.4rem;font-weight:500}
+.plan .plan-desc{color:var(--muted);font-size:.9rem;margin-bottom:1.4rem;min-height:2.6em}
+.plan-prijs{display:flex;align-items:baseline;gap:.5rem;margin-bottom:1.6rem}
+.plan-prijs .bedrag{font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,4vw,2.7rem);letter-spacing:-.01em;transition:opacity .24s var(--ease),transform .24s var(--ease)}
+.plan-prijs .bedrag.switching{opacity:0;transform:translateY(-8px)}
+.plan-prijs .per{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;color:var(--muted)}
+.plan ul.feat{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.6rem;flex:1}
+.plan ul.feat li{display:flex;gap:.6rem;align-items:flex-start;font-size:.92rem}
+.plan ul.feat li svg{width:16px;height:16px;flex:none;color:var(--groen);margin-top:4px}
+.plan .btn{width:100%}
+.plan small.fine{display:block;margin-top:1rem;font-size:.72rem;color:var(--muted-2);text-align:center}
+
+/* ============================================================
+   13 · REVIEWS — carrousel
+   ============================================================ */
+.review-stage{position:relative;max-width:840px;margin-inline:auto;overflow:hidden}
+.review-track{display:flex;transition:transform .7s var(--ease)}
+html.no-anim .review-track{transition:none}
+.review-slide{flex:0 0 100%;padding:.5rem clamp(.5rem,2vw,2rem);text-align:center}
+.review-leaf{color:var(--oker);font-size:1.1rem;letter-spacing:.4em;margin-bottom:1.4rem}
+.review-quote{font-family:var(--font-display);font-weight:400;font-size:clamp(1.35rem,3vw,2.05rem);line-height:1.42;margin-bottom:1.6rem}
+.review-quote em{font-style:italic;color:var(--groen)}
+.dark .review-quote em{color:var(--groen-licht)}
+.review-who{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+.review-who strong{color:#e9eae4;font-weight:400}
+.review-nav{display:flex;align-items:center;justify-content:center;gap:1.4rem;margin-top:2.4rem}
+.review-arrow{width:46px;height:46px;border:1px solid var(--line-strong);border-radius:50%;display:grid;place-items:center;transition:border-color .3s,color .3s}
+.review-arrow:hover{border-color:var(--oker);color:var(--oker)}
+.review-arrow svg{width:16px;height:16px}
+.review-dots{display:flex;gap:.6rem}
+.review-dots button{width:9px;height:9px;border-radius:50%;background:var(--line-strong);transition:background-color .3s,transform .3s}
+.review-dots button[aria-current="true"]{background:var(--oker);transform:scale(1.25)}
+
+/* ============================================================
+   14 · FAQ — single-open accordion (grid-template-rows)
+   ============================================================ */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:880px){.faq-grid{grid-template-columns:1fr}}
+.faq-head h2{font-size:clamp(2rem,4.4vw,3.1rem);margin:1rem 0 1rem}
+.faq-head p{color:var(--muted);max-width:34ch}
+.faq-head a{border-bottom:1px solid var(--groen);transition:color .3s}
+.faq-head a:hover{color:var(--groen)}
+.faq-list{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  display:flex;align-items:baseline;gap:1.1rem;width:100%;text-align:left;
+  padding:1.35rem 0;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.08rem,1.9vw,1.35rem);line-height:1.32;
+  transition:color .3s;
+}
+.faq-q:hover{color:var(--groen)}
+.faq-q .idx{font-family:var(--font-mono);font-size:.64rem;font-weight:400;color:var(--oker);letter-spacing:.12em;flex:none;transform:translateY(-2px)}
+.faq-x{margin-left:auto;flex:none;position:relative;width:14px;height:14px;align-self:center}
+.faq-x::before,.faq-x::after{content:"";position:absolute;left:0;top:6.2px;width:14px;height:1.6px;background:var(--groen);transition:transform .45s var(--ease)}
+.faq-x::after{transform:rotate(90deg)}
+.faq-q[aria-expanded="true"] .faq-x::after{transform:rotate(0deg)}
+.faq-a{overflow:hidden}
+.faq-ready .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.faq-ready .faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a-inner{min-height:0;overflow:hidden}
+.faq-a p{color:var(--muted);max-width:58ch;padding:0 0 1.45rem 2.35rem;font-size:.95rem}
+@media (max-width:560px){.faq-a p{padding-left:0}}
+
+/* ============================================================
+   15 · CONTACT — formulier + succes-overlay
+   ============================================================ */
+.contact{background:var(--paper-2);border-top:1px solid var(--line);position:relative;overflow:hidden}
+.contact-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
+.contact-aside h2{font-size:clamp(2rem,5vw,3.4rem);margin:1rem 0 1.2rem}
+.contact-aside p{color:var(--muted);max-width:40ch;margin-bottom:2rem}
+.contact-lines{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+.contact-lines a,.contact-lines span{display:flex;align-items:baseline;gap:.8rem;font-size:1.02rem;transition:color .3s}
+.contact-lines a:hover{color:var(--groen)}
+.contact-lines .mono{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);min-width:72px}
+.beschikbaar{
+  display:inline-flex;align-items:center;gap:.7rem;
+  border:1px solid var(--line-strong);border-radius:99px;padding:.7rem 1.2rem;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  background:rgba(243,241,234,.7);
+}
+.contact-form{
+  position:relative;background:#fbfaf6;border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(1.6rem,3.5vw,2.6rem);overflow:hidden;
+}
+.contact-form::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--groen),var(--oker) 60%,transparent)}
+.field{margin-bottom:1.25rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media (max-width:560px){.field-row{grid-template-columns:1fr}}
+.field label{display:block;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.field input,.field select,.field textarea{
+  width:100%;background:#fff;border:1px solid var(--line-strong);border-radius:10px;
+  color:var(--text);font:inherit;font-size:.95rem;padding:.8rem 1rem;
+  transition:border-color .3s,box-shadow .3s;
+}
+.field textarea{resize:vertical;min-height:130px}
+.field select{
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232e5b3f' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--groen);box-shadow:0 0 0 3px rgba(46,91,63,.14)}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#b3463f;box-shadow:0 0 0 3px rgba(179,70,63,.12)}
+.field .err{display:none;font-size:.78rem;color:#9a3a34;margin-top:.45rem}
+.field.invalid .err{display:block}
+.form-foot{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.6rem}
+.form-foot small{color:var(--muted);font-size:.78rem;max-width:30ch}
+.form-status{margin-top:1rem;font-size:.82rem;color:var(--muted)}
+.form-success{
+  position:absolute;inset:0;background:#fbfaf6;z-index:5;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  text-align:center;padding:2rem;
+  opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s .6s;
+}
+.contact-form.sent .form-success{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
+.form-success .check-ring{
+  width:74px;height:74px;border-radius:50%;border:2px solid var(--groen);
+  display:grid;place-items:center;color:var(--groen);
+  box-shadow:0 0 38px -10px rgba(46,91,63,.5);
+}
+.form-success .check-ring svg{width:34px;height:34px}
+.form-success .check-ring svg path{stroke-dasharray:30;stroke-dashoffset:30}
+html.anim-ok .contact-form.sent .form-success .check-ring svg path{animation:checkDraw .6s var(--ease) .25s forwards}
+html.no-anim .form-success .check-ring svg path{stroke-dashoffset:0}
+@keyframes checkDraw{to{stroke-dashoffset:0}}
+.form-success h3{font-size:1.5rem;font-weight:500}
+.form-success p{color:var(--muted);max-width:36ch}
+
+/* ============================================================
+   16 · FOOTER — paper + outline-watermerk
+   ============================================================ */
+.footer{position:relative;background:var(--paper);border-top:1px solid var(--line);overflow:hidden;padding-top:clamp(3.5rem,7vw,6rem)}
+.footer-watermark{
+  position:absolute;left:50%;bottom:-4vw;transform:translateX(-50%);
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(7rem,26vw,22rem);line-height:.8;letter-spacing:-.02em;
+  color:transparent;-webkit-text-stroke:1px rgba(23,28,23,.07);
+  pointer-events:none;white-space:nowrap;z-index:0;
+}
+.footer-inner{position:relative;z-index:1}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:clamp(1.6rem,4vw,3rem);padding-bottom:clamp(3rem,6vw,5rem)}
+@media (max-width:820px){.footer-top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer-top{grid-template-columns:1fr}}
+.footer-col h4{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;font-weight:500}
+.footer-col ul{display:flex;flex-direction:column;gap:.7rem}
+.footer-col a{font-size:.92rem;transition:color .3s}
+.footer-col a:hover{color:var(--groen)}
+.footer-brand .brand{margin-bottom:1rem}
+.footer-brand p{color:var(--muted);font-size:.9rem;max-width:32ch}
+.footer-socials{display:flex;gap:.8rem;margin-top:1.4rem}
+.footer-socials a{width:40px;height:40px;border:1px solid var(--line-strong);border-radius:50%;display:grid;place-items:center;transition:border-color .3s,color .3s}
+.footer-socials a:hover{border-color:var(--groen);color:var(--groen)}
+.footer-socials svg{width:16px;height:16px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding-block:1.8rem;border-top:1px solid var(--line)}
+.footer-bottom small{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted)}
+.back-to-top{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .3s}
+.back-to-top:hover{color:var(--groen)}
+.back-to-top svg{width:14px;height:14px}
+
+/* ============================================================
+   reduced motion — harde eindstaten
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .curtain{display:none !important}
+  .hero-arch-clip,[data-rv="clip"] .clip-i{clip-path:none !important}
+  .hw-i,.menu-list a{transform:none !important}
+  [data-rv]{opacity:1 !important;transform:none !important}
+  .proces-line{height:100% !important}
+  .marquee-track{animation:none !important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#hoofdinhoud">Naar hoofdinhoud</a>
+
+<!-- ===== ENTREE-GORDIJN (eenmalig per sessie) ===== -->
+<div class="curtain" id="curtain" aria-hidden="true">
+  <div class="curtain__panel curtain__panel--top"></div>
+  <div class="curtain__panel curtain__panel--bottom"></div>
+  <div class="curtain__mark">
+    <span class="naam">Buitenplaats</span>
+    <span class="jaar">Anno 2008 &middot; Utrecht</span>
+  </div>
+</div>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-bar">
+      <a class="brand" href="#hero" aria-label="Buitenplaats, naar boven">
+        <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+          <path pathLength="1" d="M50 88 V34 M50 56 C36 52 28 42 27 26 C43 27 51 36 50 52 M50 44 C52 30 60 22 75 20 C74 36 66 45 50 47"/>
+        </svg>
+        <span>Buitenplaats<small>Tuin &amp; landschap</small></span>
+      </a>
+      <nav class="header-nav" aria-label="Hoofdnavigatie">
+        <div class="header-links">
+          <a href="#diensten">Diensten</a>
+          <a href="#projecten">Projecten</a>
+          <a href="#proces">Werkwijze</a>
+          <a href="#team">Mensen</a>
+          <a href="#pakketten">Pakketten</a>
+        </div>
+        <div class="header-actions">
+          <a class="btn btn-primary js-magnetic btn-cta-text" href="#contact">Plan een tuingesprek</a>
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu openen">
+            <span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ===== OVERLAY MENU ===== -->
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <button class="menu-overlay__close" id="menuClose" aria-label="Menu sluiten"></button>
+  <div class="container">
+    <nav aria-label="Overlaymenu">
+      <ul class="menu-list">
+        <li><a href="#diensten"><span class="idx">01</span>Diensten</a></li>
+        <li><a href="#projecten"><span class="idx">02</span>Projecten</a></li>
+        <li><a href="#proces"><span class="idx">03</span>Werkwijze</a></li>
+        <li><a href="#team"><span class="idx">04</span>Mensen</a></li>
+        <li><a href="#pakketten"><span class="idx">05</span>Pakketten</a></li>
+        <li><a href="#contact"><span class="idx">06</span>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-foot">
+      <a href="mailto:hallo@buitenplaats.nl">hallo@buitenplaats.nl</a>
+      <a href="tel:+31302270000">+31 30 227 00 00</a>
+      <a href="#contact">Maliebaan 12, Utrecht</a>
+    </div>
+  </div>
+</div>
+
+<main id="hoofdinhoud">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Tuin- &amp; landschapsarchitectuur &middot; Utrecht</span>
+      <h1>
+        <span class="hw"><span class="hw-i" style="--wd:.25s">Tuinen</span></span>
+        <span class="hw"><span class="hw-i" style="--wd:.32s">die</span></span>
+        <span class="hw"><span class="hw-i" style="--wd:.39s"><em>wortelen</em></span></span>
+        <span class="hw"><span class="hw-i" style="--wd:.46s">en</span></span>
+        <span class="hw"><span class="hw-i" style="--wd:.53s">elk</span></span>
+        <span class="hw"><span class="hw-i" style="--wd:.60s">jaar</span></span>
+        <span class="hw"><span class="hw-i" style="--wd:.67s">mooier</span></span>
+        <span class="hw"><span class="hw-i" style="--wd:.74s">worden.</span></span>
+      </h1>
+      <p class="hero-sub">Buitenplaats ontwerpt en bouwt tuinen in en rond Utrecht. Geen plaatjestuin voor de opleverdag, maar een buitenruimte die over tien jaar beter is dan vandaag.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary js-magnetic" href="#contact">Plan een tuingesprek
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#projecten">Bekijk projecten</a>
+      </div>
+      <p class="hero-status"><span class="dot-pulse" aria-hidden="true"></span> Utrecht <span id="bpKlok">--:--</span> &middot; Open voor projecten</p>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-arch">
+        <div class="hero-arch-clip">
+          <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1100&q=80&auto=format&fit=crop" alt="Jonge planten in kweekbakken in de kas van Buitenplaats" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+      <div class="hero-arch-cap">Stadstuin Wittevrouwen &middot; 3e zomer</div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="drip"></span> Scroll</div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-row" id="marqueeRow">
+    <div class="marquee-track">
+      <span>Ontwerp <i>&#10038;</i> Aanleg <i>&#10038;</i> Beplanting <i>&#10038;</i> Onderhoud <i>&#10038;</i> Ecologie <i>&#10038;</i></span>
+      <span>Ontwerp <i>&#10038;</i> Aanleg <i>&#10038;</i> Beplanting <i>&#10038;</i> Onderhoud <i>&#10038;</i> Ecologie <i>&#10038;</i></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MANIFEST (donker · woord-oplichting) ===== -->
+<section class="section dark manifest">
+  <div class="container">
+    <span class="eyebrow" data-rv>Waar we in geloven</span>
+    <p class="manifest-text" id="manifestText" data-rv style="--d:.05s">Een tuin is geen project dat af is. Wij ontwerpen buitenruimtes die wortelen, groeien en elk seizoen iets teruggeven — voor mensen, vogels en bijen.</p>
+    <p class="manifest-sign" data-rv style="--d:.1s">— Buitenplaats, sinds 2008</p>
+  </div>
+</section>
+
+<!-- ===== DIENSTEN — rijen met meeschuivende preview ===== -->
+<section class="section diensten" id="diensten">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-rv>Wat we doen</span>
+      <h2 data-rv style="--d:.05s">Van eerste schets tot <em class="accent">laatste snoeibeurt</em></h2>
+      <p data-rv style="--d:.1s">Vier diensten, één hand. Wie bij ons ontwerpt, kan ook bij ons aanleggen en onderhouden — zo blijft het plan overeind, ook als de tuin groeit.</p>
+    </div>
+    <ul class="dienst-rows" id="dienstRows">
+      <li data-rv>
+        <div class="dienst-row" data-preview="0" tabindex="0">
+          <span class="dienst-num">01</span>
+          <h3>Tuinontwerp
+            <svg class="pijl" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </h3>
+          <p>Een ontwerp op schaal, getekend na een bezoek aan je tuin. Met zichtlijnen, hoogtes en een eerlijk verhaal over wat er kan binnen je budget.</p>
+        </div>
+      </li>
+      <li data-rv style="--d:.06s">
+        <div class="dienst-row" data-preview="1" tabindex="0">
+          <span class="dienst-num">02</span>
+          <h3>Aanleg &amp; realisatie
+            <svg class="pijl" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </h3>
+          <p>Eigen hoveniersploeg, geen onderaannemers. Grondwerk, bestrating, water en elektra — strak uitgevoerd volgens het ontwerp.</p>
+        </div>
+      </li>
+      <li data-rv style="--d:.12s">
+        <div class="dienst-row" data-preview="2" tabindex="0">
+          <span class="dienst-num">03</span>
+          <h3>Beplantingsplan
+            <svg class="pijl" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </h3>
+          <p>Soorten die passen bij je grond, licht en geduld. Gelaagd van bollen tot bomen, zodat er van februari tot november iets bloeit.</p>
+        </div>
+      </li>
+      <li data-rv style="--d:.18s">
+        <div class="dienst-row" data-preview="3" tabindex="0">
+          <span class="dienst-num">04</span>
+          <h3>Seizoensonderhoud
+            <svg class="pijl" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </h3>
+          <p>Vier vaste beurten per jaar door de mensen die je tuin hebben aangelegd. Snoeien, delen, bijplanten — en bijsturen waar nodig.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="dienst-preview" id="dienstPreview" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=620&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+      <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=620&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+      <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=620&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=620&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTEN — filter + clip-reveal ===== -->
+<section class="section projecten" id="projecten">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-rv>Aangelegd &amp; gegroeid</span>
+      <h2 data-rv style="--d:.05s">Projecten die <em class="accent">het seizoen</em> meekleuren</h2>
+      <p data-rv style="--d:.1s">Een selectie uit achttien jaar tuinen. We fotograferen ze pas in het tweede of derde jaar — dan zie je wat een plan echt waard is.</p>
+    </div>
+    <div class="filterbar" role="group" aria-label="Filter projecten" data-rv>
+      <button class="filter-btn" data-filter="alles" aria-pressed="true">Alles</button>
+      <button class="filter-btn" data-filter="stadstuin" aria-pressed="false">Stadstuinen</button>
+      <button class="filter-btn" data-filter="landschap" aria-pressed="false">Landschap</button>
+      <button class="filter-btn" data-filter="daktuin" aria-pressed="false">Daktuinen</button>
+    </div>
+    <div class="project-grid" id="projectGrid">
+      <article class="pc is-arch" data-cat="stadstuin" data-rv="clip">
+        <div class="pc-media">
+          <span class="pc-tag">Stadstuin</span>
+          <div class="clip-i"><img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=900&q=80&auto=format&fit=crop" alt="Groene stadstuin met mos, varens en een smal grindpad" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="pc-cap">
+          <h3><a href="#contact">Hof van Wittevrouwen</a></h3>
+          <span class="waar">Utrecht &middot; <b>2023</b></span>
+        </div>
+      </article>
+      <article class="pc" data-cat="landschap" data-rv="clip" style="--d:.07s">
+        <div class="pc-media">
+          <span class="pc-tag">Landschap</span>
+          <div class="clip-i"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=80&auto=format&fit=crop" alt="Glooiend grasland met solitaire boom in avondlicht" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="pc-cap">
+          <h3><a href="#contact">Erf aan de Kromme Rijn</a></h3>
+          <span class="waar">Bunnik &middot; <b>2021</b></span>
+        </div>
+      </article>
+      <article class="pc" data-cat="daktuin" data-rv="clip" style="--d:.14s">
+        <div class="pc-media">
+          <span class="pc-tag">Daktuin</span>
+          <div class="clip-i"><img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=900&q=80&auto=format&fit=crop" alt="Jonge gewassen in de kweekbakken op het dak" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="pc-cap">
+          <h3><a href="#contact">Dakakker Rotsoord</a></h3>
+          <span class="waar">Utrecht &middot; <b>2024</b></span>
+        </div>
+      </article>
+      <article class="pc" data-cat="stadstuin" data-rv="clip" style="--d:.05s">
+        <div class="pc-media">
+          <span class="pc-tag">Stadstuin</span>
+          <div class="clip-i"><img src="https://images.unsplash.com/photo-1558293842-c0fd3db86157?w=900&q=80&auto=format&fit=crop" alt="Bloeiende border met tulpen langs een bakstenen tuinmuur" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="pc-cap">
+          <h3><a href="#contact">Patio Lombok</a></h3>
+          <span class="waar">Utrecht &middot; <b>2022</b></span>
+        </div>
+      </article>
+      <article class="pc is-arch" data-cat="landschap" data-rv="clip" style="--d:.12s">
+        <div class="pc-media">
+          <span class="pc-tag">Landschap</span>
+          <div class="clip-i"><img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=900&q=80&auto=format&fit=crop" alt="Boerenschuur met bloeiende rode border aan de rand van het erf" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="pc-cap">
+          <h3><a href="#contact">Landgoed De Haar-rand</a></h3>
+          <span class="waar">Vleuten &middot; <b>2020</b></span>
+        </div>
+      </article>
+      <article class="pc" data-cat="daktuin" data-rv="clip" style="--d:.19s">
+        <div class="pc-media">
+          <span class="pc-tag">Daktuin</span>
+          <div class="clip-i"><img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=900&q=80&auto=format&fit=crop" alt="Dichte groene plantenwand rond het stadsterras" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="pc-cap">
+          <h3><a href="#contact">Terras Tivolistraat</a></h3>
+          <span class="waar">Utrecht &middot; <b>2023</b></span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOOR/NA ===== -->
+<section class="section" id="voorna">
+  <div class="container">
+    <div class="ba-block">
+      <div class="ba-copy" data-rv>
+        <span class="eyebrow">Voor &amp; na</span>
+        <h3>Van eerste schets naar <em>derde zomer</em></h3>
+        <p>Een achtertuin in Tuindorp: eerst weken op papier, daarna 9 m&sup3; grond en 380 planten. Twee zomers later zoemt het er van mei tot september. Sleep de balk en zie het verschil.</p>
+        <ul>
+          <li>Beplantingsplan met 26 soorten vaste planten</li>
+          <li>80% minder verharding — regenwater zakt weg in de tuin</li>
+          <li>Onderhoud: vier beurten per jaar, verder niets</li>
+        </ul>
+      </div>
+      <div class="beforeafter" id="beforeAfter" data-rv style="--d:.1s">
+        <img class="ba-before" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1300&q=80&auto=format&fit=crop" alt="Voor: het tuinontwerp als schets op de tekentafel" loading="lazy" decoding="async">
+        <img class="ba-after" src="https://images.unsplash.com/photo-1560717789-0ac7c58ac90a?w=1300&q=80&auto=format&fit=crop" alt="Na: dezelfde borders als bloeiende weide, twee zomers later" loading="lazy" decoding="async">
+        <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Vergelijk schets en resultaat: sleep om meer of minder van het eindresultaat te tonen">
+        <div class="ba-handle" aria-hidden="true"></div>
+        <span class="ba-label voor" aria-hidden="true">Schets</span>
+        <span class="ba-label na" aria-hidden="true">Nu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCES — seizoenstijdlijn ===== -->
+<section class="section" id="proces" style="background:var(--paper-2);border-block:1px solid var(--line)">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin-inline:auto">
+      <span class="eyebrow" data-rv style="justify-content:center">Werkwijze</span>
+      <h2 data-rv style="--d:.05s">Eén jaar, <em class="accent">vier seizoenen</em>, één plan</h2>
+      <p data-rv style="--d:.1s;margin-inline:auto">Een tuin maak je niet in een week. Dit is hoe een traject er bij ons meestal uitziet — het tempo bepaalt de tuin, niet de agenda.</p>
+    </div>
+    <div class="proces-flow" id="procesFlow">
+      <div class="proces-line" id="procesLine" aria-hidden="true"></div>
+      <div class="proces-stap" data-rv>
+        <span class="proces-dot">01</span>
+        <h3>Kennismaken <span class="tijd">Winter</span></h3>
+        <p>We komen langs, lopen door je tuin en luisteren. Hoe leef je, wat moet er kunnen, hoeveel tijd wil je er zelf in steken? Je krijgt binnen een week een eerlijke inschatting van aanpak en budget.</p>
+      </div>
+      <div class="proces-stap" data-rv style="--d:.08s">
+        <span class="proces-dot">02</span>
+        <h3>Schetsen <span class="tijd">Voorjaar</span></h3>
+        <p>Eerst een schetsontwerp op schaal, daarna het definitieve plan met beplantingslijst en technische tekening. Twee rondes feedback zitten er standaard in.</p>
+      </div>
+      <div class="proces-stap" data-rv style="--d:.16s">
+        <span class="proces-dot">03</span>
+        <h3>Aanleggen <span class="tijd">Zomer &middot; najaar</span></h3>
+        <p>Onze eigen ploeg voert uit: grondverbetering, bestrating, water, licht. Geplant wordt er in oktober en november — het beste moment voor vrijwel alles wat wortelt.</p>
+      </div>
+      <div class="proces-stap" data-rv style="--d:.24s">
+        <span class="proces-dot">04</span>
+        <h3>Verzorgen <span class="tijd">Het hele jaar</span></h3>
+        <p>Het eerste jaar komen we vier keer terug, daarna zo vaak als jij wilt. We snoeien, delen en vullen aan — en zien zo of het plan doet wat we beloofd hebben.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS (donker) ===== -->
+<section class="section dark stats" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat" data-rv>
+        <div class="num"><span class="countup" data-target="140">0</span><em>+</em></div>
+        <div class="lbl">Tuinen ontworpen &amp; aangelegd</div>
+      </div>
+      <div class="stat" data-rv style="--d:.08s">
+        <div class="num"><span class="countup" data-target="18">0</span></div>
+        <div class="lbl">Jaar vakmanschap</div>
+      </div>
+      <div class="stat" data-rv style="--d:.16s">
+        <div class="num"><span class="countup" data-target="9.2" data-decimals="1">0</span></div>
+        <div class="lbl">Gemiddelde klantscore</div>
+      </div>
+      <div class="stat" data-rv style="--d:.24s">
+        <div class="num"><span class="countup" data-target="12000">0</span><em>&thinsp;m&sup2;</em></div>
+        <div class="lbl">Beplanting aangeplant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="section" id="team">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin-inline:auto">
+      <span class="eyebrow" data-rv style="justify-content:center">De mensen</span>
+      <h2 data-rv style="--d:.05s">Drie paar <em class="accent">groene handen</em></h2>
+      <p data-rv style="--d:.1s;margin-inline:auto">Klein bureau, korte lijnen. Wie je tuin ontwerpt, staat er ook in als hij wordt aangelegd.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member" data-rv>
+        <div class="member-photo">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&q=80&auto=format&fit=crop" alt="Portret van Ruben van Dijk" loading="lazy" decoding="async">
+        </div>
+        <h3>Ruben van Dijk</h3>
+        <p class="role">Landschapsarchitect &middot; oprichter</p>
+        <p class="quote">&ldquo;Een goed plan zie je pas in jaar drie.&rdquo;</p>
+      </div>
+      <div class="member" data-rv style="--d:.08s">
+        <div class="member-photo">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&q=80&auto=format&fit=crop" alt="Portret van Hanna Vos" loading="lazy" decoding="async">
+        </div>
+        <h3>Hanna Vos</h3>
+        <p class="role">Beplantingsspecialist</p>
+        <p class="quote">&ldquo;Grond eerst. De rest volgt vanzelf.&rdquo;</p>
+      </div>
+      <div class="member" data-rv style="--d:.16s">
+        <div class="member-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&q=80&auto=format&fit=crop" alt="Portret van Jesse Koning" loading="lazy" decoding="async">
+        </div>
+        <h3>Jesse Koning</h3>
+        <p class="role">Uitvoering &amp; onderhoud</p>
+        <p class="quote">&ldquo;Snoeien is vooruitkijken.&rdquo;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAKKETTEN ===== -->
+<section class="section" id="pakketten" style="background:var(--paper-2);border-block:1px solid var(--line)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-rv>Pakketten</span>
+      <h2 data-rv style="--d:.05s">Helder over <em class="accent-oker">geld</em>, vanaf dag één</h2>
+      <p data-rv style="--d:.1s">Drie manieren om met ons te werken. Alle bedragen inclusief btw, zonder verrassingen achteraf. Twijfel je? Het tuingesprek is altijd gratis.</p>
+    </div>
+    <div class="period-toggle" id="periodToggle" role="group" aria-label="Prijsweergave" data-rv>
+      <button type="button" data-period="project" aria-pressed="true">Per project</button>
+      <button type="button" data-period="seizoen" aria-pressed="false">Per seizoen</button>
+    </div>
+    <div class="plans">
+      <article class="plan" data-rv>
+        <h3>Schets</h3>
+        <p class="plan-desc">Voor wie zelf aan de slag wil, met een doordacht plan als vertrekpunt.</p>
+        <div class="plan-prijs">
+          <span class="bedrag" data-project="&euro; 950" data-seizoen="&euro; 265">&euro; 950</span>
+          <span class="per" data-project="eenmalig" data-seizoen="per seizoen, 1 jaar">eenmalig</span>
+        </div>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tuinbezoek en opmeting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Schetsontwerp op schaal</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Globale beplantingslijst</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>E&eacute;n feedbackronde</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Vraag de schets aan</a>
+        <small class="fine">Tot 150 m&sup2; &middot; meerprijs daarboven op offerte</small>
+      </article>
+      <article class="plan plan-featured" data-rv style="--d:.08s">
+        <span class="plan-tag">Meest gekozen</span>
+        <h3>Ontwerp &amp; aanleg</h3>
+        <p class="plan-desc">Het hele traject uit één hand: van eerste schets tot opgeleverde tuin.</p>
+        <div class="plan-prijs">
+          <span class="bedrag" data-project="&euro; 14.500" data-seizoen="&euro; 3.950">&euro; 14.500</span>
+          <span class="per" data-project="vanaf, per project" data-seizoen="per seizoen, gespreid">vanaf, per project</span>
+        </div>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Definitief ontwerp + technische tekening</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Volledig beplantingsplan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Aanleg door eigen ploeg</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Eerste jaar onderhoud inbegrepen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Aangroeigarantie op beplanting</li>
+        </ul>
+        <a class="btn btn-primary js-magnetic" href="#contact">Plan een tuingesprek</a>
+        <small class="fine">Richtprijs voor een stadstuin van 60&ndash;100 m&sup2;</small>
+      </article>
+      <article class="plan" data-rv style="--d:.16s">
+        <h3>Jaarrond</h3>
+        <p class="plan-desc">Voor bestaande tuinen: vaste seizoensbeurten door hetzelfde team.</p>
+        <div class="plan-prijs">
+          <span class="bedrag" data-project="&euro; 2.350" data-seizoen="&euro; 645">&euro; 2.350</span>
+          <span class="per" data-project="per jaar" data-seizoen="per seizoen">per jaar</span>
+        </div>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vier seizoensbeurten per jaar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Snoei-, deel- en bijplantwerk</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Jaarlijks adviesmoment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Voorrang bij stormschade</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Vraag een rondgang aan</a>
+        <small class="fine">Opzegbaar per seizoen, geen jaarcontract</small>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS (donker) ===== -->
+<section class="section dark" id="reviews">
+  <div class="container">
+    <div class="section-head" style="text-align:center;margin-inline:auto">
+      <span class="eyebrow" data-rv style="justify-content:center">Tuineigenaren</span>
+      <h2 data-rv style="--d:.05s">Wat er <em class="accent">groeit</em>, spreekt</h2>
+    </div>
+    <div class="review-stage" id="reviewStage" data-rv>
+      <div class="review-track" id="reviewTrack">
+        <div class="review-slide">
+          <div class="review-leaf" aria-hidden="true">&#10047; &#10047; &#10047;</div>
+          <blockquote class="review-quote">&ldquo;In het eerste jaar dacht ik: het is wel erg veel grond. Nu, drie zomers later, is de tuin <em>voller en rustiger</em> dan ik ooit had durven tekenen. Ze hadden gelijk: geduld is het halve ontwerp.&rdquo;</blockquote>
+        <p class="review-who"><strong>Margriet &amp; Tom</strong> &middot; Wilhelminapark, Utrecht</p>
+        </div>
+        <div class="review-slide">
+          <div class="review-leaf" aria-hidden="true">&#10047; &#10047; &#10047;</div>
+          <blockquote class="review-quote">&ldquo;Onze patio van 40 m&sup2; leek hopeloos: schaduw, muren, tegels. Buitenplaats maakte er <em>een kamer buiten</em> van. De merel was er eerder dan het tuinmeubilair.&rdquo;</blockquote>
+          <p class="review-who"><strong>Samira el Amrani</strong> &middot; Lombok, Utrecht</p>
+        </div>
+        <div class="review-slide">
+          <div class="review-leaf" aria-hidden="true">&#10047; &#10047; &#10047;</div>
+          <blockquote class="review-quote">&ldquo;Wat ik het meest waardeer: ze komen terug. Elk seizoen dezelfde mensen, die <em>weten wat waar staat</em> en waarom. De tuin is nooit af en dat is precies de bedoeling.&rdquo;</blockquote>
+          <p class="review-who"><strong>Familie Verbeek</strong> &middot; Tuindorp, Utrecht</p>
+        </div>
+      </div>
+      <div class="review-nav">
+        <button class="review-arrow" id="reviewPrev" aria-label="Vorige review">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="review-dots" id="reviewDots" role="tablist" aria-label="Kies een review"></div>
+        <button class="review-arrow" id="reviewNext" aria-label="Volgende review">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-head">
+        <span class="eyebrow" data-rv>Veelgestelde vragen</span>
+        <h2 data-rv style="--d:.05s">Eerlijke antwoorden, <em class="accent">geen verkooppraat</em></h2>
+        <p data-rv style="--d:.1s">Staat je vraag er niet bij? <a href="#contact">Stuur een bericht</a> — je krijgt antwoord van iemand die zelf in de tuinen staat.</p>
+      </div>
+      <div class="faq-list" id="faqList" data-rv style="--d:.15s">
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+              <span class="idx">01</span>Wat kost een tuinontwerp?
+              <span class="faq-x" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="faq-a-inner">
+              <p>Een schetsontwerp begint bij &euro; 950 voor tuinen tot 150 m&sup2;. Een volledig ontwerp met beplantingsplan en technische tekening ligt meestal tussen &euro; 2.500 en &euro; 4.500. Je weet het bedrag vooraf; meerwerk bestaat bij ons alleen als jij er zelf om vraagt.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+              <span class="idx">02</span>Wanneer is het beste plantseizoen?
+              <span class="faq-x" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="faq-a-inner">
+              <p>Oktober en november. De grond is dan nog warm, er valt regen en planten krijgen een half jaar om te wortelen voordat de zon erop staat. Voorjaar kan ook, maar dan moet je de eerste zomer vaker gieten. Wij plannen aanleg daarom het liefst richting het najaar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+              <span class="idx">03</span>Doen jullie ook kleine stadstuinen?
+              <span class="faq-x" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="faq-a-inner">
+              <p>Ja, graag zelfs. Een tuin van 40 m&sup2; vraagt om scherpere keuzes dan een van 400 — elke vierkante meter moet iets doen. Ongeveer de helft van ons werk bestaat uit stadstuinen en patio's in Utrecht.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+              <span class="idx">04</span>Hoeveel onderhoud vraagt zo'n tuin?
+              <span class="faq-x" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div class="faq-a-inner">
+              <p>Eerlijk: het eerste jaar het meest, vooral water geven. Daarna sluit de beplanting zich en neemt het werk per jaar af. Reken op vier goede beurten per jaar — door ons of door jezelf. Een onderhoudsvrije tuin bestaat niet; een onderhoudsarme wel, en die ontwerpen we standaard.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 style="margin:0">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+              <span class="idx">05</span>Werken jullie ecologisch?
+              <span class="faq-x" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div class="faq-a-inner">
+              <p>We gebruiken geen kunstmest en geen gif, kiezen waar het kan voor inheemse soorten en laten regenwater de tuin in zakken in plaats van het riool. Niet als verkoopargument, maar omdat een tuin die met het systeem meewerkt simpelweg minder zorg nodig heeft.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-aside">
+        <span class="eyebrow" data-rv>Plan een tuingesprek</span>
+        <h2 data-rv style="--d:.05s">Vertel ons over <em class="accent">je tuin</em></h2>
+        <p data-rv style="--d:.1s">Stuur een paar regels over je buitenruimte en wat je ermee wilt. We reageren binnen twee werkdagen — en het eerste gesprek, bij jou in de tuin, kost niets.</p>
+        <div class="contact-lines" data-rv style="--d:.15s">
+          <a href="mailto:hallo@buitenplaats.nl"><span class="mono">Mail</span> hallo@buitenplaats.nl</a>
+          <a href="tel:+31302270000"><span class="mono">Bel</span> +31 30 227 00 00</a>
+          <span><span class="mono">Bezoek</span> Maliebaan 12, 3581 CD Utrecht</span>
+        </div>
+        <p class="beschikbaar" data-rv style="--d:.2s"><span class="dot-pulse" aria-hidden="true"></span> Plantseizoen najaar: nog 3 plekken</p>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate data-rv style="--d:.1s">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input type="text" id="f-naam" name="naam" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-email">E-mailadres</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required>
+            <span class="err">Dit e-mailadres klopt niet helemaal.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-soort">Soort tuin</label>
+          <select id="f-soort" name="soort" required>
+            <option value="">Maak een keuze&hellip;</option>
+            <option value="stadstuin">Stadstuin of patio</option>
+            <option value="landschap">Grote tuin of erf</option>
+            <option value="daktuin">Daktuin of terras</option>
+            <option value="onderhoud">Bestaande tuin, onderhoud</option>
+            <option value="anders">Iets anders</option>
+          </select>
+          <span class="err">Kies het type dat het dichtst in de buurt komt.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Je tuin in een paar regels</label>
+          <textarea id="f-bericht" name="bericht" required placeholder="Hoe groot is de tuin, waar ligt de zon, wat mis je er nu?"></textarea>
+          <span class="err">Schrijf kort iets over je tuin.</span>
+        </div>
+        <div class="form-foot">
+          <button type="submit" class="btn btn-primary js-magnetic">Verstuur bericht
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <small>We gebruiken je gegevens alleen om te reageren.</small>
+        </div>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <div class="form-success" aria-hidden="true">
+          <div class="check-ring">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Bericht verzonden</h3>
+          <p>Dank je wel. Je hoort binnen twee werkdagen van ons — meestal eerder.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-watermark" aria-hidden="true">BUITEN</div>
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-col footer-brand">
+        <a class="brand" href="#hero" aria-label="Buitenplaats, naar boven">
+          <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+            <path pathLength="1" d="M50 88 V34 M50 56 C36 52 28 42 27 26 C43 27 51 36 50 52 M50 44 C52 30 60 22 75 20 C74 36 66 45 50 47"/>
+          </svg>
+          <span>Buitenplaats<small>Tuin &amp; landschap</small></span>
+        </a>
+        <p>Tuin- en landschapsarchitectuur uit Utrecht. Tuinen die wortelen, groeien en elk jaar iets teruggeven.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 20l3-9M10.5 13.5c-1.2-.6-1.8-1.7-1.8-3A4.2 4.2 0 0113 6.4c2.4 0 4 1.4 4 3.6 0 2.6-1.5 4.5-3.6 4.5-1 0-1.8-.5-2.1-1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="#diensten">Diensten</a></li>
+          <li><a href="#projecten">Projecten</a></li>
+          <li><a href="#proces">Werkwijze</a></li>
+          <li><a href="#team">Mensen</a></li>
+          <li><a href="#faq">Veelgestelde vragen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="#diensten">Tuinontwerp</a></li>
+          <li><a href="#diensten">Aanleg &amp; realisatie</a></li>
+          <li><a href="#diensten">Beplantingsplan</a></li>
+          <li><a href="#diensten">Seizoensonderhoud</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hallo@buitenplaats.nl">hallo@buitenplaats.nl</a></li>
+          <li><a href="tel:+31302270000">+31 30 227 00 00</a></li>
+          <li><a href="#contact">Maliebaan 12</a></li>
+          <li><a href="#contact">3581 CD Utrecht</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>&copy; <span id="jaar">2026</span> Buitenplaats. Alle rechten voorbehouden. KvK 30217654.</small>
+      <a class="back-to-top" href="#hero">Naar boven
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   BUITENPLAATS — interacties (vanilla, defensief)
+   ============================================================ */
+(function () {
+  'use strict';
+  var doc = document;
+  var html = doc.documentElement;
+  var reduced = false;
+  try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { reduced = false; }
+  var finePointer = false;
+  try { finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches; } catch (e) { finePointer = false; }
+
+  /* ===== ENTREE-GORDIJN — afronden + hero-choreografie starten ===== */
+  var curtain = doc.getElementById('curtain');
+  function markReady() {
+    html.classList.add('ready');
+    setTimeout(function () { html.classList.add('blad-getekend'); }, 80);
+  }
+  if (html.classList.contains('intro-play') && curtain) {
+    /* panelen wijken vanaf .55s; hero start zodra ze onderweg zijn */
+    setTimeout(markReady, 1150);
+    setTimeout(function () {
+      if (curtain.parentNode) { curtain.parentNode.removeChild(curtain); }
+    }, 2300);
+  } else {
+    if (curtain && curtain.parentNode) { curtain.parentNode.removeChild(curtain); }
+    requestAnimationFrame(function () { requestAnimationFrame(markReady); });
+  }
+
+  /* ===== HEADER — solid, auto-hide, scroll-progress ===== */
+  var header = doc.getElementById('header');
+  var progress = doc.getElementById('scrollProgress');
+  var lastY = window.pageYOffset || 0;
+  var menuIsOpen = false;
+
+  function updateHeader(y) {
+    if (header) {
+      header.classList.toggle('is-solid', y > 60 && !menuIsOpen);
+      if (menuIsOpen) {
+        header.classList.remove('is-hidden');
+      } else if (y > lastY && y > 180) {
+        header.classList.add('is-hidden');
+      } else {
+        header.classList.remove('is-hidden');
+      }
+    }
+    if (progress) {
+      var max = doc.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    }
+    lastY = y;
+  }
+  if (header) {
+    header.addEventListener('focusin', function () { header.classList.remove('is-hidden'); });
+  }
+
+  /* ===== OVERLAY-MENU — focus-trap, Escape, scroll-lock ===== */
+  var toggle = doc.getElementById('menuToggle');
+  var overlay = doc.getElementById('menuOverlay');
+  var menuClose = doc.getElementById('menuClose');
+  var focusSel = 'a[href], button:not([disabled])';
+
+  function setMenu(open) {
+    if (!overlay || !toggle) { return; }
+    menuIsOpen = open;
+    overlay.classList.toggle('is-open', open);
+    overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    html.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      var first = overlay.querySelector(focusSel);
+      if (first) { first.focus(); }
+    } else {
+      toggle.focus();
+    }
+    updateHeader(window.pageYOffset || 0);
+  }
+  if (toggle) { toggle.addEventListener('click', function () { setMenu(!menuIsOpen); }); }
+  if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (link) { setMenu(false); }
+    });
+  }
+  doc.addEventListener('keydown', function (e) {
+    if (!menuIsOpen) { return; }
+    if (e.key === 'Escape') { e.preventDefault(); setMenu(false); return; }
+    if (e.key === 'Tab' && overlay) {
+      var nodes = Array.prototype.slice.call(overlay.querySelectorAll(focusSel));
+      if (!nodes.length) { return; }
+      var first = nodes[0];
+      var last = nodes[nodes.length - 1];
+      if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* ===== ÉÉN INTERSECTION OBSERVER — reveals, stappen, tellers ===== */
+  var statsStarted = false;
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('in-view');
+        if (entry.target.id === 'stats') { startCountups(); }
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(
+      doc.querySelectorAll('[data-rv], .proces-stap, #stats'),
+      function (el) { io.observe(el); }
+    );
+  } else {
+    Array.prototype.forEach.call(
+      doc.querySelectorAll('[data-rv], .proces-stap'),
+      function (el) { el.classList.add('in-view'); }
+    );
+    startCountups();
+  }
+
+  /* ===== TELLERS — NL-notatie (9,2 en 12.000) ===== */
+  function formatNum(value, decimals) {
+    try {
+      return new Intl.NumberFormat('nl-NL', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      }).format(value);
+    } catch (e) {
+      return decimals > 0
+        ? value.toFixed(decimals).replace('.', ',')
+        : String(Math.round(value));
+    }
+  }
+  function startCountups() {
+    if (statsStarted) { return; }
+    statsStarted = true;
+    Array.prototype.forEach.call(doc.querySelectorAll('.countup'), function (el, i) {
+      var target = parseFloat(el.getAttribute('data-target'));
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      if (isNaN(target)) { return; }
+      if (reduced) { el.textContent = formatNum(target, decimals); return; }
+      var dur = 1600;
+      var startT = null;
+      function tick(t) {
+        if (startT === null) { startT = t; }
+        var p = Math.min((t - startT) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = formatNum(target * eased, decimals);
+        if (p < 1) { requestAnimationFrame(tick); }
+      }
+      el.textContent = formatNum(0, decimals);
+      setTimeout(function () { requestAnimationFrame(tick); }, 120 + i * 120);
+    });
+  }
+
+  /* ===== MANIFEST — scroll-gedreven woord-oplichting ===== */
+  var manifest = doc.getElementById('manifestText');
+  var manifestWords = [];
+  if (manifest && !reduced) {
+    var raw = manifest.textContent.trim().split(/\s+/);
+    manifest.textContent = '';
+    raw.forEach(function (word, i) {
+      var span = doc.createElement('span');
+      span.className = 'w';
+      if (/wortelen|teruggeven|mensen|vogels|bijen/i.test(word)) { span.className += ' accent'; }
+      span.textContent = word;
+      manifest.appendChild(span);
+      if (i < raw.length - 1) { manifest.appendChild(doc.createTextNode(' ')); }
+      manifestWords.push(span);
+    });
+  }
+
+  /* ===== PROCES — groeiende lijn ===== */
+  var procesFlow = doc.getElementById('procesFlow');
+  var procesLine = doc.getElementById('procesLine');
+  if (procesLine && reduced) { procesLine.style.height = '100%'; }
+
+  /* ===== PARALLAX — projectfoto's bewegen subtiel mee ===== */
+  var parallaxEls = (reduced || !finePointer)
+    ? []
+    : Array.prototype.slice.call(doc.querySelectorAll('.pc-media .clip-i img'));
+
+  /* ===== MARQUEE — skew op scrollsnelheid (max ±3°, lerp terug) ===== */
+  var marqueeRow = reduced ? null : doc.getElementById('marqueeRow');
+  var skewCur = 0, skewTarget = 0, skewRaf = null, skewLastY = window.pageYOffset || 0;
+  function skewLoop() {
+    skewTarget *= 0.88;
+    skewCur += (skewTarget - skewCur) * 0.14;
+    if (Math.abs(skewCur) < 0.04 && Math.abs(skewTarget) < 0.04) {
+      skewCur = 0;
+      if (marqueeRow) { marqueeRow.style.transform = ''; }
+      skewRaf = null;
+      return;
+    }
+    if (marqueeRow) { marqueeRow.style.transform = 'skewX(' + skewCur.toFixed(2) + 'deg)'; }
+    skewRaf = requestAnimationFrame(skewLoop);
+  }
+
+  /* ===== ÉÉN SCROLL-rAF-LUS (ticking-flag) ===== */
+  var ticking = false;
+  function onScrollFrame() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    var vh = window.innerHeight || doc.documentElement.clientHeight;
+
+    if (marqueeRow) {
+      var vel = y - skewLastY;
+      skewLastY = y;
+      skewTarget = Math.max(-3, Math.min(3, vel * 0.07));
+      if (skewRaf === null && Math.abs(skewTarget) > 0.1) { skewRaf = requestAnimationFrame(skewLoop); }
+    }
+    updateHeader(y);
+
+    if (manifestWords.length && manifest) {
+      var r = manifest.getBoundingClientRect();
+      var prog = (vh * 0.85 - r.top) / (r.height + vh * 0.45);
+      prog = Math.max(0, Math.min(1, prog));
+      var lit = Math.floor(prog * manifestWords.length);
+      for (var i = 0; i < manifestWords.length; i++) {
+        manifestWords[i].classList.toggle('lit', i < lit);
+      }
+    }
+
+    if (procesLine && procesFlow && !reduced) {
+      var pr = procesFlow.getBoundingClientRect();
+      var start = vh * 0.8, end = vh * 0.45;
+      var total = pr.height + (start - end);
+      var passed = start - pr.top;
+      var pp = Math.min(Math.max(passed / total, 0), 1);
+      procesLine.style.height = (pp * 100).toFixed(2) + '%';
+    }
+
+    for (var j = 0; j < parallaxEls.length; j++) {
+      var el = parallaxEls[j];
+      var rect = el.parentNode.getBoundingClientRect();
+      if (rect.bottom < -120 || rect.top > vh + 120) { continue; }
+      var center = rect.top + rect.height / 2;
+      var ratio = (center - vh / 2) / vh;
+      var move = Math.max(-18, Math.min(18, -ratio * 26));
+      el.style.transform = 'translate3d(0,' + move.toFixed(2) + 'px,0)';
+    }
+  }
+  function requestTick() {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); }
+  }
+  window.addEventListener('scroll', requestTick, { passive: true });
+  window.addEventListener('resize', requestTick, { passive: true });
+  onScrollFrame();
+
+  /* ===== MAGNETISCHE KNOPPEN ===== */
+  if (finePointer && !reduced) {
+    Array.prototype.forEach.call(doc.querySelectorAll('.js-magnetic'), function (btn) {
+      var MAX = 6;
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var dx = ((e.clientX - (r.left + r.width / 2)) / (r.width / 2)) * MAX;
+        var dy = ((e.clientY - (r.top + r.height / 2)) / (r.height / 2)) * MAX;
+        btn.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+      }, { passive: true });
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; }, { passive: true });
+    });
+  }
+
+  /* ===== DIENSTEN — preview volgt het rijmidden (fine pointer) ===== */
+  var preview = doc.getElementById('dienstPreview');
+  var dienstSection = doc.querySelector('.diensten');
+  var wantPreview = false;
+  try { wantPreview = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1101px)').matches; } catch (e) {}
+  if (preview && dienstSection && !reduced && wantPreview) {
+    var previewImgs = preview.querySelectorAll('img');
+    var rows = doc.querySelectorAll('.dienst-row[data-preview]');
+    Array.prototype.forEach.call(rows, function (row) {
+      row.addEventListener('mouseenter', function () {
+        var idx = parseInt(row.getAttribute('data-preview'), 10) || 0;
+        Array.prototype.forEach.call(previewImgs, function (img, k) {
+          img.classList.toggle('is-active', k === idx);
+        });
+        var secTop = dienstSection.getBoundingClientRect().top;
+        var rowRect = row.getBoundingClientRect();
+        var py = rowRect.top - secTop + rowRect.height / 2 - preview.offsetHeight / 2;
+        preview.style.setProperty('--py', py.toFixed(0) + 'px');
+        preview.classList.add('is-on');
+      });
+    });
+    dienstSection.addEventListener('mouseleave', function () {
+      preview.classList.remove('is-on');
+    });
+  }
+
+  /* ===== PROJECTFILTER — enter/leave met lock + forced reflow ===== */
+  var filterBtns = Array.prototype.slice.call(doc.querySelectorAll('.filter-btn'));
+  var projectGrid = doc.getElementById('projectGrid');
+  var projectCards = projectGrid ? Array.prototype.slice.call(projectGrid.querySelectorAll('.pc')) : [];
+  var filterBusy = false;
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (filterBusy || btn.getAttribute('aria-pressed') === 'true') { return; }
+      filterBusy = true;
+      filterBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      var cat = btn.getAttribute('data-filter');
+      var dur = reduced ? 0 : 320;
+      projectCards.forEach(function (card) {
+        var show = cat === 'alles' || card.getAttribute('data-cat') === cat;
+        if (!show && !card.hidden) { card.classList.add('is-leaving'); }
+      });
+      setTimeout(function () {
+        projectCards.forEach(function (card) {
+          var show = cat === 'alles' || card.getAttribute('data-cat') === cat;
+          card.classList.remove('is-leaving');
+          if (show && card.hidden) {
+            card.hidden = false;
+            card.classList.add('is-entering');
+          } else if (!show) {
+            card.hidden = true;
+          }
+        });
+        /* forced reflow zodat de enter-transition daadwerkelijk speelt */
+        void projectGrid.offsetHeight;
+        projectCards.forEach(function (card) { card.classList.remove('is-entering'); });
+        filterBusy = false;
+      }, dur);
+    });
+  });
+
+  /* ===== VOOR/NA-SLIDER — range + pointer-drag ===== */
+  var ba = doc.getElementById('beforeAfter');
+  var baRange = doc.getElementById('baRange');
+  if (ba && baRange) {
+    var setBaPos = function (v) { ba.style.setProperty('--pos', v + '%'); };
+    baRange.addEventListener('input', function () { setBaPos(baRange.value); });
+    var baFromEvent = function (e) {
+      var rect = ba.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width;
+      var v = Math.round(Math.min(Math.max(x, 0), 1) * 100);
+      baRange.value = String(v);
+      setBaPos(v);
+    };
+    ba.addEventListener('pointerdown', function (e) {
+      if (e.target === baRange) { return; }
+      try { ba.setPointerCapture(e.pointerId); } catch (err) {}
+      baFromEvent(e);
+      var move = function (ev) { baFromEvent(ev); };
+      var up = function () {
+        ba.removeEventListener('pointermove', move);
+        ba.removeEventListener('pointerup', up);
+        ba.removeEventListener('pointercancel', up);
+      };
+      ba.addEventListener('pointermove', move);
+      ba.addEventListener('pointerup', up);
+      ba.addEventListener('pointercancel', up);
+    });
+    setBaPos(50);
+  }
+
+  /* ===== PAKKETTEN — project/seizoen-toggle met switching-lock ===== */
+  var periodToggle = doc.getElementById('periodToggle');
+  if (periodToggle) {
+    var periodBtns = Array.prototype.slice.call(periodToggle.querySelectorAll('button[data-period]'));
+    var bedragen = Array.prototype.slice.call(doc.querySelectorAll('.plan-prijs .bedrag'));
+    var perLabels = Array.prototype.slice.call(doc.querySelectorAll('.plan-prijs .per'));
+    var switching = false;
+    var setPeriod = function (period) {
+      if (switching) { return; }
+      switching = true;
+      periodBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-period') === period ? 'true' : 'false');
+      });
+      var dur = reduced ? 0 : 240;
+      bedragen.forEach(function (el) { el.classList.add('switching'); });
+      setTimeout(function () {
+        bedragen.forEach(function (el) {
+          var next = el.getAttribute('data-' + period);
+          if (next) { el.innerHTML = next; }
+          el.classList.remove('switching');
+        });
+        perLabels.forEach(function (el) {
+          var next = el.getAttribute('data-' + period);
+          if (next) { el.textContent = next; }
+        });
+        switching = false;
+      }, dur);
+    };
+    periodBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.getAttribute('aria-pressed') === 'true') { return; }
+        setPeriod(btn.getAttribute('data-period'));
+      });
+    });
+  }
+
+  /* ===== REVIEWS — carrousel met dots, pijlen, auto-advance ===== */
+  var track = doc.getElementById('reviewTrack');
+  var dotsWrap = doc.getElementById('reviewDots');
+  var prevBtn = doc.getElementById('reviewPrev');
+  var nextBtn = doc.getElementById('reviewNext');
+  if (track && dotsWrap) {
+    var slides = Array.prototype.slice.call(track.children);
+    var current = 0;
+    var autoTimer = null;
+    slides.forEach(function (_, i) {
+      var dot = doc.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Review ' + (i + 1) + ' van ' + slides.length);
+      dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', function () { goTo(i, true); });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var goTo = function (index, manual) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) { d.setAttribute('aria-current', i === current ? 'true' : 'false'); });
+      if (manual) { restartAuto(); }
+    };
+    var restartAuto = function () {
+      if (autoTimer) { clearInterval(autoTimer); }
+      if (reduced) { return; }
+      autoTimer = setInterval(function () { goTo(current + 1, false); }, 7000);
+    };
+    if (prevBtn) { prevBtn.addEventListener('click', function () { goTo(current - 1, true); }); }
+    if (nextBtn) { nextBtn.addEventListener('click', function () { goTo(current + 1, true); }); }
+    var stage = doc.getElementById('reviewStage');
+    if (stage) {
+      stage.addEventListener('mouseenter', function () { if (autoTimer) { clearInterval(autoTimer); } });
+      stage.addEventListener('mouseleave', restartAuto);
+      stage.addEventListener('focusin', function () { if (autoTimer) { clearInterval(autoTimer); } });
+      stage.addEventListener('focusout', restartAuto);
+    }
+    restartAuto();
+  }
+
+  /* ===== CONTACT — per-veld validatie + succes-overlay ===== */
+  var form = doc.getElementById('contactForm');
+  var statusEl = doc.getElementById('formStatus');
+  if (form) {
+    var setInvalid = function (input, invalid) {
+      var field = input.closest('.field');
+      if (field) { field.classList.toggle('invalid', invalid); }
+      input.setAttribute('aria-invalid', invalid ? 'true' : 'false');
+    };
+    var validateField = function (input) {
+      var v = input.value.trim();
+      var ok = true;
+      if (input.id === 'f-email') {
+        ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      } else {
+        ok = v.length > 0;
+      }
+      setInvalid(input, !ok);
+      return ok;
+    };
+    var formInputs = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+    formInputs.forEach(function (input) {
+      input.addEventListener('blur', function () { validateField(input); });
+      input.addEventListener('input', function () {
+        var f = input.closest('.field');
+        if (f && f.classList.contains('invalid')) { validateField(input); }
+      });
+      input.addEventListener('change', function () {
+        var f = input.closest('.field');
+        if (f && f.classList.contains('invalid')) { validateField(input); }
+      });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allOk = true, firstBad = null;
+      formInputs.forEach(function (input) {
+        if (!validateField(input)) { allOk = false; if (!firstBad) { firstBad = input; } }
+      });
+      if (!allOk) {
+        if (statusEl) { statusEl.textContent = 'Het formulier bevat fouten. Controleer de gemarkeerde velden.'; }
+        if (firstBad) { firstBad.focus(); }
+        return;
+      }
+      form.classList.add('sent');
+      var success = form.querySelector('.form-success');
+      if (success) { success.setAttribute('aria-hidden', 'false'); }
+      if (statusEl) { statusEl.textContent = 'Bericht verzonden. Je hoort binnen twee werkdagen van ons.'; }
+    });
+  }
+
+  /* ===== FAQ — single-open accordion ===== */
+  var faqList = doc.getElementById('faqList');
+  if (faqList) {
+    var faqItems = Array.prototype.slice.call(faqList.querySelectorAll('.faq-item'));
+    faqList.classList.add('faq-ready');
+    var setFaq = function (item, open) {
+      item.classList.toggle('open', open);
+      var b = item.querySelector('.faq-q');
+      if (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    };
+    faqItems.forEach(function (item) {
+      var btn = item.querySelector('.faq-q');
+      if (!btn) { return; }
+      btn.addEventListener('click', function () {
+        var wasOpen = item.classList.contains('open');
+        faqItems.forEach(function (it) { setFaq(it, false); });
+        if (!wasOpen) { setFaq(item, true); }
+      });
+    });
+    if (faqItems[0]) { setFaq(faqItems[0], true); }
+  }
+
+  /* ===== KLOK — lokale tijd Utrecht ===== */
+  var clockEl = doc.getElementById('bpKlok');
+  if (clockEl) {
+    var clockFmt = null;
+    try {
+      clockFmt = new Intl.DateTimeFormat('nl-NL', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Amsterdam' });
+    } catch (e) { clockFmt = null; }
+    if (clockFmt) {
+      var setClock = function () { clockEl.textContent = clockFmt.format(new Date()); };
+      setClock();
+      setInterval(setClock, 30000);
+    } else {
+      clockEl.textContent = '';
+    }
+  }
+
+  /* ===== FOOTER — dynamisch jaar ===== */
+  var jaarEl = doc.getElementById('jaar');
+  if (jaarEl) { jaarEl.textContent = String(new Date().getFullYear()); }
+})();
+</script>
+</body>
+</html>
