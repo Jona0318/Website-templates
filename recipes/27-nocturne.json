@@ -1,0 +1,120 @@
+{
+  "id": 27,
+  "slug": "27-nocturne",
+  "title": "Nocturne — creatieve studio",
+  "sector": "algemeen",
+  "scheme": "dark",
+  "meta": {
+    "title": "Nocturne — creatieve studio voor merk & digitaal",
+    "description": "Nocturne is een creatieve studio die merken bouwt die opvallen in het donker. Strak, modern en zonder ruis.",
+    "themeColor": "#0d0f13"
+  },
+  "theme": {
+    "--bg": "#0d0f13", "--bg-2": "#14171d", "--surface": "#171b22",
+    "--ink": "#eef1f5", "--muted": "rgba(238,241,245,.62)", "--faint": "rgba(238,241,245,.40)",
+    "--line": "rgba(238,241,245,.12)", "--line-strong": "rgba(238,241,245,.22)",
+    "--accent": "#5fe9ad", "--accent-2": "#b6a2ff", "--accent-soft": "rgba(95,233,173,.12)", "--on-accent": "#06140d",
+    "--dark-bg": "#0a0c10", "--dark-surface": "#14171d", "--dark-ink": "#eef1f5", "--dark-muted": "rgba(238,241,245,.62)", "--dark-line": "rgba(238,241,245,.12)",
+    "--radius": "14px"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
+    "serif": "Space Grotesk", "grotesk": "Onest", "mono": "Space Mono"
+  },
+  "brand": { "name": "Nocturne", "tagline": "Creatieve studio · Rotterdam", "email": "studio@nocturne.works", "tel": "+31 10 322 70 50", "address": "Schiekade 189, 3013 BR Rotterdam" },
+  "nav": [
+    { "href": "#diensten", "label": "Diensten" },
+    { "href": "#aanpak", "label": "Aanpak" },
+    { "href": "#tarieven", "label": "Tarieven" },
+    { "href": "#faq", "label": "FAQ" },
+    { "href": "#contact", "label": "Contact" }
+  ],
+  "headerCta": { "href": "#contact", "label": "Start een project" },
+  "sections": [
+    { "use": "hero", "data": {
+      "eyebrow": "Creatieve studio · est. 2015",
+      "title": "Merken die <em>oplichten</em> in het donker.",
+      "lead": "Nocturne ontwerpt identiteiten, campagnes en digitale ervaringen met een scherpe, eigentijdse rand. Minder ruis, meer indruk.",
+      "ctas": [ { "href": "#contact", "label": "Start een project", "primary": true }, { "href": "#diensten", "label": "Wat we doen" } ],
+      "clock": "Rotterdam nu",
+      "stats": [ { "value": "90+", "label": "merken gelanceerd" }, { "value": "12", "label": "design awards" }, { "value": "10 jr", "label": "ervaring" } ]
+    }},
+    { "use": "features", "id": "diensten", "data": {
+      "eyebrow": "Diensten",
+      "title": "Scherp van strategie tot <em>uitvoering</em>",
+      "intro": "Eén studio voor het hele creatieve traject — strak op elkaar afgestemd.",
+      "items": [
+        { "icon": "◐", "title": "Merkidentiteit", "text": "Een onderscheidende identiteit met een sterk systeem: logo, kleur, type en toon die overal kloppen." },
+        { "icon": "✦", "title": "Art direction", "text": "Een visuele richting met lef — beeld, ritme en sfeer die je merk een eigen stem geven." },
+        { "icon": "◢", "title": "Digitaal & web", "text": "Snelle, vloeiende websites en interfaces met motion die premium aanvoelt." },
+        { "icon": "◑", "title": "Campagne", "text": "Concepten die landen — van social tot out-of-home, consistent en raak." },
+        { "icon": "◉", "title": "Content & motion", "text": "Beeld, animatie en video die je verhaal in beweging brengen." },
+        { "icon": "⬡", "title": "Strategie", "text": "Positionering en merkstrategie als stevig fundament onder al het creatieve werk." }
+      ]
+    }},
+    { "use": "split", "id": "aanpak", "data": {
+      "eyebrow": "Aanpak",
+      "title": "Klein team, grote ambities",
+      "paragraphs": [
+        "We werken bewust met een compacte ploeg van makers — strateeg, ontwerper, motion. Daardoor blijft het werk scherp en de communicatie kort.",
+        "Elk traject begint met een duidelijke vraag en eindigt met een systeem dat je merk laat groeien, niet alleen één mooi plaatje."
+      ],
+      "points": [ "Senioren aan tafel, geen tussenlagen", "Strategie + creatie in één hand", "Levende merksystemen, geen losse deliverables", "Internationale awards, lokale lijntjes" ],
+      "cta": { "href": "#contact", "label": "Maak kennis" },
+      "glyph": "◭"
+    }},
+    { "use": "stats", "data": { "items": [
+      { "target": 2015, "label": "opgericht" },
+      { "target": 90, "suffix": "+", "label": "merken gelanceerd" },
+      { "target": 12, "label": "design awards" },
+      { "target": 40, "suffix": "+", "label": "landen bereikt" }
+    ]}},
+    { "use": "pricing", "id": "tarieven", "data": {
+      "eyebrow": "Tarieven",
+      "title": "Investeren in <em>onderscheid</em>",
+      "intro": "Richtprijzen om de schaal te voelen. Elk traject krijgt een offerte op maat.",
+      "plans": [
+        { "name": "Identiteit", "voor": "Een complete merkidentiteit met systeem en richtlijnen.", "prijs": "€ 9.500", "per": "vanaf, per traject", "features": [ "Logo + visueel systeem", "Kleur, type & toon", "Merkrichtlijnen (PDF + web)" ], "cta": { "href": "#contact", "label": "Aanvragen" } },
+        { "name": "Merk + Digitaal", "voor": "Identiteit én een website of digitale ervaring die hem laat leven.", "prijs": "€ 22.000", "per": "vanaf, per traject", "featured": true, "badge": "Compleet", "features": [ "Volledige identiteit", "Website of product", "Motion & content-kit", "Lancering & nazorg" ], "cta": { "href": "#contact", "label": "Start project" } },
+        { "name": "Studio-retainer", "voor": "Doorlopend creatief partnerschap voor merken in beweging.", "prijs": "€ 7.500", "per": "per maand", "features": [ "Vaste creatieve capaciteit", "Strategie + uitvoering", "Voorrang & korte lijnen" ], "cta": { "href": "#contact", "label": "Plan gesprek" } }
+      ],
+      "note": "Richtprijzen excl. btw. Na een kennismaking stellen we een voorstel op maat op."
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "intro": "Andere vraag? Stuur ons een bericht.",
+      "items": [
+        { "q": "Voor wat voor merken werken jullie?", "an": "Van ambitieuze start-ups tot gevestigde namen. De rode draad: merken die durven opvallen en bereid zijn scherpe keuzes te maken." },
+        { "q": "Doen jullie ook alleen strategie of alleen design?", "an": "Dat kan. We werken het liefst end-to-end, maar leveren ook losse onderdelen — bijvoorbeeld alleen positionering of alleen art direction." },
+        { "q": "Hoe lang duurt een merktraject?", "an": "Een volledige identiteit duurt doorgaans 6–10 weken; merk + digitaal 3–4 maanden. We bepalen de planning samen aan het begin." },
+        { "q": "Werken jullie internationaal?", "an": "Ja. We werken voor opdrachtgevers in heel Europa en daarbuiten; het meeste verloopt soepel op afstand." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "data": {
+      "eyebrow": "Contact",
+      "title": "Klaar om op te <em>vallen</em>?",
+      "intro": "Vertel ons over je merk en je ambitie. We reageren binnen één werkdag.",
+      "submit": "Verstuur",
+      "successTitle": "Ontvangen!",
+      "successText": "Bedankt — we nemen snel contact met je op.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "bedrijf", "label": "Bedrijf", "type": "text", "half": true },
+        { "name": "type", "label": "Wat zoek je", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Merkidentiteit", "Merk + digitaal", "Campagne", "Retainer / partner" ], "half": true, "error": "Maak een keuze." },
+        { "name": "bericht", "label": "Vertel over je merk", "type": "textarea", "required": true, "placeholder": "Waar sta je nu, en waar wil je heen?" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Nocturne is een creatieve studio in Rotterdam. We bouwen merken die opvallen — strak, modern en zonder ruis.",
+    "bottom": "KvK 64120877 · Rotterdam",
+    "columns": [
+      { "title": "Studio", "links": [ { "href": "#diensten", "label": "Diensten" }, { "href": "#aanpak", "label": "Aanpak" }, { "href": "#tarieven", "label": "Tarieven" } ] },
+      { "title": "Meer", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:studio@nocturne.works", "label": "studio@nocturne.works" }, { "href": "tel:+31103227050", "label": "+31 10 322 70 50" }, { "href": "#contact", "label": "Schiekade 189, Rotterdam" } ] }
+    ]
+  }
+}

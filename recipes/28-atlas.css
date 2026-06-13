@@ -1,0 +1,23 @@
+/* live thema-editor (template 28) */
+.thx{position:fixed;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);z-index:170;font-family:var(--font-mono)}
+.thx-fab{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:var(--bg);border-radius:99px;padding:.85rem 1.25rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 16px 38px -14px rgba(0,0,0,.5);transition:transform .3s var(--ease)}
+.thx-fab:hover{transform:translateY(-2px)}
+.thx-panel{position:absolute;right:0;bottom:calc(100% + .7rem);width:min(330px,86vw);background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.3rem;display:grid;gap:1.15rem;box-shadow:0 36px 80px -34px rgba(0,0,0,.45)}
+.thx-panel[hidden]{display:none}
+.thx-row{display:grid;gap:.6rem}
+.thx-row>span{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.thx-swatches{display:flex;gap:.5rem;flex-wrap:wrap}
+.thx-sw{width:30px;height:30px;border-radius:9px;border:2px solid transparent;cursor:pointer;transition:transform .2s var(--ease)}
+.thx-sw:hover{transform:translateY(-2px)}
+.thx-sw[aria-pressed="true"]{border-color:var(--ink)}
+.thx-seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:99px;padding:4px;gap:4px}
+.thx-seg button{flex:1;font:inherit;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem .85rem;border-radius:99px;color:var(--muted);transition:background-color .25s,color .25s}
+.thx-seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.thx-range{display:flex;align-items:center;gap:.7rem}
+.thx-range input{flex:1;accent-color:var(--accent)}
+.thx-range output{font-size:.7rem;color:var(--accent);min-width:3.6em;text-align:right;font-variant-numeric:tabular-nums}
+.thx-copy{font:inherit;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:.75rem;border:1px solid var(--line-strong);border-radius:11px;color:var(--ink);transition:border-color .25s,color .25s}
+.thx-copy:hover{border-color:var(--accent);color:var(--accent)}
+.thx-toast{position:absolute;right:0;bottom:calc(100% + .7rem);background:var(--ink);color:var(--bg);font-size:.64rem;letter-spacing:.06em;padding:.6rem .9rem;border-radius:9px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap}
+.thx-toast.show{opacity:1;transform:none}
+@media (max-width:560px){.thx-fab span.lbl{display:none}}

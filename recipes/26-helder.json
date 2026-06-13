@@ -1,0 +1,125 @@
+{
+  "id": 26,
+  "slug": "26-helder",
+  "title": "Helder — digitale studio",
+  "sector": "algemeen",
+  "scheme": "light",
+  "meta": {
+    "title": "Helder — digitale studio voor merk, web en product",
+    "description": "Helder is een digitale studio die merken, websites en producten ontwerpt en bouwt. Strak, snel en met oog voor detail.",
+    "themeColor": "#f6f4f0"
+  },
+  "theme": {
+    "--bg": "#f6f4f0", "--bg-2": "#ece8e1", "--surface": "#ffffff",
+    "--ink": "#16141d", "--muted": "rgba(22,20,29,.62)", "--faint": "rgba(22,20,29,.40)",
+    "--line": "rgba(22,20,29,.12)", "--line-strong": "rgba(22,20,29,.24)",
+    "--accent": "#6a2be6", "--accent-2": "#88c425", "--accent-soft": "rgba(106,43,230,.10)", "--on-accent": "#ffffff",
+    "--dark-bg": "#161023", "--dark-surface": "#211833", "--dark-ink": "#efeafb", "--dark-muted": "rgba(239,234,251,.62)", "--dark-line": "rgba(239,234,251,.14)",
+    "--radius": "14px"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+    "serif": "Schibsted Grotesk", "grotesk": "Plus Jakarta Sans", "mono": "JetBrains Mono"
+  },
+  "brand": { "name": "Helder", "tagline": "Digitale studio · Amsterdam", "email": "hallo@helder.studio", "tel": "+31 20 753 41 20", "address": "Da Costakade 158, 1053 XC Amsterdam" },
+  "nav": [
+    { "href": "#diensten", "label": "Diensten" },
+    { "href": "#werkwijze", "label": "Werkwijze" },
+    { "href": "#tarieven", "label": "Tarieven" },
+    { "href": "#faq", "label": "FAQ" },
+    { "href": "#contact", "label": "Contact" }
+  ],
+  "headerCta": { "href": "#contact", "label": "Plan een gesprek" },
+  "sections": [
+    { "use": "hero", "data": {
+      "eyebrow": "Digitale studio · sinds 2017",
+      "title": "Strak ontwerp, <em>vlot</em> gebouwd.",
+      "lead": "Helder ontwerpt en bouwt merken, websites en digitale producten. Klein team, korte lijnen, en een resultaat dat staat als een huis.",
+      "ctas": [ { "href": "#contact", "label": "Plan een gesprek", "primary": true }, { "href": "#werk", "label": "Bekijk werkwijze" } ],
+      "clock": "Amsterdam nu",
+      "stats": [ { "value": "120+", "label": "projecten opgeleverd" }, { "value": "4,9/5", "label": "klantbeoordeling" }, { "value": "2–6 wk", "label": "gem. doorlooptijd" } ]
+    }},
+    { "use": "features", "id": "diensten", "data": {
+      "eyebrow": "Wat we doen",
+      "title": "Eén studio, het <em>hele</em> traject",
+      "intro": "Van eerste schets tot live product — onder één dak, zonder overdrachtsruis.",
+      "items": [
+        { "icon": "✶", "title": "Merk & identiteit", "text": "Logo, kleur, typografie en richtlijnen die je merk meteen herkenbaar maken — consistent op elk kanaal." },
+        { "icon": "◵", "title": "Webdesign", "text": "Snelle, toegankelijke websites met een strakke, eigentijdse uitstraling die converteert." },
+        { "icon": "◈", "title": "Productdesign", "text": "Interfaces voor app en SaaS: heldere flows, een net design-systeem en prototypes die kloppen." },
+        { "icon": "⟐", "title": "Development", "text": "Schone front-end, vlotte performance en code die je team zonder kopzorgen overneemt." },
+        { "icon": "◑", "title": "Motion", "text": "Subtiele animatie en micro-interacties die je product levend en premium laten voelen." },
+        { "icon": "✸", "title": "Optimalisatie", "text": "Doorlopend meten en bijschaven — sneller, duidelijker, beter vindbaar." }
+      ]
+    }},
+    { "use": "split", "id": "werkwijze", "data": {
+      "eyebrow": "Werkwijze",
+      "title": "Helder van begin tot eind",
+      "paragraphs": [
+        "We werken in korte sprints met wekelijkse oplevermomenten, zodat je nooit voor verrassingen staat. Wat we doen is zichtbaar; wat het kost weet je vooraf.",
+        "Eén vast aanspreekpunt, directe lijnen met ontwerpers én bouwers. Geen lagen, geen wachttijden — gewoon dingen afmaken."
+      ],
+      "points": [ "Wekelijkse demo's en terugkoppeling", "Vaste prijs of vast dagtarief", "Design én build in één team", "Nette overdracht met documentatie" ],
+      "cta": { "href": "#contact", "label": "Start een project" },
+      "glyph": "◳"
+    }},
+    { "use": "stats", "data": { "items": [
+      { "target": 2017, "label": "opgericht" },
+      { "target": 120, "suffix": "+", "label": "projecten" },
+      { "target": 30, "suffix": "+", "label": "tevreden klanten" },
+      { "target": 4, "suffix": ",9", "label": "gem. beoordeling" }
+    ]}},
+    { "use": "pricing", "id": "tarieven", "data": {
+      "eyebrow": "Tarieven",
+      "title": "Helder geprijsd, <em>geen</em> kleine lettertjes",
+      "intro": "Kies een vertrekpunt. Elk project is maatwerk; deze pakketten geven het kader.",
+      "modes": [ { "key": "project", "label": "Per project" }, { "key": "maand", "label": "Maandelijks" } ],
+      "plans": [
+        { "name": "Sprint", "voor": "Eén afgebakend ontwerp- of bouwklusje, snel geleverd.", "prijs": { "project": "€ 3.500", "maand": "€ 1.400" }, "per": { "project": "vanaf, per project", "maand": "per maand, 3 mnd" }, "features": [ "1 duidelijk resultaat", "2 feedbackrondes", "Oplevering binnen 3 weken" ], "cta": { "href": "#contact", "label": "Kies Sprint" } },
+        { "name": "Studio", "voor": "Volledig traject: van merk tot werkende website of product.", "prijs": { "project": "€ 12.500", "maand": "€ 3.600" }, "per": { "project": "vanaf, per traject", "maand": "per maand, 4 mnd" }, "featured": true, "badge": "Meest gekozen", "features": [ "Merk + web of product", "Design-systeem", "Development inbegrepen", "Overdracht & documentatie" ], "cta": { "href": "#contact", "label": "Kies Studio" } },
+        { "name": "Partner", "voor": "Wij zijn doorlopend je ontwerp- en bouwteam.", "prijs": { "project": "op maat", "maand": "€ 5.900" }, "per": { "project": "jaarcontract", "maand": "per maand, doorlopend" }, "features": [ "Vaste capaciteit", "Voorrang & korte lijnen", "Onderhoud & doorontwikkeling" ], "cta": { "href": "#contact", "label": "Plan kennismaking" } }
+      ],
+      "note": "Genoemde bedragen zijn richtprijzen excl. btw. Na een kort kennismakingsgesprek volgt een offerte op maat."
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Veel <em>gevraagd</em>",
+      "intro": "Staat je vraag er niet bij? Mail ons, je hoort snel iets.",
+      "items": [
+        { "q": "Doen jullie ontwerp én bouw?", "an": "Ja. Ontwerpers en developers zitten bij ons in hetzelfde team, dus er gaat niets verloren in de overdracht — wat we ontwerpen kunnen we ook bouwen." },
+        { "q": "Hoe snel kunnen jullie starten?", "an": "Meestal binnen één à twee weken. Voor kleinere sprints vaak eerder; we laten het je weten in het eerste gesprek." },
+        { "q": "Werken jullie met een vaste prijs?", "an": "Voor afgebakende projecten werken we met een vaste prijs. Bij doorlopend werk hanteren we een helder maandbedrag of dagtarief." },
+        { "q": "Kan ons team het daarna zelf onderhouden?", "an": "Zeker. We leveren schone code en duidelijke documentatie, en geven desgewenst een korte overdracht zodat jullie zelfstandig verder kunnen." }
+      ]
+    }},
+    { "use": "cta", "data": {
+      "title": "Iets moois te <em>bouwen</em>?",
+      "text": "Vertel ons kort wat je voor je ziet. We denken vrijblijvend met je mee.",
+      "ctas": [ { "href": "#contact", "label": "Plan een gesprek", "primary": true } ]
+    }},
+    { "use": "contact", "id": "contact", "data": {
+      "eyebrow": "Contact",
+      "title": "Laten we <em>kennismaken</em>",
+      "intro": "Laat je gegevens achter, dan plannen we een vrijblijvend gesprek van een half uur.",
+      "submit": "Verstuur",
+      "successTitle": "Bericht ontvangen!",
+      "successText": "Bedankt — we reageren binnen één werkdag.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "type", "label": "Waar gaat het over", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Merk & identiteit", "Website", "Product / app", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "budget", "label": "Budget (indicatie)", "type": "text", "half": true, "placeholder": "Bijv. € 10.000" },
+        { "name": "bericht", "label": "Vertel kort over je project", "type": "textarea", "required": true, "placeholder": "Wat wil je maken, en wanneer moet het klaar zijn?" }
+      ]
+    }}
+  ],
+  "footer": {
+    "blurb": "Helder is een digitale studio in Amsterdam. We ontwerpen en bouwen merken, websites en producten — strak, snel en met oog voor detail.",
+    "bottom": "KvK 71204488 · Amsterdam",
+    "columns": [
+      { "title": "Studio", "links": [ { "href": "#diensten", "label": "Diensten" }, { "href": "#werkwijze", "label": "Werkwijze" }, { "href": "#tarieven", "label": "Tarieven" } ] },
+      { "title": "Meer", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:hallo@helder.studio", "label": "hallo@helder.studio" }, { "href": "tel:+31207534120", "label": "+31 20 753 41 20" }, { "href": "#contact", "label": "Da Costakade 158, Amsterdam" } ] }
+    ]
+  }
+}

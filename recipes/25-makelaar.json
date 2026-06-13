@@ -1,0 +1,137 @@
+{
+  "id": 25,
+  "slug": "25-makelaar",
+  "title": "Hofstede Makelaars — woningmakelaar in Amersfoort",
+  "sector": "diensten",
+  "scheme": "light",
+  "meta": {
+    "title": "Hofstede Makelaars — woningmakelaar in Amersfoort",
+    "description": "Hofstede Makelaars verkoopt, koopt en taxeert woningen in Amersfoort en omstreken. Persoonlijk, scherp geprijsd en met een vlekkeloze verkoopstyling.",
+    "themeColor": "#f6f4ef"
+  },
+  "theme": {
+    "--bg": "#f6f4ef",
+    "--bg-2": "#ede9e0",
+    "--surface": "#ffffff",
+    "--ink": "#19201c",
+    "--muted": "rgba(25,32,28,.62)",
+    "--faint": "rgba(25,32,28,.40)",
+    "--line": "rgba(25,32,28,.14)",
+    "--line-strong": "rgba(25,32,28,.26)",
+    "--accent": "#1f6f5c",
+    "--accent-2": "#c2724a",
+    "--accent-soft": "rgba(31,111,92,.10)",
+    "--on-accent": "#ffffff",
+    "--dark-bg": "#13211c",
+    "--dark-surface": "#1b2c25",
+    "--dark-ink": "#eef2ee",
+    "--dark-muted": "rgba(238,242,238,.62)",
+    "--dark-line": "rgba(238,242,238,.14)",
+    "--radius": "16px"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
+    "serif": "Fraunces",
+    "grotesk": "Space Grotesk",
+    "mono": "Space Mono"
+  },
+  "brand": { "name": "Hofstede", "tagline": "Makelaars · Amersfoort", "email": "hallo@hofstedemakelaars.nl", "tel": "+31 33 204 18 90", "address": "Langestraat 64, 3811 AP Amersfoort" },
+  "nav": [
+    { "href": "#diensten", "label": "Diensten" },
+    { "href": "#aanpak", "label": "Aanpak" },
+    { "href": "#tarieven", "label": "Tarieven" },
+    { "href": "#faq", "label": "Veelgesteld" },
+    { "href": "#contact", "label": "Contact" }
+  ],
+  "headerCta": { "href": "#contact", "label": "Gratis waardebepaling" },
+  "sections": [
+    { "use": "hero", "data": {
+      "eyebrow": "Woningmakelaar · sinds 1998 · NVM",
+      "title": "Verkocht met <em>gevoel</em> voor de stad.",
+      "lead": "Hofstede verkoopt, koopt en taxeert woningen in Amersfoort en omstreken. Persoonlijk contact, scherpe courtage en een styling die kopers verliefd maakt.",
+      "ctas": [ { "href": "#contact", "label": "Gratis waardebepaling", "primary": true }, { "href": "#aanpak", "label": "Onze aanpak" } ],
+      "clock": "Amersfoort nu",
+      "stats": [ { "value": "1.250+", "label": "woningen verkocht" }, { "value": "98%", "label": "binnen de vraagprijs" }, { "value": "26 dgn", "label": "gem. verkooptijd" } ]
+    }},
+    { "use": "features", "id": "diensten", "data": {
+      "eyebrow": "Wat we doen",
+      "title": "Van eerste bezichtiging tot <em>sleuteloverdracht</em>",
+      "intro": "Een compleet makelaarskantoor onder één dak — voor verkopers én kopers.",
+      "items": [
+        { "icon": "🏡", "title": "Verkoopmakelaar", "text": "Wij verzorgen styling, professionele fotografie, funda-presentatie, bezichtigingen en onderhandeling — jij ontzorgd van A tot Z." },
+        { "icon": "🔑", "title": "Aankoopmakelaar", "text": "Wij vinden, bezichtigen en bieden namens jou. Met lokale kennis bied je scherp én verstandig, ook in een krappe markt." },
+        { "icon": "📐", "title": "Taxatie", "text": "Een gevalideerd taxatierapport (NWWI) voor je hypotheek of aankoop — meestal binnen drie werkdagen geregeld." },
+        { "icon": "🖼️", "title": "Verkoopstyling", "text": "Onze stylist maakt je woning klaar voor de foto's en bezichtigingen. Goede styling levert bewezen meer op." },
+        { "icon": "📊", "title": "Waardebepaling", "text": "Benieuwd wat je huis nu waard is? We komen vrijblijvend langs en geven een onderbouwde, eerlijke richtprijs." },
+        { "icon": "🤝", "title": "Begeleiding ZZP & BV", "text": "Ook voor ondernemers met een woon-werkpand of beleggingsobject regelen we de juiste route en taxatie." }
+      ]
+    }},
+    { "use": "split", "id": "aanpak", "data": {
+      "eyebrow": "Onze aanpak",
+      "title": "Lokaal, eerlijk en zonder ruis",
+      "paragraphs": [
+        "Wij zijn met een klein, vast team — je krijgt één makelaar die je woning, je straat en je kopers kent. Geen wisselende contactpersonen, geen callcenter.",
+        "We werken op basis van een heldere, vaste courtage. Wat we beloven leggen we vast, en je weet vooraf precies waar je aan toe bent."
+      ],
+      "points": [ "Eén vaste makelaar, korte lijnen", "Professionele fotografie & styling inbegrepen", "Wekelijkse terugkoppeling over de voortgang", "Aangesloten bij NVM met gevalideerde taxaties" ],
+      "cta": { "href": "#contact", "label": "Plan een kennismaking" },
+      "glyph": "⌂"
+    }},
+    { "use": "stats", "data": { "items": [
+      { "target": 1998, "label": "opgericht" },
+      { "target": 1250, "suffix": "+", "label": "woningen verkocht" },
+      { "target": 26, "label": "dagen gem. verkooptijd" },
+      { "target": 9, "suffix": ",4", "label": "klantbeoordeling" }
+    ]}},
+    { "use": "pricing", "id": "tarieven", "data": {
+      "eyebrow": "Tarieven",
+      "title": "Heldere <em>courtage</em>, geen verrassingen",
+      "intro": "Vaste prijzen, alles inbegrepen. Geen opstartkosten — je betaalt pas bij verkoop.",
+      "plans": [
+        { "name": "Verkopen", "voor": "Volledige verkoopbegeleiding van waardebepaling tot overdracht.", "prijs": "1,15%", "per": "courtage bij verkoop", "features": [ "Styling & fotografie inbegrepen", "Funda-toppositie + social", "Bezichtigingen & onderhandeling", "Geen verkoop = geen kosten" ], "cta": { "href": "#contact", "label": "Start verkoop" } },
+        { "name": "Kopen", "voor": "Een aankoopmakelaar die naast je staat in de hele zoektocht.", "prijs": "€ 2.950", "per": "vast, bij aankoop", "featured": true, "badge": "Meest gekozen", "features": [ "Onbeperkt bezichtigen", "Bouwkundige check geregeld", "Scherpe biedstrategie", "Begeleiding tot de notaris" ], "cta": { "href": "#contact", "label": "Vind mijn huis" } },
+        { "name": "Taxatie", "voor": "Een gevalideerd NWWI-rapport voor hypotheek of aankoop.", "prijs": "€ 595", "per": "vast tarief", "features": [ "Binnen 3 werkdagen", "Geldig bij alle geldverstrekkers", "Inclusief opname aan huis" ], "cta": { "href": "#contact", "label": "Vraag taxatie aan" } }
+      ],
+      "note": "Genoemde tarieven zijn richtprijzen incl. btw voor woningen in Amersfoort e.o. Een persoonlijke offerte volgt na de waardebepaling."
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "intro": "Staat je vraag er niet bij? Bel of mail ons gerust.",
+      "items": [
+        { "q": "Wat kost een waardebepaling?", "an": "Niets. We komen vrijblijvend langs, bekijken je woning en geven een onderbouwde richtprijs — zonder verdere verplichtingen." },
+        { "q": "Betaal ik kosten als mijn huis niet verkoopt?", "an": "Nee. Bij een verkoopopdracht werken we op no-cure-no-pay: geen verkoop betekent geen courtage. Alleen vooraf afgesproken bijkomende kosten (zoals fotografie) bespreken we transparant." },
+        { "q": "Hoe lang duurt een gemiddelde verkoop?", "an": "In onze regio verkopen we woningen gemiddeld binnen 26 dagen, vaak rond of boven de vraagprijs. De doorlooptijd hangt af van prijs, type en markt." },
+        { "q": "Doen jullie ook taxaties voor mijn hypotheek?", "an": "Ja. We leveren gevalideerde NWWI-taxatierapporten die door alle geldverstrekkers worden geaccepteerd, meestal binnen drie werkdagen." },
+        { "q": "Werken jullie ook buiten Amersfoort?", "an": "We zijn gespecialiseerd in Amersfoort en de directe omgeving (Leusden, Soest, Hoogland, Nijkerk). Twijfel je of jouw plaats erbij hoort? Bel ons even." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Contact",
+      "title": "Benieuwd wat je huis <em>waard</em> is?",
+      "intro": "Laat je gegevens achter voor een gratis, vrijblijvende waardebepaling. We nemen binnen één werkdag contact op.",
+      "dark": true,
+      "submit": "Vraag waardebepaling aan",
+      "successTitle": "Aanvraag ontvangen!",
+      "successText": "Bedankt — we bellen je binnen één werkdag voor een afspraak.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "telefoon", "label": "Telefoon", "type": "tel", "half": true },
+        { "name": "type", "label": "Ik wil…", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Mijn woning verkopen", "Een woning kopen", "Een taxatie", "Een waardebepaling" ], "half": true, "error": "Maak een keuze." },
+        { "name": "adres", "label": "Adres van de woning", "type": "text", "placeholder": "Straat, huisnummer, Amersfoort" },
+        { "name": "bericht", "label": "Bericht (optioneel)", "type": "textarea", "placeholder": "Vertel kort over je situatie of wensen" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": false,
+    "blurb": "Hofstede Makelaars — een klein, vast team dat woningen verkoopt, koopt en taxeert in Amersfoort en omstreken. NVM-makelaar sinds 1998.",
+    "bottom": "NVM-makelaar · KvK 31048822",
+    "columns": [
+      { "title": "Diensten", "links": [ { "href": "#diensten", "label": "Verkopen" }, { "href": "#diensten", "label": "Kopen" }, { "href": "#diensten", "label": "Taxatie" }, { "href": "#tarieven", "label": "Tarieven" } ] },
+      { "title": "Kantoor", "links": [ { "href": "#aanpak", "label": "Onze aanpak" }, { "href": "#faq", "label": "Veelgesteld" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:hallo@hofstedemakelaars.nl", "label": "hallo@hofstedemakelaars.nl" }, { "href": "tel:+31332041890", "label": "+31 33 204 18 90" }, { "href": "#contact", "label": "Langestraat 64, Amersfoort" } ] }
+    ]
+  }
+}

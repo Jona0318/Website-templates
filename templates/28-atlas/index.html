@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="nl" class="js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas — aanpasbare website-starter met live thema-editor</title>
+<meta name="description" content="Atlas is een strakke, moderne website-starter die je live aanpast: kies accentkleur, licht of donker, hoeken en lettertype — en kopieer je thema als CSS.">
+<meta name="theme-color" content="#f7f7f5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+(function(){var h=document.documentElement;h.classList.remove('no-js');try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){h.classList.remove('no-anim');h.classList.add('anim-ok');}}catch(e){}})();
+</script>
+<style>
+/* ============================================================
+   CORE.CSS — gedeelde schil voor gegenereerde templates
+   Wordt door _kit/build.mjs in elke template ge-inlined (geen runtime-dependency).
+   Thema komt uit het recept via :root-overrides; alle secties gebruiken
+   uitsluitend de semantische tokens hieronder.
+   ============================================================ */
+:root{
+  /* thema-tokens (recept overschrijft deze) */
+  --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
+  --ink:#16140f; --muted:rgba(22,20,15,.62); --faint:rgba(22,20,15,.40);
+  --line:rgba(22,20,15,.14); --line-strong:rgba(22,20,15,.26);
+  --accent:#1b29ff; --accent-2:#ff5a3c; --accent-soft:rgba(27,41,255,.10);
+  --on-accent:#ffffff;
+  /* donkere variant van panelen (voor .dark-secties) */
+  --dark-bg:#16140f; --dark-surface:#26231b; --dark-ink:#efeadf; --dark-muted:rgba(239,234,223,.62); --dark-line:rgba(239,234,223,.14);
+  /* easing + fonts + maat */
+  --ease:cubic-bezier(.22,1,.36,1); --ease-hard:cubic-bezier(.7,0,.2,1);
+  --font-serif:Georgia,serif; --font-grotesk:system-ui,sans-serif; --font-mono:ui-monospace,monospace;
+  --header-h:74px; --gutter:clamp(1.25rem,4.5vw,4.5rem); --maxw:1440px; --radius:16px;
+}
+@property --ang{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 14px);-webkit-text-size-adjust:100%}
+html.no-anim{scroll-behavior:auto}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-grotesk);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select,textarea{font:inherit}
+::selection{background:var(--accent);color:var(--on-accent)}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:99px;border:3px solid var(--bg-2)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* korrel-overlay */
+body::after{content:"";position:fixed;inset:0;z-index:92;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+
+/* lay-out */
+.container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);position:relative}
+.section{padding-block:clamp(4.5rem,9vw,8.5rem);position:relative}
+.section--alt{background:var(--bg-2)}
+.dark{background:var(--dark-bg);color:var(--dark-ink)}
+.dark .muted{color:var(--dark-muted)}
+.muted{color:var(--muted)}
+
+/* typografie */
+h1,h2,h3{font-weight:600;line-height:1.05;letter-spacing:-.02em}
+.serif{font-family:var(--font-serif)}
+.mono{font-family:var(--font-mono);letter-spacing:0}
+.eyebrow{font-family:var(--font-mono);font-size:.7rem;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.65rem}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--accent);flex:none}
+.dark .eyebrow{color:var(--accent-2)}
+.dark .eyebrow::before{background:var(--accent-2)}
+.section-head{max-width:50rem;margin-bottom:clamp(2.4rem,5vw,4rem)}
+.section-head.center{margin-inline:auto;text-align:center}
+.section-head.center .eyebrow{justify-content:center}
+.section-head h2{font-family:var(--font-serif);font-size:clamp(2.1rem,5.4vw,3.9rem);font-weight:500;margin:1rem 0 1rem;letter-spacing:-.015em}
+.section-head h2 em{font-style:italic;color:var(--accent)}
+.dark .section-head h2 em{color:var(--accent-2)}
+.section-head p{color:var(--muted);font-size:clamp(1rem,1.4vw,1.14rem);max-width:46rem}
+.section-head.center p{margin-inline:auto}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 1.65rem;border-radius:99px;border:1px solid var(--line-strong);color:var(--ink);transition:transform .5s var(--ease),background-color .35s,color .35s,border-color .35s,box-shadow .35s;will-change:transform}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);box-shadow:0 12px 30px -14px var(--accent)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.dark .btn-ghost{color:var(--dark-ink);border-color:var(--dark-line)}
+.dark .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2)}
+
+.skip-link{position:fixed;top:0;left:0;z-index:400;background:var(--accent);color:var(--on-accent);padding:.8rem 1.3rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transform:translateY(-120%);transition:transform .3s var(--ease)}
+.skip-link:focus{transform:translateY(0)}
+
+.dot-pulse{width:9px;height:9px;border-radius:50%;background:var(--accent);position:relative;flex:none}
+.dot-pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent)}
+html.anim-ok .dot-pulse::after{animation:pulse 2.1s var(--ease) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3);opacity:0}}
+
+/* scroll-progress + intro */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left center}
+html.no-anim .scroll-progress{display:none}
+.intro{display:none}
+html.anim-ok .intro{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.4rem;position:fixed;inset:0;z-index:300;background:var(--dark-bg);color:var(--dark-ink);transition:opacity .9s var(--ease-hard),visibility 0s linear .9s}
+html.anim-ok .intro.is-done{opacity:0;visibility:hidden}
+.intro b{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.4rem,7vw,4.5rem);opacity:0;transform:translateY(.2em);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.intro span{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--dark-muted);opacity:0;transition:opacity .7s ease .35s}
+html.anim-ok .intro.is-active b{opacity:1;transform:none}
+html.anim-ok .intro.is-active span{opacity:1}
+
+/* header */
+.header{position:fixed;top:0;left:0;right:0;z-index:150;transition:transform .5s var(--ease),background-color .4s,border-color .4s;border-bottom:1px solid transparent}
+.header.is-hidden{transform:translateY(-101%)}
+.header.is-solid{background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.header-bar{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--font-serif);font-weight:600;font-size:1.18rem;letter-spacing:-.01em}
+.brand .mark{width:34px;height:34px;flex:none;border-radius:8px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-family:var(--font-serif);font-weight:600;font-size:1.1rem}
+.brand small{display:block;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:2px}
+.header-nav{display:flex;align-items:center;gap:2rem}
+.header-links{display:flex;gap:1.7rem}
+.header-links a{font-size:.88rem;font-weight:500;color:var(--muted);transition:color .3s}
+.header-links a:hover{color:var(--accent)}
+.header-actions{display:flex;align-items:center;gap:1rem}
+.menu-toggle{display:none;width:46px;height:46px;border:1px solid var(--line-strong);border-radius:50%;align-items:center;justify-content:center;flex-direction:column;gap:5px;background:transparent}
+.menu-toggle span{display:block;width:18px;height:2px;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
+@media (max-width:980px){.header-links{display:none}.header-actions .btn-cta-text{display:none}.menu-toggle{display:inline-flex}}
+
+.menu-overlay{position:fixed;inset:0;z-index:160;background:var(--dark-bg);color:var(--dark-ink);display:flex;flex-direction:column;justify-content:center;padding:calc(var(--header-h) + 2rem) var(--gutter) var(--gutter);opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s linear .6s}
+.menu-overlay.is-open{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
+.menu-overlay__close{position:absolute;top:calc((var(--header-h) - 46px)/2);right:var(--gutter);width:46px;height:46px;border:1px solid var(--dark-line);border-radius:50%;display:grid;place-items:center;color:var(--dark-ink)}
+.menu-overlay__close::before,.menu-overlay__close::after{content:"";position:absolute;width:18px;height:2px;background:currentColor}
+.menu-overlay__close::before{transform:rotate(45deg)}
+.menu-overlay__close::after{transform:rotate(-45deg)}
+.menu-list li{overflow:hidden;padding-block:.1rem}
+.menu-list a{display:inline-flex;align-items:baseline;gap:1rem;font-family:var(--font-serif);font-weight:500;font-size:clamp(2.1rem,7.5vw,4.2rem);line-height:1.18;letter-spacing:-.02em;color:var(--dark-ink);transform:translateY(112%);transition:transform .9s var(--ease),color .3s}
+.menu-list a em{font-style:italic;color:var(--accent-2)}
+.menu-list a .idx{font-family:var(--font-mono);font-size:.78rem;font-weight:400;color:var(--accent-2);letter-spacing:.1em}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(1) a{transition-delay:.08s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(2) a{transition-delay:.15s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(3) a{transition-delay:.22s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(4) a{transition-delay:.29s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(5) a{transition-delay:.36s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(6) a{transition-delay:.43s}
+.menu-overlay.is-open .menu-list a{transform:translateY(0)}
+.menu-list a:hover{color:var(--accent-2)}
+.menu-foot{margin-top:clamp(2rem,5vh,3.5rem);display:flex;gap:2rem;flex-wrap:wrap;opacity:0;transition:opacity .8s var(--ease) .5s}
+.menu-overlay.is-open .menu-foot{opacity:1}
+.menu-foot a{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;color:var(--dark-muted)}
+.menu-foot a:hover{color:var(--accent-2)}
+html.no-anim .menu-list a{transform:none}
+html.no-anim .menu-foot{opacity:1}
+
+/* reveal */
+html.anim-ok [data-rv]{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok [data-rv].in-view{opacity:1;transform:none}
+
+/* hero */
+.hero{position:relative;min-height:clamp(560px,86svh,920px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-top:calc(var(--header-h) + clamp(2rem,5vw,4rem));padding-bottom:clamp(3rem,7vw,5rem)}
+.hero .eyebrow{margin-bottom:1.3rem}
+.hero h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.6rem,7vw,5.6rem);line-height:.99;letter-spacing:-.025em;max-width:16ch}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-lead{margin-top:1.5rem;color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:46ch}
+.hero-cta{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.hero-strip{margin-top:clamp(2.2rem,5vw,3.4rem);display:flex;flex-wrap:wrap;gap:clamp(1.2rem,3vw,2.6rem);align-items:center;padding-top:1.6rem;border-top:1px solid var(--line)}
+.hero-stat{display:flex;flex-direction:column;gap:.2rem}
+.hero-stat b{font-family:var(--font-mono);font-size:1.05rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.hero-stat span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+html.anim-ok .hero>.container>*{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+html.anim-ok.loaded .hero>.container>*{opacity:1;transform:none}
+html.anim-ok.loaded .hero .eyebrow{transition-delay:.15s}
+html.anim-ok.loaded .hero h1{transition-delay:.26s}
+html.anim-ok.loaded .hero-lead{transition-delay:.4s}
+html.anim-ok.loaded .hero-cta{transition-delay:.52s}
+html.anim-ok.loaded .hero-strip{transition-delay:.62s}
+
+/* features-grid */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.feature-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.feature-grid{grid-template-columns:1fr}}
+.feature{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.5rem,2.5vw,2.1rem);display:flex;flex-direction:column;gap:.8rem;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}
+.feature:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 26px 50px -36px rgba(0,0,0,.35)}
+.feature .ico{font-size:1.6rem;line-height:1}
+.feature h3{font-family:var(--font-serif);font-weight:500;font-size:1.35rem}
+.feature p{color:var(--muted);font-size:.95rem}
+
+/* split (tekst + paneel) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem);align-items:center}
+@media (max-width:880px){.split{grid-template-columns:1fr;gap:2rem}}
+.split-panel{aspect-ratio:4/3;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative;overflow:hidden;box-shadow:0 30px 60px -40px rgba(0,0,0,.5)}
+.split-panel .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(4rem,12vw,8rem);color:color-mix(in srgb,var(--on-accent) 85%,transparent)}
+.split ul{display:grid;gap:.7rem;margin-top:1.4rem}
+.split ul li{display:flex;gap:.7rem;align-items:baseline;color:var(--muted)}
+.split ul li::before{content:"✦";color:var(--accent);flex:none;font-size:.85rem}
+
+/* stats */
+.stats{background:var(--accent);color:var(--on-accent)}
+.stats ::selection{background:var(--on-accent);color:var(--accent)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.5rem,3vw,2.5rem)}
+.stat{border-left:1px solid color-mix(in srgb,var(--on-accent) 30%,transparent);padding-left:clamp(1rem,2vw,1.6rem)}
+.stat .num{font-family:var(--font-serif);font-weight:600;font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .num sup{font-size:.42em;font-weight:600;vertical-align:super}
+.stat .lab{margin-top:.5rem;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:color-mix(in srgb,var(--on-accent) 78%,transparent)}
+@media (max-width:820px){.stats-grid{grid-template-columns:1fr 1fr;gap:1.8rem}}
+
+/* pricing */
+.price-toggle-wrap{display:flex;justify-content:center;margin-bottom:clamp(2rem,4vw,3rem)}
+.price-toggle{display:inline-flex;border:1px solid var(--line-strong);border-radius:99px;padding:5px;gap:5px}
+.price-toggle button{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.4rem;border-radius:99px;color:var(--muted);transition:background-color .3s,color .3s}
+.price-toggle button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.2vw,1.8rem);align-items:stretch}
+@media (max-width:980px){.price-grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+.price-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.6rem,2.6vw,2.3rem);display:flex;flex-direction:column;gap:1.1rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(0,0,0,.3)}
+.price-card h3{font-family:var(--font-serif);font-weight:500;font-size:1.5rem}
+.price-card .p-voor{font-size:.88rem;color:var(--muted);min-height:3em}
+.price-prijs{display:flex;align-items:baseline;gap:.5rem;border-block:1px solid var(--line);padding-block:1.1rem}
+.price-prijs .bedrag{font-family:var(--font-serif);font-weight:600;font-size:clamp(2.1rem,3.4vw,2.9rem);letter-spacing:-.02em;line-height:1;transition:opacity .24s,transform .24s var(--ease);font-variant-numeric:tabular-nums}
+.price-prijs .bedrag.switching{opacity:0;transform:translateY(8px)}
+.price-prijs .per{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.price-card ul{display:grid;gap:.55rem;font-size:.9rem}
+.price-card ul li{display:flex;gap:.6rem;align-items:baseline;color:var(--muted)}
+.price-card ul li::before{content:"→";color:var(--accent);flex:none}
+.price-card .btn{margin-top:auto;justify-content:center}
+.price-card--featured{border:2px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,conic-gradient(from var(--ang),var(--accent),var(--accent-2),var(--accent)) border-box;box-shadow:0 34px 70px -34px color-mix(in srgb,var(--accent) 40%,transparent)}
+html.anim-ok .price-card--featured{animation:angspin 8s linear infinite}
+@keyframes angspin{to{--ang:360deg}}
+.price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--on-accent);border-radius:99px;padding:.35rem .9rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:880px){.faq-grid{grid-template-columns:1fr}}
+.faq-head h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.9rem,4.4vw,3rem);margin:1rem 0 1rem}
+.faq-head h2 em{font-style:italic;color:var(--accent)}
+.faq-head p{color:var(--muted);max-width:36ch}
+.faq-head a{color:var(--accent);border-bottom:1px solid var(--accent)}
+.faq-list{border-top:1px solid var(--line-strong)}
+.faq-item{border-bottom:1px solid var(--line-strong)}
+.faq-q{display:flex;align-items:baseline;gap:1.1rem;width:100%;text-align:left;padding:1.4rem 0;font-weight:600;font-size:clamp(1.02rem,1.8vw,1.25rem);letter-spacing:-.01em;line-height:1.3;transition:color .3s}
+.faq-q:hover{color:var(--accent)}
+.faq-q .idx{font-family:var(--font-mono);font-size:.66rem;font-weight:400;color:var(--accent);letter-spacing:.1em;flex:none;transform:translateY(-2px)}
+.faq-x{margin-left:auto;flex:none;position:relative;width:14px;height:14px;align-self:center}
+.faq-x::before,.faq-x::after{content:"";position:absolute;left:0;top:6.2px;width:14px;height:2px;background:var(--accent);transition:transform .45s var(--ease)}
+.faq-x::after{transform:rotate(90deg)}
+.faq-q[aria-expanded="true"] .faq-x::after{transform:rotate(0deg)}
+.faq-a{overflow:hidden}
+.faq-ready .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.faq-ready .faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a-inner{min-height:0;overflow:hidden}
+.faq-a p{color:var(--muted);max-width:60ch;padding:0 0 1.5rem 2.4rem;font-size:.95rem}
+@media (max-width:560px){.faq-a p{padding-left:0}}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2.5rem,5vw,5rem);align-items:start}
+@media (max-width:980px){.contact-grid{grid-template-columns:1fr}}
+.contact-head h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.2rem,5.4vw,3.8rem);margin:1rem 0 1.2rem;letter-spacing:-.015em}
+.contact-head h2 em{font-style:italic;color:var(--accent)}
+.dark .contact-head h2 em{color:var(--accent-2)}
+.contact-head p{color:var(--muted);max-width:42ch;margin-bottom:1.8rem}
+.dark .contact-head p{color:var(--dark-muted)}
+.contact-info{display:grid;gap:.6rem;font-size:.95rem;color:var(--muted)}
+.dark .contact-info{color:var(--dark-muted)}
+.contact-info a:hover{color:var(--accent)}
+.contact-info .ci-rij{display:flex;gap:.8rem;align-items:baseline}
+.contact-info .ci-rij .ico{color:var(--accent);flex:none}
+.dark .contact-info .ci-rij .ico{color:var(--accent-2)}
+.contact-form{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);overflow:hidden;background:var(--surface)}
+.dark .contact-form{background:var(--dark-surface);border-color:var(--dark-line)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media (max-width:560px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field--full{grid-column:1 / -1}
+.field label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.dark .field label{color:var(--dark-muted)}
+.field input,.field select,.field textarea{color:var(--ink);background:color-mix(in srgb,var(--ink) 4%,transparent);border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;transition:border-color .3s,background-color .3s;width:100%}
+.dark .field input,.dark .field select,.dark .field textarea{color:var(--dark-ink);background:color-mix(in srgb,var(--dark-ink) 5%,transparent);border-color:var(--dark-line)}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:var(--accent-soft)}
+.field .fout{display:none;font-size:.74rem;color:var(--accent-2)}
+.field.invalid .fout{display:block}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--accent-2)}
+.form-onder{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.3rem;flex-wrap:wrap}
+.form-status{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);min-height:1.2em}
+.form-success{position:absolute;inset:0;background:var(--surface);z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:2rem;opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s .6s}
+.dark .form-success{background:var(--dark-surface)}
+.contact-form.sent .form-success{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
+.form-success .check-ring{width:74px;height:74px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;color:var(--accent);box-shadow:0 0 38px -8px color-mix(in srgb,var(--accent) 60%,transparent)}
+.form-success .check-ring svg{width:34px;height:34px}
+.form-success .check-ring svg path{stroke-dasharray:30;stroke-dashoffset:30}
+html.anim-ok .contact-form.sent .form-success .check-ring svg path{animation:checkDraw .6s var(--ease) .25s forwards}
+html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashoffset:0}
+@keyframes checkDraw{to{stroke-dashoffset:0}}
+.form-success h3{font-family:var(--font-serif);font-weight:500;font-size:1.5rem}
+.form-success p{color:var(--muted);max-width:36ch}
+
+/* cta-band */
+.cta{background:var(--dark-bg);color:var(--dark-ink);border-radius:var(--radius);padding:clamp(2.4rem,5vw,4.5rem);text-align:center;position:relative;overflow:hidden}
+.cta h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.9rem,4.6vw,3.2rem);letter-spacing:-.015em;max-width:20ch;margin-inline:auto}
+.cta h2 em{font-style:italic;color:var(--accent-2)}
+.cta p{color:var(--dark-muted);margin:1rem auto 1.8rem;max-width:46ch}
+.cta .hero-cta{justify-content:center}
+
+/* footer */
+.footer{position:relative;overflow:hidden;padding-top:clamp(4rem,8vw,7rem);border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(1.8rem,4vw,3rem);padding-bottom:clamp(2.5rem,5vw,4rem)}
+@media (max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand p{color:var(--muted);font-size:.92rem;max-width:32ch;margin-top:.9rem}
+.footer h4{font-family:var(--font-mono);font-size:.62rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:1rem}
+.footer-col ul{display:grid;gap:.55rem}
+.footer-col a{font-size:.92rem;color:var(--muted);transition:color .3s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--line);padding-block:1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--faint)}
+.naar-boven{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+.naar-boven:hover{color:var(--accent)}
+.naar-boven svg{width:13px;height:13px;transition:transform .35s var(--ease)}
+.naar-boven:hover svg{transform:translateY(-3px)}
+
+:root{--bg:#f7f7f5;--bg-2:#eeeeec;--surface:#ffffff;--ink:#18181b;--muted:rgba(24,24,27,.62);--faint:rgba(24,24,27,.40);--line:rgba(24,24,27,.12);--line-strong:rgba(24,24,27,.24);--accent:#4f46e5;--accent-2:#ec4899;--accent-soft:rgba(79,70,229,.10);--on-accent:#ffffff;--dark-bg:#101012;--dark-surface:#1b1b1f;--dark-ink:#f4f4f5;--dark-muted:rgba(244,244,245,.62);--dark-line:rgba(244,244,245,.14);--radius:16px;--font-serif:"Schibsted Grotesk",Georgia,serif;--font-grotesk:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,monospace;}
+
+/* live thema-editor (template 28) */
+.thx{position:fixed;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);z-index:170;font-family:var(--font-mono)}
+.thx-fab{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:var(--bg);border-radius:99px;padding:.85rem 1.25rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 16px 38px -14px rgba(0,0,0,.5);transition:transform .3s var(--ease)}
+.thx-fab:hover{transform:translateY(-2px)}
+.thx-panel{position:absolute;right:0;bottom:calc(100% + .7rem);width:min(330px,86vw);background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.3rem;display:grid;gap:1.15rem;box-shadow:0 36px 80px -34px rgba(0,0,0,.45)}
+.thx-panel[hidden]{display:none}
+.thx-row{display:grid;gap:.6rem}
+.thx-row>span{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.thx-swatches{display:flex;gap:.5rem;flex-wrap:wrap}
+.thx-sw{width:30px;height:30px;border-radius:9px;border:2px solid transparent;cursor:pointer;transition:transform .2s var(--ease)}
+.thx-sw:hover{transform:translateY(-2px)}
+.thx-sw[aria-pressed="true"]{border-color:var(--ink)}
+.thx-seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:99px;padding:4px;gap:4px}
+.thx-seg button{flex:1;font:inherit;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem .85rem;border-radius:99px;color:var(--muted);transition:background-color .25s,color .25s}
+.thx-seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.thx-range{display:flex;align-items:center;gap:.7rem}
+.thx-range input{flex:1;accent-color:var(--accent)}
+.thx-range output{font-size:.7rem;color:var(--accent);min-width:3.6em;text-align:right;font-variant-numeric:tabular-nums}
+.thx-copy{font:inherit;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:.75rem;border:1px solid var(--line-strong);border-radius:11px;color:var(--ink);transition:border-color .25s,color .25s}
+.thx-copy:hover{border-color:var(--accent);color:var(--accent)}
+.thx-toast{position:absolute;right:0;bottom:calc(100% + .7rem);background:var(--ink);color:var(--bg);font-size:.64rem;letter-spacing:.06em;padding:.6rem .9rem;border-radius:9px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap}
+.thx-toast.show{opacity:1;transform:none}
+@media (max-width:560px){.thx-fab span.lbl{display:none}}
+
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Direct naar inhoud</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true"><b>Atlas</b><span>Aanpasbare starter</span></div>
+<header class="header" id="header">
+  <div class="container header-bar">
+    <a class="brand" href="#top" aria-label="Atlas — naar boven">
+      <span class="mark" aria-hidden="true">A</span>
+      <span>Atlas<small>Aanpasbare starter</small></span>
+    </a>
+    <nav class="header-nav" aria-label="Hoofdmenu">
+      <ul class="header-links"><li><a href="#features">Wat het kan</a></li><li><a href="#systeem">Systeem</a></li><li><a href="#prijzen">Licenties</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-cta-text js-magnetic" href="#contact">Download starter</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu openen"><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigatie">
+  <button class="menu-overlay__close" id="menuClose" type="button" aria-label="Menu sluiten"></button>
+  <div class="container">
+    <ul class="menu-list"><li><a href="#features"><span class="idx">01</span>Wat het kan</a></li><li><a href="#systeem"><span class="idx">02</span>Systeem</a></li><li><a href="#prijzen"><span class="idx">03</span>Licenties</a></li><li><a href="#faq"><span class="idx">04</span>FAQ</a></li><li><a href="#contact"><span class="idx">05</span>Contact</a></li></ul>
+    <div class="menu-foot">
+      <a href="mailto:hallo@atlas-ui.dev">hallo@atlas-ui.dev</a>
+      <a href="tel:+31301234567">+31 30 123 45 67</a>
+      <a href="#contact">Online · gemaakt in Nederland</a>
+    </div>
+  </div>
+</div>
+<main id="main">
+<section class="hero" id="top" aria-label="Introductie">
+  <div class="container">
+    <p class="eyebrow">Aanpasbare starter · één bestand</p>
+    <h1>Eén template, <em>jouw</em> merk in seconden.</h1>
+    <p class="hero-lead">Atlas is een strakke, moderne website-starter die je live aanpast. Klik rechtsonder op ✦ Thema: kies een accentkleur, schakel naar donker, draai aan de hoeken en het lettertype — en kopieer je thema als CSS.</p>
+    <div class="hero-cta"><a class="btn btn-primary js-magnetic" href="#features">Probeer de editor
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn btn-ghost js-magnetic" href="#prijzen">Licenties</a></div>
+    <div class="hero-strip"><div class="hero-stat"><b>1</b><span>bestand, geen build</span></div><div class="hero-stat"><b>∞</b><span>kleurthema's</span></div><div class="hero-stat"><b>A11y</b><span>toegankelijk by design</span></div>
+          <div class="hero-stat" style="margin-left:auto"><b><span data-clock>--:--</span></b><span>Live demo</span></div></div>
+  </div>
+</section>
+<section class="section "  aria-label="Wat je live aanpast">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Wat je live aanpast</p>
+      <h2>Alles draait op <em>CSS-variabelen</em></h2>
+      <p>Elk onderdeel hieronder verandert direct mee met de thema-editor — geen herladen, geen build.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature" data-rv >
+        <span class="ico" aria-hidden="true">◑</span>
+        <h3>Licht of donker</h3>
+        <p>Eén schakelaar zet de hele pagina om. Alle componenten kennen beide modi.</p>
+      </article><article class="feature" data-rv data-d=".7s">
+        <span class="ico" aria-hidden="true">✦</span>
+        <h3>Accentkleur</h3>
+        <p>Kies een accent; knoppen, links, randen en highlights nemen het automatisch over.</p>
+      </article><article class="feature" data-rv data-d=".14s">
+        <span class="ico" aria-hidden="true">▢</span>
+        <h3>Hoeken</h3>
+        <p>Van strak hoekig tot zacht afgerond met één slider — overal consistent.</p>
+      </article><article class="feature" data-rv data-d=".21s">
+        <span class="ico" aria-hidden="true">Aa</span>
+        <h3>Lettertype</h3>
+        <p>Wissel tussen een grotesk en een serif-pairing; de hele typografie volgt.</p>
+      </article><article class="feature" data-rv data-d=".28s">
+        <span class="ico" aria-hidden="true">⧉</span>
+        <h3>Kopieer als CSS</h3>
+        <p>Tevreden? Kopieer je thema als kant-en-klaar :root-blok en plak het in je project.</p>
+      </article><article class="feature" data-rv data-d=".35s">
+        <span class="ico" aria-hidden="true">◳</span>
+        <h3>Klaar om te bouwen</h3>
+        <p>Header, secties, prijzen, FAQ en formulier zitten er al in — vul je content in en ga live.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section "  aria-label="Strak, modern en consistent">
+  <div class="container split">
+    <div data-rv>
+      <p class="eyebrow">Het systeem</p>
+      <h2 style="font-family:var(--font-serif);font-weight:500;font-size:clamp(1.9rem,4.4vw,3.1rem);letter-spacing:-.015em;margin:1rem 0 1rem">Strak, modern en consistent</h2>
+      <p class="muted" style="margin-bottom:1rem">Atlas is gebouwd op één set semantische design-tokens. Verander een token en alles wat erop steunt verandert mee — kleur, contrast, ruimte en vorm blijven kloppen.</p><p class="muted" style="margin-bottom:1rem">Geen frameworks, geen dependencies: één HTML-bestand met CSS en JavaScript inline. Open het, pas het aan en zet het online.</p>
+      <ul><li>Semantische CSS-variabelen</li><li>Licht- én donkermodus ingebouwd</li><li>Toegankelijk: focus, ARIA, reduced-motion</li><li>Eén bestand, nul build-stappen</li></ul>
+      <div class="hero-cta"><a class="btn btn-primary js-magnetic" href="#contact">Download de starter
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a></div>
+    </div>
+    <div class="split-panel" data-rv data-d=".1s" data-tilt aria-hidden="true"><span class="glyph">▦</span></div>
+  </div>
+</section>
+<section class="stats section" aria-label="In cijfers">
+  <div class="container stats-grid">
+    <div class="stat"><div class="num"><span data-target="1">0</span></div><div class="lab">bestand om te kopiëren</div></div><div class="stat"><div class="num"><span data-target="9">0</span></div><div class="lab">kant-en-klare secties</div></div><div class="stat"><div class="num"><span data-target="6">0</span></div><div class="lab">accent-presets</div></div><div class="stat"><div class="num"><span data-target="0">0</span></div><div class="lab">dependencies</div></div>
+  </div>
+</section>
+<section class="section "  aria-label="Kies je <em>licentie</em>">
+  <div class="container">
+    <div class="section-head center" data-rv>
+      <p class="eyebrow">Licenties</p>
+      <h2>Kies je <em>licentie</em></h2>
+      <p>Eénmalig betalen, voor altijd gebruiken. Geen abonnement.</p>
+    </div>
+    
+    <div class="price-grid" id="prijzen-grid">
+      <div class="price-card" data-rv >
+        
+        <h3>Persoonlijk</h3>
+        <p class="p-voor">Voor één eigen project of portfolio.</p>
+        <div class="price-prijs">
+          <span class="bedrag" data-toggle-value >€ 0</span>
+          <span class="per" data-toggle-value >gratis</span>
+        </div>
+        <ul><li>1 project</li><li>Volledige thema-editor</li><li>Persoonlijk gebruik</li></ul>
+        <a class="btn btn-ghost" href="#contact">Download</a>
+      </div><div class="price-card price-card--featured" data-rv data-d=".8s">
+        <span class="price-badge">Populair</span>
+        <h3>Pro</h3>
+        <p class="p-voor">Voor freelancers en klantwerk, onbeperkt.</p>
+        <div class="price-prijs">
+          <span class="bedrag" data-toggle-value >€ 49</span>
+          <span class="per" data-toggle-value >eenmalig</span>
+        </div>
+        <ul><li>Onbeperkt projecten</li><li>Commercieel gebruik</li><li>Alle toekomstige updates</li><li>E-mailsupport</li></ul>
+        <a class="btn btn-primary" href="#contact">Koop Pro</a>
+      </div><div class="price-card" data-rv data-d=".16s">
+        
+        <h3>Team</h3>
+        <p class="p-voor">Voor studio's en bureaus met meerdere makers.</p>
+        <div class="price-prijs">
+          <span class="bedrag" data-toggle-value >€ 149</span>
+          <span class="per" data-toggle-value >eenmalig</span>
+        </div>
+        <ul><li>Tot 10 zetels</li><li>Commercieel & herverkoop in klantwerk</li><li>Prioriteitssupport</li></ul>
+        <a class="btn btn-ghost" href="#contact">Koop Team</a>
+      </div>
+    </div>
+    <p class="section-head center" data-rv style="margin:clamp(1.6rem,3vw,2.4rem) auto 0;font-size:.82rem;color:var(--muted);max-width:64ch">Prijzen excl. btw. Herverkoop als kant-en-klaar product aan derden is niet toegestaan.</p>
+  </div>
+</section>
+<section class="section "  aria-label="Veelgestelde vragen">
+  <div class="container faq-grid">
+    <div class="faq-head" data-rv>
+      <p class="eyebrow">FAQ</p>
+      <h2>Veel <em>gevraagd</em></h2>
+      <p>Andere vraag? Stuur ons gerust een bericht.</p>
+    </div>
+    <div class="faq-list" data-rv data-d=".1s">
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">01</span>Hoe pas ik het thema aan?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Klik rechtsonder op de knop ✦ Thema. Daar kies je accentkleur, licht of donker, hoekafronding en lettertype — alles verandert direct mee. Met 'Kopieer CSS-variabelen' neem je je thema mee naar je eigen project.</p></div></div>
+      </div><div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">02</span>Heb ik een build-stap of framework nodig?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Nee. Atlas is één HTML-bestand met CSS en JavaScript inline. Openen, aanpassen, uploaden — klaar.</p></div></div>
+      </div><div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">03</span>Is het toegankelijk?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Ja. Zichtbare focus, ARIA op interactieve onderdelen, een skip-link en volledige ondersteuning voor prefers-reduced-motion zitten ingebouwd.</p></div></div>
+      </div><div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">04</span>Mag ik het voor klanten gebruiken?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Met de Pro- of Team-licentie gebruik je Atlas onbeperkt in commercieel klantwerk. Alleen het kant-en-klaar doorverkopen als product aan derden mag niet.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" aria-label="Oproep">
+  <div class="container">
+    <div class="cta" data-rv>
+      <h2>Maak het <em>van jou</em></h2>
+      <p>Open de editor, kies je kleuren en zet je site vandaag nog online.</p>
+      <div class="hero-cta"><a class="btn btn-primary js-magnetic" href="#contact">Download de starter
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a></div>
+    </div>
+  </div>
+</section>
+<section class="section "  aria-label="Contact">
+  <div class="container contact-grid">
+    <div class="contact-head" data-rv>
+      <p class="eyebrow">Contact</p>
+      <h2>Vragen of een <em>licentie</em>?</h2>
+      <p>Laat een bericht achter, we reageren binnen één werkdag.</p>
+      <div class="contact-info">
+        <div class="ci-rij"><span class="ico" aria-hidden="true">✉</span><a href="mailto:hallo@atlas-ui.dev">hallo@atlas-ui.dev</a></div>
+        <div class="ci-rij"><span class="ico" aria-hidden="true">☎</span><a href="tel:+31301234567">+31 30 123 45 67</a></div>
+        <div class="ci-rij"><span class="ico" aria-hidden="true">⌖</span><span>Online · gemaakt in Nederland</span></div>
+      </div>
+    </div>
+    <form class="contact-form" data-validate novalidate data-rv data-d=".1s">
+      <div class="form-grid"><div class="field "><label for="f-naam">Naam</label><input id="f-naam" name="naam" type="text" required ><span class="fout">Vul dit veld in.</span></div><div class="field "><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" required ><span class="fout">Vul dit veld in.</span></div><div class="field "><label for="f-onderwerp">Onderwerp</label><select id="f-onderwerp" name="onderwerp" required><option value="" selected disabled>Kies…</option><option>Licentie kopen</option><option>Vraag over gebruik</option><option>Maatwerk</option><option>Iets anders</option></select><span class="fout">Maak een keuze.</span></div><div class="field "><label for="f-zetels">Aantal zetels</label><input id="f-zetels" name="zetels" type="number"  placeholder="1"></div><div class="field field--full"><label for="f-bericht">Bericht</label><textarea id="f-bericht" name="bericht" required placeholder="Waarmee kunnen we helpen?"></textarea><span class="fout">Vul dit veld in.</span></div></div>
+      <div class="form-onder">
+        <button class="btn btn-primary js-magnetic" type="submit">Verstuur
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+        </button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="form-success" aria-hidden="true">
+        <div class="check-ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg></div>
+        <h3>Bedankt!</h3>
+        <p>Je bericht is binnen — we reageren snel.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+<footer class="footer " aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="Atlas"><span class="mark" aria-hidden="true">A</span><span>Atlas<small>Aanpasbare starter</small></span></a>
+        <p>Atlas is een aanpasbare website-starter: strak, modern, toegankelijk en zonder dependencies. Eén bestand dat je tot je eigen merk maakt.</p>
+      </div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="#features">Wat het kan</a></li><li><a href="#systeem">Systeem</a></li><li><a href="#prijzen">Licenties</a></li></ul></div><div class="footer-col"><h4>Meer</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hallo@atlas-ui.dev">hallo@atlas-ui.dev</a></li><li><a href="#contact">Download starter</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Atlas — Gemaakt in Nederland</span>
+      <a class="naar-boven" href="#top">Naar boven <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 14V2M3 7l5-5 5 5"/></svg></a>
+    </div>
+  </div>
+</footer>
+<script>
+/* ============================================================
+   CORE.JS — gedeelde gedragslaag voor gegenereerde templates
+   Generiek: werkt op classes/ids/data-attributen, geen pagina-config nodig.
+   Wordt door _kit/build.mjs in elke template ge-inlined.
+   ============================================================ */
+(function () {
+  'use strict';
+  var doc = document, root = doc.documentElement;
+  var reduced = false; try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var finePointer = false; try { finePointer = window.matchMedia('(pointer:fine)').matches; } catch (e) {}
+
+  /* intro + loaded */
+  function start() { root.classList.add('loaded'); requestAnimationFrame(function () { root.classList.add('drawn'); }); }
+  var intro = doc.getElementById('intro');
+  if (root.classList.contains('anim-ok') && intro) {
+    var seen = false; try { seen = sessionStorage.getItem('intro_seen') === '1'; } catch (e) {}
+    if (seen) { intro.classList.add('is-done'); intro.style.display = 'none'; start(); }
+    else {
+      requestAnimationFrame(function () { intro.classList.add('is-active'); });
+      setTimeout(function () { intro.classList.add('is-done'); start(); try { sessionStorage.setItem('intro_seen', '1'); } catch (e) {} }, 1500);
+      setTimeout(function () { if (intro) { intro.style.display = 'none'; } }, 2500);
+    }
+  } else { start(); }
+
+  /* header hide-on-scroll + solid */
+  var header = doc.getElementById('header');
+  var lastY = window.pageYOffset || 0;
+  function updateHeader() {
+    var y = window.pageYOffset || 0;
+    if (header) {
+      header.classList.toggle('is-solid', y > 24);
+      if (y > lastY && y > 400 && !menuOpen) { header.classList.add('is-hidden'); } else { header.classList.remove('is-hidden'); }
+    }
+    lastY = y;
+  }
+
+  /* overlay-menu */
+  var menuOverlay = doc.getElementById('menuOverlay');
+  var menuToggle = doc.getElementById('menuToggle');
+  var menuClose = doc.getElementById('menuClose');
+  var menuOpen = false;
+  function setMenu(open) {
+    menuOpen = open;
+    if (menuOverlay) { menuOverlay.classList.toggle('is-open', open); menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true'); }
+    if (menuToggle) { menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    doc.body.style.overflow = open ? 'hidden' : '';
+    if (open && menuClose) { menuClose.focus(); } else if (!open && menuToggle) { menuToggle.focus(); }
+  }
+  if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
+  if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
+  if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+
+  /* reveal */
+  if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {
+    var rvObs = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) { var d = en.target.getAttribute('data-d'); if (d) { en.target.style.setProperty('--d', d); } en.target.classList.add('in-view'); rvObs.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-rv]'), function (el) { rvObs.observe(el); });
+  }
+
+  /* count-up */
+  function formatInt(n) { n = Math.round(n); return n >= 10000 ? n.toLocaleString('nl-NL') : String(n); }
+  function runCount(scope) {
+    Array.prototype.forEach.call(scope.querySelectorAll('[data-target]'), function (el, i) {
+      var target = parseFloat(el.getAttribute('data-target')) || 0;
+      if (reduced) { el.textContent = formatInt(target); return; }
+      var dur = 1600, startT = null;
+      function tick(t) { if (startT === null) { startT = t; } var p = Math.min((t - startT) / dur, 1); var e = 1 - Math.pow(1 - p, 4); el.textContent = formatInt(target * e); if (p < 1) { requestAnimationFrame(tick); } }
+      el.textContent = '0'; setTimeout(function () { requestAnimationFrame(tick); }, 80 + i * 90);
+    });
+  }
+  Array.prototype.forEach.call(doc.querySelectorAll('.stats'), function (sec) {
+    if ('IntersectionObserver' in window && !reduced) {
+      var o = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { runCount(sec); o.unobserve(en.target); } }); }, { threshold: 0.4 });
+      o.observe(sec);
+    } else { runCount(sec); }
+  });
+
+  /* live klok (elk element met data-clock) */
+  function updateClocks() {
+    var els = doc.querySelectorAll('[data-clock]'); if (!els.length) { return; }
+    var label;
+    try { label = new Intl.DateTimeFormat('nl-NL', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Amsterdam' }).format(new Date()); }
+    catch (e) { var d = new Date(); label = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+    Array.prototype.forEach.call(els, function (el) { el.textContent = label; });
+  }
+  updateClocks(); setInterval(updateClocks, 30000);
+
+  /* footer-jaar */
+  Array.prototype.forEach.call(doc.querySelectorAll('[data-year]'), function (el) { el.textContent = String(new Date().getFullYear()); });
+
+  /* prijs-/modus-toggle (data-toggle-group container, knoppen data-mode, bedragen/labels data-<mode>) */
+  Array.prototype.forEach.call(doc.querySelectorAll('[data-toggle-group]'), function (group) {
+    var btns = Array.prototype.slice.call(group.querySelectorAll('button[data-mode]'));
+    var scope = doc.getElementById(group.getAttribute('data-toggle-group')) || doc;
+    var values = Array.prototype.slice.call(scope.querySelectorAll('[data-toggle-value]'));
+    var switching = false;
+    function setMode(mode) {
+      if (switching) { return; } switching = true;
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false'); });
+      var dur = reduced ? 0 : 240;
+      values.forEach(function (el) { if (el.classList.contains('bedrag')) { el.classList.add('switching'); } });
+      setTimeout(function () {
+        values.forEach(function (el) { var n = el.getAttribute('data-' + mode); if (n !== null) { el.innerHTML = n; } el.classList.remove('switching'); });
+        switching = false;
+      }, dur);
+    }
+    btns.forEach(function (btn) { btn.addEventListener('click', function () { if (btn.getAttribute('aria-pressed') !== 'true') { setMode(btn.getAttribute('data-mode')); } }); });
+  });
+
+  /* FAQ */
+  Array.prototype.forEach.call(doc.querySelectorAll('.faq-list'), function (faqList) {
+    var items = Array.prototype.slice.call(faqList.querySelectorAll('.faq-item'));
+    faqList.classList.add('faq-ready');
+    function setFaq(item, open) { item.classList.toggle('open', open); var b = item.querySelector('.faq-q'); if (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); } }
+    items.forEach(function (item) {
+      var btn = item.querySelector('.faq-q'); if (!btn) { return; }
+      btn.addEventListener('click', function () { var was = item.classList.contains('open'); items.forEach(function (it) { setFaq(it, false); }); if (!was) { setFaq(item, true); } });
+    });
+    if (items[0]) { setFaq(items[0], true); }
+  });
+
+  /* contact-formulieren */
+  Array.prototype.forEach.call(doc.querySelectorAll('form[data-validate]'), function (form) {
+    var statusEl = form.querySelector('.form-status');
+    function setInvalid(input, invalid) { var f = input.closest('.field'); if (f) { f.classList.toggle('invalid', invalid); } input.setAttribute('aria-invalid', invalid ? 'true' : 'false'); }
+    function validate(input) {
+      var v = (input.value || '').trim(), ok = true;
+      if (input.type === 'email') { ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      else if (input.type === 'number') { var n = parseFloat(v); var mn = parseFloat(input.min), mx = parseFloat(input.max); ok = !isNaN(n) && (isNaN(mn) || n >= mn) && (isNaN(mx) || n <= mx); }
+      else if (input.tagName === 'SELECT') { ok = v !== ''; }
+      else if (input.hasAttribute('required')) { ok = v.length > 0; }
+      setInvalid(input, !ok); return ok;
+    }
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea')).filter(function (i) { return i.hasAttribute('required') || i.type === 'email'; });
+    inputs.forEach(function (input) {
+      input.addEventListener('blur', function () { validate(input); });
+      input.addEventListener('input', function () { var f = input.closest('.field'); if (f && f.classList.contains('invalid')) { validate(input); } });
+      if (input.tagName === 'SELECT') { input.addEventListener('change', function () { validate(input); }); }
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allOk = true, firstBad = null;
+      inputs.forEach(function (input) { if (!validate(input)) { allOk = false; if (!firstBad) { firstBad = input; } } });
+      if (!allOk) { if (statusEl) { statusEl.textContent = 'Controleer de gemarkeerde velden.'; } if (firstBad) { firstBad.focus(); } return; }
+      form.classList.add('sent');
+      var success = form.querySelector('.form-success'); if (success) { success.setAttribute('aria-hidden', 'false'); }
+      if (statusEl) { statusEl.textContent = 'Verzonden.'; }
+    });
+  });
+
+  /* magnetische knoppen */
+  if (finePointer && !reduced) {
+    Array.prototype.forEach.call(doc.querySelectorAll('.js-magnetic'), function (btn) {
+      var MAX = 6;
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        btn.style.transform = 'translate(' + (((e.clientX - (r.left + r.width / 2)) / (r.width / 2)) * MAX).toFixed(1) + 'px,' + (((e.clientY - (r.top + r.height / 2)) / (r.height / 2)) * MAX).toFixed(1) + 'px)';
+      }, { passive: true });
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; }, { passive: true });
+    });
+  }
+
+  /* 3D-tilt */
+  if (finePointer && !reduced) {
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-tilt]'), function (card) {
+      var tx = 0, ty = 0, cx = 0, cy = 0, raf = null, MAXT = 6;
+      function loop() { cx += (tx - cx) * 0.1; cy += (ty - cy) * 0.1; card.style.transform = 'perspective(900px) rotateX(' + cy.toFixed(2) + 'deg) rotateY(' + cx.toFixed(2) + 'deg)'; if (Math.abs(tx - cx) > 0.02 || Math.abs(ty - cy) > 0.02) { raf = requestAnimationFrame(loop); } else { raf = null; } }
+      function s() { if (raf === null) { raf = requestAnimationFrame(loop); } }
+      card.addEventListener('pointermove', function (e) { var r = card.getBoundingClientRect(); tx = Math.max(-MAXT, Math.min(MAXT, ((e.clientX - r.left) / r.width - 0.5) * MAXT * 2)); ty = Math.max(-MAXT, Math.min(MAXT, -((e.clientY - r.top) / r.height - 0.5) * MAXT * 2)); s(); }, { passive: true });
+      card.addEventListener('pointerleave', function () { tx = 0; ty = 0; s(); }, { passive: true });
+    });
+  }
+
+  /* manifest woord-oplichting (.manifest-text) */
+  var manifests = [];
+  Array.prototype.forEach.call(doc.querySelectorAll('.manifest-text'), function (m) {
+    if (reduced) { return; }
+    var raw = m.textContent.trim().split(/\s+/); m.textContent = '';
+    var words = [];
+    raw.forEach(function (w, i) { var s = doc.createElement('span'); s.className = 'mw'; s.textContent = w; s.style.transition = 'opacity .4s var(--ease)'; s.style.opacity = '.22'; m.appendChild(s); if (i < raw.length - 1) { m.appendChild(doc.createTextNode(' ')); } words.push(s); });
+    m.__words = words; manifests.push(m);
+  });
+
+  /* scroll-loop */
+  var progress = doc.getElementById('scrollProgress');
+  var timelines = Array.prototype.slice.call(doc.querySelectorAll('[data-timeline-line]'));
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    updateHeader();
+    var vh = window.innerHeight || doc.documentElement.clientHeight;
+    if (progress) { var sc = doc.documentElement.scrollHeight - vh; progress.style.transform = 'scaleX(' + Math.max(0, Math.min(1, sc > 0 ? (window.pageYOffset || 0) / sc : 0)).toFixed(4) + ')'; }
+    manifests.forEach(function (m) {
+      var r = m.getBoundingClientRect(); var prog = Math.max(0, Math.min(1, (vh * 0.85 - r.top) / (r.height + vh * 0.45)));
+      var lit = Math.floor(prog * m.__words.length);
+      for (var i = 0; i < m.__words.length; i++) { m.__words[i].style.opacity = i < lit ? '1' : '.22'; }
+    });
+    if (!reduced) {
+      timelines.forEach(function (line) {
+        var host = line.parentElement; if (!host) { return; }
+        var r = host.getBoundingClientRect(); var start = vh * 0.8, end = vh * 0.45;
+        var pp = Math.min(Math.max((start - r.top) / (r.height + (start - end)), 0), 1);
+        line.style.height = (pp * 100).toFixed(2) + '%';
+      });
+    }
+  }
+  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', tick, { passive: true }); window.addEventListener('resize', tick, { passive: true });
+  frame();
+})();
+
+</script>
+<script>
+
+/* live thema-editor (template 28) — injecteert een paneel dat de :root-tokens
+   live aanpast. Toont meteen hoe "aanpasbaar" de gedeelde kern is. */
+(function () {
+  var root = document.documentElement, doc = document;
+  function setVar(k, v) { root.style.setProperty(k, v); }
+  function hexToRgba(hex, al) { var h = hex.replace('#', ''); if (h.length === 3) { h = h.split('').map(function (c) { return c + c; }).join(''); } var n = parseInt(h, 16); return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + al + ')'; }
+  function lum(hex) { var h = hex.replace('#', ''); if (h.length === 3) { h = h.split('').map(function (c) { return c + c; }).join(''); } var n = parseInt(h, 16); return (0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; }
+  function applyAccent(a, b) { setVar('--accent', a); setVar('--accent-2', b); setVar('--accent-soft', hexToRgba(a, 0.10)); setVar('--on-accent', lum(a) > 0.62 ? '#16140f' : '#ffffff'); }
+
+  var PRESETS = [
+    { a: '#4f46e5', b: '#ec4899' }, { a: '#0ea5e9', b: '#f59e0b' }, { a: '#16a34a', b: '#84cc16' },
+    { a: '#e11d48', b: '#fb923c' }, { a: '#7c3aed', b: '#22d3ee' }, { a: '#111827', b: '#6b7280' }
+  ];
+  var LIGHT = { '--bg': '#f7f7f5', '--bg-2': '#eeeeec', '--surface': '#ffffff', '--ink': '#18181b', '--muted': 'rgba(24,24,27,.62)', '--faint': 'rgba(24,24,27,.40)', '--line': 'rgba(24,24,27,.12)', '--line-strong': 'rgba(24,24,27,.24)', '--dark-bg': '#101012', '--dark-surface': '#1b1b1f', '--dark-ink': '#f4f4f5', '--dark-muted': 'rgba(244,244,245,.62)', '--dark-line': 'rgba(244,244,245,.14)' };
+  var DARK = { '--bg': '#0e0e11', '--bg-2': '#151519', '--surface': '#17171c', '--ink': '#f4f4f5', '--muted': 'rgba(244,244,245,.62)', '--faint': 'rgba(244,244,245,.40)', '--line': 'rgba(244,244,245,.12)', '--line-strong': 'rgba(244,244,245,.22)', '--dark-bg': '#08080a', '--dark-surface': '#151519', '--dark-ink': '#f4f4f5', '--dark-muted': 'rgba(244,244,245,.62)', '--dark-line': 'rgba(244,244,245,.14)' };
+  function applyMode(m) { var set = m === 'donker' ? DARK : LIGHT; Object.keys(set).forEach(function (k) { setVar(k, set[k]); }); }
+  var FONTS = { a: { serif: '"Schibsted Grotesk",sans-serif', grotesk: '"Plus Jakarta Sans",sans-serif' }, b: { serif: '"Fraunces",Georgia,serif', grotesk: '"Inter",sans-serif' } };
+  function applyFont(f) { setVar('--font-serif', FONTS[f].serif); setVar('--font-grotesk', FONTS[f].grotesk); }
+
+  /* paneel bouwen */
+  var wrap = doc.createElement('div'); wrap.className = 'thx'; wrap.setAttribute('aria-label', 'Thema aanpassen');
+  wrap.innerHTML =
+    '<span class="thx-toast" id="thxToast" role="status">CSS gekopieerd ✓</span>' +
+    '<div class="thx-panel" id="thxPanel" hidden>' +
+      '<div class="thx-row"><span>Accentkleur</span><div class="thx-swatches" id="thxSwatches"></div></div>' +
+      '<div class="thx-row"><span>Modus</span><div class="thx-seg" id="thxMode"><button type="button" data-val="licht" aria-pressed="true">Licht</button><button type="button" data-val="donker" aria-pressed="false">Donker</button></div></div>' +
+      '<div class="thx-row"><span>Hoeken</span><div class="thx-range"><input type="range" id="thxRadius" min="0" max="28" value="16" aria-label="Hoekafronding"><output id="thxRadiusOut">16px</output></div></div>' +
+      '<div class="thx-row"><span>Lettertype</span><div class="thx-seg" id="thxFont"><button type="button" data-val="a" aria-pressed="true">Grotesk</button><button type="button" data-val="b" aria-pressed="false">Serif</button></div></div>' +
+      '<button class="thx-copy" id="thxCopy" type="button">Kopieer CSS-variabelen</button>' +
+    '</div>' +
+    '<button class="thx-fab" id="thxFab" type="button" aria-expanded="false" aria-controls="thxPanel">✦ <span class="lbl">Thema</span></button>';
+  doc.body.appendChild(wrap);
+
+  var fab = doc.getElementById('thxFab'), panel = doc.getElementById('thxPanel');
+  fab.addEventListener('click', function () { var willOpen = panel.hasAttribute('hidden'); if (willOpen) { panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden', ''); } fab.setAttribute('aria-expanded', willOpen ? 'true' : 'false'); });
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hasAttribute('hidden')) { panel.setAttribute('hidden', ''); fab.setAttribute('aria-expanded', 'false'); } });
+
+  var sw = doc.getElementById('thxSwatches');
+  PRESETS.forEach(function (p, i) {
+    var b = doc.createElement('button'); b.className = 'thx-sw'; b.type = 'button';
+    b.style.background = 'linear-gradient(135deg,' + p.a + ' 58%,' + p.b + ' 58%)';
+    b.setAttribute('aria-label', 'Accent ' + (i + 1)); b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    b.addEventListener('click', function () { applyAccent(p.a, p.b); Array.prototype.forEach.call(sw.children, function (c, ci) { c.setAttribute('aria-pressed', ci === i ? 'true' : 'false'); }); });
+    sw.appendChild(b);
+  });
+
+  function bindSeg(id, fn) { var seg = doc.getElementById(id); if (!seg) { return; } var btns = seg.querySelectorAll('button'); Array.prototype.forEach.call(btns, function (btn) { btn.addEventListener('click', function () { Array.prototype.forEach.call(btns, function (b) { b.setAttribute('aria-pressed', 'false'); }); btn.setAttribute('aria-pressed', 'true'); fn(btn.getAttribute('data-val')); }); }); }
+  bindSeg('thxMode', applyMode);
+  bindSeg('thxFont', applyFont);
+
+  var rad = doc.getElementById('thxRadius'), radOut = doc.getElementById('thxRadiusOut');
+  rad.addEventListener('input', function () { setVar('--radius', rad.value + 'px'); if (radOut) { radOut.textContent = rad.value + 'px'; } });
+
+  var copy = doc.getElementById('thxCopy'), toast = doc.getElementById('thxToast');
+  copy.addEventListener('click', function () {
+    var keys = ['--bg', '--bg-2', '--surface', '--ink', '--muted', '--line', '--line-strong', '--accent', '--accent-2', '--accent-soft', '--on-accent', '--radius'];
+    var cs = getComputedStyle(root);
+    var txt = ':root{\n' + keys.map(function (k) { return '  ' + k + ': ' + (root.style.getPropertyValue(k) || cs.getPropertyValue(k)).trim() + ';'; }).join('\n') + '\n}';
+    function done() { if (toast) { toast.classList.add('show'); setTimeout(function () { toast.classList.remove('show'); }, 1700); } }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(txt).then(done, done); } else { done(); }
+  });
+})();
+
+</script>
+</body>
+</html>

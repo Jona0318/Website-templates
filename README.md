@@ -1,6 +1,6 @@
-# Template Galerij — 24 kant-en-klare websites
+# Template Galerij — 28 kant-en-klare websites
 
-Een verzameling van **24 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **28 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -32,6 +32,10 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 22 | `templates/22-museum/` | ✦ **Signature** — Museum KADE | Blauw/zachtroze (#3447aa · #fbeaeb): live open-status berekend uit openingstijden, sleepbare collectiestrook met scroll-snap, volwaardige lightbox (focus-trap, Esc, pijlen), agenda, tarieven, vrienden-tiers, tickets-banner |
 | 23 | `templates/23-sterrenwacht/` | ✦ **Signature** — Sterrenwacht Meridiaan | Nachtblauw/goud (#070b18 · #f0b94c): **canvas-sterrenhemel** met depth-parallax, twinkeling en vallende sterren; **bouw-je-eigen-sterrenbeeld** door sterren te verbinden (undo/wis/nieuwe hemel); **maanfase live berekend** uit de datum (synodische maand) en correct getekend op canvas; hemel-vanavond-panelen, agenda, tarief-toggle, FAQ, reserveringsformulier |
 | 24 | `templates/24-atelier/` | ✦ **Signature** — Atelier Ruis | Papier/ultramarijn (#f4f1ea · #1b29ff): live **stroomveld-canvas** als pronkstuk — stuur dichtheid, turbulentie en vloei met sliders, kies uit vier paletten en **download je compositie als PNG**; elke werk-thumbnail is een eigen generatief programma (flow, moiré, cirkels, voronoi); scroll-oplichtend manifest, tekenende proces-tijdlijn, pakket-toggle, FAQ, contact |
+| 25 | `templates/25-makelaar/` | ⚙ Recept — Hofstede Makelaars | Crème/dennengroen (#f6f4ef · #1f6f5c): **eerste generator-template**, gebouwd uit een kort recept (`recipes/25-makelaar.json`, ~110 regels) dat de gedeelde kern inlinet tot een zelfstandig bestand. Diensten, aanpak, courtage-tarieven, FAQ, waardebepaling-formulier |
+| 26 | `templates/26-helder/` | ⚙ Recept — Helder (algemeen) | Warm wit/violet × lime (#f6f4f0 · #6a2be6 · #88c425): strakke, moderne **algemene studio-/bedrijfstemplate**. Grotesk-typografie, prijs-toggle, diensten, werkwijze, FAQ, CTA, contact |
+| 27 | `templates/27-nocturne/` | ⚙ Recept — Nocturne (algemeen) | Bijna-zwart/mint × lila (#0d0f13 · #5fe9ad · #b6a2ff): strakke, moderne **algemene donkere agency-/portfoliotemplate**. Diensten, aanpak, tarieven, FAQ, contact |
+| 28 | `templates/28-atlas/` | ✦ Aanpasbaar — Atlas | Neutraal/indigo × roze (#f7f7f5 · #4f46e5): **live thema-editor** — kies accentkleur, schakel licht/donker, draai aan hoeken en lettertype; alles verandert direct mee en je **kopieert je thema als CSS**. Eén bestand, nul dependencies |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
@@ -67,6 +71,22 @@ Deze galerij is bedoeld als **referentiebibliotheek**: een nieuwe site bouw je d
 - **[`PATTERNS.md`](PATTERNS.md)** — de herbruikbare bouwblokken (animatie-opt-in, reveal-systeem, sliders, FAQ-accordion, formulier-validatie, canvas-boilerplate, toggles) met kant-en-klare snippets en een verwijzing naar de beste bron-template per patroon.
 
 Werkwijze: zoek in `templates.json` op sector + mechanics → kopieer dat `index.html` → vervang palette/fonts/teksten → hergebruik de helpers uit `PATTERNS.md`.
+
+### ⚙ Nóg goedkoper: de generator (`_kit/`)
+
+Voor "standaard" templates (sectorsites) hoeft de ~70% boilerplate niet telkens opnieuw geschreven te worden. De generator legt de gedeelde schil één keer vast en bouwt een template uit een **kort recept**:
+
+- **`_kit/core.css` + `_kit/core.js`** — de complete gedeelde schil (header, menu, footer, knoppen, reveal, FAQ, formulier, sliders, toggles, count-up, klok…), thembaar via CSS-variabelen.
+- **`_kit/sections.mjs`** — sectie-bibliotheek (hero, features, split, stats, pricing, faq, contact, manifest, cta) + een `custom`-escape voor unieke/bespoke secties.
+- **`_kit/build.mjs`** — vouwt `recipes/<slug>.json` uit tot een **zelfstandig** `templates/<slug>/index.html` (core wordt ingelined → géén runtime-dependency).
+- **`_kit/shot.mjs`** — full-page screenshot via headless Chrome.
+
+```bash
+node _kit/build.mjs 25-makelaar.json      # bouw één template uit een recept
+node _kit/build.mjs all                    # bouw alle recepten opnieuw
+```
+
+Effect: een nieuwe sectorsite = een recept van ~100 regels in plaats van ~1.800 regels HTML. De opgeleverde bestanden blijven volledig standalone. Zie **[`recipes/_schema.md`](recipes/_schema.md)** voor het receptformaat. Signature-pronkstukken (canvas e.d.) blijven gewoon hand-geschreven — de generator is voor het herhaalbare deel.
 
 ## 🚀 Lokaal bekijken
 

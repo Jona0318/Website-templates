@@ -1,0 +1,126 @@
+{
+  "id": 28,
+  "slug": "28-atlas",
+  "title": "Atlas — aanpasbare starter",
+  "sector": "algemeen",
+  "scheme": "light",
+  "meta": {
+    "title": "Atlas — aanpasbare website-starter met live thema-editor",
+    "description": "Atlas is een strakke, moderne website-starter die je live aanpast: kies accentkleur, licht of donker, hoeken en lettertype — en kopieer je thema als CSS.",
+    "themeColor": "#f7f7f5"
+  },
+  "theme": {
+    "--bg": "#f7f7f5", "--bg-2": "#eeeeec", "--surface": "#ffffff",
+    "--ink": "#18181b", "--muted": "rgba(24,24,27,.62)", "--faint": "rgba(24,24,27,.40)",
+    "--line": "rgba(24,24,27,.12)", "--line-strong": "rgba(24,24,27,.24)",
+    "--accent": "#4f46e5", "--accent-2": "#ec4899", "--accent-soft": "rgba(79,70,229,.10)", "--on-accent": "#ffffff",
+    "--dark-bg": "#101012", "--dark-surface": "#1b1b1f", "--dark-ink": "#f4f4f5", "--dark-muted": "rgba(244,244,245,.62)", "--dark-line": "rgba(244,244,245,.14)",
+    "--radius": "16px"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+    "serif": "Schibsted Grotesk", "grotesk": "Plus Jakarta Sans", "mono": "JetBrains Mono"
+  },
+  "brand": { "name": "Atlas", "tagline": "Aanpasbare starter", "email": "hallo@atlas-ui.dev", "tel": "+31 30 123 45 67", "address": "Online · gemaakt in Nederland" },
+  "nav": [
+    { "href": "#features", "label": "Wat het kan" },
+    { "href": "#systeem", "label": "Systeem" },
+    { "href": "#prijzen", "label": "Licenties" },
+    { "href": "#faq", "label": "FAQ" },
+    { "href": "#contact", "label": "Contact" }
+  ],
+  "headerCta": { "href": "#contact", "label": "Download starter" },
+  "customCssFile": "recipes/28-atlas.css",
+  "customJsFile": "recipes/28-atlas.js",
+  "sections": [
+    { "use": "hero", "data": {
+      "eyebrow": "Aanpasbare starter · één bestand",
+      "title": "Eén template, <em>jouw</em> merk in seconden.",
+      "lead": "Atlas is een strakke, moderne website-starter die je live aanpast. Klik rechtsonder op ✦ Thema: kies een accentkleur, schakel naar donker, draai aan de hoeken en het lettertype — en kopieer je thema als CSS.",
+      "ctas": [ { "href": "#features", "label": "Probeer de editor", "primary": true }, { "href": "#prijzen", "label": "Licenties" } ],
+      "clock": "Live demo",
+      "stats": [ { "value": "1", "label": "bestand, geen build" }, { "value": "∞", "label": "kleurthema's" }, { "value": "A11y", "label": "toegankelijk by design" } ]
+    }},
+    { "use": "features", "id": "features", "data": {
+      "eyebrow": "Wat je live aanpast",
+      "title": "Alles draait op <em>CSS-variabelen</em>",
+      "intro": "Elk onderdeel hieronder verandert direct mee met de thema-editor — geen herladen, geen build.",
+      "items": [
+        { "icon": "◑", "title": "Licht of donker", "text": "Eén schakelaar zet de hele pagina om. Alle componenten kennen beide modi." },
+        { "icon": "✦", "title": "Accentkleur", "text": "Kies een accent; knoppen, links, randen en highlights nemen het automatisch over." },
+        { "icon": "▢", "title": "Hoeken", "text": "Van strak hoekig tot zacht afgerond met één slider — overal consistent." },
+        { "icon": "Aa", "title": "Lettertype", "text": "Wissel tussen een grotesk en een serif-pairing; de hele typografie volgt." },
+        { "icon": "⧉", "title": "Kopieer als CSS", "text": "Tevreden? Kopieer je thema als kant-en-klaar :root-blok en plak het in je project." },
+        { "icon": "◳", "title": "Klaar om te bouwen", "text": "Header, secties, prijzen, FAQ en formulier zitten er al in — vul je content in en ga live." }
+      ]
+    }},
+    { "use": "split", "id": "systeem", "data": {
+      "eyebrow": "Het systeem",
+      "title": "Strak, modern en consistent",
+      "paragraphs": [
+        "Atlas is gebouwd op één set semantische design-tokens. Verander een token en alles wat erop steunt verandert mee — kleur, contrast, ruimte en vorm blijven kloppen.",
+        "Geen frameworks, geen dependencies: één HTML-bestand met CSS en JavaScript inline. Open het, pas het aan en zet het online."
+      ],
+      "points": [ "Semantische CSS-variabelen", "Licht- én donkermodus ingebouwd", "Toegankelijk: focus, ARIA, reduced-motion", "Eén bestand, nul build-stappen" ],
+      "cta": { "href": "#contact", "label": "Download de starter" },
+      "glyph": "▦"
+    }},
+    { "use": "stats", "data": { "items": [
+      { "target": 1, "label": "bestand om te kopiëren" },
+      { "target": 9, "label": "kant-en-klare secties" },
+      { "target": 6, "label": "accent-presets" },
+      { "target": 0, "label": "dependencies" }
+    ]}},
+    { "use": "pricing", "id": "prijzen", "data": {
+      "eyebrow": "Licenties",
+      "title": "Kies je <em>licentie</em>",
+      "intro": "Eénmalig betalen, voor altijd gebruiken. Geen abonnement.",
+      "plans": [
+        { "name": "Persoonlijk", "voor": "Voor één eigen project of portfolio.", "prijs": "€ 0", "per": "gratis", "features": [ "1 project", "Volledige thema-editor", "Persoonlijk gebruik" ], "cta": { "href": "#contact", "label": "Download" } },
+        { "name": "Pro", "voor": "Voor freelancers en klantwerk, onbeperkt.", "prijs": "€ 49", "per": "eenmalig", "featured": true, "badge": "Populair", "features": [ "Onbeperkt projecten", "Commercieel gebruik", "Alle toekomstige updates", "E-mailsupport" ], "cta": { "href": "#contact", "label": "Koop Pro" } },
+        { "name": "Team", "voor": "Voor studio's en bureaus met meerdere makers.", "prijs": "€ 149", "per": "eenmalig", "features": [ "Tot 10 zetels", "Commercieel & herverkoop in klantwerk", "Prioriteitssupport" ], "cta": { "href": "#contact", "label": "Koop Team" } }
+      ],
+      "note": "Prijzen excl. btw. Herverkoop als kant-en-klaar product aan derden is niet toegestaan."
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Veel <em>gevraagd</em>",
+      "intro": "Andere vraag? Stuur ons gerust een bericht.",
+      "items": [
+        { "q": "Hoe pas ik het thema aan?", "an": "Klik rechtsonder op de knop ✦ Thema. Daar kies je accentkleur, licht of donker, hoekafronding en lettertype — alles verandert direct mee. Met 'Kopieer CSS-variabelen' neem je je thema mee naar je eigen project." },
+        { "q": "Heb ik een build-stap of framework nodig?", "an": "Nee. Atlas is één HTML-bestand met CSS en JavaScript inline. Openen, aanpassen, uploaden — klaar." },
+        { "q": "Is het toegankelijk?", "an": "Ja. Zichtbare focus, ARIA op interactieve onderdelen, een skip-link en volledige ondersteuning voor prefers-reduced-motion zitten ingebouwd." },
+        { "q": "Mag ik het voor klanten gebruiken?", "an": "Met de Pro- of Team-licentie gebruik je Atlas onbeperkt in commercieel klantwerk. Alleen het kant-en-klaar doorverkopen als product aan derden mag niet." }
+      ]
+    }},
+    { "use": "cta", "data": {
+      "title": "Maak het <em>van jou</em>",
+      "text": "Open de editor, kies je kleuren en zet je site vandaag nog online.",
+      "ctas": [ { "href": "#contact", "label": "Download de starter", "primary": true } ]
+    }},
+    { "use": "contact", "id": "contact", "data": {
+      "eyebrow": "Contact",
+      "title": "Vragen of een <em>licentie</em>?",
+      "intro": "Laat een bericht achter, we reageren binnen één werkdag.",
+      "submit": "Verstuur",
+      "successTitle": "Bedankt!",
+      "successText": "Je bericht is binnen — we reageren snel.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Licentie kopen", "Vraag over gebruik", "Maatwerk", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "zetels", "label": "Aantal zetels", "type": "number", "half": true, "placeholder": "1" },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "required": true, "placeholder": "Waarmee kunnen we helpen?" }
+      ]
+    }}
+  ],
+  "footer": {
+    "blurb": "Atlas is een aanpasbare website-starter: strak, modern, toegankelijk en zonder dependencies. Eén bestand dat je tot je eigen merk maakt.",
+    "bottom": "Gemaakt in Nederland",
+    "columns": [
+      { "title": "Product", "links": [ { "href": "#features", "label": "Wat het kan" }, { "href": "#systeem", "label": "Systeem" }, { "href": "#prijzen", "label": "Licenties" } ] },
+      { "title": "Meer", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:hallo@atlas-ui.dev", "label": "hallo@atlas-ui.dev" }, { "href": "#contact", "label": "Download starter" } ] }
+    ]
+  }
+}
