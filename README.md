@@ -42,24 +42,31 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 template/
 ├── index.html              <- galerij / overzichtspagina
 ├── README.md
+├── templates.json          <- doorzoekbare index van alle templates
+├── PATTERNS.md             <- herbruikbare bouwblokken + snippets
+├── screenshots/            <- previews per template
 └── templates/
     ├── 01-business/        <- meerdere pagina's + losse css/ en js/
     │   ├── index.html, about.html, services.html, contact.html, 404.html
     │   ├── css/style.css
     │   └── js/main.js
     ├── 02-portfolio/index.html
-    ├── 03-saas/index.html
-    ├── 04-restaurant/index.html
-    ├── 05-agency/index.html
-    ├── 06-blog/index.html
-    ├── 07-webshop/index.html
-    ├── 08-fotografie/index.html
-    ├── 09-event/index.html
-    └── 10-cv/index.html
+    ├── …                    <- 03 t/m 22, elk één zelfstandig index.html
+    ├── 23-sterrenwacht/index.html   <- canvas: sterrenhemel + maanfase
+    └── 24-atelier/index.html        <- canvas: generatief stroomveld
 ```
 
 > Template 01 (Bedrijf) bestaat uit meerdere pagina's met losse CSS/JS-bestanden.
-> Templates 02 t/m 18 zijn elk **één zelfstandig `index.html`-bestand** (CSS en JS inline) — makkelijk te kopiëren en hergebruiken.
+> Templates 02 t/m 24 zijn elk **één zelfstandig `index.html`-bestand** (CSS en JS inline) — makkelijk te kopiëren en hergebruiken.
+
+## 🧭 De bibliotheek hergebruiken (en tokens besparen)
+
+Deze galerij is bedoeld als **referentiebibliotheek**: een nieuwe site bouw je door de dichtstbijzijnde template te kopiëren en aan te passen, niet vanaf nul. Twee bestanden maken dat snel én goedkoop:
+
+- **[`templates.json`](templates.json)** — doorzoekbare index van álle templates met sector, kleurenpalet, fonts, mechanics en secties. Lees dít om de juiste template te kiezen, in plaats van alle 24 `index.html`-bestanden te openen.
+- **[`PATTERNS.md`](PATTERNS.md)** — de herbruikbare bouwblokken (animatie-opt-in, reveal-systeem, sliders, FAQ-accordion, formulier-validatie, canvas-boilerplate, toggles) met kant-en-klare snippets en een verwijzing naar de beste bron-template per patroon.
+
+Werkwijze: zoek in `templates.json` op sector + mechanics → kopieer dat `index.html` → vervang palette/fonts/teksten → hergebruik de helpers uit `PATTERNS.md`.
 
 ## 🚀 Lokaal bekijken
 
