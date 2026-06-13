@@ -315,6 +315,209 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
 .naar-boven svg{width:13px;height:13px;transition:transform .35s var(--ease)}
 .naar-boven:hover svg{transform:translateY(-3px)}
 
+/* ============================================================
+   LAYOUT-VARIANTEN (voor afwisseling tussen templates)
+   ============================================================ */
+/* hero — gecentreerd */
+.hero--center .container{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero--center h1{max-width:20ch}
+.hero--center .hero-lead{margin-inline:auto}
+.hero--center .hero-cta{justify-content:center}
+.hero--center .hero-strip{justify-content:center}
+/* hero — split (tekst + visueel paneel) */
+.hero--split .container{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:900px){.hero--split .container{grid-template-columns:1fr}}
+.hero-visual{aspect-ratio:4/3;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative;overflow:hidden;box-shadow:0 40px 90px -50px rgba(0,0,0,.5);transform-style:preserve-3d;will-change:transform}
+.hero-visual .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(5rem,16vw,11rem);color:color-mix(in srgb,var(--on-accent) 85%,transparent)}
+
+/* features — kolommen + rij-variant */
+.feature-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.feature-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:880px){.feature-grid.cols-4{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.feature-grid.cols-4{grid-template-columns:1fr}}
+.feature-rows{border-top:1px solid var(--line)}
+.feature-row{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.2fr);gap:clamp(1rem,3vw,2.6rem);align-items:baseline;padding:clamp(1.4rem,3vw,2.3rem) 0;border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease)}
+.feature-row:hover{padding-left:.6rem}
+.feature-row .rnum{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em}
+.feature-row h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.3rem,2.6vw,2rem)}
+.feature-row p{color:var(--muted);max-width:52ch}
+@media (max-width:760px){.feature-row{grid-template-columns:auto 1fr}.feature-row p{grid-column:1 / -1}}
+
+/* showcase — werk/case-tegels */
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.showcase-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.showcase-grid{grid-template-columns:1fr}}
+.showcase-item{display:flex;flex-direction:column;gap:.85rem}
+.showcase-thumb{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 24px 50px -36px rgba(0,0,0,.4);transform-style:preserve-3d;will-change:transform}
+.showcase-thumb .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(3rem,8vw,5rem);color:color-mix(in srgb,var(--on-accent) 82%,transparent)}
+.showcase-thumb .tag{position:absolute;top:.8rem;left:.8rem;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-accent);background:color-mix(in srgb,var(--ink) 32%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:.3rem .65rem;border-radius:99px}
+.showcase-item:nth-child(2) .showcase-thumb{filter:hue-rotate(38deg)}
+.showcase-item:nth-child(3) .showcase-thumb{filter:hue-rotate(-32deg)}
+.showcase-item:nth-child(4) .showcase-thumb{filter:hue-rotate(18deg)}
+.showcase-item:nth-child(5) .showcase-thumb{filter:hue-rotate(-22deg)}
+.showcase-item:nth-child(6) .showcase-thumb{filter:hue-rotate(50deg)}
+.showcase-cap{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.showcase-cap h3{font-family:var(--font-serif);font-weight:500;font-size:1.2rem}
+.showcase-cap span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+
+/* steps — proces met tekenende lijn */
+.steps{position:relative;max-width:820px;display:grid;gap:clamp(1.8rem,4vw,2.8rem);padding-left:clamp(2rem,4vw,3rem)}
+.steps-rail{position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.steps-line{position:absolute;left:8px;top:6px;width:2px;height:0;background:var(--accent);transition:height .2s linear}
+html.no-anim .steps-line{height:calc(100% - 12px)}
+.step{position:relative}
+.step::before{content:"";position:absolute;left:calc(-1 * clamp(2rem,4vw,3rem) + 2px);top:.35em;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.step .snum{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.step h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.25rem,2.4vw,1.7rem);margin:.4rem 0 .5rem}
+.step p{color:var(--muted);max-width:54ch}
+
+/* quote — groot statement */
+.quote-block{max-width:30ch;margin-inline:auto;text-align:center}
+.quote-block p{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.8rem,4.6vw,3.3rem);line-height:1.18;letter-spacing:-.015em}
+.quote-block p em{font-style:italic;color:var(--accent)}
+.quote-block .who{margin-top:1.6rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.testi-grid{grid-template-columns:1fr}}
+.testi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.4rem,2.5vw,2rem);display:flex;flex-direction:column;gap:1.1rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
+.testi:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 26px 50px -36px rgba(0,0,0,.35)}
+.testi .stars{color:var(--accent);font-size:.85rem;letter-spacing:.1em}
+.testi blockquote{font-size:1.02rem;color:var(--ink)}
+.testi .who{margin-top:auto;display:flex;align-items:center;gap:.75rem}
+.testi .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));flex:none;display:grid;place-items:center;color:var(--on-accent);font-family:var(--font-serif);font-weight:600}
+.testi .who b{font-weight:600;font-size:.92rem}
+.testi .who span{display:block;font-size:.78rem;color:var(--muted)}
+
+/* logos — marquee-band */
+.logos{border-block:1px solid var(--line);overflow:hidden;background:var(--bg-2)}
+.logos-track{display:flex;align-items:center;gap:3.5rem;padding:1.1rem 0;white-space:nowrap;width:max-content}
+html.anim-ok .logos-track{animation:logos-marquee 36s linear infinite}
+.logos:hover .logos-track{animation-play-state:paused}
+.logos-track span{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(1.05rem,2.2vw,1.5rem);color:var(--muted);display:inline-flex;align-items:center;gap:3.5rem}
+.logos-track span::after{content:"✦";color:var(--accent);font-style:normal;font-size:.66em}
+@keyframes logos-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* hero — full-bleed media */
+.hero--media{color:#fff;isolation:isolate}
+.hero--media::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.hero--media::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.15))}
+.hero--media .hero-lead{color:rgba(255,255,255,.86)}
+.hero--media .hero-strip{border-top-color:rgba(255,255,255,.25)}
+.hero--media .hero-stat b{color:#fff}
+.hero--media .hero-stat span{color:rgba(255,255,255,.7)}
+.hero--media .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+.hero--media .eyebrow,.hero--media .eyebrow::before{color:#fff;background:#fff}
+
+/* zigzag — alternerende media/tekst-rijen */
+.zigzag{display:grid;gap:clamp(3rem,7vw,6rem)}
+.zz-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.zz-row:nth-child(even) .zz-media{order:2}
+@media (max-width:820px){.zz-row{grid-template-columns:1fr}.zz-row:nth-child(even) .zz-media{order:0}}
+.zz-media{aspect-ratio:5/4;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative;overflow:hidden;box-shadow:0 30px 60px -40px rgba(0,0,0,.45);transform-style:preserve-3d;will-change:transform}
+.zz-media .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(3.5rem,10vw,7rem);color:color-mix(in srgb,var(--on-accent) 82%,transparent)}
+.zz-row:nth-child(2) .zz-media{filter:hue-rotate(32deg)}
+.zz-row:nth-child(3) .zz-media{filter:hue-rotate(-26deg)}
+.zz-row:nth-child(4) .zz-media{filter:hue-rotate(18deg)}
+.zz-copy .eyebrow{margin-bottom:.8rem}
+.zz-copy h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.5rem,3vw,2.4rem);letter-spacing:-.015em;margin-bottom:.8rem}
+.zz-copy p{color:var(--muted);margin-bottom:1rem}
+.zz-copy ul{display:grid;gap:.5rem}
+.zz-copy ul li{display:flex;gap:.6rem;color:var(--muted)}
+.zz-copy ul li::before{content:"✦";color:var(--accent);flex:none;font-size:.8rem}
+
+/* bento — asymmetrisch raster */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem);grid-auto-rows:minmax(150px,1fr)}
+.bento .feature{margin:0}
+.bento .feature:first-child{grid-column:span 2;grid-row:span 2}
+.bento .feature:first-child h3{font-size:1.7rem}
+@media (max-width:760px){.bento{grid-template-columns:1fr 1fr}.bento .feature:first-child{grid-column:span 2;grid-row:span 1}}
+@media (max-width:520px){.bento{grid-template-columns:1fr}.bento .feature:first-child{grid-column:auto}}
+
+/* gallery — masonry-tegels */
+.gallery{columns:3;column-gap:clamp(1rem,2vw,1.5rem)}
+@media (max-width:880px){.gallery{columns:2}}
+@media (max-width:520px){.gallery{columns:1}}
+.gallery .tile{break-inside:avoid;margin-bottom:clamp(1rem,2vw,1.5rem);border-radius:var(--radius);overflow:hidden;position:relative;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:1px solid var(--line);display:grid;place-items:center}
+.gallery .tile .glyph{color:color-mix(in srgb,var(--on-accent) 80%,transparent);font-size:clamp(2rem,5vw,3.4rem)}
+.gallery .tile .tag{position:absolute;left:.7rem;bottom:.7rem;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-accent)}
+.gallery .tile:nth-child(3n){aspect-ratio:3/4}
+.gallery .tile:nth-child(3n+1){aspect-ratio:1}
+.gallery .tile:nth-child(3n+2){aspect-ratio:4/5}
+.gallery .tile:nth-child(2n){filter:hue-rotate(34deg)}
+.gallery .tile:nth-child(3n){filter:hue-rotate(-30deg)}
+.gallery .tile:nth-child(5n){filter:hue-rotate(60deg)}
+
+/* team — personen */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.team-grid{grid-template-columns:1fr 1fr}}
+.member{display:flex;flex-direction:column;gap:.85rem}
+.member .ph{aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:var(--on-accent);font-family:var(--font-serif);font-size:2.4rem;font-weight:600}
+.member:nth-child(2) .ph{filter:hue-rotate(40deg)}
+.member:nth-child(3) .ph{filter:hue-rotate(-30deg)}
+.member:nth-child(4) .ph{filter:hue-rotate(18deg)}
+.member:nth-child(6) .ph{filter:hue-rotate(-22deg)}
+.member h3{font-family:var(--font-serif);font-weight:500;font-size:1.15rem}
+.member .role{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* timeline — jaartallen */
+.timeline{display:grid;gap:0;border-top:1px solid var(--line)}
+.tl-item{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,3vw,2.6rem);padding:clamp(1.3rem,3vw,2.1rem) 0;border-bottom:1px solid var(--line)}
+.tl-item .yr{font-family:var(--font-mono);font-size:1.05rem;color:var(--accent);font-variant-numeric:tabular-nums;min-width:3.4em}
+.tl-item h3{font-family:var(--font-serif);font-weight:500;font-size:1.3rem;margin-bottom:.3rem}
+.tl-item p{color:var(--muted);max-width:56ch}
+
+/* marquee — kinetische tekst */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(1.3rem,3.5vw,2.6rem);background:var(--bg-2)}
+.marquee-track2{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;align-items:center}
+html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
+.marquee:hover .marquee-track2{animation-play-state:paused}
+.marquee-track2 span{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.02em;color:var(--ink);display:inline-flex;gap:2.5rem;align-items:center}
+.marquee-track2 span i{font-style:normal;color:var(--accent)}
+.marquee--outline .marquee-track2 span{color:transparent;-webkit-text-stroke:1.4px var(--line-strong)}
+.marquee--outline .marquee-track2 span i{-webkit-text-stroke:0;color:var(--accent)}
+
+/* banner — accent-CTA-band */
+.banner{background:var(--accent);color:var(--on-accent);border-radius:var(--radius);padding:clamp(2rem,4vw,3.5rem);display:flex;align-items:center;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap}
+.banner ::selection{background:var(--ink);color:var(--on-accent)}
+.banner h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.6rem,3.6vw,2.7rem);letter-spacing:-.015em;max-width:20ch}
+.banner p{color:color-mix(in srgb,var(--on-accent) 80%,transparent);margin-top:.6rem;max-width:46ch}
+.banner .btn{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.banner .btn:hover{filter:brightness(1.15)}
+
+/* tabs */
+.tabs-head{display:inline-flex;flex-wrap:wrap;gap:.4rem;border:1px solid var(--line-strong);border-radius:99px;padding:5px;margin-bottom:clamp(1.6rem,3vw,2.4rem)}
+.tabs-head button{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:99px;color:var(--muted);transition:background-color .25s,color .25s}
+.tabs-head button[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.tab-panel{display:none}
+.tab-panel.is-active{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+@media (max-width:760px){.tab-panel.is-active{grid-template-columns:1fr}}
+.tab-panel h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.4rem,3vw,2.1rem);margin-bottom:.7rem}
+.tab-panel p{color:var(--muted)}
+.tab-panel ul{display:grid;gap:.6rem}
+.tab-panel ul li{display:flex;gap:.6rem;color:var(--muted)}
+.tab-panel ul li::before{content:"→";color:var(--accent);flex:none}
+
+/* metrics — lichte cijfers-variant (geen accent-band) */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.4rem)}
+@media (max-width:820px){.metrics-grid{grid-template-columns:1fr 1fr}}
+.metric{padding-top:1.2rem;border-top:2px solid var(--accent)}
+.metric .num{font-family:var(--font-serif);font-weight:600;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1;font-variant-numeric:tabular-nums}
+.metric .num sup{font-size:.42em;vertical-align:super;color:var(--accent)}
+.metric .lab{margin-top:.5rem;color:var(--muted);font-size:.92rem}
+
+/* comparison — tabel */
+.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+.compare{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+.compare th,.compare td{text-align:left;padding:1rem 1.2rem;border-bottom:1px solid var(--line)}
+.compare thead th{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.compare tbody tr:last-child th,.compare tbody tr:last-child td{border-bottom:0}
+.compare tbody th{font-weight:500;color:var(--ink)}
+.compare td{color:var(--muted)}
+.compare .yes{color:var(--accent);font-weight:700}
+.compare .col-hi{background:var(--accent-soft);color:var(--ink)}
+.compare thead .col-hi{color:var(--accent)}
+
 :root{--bg:#f7f7f5;--bg-2:#eeeeec;--surface:#ffffff;--ink:#18181b;--muted:rgba(24,24,27,.62);--faint:rgba(24,24,27,.40);--line:rgba(24,24,27,.12);--line-strong:rgba(24,24,27,.24);--accent:#4f46e5;--accent-2:#ec4899;--accent-soft:rgba(79,70,229,.10);--on-accent:#ffffff;--dark-bg:#101012;--dark-surface:#1b1b1f;--dark-ink:#f4f4f5;--dark-muted:rgba(244,244,245,.62);--dark-line:rgba(244,244,245,.14);--radius:16px;--font-serif:"Schibsted Grotesk",Georgia,serif;--font-grotesk:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,monospace;}
 
 /* live thema-editor (template 28) */
@@ -374,7 +577,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
   </div>
 </div>
 <main id="main">
-<section class="hero" id="top" aria-label="Introductie">
+<section class="hero hero--media hero--center" id="top" aria-label="Introductie">
   <div class="container">
     <p class="eyebrow">Aanpasbare starter · één bestand</p>
     <h1>Eén template, <em>jouw</em> merk in seconden.</h1>
@@ -392,7 +595,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       <h2>Alles draait op <em>CSS-variabelen</em></h2>
       <p>Elk onderdeel hieronder verandert direct mee met de thema-editor — geen herladen, geen build.</p>
     </div>
-    <div class="feature-grid">
+    <div class="feature-grid ">
       <article class="feature" data-rv >
         <span class="ico" aria-hidden="true">◑</span>
         <h3>Licht of donker</h3>
@@ -421,6 +624,26 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
     </div>
   </div>
 </section>
+<section class="section "  aria-label="Van download naar <em>jouw</em> merk">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Zo werkt het</p>
+      <h2>Van download naar <em>jouw</em> merk</h2>
+      <p>Drie stappen en je site staat in jouw kleuren online.</p>
+    </div>
+    <div class="steps">
+      <div class="steps-rail" aria-hidden="true"></div>
+      <div class="steps-line" data-timeline-line aria-hidden="true"></div>
+      <div class="step" data-rv><div class="snum">Stap 01</div><h3>Open de editor</h3><p>Klik rechtsonder op ✦ Thema en speel met kleur, modus, hoeken en lettertype tot het klopt.</p></div><div class="step" data-rv><div class="snum">Stap 02</div><h3>Kopieer je thema</h3><p>Eén klik zet je keuzes om in een kant-en-klaar :root-CSS-blok op je klembord.</p></div><div class="step" data-rv><div class="snum">Stap 03</div><h3>Plak & ga live</h3><p>Plak het blok in je bestand, vul je content in en zet de pagina online — klaar.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section "  aria-label="Waarom <em>Atlas</em>">
+  <div class="container">
+    <div class="section-head" data-rv><p class="eyebrow">Vergelijk</p><h2>Waarom <em>Atlas</em></h2><p>Een eerlijke vergelijking met de gebruikelijke alternatieven.</p></div>
+    <div class="compare-wrap" data-rv><table class="compare"><thead><tr><th></th><th class="">Losse code</th><th class="">Pagebuilder</th><th class="col-hi">Atlas</th></tr></thead><tbody><tr><th>Live thema aanpassen</th><td class="">—</td><td class=""><span class="yes">✓</span></td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Eén bestand, geen build</th><td class=""><span class="yes">✓</span></td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Geen dependencies</th><td class=""><span class="yes">✓</span></td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Toegankelijk (ARIA, focus, reduced-motion)</th><td class="">soms</td><td class="">wisselend</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Thema als CSS exporteren</th><td class="">—</td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Eénmalige prijs</th><td class="">—</td><td class="">abonnement</td><td class="col-hi">vanaf € 0</td></tr></tbody></table></div>
+  </div>
+</section>
 <section class="section "  aria-label="Strak, modern en consistent">
   <div class="container split">
     <div data-rv>
@@ -434,9 +657,12 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
     <div class="split-panel" data-rv data-d=".1s" data-tilt aria-hidden="true"><span class="glyph">▦</span></div>
   </div>
 </section>
-<section class="stats section" aria-label="In cijfers">
-  <div class="container stats-grid">
-    <div class="stat"><div class="num"><span data-target="1">0</span></div><div class="lab">bestand om te kopiëren</div></div><div class="stat"><div class="num"><span data-target="9">0</span></div><div class="lab">kant-en-klare secties</div></div><div class="stat"><div class="num"><span data-target="6">0</span></div><div class="lab">accent-presets</div></div><div class="stat"><div class="num"><span data-target="0">0</span></div><div class="lab">dependencies</div></div>
+<section class="section "  aria-label="In cijfers" data-countup>
+  <div class="container">
+    
+    <div class="metrics-grid">
+      <div class="metric" data-rv><div class="num"><span data-target="1">0</span></div><div class="lab">bestand om te kopiëren</div></div><div class="metric" data-rv><div class="num"><span data-target="20">0</span><sup>+</sup></div><div class="lab">kant-en-klare secties</div></div><div class="metric" data-rv><div class="num"><span data-target="6">0</span></div><div class="lab">accent-presets</div></div><div class="metric" data-rv><div class="num"><span data-target="0">0</span></div><div class="lab">dependencies</div></div>
+    </div>
   </div>
 </section>
 <section class="section "  aria-label="Kies je <em>licentie</em>">
@@ -507,13 +733,11 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
     </div>
   </div>
 </section>
-<section class="section" aria-label="Oproep">
+<section class="section" aria-label="Maak het <em>van jou</em>">
   <div class="container">
-    <div class="cta" data-rv>
-      <h2>Maak het <em>van jou</em></h2>
-      <p>Open de editor, kies je kleuren en zet je site vandaag nog online.</p>
-      <div class="hero-cta"><a class="btn btn-primary js-magnetic" href="#contact">Download de starter
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a></div>
+    <div class="banner" data-rv>
+      <div><h2>Maak het <em>van jou</em></h2><p>Open de editor, kies je kleuren en zet je site vandaag nog online.</p></div>
+      <a class="btn js-magnetic" href="#contact">Download de starter</a>
     </div>
   </div>
 </section>
@@ -636,7 +860,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       el.textContent = '0'; setTimeout(function () { requestAnimationFrame(tick); }, 80 + i * 90);
     });
   }
-  Array.prototype.forEach.call(doc.querySelectorAll('.stats'), function (sec) {
+  Array.prototype.forEach.call(doc.querySelectorAll('.stats, [data-countup]'), function (sec) {
     if ('IntersectionObserver' in window && !reduced) {
       var o = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { runCount(sec); o.unobserve(en.target); } }); }, { threshold: 0.4 });
       o.observe(sec);
@@ -713,6 +937,24 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       form.classList.add('sent');
       var success = form.querySelector('.form-success'); if (success) { success.setAttribute('aria-hidden', 'false'); }
       if (statusEl) { statusEl.textContent = 'Verzonden.'; }
+    });
+  });
+
+  /* tabs */
+  Array.prototype.forEach.call(doc.querySelectorAll('[data-tabs]'), function (root2) {
+    var tabs = Array.prototype.slice.call(root2.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(root2.querySelectorAll('.tab-panel'));
+    function select(i) {
+      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+      panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = tabs.length, idx = i;
+        if (e.key === 'ArrowRight') { idx = (i + 1) % n; } else if (e.key === 'ArrowLeft') { idx = (i - 1 + n) % n; } else { return; }
+        e.preventDefault(); tabs[idx].focus(); select(idx);
+      });
     });
   });
 

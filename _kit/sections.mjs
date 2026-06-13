@@ -13,40 +13,136 @@ function ctas(items = []) {
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>` : ''}</a>`).join('')}</div>`;
 }
 
+const pad = (n) => ('0' + n).slice(-2);
+
 export const sections = {
   hero(d = {}) {
+    const layout = d.layout || 'left';
     const strip = list(d.stats).length
       ? `<div class="hero-strip">${list(d.stats).map((s) => `<div class="hero-stat"><b>${a(s.value)}</b><span>${a(s.label)}</span></div>`).join('')}
           ${d.clock ? `<div class="hero-stat" style="margin-left:auto"><b><span data-clock>--:--</span></b><span>${a(d.clock)}</span></div>` : ''}</div>`
       : '';
-    return `<section class="hero" id="${attr(d.id || 'top')}" aria-label="Introductie">
-  <div class="container">
-    ${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}
+    const copy = `${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}
     <h1>${a(d.title)}</h1>
     ${d.lead ? `<p class="hero-lead">${a(d.lead)}</p>` : ''}
     ${ctas(d.ctas)}
-    ${strip}
+    ${strip}`;
+    if (layout === 'split') {
+      return `<section class="hero hero--split" id="${attr(d.id || 'top')}" aria-label="Introductie">
+  <div class="container">
+    <div class="hero-copy">${copy}</div>
+    <div class="hero-visual" data-tilt aria-hidden="true"><span class="glyph">${a(d.glyph || '◆')}</span></div>
+  </div>
+</section>`;
+    }
+    const cls = layout === 'center' ? 'hero hero--center' : layout === 'media' ? 'hero hero--media hero--center' : 'hero';
+    return `<section class="${cls}" id="${attr(d.id || 'top')}" aria-label="Introductie">
+  <div class="container">
+    ${copy}
   </div>
 </section>`;
   },
 
   features(d = {}) {
+    const head = `<div class="section-head" data-rv>
+      ${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}
+      <h2>${a(d.title)}</h2>
+      ${d.intro ? `<p>${a(d.intro)}</p>` : ''}
+    </div>`;
+    const body = d.layout === 'rows'
+      ? `<div class="feature-rows">
+      ${list(d.items).map((it, i) => `<div class="feature-row" data-rv>
+        <span class="rnum">${pad(i + 1)}</span>
+        <h3>${a(it.title)}</h3>
+        <p>${a(it.text)}</p>
+      </div>`).join('')}
+    </div>`
+      : `<div class="feature-grid ${d.columns === 2 ? 'cols-2' : d.columns === 4 ? 'cols-4' : ''}">
+      ${list(d.items).map((it, i) => `<article class="feature" data-rv ${i ? `data-d=".${i * 7}s"` : ''}>
+        ${it.icon ? `<span class="ico" aria-hidden="true">${a(it.icon)}</span>` : ''}
+        <h3>${a(it.title)}</h3>
+        <p>${a(it.text)}</p>
+      </article>`).join('')}
+    </div>`;
     return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.eyebrow || 'Diensten')}">
+  <div class="container">
+    ${head}
+    ${body}
+  </div>
+</section>`;
+  },
+
+  showcase(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Werk')}">
   <div class="container">
     <div class="section-head" data-rv>
       ${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}
       <h2>${a(d.title)}</h2>
       ${d.intro ? `<p>${a(d.intro)}</p>` : ''}
     </div>
-    <div class="feature-grid">
-      ${list(d.items).map((it, i) => `<article class="feature" data-rv ${i ? `data-d=".${i * 7}s"` : ''}>
-        ${it.icon ? `<span class="ico" aria-hidden="true">${a(it.icon)}</span>` : ''}
-        <h3>${a(it.title)}</h3>
-        <p>${a(it.text)}</p>
+    <div class="showcase-grid">
+      ${list(d.items).map((it, i) => `<article class="showcase-item" data-rv ${i ? `data-d=".${i * 6}s"` : ''}>
+        <div class="showcase-thumb" data-tilt aria-hidden="true">${it.tag ? `<span class="tag">${a(it.tag)}</span>` : ''}<span class="glyph">${a(it.glyph || '◆')}</span></div>
+        <div class="showcase-cap"><h3>${a(it.title)}</h3><span>${a(it.meta || '')}</span></div>
       </article>`).join('')}
     </div>
   </div>
 </section>`;
+  },
+
+  steps(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Werkwijze')}">
+  <div class="container">
+    <div class="section-head" data-rv>
+      ${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}
+      <h2>${a(d.title)}</h2>
+      ${d.intro ? `<p>${a(d.intro)}</p>` : ''}
+    </div>
+    <div class="steps">
+      <div class="steps-rail" aria-hidden="true"></div>
+      <div class="steps-line" data-timeline-line aria-hidden="true"></div>
+      ${list(d.items).map((it, i) => `<div class="step" data-rv><div class="snum">${a(it.num || ('Stap ' + pad(i + 1)))}</div><h3>${a(it.title)}</h3><p>${a(it.text)}</p></div>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  quote(d = {}) {
+    return `<section class="section ${d.dark ? 'dark' : (d.variant === 'alt' ? 'section--alt' : '')}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="Citaat">
+  <div class="container">
+    <div class="quote-block" data-rv>
+      <p>${a(d.text)}</p>
+      ${d.who ? `<p class="who">${a(d.who)}</p>` : ''}
+    </div>
+  </div>
+</section>`;
+  },
+
+  testimonials(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Wat klanten zeggen')}">
+  <div class="container">
+    <div class="section-head" data-rv>
+      ${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}
+      <h2>${a(d.title)}</h2>
+      ${d.intro ? `<p>${a(d.intro)}</p>` : ''}
+    </div>
+    <div class="testi-grid">
+      ${list(d.items).map((it, i) => `<figure class="testi" data-rv ${i ? `data-d=".${i * 7}s"` : ''}>
+        <div class="stars" aria-hidden="true">${a(it.stars || '★★★★★')}</div>
+        <blockquote>${a(it.quote)}</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true">${a((it.name || '?').trim().charAt(0))}</span><span><b>${a(it.name)}</b><span>${a(it.role || '')}</span></span></figcaption>
+      </figure>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  logos(d = {}) {
+    const items = list(d.items);
+    const row = items.map((x) => `<span>${a(x)}</span>`).join('');
+    return `<div class="logos" aria-label="${attr(d.label || 'Vertrouwd door')}">
+  <div class="logos-track" aria-hidden="true">${row}${row}</div>
+</div>`;
   },
 
   split(d = {}) {
@@ -186,6 +282,129 @@ export const sections = {
     ${d.eyebrow ? `<p class="eyebrow" data-rv>${a(d.eyebrow)}</p>` : ''}
     <p class="manifest-text" style="font-family:var(--font-serif);font-weight:500;font-size:clamp(1.7rem,4.2vw,3.2rem);line-height:1.26;letter-spacing:-.015em;max-width:24ch;margin-top:1.4rem">${a(d.text)}</p>
     ${d.sign ? `<p data-rv style="margin-top:2.2rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">${a(d.sign)}</p>` : ''}
+  </div>
+</section>`;
+  },
+
+  zigzag(d = {}) {
+    var head = (d.title || d.eyebrow) ? `<div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}${d.title ? `<h2>${a(d.title)}</h2>` : ''}${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>` : '';
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Uitgelicht')}">
+  <div class="container">
+    ${head}
+    <div class="zigzag">
+      ${list(d.items).map((it) => `<div class="zz-row" data-rv>
+        <div class="zz-media" data-tilt aria-hidden="true"><span class="glyph">${a(it.glyph || '◆')}</span></div>
+        <div class="zz-copy">${it.eyebrow ? `<p class="eyebrow">${a(it.eyebrow)}</p>` : ''}<h3>${a(it.title)}</h3>${it.text ? `<p>${a(it.text)}</p>` : ''}${list(it.points).length ? `<ul>${list(it.points).map((p) => `<li>${a(p)}</li>`).join('')}</ul>` : ''}</div>
+      </div>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  bento(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Overzicht')}">
+  <div class="container">
+    <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
+    <div class="bento">
+      ${list(d.items).map((it, i) => `<article class="feature" data-rv ${i ? `data-d=".${i * 6}s"` : ''}>${it.icon ? `<span class="ico" aria-hidden="true">${a(it.icon)}</span>` : ''}<h3>${a(it.title)}</h3><p>${a(it.text)}</p></article>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  gallery(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Galerij')}">
+  <div class="container">
+    <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
+    <div class="gallery" data-rv>
+      ${list(d.items).map((it) => `<div class="tile"><span class="glyph" aria-hidden="true">${a(it.glyph || '◇')}</span>${it.tag ? `<span class="tag">${a(it.tag)}</span>` : ''}</div>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  team(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Team')}">
+  <div class="container">
+    <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
+    <div class="team-grid">
+      ${list(d.items).map((it, i) => `<article class="member" data-rv ${i ? `data-d=".${i * 6}s"` : ''}><div class="ph" aria-hidden="true">${a((it.name || '?').trim().charAt(0))}</div><h3>${a(it.name)}</h3><span class="role">${a(it.role || '')}</span></article>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  timeline(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Tijdlijn')}">
+  <div class="container">
+    <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
+    <div class="timeline">
+      ${list(d.items).map((it) => `<div class="tl-item" data-rv><span class="yr">${a(it.year)}</span><div><h3>${a(it.title)}</h3><p>${a(it.text)}</p></div></div>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  marquee(d = {}) {
+    var row = list(d.items).map((x) => `<span>${a(x)}</span>`).join('');
+    return `<div class="marquee ${d.outline ? 'marquee--outline' : ''}" aria-label="${attr(d.label || 'Slogan')}">
+  <div class="marquee-track2" aria-hidden="true">${row}${row}</div>
+</div>`;
+  },
+
+  banner(d = {}) {
+    return `<section class="section" aria-label="${attr(d.title || 'Oproep')}">
+  <div class="container">
+    <div class="banner" data-rv>
+      <div><h2>${a(d.title)}</h2>${d.text ? `<p>${a(d.text)}</p>` : ''}</div>
+      ${d.cta ? `<a class="btn js-magnetic" href="${attr(d.cta.href || '#')}">${a(d.cta.label)}</a>` : ''}
+    </div>
+  </div>
+</section>`;
+  },
+
+  tabs(d = {}) {
+    var base = (d.id || 'tabs');
+    var tabsArr = list(d.tabs);
+    var head = tabsArr.map((t, i) => `<button type="button" role="tab" id="${attr(base)}-t${i}" aria-controls="${attr(base)}-p${i}" aria-selected="${i === 0 ? 'true' : 'false'}">${a(t.label)}</button>`).join('');
+    var panels = tabsArr.map((t, i) => `<div class="tab-panel ${i === 0 ? 'is-active' : ''}" id="${attr(base)}-p${i}" role="tabpanel" aria-labelledby="${attr(base)}-t${i}">
+      <div><h3>${a(t.title)}</h3>${t.text ? `<p>${a(t.text)}</p>` : ''}</div>
+      ${list(t.points).length ? `<ul>${list(t.points).map((p) => `<li>${a(p)}</li>`).join('')}</ul>` : '<div></div>'}
+    </div>`).join('');
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Overzicht')}">
+  <div class="container">
+    <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
+    <div data-tabs data-rv>
+      <div class="tabs-head" role="tablist">${head}</div>
+      ${panels}
+    </div>
+  </div>
+</section>`;
+  },
+
+  metrics(d = {}) {
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'In cijfers')}" data-countup>
+  <div class="container">
+    ${(d.title || d.eyebrow) ? `<div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}${d.title ? `<h2>${a(d.title)}</h2>` : ''}${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>` : ''}
+    <div class="metrics-grid">
+      ${list(d.items).map((m) => `<div class="metric" data-rv><div class="num"><span data-target="${attr(m.target)}">0</span>${m.suffix ? `<sup>${a(m.suffix)}</sup>` : ''}</div><div class="lab">${a(m.label)}</div></div>`).join('')}
+    </div>
+  </div>
+</section>`;
+  },
+
+  comparison(d = {}) {
+    var cols = list(d.columns);
+    var hi = typeof d.highlight === 'number' ? d.highlight : -1;
+    var thead = `<tr><th></th>${cols.map((c, i) => `<th class="${i === hi ? 'col-hi' : ''}">${a(c)}</th>`).join('')}</tr>`;
+    var rows = list(d.rows).map((r) => `<tr><th>${a(r.label)}</th>${list(r.cells).map((cell, i) => {
+      var val = cell === true ? '<span class="yes">✓</span>' : cell === false ? '—' : a(cell);
+      return `<td class="${i === hi ? 'col-hi' : ''}">${val}</td>`;
+    }).join('')}</tr>`).join('');
+    return `<section class="section ${d.variant === 'alt' ? 'section--alt' : ''}" ${d.id ? `id="${attr(d.id)}"` : ''} aria-label="${attr(d.title || 'Vergelijking')}">
+  <div class="container">
+    <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
+    <div class="compare-wrap" data-rv><table class="compare"><thead>${thead}</thead><tbody>${rows}</tbody></table></div>
   </div>
 </section>`;
   },

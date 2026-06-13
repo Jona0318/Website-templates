@@ -315,6 +315,209 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
 .naar-boven svg{width:13px;height:13px;transition:transform .35s var(--ease)}
 .naar-boven:hover svg{transform:translateY(-3px)}
 
+/* ============================================================
+   LAYOUT-VARIANTEN (voor afwisseling tussen templates)
+   ============================================================ */
+/* hero — gecentreerd */
+.hero--center .container{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero--center h1{max-width:20ch}
+.hero--center .hero-lead{margin-inline:auto}
+.hero--center .hero-cta{justify-content:center}
+.hero--center .hero-strip{justify-content:center}
+/* hero — split (tekst + visueel paneel) */
+.hero--split .container{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:900px){.hero--split .container{grid-template-columns:1fr}}
+.hero-visual{aspect-ratio:4/3;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative;overflow:hidden;box-shadow:0 40px 90px -50px rgba(0,0,0,.5);transform-style:preserve-3d;will-change:transform}
+.hero-visual .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(5rem,16vw,11rem);color:color-mix(in srgb,var(--on-accent) 85%,transparent)}
+
+/* features — kolommen + rij-variant */
+.feature-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.feature-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:880px){.feature-grid.cols-4{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.feature-grid.cols-4{grid-template-columns:1fr}}
+.feature-rows{border-top:1px solid var(--line)}
+.feature-row{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.2fr);gap:clamp(1rem,3vw,2.6rem);align-items:baseline;padding:clamp(1.4rem,3vw,2.3rem) 0;border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease)}
+.feature-row:hover{padding-left:.6rem}
+.feature-row .rnum{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em}
+.feature-row h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.3rem,2.6vw,2rem)}
+.feature-row p{color:var(--muted);max-width:52ch}
+@media (max-width:760px){.feature-row{grid-template-columns:auto 1fr}.feature-row p{grid-column:1 / -1}}
+
+/* showcase — werk/case-tegels */
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.showcase-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.showcase-grid{grid-template-columns:1fr}}
+.showcase-item{display:flex;flex-direction:column;gap:.85rem}
+.showcase-thumb{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 24px 50px -36px rgba(0,0,0,.4);transform-style:preserve-3d;will-change:transform}
+.showcase-thumb .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(3rem,8vw,5rem);color:color-mix(in srgb,var(--on-accent) 82%,transparent)}
+.showcase-thumb .tag{position:absolute;top:.8rem;left:.8rem;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-accent);background:color-mix(in srgb,var(--ink) 32%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:.3rem .65rem;border-radius:99px}
+.showcase-item:nth-child(2) .showcase-thumb{filter:hue-rotate(38deg)}
+.showcase-item:nth-child(3) .showcase-thumb{filter:hue-rotate(-32deg)}
+.showcase-item:nth-child(4) .showcase-thumb{filter:hue-rotate(18deg)}
+.showcase-item:nth-child(5) .showcase-thumb{filter:hue-rotate(-22deg)}
+.showcase-item:nth-child(6) .showcase-thumb{filter:hue-rotate(50deg)}
+.showcase-cap{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.showcase-cap h3{font-family:var(--font-serif);font-weight:500;font-size:1.2rem}
+.showcase-cap span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+
+/* steps — proces met tekenende lijn */
+.steps{position:relative;max-width:820px;display:grid;gap:clamp(1.8rem,4vw,2.8rem);padding-left:clamp(2rem,4vw,3rem)}
+.steps-rail{position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.steps-line{position:absolute;left:8px;top:6px;width:2px;height:0;background:var(--accent);transition:height .2s linear}
+html.no-anim .steps-line{height:calc(100% - 12px)}
+.step{position:relative}
+.step::before{content:"";position:absolute;left:calc(-1 * clamp(2rem,4vw,3rem) + 2px);top:.35em;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.step .snum{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.step h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.25rem,2.4vw,1.7rem);margin:.4rem 0 .5rem}
+.step p{color:var(--muted);max-width:54ch}
+
+/* quote — groot statement */
+.quote-block{max-width:30ch;margin-inline:auto;text-align:center}
+.quote-block p{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.8rem,4.6vw,3.3rem);line-height:1.18;letter-spacing:-.015em}
+.quote-block p em{font-style:italic;color:var(--accent)}
+.quote-block .who{margin-top:1.6rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.testi-grid{grid-template-columns:1fr}}
+.testi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.4rem,2.5vw,2rem);display:flex;flex-direction:column;gap:1.1rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
+.testi:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 26px 50px -36px rgba(0,0,0,.35)}
+.testi .stars{color:var(--accent);font-size:.85rem;letter-spacing:.1em}
+.testi blockquote{font-size:1.02rem;color:var(--ink)}
+.testi .who{margin-top:auto;display:flex;align-items:center;gap:.75rem}
+.testi .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));flex:none;display:grid;place-items:center;color:var(--on-accent);font-family:var(--font-serif);font-weight:600}
+.testi .who b{font-weight:600;font-size:.92rem}
+.testi .who span{display:block;font-size:.78rem;color:var(--muted)}
+
+/* logos — marquee-band */
+.logos{border-block:1px solid var(--line);overflow:hidden;background:var(--bg-2)}
+.logos-track{display:flex;align-items:center;gap:3.5rem;padding:1.1rem 0;white-space:nowrap;width:max-content}
+html.anim-ok .logos-track{animation:logos-marquee 36s linear infinite}
+.logos:hover .logos-track{animation-play-state:paused}
+.logos-track span{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(1.05rem,2.2vw,1.5rem);color:var(--muted);display:inline-flex;align-items:center;gap:3.5rem}
+.logos-track span::after{content:"✦";color:var(--accent);font-style:normal;font-size:.66em}
+@keyframes logos-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* hero — full-bleed media */
+.hero--media{color:#fff;isolation:isolate}
+.hero--media::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.hero--media::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.15))}
+.hero--media .hero-lead{color:rgba(255,255,255,.86)}
+.hero--media .hero-strip{border-top-color:rgba(255,255,255,.25)}
+.hero--media .hero-stat b{color:#fff}
+.hero--media .hero-stat span{color:rgba(255,255,255,.7)}
+.hero--media .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+.hero--media .eyebrow,.hero--media .eyebrow::before{color:#fff;background:#fff}
+
+/* zigzag — alternerende media/tekst-rijen */
+.zigzag{display:grid;gap:clamp(3rem,7vw,6rem)}
+.zz-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.zz-row:nth-child(even) .zz-media{order:2}
+@media (max-width:820px){.zz-row{grid-template-columns:1fr}.zz-row:nth-child(even) .zz-media{order:0}}
+.zz-media{aspect-ratio:5/4;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative;overflow:hidden;box-shadow:0 30px 60px -40px rgba(0,0,0,.45);transform-style:preserve-3d;will-change:transform}
+.zz-media .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(3.5rem,10vw,7rem);color:color-mix(in srgb,var(--on-accent) 82%,transparent)}
+.zz-row:nth-child(2) .zz-media{filter:hue-rotate(32deg)}
+.zz-row:nth-child(3) .zz-media{filter:hue-rotate(-26deg)}
+.zz-row:nth-child(4) .zz-media{filter:hue-rotate(18deg)}
+.zz-copy .eyebrow{margin-bottom:.8rem}
+.zz-copy h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.5rem,3vw,2.4rem);letter-spacing:-.015em;margin-bottom:.8rem}
+.zz-copy p{color:var(--muted);margin-bottom:1rem}
+.zz-copy ul{display:grid;gap:.5rem}
+.zz-copy ul li{display:flex;gap:.6rem;color:var(--muted)}
+.zz-copy ul li::before{content:"✦";color:var(--accent);flex:none;font-size:.8rem}
+
+/* bento — asymmetrisch raster */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem);grid-auto-rows:minmax(150px,1fr)}
+.bento .feature{margin:0}
+.bento .feature:first-child{grid-column:span 2;grid-row:span 2}
+.bento .feature:first-child h3{font-size:1.7rem}
+@media (max-width:760px){.bento{grid-template-columns:1fr 1fr}.bento .feature:first-child{grid-column:span 2;grid-row:span 1}}
+@media (max-width:520px){.bento{grid-template-columns:1fr}.bento .feature:first-child{grid-column:auto}}
+
+/* gallery — masonry-tegels */
+.gallery{columns:3;column-gap:clamp(1rem,2vw,1.5rem)}
+@media (max-width:880px){.gallery{columns:2}}
+@media (max-width:520px){.gallery{columns:1}}
+.gallery .tile{break-inside:avoid;margin-bottom:clamp(1rem,2vw,1.5rem);border-radius:var(--radius);overflow:hidden;position:relative;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:1px solid var(--line);display:grid;place-items:center}
+.gallery .tile .glyph{color:color-mix(in srgb,var(--on-accent) 80%,transparent);font-size:clamp(2rem,5vw,3.4rem)}
+.gallery .tile .tag{position:absolute;left:.7rem;bottom:.7rem;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-accent)}
+.gallery .tile:nth-child(3n){aspect-ratio:3/4}
+.gallery .tile:nth-child(3n+1){aspect-ratio:1}
+.gallery .tile:nth-child(3n+2){aspect-ratio:4/5}
+.gallery .tile:nth-child(2n){filter:hue-rotate(34deg)}
+.gallery .tile:nth-child(3n){filter:hue-rotate(-30deg)}
+.gallery .tile:nth-child(5n){filter:hue-rotate(60deg)}
+
+/* team — personen */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.team-grid{grid-template-columns:1fr 1fr}}
+.member{display:flex;flex-direction:column;gap:.85rem}
+.member .ph{aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:var(--on-accent);font-family:var(--font-serif);font-size:2.4rem;font-weight:600}
+.member:nth-child(2) .ph{filter:hue-rotate(40deg)}
+.member:nth-child(3) .ph{filter:hue-rotate(-30deg)}
+.member:nth-child(4) .ph{filter:hue-rotate(18deg)}
+.member:nth-child(6) .ph{filter:hue-rotate(-22deg)}
+.member h3{font-family:var(--font-serif);font-weight:500;font-size:1.15rem}
+.member .role{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* timeline — jaartallen */
+.timeline{display:grid;gap:0;border-top:1px solid var(--line)}
+.tl-item{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,3vw,2.6rem);padding:clamp(1.3rem,3vw,2.1rem) 0;border-bottom:1px solid var(--line)}
+.tl-item .yr{font-family:var(--font-mono);font-size:1.05rem;color:var(--accent);font-variant-numeric:tabular-nums;min-width:3.4em}
+.tl-item h3{font-family:var(--font-serif);font-weight:500;font-size:1.3rem;margin-bottom:.3rem}
+.tl-item p{color:var(--muted);max-width:56ch}
+
+/* marquee — kinetische tekst */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(1.3rem,3.5vw,2.6rem);background:var(--bg-2)}
+.marquee-track2{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;align-items:center}
+html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
+.marquee:hover .marquee-track2{animation-play-state:paused}
+.marquee-track2 span{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.02em;color:var(--ink);display:inline-flex;gap:2.5rem;align-items:center}
+.marquee-track2 span i{font-style:normal;color:var(--accent)}
+.marquee--outline .marquee-track2 span{color:transparent;-webkit-text-stroke:1.4px var(--line-strong)}
+.marquee--outline .marquee-track2 span i{-webkit-text-stroke:0;color:var(--accent)}
+
+/* banner — accent-CTA-band */
+.banner{background:var(--accent);color:var(--on-accent);border-radius:var(--radius);padding:clamp(2rem,4vw,3.5rem);display:flex;align-items:center;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap}
+.banner ::selection{background:var(--ink);color:var(--on-accent)}
+.banner h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.6rem,3.6vw,2.7rem);letter-spacing:-.015em;max-width:20ch}
+.banner p{color:color-mix(in srgb,var(--on-accent) 80%,transparent);margin-top:.6rem;max-width:46ch}
+.banner .btn{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.banner .btn:hover{filter:brightness(1.15)}
+
+/* tabs */
+.tabs-head{display:inline-flex;flex-wrap:wrap;gap:.4rem;border:1px solid var(--line-strong);border-radius:99px;padding:5px;margin-bottom:clamp(1.6rem,3vw,2.4rem)}
+.tabs-head button{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:99px;color:var(--muted);transition:background-color .25s,color .25s}
+.tabs-head button[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.tab-panel{display:none}
+.tab-panel.is-active{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+@media (max-width:760px){.tab-panel.is-active{grid-template-columns:1fr}}
+.tab-panel h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.4rem,3vw,2.1rem);margin-bottom:.7rem}
+.tab-panel p{color:var(--muted)}
+.tab-panel ul{display:grid;gap:.6rem}
+.tab-panel ul li{display:flex;gap:.6rem;color:var(--muted)}
+.tab-panel ul li::before{content:"→";color:var(--accent);flex:none}
+
+/* metrics — lichte cijfers-variant (geen accent-band) */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.4rem)}
+@media (max-width:820px){.metrics-grid{grid-template-columns:1fr 1fr}}
+.metric{padding-top:1.2rem;border-top:2px solid var(--accent)}
+.metric .num{font-family:var(--font-serif);font-weight:600;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1;font-variant-numeric:tabular-nums}
+.metric .num sup{font-size:.42em;vertical-align:super;color:var(--accent)}
+.metric .lab{margin-top:.5rem;color:var(--muted);font-size:.92rem}
+
+/* comparison — tabel */
+.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+.compare{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+.compare th,.compare td{text-align:left;padding:1rem 1.2rem;border-bottom:1px solid var(--line)}
+.compare thead th{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.compare tbody tr:last-child th,.compare tbody tr:last-child td{border-bottom:0}
+.compare tbody th{font-weight:500;color:var(--ink)}
+.compare td{color:var(--muted)}
+.compare .yes{color:var(--accent);font-weight:700}
+.compare .col-hi{background:var(--accent-soft);color:var(--ink)}
+.compare thead .col-hi{color:var(--accent)}
+
 :root{--bg:#f6f4ef;--bg-2:#ede9e0;--surface:#ffffff;--ink:#19201c;--muted:rgba(25,32,28,.62);--faint:rgba(25,32,28,.40);--line:rgba(25,32,28,.14);--line-strong:rgba(25,32,28,.26);--accent:#1f6f5c;--accent-2:#c2724a;--accent-soft:rgba(31,111,92,.10);--on-accent:#ffffff;--dark-bg:#13211c;--dark-surface:#1b2c25;--dark-ink:#eef2ee;--dark-muted:rgba(238,242,238,.62);--dark-line:rgba(238,242,238,.14);--radius:16px;--font-serif:"Fraunces",Georgia,serif;--font-grotesk:"Space Grotesk","Helvetica Neue",Arial,sans-serif;--font-mono:"Space Mono",ui-monospace,monospace;}
 
 </style>
@@ -361,6 +564,9 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
           <div class="hero-stat" style="margin-left:auto"><b><span data-clock>--:--</span></b><span>Amersfoort nu</span></div></div>
   </div>
 </section>
+<div class="logos" aria-label="Vertrouwd door">
+  <div class="logos-track" aria-hidden="true"><span>NVM</span><span>Funda</span><span>VBO</span><span>Vereniging Eigen Huis</span><span>Woningmarkt NL</span><span>De Hypotheker</span><span>NVM</span><span>Funda</span><span>VBO</span><span>Vereniging Eigen Huis</span><span>Woningmarkt NL</span><span>De Hypotheker</span></div>
+</div>
 <section class="section "  aria-label="Wat we doen">
   <div class="container">
     <div class="section-head" data-rv>
@@ -368,32 +574,32 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       <h2>Van eerste bezichtiging tot <em>sleuteloverdracht</em></h2>
       <p>Een compleet makelaarskantoor onder één dak — voor verkopers én kopers.</p>
     </div>
-    <div class="feature-grid">
-      <article class="feature" data-rv >
-        <span class="ico" aria-hidden="true">🏡</span>
+    <div class="feature-rows">
+      <div class="feature-row" data-rv>
+        <span class="rnum">01</span>
         <h3>Verkoopmakelaar</h3>
         <p>Wij verzorgen styling, professionele fotografie, funda-presentatie, bezichtigingen en onderhandeling — jij ontzorgd van A tot Z.</p>
-      </article><article class="feature" data-rv data-d=".7s">
-        <span class="ico" aria-hidden="true">🔑</span>
+      </div><div class="feature-row" data-rv>
+        <span class="rnum">02</span>
         <h3>Aankoopmakelaar</h3>
         <p>Wij vinden, bezichtigen en bieden namens jou. Met lokale kennis bied je scherp én verstandig, ook in een krappe markt.</p>
-      </article><article class="feature" data-rv data-d=".14s">
-        <span class="ico" aria-hidden="true">📐</span>
+      </div><div class="feature-row" data-rv>
+        <span class="rnum">03</span>
         <h3>Taxatie</h3>
         <p>Een gevalideerd taxatierapport (NWWI) voor je hypotheek of aankoop — meestal binnen drie werkdagen geregeld.</p>
-      </article><article class="feature" data-rv data-d=".21s">
-        <span class="ico" aria-hidden="true">🖼️</span>
+      </div><div class="feature-row" data-rv>
+        <span class="rnum">04</span>
         <h3>Verkoopstyling</h3>
         <p>Onze stylist maakt je woning klaar voor de foto's en bezichtigingen. Goede styling levert bewezen meer op.</p>
-      </article><article class="feature" data-rv data-d=".28s">
-        <span class="ico" aria-hidden="true">📊</span>
+      </div><div class="feature-row" data-rv>
+        <span class="rnum">05</span>
         <h3>Waardebepaling</h3>
         <p>Benieuwd wat je huis nu waard is? We komen vrijblijvend langs en geven een onderbouwde, eerlijke richtprijs.</p>
-      </article><article class="feature" data-rv data-d=".35s">
-        <span class="ico" aria-hidden="true">🤝</span>
+      </div><div class="feature-row" data-rv>
+        <span class="rnum">06</span>
         <h3>Begeleiding ZZP & BV</h3>
         <p>Ook voor ondernemers met een woon-werkpand of beleggingsobject regelen we de juiste route en taxatie.</p>
-      </article>
+      </div>
     </div>
   </div>
 </section>
@@ -410,9 +616,66 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
     <div class="split-panel" data-rv data-d=".1s" data-tilt aria-hidden="true"><span class="glyph">⌂</span></div>
   </div>
 </section>
-<section class="stats section" aria-label="In cijfers">
-  <div class="container stats-grid">
-    <div class="stat"><div class="num"><span data-target="1998">0</span></div><div class="lab">opgericht</div></div><div class="stat"><div class="num"><span data-target="1250">0</span><sup>+</sup></div><div class="lab">woningen verkocht</div></div><div class="stat"><div class="num"><span data-target="26">0</span></div><div class="lab">dagen gem. verkooptijd</div></div><div class="stat"><div class="num"><span data-target="9">0</span><sup>,4</sup></div><div class="lab">klantbeoordeling</div></div>
+<section class="section "  aria-label="Recent in de <em>verkoop</em>">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Uitgelicht aanbod</p>
+      <h2>Recent in de <em>verkoop</em></h2>
+      <p>Een greep uit ons aanbod in Amersfoort en omstreken.</p>
+    </div>
+    <div class="showcase-grid">
+      <article class="showcase-item" data-rv >
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Verkocht</span><span class="glyph">⌂</span></div>
+        <div class="showcase-cap"><h3>Bergstraat 12</h3><span>Amersfoort · 4 kamers</span></div>
+      </article><article class="showcase-item" data-rv data-d=".6s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Te koop</span><span class="glyph">⌂</span></div>
+        <div class="showcase-cap"><h3>Vermeerkwartier 8</h3><span>Amersfoort · 5 kamers</span></div>
+      </article><article class="showcase-item" data-rv data-d=".12s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Nieuw</span><span class="glyph">⌂</span></div>
+        <div class="showcase-cap"><h3>Soesterweg 144</h3><span>Soest · 3 kamers</span></div>
+      </article><article class="showcase-item" data-rv data-d=".18s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Verkocht</span><span class="glyph">⌂</span></div>
+        <div class="showcase-cap"><h3>Hof der Gedachten</h3><span>Leusden · 6 kamers</span></div>
+      </article><article class="showcase-item" data-rv data-d=".24s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Te koop</span><span class="glyph">⌂</span></div>
+        <div class="showcase-cap"><h3>Eemkade 21</h3><span>Amersfoort · appartement</span></div>
+      </article><article class="showcase-item" data-rv data-d=".30s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Onder bod</span><span class="glyph">⌂</span></div>
+        <div class="showcase-cap"><h3>Hooglandseweg 3</h3><span>Hoogland · vrijstaand</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section "  aria-label="In cijfers" data-countup>
+  <div class="container">
+    
+    <div class="metrics-grid">
+      <div class="metric" data-rv><div class="num"><span data-target="1998">0</span></div><div class="lab">opgericht</div></div><div class="metric" data-rv><div class="num"><span data-target="1250">0</span><sup>+</sup></div><div class="lab">woningen verkocht</div></div><div class="metric" data-rv><div class="num"><span data-target="26">0</span></div><div class="lab">dagen gem. verkooptijd</div></div><div class="metric" data-rv><div class="num"><span data-target="9">0</span><sup>,4</sup></div><div class="lab">klantbeoordeling</div></div>
+    </div>
+  </div>
+</section>
+<section class="section "  aria-label="Wat verkopers <em>zeggen</em>">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Klanten</p>
+      <h2>Wat verkopers <em>zeggen</em></h2>
+      
+    </div>
+    <div class="testi-grid">
+      <figure class="testi" data-rv >
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Binnen drie weken verkocht boven de vraagprijs. Persoonlijk en eerlijk van begin tot eind.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true">F</span><span><b>Familie Bakker</b><span>Verkocht in Amersfoort</span></span></figcaption>
+      </figure><figure class="testi" data-rv data-d=".7s">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Eén vast aanspreekpunt die de buurt door en door kent. Dat scheelde enorm.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true">R</span><span><b>Renske Visser</b><span>Verkocht in Soest</span></span></figcaption>
+      </figure><figure class="testi" data-rv data-d=".14s">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Heldere courtage, geen verrassingen, en een styling die echt verschil maakte.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true">H</span><span><b>Hans & Marit</b><span>Verkocht in Leusden</span></span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 <section class="section "  aria-label="Heldere <em>courtage</em>, geen verrassingen">
@@ -605,7 +868,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       el.textContent = '0'; setTimeout(function () { requestAnimationFrame(tick); }, 80 + i * 90);
     });
   }
-  Array.prototype.forEach.call(doc.querySelectorAll('.stats'), function (sec) {
+  Array.prototype.forEach.call(doc.querySelectorAll('.stats, [data-countup]'), function (sec) {
     if ('IntersectionObserver' in window && !reduced) {
       var o = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { runCount(sec); o.unobserve(en.target); } }); }, { threshold: 0.4 });
       o.observe(sec);
@@ -682,6 +945,24 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       form.classList.add('sent');
       var success = form.querySelector('.form-success'); if (success) { success.setAttribute('aria-hidden', 'false'); }
       if (statusEl) { statusEl.textContent = 'Verzonden.'; }
+    });
+  });
+
+  /* tabs */
+  Array.prototype.forEach.call(doc.querySelectorAll('[data-tabs]'), function (root2) {
+    var tabs = Array.prototype.slice.call(root2.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(root2.querySelectorAll('.tab-panel'));
+    function select(i) {
+      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+      panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = tabs.length, idx = i;
+        if (e.key === 'ArrowRight') { idx = (i + 1) % n; } else if (e.key === 'ArrowLeft') { idx = (i - 1 + n) % n; } else { return; }
+        e.preventDefault(); tabs[idx].focus(); select(idx);
+      });
     });
   });
 

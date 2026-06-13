@@ -53,7 +53,9 @@
       "clock": "Amersfoort nu",
       "stats": [ { "value": "1.250+", "label": "woningen verkocht" }, { "value": "98%", "label": "binnen de vraagprijs" }, { "value": "26 dgn", "label": "gem. verkooptijd" } ]
     }},
+    { "use": "logos", "data": { "items": [ "NVM", "Funda", "VBO", "Vereniging Eigen Huis", "Woningmarkt NL", "De Hypotheker" ] } },
     { "use": "features", "id": "diensten", "data": {
+      "layout": "rows",
       "eyebrow": "Wat we doen",
       "title": "Van eerste bezichtiging tot <em>sleuteloverdracht</em>",
       "intro": "Een compleet makelaarskantoor onder één dak — voor verkopers én kopers.",
@@ -77,12 +79,34 @@
       "cta": { "href": "#contact", "label": "Plan een kennismaking" },
       "glyph": "⌂"
     }},
-    { "use": "stats", "data": { "items": [
+    { "use": "showcase", "id": "aanbod", "data": {
+      "eyebrow": "Uitgelicht aanbod",
+      "title": "Recent in de <em>verkoop</em>",
+      "intro": "Een greep uit ons aanbod in Amersfoort en omstreken.",
+      "items": [
+        { "tag": "Verkocht", "glyph": "⌂", "title": "Bergstraat 12", "meta": "Amersfoort · 4 kamers" },
+        { "tag": "Te koop", "glyph": "⌂", "title": "Vermeerkwartier 8", "meta": "Amersfoort · 5 kamers" },
+        { "tag": "Nieuw", "glyph": "⌂", "title": "Soesterweg 144", "meta": "Soest · 3 kamers" },
+        { "tag": "Verkocht", "glyph": "⌂", "title": "Hof der Gedachten", "meta": "Leusden · 6 kamers" },
+        { "tag": "Te koop", "glyph": "⌂", "title": "Eemkade 21", "meta": "Amersfoort · appartement" },
+        { "tag": "Onder bod", "glyph": "⌂", "title": "Hooglandseweg 3", "meta": "Hoogland · vrijstaand" }
+      ]
+    }},
+    { "use": "metrics", "data": { "items": [
       { "target": 1998, "label": "opgericht" },
       { "target": 1250, "suffix": "+", "label": "woningen verkocht" },
       { "target": 26, "label": "dagen gem. verkooptijd" },
       { "target": 9, "suffix": ",4", "label": "klantbeoordeling" }
     ]}},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Klanten",
+      "title": "Wat verkopers <em>zeggen</em>",
+      "items": [
+        { "quote": "Binnen drie weken verkocht boven de vraagprijs. Persoonlijk en eerlijk van begin tot eind.", "name": "Familie Bakker", "role": "Verkocht in Amersfoort" },
+        { "quote": "Eén vast aanspreekpunt die de buurt door en door kent. Dat scheelde enorm.", "name": "Renske Visser", "role": "Verkocht in Soest" },
+        { "quote": "Heldere courtage, geen verrassingen, en een styling die echt verschil maakte.", "name": "Hans & Marit", "role": "Verkocht in Leusden" }
+      ]
+    }},
     { "use": "pricing", "id": "tarieven", "data": {
       "eyebrow": "Tarieven",
       "title": "Heldere <em>courtage</em>, geen verrassingen",

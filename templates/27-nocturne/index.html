@@ -315,6 +315,209 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
 .naar-boven svg{width:13px;height:13px;transition:transform .35s var(--ease)}
 .naar-boven:hover svg{transform:translateY(-3px)}
 
+/* ============================================================
+   LAYOUT-VARIANTEN (voor afwisseling tussen templates)
+   ============================================================ */
+/* hero — gecentreerd */
+.hero--center .container{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero--center h1{max-width:20ch}
+.hero--center .hero-lead{margin-inline:auto}
+.hero--center .hero-cta{justify-content:center}
+.hero--center .hero-strip{justify-content:center}
+/* hero — split (tekst + visueel paneel) */
+.hero--split .container{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:900px){.hero--split .container{grid-template-columns:1fr}}
+.hero-visual{aspect-ratio:4/3;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative;overflow:hidden;box-shadow:0 40px 90px -50px rgba(0,0,0,.5);transform-style:preserve-3d;will-change:transform}
+.hero-visual .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(5rem,16vw,11rem);color:color-mix(in srgb,var(--on-accent) 85%,transparent)}
+
+/* features — kolommen + rij-variant */
+.feature-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.feature-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:880px){.feature-grid.cols-4{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.feature-grid.cols-4{grid-template-columns:1fr}}
+.feature-rows{border-top:1px solid var(--line)}
+.feature-row{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.2fr);gap:clamp(1rem,3vw,2.6rem);align-items:baseline;padding:clamp(1.4rem,3vw,2.3rem) 0;border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease)}
+.feature-row:hover{padding-left:.6rem}
+.feature-row .rnum{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em}
+.feature-row h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.3rem,2.6vw,2rem)}
+.feature-row p{color:var(--muted);max-width:52ch}
+@media (max-width:760px){.feature-row{grid-template-columns:auto 1fr}.feature-row p{grid-column:1 / -1}}
+
+/* showcase — werk/case-tegels */
+.showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.showcase-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.showcase-grid{grid-template-columns:1fr}}
+.showcase-item{display:flex;flex-direction:column;gap:.85rem}
+.showcase-thumb{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 24px 50px -36px rgba(0,0,0,.4);transform-style:preserve-3d;will-change:transform}
+.showcase-thumb .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(3rem,8vw,5rem);color:color-mix(in srgb,var(--on-accent) 82%,transparent)}
+.showcase-thumb .tag{position:absolute;top:.8rem;left:.8rem;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-accent);background:color-mix(in srgb,var(--ink) 32%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:.3rem .65rem;border-radius:99px}
+.showcase-item:nth-child(2) .showcase-thumb{filter:hue-rotate(38deg)}
+.showcase-item:nth-child(3) .showcase-thumb{filter:hue-rotate(-32deg)}
+.showcase-item:nth-child(4) .showcase-thumb{filter:hue-rotate(18deg)}
+.showcase-item:nth-child(5) .showcase-thumb{filter:hue-rotate(-22deg)}
+.showcase-item:nth-child(6) .showcase-thumb{filter:hue-rotate(50deg)}
+.showcase-cap{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.showcase-cap h3{font-family:var(--font-serif);font-weight:500;font-size:1.2rem}
+.showcase-cap span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+
+/* steps — proces met tekenende lijn */
+.steps{position:relative;max-width:820px;display:grid;gap:clamp(1.8rem,4vw,2.8rem);padding-left:clamp(2rem,4vw,3rem)}
+.steps-rail{position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.steps-line{position:absolute;left:8px;top:6px;width:2px;height:0;background:var(--accent);transition:height .2s linear}
+html.no-anim .steps-line{height:calc(100% - 12px)}
+.step{position:relative}
+.step::before{content:"";position:absolute;left:calc(-1 * clamp(2rem,4vw,3rem) + 2px);top:.35em;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.step .snum{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.step h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.25rem,2.4vw,1.7rem);margin:.4rem 0 .5rem}
+.step p{color:var(--muted);max-width:54ch}
+
+/* quote — groot statement */
+.quote-block{max-width:30ch;margin-inline:auto;text-align:center}
+.quote-block p{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.8rem,4.6vw,3.3rem);line-height:1.18;letter-spacing:-.015em}
+.quote-block p em{font-style:italic;color:var(--accent)}
+.quote-block .who{margin-top:1.6rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.testi-grid{grid-template-columns:1fr}}
+.testi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.4rem,2.5vw,2rem);display:flex;flex-direction:column;gap:1.1rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
+.testi:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 26px 50px -36px rgba(0,0,0,.35)}
+.testi .stars{color:var(--accent);font-size:.85rem;letter-spacing:.1em}
+.testi blockquote{font-size:1.02rem;color:var(--ink)}
+.testi .who{margin-top:auto;display:flex;align-items:center;gap:.75rem}
+.testi .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));flex:none;display:grid;place-items:center;color:var(--on-accent);font-family:var(--font-serif);font-weight:600}
+.testi .who b{font-weight:600;font-size:.92rem}
+.testi .who span{display:block;font-size:.78rem;color:var(--muted)}
+
+/* logos — marquee-band */
+.logos{border-block:1px solid var(--line);overflow:hidden;background:var(--bg-2)}
+.logos-track{display:flex;align-items:center;gap:3.5rem;padding:1.1rem 0;white-space:nowrap;width:max-content}
+html.anim-ok .logos-track{animation:logos-marquee 36s linear infinite}
+.logos:hover .logos-track{animation-play-state:paused}
+.logos-track span{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(1.05rem,2.2vw,1.5rem);color:var(--muted);display:inline-flex;align-items:center;gap:3.5rem}
+.logos-track span::after{content:"✦";color:var(--accent);font-style:normal;font-size:.66em}
+@keyframes logos-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* hero — full-bleed media */
+.hero--media{color:#fff;isolation:isolate}
+.hero--media::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.hero--media::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.15))}
+.hero--media .hero-lead{color:rgba(255,255,255,.86)}
+.hero--media .hero-strip{border-top-color:rgba(255,255,255,.25)}
+.hero--media .hero-stat b{color:#fff}
+.hero--media .hero-stat span{color:rgba(255,255,255,.7)}
+.hero--media .btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+.hero--media .eyebrow,.hero--media .eyebrow::before{color:#fff;background:#fff}
+
+/* zigzag — alternerende media/tekst-rijen */
+.zigzag{display:grid;gap:clamp(3rem,7vw,6rem)}
+.zz-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.zz-row:nth-child(even) .zz-media{order:2}
+@media (max-width:820px){.zz-row{grid-template-columns:1fr}.zz-row:nth-child(even) .zz-media{order:0}}
+.zz-media{aspect-ratio:5/4;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));position:relative;overflow:hidden;box-shadow:0 30px 60px -40px rgba(0,0,0,.45);transform-style:preserve-3d;will-change:transform}
+.zz-media .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(3.5rem,10vw,7rem);color:color-mix(in srgb,var(--on-accent) 82%,transparent)}
+.zz-row:nth-child(2) .zz-media{filter:hue-rotate(32deg)}
+.zz-row:nth-child(3) .zz-media{filter:hue-rotate(-26deg)}
+.zz-row:nth-child(4) .zz-media{filter:hue-rotate(18deg)}
+.zz-copy .eyebrow{margin-bottom:.8rem}
+.zz-copy h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.5rem,3vw,2.4rem);letter-spacing:-.015em;margin-bottom:.8rem}
+.zz-copy p{color:var(--muted);margin-bottom:1rem}
+.zz-copy ul{display:grid;gap:.5rem}
+.zz-copy ul li{display:flex;gap:.6rem;color:var(--muted)}
+.zz-copy ul li::before{content:"✦";color:var(--accent);flex:none;font-size:.8rem}
+
+/* bento — asymmetrisch raster */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem);grid-auto-rows:minmax(150px,1fr)}
+.bento .feature{margin:0}
+.bento .feature:first-child{grid-column:span 2;grid-row:span 2}
+.bento .feature:first-child h3{font-size:1.7rem}
+@media (max-width:760px){.bento{grid-template-columns:1fr 1fr}.bento .feature:first-child{grid-column:span 2;grid-row:span 1}}
+@media (max-width:520px){.bento{grid-template-columns:1fr}.bento .feature:first-child{grid-column:auto}}
+
+/* gallery — masonry-tegels */
+.gallery{columns:3;column-gap:clamp(1rem,2vw,1.5rem)}
+@media (max-width:880px){.gallery{columns:2}}
+@media (max-width:520px){.gallery{columns:1}}
+.gallery .tile{break-inside:avoid;margin-bottom:clamp(1rem,2vw,1.5rem);border-radius:var(--radius);overflow:hidden;position:relative;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:1px solid var(--line);display:grid;place-items:center}
+.gallery .tile .glyph{color:color-mix(in srgb,var(--on-accent) 80%,transparent);font-size:clamp(2rem,5vw,3.4rem)}
+.gallery .tile .tag{position:absolute;left:.7rem;bottom:.7rem;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-accent)}
+.gallery .tile:nth-child(3n){aspect-ratio:3/4}
+.gallery .tile:nth-child(3n+1){aspect-ratio:1}
+.gallery .tile:nth-child(3n+2){aspect-ratio:4/5}
+.gallery .tile:nth-child(2n){filter:hue-rotate(34deg)}
+.gallery .tile:nth-child(3n){filter:hue-rotate(-30deg)}
+.gallery .tile:nth-child(5n){filter:hue-rotate(60deg)}
+
+/* team — personen */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.1rem,2.2vw,1.7rem)}
+@media (max-width:880px){.team-grid{grid-template-columns:1fr 1fr}}
+.member{display:flex;flex-direction:column;gap:.85rem}
+.member .ph{aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:var(--on-accent);font-family:var(--font-serif);font-size:2.4rem;font-weight:600}
+.member:nth-child(2) .ph{filter:hue-rotate(40deg)}
+.member:nth-child(3) .ph{filter:hue-rotate(-30deg)}
+.member:nth-child(4) .ph{filter:hue-rotate(18deg)}
+.member:nth-child(6) .ph{filter:hue-rotate(-22deg)}
+.member h3{font-family:var(--font-serif);font-weight:500;font-size:1.15rem}
+.member .role{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* timeline — jaartallen */
+.timeline{display:grid;gap:0;border-top:1px solid var(--line)}
+.tl-item{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,3vw,2.6rem);padding:clamp(1.3rem,3vw,2.1rem) 0;border-bottom:1px solid var(--line)}
+.tl-item .yr{font-family:var(--font-mono);font-size:1.05rem;color:var(--accent);font-variant-numeric:tabular-nums;min-width:3.4em}
+.tl-item h3{font-family:var(--font-serif);font-weight:500;font-size:1.3rem;margin-bottom:.3rem}
+.tl-item p{color:var(--muted);max-width:56ch}
+
+/* marquee — kinetische tekst */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(1.3rem,3.5vw,2.6rem);background:var(--bg-2)}
+.marquee-track2{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;align-items:center}
+html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
+.marquee:hover .marquee-track2{animation-play-state:paused}
+.marquee-track2 span{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.02em;color:var(--ink);display:inline-flex;gap:2.5rem;align-items:center}
+.marquee-track2 span i{font-style:normal;color:var(--accent)}
+.marquee--outline .marquee-track2 span{color:transparent;-webkit-text-stroke:1.4px var(--line-strong)}
+.marquee--outline .marquee-track2 span i{-webkit-text-stroke:0;color:var(--accent)}
+
+/* banner — accent-CTA-band */
+.banner{background:var(--accent);color:var(--on-accent);border-radius:var(--radius);padding:clamp(2rem,4vw,3.5rem);display:flex;align-items:center;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap}
+.banner ::selection{background:var(--ink);color:var(--on-accent)}
+.banner h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.6rem,3.6vw,2.7rem);letter-spacing:-.015em;max-width:20ch}
+.banner p{color:color-mix(in srgb,var(--on-accent) 80%,transparent);margin-top:.6rem;max-width:46ch}
+.banner .btn{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.banner .btn:hover{filter:brightness(1.15)}
+
+/* tabs */
+.tabs-head{display:inline-flex;flex-wrap:wrap;gap:.4rem;border:1px solid var(--line-strong);border-radius:99px;padding:5px;margin-bottom:clamp(1.6rem,3vw,2.4rem)}
+.tabs-head button{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:99px;color:var(--muted);transition:background-color .25s,color .25s}
+.tabs-head button[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.tab-panel{display:none}
+.tab-panel.is-active{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+@media (max-width:760px){.tab-panel.is-active{grid-template-columns:1fr}}
+.tab-panel h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.4rem,3vw,2.1rem);margin-bottom:.7rem}
+.tab-panel p{color:var(--muted)}
+.tab-panel ul{display:grid;gap:.6rem}
+.tab-panel ul li{display:flex;gap:.6rem;color:var(--muted)}
+.tab-panel ul li::before{content:"→";color:var(--accent);flex:none}
+
+/* metrics — lichte cijfers-variant (geen accent-band) */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.4rem)}
+@media (max-width:820px){.metrics-grid{grid-template-columns:1fr 1fr}}
+.metric{padding-top:1.2rem;border-top:2px solid var(--accent)}
+.metric .num{font-family:var(--font-serif);font-weight:600;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1;font-variant-numeric:tabular-nums}
+.metric .num sup{font-size:.42em;vertical-align:super;color:var(--accent)}
+.metric .lab{margin-top:.5rem;color:var(--muted);font-size:.92rem}
+
+/* comparison — tabel */
+.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+.compare{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+.compare th,.compare td{text-align:left;padding:1rem 1.2rem;border-bottom:1px solid var(--line)}
+.compare thead th{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.compare tbody tr:last-child th,.compare tbody tr:last-child td{border-bottom:0}
+.compare tbody th{font-weight:500;color:var(--ink)}
+.compare td{color:var(--muted)}
+.compare .yes{color:var(--accent);font-weight:700}
+.compare .col-hi{background:var(--accent-soft);color:var(--ink)}
+.compare thead .col-hi{color:var(--accent)}
+
 :root{--bg:#0d0f13;--bg-2:#14171d;--surface:#171b22;--ink:#eef1f5;--muted:rgba(238,241,245,.62);--faint:rgba(238,241,245,.40);--line:rgba(238,241,245,.12);--line-strong:rgba(238,241,245,.22);--accent:#5fe9ad;--accent-2:#b6a2ff;--accent-soft:rgba(95,233,173,.12);--on-accent:#06140d;--dark-bg:#0a0c10;--dark-surface:#14171d;--dark-ink:#eef1f5;--dark-muted:rgba(238,241,245,.62);--dark-line:rgba(238,241,245,.12);--radius:14px;--font-serif:"Space Grotesk",Georgia,serif;--font-grotesk:"Onest","Helvetica Neue",Arial,sans-serif;--font-mono:"Space Mono",ui-monospace,monospace;}
 
 </style>
@@ -330,7 +533,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       <span>Nocturne<small>Creatieve studio · Rotterdam</small></span>
     </a>
     <nav class="header-nav" aria-label="Hoofdmenu">
-      <ul class="header-links"><li><a href="#diensten">Diensten</a></li><li><a href="#aanpak">Aanpak</a></li><li><a href="#tarieven">Tarieven</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul>
+      <ul class="header-links"><li><a href="#werk">Werk</a></li><li><a href="#kunnen">Wat we kunnen</a></li><li><a href="#team">Team</a></li><li><a href="#tarieven">Tarieven</a></li><li><a href="#contact">Contact</a></li></ul>
       <div class="header-actions">
         <a class="btn btn-primary btn-cta-text js-magnetic" href="#contact">Start een project</a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu openen"><span></span><span></span></button>
@@ -341,7 +544,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
 <div class="menu-overlay" id="menuOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigatie">
   <button class="menu-overlay__close" id="menuClose" type="button" aria-label="Menu sluiten"></button>
   <div class="container">
-    <ul class="menu-list"><li><a href="#diensten"><span class="idx">01</span>Diensten</a></li><li><a href="#aanpak"><span class="idx">02</span>Aanpak</a></li><li><a href="#tarieven"><span class="idx">03</span>Tarieven</a></li><li><a href="#faq"><span class="idx">04</span>FAQ</a></li><li><a href="#contact"><span class="idx">05</span>Contact</a></li></ul>
+    <ul class="menu-list"><li><a href="#werk"><span class="idx">01</span>Werk</a></li><li><a href="#kunnen"><span class="idx">02</span>Wat we kunnen</a></li><li><a href="#team"><span class="idx">03</span>Team</a></li><li><a href="#tarieven"><span class="idx">04</span>Tarieven</a></li><li><a href="#contact"><span class="idx">05</span>Contact</a></li></ul>
     <div class="menu-foot">
       <a href="mailto:studio@nocturne.works">studio@nocturne.works</a>
       <a href="tel:+31103227050">+31 10 322 70 50</a>
@@ -350,69 +553,114 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
   </div>
 </div>
 <main id="main">
-<section class="hero" id="top" aria-label="Introductie">
+<section class="hero hero--center" id="top" aria-label="Introductie">
   <div class="container">
     <p class="eyebrow">Creatieve studio · est. 2015</p>
     <h1>Merken die <em>oplichten</em> in het donker.</h1>
     <p class="hero-lead">Nocturne ontwerpt identiteiten, campagnes en digitale ervaringen met een scherpe, eigentijdse rand. Minder ruis, meer indruk.</p>
     <div class="hero-cta"><a class="btn btn-primary js-magnetic" href="#contact">Start een project
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn btn-ghost js-magnetic" href="#diensten">Wat we doen</a></div>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn btn-ghost js-magnetic" href="#werk">Bekijk werk</a></div>
     <div class="hero-strip"><div class="hero-stat"><b>90+</b><span>merken gelanceerd</span></div><div class="hero-stat"><b>12</b><span>design awards</span></div><div class="hero-stat"><b>10 jr</b><span>ervaring</span></div>
-          <div class="hero-stat" style="margin-left:auto"><b><span data-clock>--:--</span></b><span>Rotterdam nu</span></div></div>
+          <div class="hero-stat" style="margin-left:auto"><b><span data-clock>--:--</span></b><span>Rotterdam</span></div></div>
   </div>
 </section>
-<section class="section "  aria-label="Diensten">
+<div class="marquee marquee--outline" aria-label="Slogan">
+  <div class="marquee-track2" aria-hidden="true"><span>Branding</span><span>Art direction</span><span>Digitaal</span><span>Motion</span><span>Campagne</span><span>Strategie</span><span>Branding</span><span>Art direction</span><span>Digitaal</span><span>Motion</span><span>Campagne</span><span>Strategie</span></div>
+</div>
+<section class="section "  aria-label="Werk dat <em>blijft hangen</em>">
   <div class="container">
     <div class="section-head" data-rv>
-      <p class="eyebrow">Diensten</p>
-      <h2>Scherp van strategie tot <em>uitvoering</em></h2>
-      <p>Eén studio voor het hele creatieve traject — strak op elkaar afgestemd.</p>
+      <p class="eyebrow">Geselecteerd werk</p>
+      <h2>Werk dat <em>blijft hangen</em></h2>
+      <p>Een selectie uit onze recente lanceringen voor merken die durven opvallen.</p>
     </div>
-    <div class="feature-grid">
-      <article class="feature" data-rv >
-        <span class="ico" aria-hidden="true">◐</span>
-        <h3>Merkidentiteit</h3>
-        <p>Een onderscheidende identiteit met een sterk systeem: logo, kleur, type en toon die overal kloppen.</p>
-      </article><article class="feature" data-rv data-d=".7s">
-        <span class="ico" aria-hidden="true">✦</span>
-        <h3>Art direction</h3>
-        <p>Een visuele richting met lef — beeld, ritme en sfeer die je merk een eigen stem geven.</p>
-      </article><article class="feature" data-rv data-d=".14s">
-        <span class="ico" aria-hidden="true">◢</span>
-        <h3>Digitaal & web</h3>
-        <p>Snelle, vloeiende websites en interfaces met motion die premium aanvoelt.</p>
-      </article><article class="feature" data-rv data-d=".21s">
-        <span class="ico" aria-hidden="true">◑</span>
-        <h3>Campagne</h3>
-        <p>Concepten die landen — van social tot out-of-home, consistent en raak.</p>
-      </article><article class="feature" data-rv data-d=".28s">
-        <span class="ico" aria-hidden="true">◉</span>
-        <h3>Content & motion</h3>
-        <p>Beeld, animatie en video die je verhaal in beweging brengen.</p>
-      </article><article class="feature" data-rv data-d=".35s">
-        <span class="ico" aria-hidden="true">⬡</span>
-        <h3>Strategie</h3>
-        <p>Positionering en merkstrategie als stevig fundament onder al het creatieve werk.</p>
+    <div class="showcase-grid">
+      <article class="showcase-item" data-rv >
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Identiteit</span><span class="glyph">◐</span></div>
+        <div class="showcase-cap"><h3>Halo</h3><span>Rebrand</span></div>
+      </article><article class="showcase-item" data-rv data-d=".6s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Campagne</span><span class="glyph">✦</span></div>
+        <div class="showcase-cap"><h3>Polaris</h3><span>OOH + social</span></div>
+      </article><article class="showcase-item" data-rv data-d=".12s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Digitaal</span><span class="glyph">◢</span></div>
+        <div class="showcase-cap"><h3>Vesper</h3><span>Website</span></div>
+      </article><article class="showcase-item" data-rv data-d=".18s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Motion</span><span class="glyph">◉</span></div>
+        <div class="showcase-cap"><h3>Lumen</h3><span>Titelsequentie</span></div>
+      </article><article class="showcase-item" data-rv data-d=".24s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Merk</span><span class="glyph">⬡</span></div>
+        <div class="showcase-cap"><h3>Onyx</h3><span>Identiteit</span></div>
+      </article><article class="showcase-item" data-rv data-d=".30s">
+        <div class="showcase-thumb" data-tilt aria-hidden="true"><span class="tag">Web</span><span class="glyph">◭</span></div>
+        <div class="showcase-cap"><h3>Eclipse</h3><span>Platform</span></div>
       </article>
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Klein team, grote ambities">
-  <div class="container split">
-    <div data-rv>
-      <p class="eyebrow">Aanpak</p>
-      <h2 style="font-family:var(--font-serif);font-weight:500;font-size:clamp(1.9rem,4.4vw,3.1rem);letter-spacing:-.015em;margin:1rem 0 1rem">Klein team, grote ambities</h2>
-      <p class="muted" style="margin-bottom:1rem">We werken bewust met een compacte ploeg van makers — strateeg, ontwerper, motion. Daardoor blijft het werk scherp en de communicatie kort.</p><p class="muted" style="margin-bottom:1rem">Elk traject begint met een duidelijke vraag en eindigt met een systeem dat je merk laat groeien, niet alleen één mooi plaatje.</p>
-      <ul><li>Senioren aan tafel, geen tussenlagen</li><li>Strategie + creatie in één hand</li><li>Levende merksystemen, geen losse deliverables</li><li>Internationale awards, lokale lijntjes</li></ul>
-      <div class="hero-cta"><a class="btn btn-primary js-magnetic" href="#contact">Maak kennis
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a></div>
+<section class="section dark"  aria-label="Citaat">
+  <div class="container">
+    <div class="quote-block" data-rv>
+      <p>Goed design fluistert niet — het laat een merk <em>oplichten</em> in een donkere kamer.</p>
+      <p class="who">— Studioprincipe №1</p>
     </div>
-    <div class="split-panel" data-rv data-d=".1s" data-tilt aria-hidden="true"><span class="glyph">◭</span></div>
+  </div>
+</section>
+<section class="section "  aria-label="Scherp van strategie tot <em>uitvoering</em>">
+  <div class="container">
+    <div class="section-head" data-rv><p class="eyebrow">Wat we kunnen</p><h2>Scherp van strategie tot <em>uitvoering</em></h2></div>
+    <div data-tabs data-rv>
+      <div class="tabs-head" role="tablist"><button type="button" role="tab" id="tabs-t0" aria-controls="tabs-p0" aria-selected="true">Strategie</button><button type="button" role="tab" id="tabs-t1" aria-controls="tabs-p1" aria-selected="false">Merk</button><button type="button" role="tab" id="tabs-t2" aria-controls="tabs-p2" aria-selected="false">Digitaal</button><button type="button" role="tab" id="tabs-t3" aria-controls="tabs-p3" aria-selected="false">Campagne</button></div>
+      <div class="tab-panel is-active" id="tabs-p0" role="tabpanel" aria-labelledby="tabs-t0">
+      <div><h3>Positionering met fundament</h3><p>We graven naar wat je merk uniek maakt en vertalen dat naar een heldere positionering en toon.</p></div>
+      <ul><li>Merkonderzoek & positionering</li><li>Naamgeving & verhaal</li><li>Tone of voice</li></ul>
+    </div><div class="tab-panel " id="tabs-p1" role="tabpanel" aria-labelledby="tabs-t1">
+      <div><h3>Een identiteit met lef</h3><p>Een visueel systeem dat overal werkt — van app-icoon tot billboard.</p></div>
+      <ul><li>Logo & visueel systeem</li><li>Kleur, type & beeld</li><li>Merkrichtlijnen</li></ul>
+    </div><div class="tab-panel " id="tabs-p2" role="tabpanel" aria-labelledby="tabs-t2">
+      <div><h3>Ervaringen in beweging</h3><p>Snelle, vloeiende websites en producten met motion die premium aanvoelt.</p></div>
+      <ul><li>Web- & productdesign</li><li>Front-end & motion</li><li>Prototyping</li></ul>
+    </div><div class="tab-panel " id="tabs-p3" role="tabpanel" aria-labelledby="tabs-t3">
+      <div><h3>Concepten die landen</h3><p>Van idee tot uitrol over alle kanalen, consistent en raak.</p></div>
+      <ul><li>Concept & art direction</li><li>Content & video</li><li>Uitrol & nazorg</li></ul>
+    </div>
+    </div>
   </div>
 </section>
 <section class="stats section" aria-label="In cijfers">
   <div class="container stats-grid">
     <div class="stat"><div class="num"><span data-target="2015">0</span></div><div class="lab">opgericht</div></div><div class="stat"><div class="num"><span data-target="90">0</span><sup>+</sup></div><div class="lab">merken gelanceerd</div></div><div class="stat"><div class="num"><span data-target="12">0</span></div><div class="lab">design awards</div></div><div class="stat"><div class="num"><span data-target="40">0</span><sup>+</sup></div><div class="lab">landen bereikt</div></div>
+  </div>
+</section>
+<section class="section "  aria-label="Klein team, grote <em>ambities</em>">
+  <div class="container">
+    <div class="section-head" data-rv><p class="eyebrow">Het team</p><h2>Klein team, grote <em>ambities</em></h2><p>Senioren aan tafel, geen tussenlagen — je werkt direct met de makers.</p></div>
+    <div class="team-grid">
+      <article class="member" data-rv ><div class="ph" aria-hidden="true">L</div><h3>Lieke Mol</h3><span class="role">Creatief directeur</span></article><article class="member" data-rv data-d=".6s"><div class="ph" aria-hidden="true">D</div><h3>Daan Vos</h3><span class="role">Strateeg</span></article><article class="member" data-rv data-d=".12s"><div class="ph" aria-hidden="true">I</div><h3>Imara Boateng</h3><span class="role">Lead designer</span></article><article class="member" data-rv data-d=".18s"><div class="ph" aria-hidden="true">T</div><h3>Tomas Reijn</h3><span class="role">Motion & code</span></article>
+    </div>
+  </div>
+</section>
+<section class="section "  aria-label="Wat opdrachtgevers <em>zeggen</em>">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Reacties</p>
+      <h2>Wat opdrachtgevers <em>zeggen</em></h2>
+      
+    </div>
+    <div class="testi-grid">
+      <figure class="testi" data-rv >
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Nocturne gaf ons merk lef. We worden eindelijk gezien in een drukke markt.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true">P</span><span><b>Petra Lemaire</b><span>CMO, Halo</span></span></figcaption>
+      </figure><figure class="testi" data-rv data-d=".7s">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Strak, snel en verrassend. Elke deliverable zat meteen goed.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true">W</span><span><b>Wout Janssen</b><span>Oprichter, Vesper</span></span></figcaption>
+      </figure><figure class="testi" data-rv data-d=".14s">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <blockquote>Strategie én creatie uit één hand — dat scheelt enorm veel ruis.</blockquote>
+        <figcaption class="who"><span class="av" aria-hidden="true">N</span><span><b>Nadia el Amrani</b><span>Brand director, Polaris</span></span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 <section class="section "  aria-label="Investeren in <em>onderscheid</em>">
@@ -519,7 +767,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
         <a class="brand" href="#top" aria-label="Nocturne"><span class="mark" aria-hidden="true">N</span><span>Nocturne<small>Creatieve studio · Rotterdam</small></span></a>
         <p>Nocturne is een creatieve studio in Rotterdam. We bouwen merken die opvallen — strak, modern en zonder ruis.</p>
       </div>
-      <div class="footer-col"><h4>Studio</h4><ul><li><a href="#diensten">Diensten</a></li><li><a href="#aanpak">Aanpak</a></li><li><a href="#tarieven">Tarieven</a></li></ul></div><div class="footer-col"><h4>Meer</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:studio@nocturne.works">studio@nocturne.works</a></li><li><a href="tel:+31103227050">+31 10 322 70 50</a></li><li><a href="#contact">Schiekade 189, Rotterdam</a></li></ul></div>
+      <div class="footer-col"><h4>Studio</h4><ul><li><a href="#werk">Werk</a></li><li><a href="#kunnen">Wat we kunnen</a></li><li><a href="#team">Team</a></li></ul></div><div class="footer-col"><h4>Meer</h4><ul><li><a href="#tarieven">Tarieven</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:studio@nocturne.works">studio@nocturne.works</a></li><li><a href="tel:+31103227050">+31 10 322 70 50</a></li><li><a href="#contact">Schiekade 189, Rotterdam</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Nocturne — KvK 64120877 · Rotterdam</span>
@@ -602,7 +850,7 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       el.textContent = '0'; setTimeout(function () { requestAnimationFrame(tick); }, 80 + i * 90);
     });
   }
-  Array.prototype.forEach.call(doc.querySelectorAll('.stats'), function (sec) {
+  Array.prototype.forEach.call(doc.querySelectorAll('.stats, [data-countup]'), function (sec) {
     if ('IntersectionObserver' in window && !reduced) {
       var o = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { runCount(sec); o.unobserve(en.target); } }); }, { threshold: 0.4 });
       o.observe(sec);
@@ -679,6 +927,24 @@ html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashof
       form.classList.add('sent');
       var success = form.querySelector('.form-success'); if (success) { success.setAttribute('aria-hidden', 'false'); }
       if (statusEl) { statusEl.textContent = 'Verzonden.'; }
+    });
+  });
+
+  /* tabs */
+  Array.prototype.forEach.call(doc.querySelectorAll('[data-tabs]'), function (root2) {
+    var tabs = Array.prototype.slice.call(root2.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(root2.querySelectorAll('.tab-panel'));
+    function select(i) {
+      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+      panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = tabs.length, idx = i;
+        if (e.key === 'ArrowRight') { idx = (i + 1) % n; } else if (e.key === 'ArrowLeft') { idx = (i - 1 + n) % n; } else { return; }
+        e.preventDefault(); tabs[idx].focus(); select(idx);
+      });
     });
   });
 

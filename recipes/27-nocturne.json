@@ -23,45 +23,51 @@
   },
   "brand": { "name": "Nocturne", "tagline": "Creatieve studio · Rotterdam", "email": "studio@nocturne.works", "tel": "+31 10 322 70 50", "address": "Schiekade 189, 3013 BR Rotterdam" },
   "nav": [
-    { "href": "#diensten", "label": "Diensten" },
-    { "href": "#aanpak", "label": "Aanpak" },
+    { "href": "#werk", "label": "Werk" },
+    { "href": "#kunnen", "label": "Wat we kunnen" },
+    { "href": "#team", "label": "Team" },
     { "href": "#tarieven", "label": "Tarieven" },
-    { "href": "#faq", "label": "FAQ" },
     { "href": "#contact", "label": "Contact" }
   ],
   "headerCta": { "href": "#contact", "label": "Start een project" },
   "sections": [
     { "use": "hero", "data": {
+      "layout": "center",
       "eyebrow": "Creatieve studio · est. 2015",
       "title": "Merken die <em>oplichten</em> in het donker.",
       "lead": "Nocturne ontwerpt identiteiten, campagnes en digitale ervaringen met een scherpe, eigentijdse rand. Minder ruis, meer indruk.",
-      "ctas": [ { "href": "#contact", "label": "Start een project", "primary": true }, { "href": "#diensten", "label": "Wat we doen" } ],
-      "clock": "Rotterdam nu",
+      "ctas": [ { "href": "#contact", "label": "Start een project", "primary": true }, { "href": "#werk", "label": "Bekijk werk" } ],
+      "clock": "Rotterdam",
       "stats": [ { "value": "90+", "label": "merken gelanceerd" }, { "value": "12", "label": "design awards" }, { "value": "10 jr", "label": "ervaring" } ]
     }},
-    { "use": "features", "id": "diensten", "data": {
-      "eyebrow": "Diensten",
-      "title": "Scherp van strategie tot <em>uitvoering</em>",
-      "intro": "Eén studio voor het hele creatieve traject — strak op elkaar afgestemd.",
+    { "use": "marquee", "data": { "outline": true, "items": [ "Branding", "Art direction", "Digitaal", "Motion", "Campagne", "Strategie" ] } },
+    { "use": "showcase", "id": "werk", "data": {
+      "eyebrow": "Geselecteerd werk",
+      "title": "Werk dat <em>blijft hangen</em>",
+      "intro": "Een selectie uit onze recente lanceringen voor merken die durven opvallen.",
       "items": [
-        { "icon": "◐", "title": "Merkidentiteit", "text": "Een onderscheidende identiteit met een sterk systeem: logo, kleur, type en toon die overal kloppen." },
-        { "icon": "✦", "title": "Art direction", "text": "Een visuele richting met lef — beeld, ritme en sfeer die je merk een eigen stem geven." },
-        { "icon": "◢", "title": "Digitaal & web", "text": "Snelle, vloeiende websites en interfaces met motion die premium aanvoelt." },
-        { "icon": "◑", "title": "Campagne", "text": "Concepten die landen — van social tot out-of-home, consistent en raak." },
-        { "icon": "◉", "title": "Content & motion", "text": "Beeld, animatie en video die je verhaal in beweging brengen." },
-        { "icon": "⬡", "title": "Strategie", "text": "Positionering en merkstrategie als stevig fundament onder al het creatieve werk." }
+        { "tag": "Identiteit", "glyph": "◐", "title": "Halo", "meta": "Rebrand" },
+        { "tag": "Campagne", "glyph": "✦", "title": "Polaris", "meta": "OOH + social" },
+        { "tag": "Digitaal", "glyph": "◢", "title": "Vesper", "meta": "Website" },
+        { "tag": "Motion", "glyph": "◉", "title": "Lumen", "meta": "Titelsequentie" },
+        { "tag": "Merk", "glyph": "⬡", "title": "Onyx", "meta": "Identiteit" },
+        { "tag": "Web", "glyph": "◭", "title": "Eclipse", "meta": "Platform" }
       ]
     }},
-    { "use": "split", "id": "aanpak", "data": {
-      "eyebrow": "Aanpak",
-      "title": "Klein team, grote ambities",
-      "paragraphs": [
-        "We werken bewust met een compacte ploeg van makers — strateeg, ontwerper, motion. Daardoor blijft het werk scherp en de communicatie kort.",
-        "Elk traject begint met een duidelijke vraag en eindigt met een systeem dat je merk laat groeien, niet alleen één mooi plaatje."
-      ],
-      "points": [ "Senioren aan tafel, geen tussenlagen", "Strategie + creatie in één hand", "Levende merksystemen, geen losse deliverables", "Internationale awards, lokale lijntjes" ],
-      "cta": { "href": "#contact", "label": "Maak kennis" },
-      "glyph": "◭"
+    { "use": "quote", "data": {
+      "dark": true,
+      "text": "Goed design fluistert niet — het laat een merk <em>oplichten</em> in een donkere kamer.",
+      "who": "— Studioprincipe №1"
+    }},
+    { "use": "tabs", "id": "kunnen", "data": {
+      "eyebrow": "Wat we kunnen",
+      "title": "Scherp van strategie tot <em>uitvoering</em>",
+      "tabs": [
+        { "label": "Strategie", "title": "Positionering met fundament", "text": "We graven naar wat je merk uniek maakt en vertalen dat naar een heldere positionering en toon.", "points": [ "Merkonderzoek & positionering", "Naamgeving & verhaal", "Tone of voice" ] },
+        { "label": "Merk", "title": "Een identiteit met lef", "text": "Een visueel systeem dat overal werkt — van app-icoon tot billboard.", "points": [ "Logo & visueel systeem", "Kleur, type & beeld", "Merkrichtlijnen" ] },
+        { "label": "Digitaal", "title": "Ervaringen in beweging", "text": "Snelle, vloeiende websites en producten met motion die premium aanvoelt.", "points": [ "Web- & productdesign", "Front-end & motion", "Prototyping" ] },
+        { "label": "Campagne", "title": "Concepten die landen", "text": "Van idee tot uitrol over alle kanalen, consistent en raak.", "points": [ "Concept & art direction", "Content & video", "Uitrol & nazorg" ] }
+      ]
     }},
     { "use": "stats", "data": { "items": [
       { "target": 2015, "label": "opgericht" },
@@ -69,6 +75,26 @@
       { "target": 12, "label": "design awards" },
       { "target": 40, "suffix": "+", "label": "landen bereikt" }
     ]}},
+    { "use": "team", "id": "team", "data": {
+      "eyebrow": "Het team",
+      "title": "Klein team, grote <em>ambities</em>",
+      "intro": "Senioren aan tafel, geen tussenlagen — je werkt direct met de makers.",
+      "items": [
+        { "name": "Lieke Mol", "role": "Creatief directeur" },
+        { "name": "Daan Vos", "role": "Strateeg" },
+        { "name": "Imara Boateng", "role": "Lead designer" },
+        { "name": "Tomas Reijn", "role": "Motion & code" }
+      ]
+    }},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Reacties",
+      "title": "Wat opdrachtgevers <em>zeggen</em>",
+      "items": [
+        { "quote": "Nocturne gaf ons merk lef. We worden eindelijk gezien in een drukke markt.", "name": "Petra Lemaire", "role": "CMO, Halo" },
+        { "quote": "Strak, snel en verrassend. Elke deliverable zat meteen goed.", "name": "Wout Janssen", "role": "Oprichter, Vesper" },
+        { "quote": "Strategie én creatie uit één hand — dat scheelt enorm veel ruis.", "name": "Nadia el Amrani", "role": "Brand director, Polaris" }
+      ]
+    }},
     { "use": "pricing", "id": "tarieven", "data": {
       "eyebrow": "Tarieven",
       "title": "Investeren in <em>onderscheid</em>",
@@ -112,8 +138,8 @@
     "blurb": "Nocturne is een creatieve studio in Rotterdam. We bouwen merken die opvallen — strak, modern en zonder ruis.",
     "bottom": "KvK 64120877 · Rotterdam",
     "columns": [
-      { "title": "Studio", "links": [ { "href": "#diensten", "label": "Diensten" }, { "href": "#aanpak", "label": "Aanpak" }, { "href": "#tarieven", "label": "Tarieven" } ] },
-      { "title": "Meer", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Studio", "links": [ { "href": "#werk", "label": "Werk" }, { "href": "#kunnen", "label": "Wat we kunnen" }, { "href": "#team", "label": "Team" } ] },
+      { "title": "Meer", "links": [ { "href": "#tarieven", "label": "Tarieven" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
       { "title": "Contact", "links": [ { "href": "mailto:studio@nocturne.works", "label": "studio@nocturne.works" }, { "href": "tel:+31103227050", "label": "+31 10 322 70 50" }, { "href": "#contact", "label": "Schiekade 189, Rotterdam" } ] }
     ]
   }

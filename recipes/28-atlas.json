@@ -34,6 +34,7 @@
   "customJsFile": "recipes/28-atlas.js",
   "sections": [
     { "use": "hero", "data": {
+      "layout": "media",
       "eyebrow": "Aanpasbare starter · één bestand",
       "title": "Eén template, <em>jouw</em> merk in seconden.",
       "lead": "Atlas is een strakke, moderne website-starter die je live aanpast. Klik rechtsonder op ✦ Thema: kies een accentkleur, schakel naar donker, draai aan de hoeken en het lettertype — en kopieer je thema als CSS.",
@@ -54,6 +55,31 @@
         { "icon": "◳", "title": "Klaar om te bouwen", "text": "Header, secties, prijzen, FAQ en formulier zitten er al in — vul je content in en ga live." }
       ]
     }},
+    { "use": "steps", "data": {
+      "eyebrow": "Zo werkt het",
+      "title": "Van download naar <em>jouw</em> merk",
+      "intro": "Drie stappen en je site staat in jouw kleuren online.",
+      "items": [
+        { "title": "Open de editor", "text": "Klik rechtsonder op ✦ Thema en speel met kleur, modus, hoeken en lettertype tot het klopt." },
+        { "title": "Kopieer je thema", "text": "Eén klik zet je keuzes om in een kant-en-klaar :root-CSS-blok op je klembord." },
+        { "title": "Plak & ga live", "text": "Plak het blok in je bestand, vul je content in en zet de pagina online — klaar." }
+      ]
+    }},
+    { "use": "comparison", "data": {
+      "eyebrow": "Vergelijk",
+      "title": "Waarom <em>Atlas</em>",
+      "intro": "Een eerlijke vergelijking met de gebruikelijke alternatieven.",
+      "columns": [ "Losse code", "Pagebuilder", "Atlas" ],
+      "highlight": 2,
+      "rows": [
+        { "label": "Live thema aanpassen", "cells": [ false, true, true ] },
+        { "label": "Eén bestand, geen build", "cells": [ true, false, true ] },
+        { "label": "Geen dependencies", "cells": [ true, false, true ] },
+        { "label": "Toegankelijk (ARIA, focus, reduced-motion)", "cells": [ "soms", "wisselend", true ] },
+        { "label": "Thema als CSS exporteren", "cells": [ false, false, true ] },
+        { "label": "Eénmalige prijs", "cells": [ "—", "abonnement", "vanaf € 0" ] }
+      ]
+    }},
     { "use": "split", "id": "systeem", "data": {
       "eyebrow": "Het systeem",
       "title": "Strak, modern en consistent",
@@ -65,9 +91,9 @@
       "cta": { "href": "#contact", "label": "Download de starter" },
       "glyph": "▦"
     }},
-    { "use": "stats", "data": { "items": [
+    { "use": "metrics", "data": { "items": [
       { "target": 1, "label": "bestand om te kopiëren" },
-      { "target": 9, "label": "kant-en-klare secties" },
+      { "target": 20, "suffix": "+", "label": "kant-en-klare secties" },
       { "target": 6, "label": "accent-presets" },
       { "target": 0, "label": "dependencies" }
     ]}},
@@ -93,10 +119,10 @@
         { "q": "Mag ik het voor klanten gebruiken?", "an": "Met de Pro- of Team-licentie gebruik je Atlas onbeperkt in commercieel klantwerk. Alleen het kant-en-klaar doorverkopen als product aan derden mag niet." }
       ]
     }},
-    { "use": "cta", "data": {
+    { "use": "banner", "data": {
       "title": "Maak het <em>van jou</em>",
       "text": "Open de editor, kies je kleuren en zet je site vandaag nog online.",
-      "ctas": [ { "href": "#contact", "label": "Download de starter", "primary": true } ]
+      "cta": { "href": "#contact", "label": "Download de starter" }
     }},
     { "use": "contact", "id": "contact", "data": {
       "eyebrow": "Contact",

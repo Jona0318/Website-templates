@@ -72,7 +72,7 @@
       el.textContent = '0'; setTimeout(function () { requestAnimationFrame(tick); }, 80 + i * 90);
     });
   }
-  Array.prototype.forEach.call(doc.querySelectorAll('.stats'), function (sec) {
+  Array.prototype.forEach.call(doc.querySelectorAll('.stats, [data-countup]'), function (sec) {
     if ('IntersectionObserver' in window && !reduced) {
       var o = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { runCount(sec); o.unobserve(en.target); } }); }, { threshold: 0.4 });
       o.observe(sec);
@@ -149,6 +149,24 @@
       form.classList.add('sent');
       var success = form.querySelector('.form-success'); if (success) { success.setAttribute('aria-hidden', 'false'); }
       if (statusEl) { statusEl.textContent = 'Verzonden.'; }
+    });
+  });
+
+  /* tabs */
+  Array.prototype.forEach.call(doc.querySelectorAll('[data-tabs]'), function (root2) {
+    var tabs = Array.prototype.slice.call(root2.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(root2.querySelectorAll('.tab-panel'));
+    function select(i) {
+      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+      panels.forEach(function (p, j) { p.classList.toggle('is-active', j === i); });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = tabs.length, idx = i;
+        if (e.key === 'ArrowRight') { idx = (i + 1) % n; } else if (e.key === 'ArrowLeft') { idx = (i - 1 + n) % n; } else { return; }
+        e.preventDefault(); tabs[idx].focus(); select(idx);
+      });
     });
   });
 
