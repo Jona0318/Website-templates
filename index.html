@@ -1,542 +1,546 @@
 <!DOCTYPE html>
-<html lang="nl" data-theme="light">
+<html lang="nl" class="js no-anim">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Template Galerij — 28 kant-en-klare websites</title>
-  <meta name="description" content="Een verzameling van 24 kant-en-klare, responsive website-templates — waaronder 9 premium designs, twee flagships en vier signature-templates met canvas-interactie. Klik om elke template te bekijken." />
-  <link rel="icon" href="templates/01-business/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
-  <style>
-    :root {
-      --bg: #0b1020;
-      --bg-card: #141a2e;
-      --text: #f3f4f6;
-      --muted: #9aa3b8;
-      --border: #26304b;
-      --accent: #6366f1;
-      --radius: 16px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Inter", system-ui, sans-serif;
-      background:
-        radial-gradient(60% 50% at 80% -10%, rgba(99,102,241,0.25), transparent),
-        radial-gradient(50% 50% at 0% 0%, rgba(6,182,212,0.18), transparent),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template Galerij — 28 kant-en-klare websites</title>
+<meta name="description" content="Een verzameling van 28 complete, responsive website-templates: van basis tot premium, twee flagships, vier signature-designs met canvas-interactie en een live aanpasbare starter. Filter, zoek en bekijk ze allemaal.">
+<meta name="theme-color" content="#0a0a12">
+<meta property="og:title" content="Template Galerij — 28 kant-en-klare websites">
+<meta property="og:description" content="28 complete, responsive templates — pure HTML/CSS/JS, geen build-tools. Filter, zoek en open ze direct.">
+<meta property="og:type" content="website">
+<link rel="icon" href="templates/01-business/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement; h.classList.remove('no-js');
+    try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { h.classList.remove('no-anim'); h.classList.add('anim-ok'); } } catch (e) {}
+  })();
+</script>
+<style>
+/* ============================================================
+   TEMPLATE GALERIJ — overzichtspagina
+   handgemaakt · alles inline · geen dependencies
+   ============================================================ */
+:root{
+  --bg:#0a0a12;
+  --bg-2:#10101c;
+  --surface:#14141f;
+  --surface-2:#191926;
+  --text:#f3f3f8;
+  --muted:rgba(243,243,248,.62);
+  --faint:rgba(243,243,248,.40);
+  --line:rgba(243,243,248,.10);
+  --line-strong:rgba(243,243,248,.20);
+  /* speelse accent-spectrum */
+  --pink:#ff5d8f; --violet:#a06bff; --blue:#5b8cff; --teal:#38e0c8; --gold:#f5b13d; --coral:#ff6a4d;
+  --accent:var(--violet);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-hard:cubic-bezier(.7,0,.2,1);
+  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Plus Jakarta Sans",system-ui,sans-serif;
+  --f-mono:"Space Mono",ui-monospace,monospace;
+  --header-h:66px;
+  --gutter:clamp(1.1rem,4vw,4rem);
+  --maxw:1280px;
+  --radius:18px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.no-anim{scroll-behavior:auto}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--f-body);font-size:1rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  min-height:100vh;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit}
+ul{list-style:none}
+::selection{background:var(--violet);color:#fff}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:#2c2c40;border-radius:99px;border:3px solid var(--bg-2)}
+::-webkit-scrollbar-thumb:hover{background:var(--violet)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
-    header.top { padding: 5rem 0 3rem; text-align: center; }
-    .badge {
-      display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .08em;
-      text-transform: uppercase; color: #c7d2fe;
-      background: rgba(99,102,241,.15); border: 1px solid var(--border);
-      padding: .4rem 1rem; border-radius: 999px; margin-bottom: 1.5rem;
-    }
-    header.top h1 {
-      font-size: clamp(2.2rem, 6vw, 3.75rem); font-weight: 900; line-height: 1.05;
-      letter-spacing: -.02em; margin-bottom: 1rem;
-    }
-    header.top h1 span {
-      background: linear-gradient(120deg, #818cf8, #22d3ee);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    header.top p { color: var(--muted); font-size: 1.15rem; max-width: 56ch; margin: 0 auto; }
+/* achtergrond-canvas + korrel */
+#bg{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none}
+body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 
-    .grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-      padding-bottom: 4rem;
-    }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+/* skip + progress */
+.skip-link{position:fixed;top:0;left:0;z-index:400;background:var(--violet);color:#fff;padding:.7rem 1.2rem;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transform:translateY(-120%);transition:transform .3s var(--ease)}
+.skip-link:focus{transform:translateY(0)}
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:linear-gradient(90deg,var(--pink),var(--violet),var(--blue),var(--teal));transform:scaleX(0);transform-origin:left center}
+html.no-anim .scroll-progress{display:none}
 
-    .card {
-      display: flex; flex-direction: column;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-      text-decoration: none; color: inherit;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(0,0,0,.4);
-    }
-    .card-flagship {
-      grid-column: 1 / -1;
-      border-color: rgba(255,90,54,.45);
-      box-shadow: 0 0 0 1px rgba(255,90,54,.25), 0 24px 60px rgba(255,90,54,.12);
-    }
-    @media (min-width: 720px) {
-      .card-flagship { display: grid; grid-template-columns: 1.1fr 1fr; }
-      .card-flagship .thumb { aspect-ratio: auto; height: 100%; min-height: 220px; }
-    }
-    .card-flagship:hover { border-color: var(--accent); }
-    .card-flagship .premium {
-      color: #fff; background: linear-gradient(120deg, #ff5a36, #ff8a5c);
-    }
-    .thumb {
-      aspect-ratio: 16 / 10; display: grid; place-items: center;
-      position: relative; overflow: hidden;
-    }
-    .thumb .emoji { font-size: 2.75rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,.35)); }
-    .thumb .num {
-      position: absolute; top: .75rem; left: .85rem;
-      font-size: .8rem; font-weight: 800; color: rgba(255,255,255,.85);
-      background: rgba(0,0,0,.3); padding: .2rem .6rem; border-radius: 999px;
-      backdrop-filter: blur(4px);
-    }
-    .thumb .premium {
-      position: absolute; top: .75rem; right: .85rem;
-      font-size: .72rem; font-weight: 700; letter-spacing: .04em;
-      color: #1a1a1a; background: linear-gradient(120deg, #f6d365, #fda085);
-      padding: .22rem .65rem; border-radius: 999px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.35);
-    }
-    .card-body { padding: 1.25rem 1.35rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
-    .card-body h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .3rem; }
-    .card-body p { color: var(--muted); font-size: .92rem; flex: 1; }
-    .tag {
-      display: inline-block; align-self: flex-start; margin-top: 1rem;
-      font-size: .8rem; font-weight: 600; color: #c7d2fe;
-      border: 1px solid var(--border); padding: .35rem .85rem; border-radius: 8px;
-      transition: background .2s ease, color .2s ease;
-    }
-    .card:hover .tag { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* header */
+.header{position:fixed;top:0;left:0;right:0;z-index:150;height:var(--header-h);display:flex;align-items:center;transition:background-color .4s,border-color .4s;border-bottom:1px solid transparent}
+.header.is-solid{background:rgba(10,10,18,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{display:inline-flex;align-items:center;gap:.65rem;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.brand .dot{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 0deg,var(--pink),var(--violet),var(--blue),var(--teal),var(--pink));flex:none}
+html.anim-ok .brand .dot{animation:spin 9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.header-right{display:flex;align-items:center;gap:1.2rem;font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.header-right a{transition:color .3s}
+.header-right a:hover{color:var(--text)}
+.header-count{display:inline-flex;align-items:center;gap:.45rem}
+.header-count b{color:var(--text);font-weight:700}
+@media (max-width:560px){.header-right .hide-sm{display:none}}
 
-    footer.bottom {
-      border-top: 1px solid var(--border); padding: 2rem 0; text-align: center;
-      color: var(--muted); font-size: .9rem;
-    }
-    footer.bottom code {
-      background: var(--bg-card); border: 1px solid var(--border);
-      padding: .15rem .45rem; border-radius: 6px; color: #c7d2fe; font-size: .85rem;
-    }
-    a.src { color: #818cf8; text-decoration: none; }
-    a.src:hover { text-decoration: underline; }
-    :focus-visible { outline: 3px solid #22d3ee; outline-offset: 3px; }
-    ::selection { background: rgba(99,102,241,.45); color: #fff; }
+/* hero */
+.hero{padding-top:calc(var(--header-h) + clamp(2.5rem,7vw,5.5rem));padding-bottom:clamp(2rem,5vw,3.5rem);text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--f-mono);font-size:.7rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);padding:.45rem 1rem;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.02)}
+.eyebrow .live{width:8px;height:8px;border-radius:50%;background:var(--teal);position:relative}
+.eyebrow .live::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--teal)}
+html.anim-ok .eyebrow .live::after{animation:pulse 2s var(--ease) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3);opacity:0}}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,8.5vw,6rem);line-height:.98;letter-spacing:-.03em;margin:1.4rem auto .9rem;max-width:16ch}
+.hero h1 .grad{
+  background:linear-gradient(100deg,var(--pink),var(--violet) 30%,var(--blue) 60%,var(--teal));
+  background-size:220% 220%;-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+html.anim-ok .hero h1 .grad{animation:flow 9s ease-in-out infinite}
+@keyframes flow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero p.lead{color:var(--muted);font-size:clamp(1.05rem,1.8vw,1.3rem);max-width:54ch;margin:0 auto 1.8rem}
+.hero-cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:.95rem 1.5rem;border-radius:99px;border:1px solid var(--line-strong);color:var(--text);transition:transform .5s var(--ease),background-color .3s,border-color .3s,color .3s;will-change:transform}
+.btn svg{width:15px;height:15px}
+.btn-primary{background:linear-gradient(100deg,var(--pink),var(--violet),var(--blue));background-size:200% 200%;color:#fff;border-color:transparent;box-shadow:0 14px 34px -14px rgba(160,107,255,.7)}
+html.anim-ok .btn-primary{animation:flow 6s ease-in-out infinite}
+.btn-ghost:hover{border-color:var(--violet);color:#fff}
+/* stat-pills */
+.pills{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:baseline;gap:.45rem;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted);padding:.5rem .9rem;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.02)}
+.pill b{font-size:.92rem;color:var(--text)}
+.pill .swatch{width:9px;height:9px;border-radius:3px}
+html.anim-ok .hero>.wrap>*{opacity:0;transform:translateY(24px);animation:rise .8s var(--ease) forwards}
+html.anim-ok .hero .eyebrow{animation-delay:.05s}
+html.anim-ok .hero h1{animation-delay:.16s}
+html.anim-ok .hero .lead{animation-delay:.28s}
+html.anim-ok .hero .hero-cta{animation-delay:.4s}
+html.anim-ok .hero .pills{animation-delay:.5s}
+@keyframes rise{to{opacity:1;transform:none}}
 
-    /* --- Premium entrance & micro-interacties --- */
-    /* Header-elementen faden getrapt in bij laden */
-    .badge, header.top h1, header.top p {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: rise .8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-    header.top h1 { animation-delay: .12s; }
-    header.top p  { animation-delay: .24s; }
-    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+/* toolbar */
+.toolbar{position:sticky;top:var(--header-h);z-index:90;padding-block:1rem;background:rgba(10,10,18,.66);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-block:1px solid var(--line)}
+.toolbar .wrap{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.search{position:relative;flex:1;min-width:220px}
+.search input{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:99px;color:var(--text);padding:.7rem 1rem .7rem 2.5rem;transition:border-color .3s,background-color .3s}
+.search input::placeholder{color:var(--faint)}
+.search input:focus{outline:none;border-color:var(--violet);background:var(--surface-2)}
+.search svg{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--faint);pointer-events:none}
+.chips{display:flex;gap:.45rem;flex-wrap:wrap}
+.chip{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:.55rem .9rem;border-radius:99px;border:1px solid var(--line-strong);color:var(--muted);display:inline-flex;align-items:center;gap:.45rem;transition:color .25s,border-color .25s,background-color .25s,transform .25s var(--ease)}
+.chip .swatch{width:8px;height:8px;border-radius:3px;background:var(--c,var(--muted))}
+.chip .n{color:var(--faint);font-size:.62rem}
+.chip:hover{color:var(--text);transform:translateY(-1px)}
+.chip[aria-pressed="true"]{color:#fff;border-color:transparent;background:var(--c,var(--violet))}
+.chip[aria-pressed="true"] .swatch{background:rgba(255,255,255,.9)}
+.chip[aria-pressed="true"] .n{color:rgba(255,255,255,.8)}
+@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}}
 
-    /* Gradient in de titel verschuift langzaam */
-    header.top h1 span {
-      background-size: 200% 200%;
-      animation: rise .8s cubic-bezier(0.22,1,0.36,1) .12s forwards, gradientShift 8s ease-in-out 1s infinite;
-    }
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
+/* result-meta */
+.meta-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:clamp(2rem,4vw,3rem);padding-bottom:1.2rem}
+.meta-row h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.3rem,2.6vw,1.8rem);letter-spacing:-.01em}
+.meta-row .count{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.meta-row .count b{color:var(--teal)}
 
-    /* Kaarten onthullen met stagger zodra ze in beeld komen (JS zet .in) */
-    .card.reveal { opacity: 0; transform: translateY(26px); }
-    .card.reveal.in {
-      opacity: 1; transform: translateY(0);
-      transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
-      transition-delay: var(--d, 0s);
-    }
-    /* Hover-transform los van reveal-transitie houden */
-    .card.in { transition: transform .25s cubic-bezier(0.22,1,0.36,1), box-shadow .25s ease, border-color .25s ease; }
+/* grid + kaarten */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem);padding-bottom:clamp(3rem,6vw,5rem)}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.grid{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:0 30px 60px -34px rgba(0,0,0,.85)}
+.card.is-hidden{display:none}
+.card--wide{grid-column:span 2}
+@media (min-width:721px){.card--wide{display:grid;grid-template-columns:1.05fr 1fr}.card--wide .thumb{aspect-ratio:auto;min-height:100%}}
+@media (max-width:620px){.card--wide{grid-column:auto}}
+.thumb{position:relative;aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,var(--g1,#444),var(--g2,#222))}
+.thumb .emoji{font-size:2.8rem;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4));transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.card:hover .thumb .emoji{transform:scale(1.16) rotate(-6deg)}
+.thumb .num{position:absolute;top:.7rem;left:.8rem;font-family:var(--f-mono);font-size:.74rem;font-weight:700;color:rgba(255,255,255,.92);background:rgba(0,0,0,.32);padding:.2rem .55rem;border-radius:99px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.thumb .badge{position:absolute;top:.7rem;right:.8rem;font-family:var(--f-mono);font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0a0a12;padding:.24rem .6rem;border-radius:99px;background:var(--bc,#fff)}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none}
+.card:hover .thumb::after{transform:translateX(120%)}
+.body{display:flex;flex-direction:column;flex:1;padding:1.2rem 1.3rem 1.35rem;gap:.5rem}
+.body h3{font-family:var(--f-display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
+.body p{color:var(--muted);font-size:.9rem;flex:1}
+.body .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.3rem}
+.body .tags span{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:.2rem .5rem}
+.body .go{display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .3s,gap .3s}
+.body .go svg{width:13px;height:13px}
+.card:hover .body .go{color:var(--teal);gap:.7rem}
+.card--wide .body{padding:clamp(1.4rem,2.5vw,2.2rem)}
+.card--wide .body h3{font-size:1.5rem}
+.card--wide .body p{font-size:.98rem}
 
-    /* Emoji wiebelt subtiel bij hover van de kaart */
-    .thumb .emoji { transition: transform .35s cubic-bezier(0.34,1.56,0.64,1); }
-    .card:hover .thumb .emoji { transform: scale(1.18) rotate(-6deg); }
+/* reveal */
+html.anim-ok .card.reveal{opacity:0;transform:translateY(26px)}
+html.anim-ok .card.reveal.in{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
 
-    /* Pijl in de tag schuift bij hover */
-    .tag::after { content: ""; }
-    .card .tag { position: relative; }
-    .card:hover .tag { padding-right: 1.05rem; }
+/* lege staat */
+.empty{display:none;text-align:center;padding:4rem 1rem 5rem;color:var(--muted)}
+.empty.show{display:block}
+.empty .big{font-size:2.4rem;margin-bottom:.6rem}
+.empty button{margin-top:1rem;font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);border-bottom:1px solid var(--teal);padding-bottom:2px}
 
-    /* Glanzende sweep over de thumbnail bij hover */
-    .thumb::after {
-      content: "";
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%);
-      transform: translateX(-120%);
-      transition: transform .7s cubic-bezier(0.22,1,0.36,1);
-      pointer-events: none;
-    }
-    .card:hover .thumb::after { transform: translateX(120%); }
+/* footer */
+.footer{border-top:1px solid var(--line);padding-block:clamp(2.5rem,5vw,4rem);position:relative;z-index:2}
+.footer .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:2rem}
+@media (max-width:720px){.footer .wrap{grid-template-columns:1fr}}
+.footer .blurb{color:var(--muted);font-size:.92rem;max-width:42ch;margin-top:.8rem}
+.footer h4{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:.9rem}
+.footer code{font-family:var(--f-mono);font-size:.82rem;color:var(--teal);background:var(--surface);border:1px solid var(--line);padding:.15rem .45rem;border-radius:6px}
+.footer ul{display:grid;gap:.5rem;font-size:.9rem}
+.footer ul a{color:var(--muted);transition:color .3s}
+.footer ul a:hover{color:var(--text)}
+.footer .bottom{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--f-mono);font-size:.7rem;color:var(--faint)}
 
-    /* Reduced motion: alles direct zichtbaar, geen beweging */
-    @media (prefers-reduced-motion: reduce) {
-      .badge, header.top h1, header.top p, header.top h1 span { animation: none; opacity: 1; transform: none; }
-      .card.reveal { opacity: 1; transform: none; transition: none; }
-      .thumb::after { display: none; }
-      .thumb .emoji { transition: none; }
-    }
-  </style>
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok .hero>.wrap>*{opacity:1;transform:none;animation:none}
+  .thumb::after{display:none}
+}
+</style>
 </head>
 <body>
-  <header class="top">
-    <div class="wrap">
-      <span class="badge">28 kant-en-klare templates</span>
-      <h1>Template <span>Galerij</span></h1>
-      <p>Een verzameling complete, responsive website-templates — elk met een eigen stijl. Klik op een kaart om de template in een nieuw tabblad te openen.</p>
+<a class="skip-link" href="#collectie">Direct naar de templates</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Template Galerij"><span class="dot" aria-hidden="true"></span>Template&nbsp;Galerij</a>
+    <div class="header-right">
+      <span class="header-count hide-sm"><b id="hcount">28</b> templates</span>
+      <a href="#collectie">Collectie</a>
+      <a href="#over" class="hide-sm">Over</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="wrap">
-    <div class="grid">
-
-      <a class="card card-flagship" href="templates/19-studio/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0b0b0d,#ff5a36);">
-          <span class="num">19</span><span class="premium">★ Flagship</span><span class="emoji">✦</span>
-        </div>
-        <div class="card-body">
-          <h3>Studio Kaap — Flagship</h3>
-          <p>Het pronkstuk: de sterkste features uit de hele galerij gebundeld. Preloader, scroll-gedreven manifest, bento-grid, 3D-tilt, voor/na-slider, tekenende tijdlijn, snelheidsreactieve marquee, FAQ-accordion, live studioklok en filmkorrel-textuur.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card card-flagship" href="templates/20-buitenplaats/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#f3f1ea,#2e5b3f);">
-          <span class="num">20</span><span class="premium">★ Flagship</span><span class="emoji">🌿</span>
-        </div>
-        <div class="card-body">
-          <h3>Buitenplaats — Flagship</h3>
-          <p>De lichte tegenpool van Studio Kaap: serif-gedreven tuinarchitectuur met curtain-reveal, boogmaskers, meeschuivende hover-previews, projectfilter, schets-naar-tuin-slider, seizoenstijdlijn en groene duotones.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/21-letterstudio/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#e4e4ff,#6260ff);">
-          <span class="num">21</span><span class="premium">✦ Signature</span><span class="emoji">🔠</span>
-        </div>
-        <div class="card-body">
-          <h3>Letterstudio / Type Foundry</h3>
-          <p>Interactief specimen-lab: bewerkbaar reuze-proefwoord met sliders, scroll-morfend variabel font met live uitlezing, glyph-raster met preview, en vier pure CSS-showcases — nul stockfoto's.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/22-museum/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#fbeaeb,#3447aa);">
-          <span class="num">22</span><span class="premium">✦ Signature</span><span class="emoji">🖼️</span>
-        </div>
-        <div class="card-body">
-          <h3>Museum / Kunsthal</h3>
-          <p>Blauw op zachtroze met live "nu geopend"-status uit echte openingstijden, sleepbare collectiestrook, volwaardige lightbox met focus-trap, agenda en tickets-banner.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/23-sterrenwacht/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#070b18,#f0b94c);">
-          <span class="num">23</span><span class="premium">✦ Signature</span><span class="emoji">🔭</span>
-        </div>
-        <div class="card-body">
-          <h3>Sterrenwacht / Planetarium</h3>
-          <p>Eerste template met écht canvas: een animerende sterrenhemel met parallax en vallende sterren, een bouw-je-eigen-sterrenbeeld-veld waarin je sterren verbindt, en een maanfase die live uit de datum wordt berekend.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/24-atelier/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#16140f,#1b29ff);">
-          <span class="num">24</span><span class="premium">✦ Signature</span><span class="emoji">🌀</span>
-        </div>
-        <div class="card-body">
-          <h3>Generatieve Studio</h3>
-          <p>Een live stroomveld-canvas als pronkstuk: stuur dichtheid, turbulentie en vloei met sliders, kies een palet en download je eigen compositie als PNG. Elke werk-thumbnail is zelf een klein generatief programma.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/25-makelaar/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#19201c,#1f6f5c);">
-          <span class="num">25</span><span class="premium">⚙ Recept</span><span class="emoji">🏡</span>
-        </div>
-        <div class="card-body">
-          <h3>Makelaar / Vastgoed</h3>
-          <p>Eerste template uit de generator: gebouwd uit een kort recept (~110 regels) dat de gedeelde kern inlinet tot een zelfstandig bestand. Diensten, aanpak, courtage-tarieven, FAQ en waardebepaling-formulier.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/26-helder/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#6a2be6,#88c425);">
-          <span class="num">26</span><span class="premium">⚙ Recept</span><span class="emoji">💡</span>
-        </div>
-        <div class="card-body">
-          <h3>Helder — digitale studio</h3>
-          <p>Algemene, strakke studio-/bedrijfstemplate. Uniek palet violet × lime op warm wit, grotesk-typografie, met prijs-toggle, diensten, werkwijze, FAQ en contact.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/27-nocturne/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0d0f13,#5fe9ad);">
-          <span class="num">27</span><span class="premium">⚙ Recept</span><span class="emoji">🌙</span>
-        </div>
-        <div class="card-body">
-          <h3>Nocturne — creatieve studio</h3>
-          <p>Algemene, donkere agency-/portfoliotemplate. Uniek palet mint × lila op bijna-zwart, modern en strak — diensten, aanpak, tarieven, FAQ en contact.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/28-atlas/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#4f46e5,#ec4899);">
-          <span class="num">28</span><span class="premium">✦ Aanpasbaar</span><span class="emoji">🎨</span>
-        </div>
-        <div class="card-body">
-          <h3>Atlas — aanpasbare starter</h3>
-          <p>Live thema-editor: kies accentkleur, schakel licht/donker, draai aan hoeken en lettertype — alles verandert direct mee en je kopieert je thema als CSS. Eén bestand, nul dependencies.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/01-business/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#4f46e5,#06b6d4);">
-          <span class="num">01</span><span class="emoji">🏢</span>
-        </div>
-        <div class="card-body">
-          <h3>Bedrijf / Corporate</h3>
-          <p>Meerdere pagina's: home, over ons, diensten, contact. Met dark mode, prijzen en FAQ.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/02-portfolio/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0d0d0f,#2a2a18);">
-          <span class="num">02</span><span class="emoji">🎨</span>
-        </div>
-        <div class="card-body">
-          <h3>Portfolio</h3>
-          <p>Donker, creatief portfolio voor een designer of developer met projectgrid.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/03-saas/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#7c3aed,#2563eb);">
-          <span class="num">03</span><span class="emoji">🚀</span>
-        </div>
-        <div class="card-body">
-          <h3>SaaS / Software</h3>
-          <p>Productlanding met functies, prijzen (maand/jaar-schakelaar) en FAQ-accordion.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/04-restaurant/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#1f3d2b,#c1572c);">
-          <span class="num">04</span><span class="emoji">🍽️</span>
-        </div>
-        <div class="card-body">
-          <h3>Restaurant</h3>
-          <p>Warme, elegante restaurantsite met menu, galerij en reserveringsformulier.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/05-agency/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0a0a0a,#2b50ff);">
-          <span class="num">05</span><span class="emoji">⚡</span>
-        </div>
-        <div class="card-body">
-          <h3>Agency / Studio</h3>
-          <p>Bold, high-contrast bureausite met grote typografie, cases en statistieken.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/06-blog/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#d6334c,#7c1d2b);">
-          <span class="num">06</span><span class="emoji">📰</span>
-        </div>
-        <div class="card-body">
-          <h3>Blog / Magazine</h3>
-          <p>Redactionele homepage met uitgelicht artikel, artikelgrid en nieuwsbrief.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/07-webshop/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#111827,#ff4d4d);">
-          <span class="num">07</span><span class="emoji">🛍️</span>
-        </div>
-        <div class="card-body">
-          <h3>Webshop</h3>
-          <p>E-commerce homepage met productgrid, categorieën en werkende winkelmand-teller.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/08-fotografie/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#1a1a1a,#555);">
-          <span class="num">08</span><span class="emoji">📷</span>
-        </div>
-        <div class="card-body">
-          <h3>Fotografie</h3>
-          <p>Minimalistisch fotografieportfolio met galerij en categorie-filter.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/09-event/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#6d28d9,#ec4899);">
-          <span class="num">09</span><span class="emoji">🎟️</span>
-        </div>
-        <div class="card-body">
-          <h3>Event / Congres</h3>
-          <p>Energieke eventlanding met countdown, sprekers, programma en tickets.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/10-cv/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0d9488,#0f766e);">
-          <span class="num">10</span><span class="emoji">👤</span>
-        </div>
-        <div class="card-body">
-          <h3>CV / Resumé</h3>
-          <p>Persoonlijke one-page CV met animerende vaardigheidsbalken en tijdlijn.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/11-architectuur/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#1a1816,#a67c52);">
-          <span class="num">11</span><span class="premium">★ Premium</span><span class="emoji">🏛️</span>
-        </div>
-        <div class="card-body">
-          <h3>Architectuur Studio</h3>
-          <p>Editorial design met preloader, parallax, scroll-gedreven tekst en magnetische knop.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/12-hotel/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#101713,#b89b5e);">
-          <span class="num">12</span><span class="premium">★ Premium</span><span class="emoji">🛎️</span>
-        </div>
-        <div class="card-body">
-          <h3>Boutique Hotel</h3>
-          <p>Vijfsterren-uitstraling met boekingsbalk, gouden details en quote-carrousel.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/13-fintech/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0a0c10,#00e389);">
-          <span class="num">13</span><span class="premium">★ Premium</span><span class="emoji">💳</span>
-        </div>
-        <div class="card-body">
-          <h3>Fintech / Bank</h3>
-          <p>3D-tilt bankpas, live transactiefeed, bento-grid en glasmorfisme.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/14-fashion/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#f4f2ee,#1a1a1a);">
-          <span class="num">14</span><span class="premium">★ Premium</span><span class="emoji">🕊️</span>
-        </div>
-        <div class="card-body">
-          <h3>Fashion / Maison</h3>
-          <p>Haute couture-minimalisme met curtain-reveal, lookbook en asymmetrisch grid.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/15-wellness/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#9aa88f,#3a4438);">
-          <span class="num">15</span><span class="premium">★ Premium</span><span class="emoji">🌿</span>
-        </div>
-        <div class="card-body">
-          <h3>Wellness / Spa</h3>
-          <p>Serene luxe met adem-widget, boogvormige maskers en tekenende tijdlijn.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/16-bouw/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0d0f12,#3b82f6);">
-          <span class="num">16</span><span class="premium">★ Premium</span><span class="emoji">🧱</span>
-        </div>
-        <div class="card-body">
-          <h3>ZZP Metselaar</h3>
-          <p>Blueprint-stijl met zelftekenende troffel, voor/na-slider en projectfilter.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/17-koffie/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#f6f1e7,#c47a3d);">
-          <span class="num">17</span><span class="premium">★ Premium</span><span class="emoji">☕</span>
-        </div>
-        <div class="card-body">
-          <h3>Koffiebranderij</h3>
-          <p>Warm crème/karamel met stoom-animaties, brandgraad-meters en tekenende procestijdlijn.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-      <a class="card" href="templates/18-gym/index.html" target="_blank" rel="noopener">
-        <div class="thumb" style="background:linear-gradient(135deg,#0b0b0c,#d8f24b);">
-          <span class="num">18</span><span class="premium">★ Premium</span><span class="emoji">🥊</span>
-        </div>
-        <div class="card-body">
-          <h3>Boxing Gym</h3>
-          <p>Rauw zwart/acid-geel met knallende hero, dubbele marquee, duotone-foto's en lesrooster-tabs.</p>
-          <span class="tag">Bekijk template →</span>
-        </div>
-      </a>
-
-    </div>
-  </main>
-
-  <footer class="bottom">
+<main id="top">
+  <section class="hero" aria-label="Introductie">
     <div class="wrap">
-      <p>Alle templates zijn responsive en kant-en-klaar. Elke template staat in zijn eigen map onder <code>templates/</code>.</p>
-      <p style="margin-top:.5rem;">&copy; <span id="year">2026</span> — Template Galerij</p>
+      <span class="eyebrow"><span class="live" aria-hidden="true"></span>28 kant-en-klare websites · pure HTML/CSS/JS</span>
+      <h1>Een galerij vol <span class="grad">kant-en-klare</span> websites.</h1>
+      <p class="lead">Van strakke bedrijfssites tot premium animatie-werk, twee flagships, vier signature-designs met live canvas, en een starter die je zelf van kleur verschiet. Klik, kopieer, klaar — geen build-tools nodig.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" id="surprise" type="button">Verras me
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+        </button>
+        <a class="btn btn-ghost" href="#collectie">Naar de collectie
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v12M3 9l5 5 5-5"/></svg>
+        </a>
+      </div>
+      <div class="pills" id="pills" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <div class="toolbar" id="collectie">
+    <div class="wrap">
+      <label class="search">
+        <span class="sr-only">Zoek een template</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l4 4"/></svg>
+        <input id="search" type="search" placeholder="Zoek op naam of type…" autocomplete="off">
+      </label>
+      <div class="chips" id="chips" role="group" aria-label="Filter op type"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="meta-row">
+      <h2 id="resultTitle">Alle templates</h2>
+      <p class="count"><b id="resultCount">28</b> van 28 getoond</p>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">
+      <div class="big">🔍</div>
+      <p>Geen templates gevonden voor deze combinatie.</p>
+      <button type="button" id="reset">Filters wissen</button>
+    </div>
+  </div>
+
+  <footer class="footer" id="over">
+    <div class="wrap">
+      <div>
+        <a class="brand" href="#top" aria-label="Template Galerij"><span class="dot" aria-hidden="true"></span>Template&nbsp;Galerij</a>
+        <p class="blurb">28 complete, responsive templates — pure HTML, CSS en JavaScript, zonder build-tools of dependencies. Elke template staat in zijn eigen map onder <code>templates/</code>. De nieuwste worden gebouwd uit korte recepten met een gedeelde kern (<code>_kit/</code>).</p>
+      </div>
+      <div>
+        <h4>In de collectie</h4>
+        <ul>
+          <li><a href="#collectie">Alle 28 templates</a></li>
+          <li><a href="templates/19-studio/index.html" target="_blank" rel="noopener">Flagship: Studio Kaap</a></li>
+          <li><a href="templates/23-sterrenwacht/index.html" target="_blank" rel="noopener">Canvas: Sterrenwacht</a></li>
+          <li><a href="templates/28-atlas/index.html" target="_blank" rel="noopener">Aanpasbaar: Atlas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Lokaal bekijken</h4>
+        <ul>
+          <li><code>python -m http.server</code></li>
+          <li><code>npx serve</code></li>
+          <li>of dubbelklik <code>index.html</code></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap bottom">
+      <span>&copy; <span id="year">2026</span> — Template Galerij. Met plezier gemaakt.</span>
+      <span>Responsive · toegankelijk · reduced-motion-veilig</span>
     </div>
   </footer>
+</main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+<script>
+(function () {
+  'use strict';
+  var doc = document, root = doc.documentElement;
+  var reduced = false; try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
 
-    // Kaarten getrapt onthullen bij scrollen (overslaan bij reduced motion)
-    (function () {
-      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
-      if (reduced || !("IntersectionObserver" in window)) return;
+  /* ---- data ---- */
+  var TIERS = {
+    basis:      { label: 'Basis',      color: 'var(--blue)' },
+    premium:    { label: 'Premium',    color: 'var(--gold)' },
+    flagship:   { label: 'Flagship',   color: 'var(--coral)' },
+    signature:  { label: 'Signature',  color: 'var(--violet)' },
+    aanpasbaar: { label: 'Aanpasbaar', color: 'var(--teal)' }
+  };
+  var T = [
+    ['01','01-business','Bedrijf / Corporate','Meerdere pagina’s: home, over, diensten en contact — met dark mode, prijzen en FAQ.','basis','🏢','#4f46e5','#06b6d4',['Multipage']],
+    ['02','02-portfolio','Portfolio','Donker, creatief portfolio voor een designer of developer, met projectgrid.','basis','🎨','#0d0d0f','#2a2a18',[]],
+    ['03','03-saas','SaaS / Software','Productlanding met features, prijzen (maand/jaar) en een FAQ-accordion.','basis','🚀','#7c3aed','#2563eb',[]],
+    ['04','04-restaurant','Restaurant','Warme, elegante site met menu, galerij en reserveringsformulier.','basis','🍽️','#1f3d2b','#c1572c',[]],
+    ['05','05-agency','Agency / Studio','Bold, high-contrast bureausite met grote typografie, cases en statistieken.','basis','⚡','#0a0a0a','#2b50ff',[]],
+    ['06','06-blog','Blog / Magazine','Redactionele homepage met uitgelicht artikel, artikelgrid en nieuwsbrief.','basis','📰','#d6334c','#7c1d2b',[]],
+    ['07','07-webshop','Webshop','E-commerce met productgrid, categorieën en een werkende winkelmand-teller.','basis','🛍️','#111827','#ff4d4d',[]],
+    ['08','08-fotografie','Fotografie','Minimalistisch fotografieportfolio met galerij en categorie-filter.','basis','📷','#1a1a1a','#555555',[]],
+    ['09','09-event','Event / Congres','Energieke landing met countdown-timer, sprekers, programma en tickets.','basis','🎟️','#6d28d9','#ec4899',[]],
+    ['10','10-cv','CV / Resumé','Persoonlijke one-page CV met animerende vaardigheidsbalken en tijdlijn.','basis','👤','#0d9488','#0f766e',[]],
+    ['11','11-architectuur','Architectuur Studio','Editorial design met preloader, parallax, scroll-tekst en magnetische knop.','premium','🏛️','#1a1816','#a67c52',[]],
+    ['12','12-hotel','Boutique Hotel','Vijfsterren-uitstraling met boekingsbalk, gouden details en quote-carrousel.','premium','🛎️','#101713','#b89b5e',[]],
+    ['13','13-fintech','Fintech / Bank','3D-tilt bankpas, live transactiefeed, bento-grid en glasmorfisme.','premium','💳','#0a0c10','#00e389',[]],
+    ['14','14-fashion','Fashion / Maison','Haute-couture-minimalisme met curtain-reveal, lookbook en asymmetrisch grid.','premium','🕊️','#f4f2ee','#1a1a1a',[]],
+    ['15','15-wellness','Wellness / Spa','Serene luxe met adem-widget, boogvormige maskers en tekenende tijdlijn.','premium','🌿','#9aa88f','#3a4438',[]],
+    ['16','16-bouw','ZZP Metselaar','Blueprint-stijl met zelftekenende troffel, voor/na-slider en projectfilter.','premium','🧱','#0d0f12','#3b82f6',[]],
+    ['17','17-koffie','Koffiebranderij','Crème/karamel met stoom-animaties, brandgraad-meters en procestijdlijn.','premium','☕','#f6f1e7','#c47a3d',[]],
+    ['18','18-gym','Boxing Gym','Rauw zwart/acid-geel met dubbele marquee, duotone-foto’s en lesrooster-tabs.','premium','🥊','#0b0b0c','#d8f24b',[]],
+    ['19','19-studio','Studio Kaap','Het pronkstuk: de sterkste features uit de hele galerij gebundeld in één donkere flagship.','flagship','✦','#0b0b0d','#ff5a36',['Flagship']],
+    ['20','20-buitenplaats','Buitenplaats','De lichte tegenpool: serif-tuinarchitectuur met curtain-reveal en seizoenstijdlijn.','flagship','🌿','#f3f1ea','#2e5b3f',['Flagship']],
+    ['21','21-letterstudio','Letterstudio','Interactief specimen-lab met bewerkbaar reuze-proefwoord en scroll-morfend variabel font.','signature','🔠','#e4e4ff','#6260ff',[]],
+    ['22','22-museum','Museum / Kunsthal','Live “nu geopend”-status, sleepbare collectiestrook en volwaardige lightbox.','signature','🖼️','#fbeaeb','#3447aa',[]],
+    ['23','23-sterrenwacht','Sterrenwacht','Canvas-sterrenhemel, bouw-je-eigen-sterrenbeeld en een maanfase berekend uit de datum.','signature','🔭','#070b18','#f0b94c',['Canvas']],
+    ['24','24-atelier','Generatieve Studio','Live stroomveld-canvas: stuur dichtheid en turbulentie met sliders en download als PNG.','signature','🌀','#16140f','#1b29ff',['Canvas']],
+    ['25','25-makelaar','Makelaar / Vastgoed','Generator-template: diensten, uitgelicht aanbod, courtage-tarieven, FAQ en waardebepaling.','basis','🏡','#19201c','#1f6f5c',['Recept']],
+    ['26','26-helder','Helder — digitale studio','Algemene studio met split-hero, zigzag-rijen, showcase en proces — violet × lime.','basis','💡','#6a2be6','#88c425',['Recept']],
+    ['27','27-nocturne','Nocturne — creatieve studio','Donkere agency met center-hero, kinetische marquee, interactieve tabs en team — mint × lila.','basis','🌙','#0d0f13','#5fe9ad',['Recept']],
+    ['28','28-atlas','Atlas — aanpasbare starter','Live thema-editor: kleur, modus, hoeken en lettertype live aanpassen en kopiëren als CSS.','aanpasbaar','🎨','#4f46e5','#ec4899',['Recept','Thema-editor']]
+  ];
 
-      cards.forEach(function (card) { card.classList.add("reveal"); });
+  /* ---- stat-pills in hero ---- */
+  var counts = {};
+  T.forEach(function (r) { counts[r[4]] = (counts[r[4]] || 0) + 1; });
+  var pillsEl = doc.getElementById('pills');
+  if (pillsEl) {
+    Object.keys(TIERS).forEach(function (k) {
+      if (!counts[k]) { return; }
+      var p = doc.createElement('span'); p.className = 'pill';
+      p.innerHTML = '<span class="swatch" style="background:' + TIERS[k].color + '"></span><b>' + counts[k] + '</b> ' + TIERS[k].label.toLowerCase();
+      pillsEl.appendChild(p);
+    });
+  }
 
-      var observer = new IntersectionObserver(function (entries) {
-        // Stagger per batch die tegelijk in beeld komt
-        var visible = entries.filter(function (e) { return e.isIntersecting; });
-        visible.forEach(function (entry, i) {
-          entry.target.style.setProperty("--d", (i * 80) + "ms");
-          entry.target.classList.add("in");
-          observer.unobserve(entry.target);
+  /* ---- kaarten renderen ---- */
+  var grid = doc.getElementById('grid');
+  var arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>';
+  T.forEach(function (r) {
+    var num = r[0], slug = r[1], title = r[2], desc = r[3], tier = r[4], emoji = r[5], g1 = r[6], g2 = r[7], tags = r[8] || [];
+    var wide = tier === 'flagship';
+    var a = doc.createElement('a');
+    a.className = 'card reveal' + (wide ? ' card--wide' : '');
+    a.href = 'templates/' + slug + '/index.html';
+    a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('data-tier', tier);
+    a.setAttribute('data-text', (title + ' ' + desc + ' ' + TIERS[tier].label + ' ' + tags.join(' ')).toLowerCase());
+    var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' : '';
+    a.innerHTML =
+      '<div class="thumb" style="--g1:' + g1 + ';--g2:' + g2 + '">' +
+        '<span class="num">' + num + '</span>' +
+        '<span class="badge" style="--bc:' + TIERS[tier].color + '">' + TIERS[tier].label + '</span>' +
+        '<span class="emoji">' + emoji + '</span>' +
+      '</div>' +
+      '<div class="body">' +
+        '<h3>' + title + '</h3>' +
+        '<p>' + desc + '</p>' +
+        tagHtml +
+        '<span class="go">Bekijk template ' + arrow + '</span>' +
+      '</div>';
+    grid.appendChild(a);
+  });
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+
+  /* ---- filter-chips ---- */
+  var chipsEl = doc.getElementById('chips');
+  var chipDefs = [{ key: 'alle', label: 'Alle', color: 'var(--violet)', n: T.length }];
+  Object.keys(TIERS).forEach(function (k) { if (counts[k]) { chipDefs.push({ key: k, label: TIERS[k].label, color: TIERS[k].color, n: counts[k] }); } });
+  chipDefs.forEach(function (c, i) {
+    var b = doc.createElement('button');
+    b.className = 'chip'; b.type = 'button'; b.setAttribute('data-tier', c.key);
+    b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    b.style.setProperty('--c', c.color);
+    b.innerHTML = '<span class="swatch" aria-hidden="true"></span>' + c.label + ' <span class="n">' + c.n + '</span>';
+    chipsEl.appendChild(b);
+  });
+  var chips = Array.prototype.slice.call(chipsEl.querySelectorAll('.chip'));
+
+  /* ---- filteren ---- */
+  var state = { tier: 'alle', q: '' };
+  var resultCount = doc.getElementById('resultCount');
+  var resultTitle = doc.getElementById('resultTitle');
+  var emptyEl = doc.getElementById('empty');
+  function apply() {
+    var shown = 0;
+    cards.forEach(function (card) {
+      var okTier = state.tier === 'alle' || card.getAttribute('data-tier') === state.tier;
+      var okText = !state.q || card.getAttribute('data-text').indexOf(state.q) !== -1;
+      var show = okTier && okText;
+      card.classList.toggle('is-hidden', !show);
+      if (show) { shown++; }
+    });
+    if (resultCount) { resultCount.textContent = shown; }
+    if (resultTitle) {
+      var t = state.tier === 'alle' ? 'Alle templates' : (TIERS[state.tier] ? TIERS[state.tier].label : '') + '-templates';
+      resultTitle.textContent = state.q ? 'Zoekresultaten' : t;
+    }
+    if (emptyEl) { emptyEl.classList.toggle('show', shown === 0); }
+  }
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      state.tier = chip.getAttribute('data-tier');
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      apply();
+    });
+  });
+  var search = doc.getElementById('search');
+  if (search) { search.addEventListener('input', function () { state.q = search.value.trim().toLowerCase(); apply(); }); }
+  var resetBtn = doc.getElementById('reset');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+      state.tier = 'alle'; state.q = '';
+      if (search) { search.value = ''; }
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-tier') === 'alle' ? 'true' : 'false'); });
+      apply();
+    });
+  }
+
+  /* ---- verras me ---- */
+  var surprise = doc.getElementById('surprise');
+  if (surprise) {
+    surprise.addEventListener('click', function () {
+      var pool = cards.filter(function (c) { return !c.classList.contains('is-hidden'); });
+      if (!pool.length) { pool = cards; }
+      var pick = pool[Math.floor(Math.random() * pool.length)];
+      window.open(pick.href, '_blank', 'noopener');
+    });
+  }
+
+  /* ---- reveal ---- */
+  if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      var vis = entries.filter(function (e) { return e.isIntersecting; });
+      vis.forEach(function (en, i) {
+        en.target.style.setProperty('--d', (i * 55) + 'ms');
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(function (c) { io.observe(c); });
+  }
+
+  /* ---- header solid + scroll-progress ---- */
+  var header = doc.getElementById('header');
+  var progress = doc.getElementById('scrollProgress');
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (header) { header.classList.toggle('is-solid', y > 16); }
+    if (progress) { var sc = doc.documentElement.scrollHeight - window.innerHeight; progress.style.transform = 'scaleX(' + Math.max(0, Math.min(1, sc > 0 ? y / sc : 0)).toFixed(4) + ')'; }
+  }
+  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', tick, { passive: true });
+  window.addEventListener('resize', tick, { passive: true });
+  frame();
+
+  /* ---- jaar + count ---- */
+  var y = doc.getElementById('year'); if (y) { y.textContent = String(new Date().getFullYear()); }
+  var hc = doc.getElementById('hcount'); if (hc) { hc.textContent = T.length; }
+
+  /* ============================================================
+     ACHTERGROND-CANVAS — zwevende kleurblobs
+     ============================================================ */
+  (function bg() {
+    var canvas = doc.getElementById('bg'); if (!canvas || !canvas.getContext) { return; }
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var W = 0, H = 0, blobs = [], raf = null;
+    var COLORS = ['#ff5d8f', '#a06bff', '#5b8cff', '#38e0c8', '#f5b13d', '#ff6a4d'];
+    function make() {
+      var n = window.innerWidth < 640 ? 4 : 6;
+      blobs = [];
+      var s = 20240613;
+      function rnd() { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; }
+      for (var i = 0; i < n; i++) {
+        blobs.push({
+          x: rnd() * W, y: rnd() * H,
+          r: (0.18 + rnd() * 0.22) * Math.max(W, H),
+          col: COLORS[i % COLORS.length],
+          dx: (rnd() - 0.5) * 0.16, dy: (rnd() - 0.5) * 0.16,
+          ph: rnd() * Math.PI * 2
         });
-      }, { threshold: 0.12 });
-
-      cards.forEach(function (card) { observer.observe(card); });
-    })();
-  </script>
+      }
+    }
+    function resize() {
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      make();
+    }
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      for (var i = 0; i < blobs.length; i++) {
+        var b = blobs[i];
+        var ox = reduced ? 0 : Math.sin(t * 0.0001 + b.ph) * W * 0.04;
+        var oy = reduced ? 0 : Math.cos(t * 0.00012 + b.ph) * H * 0.04;
+        if (!reduced) { b.x += b.dx; b.y += b.dy; if (b.x < -b.r) { b.x = W + b.r; } if (b.x > W + b.r) { b.x = -b.r; } if (b.y < -b.r) { b.y = H + b.r; } if (b.y > H + b.r) { b.y = -b.r; } }
+        var g = ctx.createRadialGradient(b.x + ox, b.y + oy, 0, b.x + ox, b.y + oy, b.r);
+        g.addColorStop(0, hexA(b.col, 0.30));
+        g.addColorStop(1, hexA(b.col, 0));
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(b.x + ox, b.y + oy, b.r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+    }
+    function hexA(hex, al) { var h = hex.replace('#', ''); var n = parseInt(h, 16); return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + al + ')'; }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    if (reduced) { draw(0); }
+    else {
+      function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+      doc.addEventListener('visibilitychange', function () { if (doc.hidden) { if (raf) { cancelAnimationFrame(raf); raf = null; } } else if (!raf) { raf = requestAnimationFrame(loop); } });
+      raf = requestAnimationFrame(loop);
+    }
+  })();
+})();
+</script>
 </body>
 </html>
