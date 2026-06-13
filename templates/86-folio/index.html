@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOLIO — studio voor ontwerp &amp; strategie</title>
+<meta name="description" content="FOLIO is een studio voor ontwerp en strategie in Rotterdam. We brengen orde in het ingewikkelde — van merk en digitaal tot ruimte en wayfinding.">
+<meta name="theme-color" content="#ecebe4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   FOLIO — redactioneel ontwerp-systeem.
+   Swiss-grid · zichtbaar kolommenraster · hairlines · één accent.
+   Geen gradient-koppen, geen icon-kaarten, geen stat-tellers, geen emoji.
+   Bouwstenen zijn inhoud-agnostisch: bruikbaar voor elke site.
+   ============================================================ */
+:root{
+  --paper:#ecebe4;        /* warm grijs papier */
+  --paper-2:#e3e1d8;
+  --ink:#16161a;          /* bijna-zwart */
+  --ink-soft:#4a4a50;
+  --hair:#c3c1b6;         /* hairline-kleur */
+  --hair-soft:#d4d2c8;
+  --accent:#2222ff;       /* reflex-blauw — verwissel deze één variabele om te herthema'en */
+  --accent-ink:#ffffff;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  --mono:"Space Mono",ui-monospace,"SFMono-Regular",monospace;
+  --maxw:1280px;
+  --gutter:clamp(1.1rem,3.5vw,3rem);
+  --cols:12;
+  --colgap:clamp(.9rem,1.6vw,1.4rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:clamp(1rem,.97rem + .15vw,1.075rem);line-height:1.6;
+  font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea{font:inherit;color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---- typografische helpers ---- */
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
+.mono{font-family:var(--mono)}
+.label{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---- container & raster ---- */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.grid12{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:var(--colgap)}
+.rule{border:0;border-top:1px solid var(--ink);height:0}
+.hair{border:0;border-top:1px solid var(--hair);height:0}
+
+.skip{position:fixed;top:-120px;left:1rem;z-index:300;background:var(--ink);color:var(--paper);padding:.7rem 1.1rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:top .25s var(--ease)}
+.skip:focus{top:1rem}
+
+/* ---- kolommen-raster overlay (toets G) ---- */
+#grid-overlay{position:fixed;inset:0;z-index:400;pointer-events:none;opacity:0;transition:opacity .2s var(--ease)}
+#grid-overlay.on{opacity:1}
+#grid-overlay .wrap{height:100%}
+#grid-overlay .cols{height:100%;display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:var(--colgap)}
+#grid-overlay .cols span{background:color-mix(in srgb,var(--accent) 9%,transparent);border-left:1px solid color-mix(in srgb,var(--accent) 28%,transparent);border-right:1px solid color-mix(in srgb,var(--accent) 28%,transparent)}
+@media(max-width:760px){#grid-overlay .cols span:nth-child(n+7){display:none}#grid-overlay .cols{grid-template-columns:repeat(6,1fr)}}
+
+/* ---- colofon-strip bovenaan ---- */
+.strip{border-bottom:1px solid var(--ink);background:var(--paper)}
+.strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:34px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.strip .mid{display:none}
+@media(min-width:720px){.strip .mid{display:block}}
+.strip b{color:var(--ink);font-weight:700}
+
+/* ---- nav ---- */
+.nav{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.1) blur(8px);-webkit-backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{font-family:var(--serif);font-size:1.7rem;letter-spacing:-.02em;line-height:1;display:inline-flex;align-items:baseline;gap:.18rem}
+.brand sup{font-family:var(--mono);font-size:.5rem;letter-spacing:.05em;transform:translateY(-.2em)}
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-links a{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;padding:.5rem .7rem;position:relative}
+.nav-links a::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:.35rem;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links .gridkey{margin-left:.4rem;border:1px solid var(--hair);color:var(--ink-soft);background:none;cursor:pointer;padding:.4rem .6rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;transition:border-color .2s,color .2s}
+.nav-links .gridkey:hover,.nav-links .gridkey[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+.nav-links .gridkey[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.burger{display:none;border:1px solid var(--ink);background:none;cursor:pointer;padding:.45rem .7rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase}
+@media(max-width:760px){
+  .nav-links{position:fixed;inset:96px var(--gutter) auto;flex-direction:column;align-items:stretch;background:var(--paper);border:1px solid var(--ink);padding:.5rem;gap:.1rem;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease)}
+  .nav-links.open{transform:none;opacity:1;pointer-events:auto}
+  .nav-links a{padding:.7rem .8rem;border-bottom:1px solid var(--hair)}
+  .nav-links a:last-of-type{border-bottom:0}
+  .nav-links a::after{display:none}
+  .nav-links .gridkey{display:none}
+  .burger{display:inline-block}
+}
+
+/* ---- hero ---- */
+.hero{padding-block:clamp(2.6rem,7vw,6rem) clamp(2rem,4vw,3.2rem)}
+.hero .kicker{grid-column:1 / -1;margin-bottom:clamp(1.4rem,3vw,2.4rem)}
+.hero h1{grid-column:1 / span 9;font-family:var(--serif);font-weight:400;font-size:clamp(2.7rem,8.2vw,7.2rem);line-height:.98;letter-spacing:-.025em}
+.hero h1 em{font-style:italic}
+.hero h1 .u{box-shadow:inset 0 -.06em 0 var(--accent),inset 0 -.07em 0 var(--accent);padding-bottom:.02em}
+.hero .spec{grid-column:11 / -1;align-self:end;display:grid;gap:.55rem;padding-top:.4rem}
+.hero .spec dl{display:grid;gap:.5rem}
+.hero .spec .row{display:flex;justify-content:space-between;gap:.6rem;border-top:1px solid var(--hair);padding-top:.45rem}
+.hero .spec dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.hero .spec dd{font-family:var(--mono);font-size:.74rem;text-align:right}
+@media(max-width:980px){
+  .hero h1{grid-column:1 / -1}
+  .hero .spec{grid-column:1 / -1;margin-top:1.8rem}
+  .hero .spec dl{grid-template-columns:1fr 1fr;gap:0}
+  .hero .spec .row{padding:.45rem 0}
+}
+.hero-foot{margin-top:clamp(2rem,5vw,3.4rem);display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.hero-foot p{max-width:46ch;font-size:clamp(1.05rem,1.3vw,1.22rem);color:var(--ink-soft)}
+.hero-foot p strong{color:var(--ink);font-weight:600}
+.jump{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.jump .arrow{display:inline-block;transition:transform .3s var(--ease)}
+.jump:hover .arrow{transform:translateY(3px)}
+
+/* ---- sectie-kop ---- */
+.sec{padding-block:clamp(2.6rem,6vw,5.5rem);position:relative}
+.sec > .wrap > .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.6rem,3vw,2.6rem)}
+.sec-head .tag-no{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;color:var(--hair);letter-spacing:-.02em}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:400;letter-spacing:-.01em;flex:1;min-width:12ch}
+.sec-head .meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);text-align:right}
+
+/* ---- werk-index (signature) ---- */
+.index-list{border-top:1px solid var(--ink)}
+.idx{display:grid;grid-template-columns:3.2rem 1fr auto;align-items:center;gap:1rem;padding:clamp(.9rem,1.8vw,1.5rem) 0;border-bottom:1px solid var(--hair);position:relative;transition:padding-left .35s var(--ease)}
+.idx::before{content:"";position:absolute;left:0;top:0;bottom:-1px;width:0;background:var(--accent);transition:width .35s var(--ease)}
+.idx:hover,.idx:focus-within{padding-left:1.1rem}
+.idx:hover::before,.idx:focus-within::before{width:4px}
+.idx .no{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft)}
+.idx .main{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;min-width:0}
+.idx .ttl{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.5rem);line-height:1.04;letter-spacing:-.01em;transition:color .25s var(--ease)}
+.idx:hover .ttl,.idx:focus-within .ttl{color:var(--accent)}
+.idx .disc{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+.idx .yr{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);justify-self:end}
+.idx .swatch{position:absolute;right:5.2rem;top:50%;width:54px;height:38px;transform:translateY(-50%) scale(.6);opacity:0;transition:opacity .3s var(--ease),transform .3s var(--ease);pointer-events:none;border:1px solid var(--ink)}
+.idx:hover .swatch{opacity:1;transform:translateY(-50%) scale(1)}
+@media(max-width:680px){
+  .idx{grid-template-columns:2.2rem 1fr;row-gap:.3rem}
+  .idx .yr{grid-column:2;justify-self:start}
+  .idx .swatch{display:none}
+  .idx .main{gap:.2rem 1rem}
+}
+
+/* ---- studio / manifest ---- */
+.studio .lead{grid-column:1 / span 7;font-family:var(--serif);font-size:clamp(1.5rem,2.7vw,2.3rem);line-height:1.18;letter-spacing:-.01em}
+.studio .lead em{font-style:italic}
+.studio .body{grid-column:9 / -1;display:grid;gap:1.1rem;align-self:end;color:var(--ink-soft);font-size:1rem}
+.studio .body p strong{color:var(--ink);font-weight:600}
+@media(max-width:980px){.studio .lead,.studio .body{grid-column:1 / -1}.studio .body{margin-top:1.6rem}}
+.figs{margin-top:clamp(2rem,4vw,3.2rem);border-top:1px solid var(--ink);display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+@media(max-width:680px){.figs{grid-template-columns:1fr 1fr}}
+.fig{padding:1.2rem 0;border-bottom:1px solid var(--hair)}
+.fig:not(:last-child){border-right:1px solid var(--hair)}
+.fig b{display:block;font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;letter-spacing:-.02em}
+.fig span{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.fig:not(:last-child){padding-right:1.1rem}
+
+/* ---- diensten ---- */
+.serv-list{border-top:1px solid var(--ink)}
+.srv{display:grid;grid-template-columns:3.2rem 1fr 1.2fr;gap:1rem;align-items:baseline;padding:clamp(1rem,2vw,1.5rem) 0;border-bottom:1px solid var(--hair)}
+.srv .no{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft)}
+.srv h3{font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2rem);font-weight:400;letter-spacing:-.01em}
+.srv p{color:var(--ink-soft);font-size:.96rem}
+@media(max-width:680px){.srv{grid-template-columns:2.2rem 1fr}.srv p{grid-column:2}}
+
+/* ---- contact / colofon ---- */
+.contact{padding-block:clamp(3rem,7vw,6rem)}
+.contact h2{grid-column:1 / span 7;font-family:var(--serif);font-size:clamp(2.4rem,6vw,5rem);line-height:1;letter-spacing:-.02em}
+.contact h2 em{font-style:italic}
+.contact .mailto{grid-column:1 / span 7;margin-top:1.2rem}
+.contact .mailto a{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,2rem);box-shadow:inset 0 -1px 0 var(--ink);transition:box-shadow .25s var(--ease),color .25s var(--ease)}
+.contact .mailto a:hover{color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.contact .meta{grid-column:1 / span 7;margin-top:1.4rem;display:flex;gap:2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;color:var(--ink-soft)}
+.contact form{grid-column:9 / -1;align-self:start}
+@media(max-width:980px){.contact h2,.contact .mailto,.contact .meta,.contact form{grid-column:1 / -1}.contact form{margin-top:2.4rem}}
+.fld{display:grid;gap:.35rem;margin-bottom:1.1rem}
+.fld label{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.fld input,.fld textarea{background:transparent;border:0;border-bottom:1px solid var(--ink);padding:.55rem 0;font-family:var(--serif);font-size:1.2rem}
+.fld textarea{resize:vertical;min-height:62px;font-family:var(--sans);font-size:1rem}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--hair)}
+.fld input:focus,.fld textarea:focus{outline:none;border-bottom-color:var(--accent)}
+.fld.bad input,.fld.bad textarea{border-bottom-color:var(--accent)}
+.fld .err{display:none;font-family:var(--mono);font-size:.68rem;color:var(--accent)}
+.fld.bad .err{display:block}
+form .send{width:100%;margin-top:.4rem;cursor:pointer;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:.95rem 1.2rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;transition:background .25s var(--ease),color .25s var(--ease)}
+form .send:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+form .ok{display:none;border:1px solid var(--ink);padding:1rem 1.2rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+form.sent .fld,form.sent .send{display:none}
+form.sent .ok{display:block}
+
+/* ---- footer / colofon-readout ---- */
+.foot{border-top:1px solid var(--ink);padding-block:1.4rem}
+.foot .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.foot .readout b{color:var(--ink);font-weight:700}
+
+/* ---- scroll-spy index (vast, rechts) ---- */
+.spy{position:fixed;right:max(1rem,calc((100vw - var(--maxw))/2 - 0px));top:50%;transform:translateY(-50%);z-index:60;display:grid;gap:.55rem}
+.spy a{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--hair);display:flex;align-items:center;gap:.5rem;transition:color .25s var(--ease)}
+.spy a .bar{width:14px;height:1px;background:var(--hair);transition:width .3s var(--ease),background .3s var(--ease)}
+.spy a:hover,.spy a.active{color:var(--ink)}
+.spy a.active .bar{width:28px;background:var(--accent)}
+@media(max-width:1180px){.spy{display:none}}
+
+/* ---- grid-hint chip ---- */
+.hint{position:fixed;left:var(--gutter);bottom:1rem;z-index:60;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:.5rem;background:color-mix(in srgb,var(--paper) 80%,transparent);padding:.35rem .55rem;border:1px solid var(--hair)}
+.hint kbd{font-family:var(--mono);background:var(--ink);color:var(--paper);padding:.05rem .4rem;font-size:.66rem}
+@media(max-width:760px){.hint{display:none}}
+
+/* ---- reveal ---- */
+@media (prefers-reduced-motion:no-preference){
+  [data-r]{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  [data-r].in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#werk">Direct naar het werk</a>
+
+<!-- kolommen-raster overlay -->
+<div id="grid-overlay" aria-hidden="true"><div class="wrap"><div class="cols"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+
+<!-- colofon-strip -->
+<div class="strip"><div class="wrap">
+  <span><b>FOLIO</b>™ — Studio</span>
+  <span class="mid">Ontwerp · Strategie · Digitaal · Ruimte</span>
+  <span class="num">AMS <b id="clock">--:--:--</b></span>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top">Folio<sup>®</sup></a>
+  <nav class="nav-links" id="menu" aria-label="Hoofdmenu">
+    <a href="#werk">Werk</a>
+    <a href="#studio">Studio</a>
+    <a href="#diensten">Diensten</a>
+    <a href="#contact">Contact</a>
+    <button class="gridkey" id="gridkey" type="button" aria-pressed="false" title="Toon het kolommenraster (G)">Raster</button>
+  </nav>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+</div></header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero"><div class="wrap grid12">
+    <p class="kicker label">Studio voor ontwerp &amp; strategie — sinds 2014</p>
+    <h1>Wij brengen <span class="u">orde</span> in het <em>ingewikkelde</em>.</h1>
+    <div class="spec">
+      <dl>
+        <div class="row"><dt>Gevestigd</dt><dd>Rotterdam (NL)</dd></div>
+        <div class="row"><dt>Team</dt><dd>8 makers</dd></div>
+        <div class="row"><dt>Disciplines</dt><dd>4</dd></div>
+        <div class="row"><dt>Beschikbaar</dt><dd>vanaf Q3 2026</dd></div>
+      </dl>
+    </div>
+    <div class="hero-foot" style="grid-column:1 / -1">
+      <p>Een klein bureau dat <strong>merk, digitaal product en ruimte</strong> behandelt als één doordacht geheel. We houden van heldere systemen en een eerlijke regel op de juiste plek.</p>
+      <a class="jump" href="#werk">Bekijk het werk <span class="arrow" aria-hidden="true">↓</span></a>
+    </div>
+  </div></section>
+
+  <hr class="rule" role="presentation">
+
+  <!-- WERK -->
+  <section class="sec" id="werk"><div class="wrap">
+    <div class="sec-head">
+      <span class="tag-no serif">01</span>
+      <h2>Geselecteerd werk</h2>
+      <span class="meta">Index — 05 projecten</span>
+    </div>
+    <div class="index-list" data-r>
+      <a class="idx" href="#contact"><span class="no">№ 01</span><span class="main"><span class="ttl serif">Noordwal</span><span class="disc">Merkidentiteit</span></span><span class="yr">2025</span><span class="swatch" style="background:#2222ff" aria-hidden="true"></span></a>
+      <a class="idx" href="#contact"><span class="no">№ 02</span><span class="main"><span class="ttl serif">Veld &amp; Vorm</span><span class="disc">Digitaal platform</span></span><span class="yr">2025</span><span class="swatch" style="background:#16161a" aria-hidden="true"></span></a>
+      <a class="idx" href="#contact"><span class="no">№ 03</span><span class="main"><span class="ttl serif">Tijdsbeeld</span><span class="disc">Tentoonstelling</span></span><span class="yr">2024</span><span class="swatch" style="background:#d9542f" aria-hidden="true"></span></a>
+      <a class="idx" href="#contact"><span class="no">№ 04</span><span class="main"><span class="ttl serif">Kade 7</span><span class="disc">Wayfinding</span></span><span class="yr">2024</span><span class="swatch" style="background:#2f7d52" aria-hidden="true"></span></a>
+      <a class="idx" href="#contact"><span class="no">№ 05</span><span class="main"><span class="ttl serif">Onderstroom</span><span class="disc">Strategie &amp; positionering</span></span><span class="yr">2023</span><span class="swatch" style="background:#c8a23a" aria-hidden="true"></span></a>
+    </div>
+  </div></section>
+
+  <hr class="rule" role="presentation">
+
+  <!-- STUDIO -->
+  <section class="sec" id="studio"><div class="wrap">
+    <div class="sec-head">
+      <span class="tag-no serif">02</span>
+      <h2>De studio</h2>
+      <span class="meta">Colofon — 2014</span>
+    </div>
+    <div class="grid12 studio" data-r>
+      <p class="lead">Goede vormgeving valt niet op. Ze <em>klopt</em> gewoon — en geeft je precies dat ene zetje dat nodig is.</p>
+      <div class="body">
+        <p>FOLIO werd opgericht omdat we vonden dat strategie en vormgeving te vaak los van elkaar staan. Wij behandelen ze als <strong>één gesprek</strong>: eerst de vraag scherp, dan pas de vorm.</p>
+        <p>We werken in kleine, betrokken teams en blijven betrokken tot het echt staat — van het eerste concept tot de laatste oplevering.</p>
+      </div>
+    </div>
+    <div class="figs" data-r>
+      <div class="fig"><b>12</b><span>jaar ervaring</span></div>
+      <div class="fig"><b>140+</b><span>projecten</span></div>
+      <div class="fig"><b>8</b><span>vaste makers</span></div>
+      <div class="fig"><b>4</b><span>disciplines</span></div>
+    </div>
+  </div></section>
+
+  <hr class="rule" role="presentation">
+
+  <!-- DIENSTEN -->
+  <section class="sec" id="diensten"><div class="wrap">
+    <div class="sec-head">
+      <span class="tag-no serif">03</span>
+      <h2>Wat we doen</h2>
+      <span class="meta">Diensten — 04</span>
+    </div>
+    <div class="serv-list" data-r>
+      <div class="srv"><span class="no">01</span><h3>Merk &amp; identiteit</h3><p>Positionering, naam, logo en een systeem dat overal standhoudt.</p></div>
+      <div class="srv"><span class="no">02</span><h3>Digitaal ontwerp</h3><p>Websites en interfaces die snel zijn, helder en prettig in gebruik.</p></div>
+      <div class="srv"><span class="no">03</span><h3>Strategie</h3><p>De scherpe vragen vooraf, zodat de rest vanzelf de juiste kant op valt.</p></div>
+      <div class="srv"><span class="no">04</span><h3>Ruimte &amp; wayfinding</h3><p>Bewegwijzering en ruimtelijk ontwerp die mensen moeiteloos op weg helpen.</p></div>
+    </div>
+  </div></section>
+
+  <hr class="rule" role="presentation">
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact"><div class="wrap grid12">
+    <h2 data-r>Laten we<br>iets <em>maken</em>.</h2>
+    <p class="mailto" data-r><a href="mailto:hallo@folio.studio">hallo@folio.studio</a></p>
+    <div class="meta" data-r>
+      <span>Schiekade 105<br>3033 BG Rotterdam</span>
+      <span>+31 (0)10 240 19 19<br>KvK 71 02 93 84</span>
+    </div>
+    <form id="form" novalidate data-r>
+      <div class="fld"><label for="f-naam">Naam</label><input id="f-naam" type="text" placeholder="Je naam" required><span class="err">Vul je naam in.</span></div>
+      <div class="fld"><label for="f-mail">E-mail</label><input id="f-mail" type="email" placeholder="jij@voorbeeld.nl" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+      <div class="fld"><label for="f-ber">Waar gaat het over?</label><textarea id="f-ber" placeholder="Vertel kort je idee of vraag…" required></textarea><span class="err">Schrijf even een bericht.</span></div>
+      <button class="send" type="submit"><span>Verstuur bericht</span><span aria-hidden="true">→</span></button>
+      <div class="ok" role="status">Bericht ontvangen — we reageren binnen één werkdag.</div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span>FOLIO™ — Studio voor ontwerp &amp; strategie</span>
+  <span class="readout">POS <b id="coord">X:0000 Y:0000</b></span>
+  <span>&copy; <span id="jaar">2026</span> Rotterdam</span>
+</div></footer>
+
+<!-- scroll-spy index -->
+<nav class="spy" id="spy" aria-label="Sectie-index">
+  <a href="#werk" data-spy="werk"><span class="bar" aria-hidden="true"></span>01 Werk</a>
+  <a href="#studio" data-spy="studio"><span class="bar" aria-hidden="true"></span>02 Studio</a>
+  <a href="#diensten" data-spy="diensten"><span class="bar" aria-hidden="true"></span>03 Diensten</a>
+  <a href="#contact" data-spy="contact"><span class="bar" aria-hidden="true"></span>04 Contact</a>
+</nav>
+
+<div class="hint" aria-hidden="true">Druk op <kbd>G</kbd> voor het raster</div>
+
+<script>
+(function(){
+  var doc=document, reduced=false;
+  try{ reduced = matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  var jaar=doc.getElementById('jaar'); if(jaar) jaar.textContent=new Date().getFullYear();
+
+  /* ---- mobiel menu ---- */
+  var menu=doc.getElementById('menu'), burger=doc.getElementById('burger');
+  if(burger){
+    burger.addEventListener('click',function(){
+      var open=!menu.classList.contains('open');
+      menu.classList.toggle('open',open);
+      burger.setAttribute('aria-expanded',open);
+    });
+    menu.addEventListener('click',function(e){ if(e.target.closest('a')) menu.classList.remove('open'); });
+  }
+
+  /* ---- raster-overlay: knop + toets G ---- */
+  var overlay=doc.getElementById('grid-overlay'), gridkey=doc.getElementById('gridkey');
+  function toggleGrid(force){
+    var on = (typeof force==='boolean') ? force : !overlay.classList.contains('on');
+    overlay.classList.toggle('on',on);
+    if(gridkey) gridkey.setAttribute('aria-pressed',on);
+  }
+  if(gridkey) gridkey.addEventListener('click',function(){ toggleGrid(); });
+  doc.addEventListener('keydown',function(e){
+    if(e.defaultPrevented) return;
+    var t=e.target, tag=t&&t.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||(t&&t.isContentEditable)) return;
+    if(e.key==='g'||e.key==='G'){ toggleGrid(); }
+    if(e.key==='Escape'){ toggleGrid(false); }
+  });
+
+  /* ---- Amsterdam-klok ---- */
+  var clock=doc.getElementById('clock');
+  if(clock){
+    var fmt;
+    try{ fmt=new Intl.DateTimeFormat('nl-NL',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Europe/Amsterdam'}); }catch(e){ fmt=null; }
+    function tick(){ try{ clock.textContent = fmt ? fmt.format(new Date()) : new Date().toLocaleTimeString('nl-NL'); }catch(e){} }
+    tick(); setInterval(tick,1000);
+  }
+
+  /* ---- coördinaat-uitlezing ---- */
+  var coord=doc.getElementById('coord');
+  if(coord && !reduced){
+    var cx=0, cy=0, queued=false;
+    function pad(n){ n=Math.max(0,Math.round(n)); return ('0000'+n).slice(-4); }
+    function paint(){ coord.textContent='X:'+pad(cx)+' Y:'+pad(cy); queued=false; }
+    window.addEventListener('pointermove',function(e){
+      cx=e.clientX; cy=e.clientY;
+      if(!queued){ queued=true; requestAnimationFrame(paint); }
+    },{passive:true});
+  }
+
+  /* ---- scroll-spy ---- */
+  var spy=doc.getElementById('spy');
+  if(spy && 'IntersectionObserver' in window){
+    var links={};
+    [].slice.call(spy.querySelectorAll('a')).forEach(function(a){ links[a.getAttribute('data-spy')]=a; });
+    var secs=['werk','studio','diensten','contact'].map(function(id){ return doc.getElementById(id); }).filter(Boolean);
+    var spyObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var a=links[en.target.id]; if(!a) return;
+        if(en.isIntersecting){
+          [].slice.call(spy.querySelectorAll('a')).forEach(function(x){ x.classList.remove('active'); });
+          a.classList.add('active');
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){ spyObs.observe(s); });
+  }
+
+  /* ---- reveal ---- */
+  if(!reduced && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    [].slice.call(doc.querySelectorAll('[data-r]')).forEach(function(el){ io.observe(el); });
+  }else{
+    [].slice.call(doc.querySelectorAll('[data-r]')).forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- formulier ---- */
+  var form=doc.getElementById('form');
+  if(form){
+    function setBad(i,bad){ var f=i.closest('.fld'); if(f) f.classList.toggle('bad',bad); }
+    function valid(i){
+      var v=(i.value||'').trim(), ok=true;
+      if(i.type==='email') ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); else ok=v.length>0;
+      setBad(i,!ok); return ok;
+    }
+    var ins=[].slice.call(form.querySelectorAll('input,textarea'));
+    ins.forEach(function(i){ i.addEventListener('blur',function(){ valid(i); }); });
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var ok=true, first=null;
+      ins.forEach(function(i){ if(!valid(i)){ ok=false; if(!first) first=i; } });
+      if(!ok){ if(first) first.focus(); return; }
+      form.classList.add('sent');
+    });
+  }
+})();
+</script>
+</body>
+</html>

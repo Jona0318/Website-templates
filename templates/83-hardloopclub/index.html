@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPRINT — running crew</title>
+<meta name="description" content="SPRINT is een gratis running crew in Rotterdam. Drie keer per week samen rennen, alle niveaus welkom. Loop een keer mee.">
+<meta name="theme-color" content="#ff4d00">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SPRINT — running crew. Oranje × zwart × beton. Energiek, sportief.
+   ============================================================ */
+:root{
+  --bg:#0f0f0e; --panel:#181816; --concrete:#e9e7e1; --ink:#0f0f0e; --paper:#f6f4ef; --orange:#ff4d00; --lime:#d4f23d;
+  --disp:"Archivo Black",system-ui,sans-serif; --body:"Archivo",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1160px; --gutter:clamp(1rem,4vw,3rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:600;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--orange);color:#fff}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--orange);color:#fff;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--paper);border-bottom:4px solid var(--orange)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--disp);font-size:1.5rem;letter-spacing:.02em}.logo span{color:var(--orange)}
+.menu{display:flex;align-items:center;gap:.3rem}
+.menu a{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;padding:.45rem .65rem;color:#d8d6cf}
+.menu a:hover{color:var(--orange)}
+.menu .cta{background:var(--orange);color:#fff;font-family:var(--disp);font-size:.8rem;padding:.5rem .9rem;text-transform:uppercase}
+.menu .cta:hover{background:var(--lime);color:var(--ink)}
+.burger{display:none;border:2px solid var(--orange);color:var(--orange);background:none;padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.78rem}
+@media(max-width:840px){.menu{position:fixed;inset:64px 0 auto;background:var(--ink);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:4px solid var(--orange);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid #2a2a26}.burger{display:inline-block}}
+
+/* hero */
+.hero{background:var(--orange);color:var(--paper);border-bottom:4px solid var(--ink);overflow:hidden;position:relative}
+.hero .wrap{padding-block:clamp(2.4rem,6vw,5rem);position:relative}
+.hero .kick{font-family:var(--mono);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--orange);display:inline-block;padding:.3rem .8rem}
+.hero h1{font-family:var(--disp);text-transform:uppercase;font-size:clamp(3rem,14vw,9.5rem);line-height:.82;margin:1rem 0 .4rem}
+.hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
+.hero p{font-size:1.3rem;max-width:34ch;font-weight:700}
+.hero .cta{display:inline-block;margin-top:1.4rem;font-family:var(--disp);text-transform:uppercase;font-size:1.05rem;background:var(--ink);color:var(--paper);padding:.9rem 1.7rem;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--paper);transition:transform .15s,box-shadow .15s}
+.hero .cta:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--paper)}
+
+/* ticker */
+.tk{background:var(--ink);color:var(--paper);overflow:hidden}
+.tk .row{display:flex;gap:2rem;white-space:nowrap;width:max-content;padding:.5rem 0;font-family:var(--disp);text-transform:uppercase;font-size:.95rem}
+@media (prefers-reduced-motion:no-preference){.tk .row{animation:tk 18s linear infinite}}
+@keyframes tk{to{transform:translateX(-50%)}}
+.tk .row span{display:inline-flex;gap:2rem}.tk .row span::after{content:"→";color:var(--orange)}
+
+.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec-h{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
+.sec-h h2{font-family:var(--disp);text-transform:uppercase;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1}
+.sec-h .bar{flex:1;height:4px;background:var(--orange)}
+
+/* runs */
+.runs{display:grid;gap:.7rem}
+.run{display:grid;grid-template-columns:auto 1fr auto auto;gap:1.2rem;align-items:center;background:var(--concrete);border:3px solid var(--ink);padding:1rem 1.2rem;transition:transform .12s,box-shadow .12s}
+.run:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink);background:var(--lime)}
+.run .day{font-family:var(--disp);text-transform:uppercase;font-size:1.1rem;white-space:nowrap}
+.run .day b{display:block;font-size:.74rem;font-family:var(--mono);color:#5a5a52;font-weight:400}
+.run h3{font-family:var(--disp);text-transform:uppercase;font-size:1.15rem}
+.run .dist{font-family:var(--mono);font-size:.85rem}
+.run .pace{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;border:2px solid var(--ink);padding:.2rem .5rem;white-space:nowrap}
+@media(max-width:620px){.run{grid-template-columns:auto 1fr}.run .dist,.run .pace{grid-column:2;justify-self:start}}
+
+/* niveaus / paces */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem)}
+@media(max-width:760px){.levels{grid-template-columns:1fr}}
+.lv{border:3px solid var(--ink);background:var(--paper);padding:1.4rem}
+.lv:nth-child(1){background:var(--lime)}.lv:nth-child(2){background:var(--orange);color:var(--paper)}.lv:nth-child(3){background:var(--ink);color:var(--paper)}
+.lv h3{font-family:var(--disp);text-transform:uppercase;font-size:1.4rem}
+.lv .p{font-family:var(--mono);font-size:.9rem;margin:.4rem 0 .6rem}
+.lv p{font-size:.92rem}
+
+/* stats band */
+.band{background:var(--ink);color:var(--paper);border-block:4px solid var(--orange)}
+.band .wrap{padding-block:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+@media(max-width:560px){.band .wrap{grid-template-columns:1fr 1fr}}
+.band .b b{font-family:var(--disp);font-size:2rem;display:block;color:var(--orange)}
+.band .b span{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:#b8b6ae}
+
+/* join */
+.join .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media(max-width:780px){.join .wrap{grid-template-columns:1fr}}
+.join h2{font-family:var(--disp);text-transform:uppercase;font-size:clamp(2rem,6vw,3.4rem);line-height:.9}
+.join h2 span{color:var(--orange)}
+.join p{margin-top:1rem;max-width:38ch}
+.form{background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:clamp(1.2rem,3vw,1.8rem)}
+.fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase}
+.fld input,.fld select{border:2px solid var(--ink);padding:.7rem .8rem;background:var(--concrete)}
+.fld input:focus,.fld select:focus{outline:none;background:var(--lime)}
+.fld.bad input{background:#ffd6c8}
+.fld .err{display:none;font-size:.78rem;color:var(--orange)}.fld.bad .err{display:block}
+.form button{width:100%;cursor:pointer;font-family:var(--disp);text-transform:uppercase;font-size:1rem;padding:.85rem;border:3px solid var(--ink);background:var(--orange);color:#fff;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.form button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.form .ok{display:none;font-family:var(--disp);text-transform:uppercase;color:var(--orange);padding:.4rem 0}
+.form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
+
+.foot{background:var(--ink);color:var(--paper);padding-block:clamp(1.8rem,3vw,2.6rem)}
+.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.foot .logo span{color:var(--orange)}
+.foot .tag{font-family:var(--mono);font-size:.76rem;color:#8a8a82}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#runs">Naar de runs</a>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">SPRINT<span>→</span></a>
+  <nav class="menu" id="menu"><a href="#runs">Runs</a><a href="#niveaus">Niveaus</a><a href="#mee">Meelopen</a><a class="cta" href="#mee">Loop mee</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <span class="kick">// Running crew · Rotterdam · gratis</span>
+    <h1>Samen<br>ren je<br><span class="o">verder.</span></h1>
+    <p>Drie keer per week samen de stad door. Alle niveaus, geen contributie, altijd na afloop koffie.</p>
+    <a class="cta" href="#mee">Loop een keer mee →</a>
+  </div></section>
+
+  <div class="tk" aria-hidden="true"><div class="row"><span>GRATIS&nbsp;&nbsp;ALLE NIVEAUS&nbsp;&nbsp;3X PER WEEK&nbsp;&nbsp;KOFFIE NA&nbsp;&nbsp;</span><span>GRATIS&nbsp;&nbsp;ALLE NIVEAUS&nbsp;&nbsp;3X PER WEEK&nbsp;&nbsp;KOFFIE NA&nbsp;&nbsp;</span></div></div>
+
+  <section class="sec wrap" id="runs">
+    <div class="sec-h"><h2>Vaste runs</h2><span class="bar" aria-hidden="true"></span></div>
+    <div class="runs" data-r>
+      <div class="run"><div class="day">Di<b>18:30</b></div><h3>Intervaltraining</h3><span class="dist">~8 km · baan</span><span class="pace">Snel</span></div>
+      <div class="run"><div class="day">Do<b>19:00</b></div><h3>Tempo langs de Maas</h3><span class="dist">~10 km</span><span class="pace">Gemiddeld</span></div>
+      <div class="run"><div class="day">Zo<b>09:30</b></div><h3>Lange duurloop</h3><span class="dist">12—18 km</span><span class="pace">Rustig</span></div>
+      <div class="run"><div class="day">Za<b>09:00</b></div><h3>Beginnersloop</h3><span class="dist">~5 km</span><span class="pace">Instap</span></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="niveaus">
+    <div class="sec-h"><h2>Voor wie?</h2><span class="bar" aria-hidden="true"></span></div>
+    <div class="levels" data-r>
+      <div class="lv"><h3>Instap</h3><div class="p">5:30—6:30 /km</div><p>Nooit eerder gerend? Begin hier. We laten niemand achter.</p></div>
+      <div class="lv"><h3>Gemiddeld</h3><div class="p">4:45—5:30 /km</div><p>Loopt al wat? Sluit aan bij de tempo- en duurlopen.</p></div>
+      <div class="lv"><h3>Snel</h3><div class="p">< 4:45 /km</div><p>Intervallen, tempo en wedstrijdvoorbereiding.</p></div>
+    </div>
+  </section>
+
+  <section class="band" data-r><div class="wrap">
+    <div class="b"><b>180+</b><span>leden</span></div>
+    <div class="b"><b>3x</b><span>per week</span></div>
+    <div class="b"><b>€0</b><span>contributie</span></div>
+    <div class="b"><b>2019</b><span>opgericht</span></div>
+  </div></section>
+
+  <section class="sec join" id="mee"><div class="wrap">
+    <div data-r>
+      <h2>Loop een<br>keer <span>mee.</span></h2>
+      <p>Gewoon komen. Laat je gegevens achter en kies een run — we vertellen je waar we verzamelen.</p>
+      <p style="font-family:var(--mono);font-size:.85rem;margin-top:1rem">Verzamelen: Het Park, bij de molen · @sprint.rtm</p>
+    </div>
+    <form class="form" id="form" novalidate data-r>
+      <div class="fld"><label for="s-naam">Naam</label><input id="s-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+      <div class="fld"><label for="s-mail">E-mail</label><input id="s-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+      <div class="fld"><label for="s-run">Welke run?</label><select id="s-run"><option>Beginnersloop (za)</option><option>Intervaltraining (di)</option><option>Tempo Maas (do)</option><option>Lange duurloop (zo)</option></select></div>
+      <button type="submit">Ik loop mee →</button>
+      <div class="ok" role="status">→ Vet! Tot bij de start.</div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <a class="logo" href="#top">SPRINT<span>→</span></a>
+  <span class="tag">&copy; <span id="jaar">2026</span> SPRINT Running Crew · Rotterdam · gratis &amp; voor iedereen</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
+})();
+</script>
+</body>
+</html>

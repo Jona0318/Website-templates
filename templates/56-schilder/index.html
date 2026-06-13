@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laag — schildersbedrijf, Zwolle</title>
+<meta name="description" content="Laag is een schildersbedrijf in Zwolle voor binnen- en buitenschilderwerk, behang en spuitwerk. Strak afgewerkt, nette afspraken. Kies hiernaast vast een kleur en vraag een offerte aan.">
+<meta name="theme-color" content="#f2efe9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LAAG — schildersbedrijf, Zwolle. Strak, vertrouwd.
+   Signatuur: kleurkiezer die de kamer hertint.
+   ============================================================ */
+:root{
+  --paper:#f2efe9; --paper-2:#e8e3d8; --ink:#1d1d1f; --ink-2:#54524d; --muted:#86837b;
+  --teal:#2f6f6a; --teal-2:#235651; --line:rgba(29,29,31,.14); --line-soft:rgba(29,29,31,.07);
+  --disp:"Hanken Grotesk",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif;
+  --maxw:1180px; --gutter:clamp(1.2rem,5vw,4.5rem); --r:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.05rem;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}ul{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}::selection{background:var(--teal);color:#fff}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.disp{font-family:var(--disp)}
+.kicker{font-family:var(--disp);font-weight:700;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--teal);color:#fff;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+.hdr{position:sticky;top:0;z-index:50;background:rgba(242,239,233,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:box-shadow .3s}
+.hdr.stuck{box-shadow:0 10px 28px -22px rgba(29,29,31,.45)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-family:var(--disp);font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
+.logo b{color:var(--teal)}
+.nav{display:flex;align-items:center;gap:1.8rem}
+.nav a{font-weight:500;font-size:.92rem;color:var(--ink-2)}.nav a:hover{color:var(--teal)}
+.nav .cta{background:var(--teal);color:#fff;padding:.55rem 1.1rem;border-radius:99px;font-size:.88rem}.nav .cta:hover{background:var(--teal-2)}
+.burger{display:none;border:1px solid var(--line);border-radius:99px;padding:.5rem .9rem;font-weight:600;font-size:.86rem}
+@media(max-width:840px){.nav{position:fixed;inset:74px 0 auto;background:var(--paper);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+
+.hero{padding-block:clamp(2.2rem,5vw,4rem)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:2rem}}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,6.5vw,4.6rem);line-height:1.04;letter-spacing:-.02em;margin:1rem 0 0}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero p.lead{margin-top:1.2rem;color:var(--ink-2);max-width:38ch;font-size:1.14rem}
+.hero-act{margin-top:1.8rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn{background:var(--teal);color:#fff;padding:.9rem 1.6rem;border-radius:99px;font-family:var(--disp);font-weight:600;font-size:1rem;display:inline-block;transition:background-color .25s,transform .25s}
+.btn:hover{background:var(--teal-2);transform:translateY(-2px)}
+.lnk{font-weight:600;color:var(--ink);border-bottom:2px solid var(--teal);padding-bottom:2px}
+
+/* kleurkiezer */
+.kiezer{background:var(--paper-2);border-radius:var(--r);padding:clamp(1rem,2vw,1.4rem);box-shadow:0 30px 60px -44px rgba(29,29,31,.5)}
+.room{position:relative;border-radius:12px;overflow:hidden}
+.room img{width:100%;aspect-ratio:4/3.1;object-fit:cover;display:block}
+.room .tint{position:absolute;inset:0;mix-blend-mode:multiply;background:var(--c,#cbb89a);transition:background-color .5s ease}
+.room .badge{position:absolute;left:.8rem;bottom:.8rem;background:rgba(255,255,255,.92);border-radius:10px;padding:.5rem .8rem;font-family:var(--disp);font-weight:700;font-size:.86rem;display:flex;align-items:center;gap:.5rem}
+.room .badge .dot{width:16px;height:16px;border-radius:4px;background:var(--c,#cbb89a)}
+.room .badge small{font-family:var(--sans);font-weight:400;color:var(--muted);margin-left:.2rem}
+.kz-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.9rem;flex-wrap:wrap}
+.kz-bar .lbl{font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.swatches{display:flex;gap:.5rem;flex-wrap:wrap}
+.sw{width:34px;height:34px;border-radius:9px;border:2px solid transparent;cursor:pointer;transition:transform .2s}
+.sw:hover{transform:translateY(-2px)}
+.sw[aria-pressed="true"]{border-color:var(--ink)}
+
+.sec{padding-block:clamp(3rem,6vw,5rem)}
+.sec-h{margin-bottom:clamp(1.8rem,4vw,2.6rem)}
+.sec-h h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.6vw,3rem)}
+.sec-h p{color:var(--ink-2);margin-top:.5rem;max-width:46ch}
+
+/* diensten */
+.dn{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,1.5rem)}
+@media(max-width:860px){.dn{grid-template-columns:1fr 1fr}}@media(max-width:480px){.dn{grid-template-columns:1fr}}
+.dn .it{background:#fff;border-radius:var(--r);padding:1.5rem;box-shadow:0 16px 40px -34px rgba(29,29,31,.5)}
+.dn .it .n{font-family:var(--disp);font-weight:800;color:var(--teal);font-size:1.1rem}
+.dn .it h3{font-family:var(--disp);font-weight:700;font-size:1.2rem;margin:.5rem 0 .3rem}
+.dn .it p{color:var(--ink-2);font-size:.94rem}
+
+/* werkwijze */
+.werk{background:var(--ink);color:var(--paper)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,2.5vw,2rem)}
+@media(max-width:760px){.steps{grid-template-columns:1fr 1fr}}@media(max-width:440px){.steps{grid-template-columns:1fr}}
+.werk h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.4vw,3rem);margin-bottom:.5rem}
+.werk .kicker{color:#7fc9c2}
+.step{border-top:2px solid var(--teal);padding-top:1rem}
+.step .n{font-family:var(--disp);font-weight:800;font-size:1.5rem;color:#7fc9c2}
+.step h3{font-family:var(--disp);font-weight:700;font-size:1.2rem;margin:.4rem 0 .4rem}
+.step p{color:#c4c2bb;font-size:.96rem}
+
+/* garantie */
+.gar .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:760px){.gar .wrap{grid-template-columns:1fr;gap:1.5rem}}
+.gar h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.4vw,3rem)}
+.gar ul{margin-top:1.2rem;display:grid;gap:.8rem}
+.gar li{display:flex;gap:.8rem;align-items:flex-start}
+.gar .tick{width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;flex:none;font-weight:700}
+.gar li b{font-family:var(--disp);font-weight:700}.gar li span{color:var(--muted);font-size:.94rem;display:block}
+
+/* offerte */
+.off{background:var(--paper-2)}
+.off .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+@media(max-width:860px){.off .wrap{grid-template-columns:1fr;gap:2rem}}
+.off h2{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,4.4vw,3rem);margin-bottom:1rem}
+.off address{font-style:normal;color:var(--ink-2);line-height:1.9;margin-top:1rem}.off address a{border-bottom:1px solid var(--line)}
+.off .avail{color:var(--teal);font-weight:600}
+.fcard{background:#fff;border-radius:var(--r);padding:clamp(1.5rem,3vw,2.2rem);box-shadow:0 22px 50px -36px rgba(29,29,31,.5)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:480px){.row{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}.fld.full{grid-column:1/-1}
+.fld label{font-weight:600;font-size:.82rem;color:var(--ink-2)}
+.fld input,.fld select,.fld textarea{border:2px solid var(--paper-2);background:var(--paper);border-radius:11px;padding:.75rem .9rem}
+.fld textarea{min-height:70px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--teal)}
+.fld.bad input,.fld.bad select{border-color:#c0563f}
+.fld .err{display:none;font-size:.78rem;color:#c0563f}.fld.bad .err{display:block}
+.fcard button{width:100%;background:var(--teal);color:#fff;border:0;border-radius:99px;padding:.95rem;font-family:var(--disp);font-weight:600;font-size:1rem;cursor:pointer}
+.fcard button:hover{background:var(--teal-2)}
+.fcard .ok{display:none;text-align:center;padding:.5rem 0}.fcard.sent .row,.fcard.sent .fld,.fcard.sent button{display:none}.fcard.sent .ok{display:block}
+.fcard .ok h3{font-family:var(--disp);font-weight:800;font-size:1.4rem;margin-bottom:.4rem}
+
+.foot{background:var(--ink);color:#b4b2ab;padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.foot .logo{color:#fff}.foot .small{font-size:.84rem;text-align:right}@media(max-width:560px){.foot .small{text-align:left}}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#diensten">Naar de diensten</a>
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#top">Laag<b>.</b></a>
+  <nav class="nav" id="nav"><a href="#diensten">Diensten</a><a href="#werkwijze">Werkwijze</a><a href="#garantie">Garantie</a><a class="cta" href="#offerte">Offerte</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <div>
+      <span class="kicker">Schildersbedrijf · Zwolle</span>
+      <h1>Strak afgewerkt,<br><em>zonder</em> gedoe.</h1>
+      <p class="lead">Binnen- en buitenschilderwerk met nette afspraken en een vaste schilder. Kies hiernaast vast een kleur voor je kamer.</p>
+      <div class="hero-act"><a class="btn" href="#offerte">Vraag een offerte</a><a class="lnk" href="#diensten">Wat we doen</a></div>
+    </div>
+    <div class="kiezer" data-r>
+      <div class="room">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=72" alt="Woonkamer waarvan je de muurkleur kunt wijzigen" width="900" height="700">
+        <div class="tint" id="tint" aria-hidden="true"></div>
+        <div class="badge"><span class="dot" id="bdot"></span><span id="bname">Kleizand</span><small id="bcode">K-118</small></div>
+      </div>
+      <div class="kz-bar">
+        <span class="lbl">Probeer een kleur</span>
+        <div class="swatches" id="swatches" role="group" aria-label="Kleur kiezen"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="diensten"><div class="wrap">
+    <div class="sec-h" data-r><span class="kicker">Diensten</span><h2>Voor binnen en buiten</h2><p>Van één accentmuur tot het hele huis — netjes afgeplakt, strak afgewerkt, en de boel weer opgeruimd.</p></div>
+    <div class="dn" data-r>
+      <div class="it"><div class="n">01</div><h3>Binnenschilderwerk</h3><p>Muren, plafonds, kozijnen en deuren — egaal en duurzaam afgewerkt.</p></div>
+      <div class="it"><div class="n">02</div><h3>Buitenschilderwerk</h3><p>Houtrot voorkomen en herstellen, met verf die de Hollandse regen aankan.</p></div>
+      <div class="it"><div class="n">03</div><h3>Behang &amp; wandafwerking</h3><p>Van vlies tot fotobehang en sierpleister, kaarsrecht aangebracht.</p></div>
+      <div class="it"><div class="n">04</div><h3>Spuitwerk &amp; lak</h3><p>Strak gespoten deuren, trappen en meubels in onze werkplaats of bij jou thuis.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec werk" id="werkwijze"><div class="wrap">
+    <div class="sec-h" data-r><span class="kicker">Werkwijze</span><h2>Heldere afspraken</h2></div>
+    <div class="steps" data-r>
+      <div class="step"><div class="n">1</div><h3>Opname</h3><p>We komen langs, kijken mee en denken mee over kleur en aanpak.</p></div>
+      <div class="step"><div class="n">2</div><h3>Offerte</h3><p>Een vaste prijs op papier, met een duidelijke planning. Geen verrassingen.</p></div>
+      <div class="step"><div class="n">3</div><h3>Uitvoering</h3><p>Netjes afgeplakt, vaste schilders, en elke dag opgeruimd achtergelaten.</p></div>
+      <div class="step"><div class="n">4</div><h3>Oplevering</h3><p>Samen rondlopen tot het klopt — pas dan zijn we klaar.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec gar" id="garantie"><div class="wrap">
+    <div data-r>
+      <span class="kicker">Waarom Laag</span>
+      <h2>Werk dat blijft staan</h2>
+      <p style="color:var(--ink-2);margin-top:.8rem">We werken met A-merk verf en nemen de tijd voor de voorbereiding — want daar zit het verschil tussen mooi en mooi blijven.</p>
+    </div>
+    <div data-r>
+      <ul>
+        <li><span class="tick">✓</span><span><b>Vaste schilder</b><span>dezelfde mensen, van begin tot eind</span></span></li>
+        <li><span class="tick">✓</span><span><b>Vaste prijs vooraf</b><span>geen meerwerk zonder overleg</span></span></li>
+        <li><span class="tick">✓</span><span><b>Garantie op het werk</b><span>tot 5 jaar op buitenschilderwerk</span></span></li>
+        <li><span class="tick">✓</span><span><b>Schoon opgeleverd</b><span>de boel blijft leefbaar tijdens de klus</span></span></li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section class="sec off" id="offerte"><div class="wrap">
+    <div data-r>
+      <h2>Vraag een offerte</h2>
+      <p style="color:var(--ink-2)">Vertel kort over je klus, dan komen we vrijblijvend langs voor een opname en een vaste prijs.</p>
+      <p class="avail" style="margin-top:1rem" id="avail">Vandaag telefonisch bereikbaar</p>
+      <address>
+        Werkplaats: Russenweg 5, 8041 AL Zwolle<br>
+        <a href="tel:+31384200770">038 — 420 07 70</a> · <a href="mailto:hallo@laag-schilders.nl">hallo@laag-schilders.nl</a>
+      </address>
+    </div>
+    <form class="fcard" id="form" novalidate data-r>
+      <div class="row">
+        <div class="fld"><label for="s-naam">Naam</label><input id="s-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+        <div class="fld"><label for="s-tel">Telefoon</label><input id="s-tel" type="tel" required><span class="err">Vul je nummer in.</span></div>
+        <div class="fld"><label for="s-mail">E-mail</label><input id="s-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+        <div class="fld"><label for="s-klus">Soort klus</label><select id="s-klus" required><option value="">Kies…</option><option>Binnenschilderwerk</option><option>Buitenschilderwerk</option><option>Behang</option><option>Spuitwerk / lak</option><option>Weet ik nog niet</option></select><span class="err">Maak een keuze.</span></div>
+        <div class="fld full"><label for="s-ber">Toelichting</label><textarea id="s-ber" placeholder="Bijv. woonkamer + hal schilderen, kleur in overleg"></textarea></div>
+      </div>
+      <button type="submit">Vraag offerte aan</button>
+      <div class="ok" role="status"><h3>Bedankt!</h3><p style="color:var(--ink-2)">We bellen je binnen één werkdag voor een afspraak.</p></div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span class="logo">Laag<b style="color:var(--teal)">.</b></span>
+  <span class="small">&copy; <span id="jaar">2026</span> Laag schildersbedrijf · Zwolle · KvK 05088210</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  /* kleurkiezer */
+  var COLS=[
+    {c:'#cbb89a',n:'Kleizand',code:'K-118'},
+    {c:'#9aa98c',n:'Saliegroen',code:'K-204'},
+    {c:'#8aa6b6',n:'Mistblauw',code:'K-330'},
+    {c:'#c89a86',n:'Terracotta',code:'K-412'},
+    {c:'#b3a7c4',n:'Lavasteen',code:'K-507'},
+    {c:'#6f6f73',n:'Leigrijs',code:'K-610'},
+    {c:'#e6ddcf',n:'Kalkwit',code:'K-010'}
+  ];
+  var root=doc.documentElement,tint=doc.getElementById('tint'),sw=doc.getElementById('swatches');
+  var bdot=doc.getElementById('bdot'),bname=doc.getElementById('bname'),bcode=doc.getElementById('bcode');
+  function apply(col,i){root.style.setProperty('--c',col.c);if(bname)bname.textContent=col.n;if(bcode)bcode.textContent=col.code;
+    [].slice.call(sw.children).forEach(function(b,bi){b.setAttribute('aria-pressed',bi===i?'true':'false');});}
+  if(sw){COLS.forEach(function(col,i){var b=doc.createElement('button');b.className='sw';b.type='button';b.style.background=col.c;b.setAttribute('aria-label',col.n+' '+col.code);b.setAttribute('aria-pressed',i===0?'true':'false');b.addEventListener('click',function(){apply(col,i);});sw.appendChild(b);});apply(COLS[0],0);}
+  /* avail */
+  (function(){try{var p=new Intl.DateTimeFormat('nl-NL',{weekday:'short',hour:'2-digit',hour12:false,timeZone:'Europe/Amsterdam'}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value;});var w=(o.weekday||'').toLowerCase().slice(0,2),h=+o.hour,a=doc.getElementById('avail');if(a){var werk=['ma','di','wo','do','vr'].indexOf(w)>=0&&h>=7&&h<17;a.textContent=werk?'Nu telefonisch bereikbaar':'Ma–vr van 7:00 tot 17:00 bereikbaar';}}catch(e){}})();
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
+  var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('stuck',(window.pageYOffset||0)>8);});}},{passive:true});
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else if(i.hasAttribute('required'))ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],select[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');form.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});});}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grond — architectenbureau, Eindhoven</title>
+<meta name="description" content="Grond is een architectenbureau in Eindhoven. Wij ontwerpen gebouwen die hun plek begrijpen — met materiaal, licht en tijd. Bekijk onze projecten.">
+<meta name="theme-color" content="#ece9e3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   GROND — architectenbureau. Steen/beton, strak grotesk.
+   Signatuur: sticky scroll-spy projectindex.
+   ============================================================ */
+:root{
+  --paper:#ece9e3; --paper-2:#e1ddd3; --paper-3:#d6d1c5; --ink:#1c1b19; --ink-2:#56524b; --muted:#837e74;
+  --rust:#b4552c; --rust-2:#933f1c; --line:rgba(28,27,25,.18); --line-soft:rgba(28,27,25,.10);
+  --disp:"Space Grotesk",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif;
+  --maxw:1240px; --gutter:clamp(1.3rem,5vw,5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.05rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}ul{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}::selection{background:var(--rust);color:var(--paper)}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.disp{font-family:var(--disp)}
+.mono{font-family:var(--disp);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--paper);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+.hdr{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid transparent;transition:border-color .3s}
+.hdr.stuck{border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:var(--disp);font-weight:700;font-size:1.4rem;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--rust)}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{font-family:var(--disp);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}.nav a:hover{color:var(--rust)}
+.burger{display:none;border:1px solid var(--line);padding:.5rem .85rem;font-family:var(--disp);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:820px){.nav{position:fixed;inset:78px 0 auto;background:var(--paper);flex-direction:column;align-items:flex-start;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+
+.hero{padding-block:clamp(2.5rem,6vw,5rem)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:end}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:2rem}}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.6rem,6.5vw,5rem);line-height:1.02;letter-spacing:-.03em;margin:1.2rem 0 0}
+.hero h1 i{font-style:normal;color:var(--rust)}
+.hero p{margin-top:1.4rem;color:var(--ink-2);max-width:42ch;font-size:1.14rem}
+.hero-fig img{width:100%;aspect-ratio:3/3.6;object-fit:cover}
+.hero-meta{border-top:1px solid var(--line);margin-top:clamp(2rem,4vw,3rem)}
+.hero-meta .wrap{display:flex;gap:clamp(1.5rem,4vw,3rem);flex-wrap:wrap;padding-block:1.3rem;font-size:.88rem;color:var(--ink-2)}
+.hero-meta b{font-family:var(--disp);font-weight:600;color:var(--ink)}
+
+/* projecten — scroll-spy */
+.proj-sec{padding-block:clamp(3rem,6vw,5rem);border-top:1px solid var(--line)}
+.proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.proj-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem)}
+.proj-grid{display:grid;grid-template-columns:.32fr .68fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+@media(max-width:860px){.proj-grid{grid-template-columns:1fr}}
+.proj-index{position:sticky;top:110px;align-self:start}
+@media(max-width:860px){.proj-index{display:none}}
+.proj-index ol{display:grid;gap:.2rem;border-top:1px solid var(--line)}
+.proj-index li a{display:flex;gap:.8rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--line-soft);color:var(--muted);transition:color .3s,padding-left .3s}
+.proj-index li a .nr{font-family:var(--disp);font-size:.72rem}
+.proj-index li a .nm{font-family:var(--disp);font-weight:500;font-size:1.05rem}
+.proj-index li a .yr{margin-left:auto;font-size:.8rem;font-variant-numeric:tabular-nums}
+.proj-index li.active a{color:var(--ink);padding-left:.5rem}
+.proj-index li.active a .nm{color:var(--rust)}
+.proj-list{display:grid;gap:clamp(3rem,6vw,5rem)}
+.proj{scroll-margin-top:100px}
+.proj .img{aspect-ratio:16/11;overflow:hidden;background:var(--paper-3)}
+.proj .img img{width:100%;height:100%;object-fit:cover}
+.proj .img.block{display:grid;place-items:center}
+.proj .img.block span{font-family:var(--disp);font-weight:700;font-size:clamp(3rem,8vw,6rem);color:rgba(28,27,25,.14)}
+.proj .cap{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin-top:1rem;flex-wrap:wrap}
+.proj .cap h3{font-family:var(--disp);font-weight:600;font-size:clamp(1.4rem,2.6vw,2rem)}
+.proj .cap .meta{font-family:var(--disp);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--rust)}
+.proj p{color:var(--ink-2);margin-top:.6rem;max-width:60ch}
+
+/* bureau */
+.bureau{background:var(--ink);color:var(--paper)}
+.bureau .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+@media(max-width:820px){.bureau .wrap{grid-template-columns:1fr;gap:2rem}}
+.bureau h2{font-family:var(--disp);font-weight:700;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.05}
+.bureau h2 i{font-style:normal;color:var(--rust)}
+.bureau p{color:#c8c3b8;font-size:1.12rem}.bureau p+p{margin-top:1rem}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:.5rem}
+.nums b{font-family:var(--disp);font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);display:block;color:var(--rust)}
+.nums span{color:#a9a497;font-size:.92rem}
+
+/* contact */
+.cta{padding-block:clamp(3.5rem,7vw,6rem);border-top:1px solid var(--line)}
+.cta .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:820px){.cta .wrap{grid-template-columns:1fr;gap:1.5rem}}
+.cta h2{font-family:var(--disp);font-weight:700;font-size:clamp(2rem,5vw,3.6rem);line-height:1.02;letter-spacing:-.02em}
+.cta h2 i{font-style:normal;color:var(--rust)}
+.cta .r address{font-style:normal;color:var(--ink-2);line-height:1.9;font-size:1.05rem}
+.cta .r a{border-bottom:1px solid var(--line)}.cta .r a:hover{border-color:var(--rust)}
+.cta .r .big{font-family:var(--disp);font-weight:600;font-size:1.5rem;margin-bottom:.8rem}
+
+.foot{border-top:1px solid var(--line);padding-block:2.2rem}
+.foot .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-family:var(--disp);font-size:.78rem;letter-spacing:.06em}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#projecten">Naar de projecten</a>
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#top">Grond<i>.</i></a>
+  <nav class="nav" id="nav"><a href="#projecten">Projecten</a><a href="#bureau">Bureau</a><a href="#contact">Contact</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <div>
+      <span class="mono" style="color:var(--rust)">Architecten · Eindhoven · sinds 2008</span>
+      <h1>Wij bouwen met <i>grond,</i><br>licht en tijd.</h1>
+      <p>Gebouwen die hun plek begrijpen. We werken traag, met eerlijke materialen, en ontwerpen voor de mensen die er straks wonen of werken.</p>
+    </div>
+    <figure class="hero-fig" data-r><img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?auto=format&fit=crop&w=850&q=72" alt="Sculpturale gevel tegen een blauwe lucht" width="850" height="1020"></figure>
+  </div></section>
+  <div class="hero-meta"><div class="wrap">
+    <span><b>Woningbouw</b> · particulier &amp; collectief</span>
+    <span><b>Renovatie</b> &amp; herbestemming</span>
+    <span><b>Openbaar</b> &amp; cultuur</span>
+    <span><b>Interieur</b> &amp; meubel</span>
+  </div></div>
+
+  <section class="proj-sec" id="projecten"><div class="wrap">
+    <div class="proj-head"><h2>Geselecteerde projecten</h2><span class="mono" style="color:var(--muted)">2016 — 2026</span></div>
+    <div class="proj-grid">
+      <nav class="proj-index" id="pindex" aria-label="Projectindex"><ol>
+        <li data-for="p1"><a href="#p1"><span class="nr">01</span><span class="nm">Huis aan de Dommel</span><span class="yr">2024</span></a></li>
+        <li data-for="p2"><a href="#p2"><span class="nr">02</span><span class="nm">Toren Strijp</span><span class="yr">2023</span></a></li>
+        <li data-for="p3"><a href="#p3"><span class="nr">03</span><span class="nm">Hof van Acht</span><span class="yr">2021</span></a></li>
+        <li data-for="p4"><a href="#p4"><span class="nr">04</span><span class="nm">Kapel, herbestemd</span><span class="yr">2019</span></a></li>
+      </ol></nav>
+      <div class="proj-list">
+        <article class="proj" id="p1" data-r><div class="img"><img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?auto=format&fit=crop&w=1100&q=72" alt="Huis aan de Dommel" width="1100" height="756" loading="lazy"></div><div class="cap"><h3>Huis aan de Dommel</h3><span class="meta">Woonhuis · 2024</span></div><p>Een vrijstaand huis dat zich naar het water vouwt. Massief metselwerk aan de straat, volledig glas aan de rivier — wonen tussen baksteen en licht.</p></article>
+        <article class="proj" id="p2" data-r><div class="img"><img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1100&q=72" alt="Toren Strijp" width="1100" height="756" loading="lazy"></div><div class="cap"><h3>Toren Strijp</h3><span class="meta">Woontoren · 2023</span></div><p>48 woningen op een voormalig fabrieksterrein. Een robuust betonnen casco met groene loggia's, zodat iedere woning een eigen buiten heeft.</p></article>
+        <article class="proj" id="p3" data-r><div class="img block"><span>03</span></div><div class="cap"><h3>Hof van Acht</h3><span class="meta">Collectief wonen · 2021</span></div><p>Acht huishoudens rond een gedeelde binnentuin. Privé waar het moet, samen waar het kan — een hof als klein dorp in de stad.</p></article>
+        <article class="proj" id="p4" data-r><div class="img block"><span>04</span></div><div class="cap"><h3>Kapel, herbestemd</h3><span class="meta">Herbestemming · 2019</span></div><p>Een leegstaande kapel werd werkplaats en ontmoetingsplek. We lieten de ruimte vooral met rust; ingrepen zijn zichtbaar nieuw, nooit nep-oud.</p></article>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="bureau" id="bureau"><div class="wrap" style="padding-block:clamp(3.5rem,7vw,6rem)">
+    <div data-r>
+      <span class="mono" style="color:var(--rust)">Het bureau</span>
+      <h2 style="margin-top:1rem">Architectuur is een <i>werkwoord</i></h2>
+      <p>We zijn een klein team van zeven, en dat blijven we ook. Zo kennen we elk project van schets tot oplevering, en zit er altijd een ontwerper aan tafel — geen accountmanager.</p>
+      <p>Duurzaam bouwen is voor ons geen keurmerk maar vanzelfsprekend: hergebruik wat er staat, kies materiaal dat veroudert in schoonheid, en ontwerp zodat een gebouw makkelijk een tweede leven krijgt.</p>
+    </div>
+    <div data-r style="align-self:center">
+      <div class="nums">
+        <div><b>2008</b><span>opgericht</span></div>
+        <div><b>60+</b><span>opgeleverde projecten</span></div>
+        <div><b>7</b><span>mensen in het bureau</span></div>
+        <div><b>4</b><span>architectuurprijzen</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="cta" id="contact"><div class="wrap">
+    <div data-r><h2>Een plek met<br>een <i>opgave?</i></h2></div>
+    <div class="r" data-r>
+      <div class="big">Laten we kennismaken.</div>
+      <address>
+        Torenallee 45, 5617 BA Eindhoven<br>
+        <a href="tel:+31402370880">040 — 237 08 80</a><br>
+        <a href="mailto:bureau@grond-architecten.nl">bureau@grond-architecten.nl</a>
+      </address>
+    </div>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span>Grond architecten</span>
+  <span>&copy; <span id="jaar">2026</span> · Eindhoven · lid BNA</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
+  var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('stuck',(window.pageYOffset||0)>8);});}},{passive:true});
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  /* scroll-spy projectindex */
+  var idx=doc.getElementById('pindex');
+  if(idx&&'IntersectionObserver'in window){
+    var items={};idx.querySelectorAll('li').forEach(function(li){items[li.getAttribute('data-for')]=li;});
+    var spy=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){Object.keys(items).forEach(function(k){items[k].classList.toggle('active',k===en.target.id);});}});},{rootMargin:'-45% 0px -45% 0px',threshold:0});
+    doc.querySelectorAll('.proj').forEach(function(p){spy.observe(p);});
+  }
+})();
+</script>
+</body>
+</html>

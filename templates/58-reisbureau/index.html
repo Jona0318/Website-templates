@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verte — reizen op maat</title>
+<meta name="description" content="Verte stelt kleinschalige reizen op maat samen — van alpenmeren tot verre kusten. Persoonlijk advies, eerlijke partners, geen massatoerisme. Plan je reis.">
+<meta name="theme-color" content="#f4f0e7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VERTE — reizen op maat. Warm groen, zand, terracotta.
+   ============================================================ */
+:root{
+  --paper:#f4f0e7; --paper-2:#e9e3d4; --ink:#1f2e2a; --ink-2:#4f5d56; --muted:#7e8a82;
+  --green:#2f5d50; --green-2:#234a40; --terra:#c2724a; --terra-2:#a85b35; --sky:#7fa8c9; --line:rgba(31,46,42,.14); --line-soft:rgba(31,46,42,.07);
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  --maxw:1180px; --gutter:clamp(1.2rem,5vw,4.5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.05rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}ul{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}::selection{background:var(--green);color:#fff}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.serif{font-family:var(--serif)}
+.eyebrow{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--terra-2)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--green);color:#fff;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;color:#fff;transition:background-color .5s,color .5s,border-color .5s;border-bottom:1px solid transparent}
+.hdr.stuck{background:rgba(244,240,231,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:var(--ink);border-bottom-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-family:var(--serif);font-weight:500;font-size:1.6rem;letter-spacing:.01em}
+.nav{display:flex;align-items:center;gap:1.9rem}
+.nav a{font-size:.84rem;letter-spacing:.04em;opacity:.92}.nav a:hover{opacity:1}
+.nav .cta{border:1px solid currentColor;padding:.55rem 1.1rem;border-radius:99px;font-size:.82rem;opacity:1}
+.hdr.stuck .nav .cta{border-color:var(--green);color:var(--green)}
+.burger{display:none;border:1px solid currentColor;border-radius:99px;padding:.5rem .9rem;font-size:.82rem}
+@media(max-width:820px){.nav{position:fixed;inset:74px 0 auto;background:var(--green);color:#fff;flex-direction:column;align-items:flex-start;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;display:flex;align-items:center}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,30,26,.7),rgba(20,30,26,.15) 40%,rgba(20,30,26,.3))}
+.hero .wrap{position:relative;z-index:2;color:#fff}
+.hero .eyebrow{color:#f0c3a6;display:block;margin-bottom:1.2rem}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(3rem,8vw,6rem);line-height:1.02;letter-spacing:-.01em;max-width:16ch}
+.hero p{margin-top:1.3rem;font-size:1.2rem;max-width:40ch;color:rgba(255,255,255,.92)}
+.hero-act{margin-top:2rem;display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
+.btn{background:var(--terra);color:#fff;padding:.9rem 1.7rem;border-radius:99px;font-weight:600;font-size:.98rem;display:inline-block;transition:background-color .25s,transform .25s}
+.btn:hover{background:var(--terra-2);transform:translateY(-2px)}
+.lnk{color:#fff;border-bottom:1.5px solid #fff;padding-bottom:4px;font-size:.95rem}
+
+.sec{padding-block:clamp(3.5rem,7vw,6rem)}
+.sec-h{max-width:42rem;margin-bottom:clamp(2rem,4vw,3rem)}
+.sec-h h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.6vw,3.2rem);margin-top:.6rem}
+.sec-h p{color:var(--ink-2);margin-top:.6rem;font-size:1.08rem}
+
+/* bestemmingen */
+.dest{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,1.5rem)}
+@media(max-width:880px){.dest{grid-template-columns:1fr 1fr}}@media(max-width:480px){.dest{grid-template-columns:1fr}}
+.d{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;color:#fff;display:flex;align-items:flex-end;padding:1.3rem;transition:transform .35s}
+.d:hover{transform:translateY(-5px)}
+.d::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 55%);z-index:1}
+.d .c{position:relative;z-index:2}
+.d h3{font-family:var(--serif);font-weight:500;font-size:1.5rem}
+.d p{font-size:.86rem;opacity:.9;margin-top:.2rem}
+.d .pr{position:absolute;top:1rem;right:1rem;z-index:2;background:rgba(255,255,255,.92);color:var(--ink);font-size:.74rem;font-weight:600;padding:.3rem .6rem;border-radius:99px}
+
+/* band */
+.band{position:relative;min-height:46vh;display:flex;align-items:center;overflow:hidden;color:#fff;text-align:center}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band::after{content:"";position:absolute;inset:0;background:rgba(20,30,26,.45)}
+.band .wrap{position:relative;z-index:2}
+.band blockquote{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(1.6rem,4vw,2.8rem);line-height:1.25;max-width:24ch;margin:0 auto}
+
+/* op maat split */
+.maat{background:var(--paper-2)}
+.maat .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:840px){.maat .wrap{grid-template-columns:1fr}}
+.maat img{width:100%;aspect-ratio:4/4;object-fit:cover;border-radius:16px}
+.maat h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3rem);margin:.6rem 0 1rem}
+.maat p{color:var(--ink-2);font-size:1.1rem}
+.maat ul{margin-top:1.4rem;display:grid;gap:.8rem}
+.maat li{display:flex;gap:.8rem;align-items:flex-start}.maat .n{font-family:var(--serif);color:var(--terra-2);font-weight:600;flex:none}
+.maat li b{font-weight:600}.maat li span{color:var(--muted);font-size:.94rem;display:block}
+
+/* contact */
+.cta{background:var(--green);color:#eaf1ee}
+.cta .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+@media(max-width:820px){.cta .wrap{grid-template-columns:1fr;gap:2rem}}
+.cta .eyebrow{color:#f0c3a6}
+.cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3rem);color:#fff;margin:.6rem 0 1rem}
+.cta .lead{color:#bcd0c9;max-width:34ch;font-size:1.1rem}
+.cta .phone{margin-top:1.4rem;font-family:var(--serif);font-size:1.5rem;color:#fff}.cta .phone a{border-bottom:1px solid rgba(255,255,255,.4)}
+.cta .avail{margin-top:.8rem;color:#9fc0b6;font-size:.9rem}
+.fcard{background:var(--paper);color:var(--ink);border-radius:16px;padding:clamp(1.5rem,3vw,2.2rem)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:480px){.row{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}.fld.full{grid-column:1/-1}
+.fld label{font-weight:600;font-size:.82rem;color:var(--ink-2)}
+.fld input,.fld select,.fld textarea{border:1px solid var(--line);background:#fff;border-radius:10px;padding:.75rem .9rem}
+.fld textarea{min-height:64px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--green)}
+.fld.bad input,.fld.bad select{border-color:var(--terra-2)}
+.fld .err{display:none;font-size:.78rem;color:var(--terra-2)}.fld.bad .err{display:block}
+.fcard button{width:100%;background:var(--green);color:#fff;border:0;border-radius:99px;padding:.9rem;font-weight:600;cursor:pointer}.fcard button:hover{background:var(--green-2)}
+.fcard .ok{display:none;text-align:center;padding:.5rem 0}.fcard.sent .row,.fcard.sent .fld,.fcard.sent button{display:none}.fcard.sent .ok{display:block}
+.fcard .ok h3{font-family:var(--serif);font-size:1.5rem;margin-bottom:.4rem}
+
+.foot{background:var(--ink);color:#9fb0a8;padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.foot .logo{color:#fff}.foot .small{font-size:.84rem;text-align:right}@media(max-width:560px){.foot .small{text-align:left}}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#bestemmingen">Naar de bestemmingen</a>
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#top">Verte</a>
+  <nav class="nav" id="nav"><a href="#bestemmingen">Bestemmingen</a><a href="#maat">Op maat</a><a href="#contact">Contact</a><a class="cta" href="#contact">Plan je reis</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+</div></header>
+
+<main>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1600&q=72" alt="Houten bootje op een groen alpenmeer tussen de bergen" width="1600" height="1067">
+    <div class="wrap">
+      <span class="eyebrow">Reizen op maat · sinds 2010</span>
+      <h1>Reizen die je <span style="font-style:italic;color:#f0c3a6">bijblijven</span>.</h1>
+      <p>Geen pakketreizen van de plank, maar een reis die past bij jou — bedacht door mensen die er zelf zijn geweest.</p>
+      <div class="hero-act"><a class="btn" href="#contact">Plan je reis</a><a class="lnk" href="#bestemmingen">Laat je inspireren</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="bestemmingen"><div class="wrap">
+    <div class="sec-h" data-r><span class="eyebrow">Bestemmingen</span><h2>Plekken waar we van houden</h2><p>Een greep uit onze favorieten. Alles op maat samen te stellen, alleen of gecombineerd.</p></div>
+    <div class="dest" data-r>
+      <div class="d" style="background:linear-gradient(160deg,#3a6f8a,#1f3e52)"><span class="pr">v.a. € 1.450</span><div class="c"><h3>Dolomieten</h3><p>Italië · wandelen &amp; meren</p></div></div>
+      <div class="d" style="background:linear-gradient(160deg,#2f5d50,#1c3a32)"><span class="pr">v.a. € 1.690</span><div class="c"><h3>Schotse Hooglanden</h3><p>VK · ruige natuur</p></div></div>
+      <div class="d" style="background:linear-gradient(160deg,#c2724a,#8a4a2c)"><span class="pr">v.a. € 2.250</span><div class="c"><h3>Marokko</h3><p>Atlas, woestijn &amp; medina</p></div></div>
+      <div class="d" style="background:linear-gradient(160deg,#4a8a9a,#246069)"><span class="pr">v.a. € 1.950</span><div class="c"><h3>Azoren</h3><p>Portugal · vulkaaneilanden</p></div></div>
+    </div>
+  </div></section>
+
+  <section class="band">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=70" alt="Tropisch strand bij zonsondergang" width="1600" height="1067" loading="lazy">
+    <div class="wrap"><blockquote>“De mooiste reis is er één die niemand anders precies zo maakt.”</blockquote></div>
+  </section>
+
+  <section class="sec maat" id="maat"><div class="wrap">
+    <figure data-r><img src="https://images.unsplash.com/photo-1502301197179-65228ab57f78?auto=format&fit=crop&w=850&q=72" alt="Een ingepakte koffer met hoed en camera" width="850" height="850" loading="lazy"></figure>
+    <div data-r>
+      <span class="eyebrow">Op maat</span>
+      <h2>Jouw reis, van begin tot eind</h2>
+      <p>We luisteren naar wat je zoekt — rust of avontuur, comfort of ruig — en bouwen daar een reis omheen. Met partners ter plaatse die we zelf kennen en vertrouwen.</p>
+      <ul>
+        <li><span class="n">01</span><span><b>Persoonlijk gesprek</b><span>we leren je wensen en tempo kennen</span></span></li>
+        <li><span class="n">02</span><span><b>Voorstel op maat</b><span>route, verblijf en ervaringen, helder begroot</span></span></li>
+        <li><span class="n">03</span><span><b>Zorgeloos op reis</b><span>één aanspreekpunt, ook onderweg bereikbaar</span></span></li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section class="sec cta" id="contact"><div class="wrap">
+    <div data-r>
+      <span class="eyebrow">Plan je reis</span>
+      <h2>Waar gaat het<br>naartoe?</h2>
+      <p class="lead">Vertel ons je droombestemming of laat je verrassen. We bellen je terug voor een vrijblijvend reisgesprek.</p>
+      <p class="phone">Of bel <a href="tel:+31302410090">030 — 241 00 90</a></p>
+      <p class="avail" id="avail">Ma–vr telefonisch bereikbaar</p>
+    </div>
+    <form class="fcard" id="form" novalidate data-r>
+      <div class="row">
+        <div class="fld"><label for="t-naam">Naam</label><input id="t-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+        <div class="fld"><label for="t-mail">E-mail</label><input id="t-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+        <div class="fld"><label for="t-best">Bestemming</label><input id="t-best" type="text" placeholder="Of: verras me"></div>
+        <div class="fld"><label for="t-pers">Reizigers</label><select id="t-pers" required><option value="">Kies…</option><option>1</option><option>2</option><option>3–4</option><option>Groep</option></select><span class="err">Maak een keuze.</span></div>
+        <div class="fld full"><label for="t-ber">Wat voor reis zoek je?</label><textarea id="t-ber" placeholder="Periode, sfeer, budget-indicatie…"></textarea></div>
+      </div>
+      <button type="submit">Vraag een reisgesprek aan</button>
+      <div class="ok" role="status"><h3>Bon voyage in spe!</h3><p style="color:var(--ink-2)">We nemen binnen één werkdag contact op voor je reisgesprek.</p></div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span class="logo serif">Verte</span>
+  <span class="small">&copy; <span id="jaar">2026</span> Verte reizen · Oudegracht 320, Utrecht · SGR &amp; ANVR · KvK 51902288</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  (function(){try{var p=new Intl.DateTimeFormat('nl-NL',{weekday:'short',hour:'2-digit',hour12:false,timeZone:'Europe/Amsterdam'}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value;});var w=(o.weekday||'').toLowerCase().slice(0,2),h=+o.hour,a=doc.getElementById('avail');if(a){var werk=['ma','di','wo','do','vr'].indexOf(w)>=0&&h>=9&&h<18;a.textContent=werk?'Nu telefonisch bereikbaar':'Ma–vr 9:00–17:30 · za op afspraak';}}catch(e){}})();
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
+  var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('stuck',(window.pageYOffset||0)>(window.innerHeight*0.7));});}},{passive:true});
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else if(i.hasAttribute('required'))ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],select[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');form.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});});}
+})();
+</script>
+</body>
+</html>

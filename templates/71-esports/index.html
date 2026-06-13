@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RESPAWN — esports team</title>
+<meta name="description" content="RESPAWN is een Nederlands esports-team. Vijf line-ups, één doel: winnen. Bekijk de roster, de wedstrijden en sluit je aan.">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Rajdhani:wght@600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESPAWN — esports. Diep navy × neon-groen × magenta. Hoekig / clip-path.
+   ============================================================ */
+:root{
+  --bg:#080c16; --panel:#0e1424; --panel2:#121a2e; --ink:#eaf0ff; --dim:#8493b8;
+  --green:#39ff14; --mag:#ff2d92; --cyan:#27e6ff; --line:#1d2940;
+  --disp:"Rajdhani",system-ui,sans-serif; --body:"Chakra Petch",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1180px; --gutter:clamp(1rem,4vw,3rem); --clip:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--green);color:#000}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--green);color:#000;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(8,12,22,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:var(--disp);font-weight:700;font-size:1.4rem;letter-spacing:.08em;text-transform:uppercase}.logo span{color:var(--green)}
+.menu{display:flex;align-items:center;gap:.4rem}
+.menu a{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;color:var(--dim);padding:.45rem .7rem}
+.menu a:hover{color:var(--green)}
+.menu .cta{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--green);color:#000;padding:.4rem 1rem;clip-path:var(--clip)}
+.menu .cta:hover{background:var(--cyan)}
+.burger{display:none;border:1px solid var(--line);background:none;color:var(--ink);padding:.4rem .65rem;font-family:var(--mono);font-size:.78rem}
+@media(max-width:840px){.menu{position:fixed;inset:62px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid var(--line)}.burger{display:inline-block}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(115deg,rgba(57,255,20,.12),transparent 40%),
+  radial-gradient(circle at 85% 20%,rgba(255,45,146,.22),transparent 45%);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px}
+.hero .wrap{position:relative;padding-block:clamp(2.6rem,7vw,5.5rem)}
+.hero .kick{font-family:var(--mono);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
+.hero h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(3rem,13vw,9rem);line-height:.86;letter-spacing:.01em;margin:.6rem 0}
+.hero h1 .g{color:var(--green);text-shadow:0 0 24px rgba(57,255,20,.6)}
+.hero h1 .m{color:var(--mag)}
+.hero p{font-size:1.15rem;max-width:42ch;color:var(--dim)}
+.hero .row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+.btn{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.95rem;padding:.85rem 1.5rem;cursor:pointer;clip-path:var(--clip)}
+.btn.p{background:var(--green);color:#000}.btn.p:hover{background:var(--cyan)}
+.btn.s{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}.btn.s:hover{border-color:var(--mag);color:var(--mag)}
+
+/* stat strip */
+.stats{border-bottom:1px solid var(--line);background:var(--panel)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:1.4rem;text-align:center}
+@media(max-width:560px){.stats .wrap{grid-template-columns:1fr 1fr}}
+.stat b{font-family:var(--disp);font-weight:700;font-size:1.9rem;display:block;color:var(--green)}
+.stat span{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+
+.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec-h{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
+.sec-h h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,5vw,2.8rem);letter-spacing:.03em}
+.sec-h .bar{flex:1;height:2px;background:linear-gradient(90deg,var(--green),transparent)}
+
+/* roster */
+.roster{display:grid;grid-template-columns:repeat(5,1fr);gap:.9rem}
+@media(max-width:900px){.roster{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.roster{grid-template-columns:1fr 1fr}}
+.player{background:var(--panel);border:1px solid var(--line);clip-path:var(--clip);overflow:hidden;transition:transform .15s,border-color .2s}
+.player:hover{transform:translateY(-4px);border-color:var(--green)}
+.player .av{height:120px;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:2.6rem;color:#000;background:linear-gradient(135deg,var(--green),#1aa30a)}
+.player:nth-child(2) .av{background:linear-gradient(135deg,var(--mag),#a01060)}
+.player:nth-child(3) .av{background:linear-gradient(135deg,var(--cyan),#0a7e96)}
+.player:nth-child(4) .av{background:linear-gradient(135deg,#b06bff,#5a2bb0)}
+.player:nth-child(5) .av{background:linear-gradient(135deg,#ffb43d,#b07310)}
+.player .b{padding:.8rem .9rem}
+.player h3{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.1rem}
+.player .role{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;color:var(--dim)}
+
+/* matches */
+.matches{display:grid;gap:.7rem}
+.match{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;background:var(--panel);border:1px solid var(--line);clip-path:var(--clip);padding:.9rem 1.2rem}
+.match .d{font-family:var(--mono);font-size:.8rem;color:var(--green);text-align:center;border-right:1px solid var(--line);padding-right:1rem}
+.match .vs{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.1rem}
+.match .vs em{font-style:normal;color:var(--dim);font-size:.85rem;margin:0 .5rem}
+.match .game{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;border:1px solid var(--line);padding:.2rem .55rem;color:var(--cyan)}
+.match.win{border-left:3px solid var(--green)}.match.loss{border-left:3px solid var(--mag);opacity:.7}
+.match .res{font-family:var(--disp);font-weight:700}
+@media(max-width:600px){.match{grid-template-columns:auto 1fr}.match .game{grid-column:2;justify-self:start}}
+
+/* join */
+.join{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg))}
+.join .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;padding-block:clamp(2.5rem,5vw,4.5rem)}
+@media(max-width:780px){.join .wrap{grid-template-columns:1fr}}
+.join h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:.03em;line-height:1}
+.join h2 span{color:var(--green)}
+.join p{color:var(--dim);margin-top:.9rem}
+.form{border:1px solid var(--line);background:var(--panel);clip-path:var(--clip);padding:clamp(1.2rem,3vw,1.8rem)}
+.fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+.fld input,.fld select{border:1px solid var(--line);background:var(--bg);padding:.7rem .8rem;color:var(--ink)}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--green)}
+.fld.bad input{border-color:var(--mag)}
+.fld .err{display:none;font-size:.74rem;color:var(--mag)}.fld.bad .err{display:block}
+.form button{width:100%;cursor:pointer;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.85rem;border:none;background:var(--green);color:#000;clip-path:var(--clip)}
+.form .ok{display:none;font-family:var(--disp);font-weight:700;text-transform:uppercase;color:var(--green);padding:.4rem 0}
+.form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
+
+.foot{padding-block:clamp(2rem,4vw,3rem);border-top:1px solid var(--line)}
+.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.foot .logo span{color:var(--green)}
+.foot .tag{font-family:var(--mono);font-size:.76rem;color:var(--dim)}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#roster">Naar de roster</a>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">RE<span>SPAWN</span></a>
+  <nav class="menu" id="menu"><a href="#roster">Roster</a><a href="#wedstrijden">Wedstrijden</a><a href="#join">Tryouts</a><a class="cta" href="#join">Word lid</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">≡</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <span class="kick">// Esports organisatie · NL</span>
+    <h1>Geen<br><span class="g">tweede</span> <span class="m">kans</span><br>nodig.</h1>
+    <p>Vijf line-ups, één mentaliteit. We trainen hard, spelen scherp en spelen om te winnen — niet om mee te doen.</p>
+    <div class="row">
+      <a class="btn p" href="#wedstrijden">Bekijk wedstrijden</a>
+      <a class="btn s" href="#join">Doe mee aan tryouts</a>
+    </div>
+  </div></section>
+
+  <section class="stats"><div class="wrap">
+    <div class="stat"><b>5</b><span>line-ups</span></div>
+    <div class="stat"><b>23</b><span>titels</span></div>
+    <div class="stat"><b>#2</b><span>BeNeLux ranking</span></div>
+    <div class="stat"><b>2017</b><span>opgericht</span></div>
+  </div></section>
+
+  <section class="sec wrap" id="roster">
+    <div class="sec-h"><h2>Hoofd-roster</h2><span class="bar" aria-hidden="true"></span></div>
+    <div class="roster" data-r>
+      <div class="player"><div class="av" aria-hidden="true">V</div><div class="b"><h3>Vortex</h3><div class="role">IGL / Entry</div></div></div>
+      <div class="player"><div class="av" aria-hidden="true">N</div><div class="b"><h3>Nyx</h3><div class="role">AWP</div></div></div>
+      <div class="player"><div class="av" aria-hidden="true">K</div><div class="b"><h3>Kilo</h3><div class="role">Support</div></div></div>
+      <div class="player"><div class="av" aria-hidden="true">Z</div><div class="b"><h3>Zephyr</h3><div class="role">Lurker</div></div></div>
+      <div class="player"><div class="av" aria-hidden="true">R</div><div class="b"><h3>Rook</h3><div class="role">Rifler</div></div></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="wedstrijden">
+    <div class="sec-h"><h2>Wedstrijden</h2><span class="bar" aria-hidden="true"></span></div>
+    <div class="matches" data-r>
+      <div class="match"><div class="d"><b>za 14</b><br>20:00</div><div class="vs">RESPAWN <em>vs</em> Helix</div><span class="game">Aankomend</span></div>
+      <div class="match"><div class="d"><b>za 21</b><br>18:30</div><div class="vs">RESPAWN <em>vs</em> Nova GG</div><span class="game">Aankomend</span></div>
+      <div class="match win"><div class="d"><b>za 7</b><br>—</div><div class="vs">RESPAWN <em>vs</em> Mirage <span class="res">16—9</span></div><span class="game">Gewonnen</span></div>
+      <div class="match win"><div class="d"><b>do 5</b><br>—</div><div class="vs">RESPAWN <em>vs</em> Phantom <span class="res">2—1</span></div><span class="game">Gewonnen</span></div>
+      <div class="match loss"><div class="d"><b>zo 1</b><br>—</div><div class="vs">RESPAWN <em>vs</em> Apex <span class="res">12—16</span></div><span class="game">Verloren</span></div>
+    </div>
+  </section>
+
+  <section class="join" id="join"><div class="wrap">
+    <div data-r>
+      <h2>Tryouts<br><span>open.</span></h2>
+      <p>Denk je dat je het in je hebt? We zoeken talent voor onze academy-line-up. Stuur je gegevens en main-rol, dan plannen we een tryout-scrim.</p>
+    </div>
+    <form class="form" id="form" novalidate data-r>
+      <div class="fld"><label for="e-naam">Gamertag</label><input id="e-naam" type="text" required><span class="err">Vul je gamertag in.</span></div>
+      <div class="fld"><label for="e-mail">E-mail</label><input id="e-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+      <div class="fld"><label for="e-rol">Main-rol</label><select id="e-rol"><option>Entry / Rifler</option><option>AWP</option><option>IGL</option><option>Support</option><option>Lurker</option></select></div>
+      <button type="submit">Meld je aan voor tryout</button>
+      <div class="ok" role="status">▸ Aanmelding binnen. GG — we mailen je.</div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <a class="logo" href="#top">RE<span>SPAWN</span></a>
+  <span class="tag">&copy; <span id="jaar">2026</span> RESPAWN Esports · Amsterdam · @respawn.gg</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
+})();
+</script>
+</body>
+</html>

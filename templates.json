@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-13",
-  "count": 39,
+  "count": 87,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -9,7 +9,9 @@
     "flagship": "Bundelt de sterkste features uit de hele galerij in één pagina. Gemarkeerd met ✦.",
     "signature": "Flagship-niveau met één diep uitgewerkt, uniek interactief pronkstuk. Gemarkeerd met ✦.",
     "aanpasbaar": "Bezoeker past het thema live aan (kleur/modus/hoeken/lettertype) en exporteert het als CSS.",
-    "redactioneel": "Volledig met de hand geschreven (geen generator): redactioneel/print-geïnspireerd ontwerp met echte foto's — bewust géén template-look."
+    "maatwerk": "Volledig met de hand geschreven (geen generator): een uniek, doordacht ontwerp met echte foto's en een eigen layout per site — bewust géén template-look.",
+    "grafisch": "Nieuwe bold-graphic stijl: neo-brutalist / new-wave. Hard offset-schaduwen, dikke randen, oversized display-type, gedurfde platte kleuren, tickers en stickers — bewust géén foto-look.",
+    "editorial": "Verfijnd redactioneel ontwerp-systeem (Swiss-grid): zichtbaar kolommenraster, hairline-regels, oversized sectienummers en één ingehouden accent. Inhoud-agnostisch en herthema'baar — bewust de antithese van de standaard AI-look."
   },
   "sharedConventions": {
     "appliesTo": "premium, flagship en signature (11–24)",
@@ -78,44 +80,3321 @@
     "css-export": "huidig thema kopiëren als :root-CSS naar klembord"
   },
   "templates": [
-    { "id": 1, "slug": "01-business", "path": "templates/01-business/", "title": "Bedrijf / Corporate", "sector": "corporate", "tier": "basis", "scheme": "light+dark", "multipage": true, "palette": ["#4f46e5", "#06b6d4"], "fonts": ["Inter"], "mechanics": ["dark-mode-toggle", "pricing-toggle", "faq-accordion", "contact-form"], "sections": ["home", "over", "diensten", "contact", "404"], "note": "Enige multi-page template; losse css/style.css en js/main.js. Goede start voor klassieke bedrijfssites." },
-    { "id": 2, "slug": "02-portfolio", "path": "templates/02-portfolio/", "title": "Portfolio", "sector": "creatief", "tier": "basis", "scheme": "dark", "multipage": false, "palette": ["#0d0d0f", "#2a2a18"], "fonts": ["Space Grotesk", "Inter"], "mechanics": ["project-grid"], "sections": ["hero", "werk", "over", "contact"], "note": "Donker, creatief portfolio voor designer/developer." },
-    { "id": 3, "slug": "03-saas", "path": "templates/03-saas/", "title": "SaaS / Software", "sector": "tech", "tier": "basis", "scheme": "light", "multipage": false, "palette": ["#7c3aed", "#2563eb"], "fonts": ["Inter"], "mechanics": ["pricing-toggle", "faq-accordion"], "sections": ["hero", "features", "prijzen", "faq", "cta"], "note": "Productlanding met maand/jaar-prijsschakelaar." },
-    { "id": 4, "slug": "04-restaurant", "path": "templates/04-restaurant/", "title": "Restaurant", "sector": "horeca", "tier": "basis", "scheme": "light", "multipage": false, "palette": ["#1f3d2b", "#c1572c"], "fonts": ["Playfair Display", "Nunito Sans"], "mechanics": ["gallery", "contact-form"], "sections": ["hero", "menu", "galerij", "reserveren"], "note": "Warme elegante site met menu en reserveringsformulier." },
-    { "id": 5, "slug": "05-agency", "path": "templates/05-agency/", "title": "Agency / Studio", "sector": "creatief", "tier": "basis", "scheme": "dark", "multipage": false, "palette": ["#0a0a0a", "#2b50ff"], "fonts": ["Syne", "Inter"], "mechanics": ["project-grid", "count-up"], "sections": ["hero", "cases", "stats", "contact"], "note": "Bold high-contrast bureausite met grote typografie." },
-    { "id": 6, "slug": "06-blog", "path": "templates/06-blog/", "title": "Blog / Magazine", "sector": "media", "tier": "basis", "scheme": "light", "multipage": false, "palette": ["#d6334c", "#7c1d2b"], "fonts": ["Lora", "Inter"], "mechanics": ["project-grid"], "sections": ["uitgelicht", "artikelgrid", "nieuwsbrief"], "note": "Redactionele homepage; artikelgrid + nieuwsbrief." },
-    { "id": 7, "slug": "07-webshop", "path": "templates/07-webshop/", "title": "Webshop", "sector": "retail", "tier": "basis", "scheme": "light", "multipage": false, "palette": ["#111827", "#ff4d4d"], "fonts": ["Poppins"], "mechanics": ["project-grid", "cart-counter", "category-filter"], "sections": ["hero", "categorieën", "productgrid", "cta"], "note": "E-commerce homepage met werkende winkelmand-teller." },
-    { "id": 8, "slug": "08-fotografie", "path": "templates/08-fotografie/", "title": "Fotografie", "sector": "creatief", "tier": "basis", "scheme": "light", "multipage": false, "palette": ["#1a1a1a", "#555555"], "fonts": ["Cormorant Garamond", "Jost"], "mechanics": ["gallery", "category-filter"], "sections": ["hero", "galerij", "over", "contact"], "note": "Minimalistisch fotografieportfolio met filter." },
-    { "id": 9, "slug": "09-event", "path": "templates/09-event/", "title": "Event / Congres", "sector": "event", "tier": "basis", "scheme": "dark", "multipage": false, "palette": ["#6d28d9", "#ec4899"], "fonts": ["Sora"], "mechanics": ["countdown", "contact-form"], "sections": ["hero", "sprekers", "programma", "tickets"], "note": "Energieke eventlanding met countdown en programma." },
-    { "id": 10, "slug": "10-cv", "path": "templates/10-cv/", "title": "CV / Resumé", "sector": "persoonlijk", "tier": "basis", "scheme": "light", "multipage": false, "palette": ["#0d9488", "#0f766e"], "fonts": ["Inter"], "mechanics": ["skill-bars", "drawing-timeline"], "sections": ["hero", "ervaring", "vaardigheden", "contact"], "note": "One-page CV met animerende vaardigheidsbalken." },
-    { "id": 11, "slug": "11-architectuur", "path": "templates/11-architectuur/", "title": "Architectuur Studio", "sector": "creatief", "tier": "premium", "scheme": "light", "multipage": false, "palette": ["#1a1816", "#a67c52"], "fonts": ["Cormorant Garamond", "Inter"], "mechanics": ["preloader", "parallax", "manifest-scroll", "magnetic-button", "reveal-system", "anim-opt-in"], "sections": ["hero", "manifest", "projecten", "over", "contact"], "note": "Editorial design; eerste premium-template." },
-    { "id": 12, "slug": "12-hotel", "path": "templates/12-hotel/", "title": "Boutique Hotel", "sector": "horeca", "tier": "premium", "scheme": "dark", "multipage": false, "palette": ["#101713", "#b89b5e"], "fonts": ["Cormorant Garamond", "Jost"], "mechanics": ["ken-burns", "carousel", "reveal-system", "anim-opt-in"], "sections": ["hero", "kamers", "faciliteiten", "reviews", "boeken"], "note": "Vijfsterren-uitstraling met boekingsbalk en quote-carrousel." },
-    { "id": 13, "slug": "13-fintech", "path": "templates/13-fintech/", "title": "Fintech / Bank", "sector": "finance", "tier": "premium", "scheme": "dark", "multipage": false, "palette": ["#0a0c10", "#00e389"], "fonts": ["Space Grotesk", "Inter"], "mechanics": ["3d-tilt", "bento-grid", "glassmorphism", "count-up", "reveal-system", "anim-opt-in"], "sections": ["hero", "features-bento", "kaart", "prijzen", "cta"], "note": "3D-tilt bankpas, live transactiefeed, glasmorfisme." },
-    { "id": 14, "slug": "14-fashion", "path": "templates/14-fashion/", "title": "Fashion / Maison", "sector": "retail", "tier": "premium", "scheme": "light", "multipage": false, "palette": ["#f4f2ee", "#1a1a1a"], "fonts": ["Cormorant Garamond", "Jost"], "mechanics": ["curtain-reveal", "duotone", "reveal-system", "anim-opt-in"], "sections": ["hero", "collectie", "lookbook", "over"], "note": "Haute-couture-minimalisme; lookbook met scroll-snap." },
-    { "id": 15, "slug": "15-wellness", "path": "templates/15-wellness/", "title": "Wellness / Spa", "sector": "gezondheid", "tier": "premium", "scheme": "light", "multipage": false, "palette": ["#9aa88f", "#3a4438"], "fonts": ["Cormorant Garamond", "Jost"], "mechanics": ["breathing-widget", "arc-mask", "drawing-timeline", "reveal-system", "anim-opt-in"], "sections": ["hero", "behandelingen", "ritueel", "boeken"], "note": "Serene luxe met adem-widget en boogmaskers." },
-    { "id": 16, "slug": "16-bouw", "path": "templates/16-bouw/", "title": "ZZP Metselaar", "sector": "diensten", "tier": "premium", "scheme": "dark", "multipage": false, "palette": ["#0d0f12", "#3b82f6"], "fonts": ["Archivo", "Inter", "IBM Plex Mono"], "mechanics": ["self-drawing-svg", "before-after-slider", "category-filter", "reveal-system", "anim-opt-in"], "sections": ["hero", "diensten", "projecten", "voor-na", "offerte"], "note": "Blueprint-stijl, zelftekenende troffel, voor/na-slider." },
-    { "id": 17, "slug": "17-koffie", "path": "templates/17-koffie/", "title": "Koffiebranderij", "sector": "horeca", "tier": "premium", "scheme": "light", "multipage": false, "palette": ["#f6f1e7", "#c47a3d"], "fonts": ["Fraunces", "Outfit", "DM Mono"], "mechanics": ["steam-anim", "roast-meters", "drawing-timeline", "subscription-toggle", "reveal-system", "anim-opt-in"], "sections": ["hero", "bonen", "proces", "abonnement"], "note": "Crème/karamel met stoom-animaties en brandgraad-meters." },
-    { "id": 18, "slug": "18-gym", "path": "templates/18-gym/", "title": "Boxing Gym", "sector": "gezondheid", "tier": "premium", "scheme": "dark", "multipage": false, "palette": ["#0b0b0c", "#d8f24b"], "fonts": ["Archivo Black", "Archivo", "Space Mono"], "mechanics": ["velocity-marquee", "duotone", "schedule-tabs", "reveal-system", "anim-opt-in"], "sections": ["hero", "lessen", "rooster", "lidmaatschap"], "note": "Rauw zwart/acid-geel met dubbele marquee en lesrooster-tabs." },
-    { "id": 19, "slug": "19-studio", "path": "templates/19-studio/", "title": "Studio Kaap — Flagship", "name": "Studio Kaap", "sector": "creatief", "tier": "flagship", "scheme": "dark", "multipage": false, "palette": ["#0b0b0d", "#ff5a36"], "fonts": ["Bricolage Grotesque", "Instrument Serif", "Inter", "Space Mono"], "mechanics": ["preloader", "manifest-scroll", "bento-grid", "3d-tilt", "before-after-slider", "drawing-timeline", "velocity-marquee", "faq-accordion", "live-clock", "duotone", "pricing-toggle", "carousel", "count-up", "reveal-system", "anim-opt-in"], "sections": ["hero", "manifest", "werk-bento", "proces", "team", "prijzen", "faq", "contact"], "note": "Donkere flagship; bundelt de sterkste features." },
-    { "id": 20, "slug": "20-buitenplaats", "path": "templates/20-buitenplaats/", "title": "Buitenplaats — Flagship", "name": "Buitenplaats", "sector": "diensten", "tier": "flagship", "scheme": "light", "multipage": false, "palette": ["#f3f1ea", "#2e5b3f"], "fonts": ["Fraunces", "Hanken Grotesk", "IBM Plex Mono"], "mechanics": ["curtain-reveal", "arc-mask", "before-after-slider", "category-filter", "drawing-timeline", "duotone", "faq-accordion", "live-clock", "reveal-system", "anim-opt-in"], "sections": ["hero", "diensten", "projecten", "schets-slider", "seizoenen", "faq", "contact"], "note": "Lichte, serif-gedreven tegenpool van Studio Kaap (tuinarchitectuur)." },
-    { "id": 21, "slug": "21-letterstudio", "path": "templates/21-letterstudio/", "title": "Letterstudio — Signature", "name": "Kapitaal", "sector": "creatief", "tier": "signature", "scheme": "light", "multipage": false, "palette": ["#e4e4ff", "#6260ff"], "fonts": ["Epilogue", "Fraunces", "Space Mono"], "mechanics": ["editable-text", "variable-font-slider", "scroll-morph", "glyph-grid", "pricing-toggle", "css-showcases", "faq-accordion", "live-clock", "reveal-system", "anim-opt-in"], "sections": ["hero-proef", "scroll-morf", "lettertypen", "glyphs", "in-gebruik", "licenties", "proces", "faq", "contact"], "note": "Interactief type-specimen-lab; pronkstuk = bewerkbaar variabel font." },
-    { "id": 22, "slug": "22-museum", "path": "templates/22-museum/", "title": "Museum / Kunsthal — Signature", "name": "Museum KADE", "sector": "cultuur", "tier": "signature", "scheme": "light", "multipage": false, "palette": ["#fbeaeb", "#3447aa"], "fonts": ["Syne", "Newsreader", "Inter", "Space Mono"], "mechanics": ["live-open-status", "draggable-strip", "lightbox", "faq-accordion", "pricing-toggle", "reveal-system", "anim-opt-in"], "sections": ["hero", "nu-te-zien", "collectie-strip", "agenda", "tarieven", "vrienden", "tickets"], "note": "Pronkstuk = live open-status + sleepbare collectie + volwaardige lightbox." },
-    { "id": 23, "slug": "23-sterrenwacht", "path": "templates/23-sterrenwacht/", "title": "Sterrenwacht / Planetarium — Signature", "name": "Sterrenwacht Meridiaan", "sector": "cultuur", "tier": "signature", "scheme": "dark", "multipage": false, "palette": ["#070b18", "#f0b94c", "#74d3e6"], "fonts": ["Fraunces", "Space Grotesk", "Space Mono"], "mechanics": ["canvas-starfield", "constellation-builder", "moon-phase-calc", "live-clock", "pricing-toggle", "faq-accordion", "contact-form", "count-up", "reveal-system", "anim-opt-in"], "sections": ["hero-sterrenhemel", "maanfase", "sterrenbeeld-bouwer", "hemel-vanavond", "stats", "kijkavonden", "tarieven", "faq", "reserveren"], "note": "Eerste canvas-template. Pronkstukken: animerende sterrenhemel, zelf-bouw-sterrenbeeld, maanfase uit de datum." },
-    { "id": 24, "slug": "24-atelier", "path": "templates/24-atelier/", "title": "Generatieve Studio — Signature", "name": "Atelier Ruis", "sector": "creatief", "tier": "signature", "scheme": "light", "multipage": false, "palette": ["#f4f1ea", "#1b29ff", "#ff5a3c"], "fonts": ["Fraunces", "Space Grotesk", "Space Mono"], "mechanics": ["canvas-flowfield", "palette-picker", "png-export", "generative-thumbnails", "manifest-scroll", "drawing-timeline", "pricing-toggle", "faq-accordion", "contact-form", "count-up", "magnetic-button", "3d-tilt", "reveal-system", "anim-opt-in"], "sections": ["hero-stroomveld", "merken", "manifest", "werk", "diensten", "proces", "stats", "pakketten", "faq", "contact"], "note": "Pronkstuk = live stroomveld-canvas dat de bezoeker stuurt + PNG-export; thumbnails zijn eigen generatieve programma's." },
-    { "id": 25, "slug": "25-makelaar", "path": "templates/25-makelaar/", "title": "Makelaar / Vastgoed", "name": "Hofstede Makelaars", "sector": "diensten", "tier": "basis", "scheme": "light", "multipage": false, "recipe": "recipes/25-makelaar.json", "palette": ["#f6f4ef", "#1f6f5c", "#c2724a"], "fonts": ["Fraunces", "Space Grotesk", "Space Mono"], "mechanics": ["pricing", "faq-accordion", "contact-form", "count-up", "live-clock", "split", "manifest-scroll", "magnetic-button", "3d-tilt", "reveal-system", "anim-opt-in"], "sections": ["hero", "logos", "diensten(rows)", "aanpak(split)", "showcase", "metrics", "testimonials", "tarieven", "faq", "contact"], "note": "Generator-template (recipes/25-makelaar.json). Diverse opzet: logos, rij-diensten, showcase-aanbod, metrics, testimonials." },
-    { "id": 26, "slug": "26-helder", "path": "templates/26-helder/", "title": "Helder — digitale studio (algemeen)", "name": "Helder", "sector": "algemeen", "tier": "basis", "scheme": "light", "multipage": false, "recipe": "recipes/26-helder.json", "palette": ["#f6f4f0", "#6a2be6", "#88c425"], "fonts": ["Schibsted Grotesk", "Plus Jakarta Sans", "JetBrains Mono"], "mechanics": ["hero-split", "logos", "zigzag", "showcase", "steps", "metrics", "testimonials", "pricing-toggle", "faq-accordion", "contact-form", "count-up", "live-clock", "cta", "magnetic-button", "3d-tilt", "reveal-system", "anim-opt-in"], "sections": ["hero(split)", "logos", "zigzag", "showcase", "steps", "metrics", "testimonials", "tarieven", "faq", "cta", "contact"], "note": "Algemene studio-template. Uniek palet violet × lime; split-hero, zigzag-rijen, showcase, steps." },
-    { "id": 27, "slug": "27-nocturne", "path": "templates/27-nocturne/", "title": "Nocturne — creatieve studio (algemeen)", "name": "Nocturne", "sector": "algemeen", "tier": "basis", "scheme": "dark", "multipage": false, "recipe": "recipes/27-nocturne.json", "palette": ["#0d0f13", "#5fe9ad", "#b6a2ff"], "fonts": ["Space Grotesk", "Onest", "Space Mono"], "mechanics": ["hero-center", "marquee", "showcase", "quote", "tabs", "stats", "team", "testimonials", "pricing", "faq-accordion", "contact-form", "count-up", "live-clock", "magnetic-button", "3d-tilt", "reveal-system", "anim-opt-in"], "sections": ["hero(center)", "marquee", "showcase", "quote", "tabs", "stats", "team", "testimonials", "tarieven", "faq", "contact"], "note": "Algemene donkere agency-template. Uniek palet mint × lila; center-hero, kinetische marquee, interactieve tabs, team." },
-    { "id": 28, "slug": "28-atlas", "path": "templates/28-atlas/", "title": "Atlas — aanpasbare starter", "name": "Atlas", "sector": "algemeen", "tier": "aanpasbaar", "scheme": "light+dark", "multipage": false, "recipe": "recipes/28-atlas.json", "palette": ["#f7f7f5", "#4f46e5", "#ec4899"], "fonts": ["Schibsted Grotesk", "Plus Jakarta Sans", "Fraunces", "Inter", "JetBrains Mono"], "mechanics": ["theme-editor", "live-dark-mode", "accent-picker", "radius-slider", "font-toggle", "css-export", "hero-media", "steps", "comparison", "split", "metrics", "pricing", "faq-accordion", "banner", "contact-form", "count-up", "reveal-system", "anim-opt-in"], "sections": ["hero(media)", "features", "steps", "comparison", "split", "metrics", "licenties", "faq", "banner", "contact"], "note": "Live thema-editor (recipes/28-atlas.js + .css): accentkleur, licht/donker, hoeken en lettertype live aanpassen, thema kopiëren als CSS. Diverse opzet met media-hero, vergelijkingstabel en banner." },
-    { "id": 29, "slug": "29-noorderlicht", "path": "templates/29-noorderlicht/", "title": "Noorderlicht — arctische reizen", "name": "Noorderlicht", "sector": "reizen", "tier": "signature", "scheme": "dark", "multipage": false, "recipe": "recipes/29-noorderlicht.json", "palette": ["#060c18", "#5ef0b0", "#9b7bff"], "fonts": ["Spectral", "Hanken Grotesk", "Space Mono"], "mechanics": ["canvas-aurora", "showcase", "zigzag", "metrics", "testimonials", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(canvas-aurora)", "bestemmingen", "waarom", "metrics", "testimonials", "faq", "contact"], "note": "Pronkstuk = canvas-aurora (golvende lichtgordijnen + sterren). recipes/29-noorderlicht.{json,css,js}." },
-    { "id": 30, "slug": "30-vinyl", "path": "templates/30-vinyl/", "title": "Groef — platenlabel", "name": "Groef", "sector": "muziek", "tier": "signature", "scheme": "dark", "multipage": false, "recipe": "recipes/30-vinyl.json", "palette": ["#161009", "#e2562b", "#e8a93c"], "fonts": ["Space Grotesk", "Inter", "Space Mono"], "mechanics": ["webaudio-visualizer", "spinning-record", "showcase", "zigzag", "metrics", "team", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(turntable+visualizer)", "releases", "persen", "metrics", "artiesten", "faq", "contact"], "note": "Pronkstuk = draaiende plaat + audiovisualizer (synthetisch, echte WebAudio op de speel-knop)." },
-    { "id": 31, "slug": "31-arcade", "path": "templates/31-arcade/", "title": "Neonburcht — game studio", "name": "Neonburcht", "sector": "games", "tier": "signature", "scheme": "dark", "multipage": false, "recipe": "recipes/31-arcade.json", "palette": ["#140426", "#ff5da2", "#36e7ff"], "fonts": ["Orbitron", "Inter", "Space Mono"], "mechanics": ["canvas-synthwave-grid", "showcase", "tabs", "metrics", "team", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(neon-grid)", "games", "studio(tabs)", "metrics", "team", "faq", "contact"], "note": "Pronkstuk = synthwave perspectief-grid + neon-zon op canvas." },
-    { "id": 32, "slug": "32-kwekerij", "path": "templates/32-kwekerij/", "title": "Wildgroei — stadskwekerij", "name": "Wildgroei", "sector": "retail", "tier": "signature", "scheme": "light", "multipage": false, "recipe": "recipes/32-kwekerij.json", "palette": ["#f3f1e6", "#3f7d3a", "#d98a4e"], "fonts": ["Fraunces", "Hanken Grotesk", "Space Mono"], "mechanics": ["canvas-generative-plants", "showcase", "zigzag", "metrics", "testimonials", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(groeiende planten)", "planten", "workshops", "metrics", "testimonials", "faq", "contact"], "note": "Pronkstuk = recursief groeiende planten op canvas (groeien in beeld)." },
-    { "id": 33, "slug": "33-keramiek", "path": "templates/33-keramiek/", "title": "Draaischijf — keramiekstudio", "name": "Draaischijf", "sector": "creatief", "tier": "signature", "scheme": "light", "multipage": false, "recipe": "recipes/33-keramiek.json", "palette": ["#efe7dd", "#b5532e", "#6f7a5a"], "fonts": ["Spectral", "Inter", "Space Mono"], "mechanics": ["canvas-pottery-shaper", "interactief", "showcase", "zigzag", "metrics", "testimonials", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(draaischijf)", "werk", "cursussen", "metrics", "testimonials", "faq", "contact"], "note": "Pronkstuk = interactieve draaischijf: sleep over de klei en vorm je eigen vaas (cilindrische arcering + draaiglans)." },
-    { "id": 34, "slug": "34-parfum", "path": "templates/34-parfum/", "title": "Sillage — geurhuis", "name": "Sillage", "sector": "retail", "tier": "signature", "scheme": "dark", "multipage": false, "recipe": "recipes/34-parfum.json", "palette": ["#16100c", "#c9a24b", "#c98a7a"], "fonts": ["Cormorant Garamond", "Jost", "Space Mono"], "mechanics": ["canvas-smoke-diffusion", "scent-pyramid", "showcase", "zigzag", "metrics", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(rook)", "geuren", "geurpiramide", "atelier", "metrics", "faq", "contact"], "note": "Pronkstuk = opstijgende inkt/rook-diffusie op canvas + CSS-geurpiramide (kop/hart/basis)." },
-    { "id": 35, "slug": "35-data", "path": "templates/35-data/", "title": "Meetlat — data & dashboards", "name": "Meetlat", "sector": "tech", "tier": "signature", "scheme": "dark", "multipage": false, "recipe": "recipes/35-data.json", "palette": ["#0c1018", "#b6f23d", "#4cc4ff"], "fonts": ["Space Grotesk", "Inter", "JetBrains Mono"], "mechanics": ["canvas-live-chart", "features", "tabs", "metrics", "comparison", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(dashboard-grafiek)", "diensten", "aanpak(tabs)", "metrics", "comparison", "faq", "contact"], "note": "Pronkstuk = live animerende lijn/vlak-grafiek met KPI's (data ververst zichzelf)." },
-    { "id": 36, "slug": "36-tattoo", "path": "templates/36-tattoo/", "title": "Inktzwart — tattoo studio", "name": "Inktzwart", "sector": "creatief", "tier": "signature", "scheme": "light", "multipage": false, "recipe": "recipes/36-tattoo.json", "palette": ["#f2ece0", "#d11a26", "#0d0d0d"], "fonts": ["Anton", "Inter", "Space Mono"], "mechanics": ["canvas-ink-draw", "interactief", "showcase", "steps", "metrics", "team", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(inkt tekenen)", "stijlen", "werkwijze", "metrics", "artiesten", "faq", "contact"], "note": "Pronkstuk = teken met je cursor in zwarte/rode inkt-splatters op crèmepapier (flash-esthetiek)." },
-    { "id": 37, "slug": "37-getij", "path": "templates/37-getij/", "title": "Tij — surfschool", "name": "Tij", "sector": "sport", "tier": "signature", "scheme": "light", "multipage": false, "recipe": "recipes/37-getij.json", "palette": ["#eaf1ee", "#0fa3a3", "#f2a541"], "fonts": ["Bricolage Grotesque", "Hanken Grotesk", "Space Mono"], "mechanics": ["canvas-waves", "features", "zigzag", "metrics", "testimonials", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(golven)", "lessen", "verhuur", "metrics", "testimonials", "faq", "contact"], "note": "Pronkstuk = gelaagde golvende zee op canvas met schuim." },
-    { "id": 38, "slug": "38-lab", "path": "templates/38-lab/", "title": "Synaps — AI-lab", "name": "Synaps", "sector": "tech", "tier": "signature", "scheme": "dark", "multipage": false, "recipe": "recipes/38-lab.json", "palette": ["#07090f", "#6e8cff", "#2fe6e6"], "fonts": ["Space Grotesk", "Inter", "JetBrains Mono"], "mechanics": ["canvas-neural-network", "interactief", "features", "tabs", "metrics", "comparison", "faq-accordion", "contact-form", "reveal-system", "anim-opt-in"], "sections": ["hero(neuraal netwerk)", "diensten", "aanpak(tabs)", "metrics", "comparison", "faq", "contact"], "note": "Pronkstuk = neuraal deeltjesnetwerk dat op de cursor reageert (knopen worden aangetrokken en verbonden)." },
-    { "id": 39, "slug": "39-vlier", "path": "templates/39-vlier/", "title": "Vlier — bistro & natuurwijn", "name": "Vlier", "sector": "horeca", "tier": "redactioneel", "scheme": "light", "multipage": false, "palette": ["#f3eee4", "#7a2230", "#5b6045"], "fonts": ["DM Serif Display", "Spectral"], "mechanics": ["editorial-layout", "real-photos", "typeset-menu", "dotted-leaders", "drop-cap", "pull-quote", "live-open-status", "today-hours-highlight", "sticky-reserve-bar", "reservation-form", "subtle-reveal"], "sections": ["hero(asymmetrisch, foto)", "kaart(getypte menukaart)", "huis(verhaal + drop cap)", "wijn", "praktisch(urentabel)", "reserveren"], "note": "Volledig met de hand geschreven — NIET via _kit. Redactionele restaurantsite met echte Unsplash-foto's, getypte menukaart met dotted leaders, drop cap, pull quote, en een open/dicht-status + 'vandaag'-markering berekend uit de openingstijden. Bewust anti-template als tegenwicht voor de generator-look." }
+    {
+      "id": 1,
+      "slug": "01-business",
+      "path": "templates/01-business/",
+      "title": "Bedrijf / Corporate",
+      "sector": "corporate",
+      "tier": "basis",
+      "scheme": "light+dark",
+      "multipage": true,
+      "palette": [
+        "#4f46e5",
+        "#06b6d4"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "mechanics": [
+        "dark-mode-toggle",
+        "pricing-toggle",
+        "faq-accordion",
+        "contact-form"
+      ],
+      "sections": [
+        "home",
+        "over",
+        "diensten",
+        "contact",
+        "404"
+      ],
+      "note": "Enige multi-page template; losse css/style.css en js/main.js. Goede start voor klassieke bedrijfssites."
+    },
+    {
+      "id": 2,
+      "slug": "02-portfolio",
+      "path": "templates/02-portfolio/",
+      "title": "Portfolio",
+      "sector": "creatief",
+      "tier": "basis",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0d0d0f",
+        "#2a2a18"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "project-grid"
+      ],
+      "sections": [
+        "hero",
+        "werk",
+        "over",
+        "contact"
+      ],
+      "note": "Donker, creatief portfolio voor designer/developer."
+    },
+    {
+      "id": 3,
+      "slug": "03-saas",
+      "path": "templates/03-saas/",
+      "title": "SaaS / Software",
+      "sector": "tech",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#7c3aed",
+        "#2563eb"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "mechanics": [
+        "pricing-toggle",
+        "faq-accordion"
+      ],
+      "sections": [
+        "hero",
+        "features",
+        "prijzen",
+        "faq",
+        "cta"
+      ],
+      "note": "Productlanding met maand/jaar-prijsschakelaar."
+    },
+    {
+      "id": 4,
+      "slug": "04-restaurant",
+      "path": "templates/04-restaurant/",
+      "title": "Restaurant",
+      "sector": "horeca",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#1f3d2b",
+        "#c1572c"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Nunito Sans"
+      ],
+      "mechanics": [
+        "gallery",
+        "contact-form"
+      ],
+      "sections": [
+        "hero",
+        "menu",
+        "galerij",
+        "reserveren"
+      ],
+      "note": "Warme elegante site met menu en reserveringsformulier."
+    },
+    {
+      "id": 5,
+      "slug": "05-agency",
+      "path": "templates/05-agency/",
+      "title": "Agency / Studio",
+      "sector": "creatief",
+      "tier": "basis",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0a0a0a",
+        "#2b50ff"
+      ],
+      "fonts": [
+        "Syne",
+        "Inter"
+      ],
+      "mechanics": [
+        "project-grid",
+        "count-up"
+      ],
+      "sections": [
+        "hero",
+        "cases",
+        "stats",
+        "contact"
+      ],
+      "note": "Bold high-contrast bureausite met grote typografie."
+    },
+    {
+      "id": 6,
+      "slug": "06-blog",
+      "path": "templates/06-blog/",
+      "title": "Blog / Magazine",
+      "sector": "media",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#d6334c",
+        "#7c1d2b"
+      ],
+      "fonts": [
+        "Lora",
+        "Inter"
+      ],
+      "mechanics": [
+        "project-grid"
+      ],
+      "sections": [
+        "uitgelicht",
+        "artikelgrid",
+        "nieuwsbrief"
+      ],
+      "note": "Redactionele homepage; artikelgrid + nieuwsbrief."
+    },
+    {
+      "id": 7,
+      "slug": "07-webshop",
+      "path": "templates/07-webshop/",
+      "title": "Webshop",
+      "sector": "retail",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#111827",
+        "#ff4d4d"
+      ],
+      "fonts": [
+        "Poppins"
+      ],
+      "mechanics": [
+        "project-grid",
+        "cart-counter",
+        "category-filter"
+      ],
+      "sections": [
+        "hero",
+        "categorieën",
+        "productgrid",
+        "cta"
+      ],
+      "note": "E-commerce homepage met werkende winkelmand-teller."
+    },
+    {
+      "id": 8,
+      "slug": "08-fotografie",
+      "path": "templates/08-fotografie/",
+      "title": "Fotografie",
+      "sector": "creatief",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#1a1a1a",
+        "#555555"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "mechanics": [
+        "gallery",
+        "category-filter"
+      ],
+      "sections": [
+        "hero",
+        "galerij",
+        "over",
+        "contact"
+      ],
+      "note": "Minimalistisch fotografieportfolio met filter."
+    },
+    {
+      "id": 9,
+      "slug": "09-event",
+      "path": "templates/09-event/",
+      "title": "Event / Congres",
+      "sector": "event",
+      "tier": "basis",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#6d28d9",
+        "#ec4899"
+      ],
+      "fonts": [
+        "Sora"
+      ],
+      "mechanics": [
+        "countdown",
+        "contact-form"
+      ],
+      "sections": [
+        "hero",
+        "sprekers",
+        "programma",
+        "tickets"
+      ],
+      "note": "Energieke eventlanding met countdown en programma."
+    },
+    {
+      "id": 10,
+      "slug": "10-cv",
+      "path": "templates/10-cv/",
+      "title": "CV / Resumé",
+      "sector": "persoonlijk",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#0d9488",
+        "#0f766e"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "mechanics": [
+        "skill-bars",
+        "drawing-timeline"
+      ],
+      "sections": [
+        "hero",
+        "ervaring",
+        "vaardigheden",
+        "contact"
+      ],
+      "note": "One-page CV met animerende vaardigheidsbalken."
+    },
+    {
+      "id": 11,
+      "slug": "11-architectuur",
+      "path": "templates/11-architectuur/",
+      "title": "Architectuur Studio",
+      "sector": "creatief",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#1a1816",
+        "#a67c52"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "mechanics": [
+        "preloader",
+        "parallax",
+        "manifest-scroll",
+        "magnetic-button",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "manifest",
+        "projecten",
+        "over",
+        "contact"
+      ],
+      "note": "Editorial design; eerste premium-template."
+    },
+    {
+      "id": 12,
+      "slug": "12-hotel",
+      "path": "templates/12-hotel/",
+      "title": "Boutique Hotel",
+      "sector": "horeca",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#101713",
+        "#b89b5e"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "mechanics": [
+        "ken-burns",
+        "carousel",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "kamers",
+        "faciliteiten",
+        "reviews",
+        "boeken"
+      ],
+      "note": "Vijfsterren-uitstraling met boekingsbalk en quote-carrousel."
+    },
+    {
+      "id": 13,
+      "slug": "13-fintech",
+      "path": "templates/13-fintech/",
+      "title": "Fintech / Bank",
+      "sector": "finance",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0a0c10",
+        "#00e389"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "3d-tilt",
+        "bento-grid",
+        "glassmorphism",
+        "count-up",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "features-bento",
+        "kaart",
+        "prijzen",
+        "cta"
+      ],
+      "note": "3D-tilt bankpas, live transactiefeed, glasmorfisme."
+    },
+    {
+      "id": 14,
+      "slug": "14-fashion",
+      "path": "templates/14-fashion/",
+      "title": "Fashion / Maison",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f4f2ee",
+        "#1a1a1a"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "mechanics": [
+        "curtain-reveal",
+        "duotone",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "collectie",
+        "lookbook",
+        "over"
+      ],
+      "note": "Haute-couture-minimalisme; lookbook met scroll-snap."
+    },
+    {
+      "id": 15,
+      "slug": "15-wellness",
+      "path": "templates/15-wellness/",
+      "title": "Wellness / Spa",
+      "sector": "gezondheid",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#9aa88f",
+        "#3a4438"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "mechanics": [
+        "breathing-widget",
+        "arc-mask",
+        "drawing-timeline",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "behandelingen",
+        "ritueel",
+        "boeken"
+      ],
+      "note": "Serene luxe met adem-widget en boogmaskers."
+    },
+    {
+      "id": 16,
+      "slug": "16-bouw",
+      "path": "templates/16-bouw/",
+      "title": "ZZP Metselaar",
+      "sector": "diensten",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0d0f12",
+        "#3b82f6"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter",
+        "IBM Plex Mono"
+      ],
+      "mechanics": [
+        "self-drawing-svg",
+        "before-after-slider",
+        "category-filter",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "projecten",
+        "voor-na",
+        "offerte"
+      ],
+      "note": "Blueprint-stijl, zelftekenende troffel, voor/na-slider."
+    },
+    {
+      "id": 17,
+      "slug": "17-koffie",
+      "path": "templates/17-koffie/",
+      "title": "Koffiebranderij",
+      "sector": "horeca",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f6f1e7",
+        "#c47a3d"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Outfit",
+        "DM Mono"
+      ],
+      "mechanics": [
+        "steam-anim",
+        "roast-meters",
+        "drawing-timeline",
+        "subscription-toggle",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "bonen",
+        "proces",
+        "abonnement"
+      ],
+      "note": "Crème/karamel met stoom-animaties en brandgraad-meters."
+    },
+    {
+      "id": 18,
+      "slug": "18-gym",
+      "path": "templates/18-gym/",
+      "title": "Boxing Gym",
+      "sector": "gezondheid",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0b0b0c",
+        "#d8f24b"
+      ],
+      "fonts": [
+        "Archivo Black",
+        "Archivo",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "velocity-marquee",
+        "duotone",
+        "schedule-tabs",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "lessen",
+        "rooster",
+        "lidmaatschap"
+      ],
+      "note": "Rauw zwart/acid-geel met dubbele marquee en lesrooster-tabs."
+    },
+    {
+      "id": 19,
+      "slug": "19-studio",
+      "path": "templates/19-studio/",
+      "title": "Studio Kaap — Flagship",
+      "name": "Studio Kaap",
+      "sector": "creatief",
+      "tier": "flagship",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0b0b0d",
+        "#ff5a36"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "Instrument Serif",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "preloader",
+        "manifest-scroll",
+        "bento-grid",
+        "3d-tilt",
+        "before-after-slider",
+        "drawing-timeline",
+        "velocity-marquee",
+        "faq-accordion",
+        "live-clock",
+        "duotone",
+        "pricing-toggle",
+        "carousel",
+        "count-up",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "manifest",
+        "werk-bento",
+        "proces",
+        "team",
+        "prijzen",
+        "faq",
+        "contact"
+      ],
+      "note": "Donkere flagship; bundelt de sterkste features."
+    },
+    {
+      "id": 20,
+      "slug": "20-buitenplaats",
+      "path": "templates/20-buitenplaats/",
+      "title": "Buitenplaats — Flagship",
+      "name": "Buitenplaats",
+      "sector": "diensten",
+      "tier": "flagship",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f3f1ea",
+        "#2e5b3f"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Hanken Grotesk",
+        "IBM Plex Mono"
+      ],
+      "mechanics": [
+        "curtain-reveal",
+        "arc-mask",
+        "before-after-slider",
+        "category-filter",
+        "drawing-timeline",
+        "duotone",
+        "faq-accordion",
+        "live-clock",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "projecten",
+        "schets-slider",
+        "seizoenen",
+        "faq",
+        "contact"
+      ],
+      "note": "Lichte, serif-gedreven tegenpool van Studio Kaap (tuinarchitectuur)."
+    },
+    {
+      "id": 21,
+      "slug": "21-letterstudio",
+      "path": "templates/21-letterstudio/",
+      "title": "Letterstudio — Signature",
+      "name": "Kapitaal",
+      "sector": "creatief",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#e4e4ff",
+        "#6260ff"
+      ],
+      "fonts": [
+        "Epilogue",
+        "Fraunces",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "editable-text",
+        "variable-font-slider",
+        "scroll-morph",
+        "glyph-grid",
+        "pricing-toggle",
+        "css-showcases",
+        "faq-accordion",
+        "live-clock",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero-proef",
+        "scroll-morf",
+        "lettertypen",
+        "glyphs",
+        "in-gebruik",
+        "licenties",
+        "proces",
+        "faq",
+        "contact"
+      ],
+      "note": "Interactief type-specimen-lab; pronkstuk = bewerkbaar variabel font."
+    },
+    {
+      "id": 22,
+      "slug": "22-museum",
+      "path": "templates/22-museum/",
+      "title": "Museum / Kunsthal — Signature",
+      "name": "Museum KADE",
+      "sector": "cultuur",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#fbeaeb",
+        "#3447aa"
+      ],
+      "fonts": [
+        "Syne",
+        "Newsreader",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "live-open-status",
+        "draggable-strip",
+        "lightbox",
+        "faq-accordion",
+        "pricing-toggle",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "nu-te-zien",
+        "collectie-strip",
+        "agenda",
+        "tarieven",
+        "vrienden",
+        "tickets"
+      ],
+      "note": "Pronkstuk = live open-status + sleepbare collectie + volwaardige lightbox."
+    },
+    {
+      "id": 23,
+      "slug": "23-sterrenwacht",
+      "path": "templates/23-sterrenwacht/",
+      "title": "Sterrenwacht / Planetarium — Signature",
+      "name": "Sterrenwacht Meridiaan",
+      "sector": "cultuur",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#070b18",
+        "#f0b94c",
+        "#74d3e6"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-starfield",
+        "constellation-builder",
+        "moon-phase-calc",
+        "live-clock",
+        "pricing-toggle",
+        "faq-accordion",
+        "contact-form",
+        "count-up",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero-sterrenhemel",
+        "maanfase",
+        "sterrenbeeld-bouwer",
+        "hemel-vanavond",
+        "stats",
+        "kijkavonden",
+        "tarieven",
+        "faq",
+        "reserveren"
+      ],
+      "note": "Eerste canvas-template. Pronkstukken: animerende sterrenhemel, zelf-bouw-sterrenbeeld, maanfase uit de datum."
+    },
+    {
+      "id": 24,
+      "slug": "24-atelier",
+      "path": "templates/24-atelier/",
+      "title": "Generatieve Studio — Signature",
+      "name": "Atelier Ruis",
+      "sector": "creatief",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f4f1ea",
+        "#1b29ff",
+        "#ff5a3c"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-flowfield",
+        "palette-picker",
+        "png-export",
+        "generative-thumbnails",
+        "manifest-scroll",
+        "drawing-timeline",
+        "pricing-toggle",
+        "faq-accordion",
+        "contact-form",
+        "count-up",
+        "magnetic-button",
+        "3d-tilt",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero-stroomveld",
+        "merken",
+        "manifest",
+        "werk",
+        "diensten",
+        "proces",
+        "stats",
+        "pakketten",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = live stroomveld-canvas dat de bezoeker stuurt + PNG-export; thumbnails zijn eigen generatieve programma's."
+    },
+    {
+      "id": 25,
+      "slug": "25-makelaar",
+      "path": "templates/25-makelaar/",
+      "title": "Makelaar / Vastgoed",
+      "name": "Hofstede Makelaars",
+      "sector": "diensten",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/25-makelaar.json",
+      "palette": [
+        "#f6f4ef",
+        "#1f6f5c",
+        "#c2724a"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "pricing",
+        "faq-accordion",
+        "contact-form",
+        "count-up",
+        "live-clock",
+        "split",
+        "manifest-scroll",
+        "magnetic-button",
+        "3d-tilt",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "logos",
+        "diensten(rows)",
+        "aanpak(split)",
+        "showcase",
+        "metrics",
+        "testimonials",
+        "tarieven",
+        "faq",
+        "contact"
+      ],
+      "note": "Generator-template (recipes/25-makelaar.json). Diverse opzet: logos, rij-diensten, showcase-aanbod, metrics, testimonials."
+    },
+    {
+      "id": 26,
+      "slug": "26-helder",
+      "path": "templates/26-helder/",
+      "title": "Helder — digitale studio (algemeen)",
+      "name": "Helder",
+      "sector": "algemeen",
+      "tier": "basis",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/26-helder.json",
+      "palette": [
+        "#f6f4f0",
+        "#6a2be6",
+        "#88c425"
+      ],
+      "fonts": [
+        "Schibsted Grotesk",
+        "Plus Jakarta Sans",
+        "JetBrains Mono"
+      ],
+      "mechanics": [
+        "hero-split",
+        "logos",
+        "zigzag",
+        "showcase",
+        "steps",
+        "metrics",
+        "testimonials",
+        "pricing-toggle",
+        "faq-accordion",
+        "contact-form",
+        "count-up",
+        "live-clock",
+        "cta",
+        "magnetic-button",
+        "3d-tilt",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(split)",
+        "logos",
+        "zigzag",
+        "showcase",
+        "steps",
+        "metrics",
+        "testimonials",
+        "tarieven",
+        "faq",
+        "cta",
+        "contact"
+      ],
+      "note": "Algemene studio-template. Uniek palet violet × lime; split-hero, zigzag-rijen, showcase, steps."
+    },
+    {
+      "id": 27,
+      "slug": "27-nocturne",
+      "path": "templates/27-nocturne/",
+      "title": "Nocturne — creatieve studio (algemeen)",
+      "name": "Nocturne",
+      "sector": "algemeen",
+      "tier": "basis",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/27-nocturne.json",
+      "palette": [
+        "#0d0f13",
+        "#5fe9ad",
+        "#b6a2ff"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Onest",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "hero-center",
+        "marquee",
+        "showcase",
+        "quote",
+        "tabs",
+        "stats",
+        "team",
+        "testimonials",
+        "pricing",
+        "faq-accordion",
+        "contact-form",
+        "count-up",
+        "live-clock",
+        "magnetic-button",
+        "3d-tilt",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(center)",
+        "marquee",
+        "showcase",
+        "quote",
+        "tabs",
+        "stats",
+        "team",
+        "testimonials",
+        "tarieven",
+        "faq",
+        "contact"
+      ],
+      "note": "Algemene donkere agency-template. Uniek palet mint × lila; center-hero, kinetische marquee, interactieve tabs, team."
+    },
+    {
+      "id": 28,
+      "slug": "28-atlas",
+      "path": "templates/28-atlas/",
+      "title": "Atlas — aanpasbare starter",
+      "name": "Atlas",
+      "sector": "algemeen",
+      "tier": "aanpasbaar",
+      "scheme": "light+dark",
+      "multipage": false,
+      "recipe": "recipes/28-atlas.json",
+      "palette": [
+        "#f7f7f5",
+        "#4f46e5",
+        "#ec4899"
+      ],
+      "fonts": [
+        "Schibsted Grotesk",
+        "Plus Jakarta Sans",
+        "Fraunces",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "mechanics": [
+        "theme-editor",
+        "live-dark-mode",
+        "accent-picker",
+        "radius-slider",
+        "font-toggle",
+        "css-export",
+        "hero-media",
+        "steps",
+        "comparison",
+        "split",
+        "metrics",
+        "pricing",
+        "faq-accordion",
+        "banner",
+        "contact-form",
+        "count-up",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(media)",
+        "features",
+        "steps",
+        "comparison",
+        "split",
+        "metrics",
+        "licenties",
+        "faq",
+        "banner",
+        "contact"
+      ],
+      "note": "Live thema-editor (recipes/28-atlas.js + .css): accentkleur, licht/donker, hoeken en lettertype live aanpassen, thema kopiëren als CSS. Diverse opzet met media-hero, vergelijkingstabel en banner."
+    },
+    {
+      "id": 29,
+      "slug": "29-noorderlicht",
+      "path": "templates/29-noorderlicht/",
+      "title": "Noorderlicht — arctische reizen",
+      "name": "Noorderlicht",
+      "sector": "reizen",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/29-noorderlicht.json",
+      "palette": [
+        "#060c18",
+        "#5ef0b0",
+        "#9b7bff"
+      ],
+      "fonts": [
+        "Spectral",
+        "Hanken Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-aurora",
+        "showcase",
+        "zigzag",
+        "metrics",
+        "testimonials",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(canvas-aurora)",
+        "bestemmingen",
+        "waarom",
+        "metrics",
+        "testimonials",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = canvas-aurora (golvende lichtgordijnen + sterren). recipes/29-noorderlicht.{json,css,js}."
+    },
+    {
+      "id": 30,
+      "slug": "30-vinyl",
+      "path": "templates/30-vinyl/",
+      "title": "Groef — platenlabel",
+      "name": "Groef",
+      "sector": "muziek",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/30-vinyl.json",
+      "palette": [
+        "#161009",
+        "#e2562b",
+        "#e8a93c"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "webaudio-visualizer",
+        "spinning-record",
+        "showcase",
+        "zigzag",
+        "metrics",
+        "team",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(turntable+visualizer)",
+        "releases",
+        "persen",
+        "metrics",
+        "artiesten",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = draaiende plaat + audiovisualizer (synthetisch, echte WebAudio op de speel-knop)."
+    },
+    {
+      "id": 31,
+      "slug": "31-arcade",
+      "path": "templates/31-arcade/",
+      "title": "Neonburcht — game studio",
+      "name": "Neonburcht",
+      "sector": "games",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/31-arcade.json",
+      "palette": [
+        "#140426",
+        "#ff5da2",
+        "#36e7ff"
+      ],
+      "fonts": [
+        "Orbitron",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-synthwave-grid",
+        "showcase",
+        "tabs",
+        "metrics",
+        "team",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(neon-grid)",
+        "games",
+        "studio(tabs)",
+        "metrics",
+        "team",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = synthwave perspectief-grid + neon-zon op canvas."
+    },
+    {
+      "id": 32,
+      "slug": "32-kwekerij",
+      "path": "templates/32-kwekerij/",
+      "title": "Wildgroei — stadskwekerij",
+      "name": "Wildgroei",
+      "sector": "retail",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/32-kwekerij.json",
+      "palette": [
+        "#f3f1e6",
+        "#3f7d3a",
+        "#d98a4e"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Hanken Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-generative-plants",
+        "showcase",
+        "zigzag",
+        "metrics",
+        "testimonials",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(groeiende planten)",
+        "planten",
+        "workshops",
+        "metrics",
+        "testimonials",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = recursief groeiende planten op canvas (groeien in beeld)."
+    },
+    {
+      "id": 33,
+      "slug": "33-keramiek",
+      "path": "templates/33-keramiek/",
+      "title": "Draaischijf — keramiekstudio",
+      "name": "Draaischijf",
+      "sector": "creatief",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/33-keramiek.json",
+      "palette": [
+        "#efe7dd",
+        "#b5532e",
+        "#6f7a5a"
+      ],
+      "fonts": [
+        "Spectral",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-pottery-shaper",
+        "interactief",
+        "showcase",
+        "zigzag",
+        "metrics",
+        "testimonials",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(draaischijf)",
+        "werk",
+        "cursussen",
+        "metrics",
+        "testimonials",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = interactieve draaischijf: sleep over de klei en vorm je eigen vaas (cilindrische arcering + draaiglans)."
+    },
+    {
+      "id": 34,
+      "slug": "34-parfum",
+      "path": "templates/34-parfum/",
+      "title": "Sillage — geurhuis",
+      "name": "Sillage",
+      "sector": "retail",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/34-parfum.json",
+      "palette": [
+        "#16100c",
+        "#c9a24b",
+        "#c98a7a"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-smoke-diffusion",
+        "scent-pyramid",
+        "showcase",
+        "zigzag",
+        "metrics",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(rook)",
+        "geuren",
+        "geurpiramide",
+        "atelier",
+        "metrics",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = opstijgende inkt/rook-diffusie op canvas + CSS-geurpiramide (kop/hart/basis)."
+    },
+    {
+      "id": 35,
+      "slug": "35-data",
+      "path": "templates/35-data/",
+      "title": "Meetlat — data & dashboards",
+      "name": "Meetlat",
+      "sector": "tech",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/35-data.json",
+      "palette": [
+        "#0c1018",
+        "#b6f23d",
+        "#4cc4ff"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "mechanics": [
+        "canvas-live-chart",
+        "features",
+        "tabs",
+        "metrics",
+        "comparison",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(dashboard-grafiek)",
+        "diensten",
+        "aanpak(tabs)",
+        "metrics",
+        "comparison",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = live animerende lijn/vlak-grafiek met KPI's (data ververst zichzelf)."
+    },
+    {
+      "id": 36,
+      "slug": "36-tattoo",
+      "path": "templates/36-tattoo/",
+      "title": "Inktzwart — tattoo studio",
+      "name": "Inktzwart",
+      "sector": "creatief",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/36-tattoo.json",
+      "palette": [
+        "#f2ece0",
+        "#d11a26",
+        "#0d0d0d"
+      ],
+      "fonts": [
+        "Anton",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-ink-draw",
+        "interactief",
+        "showcase",
+        "steps",
+        "metrics",
+        "team",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(inkt tekenen)",
+        "stijlen",
+        "werkwijze",
+        "metrics",
+        "artiesten",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = teken met je cursor in zwarte/rode inkt-splatters op crèmepapier (flash-esthetiek)."
+    },
+    {
+      "id": 37,
+      "slug": "37-getij",
+      "path": "templates/37-getij/",
+      "title": "Tij — surfschool",
+      "name": "Tij",
+      "sector": "sport",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/37-getij.json",
+      "palette": [
+        "#eaf1ee",
+        "#0fa3a3",
+        "#f2a541"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "Hanken Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-waves",
+        "features",
+        "zigzag",
+        "metrics",
+        "testimonials",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(golven)",
+        "lessen",
+        "verhuur",
+        "metrics",
+        "testimonials",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = gelaagde golvende zee op canvas met schuim."
+    },
+    {
+      "id": 38,
+      "slug": "38-lab",
+      "path": "templates/38-lab/",
+      "title": "Synaps — AI-lab",
+      "name": "Synaps",
+      "sector": "tech",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/38-lab.json",
+      "palette": [
+        "#07090f",
+        "#6e8cff",
+        "#2fe6e6"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "JetBrains Mono"
+      ],
+      "mechanics": [
+        "canvas-neural-network",
+        "interactief",
+        "features",
+        "tabs",
+        "metrics",
+        "comparison",
+        "faq-accordion",
+        "contact-form",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero(neuraal netwerk)",
+        "diensten",
+        "aanpak(tabs)",
+        "metrics",
+        "comparison",
+        "faq",
+        "contact"
+      ],
+      "note": "Pronkstuk = neuraal deeltjesnetwerk dat op de cursor reageert (knopen worden aangetrokken en verbonden)."
+    },
+    {
+      "id": 39,
+      "slug": "39-vlier",
+      "path": "templates/39-vlier/",
+      "title": "Vlier — bistro & natuurwijn",
+      "name": "Vlier",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f3eee4",
+        "#7a2230",
+        "#5b6045"
+      ],
+      "fonts": [
+        "DM Serif Display",
+        "Spectral"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "typeset-menu",
+        "dotted-leaders",
+        "drop-cap",
+        "pull-quote",
+        "live-open-status",
+        "today-hours-highlight",
+        "sticky-reserve-bar",
+        "reservation-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero(asymmetrisch, foto)",
+        "kaart(getypte menukaart)",
+        "huis(verhaal + drop cap)",
+        "wijn",
+        "praktisch(urentabel)",
+        "reserveren"
+      ],
+      "note": "Volledig met de hand geschreven — NIET via _kit. Redactionele restaurantsite met echte Unsplash-foto's, getypte menukaart met dotted leaders, drop cap, pull quote, en een open/dicht-status + 'vandaag'-markering berekend uit de openingstijden. Bewust anti-template als tegenwicht voor de generator-look."
+    },
+    {
+      "id": 40,
+      "slug": "40-klaver",
+      "path": "templates/40-klaver/",
+      "title": "Klaver — tandartspraktijk",
+      "name": "Klaver",
+      "sector": "gezondheid",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#eef5f3",
+        "#1f9e92",
+        "#ff7a59"
+      ],
+      "fonts": [
+        "Figtree"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "rounded-soft-ui",
+        "live-open-status",
+        "today-hours-highlight",
+        "treatment-list",
+        "plain-faq",
+        "appointment-form",
+        "sticky-header",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero(asymmetrisch, foto + status-pill)",
+        "verzekeraars-strip",
+        "behandelingen(lijst)",
+        "praktijk(verhaal + waarden)",
+        "eerste-afspraak(3 stappen)",
+        "praktisch(urentabel)",
+        "faq(Q&A)",
+        "afspraak(formulier)"
+      ],
+      "note": "Volledig met de hand geschreven — NIET via _kit. Rustige healthcare-site (Figtree, mint/teal, zachte ronde vormen) met echte foto's, open-status + 'vandaag' uit de openingstijden, en een vriendelijk afspraakformulier. Bewust een totaal andere sfeer dan Vlier — om aan te tonen dat maatwerk-sites onderling verschillen."
+    },
+    {
+      "id": 41,
+      "slug": "41-boekhandel",
+      "path": "templates/41-boekhandel/",
+      "title": "Marginalia — boekhandel",
+      "name": "Marginalia",
+      "sector": "retail",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f4efe3",
+        "#1f4035",
+        "#bb4a2c"
+      ],
+      "fonts": [
+        "Newsreader",
+        "Spline Sans Mono"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "staff-picks-list",
+        "events-agenda",
+        "live-open-status",
+        "today-hours-highlight",
+        "newsletter-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "tips",
+        "agenda",
+        "over",
+        "bezoek"
+      ],
+      "note": "Hand-made (geen _kit). Literaire boekhandel: groen/cream, Newsreader-serif, genummerde boektips, evenementen-agenda en open-status uit de openingstijden."
+    },
+    {
+      "id": 42,
+      "slug": "42-advocaten",
+      "path": "templates/42-advocaten/",
+      "title": "Hagedoorn & Vis — advocaten",
+      "name": "Hagedoorn & Vis",
+      "sector": "juridisch",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#13213a",
+        "#b08d4f",
+        "#f5f2ea"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Inter"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "practice-areas",
+        "approach-steps",
+        "intake-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "rechtsgebieden",
+        "aanpak",
+        "team",
+        "contact"
+      ],
+      "note": "Hand-made (geen _kit). Klassiek advocatenkantoor: navy + ivoor + goud, Playfair-serif, gezaghebbend en structureel. Bibliotheek-hero."
+    },
+    {
+      "id": 43,
+      "slug": "43-barbier",
+      "path": "templates/43-barbier/",
+      "title": "Stoppel — barbier",
+      "name": "Stoppel",
+      "sector": "creatief",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#15110d",
+        "#d98a3a",
+        "#f0e7d8"
+      ],
+      "fonts": [
+        "Oswald",
+        "Inter"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "full-bleed-hero",
+        "marquee",
+        "price-list",
+        "live-open-status",
+        "booking-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "prijzen",
+        "vakwerk",
+        "boeken"
+      ],
+      "note": "Hand-made (geen _kit). Stoere barbershop: donker met brick & amber, Oswald-condensed, full-bleed foto, getypte prijslijst en boek-een-stoel."
+    },
+    {
+      "id": 44,
+      "slug": "44-bloemist",
+      "path": "templates/44-bloemist/",
+      "title": "Veld — bloemist",
+      "name": "Veld",
+      "sector": "retail",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f6f3ec",
+        "#8a9a7b",
+        "#cf8f8a"
+      ],
+      "fonts": [
+        "Marcellus",
+        "Mulish"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "product-cards",
+        "subscription",
+        "live-open-status",
+        "newsletter-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "boeketten",
+        "abonnement",
+        "bezoek"
+      ],
+      "note": "Hand-made (geen _kit). Zachte botanische bloemist: salie/oudroze, Marcellus-serif, seizoensboeketten en bloemenabonnement."
+    },
+    {
+      "id": 45,
+      "slug": "45-meubel",
+      "path": "templates/45-meubel/",
+      "title": "Eik & Es — meubels & interieur",
+      "name": "Eik & Es",
+      "sector": "retail",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f3f0e9",
+        "#9a7b56",
+        "#211e19"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Hanken Grotesk"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "minimal-whitespace",
+        "collections-grid",
+        "live-open-status",
+        "contact-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "collecties",
+        "werkplaats",
+        "showroom"
+      ],
+      "note": "Hand-made (geen _kit). Minimalistische meubel-/interieurwinkel: neutraal, veel wit, lichte Fraunces. Product-georiënteerd, Scandinavisch."
+    },
+    {
+      "id": 46,
+      "slug": "46-bakkerij",
+      "path": "templates/46-bakkerij/",
+      "title": "Desem — ambachtelijke bakkerij",
+      "name": "Desem",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f5ede0",
+        "#6b4a2e",
+        "#c0612e"
+      ],
+      "fonts": [
+        "Bitter",
+        "Inter"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "typeset-menu",
+        "dotted-leaders",
+        "live-open-status",
+        "order-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "kaart",
+        "ambacht",
+        "bezoek"
+      ],
+      "note": "Hand-made (geen _kit). Warme ambachtelijke bakkerij: crust/cream, Bitter slab-serif, getypte kaart met leaders en brood bestellen."
+    },
+    {
+      "id": 47,
+      "slug": "47-yoga",
+      "path": "templates/47-yoga/",
+      "title": "Adem — yogastudio",
+      "name": "Adem",
+      "sector": "gezondheid",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#efe9df",
+        "#c1714e",
+        "#7e8a6a"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Inter"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "weekly-schedule",
+        "today-highlight",
+        "pricing-list",
+        "trial-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "rooster",
+        "lessen",
+        "over",
+        "bezoek"
+      ],
+      "note": "Hand-made (geen _kit). Rustige yogastudio: zand/terracotta, lichte Fraunces, volledig weekrooster met vandaag-markering en proefles-CTA."
+    },
+    {
+      "id": 48,
+      "slug": "48-fiets",
+      "path": "templates/48-fiets/",
+      "title": "Spaak — fietsenwinkel",
+      "name": "Spaak",
+      "sector": "retail",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f4f1ea",
+        "#f2641e",
+        "#1c4ff0"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "service-cards",
+        "repair-price-list",
+        "live-open-status",
+        "repair-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "reparatie",
+        "tweedehands",
+        "bezoek"
+      ],
+      "note": "Hand-made (geen _kit). Energieke buurtfietsenwinkel: oranje + blauw, vet Archivo-grotesk, reparatie-prijslijst en plan-je-reparatie."
+    },
+    {
+      "id": 49,
+      "slug": "49-dierenarts",
+      "path": "templates/49-dierenarts/",
+      "title": "Poot & Pels — dierenarts",
+      "name": "Poot & Pels",
+      "sector": "gezondheid",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#fffaf0",
+        "#f4b324",
+        "#3f7fd6"
+      ],
+      "fonts": [
+        "Fredoka",
+        "Inter"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "rounded-soft-ui",
+        "service-cards",
+        "emergency-band",
+        "live-open-status",
+        "appointment-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "over",
+        "spoed",
+        "afspraak"
+      ],
+      "note": "Hand-made (geen _kit). Vriendelijke dierenarts: geel/blauw, ronde Fredoka, speelse kaarten, 24/7-spoedband en afspraakformulier."
+    },
+    {
+      "id": 50,
+      "slug": "50-kaas",
+      "path": "templates/50-kaas/",
+      "title": "Wrongel — kaaswinkel & affineur",
+      "name": "Wrongel",
+      "sector": "retail",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f4ecdb",
+        "#8c3b2e",
+        "#c79a3e"
+      ],
+      "fonts": [
+        "Lora",
+        "Inter"
+      ],
+      "mechanics": [
+        "editorial-layout",
+        "real-photos",
+        "assortment-list",
+        "tasting-board",
+        "live-open-status",
+        "order-form",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "assortiment",
+        "proeverij",
+        "bezoek"
+      ],
+      "note": "Hand-made (geen _kit). Warme ambachtelijke kaaswinkel/affineur: bordeaux + goud, Lora-serif, assortiment met prijzen per kilo en proefplank."
+    },
+    {
+      "id": 51,
+      "slug": "51-finedining",
+      "path": "templates/51-finedining/",
+      "title": "Maas — fine dining",
+      "name": "Maas",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0e0d0b",
+        "#c9a86a",
+        "#efe9dd"
+      ],
+      "fonts": [
+        "Bodoni Moda",
+        "Jost"
+      ],
+      "mechanics": [
+        "full-bleed-hero",
+        "tasting-menu",
+        "seatings-status",
+        "reservation-form",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "menu(7 gangen)",
+        "avond",
+        "reserveren"
+      ],
+      "note": "Hand-made. Donker, luxe fine-dining: Bodoni-didone, getypt zevengangen-proefmenu, twee zittingen. Hoge typografische verfijning."
+    },
+    {
+      "id": 52,
+      "slug": "52-architect",
+      "path": "templates/52-architect/",
+      "title": "Grond — architecten",
+      "name": "Grond",
+      "sector": "creatief",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ece9e3",
+        "#b4552c",
+        "#1c1b19"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "scroll-spy-index",
+        "project-list",
+        "real-photos",
+        "stats",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "projecten(scroll-spy)",
+        "bureau",
+        "contact"
+      ],
+      "note": "Hand-made. Beton-minimalistisch architectenbureau. SIGNATUUR: sticky scroll-spy projectindex die de actieve sectie markeert tijdens scrollen."
+    },
+    {
+      "id": 53,
+      "slug": "53-koffiebar",
+      "path": "templates/53-koffiebar/",
+      "title": "Tussen — koffiebar",
+      "name": "Tussen",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f7f3ea",
+        "#2440e8",
+        "#f5b323"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "Inter"
+      ],
+      "mechanics": [
+        "day-aware-special",
+        "menu",
+        "live-open-status",
+        "newsletter",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "kaart",
+        "over",
+        "bezoek"
+      ],
+      "note": "Hand-made. Heldere koffiebar cream × kobalt. SIGNATUUR: dag-afhankelijke 'vandaag'-special (verandert per weekdag)."
+    },
+    {
+      "id": 54,
+      "slug": "54-wijnbar",
+      "path": "templates/54-wijnbar/",
+      "title": "Decant — natuurwijnbar",
+      "name": "Decant",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#1f1216",
+        "#c2526a",
+        "#d9a25a"
+      ],
+      "fonts": [
+        "EB Garamond",
+        "Inter"
+      ],
+      "mechanics": [
+        "wine-list",
+        "live-open-status",
+        "reservation-form",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "wijnkaart",
+        "over",
+        "bezoek"
+      ],
+      "note": "Hand-made. Donkere intieme natuurwijnbar: aubergine, EB Garamond, wijnkaart per glas, open-status met na-middernacht-logica."
+    },
+    {
+      "id": 55,
+      "slug": "55-fotograaf",
+      "path": "templates/55-fotograaf/",
+      "title": "Licht — fotografie",
+      "name": "Licht",
+      "sector": "creatief",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f6f5f2",
+        "#141413",
+        "#b5654a"
+      ],
+      "fonts": [
+        "Manrope"
+      ],
+      "mechanics": [
+        "filter-gallery",
+        "full-bleed-hero",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "werk(filter)",
+        "over",
+        "contact"
+      ],
+      "note": "Hand-made. Minimalistisch monochroom fotografieportfolio. SIGNATUUR: filterbare galerij (portret/reportage/landschap) met hover-captions."
+    },
+    {
+      "id": 56,
+      "slug": "56-schilder",
+      "path": "templates/56-schilder/",
+      "title": "Laag — schildersbedrijf",
+      "name": "Laag",
+      "sector": "diensten",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f2efe9",
+        "#2f6f6a",
+        "#1d1d1f"
+      ],
+      "fonts": [
+        "Hanken Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "colour-picker",
+        "service-cards",
+        "steps",
+        "quote-form",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero(kleurkiezer)",
+        "diensten",
+        "werkwijze",
+        "garantie",
+        "offerte"
+      ],
+      "note": "Hand-made. Schildersbedrijf. SIGNATUUR: interactieve kleurkiezer die een kamerfoto live hertint (multiply-overlay) met kleurnaam + code."
+    },
+    {
+      "id": 57,
+      "slug": "57-patisserie",
+      "path": "templates/57-patisserie/",
+      "title": "Suiker — patisserie",
+      "name": "Suiker",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#fbf3ef",
+        "#cf8493",
+        "#bb924f"
+      ],
+      "fonts": [
+        "Italiana",
+        "Inter"
+      ],
+      "mechanics": [
+        "category-swatches",
+        "order-form",
+        "live-open-status",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "assortiment",
+        "ambacht",
+        "bestellen+bezoek"
+      ],
+      "note": "Hand-made. Verfijnde patisserie: rozig cream, Italiana-serif, ronde categorie-swatches, taart-bestelformulier."
+    },
+    {
+      "id": 58,
+      "slug": "58-reisbureau",
+      "path": "templates/58-reisbureau/",
+      "title": "Verte — reizen op maat",
+      "name": "Verte",
+      "sector": "reizen",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f4f0e7",
+        "#2f5d50",
+        "#c2724a"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Inter"
+      ],
+      "mechanics": [
+        "full-bleed-hero",
+        "destination-cards",
+        "image-band",
+        "plan-form",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "bestemmingen",
+        "band",
+        "op-maat",
+        "contact"
+      ],
+      "note": "Hand-made. Boutique-reisbureau: warm groen × terracotta, Fraunces, full-bleed alpenhero en bestemmingskaarten."
+    },
+    {
+      "id": 59,
+      "slug": "59-kapsalon",
+      "path": "templates/59-kapsalon/",
+      "title": "Kam — kapsalon",
+      "name": "Kam",
+      "sector": "diensten",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f4f1ee",
+        "#a4737f",
+        "#1a1817"
+      ],
+      "fonts": [
+        "Jost",
+        "Inter"
+      ],
+      "mechanics": [
+        "price-list",
+        "live-open-status",
+        "booking-form",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "prijzen",
+        "over",
+        "boeken"
+      ],
+      "note": "Hand-made. Chique moderne kapsalon: off-white × mauve, Jost, eerlijke prijslijst (genderneutraal) en boek-een-stoel."
+    },
+    {
+      "id": 60,
+      "slug": "60-brouwerij",
+      "path": "templates/60-brouwerij/",
+      "title": "Schuim — stadsbrouwerij",
+      "name": "Schuim",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#15140f",
+        "#c9a227",
+        "#7a9a36"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "mechanics": [
+        "tap-list",
+        "abv-badges",
+        "live-open-status",
+        "tour-form",
+        "real-photos",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "taps(op het vat)",
+        "brouwerij",
+        "proeflokaal"
+      ],
+      "note": "Hand-made. Stoere stadsbrouwerij donker × amber. SIGNATUUR: 'op het vat nu'-taplijst met ABV en status (op vat/laatste/binnenkort)."
+    },
+    {
+      "id": 61,
+      "slug": "61-bureau",
+      "path": "templates/61-bureau/",
+      "title": "VOLT — creatief bureau",
+      "name": "VOLT",
+      "sector": "creatief",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f3f1e7",
+        "#0d0d0c",
+        "#c2f53a",
+        "#6b4bff",
+        "#ff5da8"
+      ],
+      "fonts": [
+        "Syne",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "marquee-ticker",
+        "oversized-type",
+        "rotating-sticker",
+        "hard-shadow-cards",
+        "hover-color-flip",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "werk",
+        "cijfers",
+        "contact"
+      ],
+      "note": "Neo-brutalist. SIGNATUUR: marquee-ticker + roterende sticker + mega-typografie met lime highlight."
+    },
+    {
+      "id": 62,
+      "slug": "62-streetwear",
+      "path": "templates/62-streetwear/",
+      "title": "DRIFT — streetwear drop",
+      "name": "DRIFT",
+      "sector": "mode",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#1a32ff",
+        "#ff2e88",
+        "#d6ff3d",
+        "#0c0c0e"
+      ],
+      "fonts": [
+        "Archivo Black",
+        "Archivo",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "drop-bar",
+        "oversized-type",
+        "horizontal-lookbook-strip",
+        "product-grid",
+        "hard-shadow-cards",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "drop-hero",
+        "lookbook",
+        "shop",
+        "manifest",
+        "signup"
+      ],
+      "note": "Drop-cultuur kobalt × hot pink × acid. SIGNATUUR: horizontale lookbook-strip + outline display-type."
+    },
+    {
+      "id": 63,
+      "slug": "63-festival",
+      "path": "templates/63-festival/",
+      "title": "VOLTAGE — festival",
+      "name": "VOLTAGE",
+      "sector": "evenement",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0b0b0b",
+        "#e6ff00",
+        "#7b2ff7",
+        "#ff2e7e"
+      ],
+      "fonts": [
+        "Anton",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "poster-hero",
+        "lineup",
+        "marquee",
+        "day-tabs",
+        "ticket-tiers",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "poster-hero",
+        "programma",
+        "tickets",
+        "info",
+        "contact"
+      ],
+      "note": "Poster-stijl festival acid-geel × zwart × paars. SIGNATUUR: line-up poster-hero + dag-tabs voor het programma."
+    },
+    {
+      "id": 64,
+      "slug": "64-saas",
+      "path": "templates/64-saas/",
+      "title": "KERNEL — dev tool",
+      "name": "KERNEL",
+      "sector": "software",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#070a0f",
+        "#00e5ff",
+        "#ff3d8b",
+        "#9dff3d"
+      ],
+      "fonts": [
+        "Sora",
+        "JetBrains Mono"
+      ],
+      "mechanics": [
+        "grid-hero",
+        "typed-console",
+        "block-feature-grid",
+        "steps",
+        "pricing",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "features",
+        "aan-de-slag",
+        "prijzen",
+        "contact"
+      ],
+      "note": "Donkere developer-tool cyan × magenta. SIGNATUUR: grid-hero met live-getypte console-tail."
+    },
+    {
+      "id": 65,
+      "slug": "65-podcast",
+      "path": "templates/65-podcast/",
+      "title": "FREQ — podcast",
+      "name": "FREQ",
+      "sector": "media",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#fff4e6",
+        "#ff5a1f",
+        "#0e8c7d",
+        "#0b3d3a"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Space Grotesk"
+      ],
+      "mechanics": [
+        "player-hero",
+        "clickable-waveform",
+        "demo-player",
+        "episode-list",
+        "hosts",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "speler-hero",
+        "afleveringen",
+        "makers",
+        "abonneer"
+      ],
+      "note": "Warme redactionele podcast oranje × teal × cream. SIGNATUUR: speler-hero met klikbare/animerende waveform."
+    },
+    {
+      "id": 66,
+      "slug": "66-gym",
+      "path": "templates/66-gym/",
+      "title": "PULS — sportschool",
+      "name": "PULS",
+      "sector": "sport",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#111110",
+        "#d6ff00",
+        "#ff3b2e"
+      ],
+      "fonts": [
+        "Archivo Black",
+        "Barlow Condensed",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "diagonal-hero",
+        "stat-blocks",
+        "marquee",
+        "day-tabs-schedule",
+        "today-auto-select",
+        "pricing",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "rooster",
+        "tarieven",
+        "contact"
+      ],
+      "note": "Industrieel-brutalist beton × volt × zwart. SIGNATUUR: dag-tabs lesrooster met automatische vandaag-selectie."
+    },
+    {
+      "id": 67,
+      "slug": "67-burgerbar",
+      "path": "templates/67-burgerbar/",
+      "title": "SMASH — burgerbar",
+      "name": "SMASH",
+      "sector": "horeca",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ff3b30",
+        "#ffc21c",
+        "#fff6e3"
+      ],
+      "fonts": [
+        "Bungee",
+        "Fredoka",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "playful-hero",
+        "rotating-sticker",
+        "marquee",
+        "menu-cards",
+        "order-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "menu",
+        "extras",
+        "afhalen"
+      ],
+      "note": "Speels-brutalist ketchup × mosterd × cream. SIGNATUUR: Bungee mega-display + roterende sticker + afhaalformulier."
+    },
+    {
+      "id": 68,
+      "slug": "68-club",
+      "path": "templates/68-club/",
+      "title": "NOCTURN — nachtclub",
+      "name": "NOCTURN",
+      "sector": "uitgaan",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#08060f",
+        "#8b2fff",
+        "#00ffd5",
+        "#ff2d92"
+      ],
+      "fonts": [
+        "Syncopate",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "glow-poster-hero",
+        "agenda",
+        "info-cards",
+        "table-reservation",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "agenda",
+        "info",
+        "reserveren"
+      ],
+      "note": "Glow-poster zwart × UV-paars × acid-cyaan. SIGNATUUR: neon-hero met glow + avond-agenda."
+    },
+    {
+      "id": 69,
+      "slug": "69-tattoo",
+      "path": "templates/69-tattoo/",
+      "title": "INKT — tattoo studio",
+      "name": "INKT",
+      "sector": "lifestyle",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0c0b0a",
+        "#e2231a",
+        "#ece4d6"
+      ],
+      "fonts": [
+        "Bebas Neue",
+        "Oswald",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "heavy-display-hero",
+        "flash-grid",
+        "artist-cards",
+        "price-list",
+        "booking-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "flash",
+        "artists",
+        "stijlen",
+        "boeken"
+      ],
+      "note": "Rauw bijna-zwart × bloedrood × bone. SIGNATUUR: zware Bebas-display + flash-grid van motieven."
+    },
+    {
+      "id": 70,
+      "slug": "70-platenzaak",
+      "path": "templates/70-platenzaak/",
+      "title": "WALS — platenzaak",
+      "name": "WALS",
+      "sector": "retail",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ff5e1a",
+        "#161310",
+        "#f6ead2",
+        "#0b6e5f"
+      ],
+      "fonts": [
+        "Climate Crisis",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "spinning-vinyl-hero",
+        "marquee",
+        "genre-filter",
+        "crate-grid",
+        "newsletter-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "nieuw-binnen",
+        "info",
+        "mailing"
+      ],
+      "note": "Retro-print burnt orange × zwart × cream. SIGNATUUR: CSS-draaiende vinyl + filterbare platenbak op genre."
+    },
+    {
+      "id": 71,
+      "slug": "71-esports",
+      "path": "templates/71-esports/",
+      "title": "RESPAWN — esports team",
+      "name": "RESPAWN",
+      "sector": "sport",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#080c16",
+        "#39ff14",
+        "#ff2d92",
+        "#27e6ff"
+      ],
+      "fonts": [
+        "Rajdhani",
+        "Chakra Petch",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "clip-path-hero",
+        "grid-bg",
+        "stat-strip",
+        "roster-cards",
+        "match-list",
+        "tryout-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "roster",
+        "wedstrijden",
+        "tryouts"
+      ],
+      "note": "Hoekig navy × neon-groen × magenta. SIGNATUUR: clip-path kaarten + grid-hero + win/loss match-lijst."
+    },
+    {
+      "id": 72,
+      "slug": "72-dansstudio",
+      "path": "templates/72-dansstudio/",
+      "title": "TEMPO — dansstudio",
+      "name": "TEMPO",
+      "sector": "sport",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0d0d0d",
+        "#ff1f8f",
+        "#c6f032"
+      ],
+      "fonts": [
+        "Familjen Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "kinetic-hero",
+        "marquee",
+        "style-cards",
+        "day-tabs-schedule",
+        "today-auto-select",
+        "trial-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "stijlen",
+        "rooster",
+        "proefles"
+      ],
+      "note": "Kinetisch zwart × magenta × lime. SIGNATUUR: schuine kinetische type-hero + dag-tabs weekrooster."
+    },
+    {
+      "id": 73,
+      "slug": "73-coworking",
+      "path": "templates/73-coworking/",
+      "title": "HUB — co-working",
+      "name": "HUB",
+      "sector": "zakelijk",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#cdff3a",
+        "#1f49ff",
+        "#ff5b46",
+        "#15140f"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "geometric-hero",
+        "shape-collage",
+        "space-cards",
+        "amenities-band",
+        "tour-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "ruimtes",
+        "voorzieningen",
+        "rondleiding"
+      ],
+      "note": "Geometrisch cream × chartreuse × kobalt. SIGNATUUR: vorm-collage hero (cirkel/blob/vierkant)."
+    },
+    {
+      "id": 74,
+      "slug": "74-aannemer",
+      "path": "templates/74-aannemer/",
+      "title": "BETON — aannemer",
+      "name": "BETON",
+      "sector": "bouw",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ffd400",
+        "#16150f",
+        "#ff6a00"
+      ],
+      "fonts": [
+        "Anton",
+        "Barlow",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "hazard-stripes",
+        "outline-type-hero",
+        "service-cards",
+        "project-grid",
+        "steps",
+        "quote-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "projecten",
+        "aanpak",
+        "offerte"
+      ],
+      "note": "Industrieel safety-geel × zwart. SIGNATUUR: hazard-strepen scheidingsbalken + Anton outline-display."
+    },
+    {
+      "id": 75,
+      "slug": "75-pokebar",
+      "path": "templates/75-pokebar/",
+      "title": "KOM — poké bar",
+      "name": "KOM",
+      "sector": "horeca",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#1fb869",
+        "#ff5e4d",
+        "#fff8ec",
+        "#ffc83d"
+      ],
+      "fonts": [
+        "Fredoka",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "playful-hero",
+        "bowl-illustration",
+        "interactive-bowl-builder",
+        "live-price",
+        "classics-grid",
+        "order-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "bouw-je-bowl",
+        "klassiekers",
+        "bestellen"
+      ],
+      "note": "Speels fris groen × koraal × cream. SIGNATUUR: interactieve bowl-bouwer die samenstelling + prijs live bijwerkt."
+    },
+    {
+      "id": 76,
+      "slug": "76-ijssalon",
+      "path": "templates/76-ijssalon/",
+      "title": "ROOM — ambachtelijk ijs",
+      "name": "ROOM",
+      "sector": "horeca",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ff8fbf",
+        "#74e0c3",
+        "#fff4ee",
+        "#ffd24a"
+      ],
+      "fonts": [
+        "Baloo 2",
+        "Nunito",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "playful-hero",
+        "floating-cones",
+        "marquee",
+        "flavor-grid",
+        "price-band",
+        "contact-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "smaken",
+        "prijzen",
+        "bezoek"
+      ],
+      "note": "Speels-pastel-bold bubblegum × mint × cream. SIGNATUUR: zwevende hoorntjes + kleurrijke smakengrid."
+    },
+    {
+      "id": 77,
+      "slug": "77-drankmerk",
+      "path": "templates/77-drankmerk/",
+      "title": "BOLT — energiedrank",
+      "name": "BOLT",
+      "sector": "product",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0a0e2a",
+        "#c6ff2e",
+        "#1f5cff",
+        "#ff3b6b"
+      ],
+      "fonts": [
+        "Archivo Black",
+        "Archivo",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "product-hero",
+        "css-can",
+        "flavor-color-switch",
+        "stat-strip",
+        "flavor-grid",
+        "signup-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "smaken",
+        "waarom",
+        "waar-te-koop"
+      ],
+      "note": "Product electric blue × lime × zwart. SIGNATUUR: CSS-blik dat live van kleur+smaak wisselt via swatches (CSS-vars)."
+    },
+    {
+      "id": 78,
+      "slug": "78-literairfestival",
+      "path": "templates/78-literairfestival/",
+      "title": "WOORD — literair festival",
+      "name": "WOORD",
+      "sector": "evenement",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f3ead7",
+        "#c2241f",
+        "#7a1410",
+        "#c08a2e"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "editorial-poster-hero",
+        "name-list",
+        "program-list",
+        "speaker-grid",
+        "ticket-tiers",
+        "newsletter-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "poster-hero",
+        "programma",
+        "sprekers",
+        "tickets",
+        "nieuwsbrief"
+      ],
+      "note": "Editoriale poster cream-papier × diep rood. SIGNATUUR: zware Fraunces-display + redactionele programma-lijst."
+    },
+    {
+      "id": 79,
+      "slug": "79-makelaar",
+      "path": "templates/79-makelaar/",
+      "title": "VIERKANT — makelaars",
+      "name": "VIERKANT",
+      "sector": "zakelijk",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0f1b3d",
+        "#d4ff3d",
+        "#ff6a4d",
+        "#f4f1e6"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "geometric-hero",
+        "shape-collage",
+        "stat-strip",
+        "listing-grid",
+        "status-badges",
+        "valuation-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "aanbod",
+        "aanpak",
+        "waardebepaling"
+      ],
+      "note": "Geometrisch diep navy × chartreuse. SIGNATUUR: vorm-collage hero + woningaanbod met status-badges."
+    },
+    {
+      "id": 80,
+      "slug": "80-escaperoom",
+      "path": "templates/80-escaperoom/",
+      "title": "ONTSNAP — escape rooms",
+      "name": "ONTSNAP",
+      "sector": "uitgaan",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0c0a0a",
+        "#ff6a00",
+        "#e2231a",
+        "#ffb43d"
+      ],
+      "fonts": [
+        "Oswald",
+        "Barlow",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "countdown-hero",
+        "live-clock",
+        "room-cards",
+        "difficulty-meters",
+        "booking-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "rooms",
+        "hoe-werkt-het",
+        "boeken"
+      ],
+      "note": "Gespannen bijna-zwart × oranje × rood. SIGNATUUR: aftellende 60:00 klok-hero + room-kaarten met moeilijkheidsmeters."
+    },
+    {
+      "id": 81,
+      "slug": "81-nagelstudio",
+      "path": "templates/81-nagelstudio/",
+      "title": "KROON — nagelstudio",
+      "name": "KROON",
+      "sector": "beauty",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ff2d87",
+        "#171013",
+        "#e8b14a",
+        "#fbf2ee"
+      ],
+      "fonts": [
+        "Syne",
+        "Manrope",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "glam-hero",
+        "rotating-crown",
+        "marquee",
+        "colorblock-gallery",
+        "price-list",
+        "booking-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "nail-art",
+        "prijzen",
+        "afspraak"
+      ],
+      "note": "Bold-glam hot pink × zwart × goud. SIGNATUUR: nail-art kleurblok-galerie + hard-shadow prijslijst."
+    },
+    {
+      "id": 82,
+      "slug": "82-gamestudio",
+      "path": "templates/82-gamestudio/",
+      "title": "PIXELWERK — game studio",
+      "name": "PIXELWERK",
+      "sector": "software",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#150a2b",
+        "#b6ff3d",
+        "#ff3da6",
+        "#3de0ff"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "block-hero",
+        "pixel-logo",
+        "stat-strip",
+        "work-grid",
+        "service-grid",
+        "project-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "werk",
+        "diensten",
+        "contact"
+      ],
+      "note": "Speels diep paars × lime × magenta. SIGNATUUR: blok-portfolio van games/apps met badges."
+    },
+    {
+      "id": 83,
+      "slug": "83-hardloopclub",
+      "path": "templates/83-hardloopclub/",
+      "title": "SPRINT — running crew",
+      "name": "SPRINT",
+      "sector": "sport",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ff4d00",
+        "#0f0f0e",
+        "#d4f23d",
+        "#f6f4ef"
+      ],
+      "fonts": [
+        "Archivo Black",
+        "Archivo",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "outline-type-hero",
+        "marquee",
+        "runs-list",
+        "pace-tags",
+        "level-cards",
+        "stats-band",
+        "join-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "runs",
+        "niveaus",
+        "meelopen"
+      ],
+      "note": "Energiek oranje × zwart × beton. SIGNATUUR: outline-display hero + vaste runs met pace-tags."
+    },
+    {
+      "id": 84,
+      "slug": "84-zonnepanelen",
+      "path": "templates/84-zonnepanelen/",
+      "title": "STROOM — zonnepanelen",
+      "name": "STROOM",
+      "sector": "energie",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0a2e22",
+        "#ffd60a",
+        "#26c281",
+        "#f4f3e7"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "eco-hero",
+        "savings-calculator",
+        "range-slider",
+        "live-calc",
+        "stat-strip",
+        "benefit-cards",
+        "quote-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "bereken",
+        "voordelen",
+        "aanpak",
+        "offerte"
+      ],
+      "note": "Bold-eco zon-geel × diep groen. SIGNATUUR: interactieve besparings-slider die kWh + euro live berekent."
+    },
+    {
+      "id": 85,
+      "slug": "85-kunstgalerie",
+      "path": "templates/85-kunstgalerie/",
+      "title": "KLEUR — kunstgalerie",
+      "name": "KLEUR",
+      "sector": "cultuur",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#2347ff",
+        "#ff3b30",
+        "#ffc400",
+        "#11a05f"
+      ],
+      "fonts": [
+        "Syne",
+        "Space Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "colorblock-hero",
+        "color-band",
+        "exposition-cards",
+        "artist-grid",
+        "visit-band",
+        "newsletter-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "nu-te-zien",
+        "kunstenaars",
+        "bezoek",
+        "nieuwsbrief"
+      ],
+      "note": "Kleurblok-galerie cream × rood/blauw/geel/groen. SIGNATUUR: multicolor poster-hero + exposities in kleurvlakken."
+    },
+    {
+      "id": 86,
+      "slug": "86-folio",
+      "path": "templates/86-folio/",
+      "title": "FOLIO — studio voor ontwerp & strategie",
+      "name": "FOLIO",
+      "sector": "algemeen",
+      "tier": "editorial",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#ecebe4",
+        "#16161a",
+        "#2222ff"
+      ],
+      "fonts": [
+        "Instrument Serif",
+        "Hanken Grotesk",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "swiss-grid",
+        "column-grid-overlay(toets G)",
+        "scroll-spy-index",
+        "work-index-hover",
+        "live-amsterdam-clock",
+        "cursor-coordinate-readout",
+        "spec-column-hero",
+        "figures-band",
+        "numbered-services",
+        "colophon-form",
+        "form-validate",
+        "subtle-reveal"
+      ],
+      "sections": [
+        "hero",
+        "werk",
+        "studio",
+        "diensten",
+        "contact"
+      ],
+      "note": "Redactioneel Swiss-grid systeem (Instrument Serif + Hanken Grotesk + Space Mono). Bewust GEEN gradient-koppen/icon-kaarten/stat-tellers/emoji. SIGNATUUR: toggle-baar kolommenraster (toets G), scroll-spy sectie-index, en live klok + cursor-coordinaat colofon. Inhoud-agnostisch — herthema via één accent-variabele."
+    },
+    {
+      "id": 87,
+      "slug": "87-dijke",
+      "path": "templates/87-dijke/",
+      "title": "Dijke Service — reparatie & onderhoud van machines",
+      "name": "Dijke Service",
+      "sector": "industrie/techniek",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0b0d11",
+        "#14181f",
+        "#f5f6f8",
+        "#1e5cff"
+      ],
+      "fonts": [
+        "Archivo (width-axis)",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "fixed-blur-nav",
+        "grid-hero",
+        "expanded-display-type",
+        "service-invert-grid",
+        "machine-cards-scrim",
+        "cta-banner",
+        "process-steps",
+        "why-split+stats",
+        "contact-form-validate",
+        "reveal-on-scroll",
+        "mobile-menu",
+        "photo-placeholders"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "machines",
+        "storingsband",
+        "werkwijze",
+        "waarom",
+        "contact"
+      ],
+      "note": "Geimplementeerd vanuit een Claude-Design handoff (Van Dijke bundle), STRAKKER afgewerkt: minder blauwe gloed/zware schaduwen, scherpere hairlines, strakker raster, en de drag-drop <image-slot> placeholders vervangen door zelfstandige, nette foto-frames (geen externe runtime). Industrieel zwart/grijs/wit x elektrisch blauw, Archivo expanded via width-as."
+    }
   ]
 }

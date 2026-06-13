@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOLT — natuurlijke energie</title>
+<meta name="description" content="BOLT is een natuurlijke energiedrank zonder onzin. Cafeïne uit groene thee, weinig suiker, vol smaak. Vier smaken, één boost.">
+<meta name="theme-color" content="#0a0e2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BOLT — energiedrank. Electric blue × lime × zwart. Product, kleur-switch.
+   ============================================================ */
+:root{
+  --bg:#0a0e2a; --panel:#101740; --ink:#eef2ff; --dim:#9aa6d8; --blue:#1f5cff; --lime:#c6ff2e; --line:#222a5c;
+  --flavor:#1f5cff; --flavor2:#5b86ff;
+  --disp:"Archivo Black",system-ui,sans-serif; --body:"Archivo",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1180px; --gutter:clamp(1rem,4vw,3rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--lime);color:#000}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--lime);color:#000;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,14,42,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--disp);font-size:1.5rem;letter-spacing:.02em}.logo span{color:var(--lime)}
+.menu{display:flex;align-items:center;gap:.3rem}
+.menu a{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;color:var(--dim);padding:.45rem .65rem}
+.menu a:hover{color:var(--lime)}
+.menu .cta{font-family:var(--disp);font-size:.78rem;background:var(--lime);color:#000;padding:.45rem .9rem}
+.menu .cta:hover{background:#fff}
+.burger{display:none;border:1px solid var(--line);background:none;color:var(--ink);padding:.4rem .65rem;font-family:var(--mono);font-size:.78rem}
+@media(max-width:840px){.menu{position:fixed;inset:64px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid var(--line)}.burger{display:inline-block}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 40%,color-mix(in srgb,var(--flavor) 45%,transparent),transparent 55%);transition:background .4s}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding-block:clamp(2.4rem,6vw,5rem)}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;text-align:center}}
+.hero .kick{font-family:var(--mono);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.hero h1{font-family:var(--disp);font-size:clamp(3rem,12vw,8rem);line-height:.86;letter-spacing:-.01em;margin:.8rem 0;text-transform:uppercase}
+.hero h1 .l{color:var(--lime)}
+.hero p{font-size:1.2rem;max-width:34ch;color:var(--dim)}
+@media(max-width:820px){.hero p{margin-inline:auto}}
+.hero .row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+@media(max-width:820px){.hero .row{justify-content:center}}
+.btn{font-family:var(--disp);text-transform:uppercase;font-size:.9rem;padding:.85rem 1.4rem;cursor:pointer;border:none}
+.btn.p{background:var(--lime);color:#000}.btn.p:hover{background:#fff}
+.btn.s{background:var(--panel);color:var(--ink);border:1px solid var(--line)}.btn.s:hover{border-color:var(--lime)}
+/* blik */
+.canwrap{justify-self:center;display:grid;place-items:center;gap:1.2rem}
+.can{width:130px;height:300px;border-radius:22px;background:linear-gradient(180deg,var(--flavor2),var(--flavor));border:3px solid #050818;box-shadow:0 26px 50px -16px rgba(0,0,0,.7),inset 0 0 0 6px rgba(255,255,255,.08);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;transition:background .4s}
+.can::before{content:"";position:absolute;top:10px;left:14px;width:20px;height:84%;border-radius:99px;background:linear-gradient(180deg,rgba(255,255,255,.5),transparent)}
+.can .bn{font-family:var(--disp);font-size:1.5rem;color:#fff;text-transform:uppercase;letter-spacing:.04em;text-shadow:0 2px 0 rgba(0,0,0,.3)}
+.can .fn{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:rgba(255,255,255,.9);letter-spacing:.1em}
+.can .bolt{font-size:2rem}
+.swatches{display:flex;gap:.6rem}
+.sw{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);cursor:pointer;transition:transform .15s,border-color .2s}
+.sw[aria-pressed="true"]{border-color:var(--lime);transform:scale(1.12)}
+
+/* stat strip */
+.stats{border-bottom:1px solid var(--line);background:var(--panel)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:1.4rem;text-align:center}
+@media(max-width:560px){.stats .wrap{grid-template-columns:1fr 1fr}}
+.stat b{font-family:var(--disp);font-size:1.8rem;display:block;color:var(--lime)}
+.stat span{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+
+.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec-h{margin-bottom:1.8rem}
+.sec-h h2{font-family:var(--disp);text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);line-height:1}
+.sec-h h2 span{color:var(--lime)}
+
+/* flavors grid */
+.flavors{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.9rem,2vw,1.4rem)}
+@media(max-width:760px){.flavors{grid-template-columns:1fr 1fr}}@media(max-width:420px){.flavors{grid-template-columns:1fr}}
+.fv{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden;text-align:center;transition:transform .15s}
+.fv:hover{transform:translateY(-4px)}
+.fv .top{height:90px;display:grid;place-items:center;font-size:2rem}
+.fv h3{font-family:var(--disp);text-transform:uppercase;font-size:1rem;margin:.8rem 0 .2rem}
+.fv p{font-family:var(--mono);font-size:.7rem;color:var(--dim);padding-bottom:1rem}
+
+/* waar te koop */
+.buy .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media(max-width:780px){.buy .wrap{grid-template-columns:1fr}}
+.buy h2{font-family:var(--disp);text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);line-height:1}
+.buy h2 span{color:var(--lime)}
+.buy p{color:var(--dim);margin-top:.9rem}
+.shops{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.shops span{font-family:var(--mono);font-size:.78rem;border:1px solid var(--line);padding:.4rem .8rem;border-radius:99px;color:var(--dim)}
+.form{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:clamp(1.2rem,3vw,1.8rem)}
+.fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+.fld input{border:1px solid var(--line);background:var(--bg);padding:.7rem .8rem;border-radius:8px;color:var(--ink)}
+.fld input:focus{outline:none;border-color:var(--lime)}
+.fld.bad input{border-color:#ff4d6a}
+.fld .err{display:none;font-size:.74rem;color:#ff8198}.fld.bad .err{display:block}
+.form button{width:100%;cursor:pointer;font-family:var(--disp);text-transform:uppercase;padding:.85rem;border:none;background:var(--lime);color:#000}
+.form .ok{display:none;font-family:var(--disp);text-transform:uppercase;color:var(--lime);padding:.4rem 0}
+.form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
+
+.foot{padding-block:clamp(2rem,4vw,3rem);border-top:1px solid var(--line)}
+.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.foot .logo span{color:var(--lime)}
+.foot .tag{font-family:var(--mono);font-size:.76rem;color:var(--dim)}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#smaken">Naar de smaken</a>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">BOLT<span>⚡</span></a>
+  <nav class="menu" id="menu"><a href="#smaken">Smaken</a><a href="#waarom">Waarom BOLT</a><a href="#kopen">Waar te koop</a><a class="cta" href="#kopen">Bestel</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">≡</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <div>
+      <span class="kick">// Natuurlijke energie · 0% onzin</span>
+      <h1>Boost<br><span class="l">zonder</span><br>kater.</h1>
+      <p>Cafeïne uit groene thee, weinig suiker en echte smaak. Energie waar je je goed bij voelt.</p>
+      <div class="row">
+        <a class="btn p" href="#kopen">Bestel een sixpack</a>
+        <a class="btn s" href="#smaken">Bekijk smaken</a>
+      </div>
+    </div>
+    <div class="canwrap">
+      <div class="can" id="can"><span class="bolt" aria-hidden="true">⚡</span><span class="bn">BOLT</span><span class="fn" id="canName">Citrus</span></div>
+      <div class="swatches" id="sw" role="group" aria-label="Kies een smaak">
+        <button class="sw" style="background:#1f5cff" aria-pressed="true" data-c="#1f5cff" data-c2="#5b86ff" data-n="Citrus"></button>
+        <button class="sw" style="background:#ff3b6b" aria-pressed="false" data-c="#ff3b6b" data-c2="#ff789c" data-n="Bessen"></button>
+        <button class="sw" style="background:#16c79a" aria-pressed="false" data-c="#16c79a" data-c2="#5fe3c1" data-n="Munt-limoen"></button>
+        <button class="sw" style="background:#ff8f1f" aria-pressed="false" data-c="#ff8f1f" data-c2="#ffb45e" data-n="Mango"></button>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="stats"><div class="wrap">
+    <div class="stat"><b>80mg</b><span>cafeïne (groene thee)</span></div>
+    <div class="stat"><b>4g</b><span>suiker per blikje</span></div>
+    <div class="stat"><b>25</b><span>kcal</span></div>
+    <div class="stat"><b>100%</b><span>natuurlijke smaak</span></div>
+  </div></section>
+
+  <section class="sec wrap" id="smaken">
+    <div class="sec-h"><h2>Vier <span>smaken</span></h2></div>
+    <div class="flavors" data-r>
+      <div class="fv"><div class="top" style="background:#1f5cff" aria-hidden="true">🍋</div><h3>Citrus</h3><p>Fris &amp; scherp</p></div>
+      <div class="fv"><div class="top" style="background:#ff3b6b" aria-hidden="true">🫐</div><h3>Bessen</h3><p>Zoet &amp; vol</p></div>
+      <div class="fv"><div class="top" style="background:#16c79a" aria-hidden="true">🌿</div><h3>Munt-limoen</h3><p>Koel &amp; helder</p></div>
+      <div class="fv"><div class="top" style="background:#ff8f1f" aria-hidden="true">🥭</div><h3>Mango</h3><p>Tropisch</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="waarom">
+    <div class="sec-h"><h2>Waarom <span>BOLT</span></h2></div>
+    <div class="flavors" data-r>
+      <div class="fv" style="text-align:left"><div class="top" style="background:var(--panel);font-size:1.6rem" aria-hidden="true">🍵</div><div style="padding:1rem"><h3 style="margin-top:0">Groene thee</h3><p style="padding:0;color:var(--dim);font-family:var(--body);font-size:.9rem">Zachte cafeïne, geen harde piek en val.</p></div></div>
+      <div class="fv" style="text-align:left"><div class="top" style="background:var(--panel);font-size:1.6rem" aria-hidden="true">🍃</div><div style="padding:1rem"><h3 style="margin-top:0">Weinig suiker</h3><p style="padding:0;color:var(--dim);font-family:var(--body);font-size:.9rem">4 gram per blik, gezoet met steviolglycosiden.</p></div></div>
+      <div class="fv" style="text-align:left"><div class="top" style="background:var(--panel);font-size:1.6rem" aria-hidden="true">♻️</div><div style="padding:1rem"><h3 style="margin-top:0">Recyclebaar blik</h3><p style="padding:0;color:var(--dim);font-family:var(--body);font-size:.9rem">100% aluminium, eindeloos te hergebruiken.</p></div></div>
+      <div class="fv" style="text-align:left"><div class="top" style="background:var(--panel);font-size:1.6rem" aria-hidden="true">🇳🇱</div><div style="padding:1rem"><h3 style="margin-top:0">Lokaal gemaakt</h3><p style="padding:0;color:var(--dim);font-family:var(--body);font-size:.9rem">Gebrouwen en geblikt in Nederland.</p></div></div>
+    </div>
+  </section>
+
+  <section class="sec buy" id="kopen"><div class="wrap">
+    <div data-r>
+      <h2>Waar te <span>koop</span></h2>
+      <p>Online besteld voor 16:00 = morgen in huis. Of pak 'm bij een van onze verkooppunten.</p>
+      <div class="shops"><span>Albert Heijn</span><span>Jumbo</span><span>Sportscholen</span><span>Horeca</span><span>Onze webshop</span></div>
+    </div>
+    <form class="form" id="form" novalidate data-r>
+      <div class="fld"><label for="b-naam">Naam</label><input id="b-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+      <div class="fld"><label for="b-mail">E-mail</label><input id="b-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+      <button type="submit">Stuur me het proefpakket ⚡</button>
+      <div class="ok" role="status">⚡ Onderweg! Check je inbox.</div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <a class="logo" href="#top">BOLT<span>⚡</span></a>
+  <span class="tag">&copy; <span id="jaar">2026</span> BOLT Drinks B.V. · Nederland · @drinkbolt</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  // flavor switch
+  var sw=doc.getElementById('sw'),root=doc.documentElement,canName=doc.getElementById('canName');
+  if(sw){sw.addEventListener('click',function(e){var b=e.target.closest('.sw');if(!b)return;[].slice.call(sw.querySelectorAll('.sw')).forEach(function(x){x.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');root.style.setProperty('--flavor',b.getAttribute('data-c'));root.style.setProperty('--flavor2',b.getAttribute('data-c2'));if(canName)canName.textContent=b.getAttribute('data-n');});}
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
+})();
+</script>
+</body>
+</html>

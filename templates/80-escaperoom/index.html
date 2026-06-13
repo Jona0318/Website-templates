@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONTSNAP — escape rooms</title>
+<meta name="description" content="ONTSNAP heeft vier escape rooms in Nijmegen. 60 minuten, één team, ontelbaar veel puzzels. Durf jij het aan? Boek je tijdslot.">
+<meta name="theme-color" content="#0c0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ONTSNAP — escape room. Bijna-zwart × oranje × rood. Mysterieus, gespannen.
+   ============================================================ */
+:root{
+  --bg:#0c0a0a; --panel:#161210; --panel2:#1d1714; --ink:#f3ece4; --dim:#9b8f84; --orange:#ff6a00; --red:#e2231a; --gold:#ffb43d; --line:#2a221d;
+  --disp:"Oswald",system-ui,sans-serif; --body:"Barlow",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1140px; --gutter:clamp(1rem,4vw,3rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--orange);color:#000}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--orange);color:#000;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(12,10,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:var(--disp);font-weight:700;font-size:1.4rem;letter-spacing:.06em;text-transform:uppercase}.logo span{color:var(--orange)}
+.menu{display:flex;align-items:center;gap:.4rem}
+.menu a{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;color:var(--dim);padding:.45rem .7rem}
+.menu a:hover{color:var(--orange)}
+.menu .cta{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--orange);color:#000;padding:.45rem 1rem}
+.menu .cta:hover{background:var(--gold)}
+.burger{display:none;border:1px solid var(--line);background:none;color:var(--ink);padding:.4rem .65rem;font-family:var(--mono);font-size:.78rem}
+@media(max-width:840px){.menu{position:fixed;inset:62px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid var(--line)}.burger{display:inline-block}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,106,0,.22),transparent 55%),radial-gradient(circle at 80% 90%,rgba(226,35,26,.18),transparent 50%)}
+.hero .wrap{position:relative;text-align:center;padding-block:clamp(2.8rem,7vw,5.5rem)}
+.hero .kick{font-family:var(--mono);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.hero h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(3rem,13vw,9rem);line-height:.86;letter-spacing:.01em;margin:.8rem 0}
+.hero h1 .o{color:var(--orange)}
+.hero .timer{font-family:var(--disp);font-weight:700;font-size:clamp(2.5rem,8vw,5rem);color:var(--red);letter-spacing:.1em;font-variant-numeric:tabular-nums;text-shadow:0 0 24px rgba(226,35,26,.5)}
+.hero p{font-size:1.15rem;max-width:42ch;margin:1rem auto 0;color:var(--dim)}
+.hero .cta{display:inline-block;margin-top:1.6rem;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:1rem;background:var(--orange);color:#000;padding:.9rem 1.8rem;transition:transform .15s}
+.hero .cta:hover{transform:translateY(-2px)}
+
+.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec-h{margin-bottom:1.8rem}
+.sec-h h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:.02em}
+.sec-h h2 span{color:var(--orange)}
+
+/* rooms */
+.rooms{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2vw,1.5rem)}
+@media(max-width:720px){.rooms{grid-template-columns:1fr}}
+.room{border:1px solid var(--line);background:var(--panel);border-radius:12px;overflow:hidden;transition:transform .15s,border-color .2s}
+.room:hover{transform:translateY(-4px);border-color:var(--orange)}
+.room .top{height:160px;display:grid;place-items:center;font-size:3rem;border-bottom:1px solid var(--line);position:relative}
+.room:nth-child(1) .top{background:linear-gradient(135deg,#2a1206,#160a04)}
+.room:nth-child(2) .top{background:linear-gradient(135deg,#26110f,#160a09)}
+.room:nth-child(3) .top{background:linear-gradient(135deg,#231a06,#15100a)}
+.room:nth-child(4) .top{background:linear-gradient(135deg,#1a0f1e,#120a14)}
+.room .tag{position:absolute;top:.8rem;left:.8rem;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;background:var(--orange);color:#000;padding:.2rem .5rem}
+.room .b{padding:1.3rem}
+.room h3{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.4rem}
+.room p{color:var(--dim);font-size:.92rem;margin:.4rem 0 .9rem}
+.room .meta{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-family:var(--mono);font-size:.74rem;color:var(--dim);margin-bottom:.8rem}
+.room .meta b{color:var(--ink)}
+.room .diff{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+.room .bars{display:flex;gap:3px}
+.room .bars i{width:16px;height:8px;background:var(--line);border-radius:2px}
+.room .bars i.on{background:var(--red)}
+
+/* hoe band */
+.how{background:var(--panel);border-block:1px solid var(--line)}
+.how .wrap{padding-block:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+@media(max-width:720px){.how .wrap{grid-template-columns:1fr}}
+.how .c .no{font-family:var(--disp);font-weight:700;font-size:2rem;color:var(--orange)}
+.how .c h3{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.1rem;margin:.3rem 0}
+.how .c p{font-size:.9rem;color:var(--dim)}
+
+/* boeken */
+.book{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg))}
+.book .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;padding-block:clamp(2.5rem,5vw,4.5rem)}
+@media(max-width:780px){.book .wrap{grid-template-columns:1fr}}
+.book h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.95}
+.book h2 span{color:var(--orange)}
+.book p{color:var(--dim);margin-top:.9rem}
+.form{border:1px solid var(--line);background:var(--panel2);border-radius:12px;padding:clamp(1.2rem,3vw,1.8rem)}
+.fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+.fld input,.fld select{border:1px solid var(--line);background:var(--bg);padding:.7rem .8rem;border-radius:6px;color:var(--ink)}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--orange)}
+.fld.bad input{border-color:var(--red)}
+.fld .err{display:none;font-size:.74rem;color:var(--red)}.fld.bad .err{display:block}
+.form button{width:100%;cursor:pointer;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.85rem;border:none;background:var(--orange);color:#000}
+.form .ok{display:none;font-family:var(--disp);font-weight:700;text-transform:uppercase;color:var(--orange);padding:.4rem 0}
+.form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
+
+.foot{padding-block:clamp(2rem,4vw,3rem);border-top:1px solid var(--line)}
+.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.foot .logo span{color:var(--orange)}
+.foot .tag{font-family:var(--mono);font-size:.76rem;color:var(--dim)}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#rooms">Naar de rooms</a>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">ONT<span>SNAP</span></a>
+  <nav class="menu" id="menu"><a href="#rooms">Rooms</a><a href="#hoe">Hoe werkt het</a><a href="#boeken">Boeken</a><a class="cta" href="#boeken">Boek nu</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">≡</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <span class="kick">// Escape rooms · Nijmegen</span>
+    <h1>De klok <span class="o">tikt.</span></h1>
+    <div class="timer" aria-hidden="true">60:00</div>
+    <p>Vier kamers, ontelbaar veel puzzels en precies één uur. Eén team, één missie: kom op tijd naar buiten.</p>
+    <a class="cta" href="#boeken">Boek je tijdslot →</a>
+  </div></section>
+
+  <section class="sec wrap" id="rooms">
+    <div class="sec-h"><h2>Kies je <span>room</span></h2></div>
+    <div class="rooms" data-r>
+      <div class="room"><div class="top" aria-hidden="true">🔦<span class="tag">Nieuw</span></div><div class="b"><h3>De Bunker</h3><p>Sluit in 1944. Je hebt 60 minuten voor de luchtaanval begint.</p><div class="meta"><span><b>2—6</b> spelers</span><span><b>60</b> min</span><span><b>WO II</b> thema</span></div><div class="diff">Moeilijkheid <span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></div></div>
+      <div class="room"><div class="top" aria-hidden="true">🧪<span class="tag">Populair</span></div><div class="b"><h3>Het Laboratorium</h3><p>De professor is verdwenen. Zijn laatste experiment loopt nog.</p><div class="meta"><span><b>2—5</b> spelers</span><span><b>60</b> min</span><span><b>Mysterie</b></span></div><div class="diff">Moeilijkheid <span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></div></div>
+      <div class="room"><div class="top" aria-hidden="true">👑<span class="tag">Familie</span></div><div class="b"><h3>De Schatkamer</h3><p>Een vergeten koningsgraf vol valstrikken en goud.</p><div class="meta"><span><b>2—6</b> spelers</span><span><b>60</b> min</span><span><b>Avontuur</b></span></div><div class="diff">Moeilijkheid <span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></div></div>
+      <div class="room"><div class="top" aria-hidden="true">🏚️<span class="tag">18+</span></div><div class="b"><h3>Het Asiel</h3><p>Het oude gesticht is al jaren dicht. Of toch niet?</p><div class="meta"><span><b>3—6</b> spelers</span><span><b>60</b> min</span><span><b>Horror</b></span></div><div class="diff">Moeilijkheid <span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></div></div>
+    </div>
+  </section>
+
+  <section class="how" id="hoe" data-r><div class="wrap">
+    <div class="c"><div class="no">01</div><h3>Boek online</h3><p>Kies een room, datum en tijdslot. Betaal direct of bij aankomst.</p></div>
+    <div class="c"><div class="no">02</div><h3>Kom met je team</h3><p>Wees 15 minuten voor je tijd aanwezig voor de briefing.</p></div>
+    <div class="c"><div class="no">03</div><h3>Ontsnap</h3><p>60 minuten op de klok. Hints via het scherm als je vastzit.</p></div>
+  </div></section>
+
+  <section class="book" id="boeken"><div class="wrap">
+    <div data-r>
+      <h2>Durf jij<br><span>het aan?</span></h2>
+      <p>Reserveer je tijdslot. We bevestigen per mail met alle praktische info. Vanaf 2 personen, ook voor bedrijfsuitjes.</p>
+      <p style="font-family:var(--mono);font-size:.85rem;margin-top:1rem">Smetiusstraat 1, Nijmegen · 024 — 360 12 12</p>
+    </div>
+    <form class="form" id="form" novalidate data-r>
+      <div class="fld"><label for="o-naam">Naam</label><input id="o-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+      <div class="fld"><label for="o-mail">E-mail</label><input id="o-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+      <div class="fld"><label for="o-room">Welke room?</label><select id="o-room"><option>De Bunker</option><option>Het Laboratorium</option><option>De Schatkamer</option><option>Het Asiel (18+)</option></select></div>
+      <div class="fld"><label for="o-pers">Aantal spelers</label><input id="o-pers" type="text" required placeholder="bijv. 4"><span class="err">Met hoeveel kom je?</span></div>
+      <button type="submit">Reserveer tijdslot →</button>
+      <div class="ok" role="status">⏱ Gelukt! Check je inbox voor bevestiging.</div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <a class="logo" href="#top">ONT<span>SNAP</span></a>
+  <span class="tag">&copy; <span id="jaar">2026</span> ONTSNAP Nijmegen · KvK 09182736 · @ontsnap.nijmegen</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  // tikkende klok in hero (alleen visueel, geen actie)
+  var timer=doc.querySelector('.hero .timer');
+  if(timer&&!reduced){var s=3600;var iv=setInterval(function(){s-=1;if(s<3540){s=3600;}var m=Math.floor(s/60),x=s%60;timer.textContent=(m<10?'0':'')+m+':'+(x<10?'0':'')+x;},1000);}
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
+})();
+</script>
+</body>
+</html>

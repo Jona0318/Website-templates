@@ -1,6 +1,6 @@
-# Template Galerij — 39 kant-en-klare websites
+# Template Galerij — 87 kant-en-klare websites
 
-Een verzameling van **39 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **87 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), een rij **signature-templates** met dieper uitgewerkte interactiviteit, **22 maatwerk-sites** (volledig met de hand geschreven, met echte foto's) en een nieuwe lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -46,10 +46,61 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 36 | `templates/36-tattoo/` | ✦ Signature — Inktzwart | Crème/rood (#f2ece0 · #d11a26): **teken met je cursor in zwarte/rode inkt-splatters** (flash-esthetiek). Tattoo studio |
 | 37 | `templates/37-getij/` | ✦ Signature — Tij | Zeegroen/zand (#eaf1ee · #0fa3a3): **gelaagde golvende zee op canvas** met schuim. Surfschool & strandclub |
 | 38 | `templates/38-lab/` | ✦ Signature — Synaps | Diep nacht/indigo × cyaan (#07090f · #6e8cff): **neuraal deeltjesnetwerk** dat op je cursor reageert. Toegepast AI-lab |
-| 39 | `templates/39-vlier/` | ✎ Redactioneel — Vlier | Warm papier/bordeaux (#f3eee4 · #7a2230): **volledig met de hand geschreven** (geen generator). Redactionele restaurant-pagina met echte foto's, een **getypte menukaart** met dotted leaders, drop cap, pull quote en een **open/dicht-status uit de openingstijden**. Bewust anti-template |
+| 39 | `templates/39-vlier/` | ✎ Maatwerk — Vlier | Warm papier/bordeaux (#f3eee4 · #7a2230): **volledig met de hand geschreven** (geen generator). Redactionele restaurant-pagina met echte foto's, een **getypte menukaart** met dotted leaders, drop cap, pull quote en een **open/dicht-status uit de openingstijden**. Bewust anti-template |
+| 40 | `templates/40-klaver/` | ✎ Maatwerk — Klaver | Zacht mint/teal × koraal (#eef5f3 · #1f9e92): **met de hand gebouwde** tandartspraktijk. Rustig, licht en luchtig (Figtree, ronde vormen), met echte foto's, een **open-status uit de openingstijden**, behandelingenlijst en een vriendelijk afspraakformulier. Andere sfeer dan Vlier — om te tonen dat maatwerk onderling verschilt |
+| 41 | `templates/41-boekhandel/` | ✎ Maatwerk — Marginalia | Groen/cream (#f4efe3 · #1f4035): literaire **boekhandel**, Newsreader-serif. Genummerde boektips, evenementen-agenda, open-status |
+| 42 | `templates/42-advocaten/` | ✎ Maatwerk — Hagedoorn & Vis | Navy/ivoor × goud (#13213a · #b08d4f): klassiek, gezaghebbend **advocatenkantoor**, Playfair-serif, bibliotheek-hero, rechtsgebieden & intake |
+| 43 | `templates/43-barbier/` | ✎ Maatwerk — Stoppel | Donker brick × amber (#15110d · #d98a3a): stoere **barbershop**, Oswald-condensed, full-bleed foto, prijslijst, boek-een-stoel |
+| 44 | `templates/44-bloemist/` | ✎ Maatwerk — Veld | Salie × oudroze (#f6f3ec · #8a9a7b): zachte botanische **bloemist**, Marcellus-serif, seizoensboeketten & abonnement |
+| 45 | `templates/45-meubel/` | ✎ Maatwerk — Eik & Es | Neutraal/hout (#f3f0e9 · #9a7b56): minimalistische **meubel- & interieurwinkel**, veel wit, lichte Fraunces, collecties & showroom |
+| 46 | `templates/46-bakkerij/` | ✎ Maatwerk — Desem | Crust/cream (#f5ede0 · #c0612e): warme ambachtelijke **bakkerij**, Bitter slab-serif, getypte kaart met leaders, brood bestellen |
+| 47 | `templates/47-yoga/` | ✎ Maatwerk — Adem | Zand × terracotta (#efe9df · #c1714e): rustige **yogastudio**, lichte Fraunces, volledig **weekrooster** met vandaag-markering |
+| 48 | `templates/48-fiets/` | ✎ Maatwerk — Spaak | Oranje × blauw (#f4f1ea · #f2641e): energieke **fietsenwinkel**, vet Archivo-grotesk, reparatie-prijslijst & plan-je-reparatie |
+| 49 | `templates/49-dierenarts/` | ✎ Maatwerk — Poot & Pels | Geel × blauw (#fffaf0 · #f4b324): vriendelijke **dierenarts**, ronde Fredoka, 24/7-spoedband, open-status & afspraak |
+| 50 | `templates/50-kaas/` | ✎ Maatwerk — Wrongel | Bordeaux × goud (#f4ecdb · #8c3b2e): warme **kaaswinkel & affineur**, Lora-serif, assortiment per kilo & proefplank |
+| 51 | `templates/51-finedining/` | ✎ Maatwerk — Maas | Zwart × goud (#0e0d0b · #c9a86a): donker **fine-dining** restaurant, Bodoni-didone, getypt **zevengangen-proefmenu** |
+| 52 | `templates/52-architect/` | ✎ Maatwerk — Grond | Beton × roest (#ece9e3 · #b4552c): **architectenbureau** met **sticky scroll-spy projectindex**, Space Grotesk |
+| 53 | `templates/53-koffiebar/` | ✎ Maatwerk — Tussen | Cream × kobalt (#f7f3ea · #2440e8): moderne **koffiebar** met **dag-afhankelijke special**, Bricolage Grotesque |
+| 54 | `templates/54-wijnbar/` | ✎ Maatwerk — Decant | Aubergine × roze (#1f1216 · #c2526a): donkere **natuurwijnbar**, EB Garamond, wijnkaart per glas |
+| 55 | `templates/55-fotograaf/` | ✎ Maatwerk — Licht | Monochroom (#f6f5f2 · #141413): minimalistisch **fotografieportfolio** met **filterbare galerij**, Manrope |
+| 56 | `templates/56-schilder/` | ✎ Maatwerk — Laag | Steen × teal (#f2efe9 · #2f6f6a): **schildersbedrijf** met interactieve **kleurkiezer** (kamer hertint live) |
+| 57 | `templates/57-patisserie/` | ✎ Maatwerk — Suiker | Rozig cream (#fbf3ef · #cf8493): verfijnde **patisserie**, Italiana-serif, assortiment & taart bestellen |
+| 58 | `templates/58-reisbureau/` | ✎ Maatwerk — Verte | Groen × terracotta (#2f5d50 · #c2724a): **boutique-reisbureau**, Fraunces, full-bleed alpenhero & bestemmingen |
+| 59 | `templates/59-kapsalon/` | ✎ Maatwerk — Kam | Off-white × mauve (#f4f1ee · #a4737f): chique **kapsalon**, Jost, eerlijke prijslijst & boek-een-stoel |
+| 60 | `templates/60-brouwerij/` | ✎ Maatwerk — Schuim | Donker × amber (#15140f · #c9a227): stoere **stadsbrouwerij** met **"op het vat nu"-taplijst** (ABV), Archivo |
+| 61 | `templates/61-bureau/` | ◆ Grafisch — VOLT | Lime × paars × zwart (#c2f53a · #6b4bff): **neo-brutalist** creatief bureau, Syne, **marquee-ticker**, mega-typografie, roterende sticker & hard-shadow kaarten |
+| 62 | `templates/62-streetwear/` | ◆ Grafisch — DRIFT | Kobalt × hot pink × acid (#1a32ff · #ff2e88): **streetwear-drop**, Archivo Black, outline display-type & **horizontale lookbook-strip** |
+| 63 | `templates/63-festival/` | ◆ Grafisch — VOLTAGE | Acid-geel × zwart × paars (#0b0b0b · #e6ff00): **festival-poster**, Anton, line-up-hero, **dag-tabs** voor het programma & ticket-tiers |
+| 64 | `templates/64-saas/` | ◆ Grafisch — KERNEL | Cyan × magenta op bijna-zwart (#070a0f · #00e5ff): **developer-tool**, Sora/JetBrains Mono, grid-hero met **live-getypte console** |
+| 65 | `templates/65-podcast/` | ◆ Grafisch — FREQ | Oranje × teal × cream (#fff4e6 · #ff5a1f): warme **podcast**, Fraunces, speler-hero met **klikbare/animerende waveform** |
+| 66 | `templates/66-gym/` | ◆ Grafisch — PULS | Beton × volt-geel × zwart (#111110 · #d6ff00): industrieel-brutalistische **sportschool**, diagonale hero, **dag-tabs lesrooster** (vandaag automatisch) |
+| 67 | `templates/67-burgerbar/` | ◆ Grafisch — SMASH | Ketchup-rood × mosterd × cream (#ff3b30 · #ffc21c): speels-brutalistische **burgerbar**, Bungee-display, roterende sticker & afhaalformulier |
+| 68 | `templates/68-club/` | ◆ Grafisch — NOCTURN | Diepzwart × UV-paars × acid-cyaan (#08060f · #00ffd5): glow-poster **nachtclub**, Syncopate, avond-agenda & tafelreservering |
+| 69 | `templates/69-tattoo/` | ◆ Grafisch — INKT | Bijna-zwart × bloedrood × bone (#0c0b0a · #e2231a): rauwe **tattoo studio**, zware Bebas-display, **flash-grid** & artists |
+| 70 | `templates/70-platenzaak/` | ◆ Grafisch — WALS | Burnt orange × zwart × cream (#ff5e1a · #0b6e5f): retro-print **platenzaak**, **draaiende vinyl-hero** & filterbare platenbak op genre |
+| 71 | `templates/71-esports/` | ◆ Grafisch — RESPAWN | Navy × neon-groen × magenta (#080c16 · #39ff14): hoekig **esports-team**, **clip-path** kaarten, roster & win/loss-wedstrijden |
+| 72 | `templates/72-dansstudio/` | ◆ Grafisch — TEMPO | Zwart × magenta × lime (#0d0d0d · #ff1f8f): kinetische **dansstudio**, schuine type-hero, marquee & weekrooster met dag-tabs |
+| 73 | `templates/73-coworking/` | ◆ Grafisch — HUB | Cream × chartreuse × kobalt (#cdff3a · #1f49ff): geometrische **co-working space**, **vorm-collage hero**, ruimtes & rondleiding |
+| 74 | `templates/74-aannemer/` | ◆ Grafisch — BETON | Safety-geel × zwart (#ffd400 · #ff6a00): industriële **aannemer**, **hazard-strepen**, Anton outline-display, projecten & offerte |
+| 75 | `templates/75-pokebar/` | ◆ Grafisch — KOM | Fris groen × koraal × cream (#1fb869 · #ff5e4d): speelse **poké bar** met **interactieve bowl-bouwer** die samenstelling + prijs live bijwerkt |
+| 76 | `templates/76-ijssalon/` | ◆ Grafisch — ROOM | Bubblegum-roze × mint × cream (#ff8fbf · #74e0c3): speels-pastel **ijssalon**, zwevende hoorntjes & kleurrijke smakengrid |
+| 77 | `templates/77-drankmerk/` | ◆ Grafisch — BOLT | Electric blue × lime × zwart (#0a0e2a · #c6ff2e): **energiedrank-merk**, CSS-blik dat **live van kleur & smaak wisselt** via swatches |
+| 78 | `templates/78-literairfestival/` | ◆ Grafisch — WOORD | Cream-papier × diep rood (#f3ead7 · #c2241f): editoriale **festival-poster**, zware Fraunces-titel, programma & ticket-tiers |
+| 79 | `templates/79-makelaar/` | ◆ Grafisch — VIERKANT | Diep navy × chartreuse (#0f1b3d · #d4ff3d): geometrische **makelaar**, vorm-collage hero, woningaanbod & waardebepaling |
+| 80 | `templates/80-escaperoom/` | ◆ Grafisch — ONTSNAP | Bijna-zwart × oranje × rood (#0c0a0a · #ff6a00): gespannen **escape rooms**, **aftellende klok-hero** & moeilijkheidsmeters |
+| 81 | `templates/81-nagelstudio/` | ◆ Grafisch — KROON | Hot pink × zwart × goud (#ff2d87 · #e8b14a): bold-glam **nagelstudio**, Syne-display, nail-art **kleurblokken** & prijslijst |
+| 82 | `templates/82-gamestudio/` | ◆ Grafisch — PIXELWERK | Diep paars × lime × magenta (#150a2b · #b6ff3d): speelse **game- & app-studio**, **blok-portfolio** met badges & diensten |
+| 83 | `templates/83-hardloopclub/` | ◆ Grafisch — SPRINT | Oranje × zwart × beton (#ff4d00 · #d4f23d): energieke **running crew**, outline-type-hero, vaste runs met **pace-tags** |
+| 84 | `templates/84-zonnepanelen/` | ◆ Grafisch — STROOM | Zon-geel × diep groen (#0a2e22 · #ffd60a): bold-eco **zonnepanelen** met **interactieve besparings-slider** (kWh + euro live) |
+| 85 | `templates/85-kunstgalerie/` | ◆ Grafisch — KLEUR | Cream × rood/blauw/geel/groen (#2347ff · #ff3b30): **kleurblok-galerie**, bold poster-hero & exposities in kleurvlakken |
+| 86 | `templates/86-folio/` | § Editorieel — FOLIO | Warm grijs × ink × reflex-blauw (#ecebe4 · #2222ff): verfijnd **Swiss-grid ontwerpsysteem** (Instrument Serif). **Zichtbaar kolommenraster (toets G)**, scroll-spy sectie-index, werk-index met hover-accent en een live Amsterdam-klok + cursor-coördinaat in het colofon. Bewust géén gradient-koppen/icon-kaarten/stat-tellers/emoji — inhoud-agnostisch en herthema'baar via één accent-variabele |
+| 87 | `templates/87-dijke/` | ★ Dijke Service | Industrieel zwart/grijs/wit × elektrisch blauw (#0b0d11 · #1e5cff), Archivo expanded (width-axis). Diensten, specialisaties, werkwijze, "waarom" en offerteformulier. **Geïmplementeerd vanuit een Claude-Design handoff** (`van-dijke` bundle), strakker afgewerkt: minder gloed/zware schaduwen, scherpere hairlines, en de drag-drop `<image-slot>` placeholders vervangen door zelfstandige nette foto-frames (geen externe runtime) |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
+> ✎ = maatwerk: volledig met de hand geschreven (geen generator), met echte foto's en een eigen layout per site.
+> ◆ = grafisch: nieuwe bold-graphic / neo-brutalist stijl — hard offset-schaduwen, dikke randen, oversized display-type en gedurfde platte kleuren (foto-vrij).
+> § = editorieel: verfijnd Swiss-grid ontwerp-systeem — zichtbaar kolommenraster, hairline-regels, oversized sectienummers en één ingehouden accent; inhoud-agnostisch en herthema'baar.
 
 ## 📁 Structuur
 

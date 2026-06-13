@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Licht — fotografie, Anouk de Vries</title>
+<meta name="description" content="Anouk de Vries is fotograaf. Portret, reportage en landschap — eerlijk licht, echte momenten. Bekijk het werk en neem contact op voor een opdracht.">
+<meta name="theme-color" content="#f6f5f2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LICHT — fotografieportfolio. Minimaal, monochroom, Manrope.
+   Signatuur: filterbare galerij.
+   ============================================================ */
+:root{
+  --paper:#f6f5f2; --paper-2:#eceae5; --ink:#141413; --ink-2:#56544e; --muted:#8d8a82;
+  --accent:#b5654a; --line:rgba(20,20,19,.14); --line-soft:rgba(20,20,19,.07);
+  --sans:"Manrope",system-ui,sans-serif;
+  --maxw:1280px; --gutter:clamp(1.2rem,4vw,4rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.05rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}::selection{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--paper);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;mix-blend-mode:difference;color:#fff}
+.hdr.solid{mix-blend-mode:normal;color:var(--ink);background:rgba(246,245,242,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:800;font-size:1.2rem;letter-spacing:.04em}
+.nav{display:flex;gap:1.8rem}
+.nav a{font-size:.82rem;font-weight:500;letter-spacing:.04em}
+.burger{display:none;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:720px){.nav{position:fixed;inset:72px 0 auto;background:var(--ink);color:#fff;flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1);mix-blend-mode:normal}.nav.open{transform:none}.burger{display:inline-block}}
+
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.25),transparent 30%,transparent 60%,rgba(0,0,0,.45))}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(2.5rem,6vw,4.5rem);color:#fff}
+.hero h1{font-weight:300;font-size:clamp(3.5rem,14vw,10rem);line-height:.9;letter-spacing:-.02em}
+.hero .sub{margin-top:.8rem;font-weight:500;font-size:clamp(1rem,2vw,1.3rem);letter-spacing:.02em}
+.hero .sub span{opacity:.8}
+
+.sec{padding-block:clamp(3rem,6vw,5.5rem)}
+.werk-top{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.werk-top h2{font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em}
+.filters{display:flex;gap:.4rem;flex-wrap:wrap}
+.filters button{font-size:.8rem;font-weight:600;letter-spacing:.04em;padding:.5rem 1rem;border-radius:99px;border:1px solid var(--line);color:var(--ink-2);transition:background-color .25s,color .25s,border-color .25s}
+.filters button:hover{border-color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.4vw,1rem)}
+@media(max-width:860px){.gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.gallery{grid-template-columns:1fr}}
+.shot{position:relative;overflow:hidden;background:var(--paper-2);transition:opacity .4s,transform .4s}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.shot:hover img{transform:scale(1.04)}
+.shot.tall{grid-row:span 2}
+.shot .cap{position:absolute;left:0;right:0;bottom:0;padding:1rem;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.shot:hover .cap{opacity:1;transform:none}
+.shot .cap b{font-weight:700;display:block}
+.shot .cap span{font-size:.8rem;opacity:.85}
+.shot.hide{display:none}
+
+/* over */
+.over{background:var(--ink);color:var(--paper)}
+.over .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:760px){.over .wrap{grid-template-columns:1fr;gap:1.5rem}}
+.over .big{font-weight:300;font-size:clamp(1.8rem,4vw,3rem);line-height:1.2;letter-spacing:-.01em}
+.over .big b{font-weight:700}
+.over p{color:#c5c2bb;font-size:1.08rem}.over p+p{margin-top:1rem}
+.over .meta{margin-top:1.4rem;display:flex;gap:2rem;flex-wrap:wrap;color:#9d998f;font-size:.86rem}
+.over .meta b{color:var(--paper);display:block;font-weight:700;font-size:1.4rem}
+
+/* contact */
+.contact{text-align:center}
+.contact .eyebrow{display:block;margin-bottom:1rem}
+.contact h2{font-weight:300;font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:-.02em;line-height:1.05}
+.contact a.mail{display:inline-block;margin-top:1.4rem;font-weight:600;font-size:1.1rem;border-bottom:2px solid var(--accent);padding-bottom:4px}
+.contact .lines{margin-top:1.8rem;color:var(--muted);font-size:.92rem}
+
+.foot{border-top:1px solid var(--line);padding-block:2rem}
+.foot .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.82rem}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#werk">Naar het werk</a>
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#top">LICHT — Anouk de Vries</a>
+  <nav class="nav" id="nav"><a href="#werk">Werk</a><a href="#over">Over</a><a href="#contact">Contact</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+</div></header>
+
+<main>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=72" alt="Berglandschap in zacht ochtendlicht met een kleine figuur" width="1600" height="1067">
+    <div class="wrap">
+      <h1>Licht</h1>
+      <p class="sub">Fotografie · <span>portret, reportage &amp; landschap</span></p>
+    </div>
+  </section>
+
+  <section class="sec" id="werk"><div class="wrap">
+    <div class="werk-top" data-r>
+      <h2>Geselecteerd werk</h2>
+      <div class="filters" id="filters" role="group" aria-label="Filter op categorie">
+        <button data-filter="alles" aria-pressed="true">Alles</button>
+        <button data-filter="portret" aria-pressed="false">Portret</button>
+        <button data-filter="reportage" aria-pressed="false">Reportage</button>
+        <button data-filter="landschap" aria-pressed="false">Landschap</button>
+      </div>
+    </div>
+    <div class="gallery" id="gallery" data-r>
+      <a class="shot tall" data-cat="portret" href="#"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=70" alt="Portret van een man in tegenlicht" loading="lazy"><span class="cap"><b>Daan</b><span>Portret · studio</span></span></a>
+      <a class="shot" data-cat="reportage" href="#"><img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?auto=format&fit=crop&w=700&q=70" alt="Stilleven met camera en kaart" loading="lazy"><span class="cap"><b>Onderweg</b><span>Reportage</span></span></a>
+      <a class="shot" data-cat="portret" href="#"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=70" alt="Portret van een lachende vrouw" loading="lazy"><span class="cap"><b>Imke</b><span>Portret · buiten</span></span></a>
+      <a class="shot" data-cat="landschap" href="#"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=700&q=70" alt="Berglandschap in ochtendlicht" loading="lazy"><span class="cap"><b>Ciucaș</b><span>Landschap</span></span></a>
+      <a class="shot tall" data-cat="portret" href="#"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=70" alt="Portret van een man" loading="lazy"><span class="cap"><b>Pieter</b><span>Portret · studio</span></span></a>
+      <a class="shot" data-cat="reportage" href="#"><img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=700&q=70" alt="Reportageportret" loading="lazy"><span class="cap"><b>De repetitie</b><span>Reportage</span></span></a>
+    </div>
+  </div></section>
+
+  <section class="sec over" id="over"><div class="wrap">
+    <div data-r><p class="big">Ik fotografeer <b>mensen en plekken</b> in het licht dat er toevallig is.</p></div>
+    <div data-r>
+      <p>Geen geforceerde glimlach, geen overdreven bewerking. Ik werk graag met daglicht en wacht op het moment waarop iemand even vergeet dat de camera er is.</p>
+      <p>Voor portret, bedrijfsreportage, bruiloften en redactioneel werk — door heel Nederland en daarbuiten.</p>
+      <div class="meta"><div><b>12 jr</b>ervaring</div><div><b>300+</b>opdrachten</div><div><b>NL/EU</b>werkgebied</div></div>
+    </div>
+  </div></section>
+
+  <section class="sec contact" id="contact"><div class="wrap" data-r>
+    <span class="eyebrow">Contact</span>
+    <h2>Een verhaal te<br>vertellen?</h2>
+    <a class="mail" href="mailto:hallo@licht-fotografie.nl">hallo@licht-fotografie.nl</a>
+    <div class="lines">Anouk de Vries · +31 6 24 55 81 90 · Utrecht</div>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span>LICHT — Anouk de Vries</span>
+  <span>&copy; <span id="jaar">2026</span> · alle rechten voorbehouden</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
+  var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('solid',(window.pageYOffset||0)>(window.innerHeight*0.7));});}},{passive:true});
+  /* filter */
+  var fil=doc.getElementById('filters'),gal=doc.getElementById('gallery');
+  if(fil&&gal){var btns=[].slice.call(fil.querySelectorAll('button')),shots=[].slice.call(gal.querySelectorAll('.shot'));
+    fil.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var f=b.getAttribute('data-filter');btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});shots.forEach(function(s){s.classList.toggle('hide',!(f==='alles'||s.getAttribute('data-cat')===f));});});
+  }
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+})();
+</script>
+</body>
+</html>

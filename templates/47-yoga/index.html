@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adem — yogastudio in Nijmegen</title>
+<meta name="description" content="Adem is een rustige yogastudio in Nijmegen. Vinyasa, yin en hatha in kleine groepen, voor elk niveau. Probeer je eerste les voor € 5.">
+<meta name="theme-color" content="#efe9df">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ADEM — yogastudio, Nijmegen. Rustig, warm, aards.
+   ============================================================ */
+:root{
+  --sand:#efe9df; --sand-2:#e5dccd; --ink:#2e2a24; --ink-2:#5e564b; --muted:#867c6e;
+  --terra:#c1714e; --terra-2:#a85b3a; --sage:#7e8a6a; --line:rgba(46,42,36,.14); --line-soft:rgba(46,42,36,.07);
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  --maxw:1080px; --gutter:clamp(1.2rem,5vw,4.5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);font-size:1.06rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}ul{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}::selection{background:var(--terra);color:#fff}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.serif{font-family:var(--serif)}
+.kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra-2)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--terra);color:#fff;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+.hdr{position:sticky;top:0;z-index:50;background:rgba(239,233,223,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:box-shadow .3s}
+.hdr.stuck{box-shadow:0 10px 30px -24px rgba(46,42,36,.4)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:var(--serif);font-weight:400;font-size:1.7rem;letter-spacing:.04em}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{font-size:.84rem;letter-spacing:.06em;color:var(--ink-2)}.nav a:hover{color:var(--terra-2)}
+.nav .cta{border:1px solid var(--terra-2);color:var(--terra-2);padding:.55rem 1.1rem;border-radius:99px;font-size:.82rem}
+.nav .cta:hover{background:var(--terra-2);color:#fff}
+.burger{display:none;border:1px solid var(--line);border-radius:99px;padding:.5rem .9rem;font-size:.82rem}
+@media(max-width:820px){.nav{position:fixed;inset:78px 0 auto;background:var(--sand);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+
+.hero{padding-block:clamp(2.5rem,6vw,5rem)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media(max-width:840px){.hero .wrap{grid-template-columns:1fr;gap:2rem}}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.8rem,8vw,5.6rem);line-height:1.05;margin:1.1rem 0 0;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--terra-2)}
+.hero p.lead{margin-top:1.4rem;color:var(--ink-2);max-width:38ch;font-size:1.16rem}
+.hero-act{margin-top:2rem;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.btn{background:var(--terra-2);color:#fff;padding:.85rem 1.6rem;border-radius:99px;font-weight:600;font-size:.95rem;display:inline-block;transition:background-color .25s,transform .25s}
+.btn:hover{background:var(--terra);transform:translateY(-2px)}
+.lnk{border-bottom:1.5px solid var(--sage);padding-bottom:3px}.lnk:hover{color:var(--sage)}
+.hero-fig img{width:100%;aspect-ratio:4/4.4;object-fit:cover;border-radius:300px 300px 12px 12px;filter:grayscale(.1)}
+
+.sec{padding-block:clamp(3rem,6vw,5rem)}
+.sec-h{text-align:center;max-width:38rem;margin:0 auto clamp(2rem,4vw,3rem)}
+.sec-h h2{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.6vw,3.2rem);margin-top:.6rem}
+.sec-h p{color:var(--ink-2);margin-top:.6rem}
+
+/* rooster */
+.rooster{background:var(--sand-2)}
+.week{display:grid;gap:0;max-width:760px;margin:0 auto}
+.dayrow{display:grid;grid-template-columns:7rem 1fr;gap:1.5rem;padding:1.3rem 0;border-bottom:1px solid var(--line-soft)}
+.dayrow .d{font-family:var(--serif);font-size:1.25rem}
+.dayrow.today .d{color:var(--terra-2)}
+.dayrow.today .d::after{content:" · vandaag";font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-2)}
+.cls{display:flex;gap:.8rem;align-items:baseline;flex-wrap:wrap}
+.cls + .cls{margin-top:.5rem}
+.cls .t{font-variant-numeric:tabular-nums;color:var(--ink);min-width:5.2rem}
+.cls .nm{font-weight:600}
+.cls .lv{font-size:.78rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:.1rem .55rem}
+.dayrow .rust{color:var(--muted);font-style:italic}
+
+/* lessen types */
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2rem)}
+@media(max-width:760px){.types{grid-template-columns:1fr}}
+.type{border-top:2px solid var(--terra);padding-top:1.1rem}
+.type h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:.4rem}
+.type p{color:var(--ink-2);font-size:.98rem}
+
+/* over */
+.over{background:var(--sand-2)}
+.over .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media(max-width:840px){.over .wrap{grid-template-columns:1fr}}
+.over img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(1) contrast(1.05);border-radius:8px}
+.over h2{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.4vw,3rem);margin:.7rem 0 1rem}
+.over p{color:var(--ink-2);font-size:1.1rem}.over p+p{margin-top:1rem}
+.over .sign{margin-top:1.4rem;font-family:var(--serif);font-style:italic;color:var(--terra-2)}
+
+/* prijs + bezoek */
+.bez .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+@media(max-width:820px){.bez .wrap{grid-template-columns:1fr;gap:2rem}}
+.bez h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.2rem}
+.tar{display:grid;gap:.2rem}
+.tar .row{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line-soft)}
+.tar .row .nm small{display:block;color:var(--muted);font-size:.86rem}
+.tar .row .pr{font-variant-numeric:tabular-nums;color:var(--terra-2);font-weight:600;white-space:nowrap}
+.bez address{font-style:normal;color:var(--ink-2);line-height:1.9;margin-bottom:1.2rem}.bez address a{border-bottom:1px solid var(--line)}
+.bez .form{display:grid;gap:.8rem}
+.bez .form input{border:1px solid var(--line);background:var(--sand);padding:.8rem .9rem;border-radius:8px}
+.bez .form input:focus{outline:none;border-color:var(--terra)}
+.bez .form button{justify-self:start;background:var(--terra-2);color:#fff;border:0;padding:.85rem 1.7rem;border-radius:99px;font-weight:600;cursor:pointer}
+.bez .form button:hover{background:var(--terra)}
+.bez .ok{display:none;color:var(--sage);font-style:italic}.bez .form.sent>*{display:none}.bez .form.sent .ok{display:block}
+
+.foot{background:var(--ink);color:#cfc7ba;padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+.foot .logo{color:#fff}.foot .small{font-size:.84rem;text-align:right}@media(max-width:560px){.foot .small{text-align:left}}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .8s,transform .8s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#rooster">Naar het rooster</a>
+<header class="hdr" id="hdr"><div class="wrap">
+  <a class="logo" href="#top">adem</a>
+  <nav class="nav" id="nav"><a href="#rooster">Rooster</a><a href="#lessen">Lessen</a><a href="#over">Over</a><a href="#bezoek">Tarieven</a><a class="cta" href="#bezoek">Proefles € 5</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <div>
+      <span class="kicker">Yogastudio · Nijmegen</span>
+      <h1>Adem in,<br>adem <em>uit</em>.</h1>
+      <p class="lead">Een rustige studio met kleine groepen, voor elk niveau. Even uit je hoofd en terug in je lijf — meer is het niet, en precies genoeg.</p>
+      <div class="hero-act"><a class="btn" href="#bezoek">Probeer een proefles</a><a class="lnk" href="#rooster">Bekijk het rooster</a></div>
+    </div>
+    <figure class="hero-fig" data-r><img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=850&q=72" alt="Iemand in een rustige yogahouding in de studio" width="850" height="935"></figure>
+  </div></section>
+
+  <section class="sec rooster" id="rooster"><div class="wrap">
+    <div class="sec-h" data-r><span class="kicker">Weekrooster</span><h2>Wanneer kun je op de mat?</h2><p>Reserveren kan via de app, maar binnenlopen mag ook als er plek is.</p></div>
+    <div class="week" data-r>
+      <div class="dayrow" data-day="1"><div class="d">Maandag</div><div><div class="cls"><span class="t">09:00</span><span class="nm">Hatha</span><span class="lv">alle niveaus</span></div><div class="cls"><span class="t">19:30</span><span class="nm">Vinyasa flow</span><span class="lv">gevorderd</span></div></div></div>
+      <div class="dayrow" data-day="2"><div class="d">Dinsdag</div><div><div class="cls"><span class="t">07:00</span><span class="nm">Sunrise flow</span><span class="lv">alle niveaus</span></div><div class="cls"><span class="t">20:00</span><span class="nm">Yin</span><span class="lv">rustig</span></div></div></div>
+      <div class="dayrow" data-day="3"><div class="d">Woensdag</div><div><div class="cls"><span class="t">09:30</span><span class="nm">Zwangerschapsyoga</span><span class="lv">prenataal</span></div><div class="cls"><span class="t">18:30</span><span class="nm">Vinyasa</span><span class="lv">beginner</span></div></div></div>
+      <div class="dayrow" data-day="4"><div class="d">Donderdag</div><div><div class="cls"><span class="t">09:00</span><span class="nm">Hatha</span><span class="lv">alle niveaus</span></div><div class="cls"><span class="t">20:00</span><span class="nm">Yin &amp; meditatie</span><span class="lv">rustig</span></div></div></div>
+      <div class="dayrow" data-day="5"><div class="d">Vrijdag</div><div><div class="cls"><span class="t">07:00</span><span class="nm">Sunrise flow</span><span class="lv">alle niveaus</span></div><div class="cls"><span class="t">17:30</span><span class="nm">Weekend-release</span><span class="lv">rustig</span></div></div></div>
+      <div class="dayrow" data-day="6"><div class="d">Zaterdag</div><div><div class="cls"><span class="t">10:00</span><span class="nm">Vinyasa flow</span><span class="lv">alle niveaus</span></div></div></div>
+      <div class="dayrow" data-day="0"><div class="d">Zondag</div><div><div class="cls"><span class="t">10:30</span><span class="nm">Slow Sunday</span><span class="lv">rustig</span></div></div></div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="lessen"><div class="wrap">
+    <div class="sec-h" data-r><span class="kicker">De lessen</span><h2>Drie manieren om los te laten</h2></div>
+    <div class="types" data-r>
+      <div class="type"><h3>Vinyasa</h3><p>Dynamisch en stromend, op het ritme van je adem. Je wordt warm, sterk en lekker moe — op de goede manier.</p></div>
+      <div class="type"><h3>Yin</h3><p>Houdingen die je minutenlang vasthoudt. Zacht voor je spieren, diep voor je bindweefsel, rust voor je hoofd.</p></div>
+      <div class="type"><h3>Hatha</h3><p>Klassiek en aandachtig, met tijd voor uitleg. De fijne basis om alle andere lessen beter te begrijpen.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec over" id="over"><div class="wrap">
+    <figure data-r><img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&w=950&q=72" alt="Een yogales met meerdere deelnemers" width="950" height="712" loading="lazy"></figure>
+    <div data-r>
+      <span class="kicker">Over Adem</span>
+      <h2>Geen prestatie, wel aandacht</h2>
+      <p>Bij Adem hoef je niets te kunnen en niets te bewijzen. Onze docenten kijken naar jou, niet naar de perfecte houding, en houden de groepen klein zodat er aandacht is voor iedereen.</p>
+      <p>Een warme studio met houten vloer, planten en zachte muziek — gewoon een fijne plek om even te zijn.</p>
+      <p class="sign">— Maartje &amp; Tijn, docenten</p>
+    </div>
+  </div></section>
+
+  <section class="sec bez" id="bezoek"><div class="wrap">
+    <div data-r>
+      <h2>Tarieven</h2>
+      <div class="tar">
+        <div class="row"><span class="nm">Proefles<small>eerste keer, kennismaken</small></span><span class="pr">€ 5</span></div>
+        <div class="row"><span class="nm">Losse les</span><span class="pr">€ 14</span></div>
+        <div class="row"><span class="nm">10-rittenkaart<small>3 maanden geldig</small></span><span class="pr">€ 120</span></div>
+        <div class="row"><span class="nm">Onbeperkt / maand<small>alle lessen</small></span><span class="pr">€ 79</span></div>
+        <div class="row"><span class="nm">Student / maand</span><span class="pr">€ 59</span></div>
+      </div>
+    </div>
+    <div data-r>
+      <h2>Kom langs</h2>
+      <address>
+        Van Welderenstraat 21<br>6511 MA Nijmegen<br>
+        <a href="tel:+31243601199">024 — 360 11 99</a> · <a href="mailto:hoi@adem-yoga.nl">hoi@adem-yoga.nl</a>
+      </address>
+      <p style="color:var(--ink-2);margin-bottom:1rem">Reserveer je proefles, dan leggen we een matje voor je klaar.</p>
+      <form class="form" id="form" novalidate>
+        <input id="y-naam" type="text" placeholder="Naam" aria-label="Naam" required>
+        <input id="y-mail" type="email" placeholder="E-mail" aria-label="E-mail" required>
+        <input id="y-les" type="text" placeholder="Welke les wil je proberen?" aria-label="Les">
+        <button type="submit">Reserveer mijn proefles</button>
+        <p class="ok" role="status">Namasté — je proefles staat genoteerd. Tot op de mat.</p>
+      </form>
+    </div>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span class="logo serif">adem</span>
+  <span class="small">&copy; <span id="jaar">2026</span> Adem yogastudio · Van Welderenstraat 21, Nijmegen · KvK 66201884</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  function dnow(){try{var w=new Intl.DateTimeFormat('nl-NL',{weekday:'short',timeZone:'Europe/Amsterdam'}).format(new Date()).toLowerCase().slice(0,2);return {zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6}[w];}catch(e){return new Date().getDay();}}
+  var d=dnow();doc.querySelectorAll('.dayrow').forEach(function(r){if(+r.getAttribute('data-day')===d)r.classList.add('today');});
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
+  var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('stuck',(window.pageYOffset||0)>8);});}},{passive:true});
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){form.addEventListener('submit',function(e){e.preventDefault();var n=doc.getElementById('y-naam'),m=doc.getElementById('y-mail');if(!n.value.trim()){n.focus();return;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m.value.trim())){m.focus();return;}form.classList.add('sent');});}
+})();
+</script>
+</body>
+</html>

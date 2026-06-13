@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOCTURN — nachtclub Rotterdam</title>
+<meta name="description" content="NOCTURN is een nachtclub aan de Maas. House, techno en disco tot zonsopkomst. Bekijk de agenda en reserveer een tafel.">
+<meta name="theme-color" content="#08060f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   NOCTURN — nachtclub. Diepzwart × UV-paars × acid-cyaan. Glow-poster.
+   ============================================================ */
+:root{
+  --bg:#08060f; --panel:#0f0b1c; --ink:#f3f0ff; --dim:#9a93c0; --uv:#8b2fff; --cyan:#00ffd5; --pink:#ff2d92;
+  --disp:"Syncopate",system-ui,sans-serif; --body:"Space Grotesk",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1140px; --gutter:clamp(1rem,4vw,3rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--cyan);color:#000}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--cyan);color:#000;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(8,6,15,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(139,47,255,.4)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:var(--disp);font-weight:700;font-size:1.1rem;letter-spacing:.22em;color:var(--ink)}
+.menu{display:flex;align-items:center;gap:.4rem}
+.menu a{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;color:var(--dim);padding:.45rem .7rem}
+.menu a:hover{color:var(--cyan)}
+.menu .cta{font-family:var(--mono);font-weight:700;background:var(--cyan);color:#000;padding:.5rem 1rem;border-radius:99px}
+.menu .cta:hover{background:var(--pink);color:#fff}
+.burger{display:none;border:1px solid var(--uv);background:none;color:var(--ink);padding:.4rem .65rem;font-family:var(--mono);font-size:.78rem}
+@media(max-width:840px){.menu{position:fixed;inset:62px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--uv);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid rgba(139,47,255,.3)}.burger{display:inline-block}}
+
+/* hero poster */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(139,47,255,.4)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 20% 18%,rgba(139,47,255,.55),transparent 45%),
+  radial-gradient(circle at 82% 84%,rgba(0,255,213,.32),transparent 48%),
+  radial-gradient(circle at 60% 40%,rgba(255,45,146,.22),transparent 55%)}
+.hero .wrap{position:relative;text-align:center;padding-block:clamp(3rem,8vw,6rem)}
+.hero .date{font-family:var(--mono);font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan)}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.6rem,11vw,8rem);line-height:.95;letter-spacing:.04em;margin:1rem 0;color:var(--ink);text-shadow:0 0 30px rgba(139,47,255,.8)}
+.hero .sub{font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.hero .cta{display:inline-block;margin-top:2rem;font-family:var(--mono);font-weight:700;text-transform:uppercase;font-size:.85rem;letter-spacing:.06em;background:var(--cyan);color:#000;padding:.9rem 1.8rem;border-radius:99px;transition:transform .15s,box-shadow .15s;box-shadow:0 0 24px rgba(0,255,213,.6)}
+.hero .cta:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,255,213,.9)}
+
+/* agenda */
+.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
+.sec-h h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.06em;text-transform:uppercase}
+.sec-h .all{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;color:var(--cyan)}
+.agenda{display:grid;gap:.8rem}
+.night{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:center;background:var(--panel);border:1px solid rgba(139,47,255,.3);border-radius:14px;padding:1.1rem 1.3rem;transition:border-color .2s,transform .15s}
+.night:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.night .d{text-align:center;font-family:var(--mono);line-height:1;flex:none;border-right:1px solid rgba(139,47,255,.3);padding-right:1.2rem}
+.night .d b{font-size:1.7rem;display:block;color:var(--cyan)}
+.night .d span{font-size:.7rem;text-transform:uppercase;color:var(--dim)}
+.night h3{font-family:var(--disp);font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase}
+.night .line{font-family:var(--mono);font-size:.8rem;color:var(--dim);margin-top:.25rem}
+.night .gen{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;border:1px solid var(--uv);color:var(--uv);padding:.2rem .55rem;border-radius:99px}
+.night.sold{opacity:.55}
+.night.sold .gen{border-color:var(--pink);color:var(--pink)}
+@media(max-width:600px){.night{grid-template-columns:auto 1fr}.night .gen{grid-column:2;justify-self:start}}
+
+/* info grid */
+.info-g{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem)}
+@media(max-width:760px){.info-g{grid-template-columns:1fr}}
+.icard{background:var(--panel);border:1px solid rgba(139,47,255,.3);border-radius:14px;padding:1.4rem}
+.icard .ic{font-size:1.6rem;color:var(--cyan)}
+.icard h3{font-family:var(--disp);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em;margin:.7rem 0 .4rem}
+.icard p{color:var(--dim);font-size:.92rem}
+
+/* reserveren */
+.res{background:linear-gradient(180deg,var(--panel),var(--bg));border-top:1px solid rgba(139,47,255,.4)}
+.res .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;padding-block:clamp(2.5rem,5vw,4.5rem)}
+@media(max-width:780px){.res .wrap{grid-template-columns:1fr}}
+.res h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.6rem,4.5vw,2.6rem);letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+.res p{color:var(--dim);margin-top:.9rem}
+.form{border:1px solid rgba(139,47,255,.4);background:var(--panel);border-radius:16px;padding:clamp(1.2rem,3vw,1.8rem)}
+.fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+.fld input,.fld select{border:1px solid rgba(139,47,255,.4);background:var(--bg);padding:.7rem .8rem;border-radius:8px;color:var(--ink)}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--cyan)}
+.fld.bad input{border-color:var(--pink)}
+.fld .err{display:none;font-size:.74rem;color:var(--pink)}.fld.bad .err{display:block}
+.form button{width:100%;cursor:pointer;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.85rem;border:none;border-radius:99px;background:var(--cyan);color:#000;box-shadow:0 0 20px rgba(0,255,213,.5)}
+.form .ok{display:none;font-family:var(--disp);font-weight:700;color:var(--cyan);padding:.4rem 0;text-transform:uppercase;letter-spacing:.04em;font-size:.95rem}
+.form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
+
+.foot{padding-block:clamp(2rem,4vw,3rem);border-top:1px solid rgba(139,47,255,.3)}
+.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.foot .tag{font-family:var(--mono);font-size:.76rem;color:var(--dim)}
+@media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#agenda">Naar de agenda</a>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">NOCTURN</a>
+  <nav class="menu" id="menu"><a href="#agenda">Agenda</a><a href="#info">Info</a><a href="#reserveer">Reserveren</a><a class="cta" href="#reserveer">Tafel boeken</a></nav>
+  <button class="burger" id="burger" aria-expanded="false">≡</button>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <div class="date">Dit weekend · 13 — 14 juni</div>
+    <h1>NOCTURN</h1>
+    <div class="sub">House · Techno · Disco — tot zonsopkomst</div>
+    <a class="cta" href="#agenda">Bekijk de agenda</a>
+  </div></section>
+
+  <section class="sec wrap" id="agenda">
+    <div class="sec-h"><h2>Agenda</h2><span class="all">Aan de Maas · 22:00 — 06:00</span></div>
+    <div class="agenda" data-r>
+      <article class="night"><div class="d"><b>13</b><span>vr jun</span></div><div><h3>Subsonic — all night long</h3><div class="line">met resident Mila Kraft &amp; Vektor</div></div><span class="gen">Techno</span></article>
+      <article class="night"><div class="d"><b>14</b><span>za jun</span></div><div><h3>Disco Inferno</h3><div class="line">special guest Frankie Dust (UK)</div></div><span class="gen">Disco</span></article>
+      <article class="night sold"><div class="d"><b>20</b><span>vr jun</span></div><div><h3>Deep Current</h3><div class="line">uitverkocht — wachtlijst open</div></div><span class="gen">Uitverkocht</span></article>
+      <article class="night"><div class="d"><b>21</b><span>za jun</span></div><div><h3>Pulse — label night</h3><div class="line">Halftone · Sander Kleff · Noor</div></div><span class="gen">House</span></article>
+      <article class="night"><div class="d"><b>28</b><span>za jun</span></div><div><h3>Solstice Rooftop</h3><div class="line">vroege start 18:00 · dak open</div></div><span class="gen">Open air</span></article>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="info">
+    <div class="sec-h"><h2>Goed om te weten</h2></div>
+    <div class="info-g" data-r>
+      <div class="icard"><div class="ic" aria-hidden="true">🕒</div><h3>Openingstijden</h3><p>Vrijdag &amp; zaterdag 22:00 — 06:00. Deuren dicht om 04:00.</p></div>
+      <div class="icard"><div class="ic" aria-hidden="true">🪪</div><h3>Entree</h3><p>18+ · legitimatie verplicht. Deurbeleid: kom zoals je bent, respecteer elkaar.</p></div>
+      <div class="icard"><div class="ic" aria-hidden="true">📍</div><h3>Locatie</h3><p>Maaskade 140, Rotterdam. 8 min van Rotterdam Blaak. Geen parkeren.</p></div>
+    </div>
+  </section>
+
+  <section class="res" id="reserveer"><div class="wrap">
+    <div data-r>
+      <h2>Reserveer<br>een tafel</h2>
+      <p>Eigen tafel met bottle service in de loungezone. Laat je gegevens achter, dan bevestigen we per mail met de beschikbare arrangementen.</p>
+    </div>
+    <form class="form" id="form" novalidate data-r>
+      <div class="fld"><label for="n-naam">Naam</label><input id="n-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+      <div class="fld"><label for="n-mail">E-mail</label><input id="n-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+      <div class="fld"><label for="n-avond">Avond</label><select id="n-avond"><option>Vr 13 jun — Subsonic</option><option>Za 14 jun — Disco Inferno</option><option>Za 21 jun — Pulse</option></select></div>
+      <div class="fld"><label for="n-pers">Aantal personen</label><input id="n-pers" type="text" required placeholder="bijv. 6"><span class="err">Hoeveel personen?</span></div>
+      <button type="submit">Vraag tafel aan</button>
+      <div class="ok" role="status">✦ Aanvraag binnen — we mailen je terug.</div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <a class="logo" href="#top">NOCTURN</a>
+  <span class="tag">&copy; <span id="jaar">2026</span> NOCTURN Rotterdam · 18+ · @nocturn.rtm</span>
+</div></footer>
+
+<script>
+(function(){
+  var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
+  var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
+})();
+</script>
+</body>
+</html>
