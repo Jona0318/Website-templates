@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="nl" class="js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Ruis — generatieve ontwerpstudio, Rotterdam</title>
+<meta name="description" content="Atelier Ruis is een generatieve ontwerpstudio in Rotterdam. Wij schrijven code die ontwerpt: identiteiten, prints en installaties die nooit twee keer hetzelfde zijn. Stuur hier zelf het stroomveld — sleep de sliders, kies een palet, en download je eigen compositie.">
+<meta name="theme-color" content="#f4f1ea">
+<meta property="og:title" content="Atelier Ruis — generatieve ontwerpstudio">
+<meta property="og:description" content="Code die ontwerpt. Stuur het stroomveld zelf en download je eigen compositie.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement;
+    h.classList.remove('no-js');
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        h.classList.remove('no-anim');
+        h.classList.add('anim-ok');
+      }
+    } catch (e) {}
+  })();
+</script>
+<style>
+/* ============================================================
+   ATELIER RUIS — generatieve ontwerpstudio · Rotterdam
+   signature one-page template · alles inline, geen libraries
+   pronkstuk: een live stroomveld-canvas dat de bezoeker zelf stuurt
+   ============================================================ */
+:root{
+  --papier:#f4f1ea;
+  --papier-2:#eae5da;
+  --inkt:#16140f;
+  --inkt-2:#26231b;
+  --wit:#ffffff;
+  --tekst:#16140f;
+  --tekst-zacht:rgba(22,20,15,.62);
+  --tekst-flauw:rgba(22,20,15,.40);
+  --blauw:#1b29ff;
+  --blauw-diep:#0c16c8;
+  --koraal:#ff5a3c;
+  --groen:#13a07a;
+  --geel:#f5c518;
+  --lijn:rgba(22,20,15,.14);
+  --lijn-sterk:rgba(22,20,15,.26);
+  --blauw-zacht:rgba(27,41,255,.10);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-hard:cubic-bezier(.7,0,.2,1);
+  --font-serif:"Fraunces",Georgia,serif;
+  --font-grotesk:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --header-h:74px;
+  --gutter:clamp(1.25rem,4.5vw,4.5rem);
+  --maxw:1440px;
+  --radius:16px;
+}
+@property --ang{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 14px);-webkit-text-size-adjust:100%}
+html.no-anim{scroll-behavior:auto}
+body{
+  background:var(--papier);color:var(--tekst);
+  font-family:var(--font-grotesk);font-size:1rem;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select,textarea{font:inherit}
+::selection{background:var(--blauw);color:#fff}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--papier-2)}
+::-webkit-scrollbar-thumb{background:#c4bcab;border-radius:99px;border:3px solid var(--papier-2)}
+::-webkit-scrollbar-thumb:hover{background:var(--blauw)}
+:focus-visible{outline:2px solid var(--blauw);outline-offset:3px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* korrel */
+body::after{
+  content:"";position:fixed;inset:0;z-index:92;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+.container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);position:relative}
+.section{padding-block:clamp(4.5rem,9vw,8.5rem);position:relative}
+.dark{background:var(--inkt);color:#efeadf}
+.muted{color:var(--tekst-zacht)}
+.dark .muted{color:rgba(239,234,223,.6)}
+
+.dot-pulse{width:9px;height:9px;border-radius:50%;background:var(--groen);position:relative;flex:none}
+.dot-pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--groen)}
+html.anim-ok .dot-pulse::after{animation:pulse 2.1s var(--ease) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3);opacity:0}}
+
+h1,h2,h3{font-weight:600;line-height:1.05;letter-spacing:-.02em}
+.serif{font-family:var(--font-serif)}
+.mono{font-family:var(--font-mono);letter-spacing:0}
+.eyebrow{font-family:var(--font-mono);font-size:.7rem;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--blauw);display:inline-flex;align-items:center;gap:.65rem}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--blauw);flex:none}
+.dark .eyebrow{color:#9aa0ff}
+.dark .eyebrow::before{background:#9aa0ff}
+.section-head{max-width:50rem;margin-bottom:clamp(2.4rem,5vw,4rem)}
+.section-head h2{font-family:var(--font-serif);font-size:clamp(2.1rem,5.4vw,3.9rem);font-weight:500;margin:1rem 0 1rem;letter-spacing:-.015em}
+.section-head h2 em{font-style:italic;color:var(--blauw)}
+.dark .section-head h2 em{color:#9aa0ff}
+.section-head p{color:var(--tekst-zacht);font-size:clamp(1rem,1.4vw,1.14rem);max-width:46rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 1.65rem;border-radius:99px;border:1px solid var(--lijn-sterk);color:var(--tekst);transition:transform .5s var(--ease),background-color .35s,color .35s,border-color .35s,box-shadow .35s;will-change:transform}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-primary{background:var(--blauw);color:#fff;border-color:var(--blauw);box-shadow:0 12px 30px -14px rgba(27,41,255,.6)}
+.btn-primary:hover{background:var(--blauw-diep);border-color:var(--blauw-diep)}
+.btn-ghost:hover{border-color:var(--blauw);color:var(--blauw)}
+.dark .btn-ghost{color:#efeadf;border-color:rgba(239,234,223,.28)}
+.dark .btn-ghost:hover{border-color:#9aa0ff;color:#9aa0ff}
+
+.skip-link{position:fixed;top:0;left:0;z-index:400;background:var(--blauw);color:#fff;padding:.8rem 1.3rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transform:translateY(-120%);transition:transform .3s var(--ease)}
+.skip-link:focus{transform:translateY(0)}
+
+/* sliders */
+.slider-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem}
+.slider-row label{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tekst-zacht);white-space:nowrap}
+.slider-out{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;color:var(--blauw);min-width:4.4em;text-align:right;font-variant-numeric:tabular-nums}
+.slider{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--blauw) 0 var(--fill,50%),rgba(22,20,15,.16) var(--fill,50%) 100%);cursor:pointer;outline-offset:8px}
+.slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--blauw);border:5px solid var(--papier);box-shadow:0 3px 14px rgba(27,41,255,.45);cursor:grab;transition:transform .25s var(--ease)}
+.slider::-webkit-slider-thumb:hover{transform:scale(1.12)}
+.slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--blauw);border:5px solid var(--papier);box-shadow:0 3px 14px rgba(27,41,255,.45);cursor:grab}
+.slider::-moz-range-track{background:transparent}
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+.intro{display:none}
+html.anim-ok .intro{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.6rem;position:fixed;inset:0;z-index:300;background:var(--inkt);color:var(--papier);transition:opacity .9s var(--ease-hard),visibility 0s linear .9s}
+html.anim-ok .intro.is-done{opacity:0;visibility:hidden}
+.intro-canvas{width:140px;height:140px;opacity:0;transition:opacity .6s ease}
+html.anim-ok .intro.is-active .intro-canvas{opacity:1}
+.intro-tekst{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(239,234,223,.6);opacity:0;transition:opacity .7s ease .4s}
+html.anim-ok .intro.is-active .intro-tekst{opacity:1}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:linear-gradient(90deg,var(--blauw),var(--koraal));transform:scaleX(0);transform-origin:left center}
+html.no-anim .scroll-progress{display:none}
+.header{position:fixed;top:0;left:0;right:0;z-index:150;transition:transform .5s var(--ease),background-color .4s,border-color .4s;border-bottom:1px solid transparent}
+.header.is-hidden{transform:translateY(-101%)}
+.header.is-solid{background:rgba(244,241,234,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--lijn)}
+.header-bar{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.brand{display:inline-flex;align-items:center;gap:.8rem;font-family:var(--font-serif);font-weight:600;font-size:1.18rem;letter-spacing:-.01em}
+.brand .logo{width:36px;height:36px;flex:none;border-radius:8px;overflow:hidden;background:var(--inkt)}
+.brand small{display:block;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tekst-zacht);font-weight:400;margin-top:2px}
+.header-nav{display:flex;align-items:center;gap:2rem}
+.header-links{display:flex;gap:1.7rem}
+.header-links a{font-size:.88rem;font-weight:500;color:var(--tekst-zacht);transition:color .3s}
+.header-links a:hover{color:var(--blauw)}
+.header-actions{display:flex;align-items:center;gap:1rem}
+.menu-toggle{display:none;width:46px;height:46px;border:1px solid var(--lijn-sterk);border-radius:50%;align-items:center;justify-content:center;flex-direction:column;gap:5px;background:rgba(255,255,255,.4)}
+.menu-toggle span{display:block;width:18px;height:2px;background:var(--tekst);transition:transform .4s var(--ease),opacity .3s}
+@media (max-width:980px){.header-links{display:none}.header-actions .btn-cta-text{display:none}.menu-toggle{display:inline-flex}}
+
+.menu-overlay{position:fixed;inset:0;z-index:160;background:var(--inkt);color:var(--papier);display:flex;flex-direction:column;justify-content:center;padding:calc(var(--header-h) + 2rem) var(--gutter) var(--gutter);opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s linear .6s}
+.menu-overlay.is-open{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
+.menu-overlay__close{position:absolute;top:calc((var(--header-h) - 46px)/2);right:var(--gutter);width:46px;height:46px;border:1px solid rgba(239,234,223,.3);border-radius:50%;display:grid;place-items:center;color:var(--papier)}
+.menu-overlay__close::before,.menu-overlay__close::after{content:"";position:absolute;width:18px;height:2px;background:currentColor}
+.menu-overlay__close::before{transform:rotate(45deg)}
+.menu-overlay__close::after{transform:rotate(-45deg)}
+.menu-list li{overflow:hidden;padding-block:.1rem}
+.menu-list a{display:inline-flex;align-items:baseline;gap:1rem;font-family:var(--font-serif);font-weight:500;font-size:clamp(2.1rem,7.5vw,4.2rem);line-height:1.18;letter-spacing:-.02em;color:var(--papier);transform:translateY(112%);transition:transform .9s var(--ease),color .3s}
+.menu-list a em{font-style:italic;color:#9aa0ff}
+.menu-list a .idx{font-family:var(--font-mono);font-size:.78rem;font-weight:400;color:#9aa0ff;letter-spacing:.1em}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(1) a{transition-delay:.08s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(2) a{transition-delay:.15s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(3) a{transition-delay:.22s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(4) a{transition-delay:.29s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(5) a{transition-delay:.36s}
+html.anim-ok .menu-overlay.is-open .menu-list li:nth-child(6) a{transition-delay:.43s}
+.menu-overlay.is-open .menu-list a{transform:translateY(0)}
+.menu-list a:hover{color:#9aa0ff}
+.menu-foot{margin-top:clamp(2rem,5vh,3.5rem);display:flex;gap:2rem;flex-wrap:wrap;opacity:0;transition:opacity .8s var(--ease) .5s}
+.menu-overlay.is-open .menu-foot{opacity:1}
+.menu-foot a{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;color:rgba(239,234,223,.6)}
+.menu-foot a:hover{color:#9aa0ff}
+html.no-anim .menu-list a{transform:none}
+html.no-anim .menu-foot{opacity:1}
+
+/* reveal */
+html.anim-ok [data-rv]{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok [data-rv].in-view{opacity:1;transform:none}
+
+/* ============================================================
+   HERO — generatief stroomveld als pronkstuk
+   ============================================================ */
+.hero{position:relative;padding-top:calc(var(--header-h) + clamp(2rem,5vw,4rem));padding-bottom:clamp(3rem,6vw,5rem);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(2rem,4vw,4rem);align-items:center}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:2.5rem}}
+.hero-left .eyebrow{margin-bottom:1.3rem}
+.hero h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.6rem,6.6vw,5.4rem);line-height:.98;letter-spacing:-.025em;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--blauw)}
+.hero-lead{margin-top:1.5rem;color:var(--tekst-zacht);font-size:clamp(1.05rem,1.6vw,1.28rem);max-width:42ch}
+.hero-cta{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.hero-meta{margin-top:2rem;display:flex;align-items:center;gap:.7rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tekst-zacht)}
+/* studio-paneel met canvas */
+.studio{position:relative;border:1px solid var(--lijn-sterk);border-radius:var(--radius);overflow:hidden;background:var(--inkt);box-shadow:0 40px 90px -50px rgba(22,20,15,.7)}
+.studio-bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;background:var(--inkt-2);border-bottom:1px solid rgba(239,234,223,.1)}
+.studio-bar .dot{width:11px;height:11px;border-radius:50%;flex:none}
+.studio-bar .dot:nth-child(1){background:var(--koraal)}
+.studio-bar .dot:nth-child(2){background:var(--geel)}
+.studio-bar .dot:nth-child(3){background:var(--groen)}
+.studio-bar .titel{margin-left:.6rem;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,234,223,.55)}
+.studio-bar .live{margin-left:auto;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#9aa0ff;display:flex;align-items:center;gap:.45rem}
+.studio-bar .live .dot-pulse{width:7px;height:7px;background:var(--groen)}
+.studio-canvas-wrap{position:relative;aspect-ratio:1/1;background:#0c0b08}
+@media (max-width:560px){.studio-canvas-wrap{aspect-ratio:4/5}}
+.studio-canvas{display:block;width:100%;height:100%}
+.studio-controls{display:grid;gap:.9rem;padding:1.1rem 1.2rem;background:var(--inkt-2)}
+.studio-controls .slider-row label{color:rgba(239,234,223,.6)}
+.studio-controls .slider-out{color:#9aa0ff}
+.studio-controls .slider{background:linear-gradient(90deg,#9aa0ff 0 var(--fill,50%),rgba(239,234,223,.16) var(--fill,50%) 100%)}
+.studio-controls .slider::-webkit-slider-thumb{background:#9aa0ff;border-color:var(--inkt-2)}
+.studio-controls .slider::-moz-range-thumb{background:#9aa0ff;border-color:var(--inkt-2)}
+.studio-onder{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;padding-top:.3rem}
+.palet-rij{display:flex;gap:.4rem;margin-right:auto}
+.palet-knop{width:30px;height:30px;border-radius:8px;border:2px solid transparent;overflow:hidden;display:flex;transition:transform .25s var(--ease),border-color .25s}
+.palet-knop i{flex:1;display:block}
+.palet-knop:hover{transform:translateY(-2px)}
+.palet-knop[aria-pressed="true"]{border-color:#9aa0ff}
+.studio-btn{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1rem;border-radius:99px;border:1px solid rgba(239,234,223,.24);color:#efeadf;display:inline-flex;align-items:center;gap:.4rem;transition:border-color .3s,color .3s,background-color .3s}
+.studio-btn:hover{border-color:#9aa0ff;color:#9aa0ff}
+.studio-btn--vol{background:#9aa0ff;color:var(--inkt);border-color:#9aa0ff}
+.studio-btn--vol:hover{background:#fff;border-color:#fff;color:var(--inkt)}
+html.anim-ok .hero-left>*{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+html.anim-ok.loaded .hero-left .eyebrow{transition-delay:.15s;opacity:1;transform:none}
+html.anim-ok.loaded .hero-left h1{transition-delay:.26s;opacity:1;transform:none}
+html.anim-ok.loaded .hero-left .hero-lead{transition-delay:.4s;opacity:1;transform:none}
+html.anim-ok.loaded .hero-left .hero-cta{transition-delay:.52s;opacity:1;transform:none}
+html.anim-ok.loaded .hero-left .hero-meta{transition-delay:.62s;opacity:1;transform:none}
+html.anim-ok .studio{opacity:0;transform:translateY(30px) scale(.98);transition:opacity 1s var(--ease) .3s,transform 1s var(--ease) .3s}
+html.anim-ok.loaded .studio{opacity:1;transform:none}
+
+/* ============================================================
+   LOGOSTRIP / marquee
+   ============================================================ */
+.merken{border-block:1px solid var(--lijn);overflow:hidden;background:var(--papier-2)}
+.merken-track{display:flex;align-items:center;gap:3.5rem;padding:1.1rem 0;white-space:nowrap;will-change:transform;width:max-content}
+html.anim-ok .merken-track{animation:marquee 34s linear infinite}
+.merken:hover .merken-track{animation-play-state:paused}
+.merken-track span{font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(1.1rem,2.2vw,1.6rem);color:var(--tekst-zacht);display:inline-flex;align-items:center;gap:3.5rem}
+.merken-track span::after{content:"✦";color:var(--blauw);font-style:normal;font-size:.7em}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================================================
+   MANIFEST — scroll-oplichting (donker)
+   ============================================================ */
+.manifest-text{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.7rem,4.2vw,3.2rem);line-height:1.26;letter-spacing:-.015em;max-width:24ch}
+.manifest-text .w{color:rgba(239,234,223,.18);transition:color .4s var(--ease)}
+.manifest-text .w.lit{color:#efeadf}
+.manifest-text .w.accent.lit{color:#9aa0ff}
+html.no-anim .manifest-text .w{color:#efeadf}
+html.no-anim .manifest-text .w.accent{color:#9aa0ff}
+.manifest-sign{margin-top:2.4rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,234,223,.55)}
+
+/* ============================================================
+   WERK — generatieve thumbnails (pure canvas, geen foto's)
+   ============================================================ */
+.werk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2rem)}
+@media (max-width:880px){.werk-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.werk-grid{grid-template-columns:1fr}}
+.werk{display:flex;flex-direction:column;gap:.9rem}
+.werk-canvas-wrap{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--lijn);background:var(--inkt);transform-style:preserve-3d;will-change:transform;box-shadow:0 24px 50px -36px rgba(22,20,15,.6)}
+.werk-canvas{display:block;width:100%;height:100%}
+.werk-tag{position:absolute;top:.8rem;left:.8rem;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:#efeadf;background:rgba(22,20,15,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:.3rem .65rem;border-radius:99px}
+.werk-cap{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.werk-cap h3{font-family:var(--font-serif);font-weight:500;font-size:1.25rem}
+.werk-cap span{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tekst-flauw)}
+
+/* ============================================================
+   DIENSTEN
+   ============================================================ */
+.dienst-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lijn);border:1px solid var(--lijn);border-radius:var(--radius);overflow:hidden}
+@media (max-width:760px){.dienst-grid{grid-template-columns:1fr}}
+.dienst{background:var(--papier);padding:clamp(1.6rem,3vw,2.6rem);display:flex;flex-direction:column;gap:1rem;transition:background-color .4s}
+.dienst:hover{background:var(--wit)}
+.dienst .nr{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;color:var(--blauw)}
+.dienst h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.4rem,2.6vw,1.9rem)}
+.dienst p{color:var(--tekst-zacht);font-size:.96rem;max-width:46ch}
+.dienst ul{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.2rem}
+.dienst ul li{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tekst-zacht);border:1px solid var(--lijn);border-radius:99px;padding:.3rem .7rem}
+
+/* ============================================================
+   PROCES — tekenende tijdlijn
+   ============================================================ */
+.proces-flow{position:relative;max-width:780px;display:grid;gap:clamp(2rem,4vw,3rem);padding-left:clamp(2rem,4vw,3rem)}
+.proces-rail{position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--lijn)}
+.proces-lijn{position:absolute;left:8px;top:6px;width:2px;height:0;background:var(--blauw);transition:height .2s linear}
+html.no-anim .proces-lijn{height:calc(100% - 12px)}
+.stap{position:relative}
+.stap::before{content:"";position:absolute;left:calc(-1 * clamp(2rem,4vw,3rem) + 2px);top:.4em;width:14px;height:14px;border-radius:50%;background:var(--papier);border:3px solid var(--blauw)}
+.stap .stap-num{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blauw)}
+.stap h3{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.3rem,2.4vw,1.8rem);margin:.4rem 0 .5rem}
+.stap p{color:var(--tekst-zacht);max-width:54ch;font-size:.96rem}
+
+/* ============================================================
+   STATS — blauw
+   ============================================================ */
+.stats{background:var(--blauw);color:#fff}
+.stats ::selection{background:#fff;color:var(--blauw)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.5rem,3vw,2.5rem)}
+.stat{border-left:1px solid rgba(255,255,255,.3);padding-left:clamp(1rem,2vw,1.6rem)}
+.stat .num{font-family:var(--font-serif);font-weight:600;font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .num sup{font-size:.42em;font-weight:600;vertical-align:super}
+.stat .lab{margin-top:.5rem;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+@media (max-width:820px){.stats-grid{grid-template-columns:1fr 1fr;gap:1.8rem}}
+
+/* ============================================================
+   PAKKETTEN — toggle
+   ============================================================ */
+.pak-toggle-wrap{display:flex;justify-content:center;margin-bottom:clamp(2rem,4vw,3rem)}
+.pak-toggle{display:inline-flex;border:1px solid var(--lijn-sterk);border-radius:99px;padding:5px;gap:5px;background:rgba(255,255,255,.5)}
+.pak-toggle button{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.4rem;border-radius:99px;color:var(--tekst-zacht);transition:background-color .3s,color .3s}
+.pak-toggle button[aria-pressed="true"]{background:var(--blauw);color:#fff}
+.pak-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.2vw,1.8rem);align-items:stretch}
+@media (max-width:980px){.pak-grid{grid-template-columns:1fr;max-width:480px;margin-inline:auto}}
+.pak-card{position:relative;background:var(--wit);border:1px solid var(--lijn);border-radius:var(--radius);padding:clamp(1.6rem,2.6vw,2.3rem);display:flex;flex-direction:column;gap:1.1rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
+.pak-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -34px rgba(22,20,15,.3)}
+.pak-card h3{font-family:var(--font-serif);font-weight:500;font-size:1.5rem}
+.pak-card .p-voor{font-size:.88rem;color:var(--tekst-zacht);min-height:3em}
+.pak-prijs{display:flex;align-items:baseline;gap:.5rem;border-block:1px solid var(--lijn);padding-block:1.1rem}
+.pak-prijs .bedrag{font-family:var(--font-serif);font-weight:600;font-size:clamp(2.1rem,3.4vw,2.9rem);letter-spacing:-.02em;line-height:1;transition:opacity .24s,transform .24s var(--ease);font-variant-numeric:tabular-nums}
+.pak-prijs .bedrag.switching{opacity:0;transform:translateY(8px)}
+.pak-prijs .per{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tekst-zacht)}
+.pak-card ul{display:grid;gap:.55rem;font-size:.9rem}
+.pak-card ul li{display:flex;gap:.6rem;align-items:baseline;color:var(--tekst-zacht)}
+.pak-card ul li::before{content:"→";color:var(--blauw);flex:none}
+.pak-card .btn{margin-top:auto;justify-content:center}
+.pak-card--featured{border:2px solid transparent;background:linear-gradient(var(--wit),var(--wit)) padding-box,conic-gradient(from var(--ang),var(--blauw),var(--koraal),var(--blauw-diep),var(--blauw)) border-box;box-shadow:0 34px 70px -34px rgba(27,41,255,.4)}
+html.anim-ok .pak-card--featured{animation:angspin 8s linear infinite}
+@keyframes angspin{to{--ang:360deg}}
+.pak-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blauw);color:#fff;border-radius:99px;padding:.35rem .9rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:880px){.faq-grid{grid-template-columns:1fr}}
+.faq-head h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(1.9rem,4.4vw,3rem);margin:1rem 0 1rem}
+.faq-head h2 em{font-style:italic;color:var(--blauw)}
+.faq-head p{color:var(--tekst-zacht);max-width:36ch}
+.faq-head a{color:var(--blauw);border-bottom:1px solid var(--blauw)}
+.faq-list{border-top:1px solid var(--lijn-sterk)}
+.faq-item{border-bottom:1px solid var(--lijn-sterk)}
+.faq-q{display:flex;align-items:baseline;gap:1.1rem;width:100%;text-align:left;padding:1.4rem 0;font-weight:600;font-size:clamp(1.02rem,1.8vw,1.25rem);letter-spacing:-.01em;line-height:1.3;transition:color .3s}
+.faq-q:hover{color:var(--blauw)}
+.faq-q .idx{font-family:var(--font-mono);font-size:.66rem;font-weight:400;color:var(--blauw);letter-spacing:.1em;flex:none;transform:translateY(-2px)}
+.faq-x{margin-left:auto;flex:none;position:relative;width:14px;height:14px;align-self:center}
+.faq-x::before,.faq-x::after{content:"";position:absolute;left:0;top:6.2px;width:14px;height:2px;background:var(--blauw);transition:transform .45s var(--ease)}
+.faq-x::after{transform:rotate(90deg)}
+.faq-q[aria-expanded="true"] .faq-x::after{transform:rotate(0deg)}
+.faq-a{overflow:hidden}
+.faq-ready .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.faq-ready .faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a-inner{min-height:0;overflow:hidden}
+.faq-a p{color:var(--tekst-zacht);max-width:60ch;padding:0 0 1.5rem 2.4rem;font-size:.95rem}
+@media (max-width:560px){.faq-a p{padding-left:0}}
+
+/* ============================================================
+   CONTACT (donker)
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2.5rem,5vw,5rem);align-items:start}
+@media (max-width:980px){.contact-grid{grid-template-columns:1fr}}
+.contact-head h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.2rem,5.4vw,3.8rem);margin:1rem 0 1.2rem;letter-spacing:-.015em}
+.contact-head h2 em{font-style:italic;color:#9aa0ff}
+.contact-head p{color:rgba(239,234,223,.62);max-width:42ch;margin-bottom:1.8rem}
+.contact-beschik{display:flex;align-items:center;gap:.8rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,234,223,.62);margin-bottom:2rem}
+.contact-info{display:grid;gap:.6rem;font-size:.95rem;color:rgba(239,234,223,.62)}
+.contact-info a:hover{color:#9aa0ff}
+.contact-info .ci-rij{display:flex;gap:.8rem;align-items:baseline}
+.contact-info .ci-rij .ico{color:#9aa0ff;flex:none}
+.contact-form{position:relative;background:var(--inkt-2);border:1px solid rgba(239,234,223,.12);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);overflow:hidden}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media (max-width:560px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field--full{grid-column:1 / -1}
+.field label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(239,234,223,.6)}
+.field input,.field select,.field textarea{color:var(--papier);background:rgba(239,234,223,.05);border:1px solid rgba(239,234,223,.14);border-radius:10px;padding:.85rem 1rem;transition:border-color .3s,background-color .3s;width:100%}
+.field textarea{min-height:120px;resize:vertical}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239aa0ff' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;cursor:pointer}
+.field select option{background:var(--inkt-2);color:var(--papier)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#9aa0ff;background:rgba(154,160,255,.08)}
+.field .fout{display:none;font-size:.74rem;color:var(--koraal)}
+.field.invalid .fout{display:block}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--koraal)}
+.form-onder{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.3rem;flex-wrap:wrap}
+.form-status{font-family:var(--font-mono);font-size:.72rem;color:rgba(239,234,223,.6);min-height:1.2em}
+.form-success{position:absolute;inset:0;background:var(--inkt-2);z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:2rem;opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s .6s}
+.contact-form.sent .form-success{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
+.form-success .check-ring{width:74px;height:74px;border-radius:50%;border:2px solid #9aa0ff;display:grid;place-items:center;color:#9aa0ff;box-shadow:0 0 38px -8px rgba(154,160,255,.6)}
+.form-success .check-ring svg{width:34px;height:34px}
+.form-success .check-ring svg path{stroke-dasharray:30;stroke-dashoffset:30}
+html.anim-ok .contact-form.sent .form-success .check-ring svg path{animation:checkDraw .6s var(--ease) .25s forwards}
+html.no-anim .contact-form.sent .form-success .check-ring svg path{stroke-dashoffset:0}
+@keyframes checkDraw{to{stroke-dashoffset:0}}
+.form-success h3{font-family:var(--font-serif);font-weight:500;font-size:1.5rem}
+.form-success p{color:rgba(239,234,223,.62);max-width:36ch}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{position:relative;overflow:hidden;padding-top:clamp(4rem,8vw,7rem);background:var(--inkt);color:#efeadf}
+.footer-watermark{position:absolute;left:50%;bottom:-4vw;transform:translateX(-50%);font-family:var(--font-serif);font-style:italic;font-weight:500;font-size:clamp(7rem,26vw,24rem);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(154,160,255,.16);pointer-events:none;white-space:nowrap;z-index:0;user-select:none;-webkit-user-select:none}
+.footer-inner{position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(1.8rem,4vw,3rem);padding-bottom:clamp(2.5rem,5vw,4rem)}
+@media (max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand p{color:rgba(239,234,223,.6);font-size:.92rem;max-width:32ch;margin-top:.9rem}
+.footer .brand{color:#efeadf}
+.footer h4{font-family:var(--font-mono);font-size:.62rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,234,223,.4);margin-bottom:1rem}
+.footer-col ul{display:grid;gap:.55rem}
+.footer-col a{font-size:.92rem;color:rgba(239,234,223,.6);transition:color .3s}
+.footer-col a:hover{color:#9aa0ff}
+.footer-bottom{border-top:1px solid rgba(239,234,223,.12);padding-block:1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:rgba(239,234,223,.4)}
+.naar-boven{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+.naar-boven:hover{color:#9aa0ff}
+.naar-boven svg{width:13px;height:13px;transition:transform .35s var(--ease)}
+.naar-boven:hover svg{transform:translateY(-3px)}
+
+@media (max-width:560px){
+  :root{--header-h:66px}
+}
+</style>
+</head>
+<body id="top">
+
+<a class="skip-link" href="#main">Direct naar inhoud</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- INTRO -->
+<div class="intro" id="intro" aria-hidden="true">
+  <canvas class="intro-canvas" id="introCanvas" width="280" height="280"></canvas>
+  <div class="intro-tekst">Atelier Ruis &middot; code die ontwerpt</div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header-bar">
+    <a class="brand" href="#top" aria-label="Atelier Ruis — naar boven">
+      <canvas class="logo" id="logoCanvas" width="72" height="72" aria-hidden="true"></canvas>
+      <span>Atelier&nbsp;Ruis<small>generatief ontwerp &middot; Rotterdam</small></span>
+    </a>
+    <nav class="header-nav" aria-label="Hoofdmenu">
+      <ul class="header-links">
+        <li><a href="#studio">De machine</a></li>
+        <li><a href="#werk">Werk</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#proces">Proces</a></li>
+        <li><a href="#pakketten">Pakketten</a></li>
+      </ul>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-cta-text js-magnetic" href="#contact">Start een project</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu openen"><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigatie">
+  <button class="menu-overlay__close" id="menuClose" type="button" aria-label="Menu sluiten"></button>
+  <div class="container">
+    <ul class="menu-list">
+      <li><a href="#studio"><span class="idx">01</span>De <em>machine</em></a></li>
+      <li><a href="#werk"><span class="idx">02</span>Werk</a></li>
+      <li><a href="#diensten"><span class="idx">03</span>Diensten</a></li>
+      <li><a href="#proces"><span class="idx">04</span>Proces</a></li>
+      <li><a href="#pakketten"><span class="idx">05</span>Pakketten</a></li>
+      <li><a href="#contact"><span class="idx">06</span>Start een <em>project</em></a></li>
+    </ul>
+    <div class="menu-foot">
+      <a href="mailto:hallo@atelierruis.nl">hallo@atelierruis.nl</a>
+      <a href="tel:+31102201974">+31 (0)10 220 19 74</a>
+      <a href="#contact">Van Nellefabriek, Rotterdam</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============================================================
+     1 · HERO — de generatieve machine
+     ============================================================ -->
+<section class="hero" id="studio" aria-label="Introductie en generatieve machine">
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <p class="eyebrow">Generatieve ontwerpstudio &middot; Rotterdam</p>
+      <h1>Code die <em>ontwerpt</em>.</h1>
+      <p class="hero-lead">Wij bouwen systemen in plaats van plaatjes — identiteiten, prints en installaties die nooit twee keer hetzelfde zijn. Dit is er één van. Sleep de sliders, kies een palet, en stuur het stroomveld zelf.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary js-magnetic" href="#werk">Bekijk het werk
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+        </a>
+        <a class="btn btn-ghost js-magnetic" href="#contact">Start een project</a>
+      </div>
+      <p class="hero-meta"><span class="dot-pulse" aria-hidden="true"></span>Studio open &middot; Rotterdam <span id="klok">--:--</span></p>
+    </div>
+
+    <div class="studio" data-rv>
+      <div class="studio-bar" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="titel">stroomveld.js</span>
+        <span class="live"><span class="dot-pulse"></span>live</span>
+      </div>
+      <div class="studio-canvas-wrap">
+        <canvas class="studio-canvas" id="veld" role="img" aria-label="Live generatief stroomveld dat je met de bediening eronder kunt sturen"></canvas>
+      </div>
+      <div class="studio-controls" role="group" aria-label="Bediening van het stroomveld">
+        <div class="slider-row">
+          <label for="cDicht">Dichtheid</label>
+          <input class="slider" type="range" id="cDicht" min="120" max="1400" step="10" value="650">
+          <output class="slider-out" id="cDichtOut" for="cDicht">650</output>
+        </div>
+        <div class="slider-row">
+          <label for="cTurb">Turbulentie</label>
+          <input class="slider" type="range" id="cTurb" min="2" max="100" step="1" value="38">
+          <output class="slider-out" id="cTurbOut" for="cTurb">0.38</output>
+        </div>
+        <div class="slider-row">
+          <label for="cVloei">Vloei</label>
+          <input class="slider" type="range" id="cVloei" min="5" max="100" step="1" value="55">
+          <output class="slider-out" id="cVloeiOut" for="cVloei">0.55</output>
+        </div>
+        <div class="studio-onder">
+          <div class="palet-rij" id="paletRij" role="group" aria-label="Palet"></div>
+          <button class="studio-btn" id="veldNieuw" type="button">↻ Genereer</button>
+          <button class="studio-btn studio-btn--vol" id="veldDownload" type="button">↓ PNG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERKEN -->
+<div class="merken" aria-label="Geselecteerde opdrachtgevers">
+  <div class="merken-track" id="merkenTrack">
+    <span>Boijmans Next</span><span>Concertgebouw NL</span><span>Dutch Design Week</span><span>De Nederlandsche Bank</span><span>Eye Filmmuseum</span><span>STRP Festival</span>
+    <span>Boijmans Next</span><span>Concertgebouw NL</span><span>Dutch Design Week</span><span>De Nederlandsche Bank</span><span>Eye Filmmuseum</span><span>STRP Festival</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     2 · MANIFEST
+     ============================================================ -->
+<section class="section dark" aria-label="Manifest">
+  <div class="container">
+    <p class="eyebrow" data-rv>Manifest</p>
+    <p class="manifest-text" id="manifestText" style="margin-top:1.4rem">
+      Wij tekenen geen eindbeelden. Wij schrijven de regels waaruit eindbeelden zelf ontstaan — duizend varianten, één systeem, altijd levend.
+    </p>
+    <p class="manifest-sign" data-rv>— Atelier Ruis, sinds 2016</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     3 · WERK — generatieve thumbnails
+     ============================================================ -->
+<section class="section" id="werk" aria-label="Werk">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Geselecteerd werk</p>
+      <h2>Systemen, geen <em>plaatjes</em></h2>
+      <p>Elke thumbnail hieronder is geen afbeelding maar een klein programma dat live in je browser tekent — een voorproefje van hoe wij werken.</p>
+    </div>
+    <div class="werk-grid">
+      <article class="werk" data-rv>
+        <div class="werk-canvas-wrap" data-tilt><canvas class="werk-canvas" data-algo="flow" data-seed="7" aria-hidden="true"></canvas><span class="werk-tag">Identiteit</span></div>
+        <div class="werk-cap"><h3>Concertgebouw NL</h3><span>Stroomveld</span></div>
+      </article>
+      <article class="werk" data-rv data-d=".07s">
+        <div class="werk-canvas-wrap" data-tilt><canvas class="werk-canvas" data-algo="moire" data-seed="13" aria-hidden="true"></canvas><span class="werk-tag">Affiche</span></div>
+        <div class="werk-cap"><h3>STRP Festival</h3><span>Moiré-raster</span></div>
+      </article>
+      <article class="werk" data-rv data-d=".14s">
+        <div class="werk-canvas-wrap" data-tilt><canvas class="werk-canvas" data-algo="circ" data-seed="21" aria-hidden="true"></canvas><span class="werk-tag">Installatie</span></div>
+        <div class="werk-cap"><h3>Dutch Design Week</h3><span>Pakkingen</span></div>
+      </article>
+      <article class="werk" data-rv>
+        <div class="werk-canvas-wrap" data-tilt><canvas class="werk-canvas" data-algo="voronoi" data-seed="34" aria-hidden="true"></canvas><span class="werk-tag">Datavisualisatie</span></div>
+        <div class="werk-cap"><h3>De Nederlandsche Bank</h3><span>Celdeling</span></div>
+      </article>
+      <article class="werk" data-rv data-d=".07s">
+        <div class="werk-canvas-wrap" data-tilt><canvas class="werk-canvas" data-algo="flow" data-seed="55" aria-hidden="true"></canvas><span class="werk-tag">Titelsequentie</span></div>
+        <div class="werk-cap"><h3>Eye Filmmuseum</h3><span>Stroomveld</span></div>
+      </article>
+      <article class="werk" data-rv data-d=".14s">
+        <div class="werk-canvas-wrap" data-tilt><canvas class="werk-canvas" data-algo="moire" data-seed="89" aria-hidden="true"></canvas><span class="werk-tag">Web</span></div>
+        <div class="werk-cap"><h3>Boijmans Next</h3><span>Moiré-raster</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4 · DIENSTEN
+     ============================================================ -->
+<section class="section" id="diensten" aria-label="Diensten">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Wat we doen</p>
+      <h2>Vier manieren om <em>systeem</em> te maken</h2>
+    </div>
+    <div class="dienst-grid">
+      <div class="dienst" data-rv><span class="nr">01</span><h3>Generatieve identiteit</h3><p>Een huisstijl die zichzelf eindeloos hertekent: logo's, patronen en sjablonen die meebewegen met data, tijd of plaats — geleverd als levend systeem, niet als pdf.</p><ul><li>Brand systems</li><li>Variabele logo's</li><li>Sjablonen</li></ul></div>
+      <div class="dienst" data-rv data-d=".07s"><span class="nr">02</span><h3>Print &amp; affiche</h3><p>Oplages waarin geen twee exemplaren gelijk zijn. Wij genereren tot duizenden unieke covers, posters en verpakkingen, drukklaar als vector of hoge-resolutie raster.</p><ul><li>Unieke oplages</li><li>Riso &amp; offset</li><li>Vector-export</li></ul></div>
+      <div class="dienst" data-rv><span class="nr">03</span><h3>Installatie &amp; scherm</h3><p>Generatief werk op groot formaat: projecties, LED-gevels en interactieve installaties die reageren op publiek, geluid of weer — van concept tot draaiende software op locatie.</p><ul><li>Realtime</li><li>Interactie</li><li>Touchdesigner / web</li></ul></div>
+      <div class="dienst" data-rv data-d=".07s"><span class="nr">04</span><h3>Creative coding op maat</h3><p>Heb je al een idee dat alleen met code kan? Wij prototypen snel, leggen het systeem helder uit, en dragen schone, gedocumenteerde code over aan jouw team.</p><ul><li>Prototyping</li><li>Tooling</li><li>Overdracht</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5 · PROCES
+     ============================================================ -->
+<section class="section" id="proces" aria-label="Proces" style="background:var(--papier-2)">
+  <div class="container">
+    <div class="section-head" data-rv>
+      <p class="eyebrow">Hoe het gaat</p>
+      <h2>Van <em>vraag</em> naar systeem</h2>
+    </div>
+    <div class="proces-flow" id="procesFlow">
+      <div class="proces-rail" aria-hidden="true"></div>
+      <div class="proces-lijn" id="procesLijn" aria-hidden="true"></div>
+      <div class="stap" data-rv><div class="stap-num">Stap 01</div><h3>Onderzoek &amp; regels</h3><p>We zoeken de logica achter je merk of verhaal: welke variabelen mogen bewegen, en welke vorm blijft altijd staan. Daaruit volgen de spelregels van het systeem.</p></div>
+      <div class="stap" data-rv><div class="stap-num">Stap 02</div><h3>Sketches in code</h3><p>Geen Photoshop-mockups maar werkende schetsen. Je ziet meteen tientallen varianten draaien en stuurt mee — precies zoals met het stroomveld bovenaan deze pagina.</p></div>
+      <div class="stap" data-rv><div class="stap-num">Stap 03</div><h3>Verfijnen &amp; vastleggen</h3><p>We kiezen de richting, leggen smaakgrenzen vast en bouwen het systeem robuust: zo blijft elke gegenereerde variant onmiskenbaar van jou.</p></div>
+      <div class="stap" data-rv><div class="stap-num">Stap 04</div><h3>Oplevering &amp; overdracht</h3><p>Drukklare export, een web-tool of broncode — plus uitleg, zodat je team zelf nieuwe varianten kan maken zonder ons te bellen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6 · STATS
+     ============================================================ -->
+<section class="stats section" aria-label="In cijfers">
+  <div class="container stats-grid">
+    <div class="stat"><div class="num" data-count="2016"><span data-target="2016">0</span></div><div class="lab">opgericht</div></div>
+    <div class="stat"><div class="num"><span data-target="140">0</span><sup>+</sup></div><div class="lab">projecten</div></div>
+    <div class="stat"><div class="num"><span data-target="2300000">0</span></div><div class="lab">unieke varianten gegenereerd</div></div>
+    <div class="stat"><div class="num"><span data-target="9">0</span></div><div class="lab">makers in de studio</div></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7 · PAKKETTEN
+     ============================================================ -->
+<section class="section" id="pakketten" aria-label="Pakketten">
+  <div class="container">
+    <div class="section-head" data-rv style="margin-inline:auto;text-align:center">
+      <p class="eyebrow" style="justify-content:center">Samenwerken</p>
+      <h2>Kies een <em>vertrekpunt</em></h2>
+      <p style="margin-inline:auto">Richtprijzen, exclusief btw. Elk project is maatwerk — dit geeft je een gevoel voor de schaal. We maken altijd eerst een offerte op je vraag.</p>
+    </div>
+    <div class="pak-toggle-wrap" data-rv>
+      <div class="pak-toggle" id="pakToggle" role="group" aria-label="Projectschaal">
+        <button type="button" data-mode="project" aria-pressed="true">Per project</button>
+        <button type="button" data-mode="maand" aria-pressed="false">Maandelijks</button>
+      </div>
+    </div>
+    <div class="pak-grid">
+      <div class="pak-card" data-rv>
+        <h3>Sprint</h3>
+        <p class="p-voor">Eén afgebakend generatief stuk — een affiche-systeem, een patroon of een prototype.</p>
+        <div class="pak-prijs"><span class="bedrag" data-project="€&nbsp;4.500" data-maand="€&nbsp;1.800">€&nbsp;4.500</span><span class="per" data-project="vanaf, per project" data-maand="per maand, 3 mnd">vanaf, per project</span></div>
+        <ul><li>1 generatief systeem</li><li>2 feedbackrondes</li><li>Drukklare export</li></ul>
+        <a class="btn btn-ghost" href="#contact">Aanvragen</a>
+      </div>
+      <div class="pak-card pak-card--featured" data-rv data-d=".08s">
+        <span class="pak-badge">Meest gekozen</span>
+        <h3>Identiteit</h3>
+        <p class="p-voor">Een complete generatieve huisstijl met sjablonen en een tool om er zelf mee te werken.</p>
+        <div class="pak-prijs"><span class="bedrag" data-project="€&nbsp;14.000" data-maand="€&nbsp;3.900">€&nbsp;14.000</span><span class="per" data-project="vanaf, per traject" data-maand="per maand, 4 mnd">vanaf, per traject</span></div>
+        <ul><li>Volledig brand system</li><li>Variabel logo + patronen</li><li>Web-tool voor je team</li><li>Documentatie &amp; overdracht</li></ul>
+        <a class="btn btn-primary" href="#contact">Start een project</a>
+      </div>
+      <div class="pak-card" data-rv data-d=".16s">
+        <h3>Atelier-partner</h3>
+        <p class="p-voor">Wij zijn doorlopend jouw generatieve afdeling — voor merken die blijven bewegen.</p>
+        <div class="pak-prijs"><span class="bedrag" data-project="op maat" data-maand="€&nbsp;6.500">op maat</span><span class="per" data-project="jaarcontract" data-maand="per maand, doorlopend">jaarcontract</span></div>
+        <ul><li>Vaste capaciteit per maand</li><li>Voorrang &amp; korte lijnen</li><li>Onderhoud van je systemen</li></ul>
+        <a class="btn btn-ghost" href="#contact">Plan kennismaking</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8 · FAQ
+     ============================================================ -->
+<section class="section" id="faq" aria-label="Veelgestelde vragen" style="background:var(--papier-2)">
+  <div class="container faq-grid">
+    <div class="faq-head" data-rv>
+      <p class="eyebrow">FAQ</p>
+      <h2>Veel <em>gevraagd</em></h2>
+      <p>Iets anders op je hart? Mail <a href="mailto:hallo@atelierruis.nl">hallo@atelierruis.nl</a> — je hoort snel van ons.</p>
+    </div>
+    <div class="faq-list" id="faqList" data-rv data-d=".1s">
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">01</span>Wat is "generatief ontwerp" precies?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>In plaats van één vast ontwerp maken we een set regels — een klein programma — dat zelf eindeloze varianten produceert binnen jouw smaak en merk. Denk aan een huisstijl die voor elke poster een nieuw, maar herkenbaar patroon tekent.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">02</span>Krijg ik bruikbare, drukklare bestanden?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Altijd. We leveren afhankelijk van het project hoge-resolutie raster (PNG/TIFF), vectoren (SVG/PDF) of een web-tool waarmee je zelf exporteert. Het stroomveld hierboven kun je nu al als PNG downloaden — diezelfde aanpak schalen we op naar drukkwaliteit.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">03</span>Kan mijn team het zelf blijven gebruiken?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Daar zit het hem juist in. We bouwen waar mogelijk een eenvoudige tool met sliders en knoppen, plus heldere documentatie, zodat je marketing- of ontwerpteam zonder code nieuwe varianten maakt.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">04</span>Werken jullie ook buiten Rotterdam?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Onze studio zit in de Van Nellefabriek, maar we werken voor opdrachtgevers door heel Europa. Het meeste gaat prima op afstand; voor installaties komen we uiteraard ter plaatse.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span class="idx">05</span>Hoe lang duurt een traject?<span class="faq-x" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Een sprint is vaak in 2–3 weken klaar; een volledige generatieve identiteit duurt doorgaans 2–4 maanden. We plannen altijd een korte verkenning vooraf zodat de scope en planning helder zijn.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9 · CONTACT
+     ============================================================ -->
+<section class="section dark" id="contact" aria-label="Start een project">
+  <div class="container contact-grid">
+    <div class="contact-head" data-rv>
+      <p class="eyebrow">Start een project</p>
+      <h2>Laat het systeem voor je <em>werken</em></h2>
+      <p>Vertel kort wat je voor je ziet. We reageren binnen één werkdag met een eerste reactie en, als het past, een voorstel voor een verkenning.</p>
+      <div class="contact-beschik"><span class="dot-pulse" aria-hidden="true"></span><span>Open voor projecten in <span id="kwartaal">dit kwartaal</span></span></div>
+      <div class="contact-info">
+        <div class="ci-rij"><span class="ico" aria-hidden="true">✉</span><a href="mailto:hallo@atelierruis.nl">hallo@atelierruis.nl</a></div>
+        <div class="ci-rij"><span class="ico" aria-hidden="true">☎</span><a href="tel:+31102201974">+31 (0)10 220 19 74</a></div>
+        <div class="ci-rij"><span class="ico" aria-hidden="true">⌖</span><span>Van Nellefabriek, Van Nelleweg 1, Rotterdam</span></div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm" novalidate data-rv data-d=".1s">
+      <div class="form-grid">
+        <div class="field"><label for="f-naam">Naam</label><input id="f-naam" name="naam" type="text" autocomplete="name" required><span class="fout">Vul je naam in.</span></div>
+        <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="fout">Vul een geldig e-mailadres in.</span></div>
+        <div class="field"><label for="f-org">Organisatie</label><input id="f-org" name="organisatie" type="text" autocomplete="organization"></div>
+        <div class="field">
+          <label for="f-type">Type project</label>
+          <select id="f-type" name="type" required>
+            <option value="" selected disabled>Kies een richting…</option>
+            <option>Generatieve identiteit</option>
+            <option>Print &amp; affiche</option>
+            <option>Installatie &amp; scherm</option>
+            <option>Creative coding op maat</option>
+            <option>Weet ik nog niet</option>
+          </select>
+          <span class="fout">Kies een type.</span>
+        </div>
+        <div class="field field--full"><label for="f-bericht">Vertel kort over je project</label><textarea id="f-bericht" name="bericht" placeholder="Wat wil je maken, en wanneer moet het klaar zijn?" required></textarea><span class="fout">Schrijf een kort bericht.</span></div>
+      </div>
+      <div class="form-onder">
+        <button class="btn btn-primary js-magnetic" type="submit">Verstuur
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+        </button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </div>
+      <div class="form-success" aria-hidden="true">
+        <div class="check-ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg></div>
+        <h3>Bericht ontvangen!</h3>
+        <p>Bedankt — we lezen het en reageren binnen één werkdag.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Footer">
+  <span class="footer-watermark" aria-hidden="true">Ruis</span>
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="Atelier Ruis">
+          <canvas class="logo" id="logoCanvas2" width="72" height="72" aria-hidden="true"></canvas>
+          <span style="color:#efeadf">Atelier&nbsp;Ruis<small style="color:rgba(239,234,223,.5)">generatief ontwerp &middot; Rotterdam</small></span>
+        </a>
+        <p>Een generatieve ontwerpstudio in de Van Nellefabriek. Wij schrijven code die ontwerpt — voor merken, musea en festivals die willen blijven bewegen.</p>
+      </div>
+      <div class="footer-col"><h4>Studio</h4><ul><li><a href="#werk">Werk</a></li><li><a href="#diensten">Diensten</a></li><li><a href="#proces">Proces</a></li><li><a href="#pakketten">Pakketten</a></li></ul></div>
+      <div class="footer-col"><h4>Spelen</h4><ul><li><a href="#studio">De machine</a></li><li><a href="#werk">Live thumbnails</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hallo@atelierruis.nl">hallo@atelierruis.nl</a></li><li><a href="tel:+31102201974">+31 (0)10 220 19 74</a></li><li><a href="#contact">Van Nellefabriek, Rotterdam</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="jaar">2026</span> Atelier Ruis — Rotterdam. Elk bezoek tekent een ander beeld.</span>
+      <a class="naar-boven" href="#top">Naar boven <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 14V2M3 7l5-5 5 5"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var doc = document, root = doc.documentElement;
+  var reduced = false; try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  var finePointer = false; try { finePointer = window.matchMedia('(pointer:fine)').matches; } catch (e) {}
+
+  /* ===== paletten (gedeeld) ===== */
+  var PALETTEN = [
+    { naam: 'Inkt', bg: '#0c0b08', kleuren: ['#1b29ff', '#ff5a3c', '#f5c518', '#efeadf'] },
+    { naam: 'Riso', bg: '#f4f1ea', kleuren: ['#ff5a3c', '#1b29ff', '#13a07a', '#16140f'] },
+    { naam: 'Nacht', bg: '#0b1020', kleuren: ['#74d3e6', '#9aa0ff', '#f0b94c', '#ffffff'] },
+    { naam: 'Klei', bg: '#1a1411', kleuren: ['#e8a06a', '#c45a3a', '#7a9b8e', '#f1e3cf'] }
+  ];
+
+  /* ===== INTRO ===== */
+  function start() {
+    root.classList.add('loaded');
+    requestAnimationFrame(function () { root.classList.add('drawn'); });
+  }
+  var intro = doc.getElementById('intro');
+  if (root.classList.contains('anim-ok') && intro) {
+    var seen = false; try { seen = sessionStorage.getItem('ruis_intro') === '1'; } catch (e) {}
+    drawIntro();
+    if (seen) { intro.classList.add('is-done'); intro.style.display = 'none'; start(); }
+    else {
+      requestAnimationFrame(function () { intro.classList.add('is-active'); });
+      setTimeout(function () { intro.classList.add('is-done'); start(); try { sessionStorage.setItem('ruis_intro', '1'); } catch (e) {} }, 1700);
+      setTimeout(function () { if (intro) { intro.style.display = 'none'; } }, 2700);
+    }
+  } else { start(); }
+
+  function drawIntro() {
+    var c = doc.getElementById('introCanvas'); if (!c || !c.getContext) { return; }
+    var x = c.getContext('2d'), n = 280;
+    x.clearRect(0, 0, n, n);
+    var cols = ['#1b29ff', '#ff5a3c', '#f5c518', '#efeadf'];
+    for (var i = 0; i < 600; i++) {
+      var a = (i / 600) * Math.PI * 8;
+      var r = (i / 600) * 120;
+      var px = 140 + Math.cos(a) * r, py = 140 + Math.sin(a) * r;
+      x.beginPath(); x.arc(px, py, 1.6, 0, Math.PI * 2);
+      x.fillStyle = cols[i % cols.length]; x.globalAlpha = 0.5 + 0.5 * (i / 600); x.fill();
+    }
+    x.globalAlpha = 1;
+  }
+
+  /* ===== logo-canvas (klein stroomveldje) ===== */
+  function drawLogo(id) {
+    var c = doc.getElementById(id); if (!c || !c.getContext) { return; }
+    var x = c.getContext('2d'), n = 72;
+    x.fillStyle = '#16140f'; x.fillRect(0, 0, n, n);
+    var cols = ['#1b29ff', '#ff5a3c', '#f5c518'];
+    var s = 555;
+    function rnd() { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; }
+    for (var p = 0; p < 26; p++) {
+      var fx = rnd() * n, fy = rnd() * n;
+      x.beginPath(); x.moveTo(fx, fy);
+      for (var k = 0; k < 14; k++) {
+        var ang = Math.sin(fx * 0.06) + Math.cos(fy * 0.06) + p;
+        fx += Math.cos(ang) * 3; fy += Math.sin(ang) * 3;
+        x.lineTo(fx, fy);
+      }
+      x.strokeStyle = cols[p % cols.length]; x.globalAlpha = 0.8; x.lineWidth = 1.4; x.stroke();
+    }
+    x.globalAlpha = 1;
+  }
+  drawLogo('logoCanvas'); drawLogo('logoCanvas2');
+
+  /* ===== HEADER ===== */
+  var header = doc.getElementById('header');
+  var lastY = window.pageYOffset || 0;
+  function updateHeader() {
+    var y = window.pageYOffset || 0;
+    if (header) {
+      header.classList.toggle('is-solid', y > 24);
+      if (y > lastY && y > 400 && !menuOpen) { header.classList.add('is-hidden'); }
+      else { header.classList.remove('is-hidden'); }
+    }
+    lastY = y;
+  }
+
+  /* ===== MENU ===== */
+  var menuOverlay = doc.getElementById('menuOverlay');
+  var menuToggle = doc.getElementById('menuToggle');
+  var menuClose = doc.getElementById('menuClose');
+  var menuOpen = false;
+  function setMenu(open) {
+    menuOpen = open;
+    if (menuOverlay) { menuOverlay.classList.toggle('is-open', open); menuOverlay.setAttribute('aria-hidden', open ? 'false' : 'true'); }
+    if (menuToggle) { menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    doc.body.style.overflow = open ? 'hidden' : '';
+    if (open && menuClose) { menuClose.focus(); } else if (menuToggle) { menuToggle.focus(); }
+  }
+  if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
+  if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
+  if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+
+  /* ===== REVEAL ===== */
+  if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {
+    var rvObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          var d = en.target.getAttribute('data-d'); if (d) { en.target.style.setProperty('--d', d); }
+          en.target.classList.add('in-view'); rvObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-rv]'), function (el) { rvObs.observe(el); });
+  }
+
+  /* ===== COUNT-UP ===== */
+  function formatInt(n) { return Math.round(n).toLocaleString('nl-NL'); }
+  function runCount(scope) {
+    Array.prototype.forEach.call(scope.querySelectorAll('[data-target]'), function (el, i) {
+      var target = parseFloat(el.getAttribute('data-target')) || 0;
+      if (reduced) { el.textContent = formatInt(target); return; }
+      var dur = 1600, startT = null;
+      function tick(t) { if (startT === null) { startT = t; } var p = Math.min((t - startT) / dur, 1); var e = 1 - Math.pow(1 - p, 4); el.textContent = formatInt(target * e); if (p < 1) { requestAnimationFrame(tick); } }
+      el.textContent = '0'; setTimeout(function () { requestAnimationFrame(tick); }, 80 + i * 90);
+    });
+  }
+  var statsSection = doc.querySelector('.stats');
+  if (statsSection) {
+    if ('IntersectionObserver' in window && !reduced) {
+      var sObs = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting) { runCount(statsSection); sObs.unobserve(en.target); } }); }, { threshold: 0.4 });
+      sObs.observe(statsSection);
+    } else { runCount(statsSection); }
+  }
+
+  /* ===== KLOK ===== */
+  var klokEl = doc.getElementById('klok');
+  function updateKlok() {
+    if (!klokEl) { return; }
+    try {
+      var fmt = new Intl.DateTimeFormat('nl-NL', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Amsterdam' });
+      klokEl.textContent = fmt.format(new Date());
+    } catch (e) { var d = new Date(); klokEl.textContent = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+  }
+  updateKlok(); setInterval(updateKlok, 30000);
+
+  /* ===== kwartaal ===== */
+  (function () {
+    var el = doc.getElementById('kwartaal'); if (!el) { return; }
+    var m = new Date().getMonth(); var q = Math.floor(m / 3) + 1;
+    el.textContent = 'Q' + q + ' ' + new Date().getFullYear();
+  })();
+
+  /* ===== FOOTER-JAAR ===== */
+  var jaarEl = doc.getElementById('jaar'); if (jaarEl) { jaarEl.textContent = String(new Date().getFullYear()); }
+
+  /* ===== PAKKETTEN-TOGGLE ===== */
+  var pakToggle = doc.getElementById('pakToggle');
+  if (pakToggle) {
+    var pBtns = Array.prototype.slice.call(pakToggle.querySelectorAll('button[data-mode]'));
+    var bedragen = Array.prototype.slice.call(doc.querySelectorAll('.pak-prijs .bedrag'));
+    var perLabels = Array.prototype.slice.call(doc.querySelectorAll('.pak-prijs .per'));
+    var pSwitching = false;
+    function setPak(mode) {
+      if (pSwitching) { return; } pSwitching = true;
+      pBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false'); });
+      var dur = reduced ? 0 : 240;
+      bedragen.forEach(function (el) { el.classList.add('switching'); });
+      setTimeout(function () {
+        bedragen.forEach(function (el) { var n = el.getAttribute('data-' + mode); if (n) { el.innerHTML = n; } el.classList.remove('switching'); });
+        perLabels.forEach(function (el) { var n = el.getAttribute('data-' + mode); if (n) { el.textContent = n; } });
+        pSwitching = false;
+      }, dur);
+    }
+    pBtns.forEach(function (btn) { btn.addEventListener('click', function () { if (btn.getAttribute('aria-pressed') !== 'true') { setPak(btn.getAttribute('data-mode')); } }); });
+  }
+
+  /* ===== FAQ ===== */
+  var faqList = doc.getElementById('faqList');
+  if (faqList) {
+    var faqItems = Array.prototype.slice.call(faqList.querySelectorAll('.faq-item'));
+    faqList.classList.add('faq-ready');
+    function setFaq(item, open) { item.classList.toggle('open', open); var b = item.querySelector('.faq-q'); if (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); } }
+    faqItems.forEach(function (item) {
+      var btn = item.querySelector('.faq-q'); if (!btn) { return; }
+      btn.addEventListener('click', function () { var wasOpen = item.classList.contains('open'); faqItems.forEach(function (it) { setFaq(it, false); }); if (!wasOpen) { setFaq(item, true); } });
+    });
+    if (faqItems[0]) { setFaq(faqItems[0], true); }
+  }
+
+  /* ===== CONTACT-FORM ===== */
+  var form = doc.getElementById('contactForm');
+  var statusEl = doc.getElementById('formStatus');
+  if (form) {
+    function setInvalid(input, invalid) { var f = input.closest('.field'); if (f) { f.classList.toggle('invalid', invalid); } input.setAttribute('aria-invalid', invalid ? 'true' : 'false'); }
+    function validateField(input) {
+      var v = (input.value || '').trim(); var ok = true;
+      if (input.id === 'f-email') { ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      else if (input.tagName === 'SELECT') { ok = v !== ''; }
+      else if (input.hasAttribute('required')) { ok = v.length > 0; }
+      setInvalid(input, !ok); return ok;
+    }
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input[required], select[required], textarea[required], input#f-email'));
+    inputs.forEach(function (input) {
+      input.addEventListener('blur', function () { validateField(input); });
+      input.addEventListener('input', function () { var f = input.closest('.field'); if (f && f.classList.contains('invalid')) { validateField(input); } });
+      if (input.tagName === 'SELECT') { input.addEventListener('change', function () { validateField(input); }); }
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allOk = true, firstBad = null;
+      inputs.forEach(function (input) { if (!validateField(input)) { allOk = false; if (!firstBad) { firstBad = input; } } });
+      if (!allOk) { if (statusEl) { statusEl.textContent = 'Controleer de gemarkeerde velden.'; } if (firstBad) { firstBad.focus(); } return; }
+      form.classList.add('sent');
+      var success = form.querySelector('.form-success'); if (success) { success.setAttribute('aria-hidden', 'false'); }
+      if (statusEl) { statusEl.textContent = 'Verzonden.'; }
+    });
+  }
+
+  /* ===== MAGNETISCH ===== */
+  if (finePointer && !reduced) {
+    Array.prototype.forEach.call(doc.querySelectorAll('.js-magnetic'), function (btn) {
+      var MAX = 6;
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var dx = ((e.clientX - (r.left + r.width / 2)) / (r.width / 2)) * MAX;
+        var dy = ((e.clientY - (r.top + r.height / 2)) / (r.height / 2)) * MAX;
+        btn.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+      }, { passive: true });
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; }, { passive: true });
+    });
+  }
+
+  /* ===== 3D-TILT op werk-thumbnails ===== */
+  if (finePointer && !reduced) {
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-tilt]'), function (card) {
+      var tx = 0, ty = 0, cx = 0, cy = 0, raf = null, MAXT = 6;
+      function loop() {
+        cx += (tx - cx) * 0.1; cy += (ty - cy) * 0.1;
+        card.style.transform = 'perspective(900px) rotateX(' + cy.toFixed(2) + 'deg) rotateY(' + cx.toFixed(2) + 'deg)';
+        if (Math.abs(tx - cx) > 0.02 || Math.abs(ty - cy) > 0.02) { raf = requestAnimationFrame(loop); } else { raf = null; }
+      }
+      function startL() { if (raf === null) { raf = requestAnimationFrame(loop); } }
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        tx = Math.max(-MAXT, Math.min(MAXT, ((e.clientX - r.left) / r.width - 0.5) * MAXT * 2));
+        ty = Math.max(-MAXT, Math.min(MAXT, -((e.clientY - r.top) / r.height - 0.5) * MAXT * 2));
+        startL();
+      }, { passive: true });
+      card.addEventListener('pointerleave', function () { tx = 0; ty = 0; startL(); }, { passive: true });
+    });
+  }
+
+  /* ===== generieke slider-binding ===== */
+  function bindSlider(input, out, format, apply) {
+    if (!input) { return; }
+    function update() {
+      var v = parseFloat(input.value); if (isNaN(v)) { return; }
+      var min = parseFloat(input.min) || 0, max = parseFloat(input.max) || 100;
+      var pct = max > min ? ((v - min) / (max - min)) * 100 : 0;
+      input.style.setProperty('--fill', pct.toFixed(1) + '%');
+      if (out) { out.textContent = format(v); }
+      apply(v);
+    }
+    input.addEventListener('input', update); update();
+  }
+
+  /* ============================================================
+     WERK-THUMBNAILS — kleine generatieve programma's
+     ============================================================ */
+  function mkRng(seed) { var s = (seed * 2654435761) >>> 0; return function () { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+  function drawThumb(canvas, algo, seed) {
+    if (!canvas || !canvas.getContext) { return; }
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var rect = canvas.getBoundingClientRect();
+    var W = rect.width || 240, H = rect.height || 300;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var pal = PALETTEN[seed % PALETTEN.length];
+    var r = mkRng(seed + 1);
+    ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H);
+
+    if (algo === 'flow') {
+      ctx.globalAlpha = 0.55; ctx.lineWidth = 1.1;
+      for (var p = 0; p < 220; p++) {
+        var fx = r() * W, fy = r() * H;
+        ctx.strokeStyle = pal.kleuren[p % pal.kleuren.length];
+        ctx.beginPath(); ctx.moveTo(fx, fy);
+        for (var k = 0; k < 40; k++) {
+          var a = Math.sin(fx * 0.012 + seed) + Math.cos(fy * 0.012 - seed) + Math.sin((fx + fy) * 0.006);
+          fx += Math.cos(a) * 4; fy += Math.sin(a) * 4;
+          if (fx < 0 || fx > W || fy < 0 || fy > H) { break; }
+          ctx.lineTo(fx, fy);
+        }
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    } else if (algo === 'moire') {
+      ctx.globalAlpha = 0.5;
+      for (var c1 = 0; c1 < 2; c1++) {
+        ctx.strokeStyle = pal.kleuren[c1]; ctx.lineWidth = 1.4;
+        var ox = c1 * (6 + r() * 10), oy = c1 * (4 + r() * 8);
+        for (var yy = -H; yy < H * 2; yy += 7) {
+          ctx.beginPath();
+          for (var xx = 0; xx <= W; xx += 6) {
+            var yv = yy + Math.sin((xx + ox) * 0.03 + c1) * 22 + oy;
+            if (xx === 0) { ctx.moveTo(xx, yv); } else { ctx.lineTo(xx, yv); }
+          }
+          ctx.stroke();
+        }
+      }
+      ctx.globalAlpha = 1;
+    } else if (algo === 'circ') {
+      for (var ci = 0; ci < 60; ci++) {
+        var cxp = r() * W, cyp = r() * H, rad = 6 + r() * 60;
+        ctx.beginPath(); ctx.arc(cxp, cyp, rad, 0, Math.PI * 2);
+        ctx.strokeStyle = pal.kleuren[ci % pal.kleuren.length]; ctx.globalAlpha = 0.6; ctx.lineWidth = 1.3; ctx.stroke();
+        if (r() > 0.7) { ctx.fillStyle = pal.kleuren[(ci + 1) % pal.kleuren.length]; ctx.globalAlpha = 0.3; ctx.fill(); }
+      }
+      ctx.globalAlpha = 1;
+    } else if (algo === 'voronoi') {
+      var pts = [];
+      for (var v = 0; v < 26; v++) { pts.push({ x: r() * W, y: r() * H, c: pal.kleuren[v % pal.kleuren.length] }); }
+      var step = 5;
+      for (var gx = 0; gx < W; gx += step) {
+        for (var gy = 0; gy < H; gy += step) {
+          var best = 1e9, bestC = '#000', second = 1e9;
+          for (var pi = 0; pi < pts.length; pi++) {
+            var dd = (pts[pi].x - gx) * (pts[pi].x - gx) + (pts[pi].y - gy) * (pts[pi].y - gy);
+            if (dd < best) { second = best; best = dd; bestC = pts[pi].c; } else if (dd < second) { second = dd; }
+          }
+          var edge = (Math.sqrt(second) - Math.sqrt(best)) < 2.2;
+          ctx.fillStyle = edge ? pal.bg : bestC;
+          ctx.globalAlpha = edge ? 1 : 0.5;
+          ctx.fillRect(gx, gy, step, step);
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+  }
+  var thumbs = Array.prototype.slice.call(doc.querySelectorAll('.werk-canvas'));
+  if (thumbs.length) {
+    if ('IntersectionObserver' in window) {
+      var tObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            var cv = en.target;
+            drawThumb(cv, cv.getAttribute('data-algo'), parseInt(cv.getAttribute('data-seed'), 10) || 1);
+            tObs.unobserve(cv);
+          }
+        });
+      }, { threshold: 0.1 });
+      thumbs.forEach(function (cv) { tObs.observe(cv); });
+    } else {
+      thumbs.forEach(function (cv) { drawThumb(cv, cv.getAttribute('data-algo'), parseInt(cv.getAttribute('data-seed'), 10) || 1); });
+    }
+    var thumbTO;
+    window.addEventListener('resize', function () {
+      clearTimeout(thumbTO);
+      thumbTO = setTimeout(function () { thumbs.forEach(function (cv) { drawThumb(cv, cv.getAttribute('data-algo'), parseInt(cv.getAttribute('data-seed'), 10) || 1); }); }, 200);
+    }, { passive: true });
+  }
+
+  /* ============================================================
+     HET PRONKSTUK — live stroomveld-canvas
+     ============================================================ */
+  (function veld() {
+    var canvas = doc.getElementById('veld'); if (!canvas || !canvas.getContext) { return; }
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = 0, H = 0;
+    var particles = [];
+    var dichtheid = 650, turb = 0.038, vloei = 0.55, seed = 42, paletIdx = 0;
+    var raf = null;
+
+    function rngFromSeed(s) { var v = (s * 2654435761) >>> 0; return function () { v = (v * 1664525 + 1013904223) >>> 0; return v / 4294967296; }; }
+    var rnd = rngFromSeed(seed);
+
+    function veldHoek(x, y) {
+      /* gelaagd sinus-"noise" = organisch stroomveld, gestuurd door turbulentie + seed */
+      var f = turb;
+      var n = Math.sin(x * f + seed * 0.7) + Math.cos(y * f - seed * 0.3)
+            + 0.5 * Math.sin((x + y) * f * 0.6 + seed)
+            + 0.5 * Math.cos((x - y) * f * 0.9);
+      return n * Math.PI;
+    }
+
+    function resize() {
+      var rect = canvas.getBoundingClientRect();
+      W = rect.width; H = rect.height;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      paint();
+    }
+
+    function paint() {
+      var pal = PALETTEN[paletIdx];
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = pal.bg; ctx.fillRect(0, 0, W, H);
+      spawnAll();
+      if (reduced) {
+        /* statische compositie: teken volledige sporen in één pass */
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          ctx.strokeStyle = p.col; ctx.globalAlpha = 0.5; ctx.lineWidth = p.w;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y);
+          for (var k = 0; k < 60; k++) {
+            var a = veldHoek(p.x, p.y);
+            p.x += Math.cos(a) * vloei * 8; p.y += Math.sin(a) * vloei * 8;
+            if (p.x < 0 || p.x > W || p.y < 0 || p.y > H) { break; }
+            ctx.lineTo(p.x, p.y);
+          }
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function spawnOne(p) {
+      var pal = PALETTEN[paletIdx];
+      p.x = rnd() * W; p.y = rnd() * H;
+      p.life = 0; p.max = 40 + Math.floor(rnd() * 90);
+      p.col = pal.kleuren[Math.floor(rnd() * pal.kleuren.length)];
+      p.w = 0.6 + rnd() * 1.8;
+      return p;
+    }
+    function spawnAll() {
+      rnd = rngFromSeed(seed);
+      particles = [];
+      var n = Math.round(dichtheid);
+      for (var i = 0; i < n; i++) { particles.push(spawnOne({})); }
+    }
+
+    function step() {
+      ctx.globalAlpha = 0.12;
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        var a = veldHoek(p.x, p.y);
+        var nx = p.x + Math.cos(a) * vloei * 8;
+        var ny = p.y + Math.sin(a) * vloei * 8;
+        ctx.strokeStyle = p.col; ctx.lineWidth = p.w;
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(nx, ny); ctx.stroke();
+        p.x = nx; p.y = ny; p.life++;
+        if (p.life > p.max || p.x < 0 || p.x > W || p.y < 0 || p.y > H) { spawnOne(p); }
+      }
+      ctx.globalAlpha = 1;
+      raf = requestAnimationFrame(step);
+    }
+    function ensureLoop() { if (!reduced && raf === null) { raf = requestAnimationFrame(step); } }
+    function stopLoop() { if (raf !== null) { cancelAnimationFrame(raf); raf = null; } }
+
+    function regenereer(newSeed) {
+      if (typeof newSeed === 'number') { seed = newSeed; }
+      paint();
+    }
+
+    /* ----- palet-knoppen ----- */
+    var paletRij = doc.getElementById('paletRij');
+    if (paletRij) {
+      PALETTEN.forEach(function (pal, idx) {
+        var b = doc.createElement('button');
+        b.className = 'palet-knop'; b.type = 'button';
+        b.setAttribute('aria-pressed', idx === 0 ? 'true' : 'false');
+        b.setAttribute('aria-label', 'Palet ' + pal.naam);
+        b.title = pal.naam;
+        pal.kleuren.forEach(function (c) { var i = doc.createElement('i'); i.style.background = c; b.appendChild(i); });
+        b.addEventListener('click', function () {
+          paletIdx = idx;
+          Array.prototype.forEach.call(paletRij.children, function (ch, ci) { ch.setAttribute('aria-pressed', ci === idx ? 'true' : 'false'); });
+          paint();
+        });
+        paletRij.appendChild(b);
+      });
+    }
+
+    /* ----- sliders ----- */
+    bindSlider(doc.getElementById('cDicht'), doc.getElementById('cDichtOut'),
+      function (v) { return String(Math.round(v)); },
+      function (v) { dichtheid = v; paint(); });
+    bindSlider(doc.getElementById('cTurb'), doc.getElementById('cTurbOut'),
+      function (v) { return (v / 100).toFixed(2); },
+      function (v) { turb = v / 1000 * 2.6 + 0.004; paint(); });
+    bindSlider(doc.getElementById('cVloei'), doc.getElementById('cVloeiOut'),
+      function (v) { return (v / 100).toFixed(2); },
+      function (v) { vloei = v / 100; });
+
+    /* ----- knoppen ----- */
+    var nieuwBtn = doc.getElementById('veldNieuw');
+    if (nieuwBtn) { nieuwBtn.addEventListener('click', function () { regenereer((Math.floor((seed * 16807 + 19) % 2147483647)) || 7); }); }
+    var dlBtn = doc.getElementById('veldDownload');
+    if (dlBtn) {
+      dlBtn.addEventListener('click', function () {
+        try {
+          var url = canvas.toDataURL('image/png');
+          var a = doc.createElement('a');
+          a.href = url; a.download = 'atelier-ruis-stroomveld.png';
+          doc.body.appendChild(a); a.click(); doc.body.removeChild(a);
+        } catch (e) { /* canvas tainted o.i.d. — stilletjes negeren */ }
+      });
+    }
+
+    window.addEventListener('resize', function () { resize(); }, { passive: true });
+    doc.addEventListener('visibilitychange', function () { if (doc.hidden) { stopLoop(); } else { ensureLoop(); } });
+
+    /* init zodra in beeld */
+    function init() { resize(); ensureLoop(); }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { init(); io.disconnect(); }
+        });
+      }, { threshold: 0.1 });
+      io.observe(canvas);
+    } else { init(); }
+  })();
+
+  /* ===== MANIFEST woord-oplichting ===== */
+  var manifest = doc.getElementById('manifestText');
+  var manifestWords = [];
+  if (manifest && !reduced) {
+    var raw = manifest.textContent.trim().split(/\s+/);
+    manifest.textContent = '';
+    raw.forEach(function (word, i) {
+      var span = doc.createElement('span'); span.className = 'w';
+      if (/systeem|levend|regels|varianten|ontstaan/i.test(word)) { span.className += ' accent'; }
+      span.textContent = word; manifest.appendChild(span);
+      if (i < raw.length - 1) { manifest.appendChild(doc.createTextNode(' ')); }
+      manifestWords.push(span);
+    });
+  }
+  var procesFlow = doc.getElementById('procesFlow');
+  var procesLijn = doc.getElementById('procesLijn');
+
+  /* ===== SCROLL-LUS ===== */
+  var progress = doc.getElementById('scrollProgress');
+  var ticking = false;
+  function onScrollFrame() {
+    ticking = false;
+    updateHeader();
+    var vh = window.innerHeight || doc.documentElement.clientHeight;
+    if (progress) {
+      var scrollable = (doc.documentElement.scrollHeight - vh);
+      var pr = scrollable > 0 ? (window.pageYOffset || 0) / scrollable : 0;
+      progress.style.transform = 'scaleX(' + Math.max(0, Math.min(1, pr)).toFixed(4) + ')';
+    }
+    if (manifestWords.length && manifest) {
+      var r = manifest.getBoundingClientRect();
+      var prog = (vh * 0.85 - r.top) / (r.height + vh * 0.45);
+      prog = Math.max(0, Math.min(1, prog));
+      var lit = Math.floor(prog * manifestWords.length);
+      for (var i = 0; i < manifestWords.length; i++) { manifestWords[i].classList.toggle('lit', i < lit); }
+    }
+    if (procesLijn && procesFlow && !reduced) {
+      var pf = procesFlow.getBoundingClientRect();
+      var startp = vh * 0.8, endp = vh * 0.45;
+      var total = pf.height + (startp - endp);
+      var passed = startp - pf.top;
+      var pp = Math.min(Math.max(passed / total, 0), 1);
+      procesLijn.style.height = (pp * 100).toFixed(2) + '%';
+    }
+  }
+  function requestTick() { if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); } }
+  window.addEventListener('scroll', requestTick, { passive: true });
+  window.addEventListener('resize', requestTick, { passive: true });
+  onScrollFrame();
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
-# Template Galerij — 22 kant-en-klare websites
+# Template Galerij — 24 kant-en-klare websites
 
-Een verzameling van **22 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **twee signature-templates** met dieper uitgewerkte interactiviteit (Letterstudio en Museum). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **24 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -30,8 +30,11 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 20 | `templates/20-buitenplaats/` | ✦ **Flagship** — Buitenplaats | De lichte, serif-gedreven tegenpool: curtain-reveal, boogmaskers, meeschuivende hover-previews bij diensten, projectfilter, schets-naar-tuin-slider, seizoenstijdlijn, groene duotones, FAQ, live klok, papierkorrel |
 | 21 | `templates/21-letterstudio/` | ✦ **Signature** — Letterstudio | Paars/lila (#6260ff · #e4e4ff) interactief specimen-lab: bewerkbaar proefwoord + sliders, scroll-morfend variabel font met live wght/opsz-uitlezing, glyph-raster met reuze-preview, licentie-toggle, vier pure CSS-showcases (geen stockfoto's) |
 | 22 | `templates/22-museum/` | ✦ **Signature** — Museum KADE | Blauw/zachtroze (#3447aa · #fbeaeb): live open-status berekend uit openingstijden, sleepbare collectiestrook met scroll-snap, volwaardige lightbox (focus-trap, Esc, pijlen), agenda, tarieven, vrienden-tiers, tickets-banner |
+| 23 | `templates/23-sterrenwacht/` | ✦ **Signature** — Sterrenwacht Meridiaan | Nachtblauw/goud (#070b18 · #f0b94c): **canvas-sterrenhemel** met depth-parallax, twinkeling en vallende sterren; **bouw-je-eigen-sterrenbeeld** door sterren te verbinden (undo/wis/nieuwe hemel); **maanfase live berekend** uit de datum (synodische maand) en correct getekend op canvas; hemel-vanavond-panelen, agenda, tarief-toggle, FAQ, reserveringsformulier |
+| 24 | `templates/24-atelier/` | ✦ **Signature** — Atelier Ruis | Papier/ultramarijn (#f4f1ea · #1b29ff): live **stroomveld-canvas** als pronkstuk — stuur dichtheid, turbulentie en vloei met sliders, kies uit vier paletten en **download je compositie als PNG**; elke werk-thumbnail is een eigen generatief programma (flow, moiré, cirkels, voronoi); scroll-oplichtend manifest, tekenende proces-tijdlijn, pakket-toggle, FAQ, contact |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
+> ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
 
 ## 📁 Structuur
 
