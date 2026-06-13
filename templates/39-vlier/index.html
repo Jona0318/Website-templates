@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vlier — bistro &amp; natuurwijn · Haarlem</title>
+<meta name="description" content="Vlier is een kleine bistro aan het Spaarne in Haarlem. Een seizoenskeuken zonder poespas, natuurwijn per glas, en een tafel die altijd net even te gezellig wordt. Reserveer online.">
+<meta name="theme-color" content="#f3eee4">
+<meta property="og:title" content="Vlier — bistro & natuurwijn, Haarlem">
+<meta property="og:description" content="Seizoenskeuken zonder poespas en natuurwijn per glas, aan het Spaarne in Haarlem.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VLIER — bistro & natuurwijn, Haarlem
+   Handgemaakte, redactionele one-pager. Geen libraries.
+   ============================================================ */
+:root{
+  --paper:#f3eee4;
+  --paper-2:#ebe3d4;
+  --paper-3:#e3d9c6;
+  --ink:#211b15;
+  --ink-2:#4a4036;
+  --ink-soft:rgba(33,27,21,.66);
+  --ink-faint:rgba(33,27,21,.45);
+  --wine:#7a2230;
+  --wine-deep:#5d1822;
+  --olive:#5b6045;
+  --line:rgba(33,27,21,.16);
+  --line-soft:rgba(33,27,21,.10);
+  --serif:"DM Serif Display",Georgia,"Times New Roman",serif;
+  --text:"Spectral",Georgia,serif;
+  --maxw:1180px;
+  --gutter:clamp(1.25rem,5vw,5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--text);font-weight:400;font-size:1.06rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--wine);color:var(--paper)}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.serif{font-family:var(--serif)}
+.italic{font-style:italic}
+.label{font-family:var(--text);font-weight:500;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+.skip{position:fixed;top:-100px;left:1rem;z-index:100;background:var(--wine);color:var(--paper);padding:.6rem 1rem;border-radius:0;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- briefhoofd ---------- */
+.letterhead{border-bottom:1px solid var(--line);background:var(--paper)}
+.letterhead .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:38px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.letterhead .status{display:inline-flex;align-items:center;gap:.5rem;font-weight:500}
+.letterhead .status .lamp{width:7px;height:7px;border-radius:50%;background:var(--olive);box-shadow:0 0 0 0 rgba(91,96,69,.5)}
+.letterhead .status[data-open="false"] .lamp{background:var(--wine)}
+@media (max-width:640px){.letterhead .city{display:none}}
+
+/* ---------- kop / navigatie ---------- */
+.nav{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 10px 30px -24px rgba(33,27,21,.5)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{font-family:var(--serif);font-size:1.7rem;line-height:1;letter-spacing:.01em}
+.brand span{color:var(--wine)}
+.nav-links{display:flex;align-items:center;gap:2.1rem}
+.nav-links a{font-family:var(--text);font-weight:500;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);position:relative;padding-block:.4rem}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:.1rem;height:1px;background:var(--wine);transition:right .35s cubic-bezier(.22,1,.36,1)}
+.nav-links a:hover::after{right:0}
+.nav-resv{display:inline-flex;align-items:center;border:1px solid var(--ink);padding:.55rem 1.1rem;border-radius:0;font-family:var(--text);font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;transition:background-color .3s,color .3s}
+.nav-resv:hover{background:var(--ink);color:var(--paper)}
+.nav-resv::after{display:none}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{width:18px;height:1.5px;background:var(--ink)}
+@media (max-width:860px){
+  .nav-links{position:fixed;inset:0;top:0;background:var(--paper);flex-direction:column;justify-content:center;gap:1.6rem;transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:70}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.1rem;letter-spacing:.12em}
+  .nav-links .nav-resv{font-size:.9rem;padding:.8rem 1.6rem}
+  .burger{display:flex;z-index:80}
+  .burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(2.5rem,6vw,5rem);padding-bottom:clamp(2.5rem,6vw,4.5rem)}
+.hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(2rem,5vw,5rem);align-items:end}
+@media (max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:2.2rem}}
+.hero-kicker{color:var(--wine);margin-bottom:1.4rem}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.1rem,9vw,6.6rem);line-height:.96;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--wine)}
+.hero-intro{margin-top:1.6rem;font-size:clamp(1.08rem,1.5vw,1.28rem);color:var(--ink-2);max-width:42ch;line-height:1.66}
+.hero-intro .first{font-style:italic}
+.hero-actions{margin-top:2rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.lnk{font-family:var(--text);font-weight:500;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.6rem;padding-bottom:.25rem;border-bottom:1.5px solid var(--wine);color:var(--ink);transition:gap .3s,color .3s}
+.lnk:hover{gap:1rem;color:var(--wine)}
+.lnk.ghost{border-bottom-color:var(--line);color:var(--ink-2)}
+.lnk.ghost:hover{border-bottom-color:var(--ink);color:var(--ink)}
+.hero-figure{position:relative}
+.hero-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.96) contrast(1.02)}
+.hero-figure figcaption{margin-top:.7rem;font-style:italic;font-size:.88rem;color:var(--ink-soft)}
+.hero-figure .since{position:absolute;top:0;left:-1.9rem;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint)}
+@media (max-width:880px){.hero-figure .since{display:none}}
+
+/* ---------- sectiekop met nummer ---------- */
+.sec{padding-block:clamp(3.5rem,7vw,6rem);border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:clamp(2rem,4vw,3.2rem)}
+.sec-head .no{font-family:var(--text);font-weight:500;font-size:.78rem;letter-spacing:.1em;color:var(--wine)}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.6vw,3.2rem);line-height:1;letter-spacing:-.01em}
+.sec-head .aside{margin-left:auto;font-style:italic;color:var(--ink-soft);max-width:30ch;text-align:right;font-size:.96rem}
+@media (max-width:640px){.sec-head{flex-wrap:wrap}.sec-head .aside{margin-left:0;text-align:left;width:100%}}
+
+/* ---------- de kaart ---------- */
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.2rem,5vw,4.5rem) clamp(2.5rem,6vw,5.5rem)}
+@media (max-width:760px){.menu-grid{grid-template-columns:1fr;gap:2.4rem}}
+.course + .course{margin-top:2.4rem}
+.course h3{font-family:var(--text);font-weight:500;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--wine);padding-bottom:.7rem;margin-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.dish{margin-bottom:1.15rem}
+.dish-top{display:flex;align-items:baseline;gap:.4rem}
+.dish-name{font-family:var(--serif);font-size:1.18rem;line-height:1.2}
+.dish-lead{flex:1;position:relative;top:-.32rem;border-bottom:1.5px dotted var(--line)}
+.dish-price{font-family:var(--text);font-variant-numeric:tabular-nums;font-size:1.02rem;color:var(--ink-2)}
+.dish-desc{font-style:italic;color:var(--ink-soft);font-size:.95rem;margin-top:.12rem;max-width:42ch}
+.dish .veg{color:var(--olive);font-style:normal;font-weight:500;font-size:.78rem;letter-spacing:.04em}
+.menu-note{margin-top:clamp(2.4rem,5vw,3.2rem);font-style:italic;color:var(--ink-soft);font-size:.98rem;max-width:60ch}
+
+/* ---------- het huis ---------- */
+.huis{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:860px){.huis{grid-template-columns:1fr;gap:2rem}}
+.huis-fig img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.96)}
+.huis-fig figcaption{margin-top:.7rem;font-style:italic;font-size:.88rem;color:var(--ink-soft)}
+.huis-text p{font-size:1.1rem;line-height:1.74;color:var(--ink-2)}
+.huis-text p + p{margin-top:1.1rem}
+.huis-text p.lead::first-letter{font-family:var(--serif);font-size:3.6rem;line-height:.72;float:left;margin:.32rem .6rem 0 0;color:var(--wine)}
+.pull{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.18;color:var(--ink);margin:1.8rem 0;padding-left:1.2rem;border-left:2px solid var(--wine)}
+.signoff{margin-top:1.6rem;font-style:italic;color:var(--ink-soft)}
+.signoff b{font-style:normal;font-weight:500}
+
+/* ---------- wijn ---------- */
+.wijn{background:var(--wine);color:var(--paper)}
+.wijn .sec-head h2,.wijn .sec-head .no{color:var(--paper)}
+.wijn .sec-head .no{opacity:.7}
+.wijn .sec-head .aside{color:rgba(243,238,228,.8)}
+.wijn-grid{display:grid;grid-template-columns:1fr 1fr;gap:.2rem clamp(2.5rem,6vw,5rem)}
+@media (max-width:680px){.wijn-grid{grid-template-columns:1fr}}
+.glas{display:flex;align-items:baseline;gap:.4rem;padding-block:.95rem;border-bottom:1px solid rgba(243,238,228,.2)}
+.glas-name{font-family:var(--serif);font-size:1.18rem}
+.glas-name small{font-family:var(--text);font-style:italic;font-size:.86rem;opacity:.78;margin-left:.5rem}
+.glas-lead{flex:1;position:relative;top:-.3rem;border-bottom:1.5px dotted rgba(243,238,228,.3)}
+.glas-price{font-variant-numeric:tabular-nums}
+.wijn-note{margin-top:clamp(2rem,4vw,2.8rem);font-style:italic;opacity:.85;max-width:62ch}
+
+/* ---------- praktisch ---------- */
+.prak{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.2rem,5vw,4.5rem);align-items:start}
+@media (max-width:860px){.prak{grid-template-columns:1fr;gap:2.4rem}}
+.hours{width:100%;border-collapse:collapse}
+.hours th{text-align:left;font-family:var(--text);font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);padding-bottom:.8rem;border-bottom:1px solid var(--line)}
+.hours td{padding-block:.7rem;border-bottom:1px solid var(--line-soft);font-size:1.02rem}
+.hours td.day{font-family:var(--serif);font-size:1.12rem}
+.hours td.time{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.hours tr.today td{background:var(--paper-2)}
+.hours tr.today td.day{position:relative}
+.hours tr.today td.day::before{content:"";position:absolute;left:-.85rem;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:var(--wine)}
+.hours td.closed{color:var(--ink-faint);font-style:italic}
+.prak-side .now{font-family:var(--serif);font-size:1.4rem;margin-bottom:.4rem}
+.prak-side .now[data-open="false"]{color:var(--wine)}
+.contact-lines{margin-top:1.6rem;display:grid;gap:.55rem;font-size:1.04rem}
+.contact-lines a{border-bottom:1px solid var(--line);transition:border-color .3s}
+.contact-lines a:hover{border-bottom-color:var(--wine)}
+.prak-fig{margin-top:1.8rem}
+.prak-fig img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:saturate(.95)}
+.prak-fig figcaption{margin-top:.6rem;font-style:italic;font-size:.86rem;color:var(--ink-soft)}
+
+/* ---------- reserveren ---------- */
+.resv{background:var(--ink);color:var(--paper)}
+.resv .sec-head h2,.resv .sec-head .no{color:var(--paper)}
+.resv .sec-head .no{color:#d8b3a0}
+.resv .sec-head .aside{color:rgba(243,238,228,.78)}
+.resv-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem)}
+@media (max-width:860px){.resv-grid{grid-template-columns:1fr;gap:2rem}}
+.resv-intro p{color:rgba(243,238,228,.82);font-size:1.08rem;line-height:1.7;max-width:40ch}
+.resv-intro .big{font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--paper);margin-bottom:1rem;line-height:1.1}
+.resv-intro .phone{margin-top:1.6rem;font-family:var(--serif);font-size:1.5rem}
+.resv-intro .phone a{border-bottom:1px solid rgba(243,238,228,.4)}
+.form{position:relative}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 1.6rem}
+@media (max-width:520px){.frow{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column}
+.field.full{grid-column:1 / -1}
+.field label{font-family:var(--text);font-weight:500;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(243,238,228,.6);margin-bottom:.5rem}
+.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1.5px solid rgba(243,238,228,.28);color:var(--paper);padding:.5rem .1rem;font-size:1.05rem;border-radius:0;transition:border-color .3s}
+.field textarea{resize:vertical;min-height:62px}
+.field select option{color:#211b15}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--paper)}
+.field.bad input,.field.bad select{border-bottom-color:#e7a07f}
+.field .err{font-size:.78rem;color:#e7a07f;margin-top:.35rem;display:none}
+.field.bad .err{display:block}
+.fsubmit{margin-top:1.8rem;display:inline-flex;align-items:center;gap:.7rem;background:var(--paper);color:var(--ink);border:0;padding:.95rem 1.8rem;font-family:var(--text);font-weight:500;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .3s,color .3s}
+.fsubmit:hover{background:var(--wine);color:var(--paper)}
+.fnote{margin-top:1rem;font-size:.82rem;color:rgba(243,238,228,.55)}
+.form-ok{display:none;background:rgba(243,238,228,.06);border:1px solid rgba(243,238,228,.2);padding:1.6rem;margin-top:.4rem}
+.form.sent .form-ok{display:block}
+.form.sent .frow,.form.sent .fsubmit,.form.sent .fnote{display:none}
+.form-ok h3{font-family:var(--serif);font-size:1.6rem;margin-bottom:.5rem}
+.form-ok p{color:rgba(243,238,228,.8)}
+
+/* ---------- footer ---------- */
+.foot{padding-block:clamp(3rem,6vw,5rem)}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:2rem}
+.foot-mark{font-family:var(--serif);font-size:clamp(3.5rem,12vw,8rem);line-height:.8;letter-spacing:-.01em}
+.foot-mark span{color:var(--wine)}
+.foot-cols{display:flex;gap:clamp(2rem,5vw,4rem);flex-wrap:wrap;font-size:.96rem}
+.foot-cols h4{font-family:var(--text);font-weight:500;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.7rem}
+.foot-cols a{color:var(--ink-2)}
+.foot-cols a:hover{color:var(--wine)}
+.foot-cols p{color:var(--ink-2);line-height:1.7}
+.foot-bottom{margin-top:1.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;color:var(--ink-faint)}
+
+/* ---------- sticky reserveerbalk ---------- */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--ink);color:var(--paper);transform:translateY(110%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.bar.show{transform:none}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:56px}
+.bar .b-status{font-size:.86rem;display:inline-flex;align-items:center;gap:.55rem}
+.bar .b-status .lamp{width:7px;height:7px;border-radius:50%;background:#8a9a6a}
+.bar .b-status[data-open="false"] .lamp{background:#d98a78}
+.bar .b-status .italic{color:rgba(243,238,228,.7)}
+.bar a{font-family:var(--text);font-weight:500;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(243,238,228,.5);padding:.5rem 1.1rem;transition:background-color .3s,color .3s}
+.bar a:hover{background:var(--paper);color:var(--ink)}
+@media (max-width:520px){.bar .b-status .italic{display:none}}
+
+/* ---------- subtiele reveal ---------- */
+@media (prefers-reduced-motion:no-preference){
+  [data-r]{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  [data-r].in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#kaart">Naar de kaart</a>
+
+<div class="letterhead">
+  <div class="wrap">
+    <span class="city">Spaarne 12 · Haarlem</span>
+    <span class="status" id="lh-status" data-open="true"><span class="lamp"></span><span id="lh-status-text">Open</span></span>
+    <span>Bistro &amp; natuurwijn</span>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Vlier<span>.</span></a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#kaart">De kaart</a>
+      <a href="#huis">Het huis</a>
+      <a href="#wijn">Wijn</a>
+      <a href="#praktisch">Praktisch</a>
+      <a class="nav-resv" href="#reserveren">Reserveren</a>
+    </nav>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="hero-kicker label">Bistro &amp; natuurwijn — sinds 2011</p>
+        <h1>Seizoens&shy;keuken,<br>zonder <em>poespas</em>.</h1>
+        <p class="hero-intro"><span class="first">Een kleine kaart die meebeweegt met de markt,</span> natuurwijn per glas, en een tafel die bijna altijd net even te gezellig wordt. Aan het Spaarne, midden in Haarlem.</p>
+        <div class="hero-actions">
+          <a class="lnk" href="#reserveren">Reserveer een tafel</a>
+          <a class="lnk ghost" href="#kaart">Bekijk de kaart</a>
+        </div>
+      </div>
+      <figure class="hero-figure" data-r>
+        <span class="since">Vlier · MMXI</span>
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=72" alt="Gedekte tafel met een bord en glazen wijn in de bistro" width="880" height="1100">
+        <figcaption>De toog, op een gewone dinsdagavond.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- DE KAART -->
+  <section class="sec" id="kaart">
+    <div class="wrap">
+      <div class="sec-head" data-r>
+        <span class="no">01</span>
+        <h2>De kaart</h2>
+        <p class="aside">Wisselt elke paar weken — dit is wat er nu op staat.</p>
+      </div>
+      <div class="menu-grid">
+        <div>
+          <div class="course">
+            <h3>Vooraf</h3>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Burrata &amp; geroosterde biet</span><span class="dish-lead"></span><span class="dish-price">14</span></div><p class="dish-desc">hazelnoot, bietenblad, oude balsamico</p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Steak tartaar</span><span class="dish-lead"></span><span class="dish-price">16</span></div><p class="dish-desc">met de hand gesneden, mosterd, kappertjes, eigeel</p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Soep van geroosterde pompoen</span><span class="dish-lead"></span><span class="dish-price">11</span></div><p class="dish-desc">salie, pompoenpit, een scheut room <span class="veg">· vega</span></p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Gemarineerde zalm</span><span class="dish-lead"></span><span class="dish-price">15</span></div><p class="dish-desc">venkel, dille, mierikswortel</p></div>
+          </div>
+          <div class="course">
+            <h3>Erbij</h3>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Friet met mayonaise</span><span class="dish-lead"></span><span class="dish-price">5</span></div></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Groene salade</span><span class="dish-lead"></span><span class="dish-price">5</span></div></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Geroosterde seizoensgroenten</span><span class="dish-lead"></span><span class="dish-price">6</span></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="course">
+            <h3>Hoofd</h3>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Gebraden zeebaars</span><span class="dish-lead"></span><span class="dish-price">27</span></div><p class="dish-desc">geroosterde prei, beurre blanc, kappertjes</p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Hertenstoof</span><span class="dish-lead"></span><span class="dish-price">26</span></div><p class="dish-desc">knolselderij, gestoofde peer, jus van tijm</p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Risotto van pastinaak</span><span class="dish-lead"></span><span class="dish-price">22</span></div><p class="dish-desc">salie, parmezaan, geroosterde hazelnoot <span class="veg">· vega</span></p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Côte de bœuf, voor twee</span><span class="dish-lead"></span><span class="dish-price">58</span></div><p class="dish-desc">friet, béarnaise, groene salade</p></div>
+          </div>
+          <div class="course">
+            <h3>Zoet</h3>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Tarte tatin</span><span class="dish-lead"></span><span class="dish-price">11</span></div><p class="dish-desc">warme appel, crème fraîche</p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Chocolade &amp; olijfolie</span><span class="dish-lead"></span><span class="dish-price">10</span></div><p class="dish-desc">zeezout, geroosterde amandel</p></div>
+            <div class="dish"><div class="dish-top"><span class="dish-name">Drie kazen</span><span class="dish-lead"></span><span class="dish-price">14</span></div><p class="dish-desc">van Fromagerie Crémerie, vijgenbrood</p></div>
+          </div>
+        </div>
+      </div>
+      <p class="menu-note">Een allergie of dieetwens? Zeg het bij het reserveren of aan tafel — de keuken denkt graag mee. Een keuzemenu van drie gangen serveren we voor 39 per persoon.</p>
+    </div>
+  </section>
+
+  <!-- HET HUIS -->
+  <section class="sec" id="huis">
+    <div class="wrap">
+      <div class="sec-head" data-r>
+        <span class="no">02</span>
+        <h2>Het huis</h2>
+      </div>
+      <div class="huis">
+        <figure class="huis-fig" data-r>
+          <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=72" alt="Een bord met gebakken vis en een glas rode wijn" width="900" height="1200" loading="lazy">
+          <figcaption>Vis van de afslag in IJmuiden, ’s ochtends gehaald.</figcaption>
+        </figure>
+        <div class="huis-text" data-r>
+          <p class="lead">Vlier begon als een idee aan een te kleine keukentafel: koken met wat er is, en het simpel houden. Geen tien gangen, geen schuim, geen verhaal van vijf minuten bij elk bord. Gewoon goed eten, eerlijke wijn en de tijd om te blijven zitten.</p>
+          <blockquote class="pull">“We schrijven de kaart met krijt, want morgen ziet de markt er weer anders uit.”</blockquote>
+          <p>We werken met kleine leveranciers uit de buurt: een visser uit IJmuiden, een tuinder uit de Haarlemmermeer, een kaasmaker om de hoek. Wat niet vers is, staat niet op de kaart. En de wijn? Die zoeken we uit bij makers die zo min mogelijk toevoegen — levend, soms eigenwijs, altijd met karakter.</p>
+          <p class="signoff">— <b>Mar &amp; Joost</b>, koks en eigenaren</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIJN -->
+  <section class="sec wijn" id="wijn">
+    <div class="wrap">
+      <div class="sec-head" data-r>
+        <span class="no">03</span>
+        <h2>Aan wijn doen we niet moeilijk</h2>
+        <p class="aside">Een handvol per glas, de hele kaart op de fles.</p>
+      </div>
+      <div class="wijn-grid">
+        <div class="glas"><span class="glas-name">Mâcon-Villages <small>Chardonnay · Bourgogne</small></span><span class="glas-lead"></span><span class="glas-price">7,5</span></div>
+        <div class="glas"><span class="glas-name">Gamay Pét-Nat <small>mousserend · Loire</small></span><span class="glas-lead"></span><span class="glas-price">8</span></div>
+        <div class="glas"><span class="glas-name">Nero d’Avola <small>rood · Sicilië</small></span><span class="glas-lead"></span><span class="glas-price">7</span></div>
+        <div class="glas"><span class="glas-name">Riesling trocken <small>wit · Pfalz</small></span><span class="glas-lead"></span><span class="glas-price">8,5</span></div>
+        <div class="glas"><span class="glas-name">Cinsault rosé <small>rosé · Languedoc</small></span><span class="glas-lead"></span><span class="glas-price">7</span></div>
+        <div class="glas"><span class="glas-name">Vermout van het huis <small>aperitief</small></span><span class="glas-lead"></span><span class="glas-price">6,5</span></div>
+      </div>
+      <p class="wijn-note">Liever dat wij kiezen? Vraag om een wijnarrangement bij je gangen — vier glazen, afgestemd op wat je eet, voor 28.</p>
+    </div>
+  </section>
+
+  <!-- PRAKTISCH -->
+  <section class="sec" id="praktisch">
+    <div class="wrap">
+      <div class="sec-head" data-r>
+        <span class="no">04</span>
+        <h2>Praktisch</h2>
+      </div>
+      <div class="prak">
+        <div data-r>
+          <table class="hours" id="hours">
+            <thead><tr><th>Dag</th><th style="text-align:right">Keuken open</th></tr></thead>
+            <tbody><!-- door JS gevuld --></tbody>
+          </table>
+        </div>
+        <div class="prak-side" data-r>
+          <p class="now" id="now-line" data-open="true">We zijn nu open.</p>
+          <p style="color:var(--ink-2)">Loop gerust binnen voor een glas aan de bar; voor een tafel reserveren we het liefst even vooruit, zeker in het weekend.</p>
+          <div class="contact-lines">
+            <span>Spaarne 12, 2011 CH Haarlem</span>
+            <a href="tel:+31235312088">023 — 531 20 88</a>
+            <a href="mailto:reserveren@vlier-haarlem.nl">reserveren@vlier-haarlem.nl</a>
+          </div>
+          <figure class="prak-fig">
+            <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=900&q=72" alt="Een gedekte tafel van bovenaf met verschillende gerechten" width="900" height="563" loading="lazy">
+            <figcaption>Zondags is er een kleine lunchkaart.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVEREN -->
+  <section class="sec resv" id="reserveren">
+    <div class="wrap">
+      <div class="sec-head" data-r>
+        <span class="no">05</span>
+        <h2>Reserveren</h2>
+      </div>
+      <div class="resv-grid">
+        <div class="resv-intro" data-r>
+          <p class="big">Schuif aan.</p>
+          <p>Vul hiernaast je gegevens in, dan bevestigen we je tafel per mail — meestal binnen een paar uur. Voor groepen vanaf zes personen of een hele avond bel je ons even.</p>
+          <p class="phone">Liever bellen? <a href="tel:+31235312088">023 — 531 20 88</a></p>
+        </div>
+        <form class="form" id="form" novalidate data-r>
+          <div class="frow">
+            <div class="field"><label for="r-naam">Naam</label><input id="r-naam" name="naam" type="text" autocomplete="name" required><span class="err">Vul je naam in.</span></div>
+            <div class="field"><label for="r-tel">Telefoon</label><input id="r-tel" name="tel" type="tel" autocomplete="tel" required><span class="err">Vul een telefoonnummer in.</span></div>
+            <div class="field"><label for="r-datum">Datum</label><input id="r-datum" name="datum" type="date" required><span class="err">Kies een datum.</span></div>
+            <div class="field"><label for="r-tijd">Tijd</label><input id="r-tijd" name="tijd" type="time" value="19:30" required><span class="err">Kies een tijd.</span></div>
+            <div class="field"><label for="r-pers">Personen</label>
+              <select id="r-pers" name="personen" required>
+                <option value="2">2 personen</option><option value="1">1 persoon</option><option value="3">3 personen</option><option value="4">4 personen</option><option value="5">5 personen</option><option value="6">6 personen</option><option value="7">6+ — bel ons</option>
+              </select>
+            </div>
+            <div class="field"><label for="r-mail">E-mail</label><input id="r-mail" name="email" type="email" autocomplete="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+            <div class="field full"><label for="r-opm">Opmerking (allergie, gelegenheid…)</label><textarea id="r-opm" name="opmerking"></textarea></div>
+          </div>
+          <button class="fsubmit" type="submit">Tafel reserveren</button>
+          <p class="fnote">We gebruiken je gegevens alleen voor deze reservering.</p>
+          <div class="form-ok" role="status">
+            <h3>Tot snel bij Vlier.</h3>
+            <p id="ok-text">Bedankt — we hebben je aanvraag ontvangen en bevestigen je tafel zo snel mogelijk per mail.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-mark">Vlier<span>.</span></div>
+      <div class="foot-cols">
+        <div>
+          <h4>Adres</h4>
+          <p>Spaarne 12<br>2011 CH Haarlem</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><a href="tel:+31235312088">023 — 531 20 88</a><br><a href="mailto:reserveren@vlier-haarlem.nl">reserveren@vlier-haarlem.nl</a></p>
+        </div>
+        <div>
+          <h4>Volgen</h4>
+          <p><a href="#top">Instagram</a><br><a href="#top">Nieuwsbrief</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="jaar">2026</span> Vlier — bistro &amp; natuurwijn</span>
+      <span>Keuken op fooienbasis voor het team · KvK 34281190</span>
+    </div>
+  </div>
+</footer>
+
+<div class="bar" id="bar" aria-hidden="true">
+  <div class="wrap">
+    <span class="b-status" id="bar-status" data-open="true"><span class="lamp"></span><span id="bar-status-text">Open</span> <span class="italic" id="bar-sub"></span></span>
+    <a href="#reserveren">Reserveren</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var doc = document;
+  var reduced = false; try { reduced = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  /* ---- openingstijden (minuten; sluit kan > 1440 voor na middernacht) ---- */
+  var DAYS = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
+  var SHORT = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'];
+  /* index = JS getDay() (0=zo) */
+  var HOURS = {
+    0: [16 * 60, 22 * 60],          // zo 16:00–22:00
+    1: null,                        // ma gesloten
+    2: [17 * 60, 23 * 60],          // di 17:00–23:00
+    3: [17 * 60, 23 * 60],          // wo
+    4: [17 * 60, 23 * 60],          // do
+    5: [17 * 60, 24 * 60],          // vr 17:00–00:00
+    6: [16 * 60, 24 * 60]           // za 16:00–00:00
+  };
+  function fmt(m) { m = m % (24 * 60); var h = Math.floor(m / 60), mm = m % 60; return ('0' + h).slice(-2) + ':' + ('0' + mm).slice(-2); }
+  function nlNow() {
+    try {
+      var p = new Intl.DateTimeFormat('nl-NL', { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Amsterdam' }).formatToParts(new Date());
+      var o = {}; p.forEach(function (x) { o[x.type] = x.value; });
+      var map = { zo: 0, ma: 1, di: 2, wo: 3, do: 4, vr: 5, za: 6 };
+      var key = (o.weekday || '').toLowerCase().slice(0, 2);
+      var day = map[key]; if (day === undefined) { day = new Date().getDay(); }
+      return { day: day, min: parseInt(o.hour, 10) * 60 + parseInt(o.minute, 10) };
+    } catch (e) { var d = new Date(); return { day: d.getDay(), min: d.getHours() * 60 + d.getMinutes() }; }
+  }
+  function status() {
+    var n = nlNow(), today = HOURS[n.day];
+    /* check ook gisteren-na-middernacht */
+    var yest = HOURS[(n.day + 6) % 7];
+    if (yest && yest[1] > 24 * 60 && n.min < (yest[1] - 24 * 60)) {
+      return { open: true, label: 'Open tot ' + fmt(yest[1]) };
+    }
+    if (today && n.min >= today[0] && n.min < today[1]) {
+      return { open: true, label: 'Open tot ' + fmt(today[1]) };
+    }
+    /* nog niet open vandaag? */
+    if (today && n.min < today[0]) {
+      return { open: false, label: 'Vandaag open vanaf ' + fmt(today[0]) };
+    }
+    /* zoek volgende dag met opening */
+    for (var i = 1; i <= 7; i++) { var d = (n.day + i) % 7; if (HOURS[d]) { return { open: false, label: 'Open ' + SHORT[d] + ' vanaf ' + fmt(HOURS[d][0]) }; } }
+    return { open: false, label: 'Tijdelijk gesloten' };
+  }
+
+  var st = status();
+  function setStatus(elId, textId, st) {
+    var el = doc.getElementById(elId), t = doc.getElementById(textId);
+    if (el) { el.setAttribute('data-open', st.open ? 'true' : 'false'); }
+    if (t) { t.textContent = st.open ? 'Open' : 'Gesloten'; }
+  }
+  setStatus('lh-status', 'lh-status-text', st);
+  doc.getElementById('lh-status-text').textContent = st.label;
+  var barStatus = doc.getElementById('bar-status'); if (barStatus) { barStatus.setAttribute('data-open', st.open ? 'true' : 'false'); }
+  doc.getElementById('bar-status-text').textContent = st.open ? 'Open' : 'Gesloten';
+  doc.getElementById('bar-sub').textContent = st.label.replace(/^Open /, '· ').replace(/^Gesloten/, '');
+  var nowLine = doc.getElementById('now-line');
+  if (nowLine) { nowLine.setAttribute('data-open', st.open ? 'true' : 'false'); nowLine.textContent = st.open ? 'We zijn nu open — ' + st.label.toLowerCase() + '.' : st.label + '.'; }
+
+  /* ---- urentabel ---- */
+  var tb = doc.querySelector('#hours tbody');
+  if (tb) {
+    var n = nlNow();
+    var order = [1, 2, 3, 4, 5, 6, 0]; // ma..zo
+    order.forEach(function (d) {
+      var tr = doc.createElement('tr');
+      if (d === n.day) { tr.className = 'today'; }
+      var h = HOURS[d];
+      tr.innerHTML = '<td class="day">' + DAYS[d].charAt(0).toUpperCase() + DAYS[d].slice(1) + '</td>' +
+        (h ? '<td class="time">' + fmt(h[0]) + ' – ' + fmt(h[1]) + '</td>' : '<td class="time closed">gesloten</td>');
+      tb.appendChild(tr);
+    });
+  }
+
+  /* ---- jaar ---- */
+  var jaar = doc.getElementById('jaar'); if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* ---- datum-input minimaal vandaag ---- */
+  var dEl = doc.getElementById('r-datum');
+  if (dEl) { try { var t = new Date(); var iso = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2); dEl.min = iso; dEl.value = iso; } catch (e) {} }
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav = doc.getElementById('nav');
+  var burger = doc.getElementById('burger');
+  var links = doc.getElementById('navlinks');
+  function setMenu(open) { if (links) { links.classList.toggle('open', open); } if (burger) { burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open ? 'true' : 'false'); } doc.body.style.overflow = open ? 'hidden' : ''; }
+  if (burger) { burger.addEventListener('click', function () { setMenu(!links.classList.contains('open')); }); }
+  if (links) { links.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setMenu(false); } });
+
+  /* ---- sticky reserveerbalk + nav stuck (1 scroll-listener) ---- */
+  var bar = doc.getElementById('bar');
+  var resvSec = doc.getElementById('reserveren');
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (nav) { nav.classList.toggle('stuck', y > 8); }
+    if (bar) {
+      var heroH = Math.max(360, window.innerHeight * 0.6);
+      var resvTop = resvSec ? resvSec.getBoundingClientRect().top : 9999;
+      var show = y > heroH && resvTop > window.innerHeight * 0.5;
+      bar.classList.toggle('show', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+  }
+  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }
+  window.addEventListener('scroll', tick, { passive: true });
+  window.addEventListener('resize', tick, { passive: true });
+  onScroll();
+
+  /* ---- reveal ---- */
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-r]'), function (el) { io.observe(el); });
+  }
+
+  /* ---- reserveringsformulier ---- */
+  var form = doc.getElementById('form');
+  if (form) {
+    function bad(input, on) { var f = input.closest('.field'); if (f) { f.classList.toggle('bad', on); } }
+    function valid(input) {
+      var v = (input.value || '').trim(), ok = true;
+      if (input.type === 'email') { ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      else if (input.hasAttribute('required')) { ok = v.length > 0; }
+      bad(input, !ok); return ok;
+    }
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input[required], select[required]'));
+    inputs.forEach(function (i) { i.addEventListener('blur', function () { valid(i); }); i.addEventListener('input', function () { if (i.closest('.field').classList.contains('bad')) { valid(i); } }); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function (i) { if (!valid(i)) { allOk = false; if (!first) { first = i; } } });
+      if (!allOk) { if (first) { first.focus(); } return; }
+      var naam = (doc.getElementById('r-naam').value || '').trim().split(' ')[0];
+      var pers = doc.getElementById('r-pers');
+      var okt = doc.getElementById('ok-text');
+      if (okt) { okt.textContent = (naam ? naam + ', bedankt' : 'Bedankt') + ' — we hebben je aanvraag voor ' + (pers ? pers.options[pers.selectedIndex].text.toLowerCase() : '') + ' ontvangen en bevestigen je tafel zo snel mogelijk per mail.'; }
+      form.classList.add('sent');
+      form.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+    });
+  }
+})();
+</script>
+</body>
+</html>

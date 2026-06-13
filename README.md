@@ -1,6 +1,6 @@
-# Template Galerij — 38 kant-en-klare websites
+# Template Galerij — 39 kant-en-klare websites
 
-Een verzameling van **38 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **39 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -46,6 +46,7 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 36 | `templates/36-tattoo/` | ✦ Signature — Inktzwart | Crème/rood (#f2ece0 · #d11a26): **teken met je cursor in zwarte/rode inkt-splatters** (flash-esthetiek). Tattoo studio |
 | 37 | `templates/37-getij/` | ✦ Signature — Tij | Zeegroen/zand (#eaf1ee · #0fa3a3): **gelaagde golvende zee op canvas** met schuim. Surfschool & strandclub |
 | 38 | `templates/38-lab/` | ✦ Signature — Synaps | Diep nacht/indigo × cyaan (#07090f · #6e8cff): **neuraal deeltjesnetwerk** dat op je cursor reageert. Toegepast AI-lab |
+| 39 | `templates/39-vlier/` | ✎ Redactioneel — Vlier | Warm papier/bordeaux (#f3eee4 · #7a2230): **volledig met de hand geschreven** (geen generator). Redactionele restaurant-pagina met echte foto's, een **getypte menukaart** met dotted leaders, drop cap, pull quote en een **open/dicht-status uit de openingstijden**. Bewust anti-template |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
