@@ -1,0 +1,18 @@
+/* 38 — Synaps: neuraal netwerk-hero */
+.sy2-hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:calc(var(--header-h) + 2rem);padding-bottom:clamp(3rem,7vw,5rem)}
+.sy2-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.sy2-veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(60% 55% at 50% 50%,transparent,var(--bg) 88%)}
+.sy2-inner{position:relative;z-index:2;pointer-events:none}
+.sy2-inner .btn{pointer-events:auto}
+.sy2-hero .eyebrow{margin-bottom:1.3rem;color:var(--accent-2);border:1px solid var(--line);background:rgba(255,255,255,.02)}
+.sy2-hero .eyebrow::before{background:var(--accent-2)}
+.sy2-hero h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(2.7rem,8.5vw,6.2rem);line-height:.98;letter-spacing:-.025em;max-width:18ch;margin-inline:auto}
+.sy2-hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sy2-lead{margin:1.4rem auto 0;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.3rem);max-width:48ch}
+.sy2-cta{margin-top:2rem;display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+.sy2-hint{position:absolute;left:0;right:0;bottom:1.4rem;z-index:2;text-align:center;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);pointer-events:none}
+html.anim-ok .sy2-inner>*{opacity:0;transform:translateY(20px);animation:auroRise 1s var(--ease) forwards}
+html.anim-ok .sy2-inner h1{animation-delay:.14s}
+html.anim-ok .sy2-inner .sy2-lead{animation-delay:.3s}
+html.anim-ok .sy2-inner .sy2-cta{animation-delay:.44s}
+@keyframes auroRise{to{opacity:1;transform:none}}

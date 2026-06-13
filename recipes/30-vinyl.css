@@ -1,0 +1,28 @@
+/* 30 — Groef: turntable-hero */
+.gr-hero{position:relative;overflow:hidden;padding-top:calc(var(--header-h) + clamp(2rem,5vw,4rem));padding-bottom:clamp(2.5rem,5vw,4rem)}
+.gr-hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:900px){.gr-hero .container{grid-template-columns:1fr;gap:2.5rem}}
+.gr-hero .eyebrow{margin-bottom:1.2rem}
+.gr-hero h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(2.8rem,8vw,6rem);line-height:.92;letter-spacing:-.03em;text-transform:uppercase}
+.gr-hero h1 em{font-style:normal;color:var(--accent)}
+.gr-lead{margin-top:1.3rem;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.28rem);max-width:42ch}
+.gr-cta{margin-top:1.8rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.gr-deck{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.record{position:relative;width:min(78%,360px);aspect-ratio:1;border-radius:50%;background:#0e0b08;box-shadow:0 40px 80px -40px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.05)}
+.record::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.05) 0 1px,transparent 1px 4px),radial-gradient(circle at 36% 32%,rgba(255,255,255,.12),transparent 42%)}
+.record .label{position:absolute;inset:34%;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;text-align:center;color:#1a1208;font-family:var(--font-serif);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(.6rem,1.4vw,.8rem);line-height:1.1;padding:8%}
+.record .hole{position:absolute;left:50%;top:50%;width:9px;height:9px;border-radius:50%;background:var(--bg);transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(0,0,0,.4)}
+html.anim-ok .record.spinning{animation:grSpin 3.4s linear infinite}
+@keyframes grSpin{to{transform:rotate(360deg)}}
+.arm{position:absolute;top:6%;right:6%;width:36%;height:6px;background:linear-gradient(90deg,#c9c3b8,#8a857c);border-radius:99px;transform-origin:right center;transform:rotate(-26deg);transition:transform .6s var(--ease);box-shadow:0 4px 10px rgba(0,0,0,.4);z-index:3}
+.arm::before{content:"";position:absolute;right:-7px;top:-7px;width:20px;height:20px;border-radius:50%;background:#c9c3b8}
+.arm::after{content:"";position:absolute;left:-3px;top:-4px;width:14px;height:14px;border-radius:3px;background:var(--accent)}
+.record.spinning ~ .arm,.gr-deck.playing .arm{transform:rotate(-6deg)}
+.viz{width:min(78%,360px);height:74px;display:block}
+.gr-play{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.5rem;border-radius:99px;background:var(--accent);color:#1a1208;border:1px solid var(--accent);transition:transform .3s var(--ease),filter .3s}
+.gr-play:hover{filter:brightness(1.08);transform:translateY(-2px)}
+html.anim-ok .gr-hero .eyebrow,html.anim-ok .gr-hero h1,html.anim-ok .gr-lead,html.anim-ok .gr-cta{opacity:0;transform:translateY(22px);animation:auroRise .9s var(--ease) forwards}
+html.anim-ok .gr-hero h1{animation-delay:.12s}
+html.anim-ok .gr-lead{animation-delay:.24s}
+html.anim-ok .gr-cta{animation-delay:.34s}
+@keyframes auroRise{to{opacity:1;transform:none}}

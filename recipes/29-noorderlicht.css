@@ -1,0 +1,21 @@
+/* 29 — Noorderlicht: aurora-hero */
+.auro-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding-top:calc(var(--header-h) + 3rem);padding-bottom:clamp(3rem,7vw,5.5rem)}
+.auro-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.auro-veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 80% at 50% 120%,rgba(94,240,176,.14),transparent 60%),linear-gradient(to top,var(--bg) 3%,transparent 48%)}
+.auro-inner{position:relative;z-index:2;width:100%}
+.auro-hero .eyebrow{margin-bottom:1.2rem}
+.auro-hero h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.7rem,8vw,6.2rem);line-height:1;letter-spacing:-.02em;max-width:15ch}
+.auro-hero h1 em{font-style:italic;color:var(--accent)}
+.auro-lead{margin-top:1.4rem;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.3rem);max-width:46ch}
+.auro-cta{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.auro-meta{margin-top:clamp(2rem,5vw,3rem);display:flex;gap:clamp(1.2rem,3vw,2.6rem);flex-wrap:wrap;align-items:center;padding-top:1.5rem;border-top:1px solid var(--line)}
+.auro-meta div{display:flex;flex-direction:column;gap:.15rem}
+.auro-meta b{font-family:var(--font-mono);font-size:1.05rem;color:var(--ink)}
+.auro-meta span{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+html.anim-ok .auro-inner>*{opacity:0;transform:translateY(24px);animation:auroRise .9s var(--ease) forwards}
+html.anim-ok .auro-inner .eyebrow{animation-delay:.15s}
+html.anim-ok .auro-inner h1{animation-delay:.28s}
+html.anim-ok .auro-inner .auro-lead{animation-delay:.42s}
+html.anim-ok .auro-inner .auro-cta{animation-delay:.54s}
+html.anim-ok .auro-inner .auro-meta{animation-delay:.66s}
+@keyframes auroRise{to{opacity:1;transform:none}}

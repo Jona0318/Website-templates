@@ -1,6 +1,6 @@
-# Template Galerij — 28 kant-en-klare websites
+# Template Galerij — 38 kant-en-klare websites
 
-Een verzameling van **28 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **38 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats) en **vier signature-templates** met dieper uitgewerkte interactiviteit. De twee nieuwste signatures zetten de stap naar **echte `<canvas>`-rendering**: een live animerende sterrenhemel met een maanfase berekend uit de datum, en een generatief stroomveld dat de bezoeker zelf stuurt en als PNG kan downloaden. Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -36,6 +36,16 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 26 | `templates/26-helder/` | ⚙ Recept — Helder (algemeen) | Warm wit/violet × lime (#f6f4f0 · #6a2be6 · #88c425): strakke, moderne **algemene studio-/bedrijfstemplate**. Grotesk-typografie, prijs-toggle, diensten, werkwijze, FAQ, CTA, contact |
 | 27 | `templates/27-nocturne/` | ⚙ Recept — Nocturne (algemeen) | Bijna-zwart/mint × lila (#0d0f13 · #5fe9ad · #b6a2ff): strakke, moderne **algemene donkere agency-/portfoliotemplate**. Diensten, aanpak, tarieven, FAQ, contact |
 | 28 | `templates/28-atlas/` | ✦ Aanpasbaar — Atlas | Neutraal/indigo × roze (#f7f7f5 · #4f46e5): **live thema-editor** — kies accentkleur, schakel licht/donker, draai aan hoeken en lettertype; alles verandert direct mee en je **kopieert je thema als CSS**. Eén bestand, nul dependencies |
+| 29 | `templates/29-noorderlicht/` | ✦ Signature — Noorderlicht | Arctisch nachtblauw/aurora-groen (#060c18 · #5ef0b0): **canvas-aurora** met golvende lichtgordijnen + sterren. Arctisch reisbureau met bestemmingen en aurora-garantie |
+| 30 | `templates/30-vinyl/` | ✦ Signature — Groef | Warm zwart/oranje (#161009 · #e2562b): **draaiende plaat + audiovisualizer** (synthetisch, echte **WebAudio** op de speel-knop). Platenlabel met releases en perserij |
+| 31 | `templates/31-arcade/` | ✦ Signature — Neonburcht | Synthwave paars/roze × cyaan (#140426 · #ff5da2): **canvas perspectief-grid + neon-zon**. Game studio met games, tabs en team |
+| 32 | `templates/32-kwekerij/` | ✦ Signature — Wildgroei | Warm wit/bladgroen (#f3f1e6 · #3f7d3a): **recursief groeiende planten op canvas** die in beeld groeien. Stadskwekerij & plantenwinkel |
+| 33 | `templates/33-keramiek/` | ✦ Signature — Draaischijf | Klei/terracotta (#efe7dd · #b5532e): **interactieve draaischijf** — sleep over de klei en vorm je eigen vaas (cilindrische arcering + draaiglans) |
+| 34 | `templates/34-parfum/` | ✦ Signature — Sillage | Sepia/goud (#16100c · #c9a24b): **opstijgende inkt/rook-diffusie op canvas** + CSS-geurpiramide. Onafhankelijk geurhuis |
+| 35 | `templates/35-data/` | ✦ Signature — Meetlat | Slate/lime (#0c1018 · #b6f23d): **live animerende dashboard-grafiek** met KPI's. Data-consultancy met vergelijkingstabel |
+| 36 | `templates/36-tattoo/` | ✦ Signature — Inktzwart | Crème/rood (#f2ece0 · #d11a26): **teken met je cursor in zwarte/rode inkt-splatters** (flash-esthetiek). Tattoo studio |
+| 37 | `templates/37-getij/` | ✦ Signature — Tij | Zeegroen/zand (#eaf1ee · #0fa3a3): **gelaagde golvende zee op canvas** met schuim. Surfschool & strandclub |
+| 38 | `templates/38-lab/` | ✦ Signature — Synaps | Diep nacht/indigo × cyaan (#07090f · #6e8cff): **neuraal deeltjesnetwerk** dat op je cursor reageert. Toegepast AI-lab |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.

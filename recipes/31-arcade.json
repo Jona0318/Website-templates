@@ -1,0 +1,87 @@
+{
+  "id": 31, "slug": "31-arcade", "title": "Neonburcht — game studio", "sector": "games", "scheme": "dark",
+  "meta": { "title": "Neonburcht — onafhankelijke game studio", "description": "Neonburcht is een onafhankelijke game studio. Wij maken games met lef, stijl en een synthwave-hart.", "themeColor": "#140426" },
+  "theme": {
+    "--bg": "#140426", "--bg-2": "#1c0838", "--surface": "#220c42",
+    "--ink": "#f5e9ff", "--muted": "rgba(245,233,255,.66)", "--faint": "rgba(245,233,255,.42)",
+    "--line": "rgba(245,233,255,.14)", "--line-strong": "rgba(245,233,255,.26)",
+    "--accent": "#ff5da2", "--accent-2": "#36e7ff", "--accent-soft": "rgba(255,93,162,.14)", "--on-accent": "#160426",
+    "--dark-bg": "#0e021c", "--dark-surface": "#1c0838", "--dark-ink": "#f5e9ff", "--dark-muted": "rgba(245,233,255,.66)", "--dark-line": "rgba(245,233,255,.14)",
+    "--radius": "14px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap", "serif": "Orbitron", "grotesk": "Inter", "mono": "Space Mono" },
+  "brand": { "name": "Neonburcht", "tagline": "Game studio · Eindhoven", "email": "play@neonburcht.gg", "tel": "+31 40 311 92 40", "address": "Strijp-S, Eindhoven" },
+  "nav": [ { "href": "#games", "label": "Games" }, { "href": "#studio", "label": "Studio" }, { "href": "#team", "label": "Team" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ],
+  "headerCta": { "href": "#games", "label": "Speel nu" },
+  "customCssFile": "recipes/31-arcade.css",
+  "customJsFile": "recipes/31-arcade.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='syn-hero' aria-label='Introductie'><canvas class='syn-canvas' id='synCanvas' aria-hidden='true'></canvas><div class='syn-veil' aria-hidden='true'></div><div class='container syn-inner'><p class='eyebrow'>Onafhankelijke game studio</p><h1>Games met <em>lef</em>.</h1><p class='syn-lead'>Neonburcht maakt eigenzinnige games met een synthwave-hart — strak, snel en vol stijl. Van pixel tot release, alles onder één neonlicht.</p><div class='syn-cta'><a class='btn btn-primary js-magnetic' href='#games'>Bekijk onze games</a><a class='btn btn-ghost' href='#contact'>Werk met ons</a></div></div></section>" } },
+    { "use": "showcase", "id": "games", "data": {
+      "eyebrow": "Onze games",
+      "title": "Vers uit de <em>burcht</em>",
+      "intro": "Van arcade-roguelike tot rustige puzzelgame — altijd met karakter.",
+      "items": [
+        { "tag": "PC · Console", "glyph": "▶", "title": "Neon Drift", "meta": "Arcade racer" },
+        { "tag": "PC", "glyph": "✦", "title": "Hollow Keep", "meta": "Roguelike" },
+        { "tag": "Switch", "glyph": "◆", "title": "Lumen", "meta": "Puzzel" },
+        { "tag": "Mobile", "glyph": "★", "title": "Pulse Runner", "meta": "Endless runner" },
+        { "tag": "PC · VR", "glyph": "◈", "title": "Voidfall", "meta": "Actie" },
+        { "tag": "binnenkort", "glyph": "◓", "title": "Project Halo", "meta": "Aangekondigd" }
+      ]
+    }},
+    { "use": "tabs", "id": "studio", "data": {
+      "eyebrow": "De studio",
+      "title": "Wat we <em>maken</em>",
+      "tabs": [
+        { "label": "Originals", "title": "Eigen titels", "text": "We ontwikkelen en publiceren onze eigen games, van prototype tot lancering.", "points": [ "Concept & game design", "Art & audio in huis", "Publishing & community" ] },
+        { "label": "Co-dev", "title": "Samen bouwen", "text": "Hulp nodig bij je game? We versterken jouw team met code, art of design.", "points": [ "Gameplay-programmering", "Tooling & ports", "Tijdelijke teamversterking" ] },
+        { "label": "Work-for-hire", "title": "Opdrachten", "text": "Serious games, installaties en speelse merkervaringen op maat.", "points": [ "Branded games", "Interactieve installaties", "Prototyping" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "cijfers", "data": { "items": [
+      { "target": 2018, "label": "opgericht" },
+      { "target": 6, "label": "uitgebrachte games" },
+      { "target": 1200000, "suffix": "+", "label": "spelers" },
+      { "target": 3, "label": "awards" }
+    ]}},
+    { "use": "team", "id": "team", "data": {
+      "eyebrow": "Het team",
+      "title": "De <em>burchtbewoners</em>",
+      "items": [ { "name": "Robin Daalder", "role": "Creative director" }, { "name": "Suze Kok", "role": "Lead art" }, { "name": "Mees Pranger", "role": "Engineering" }, { "name": "Yara Sol", "role": "Audio & music" } ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Veel <em>gevraagd</em>",
+      "items": [
+        { "q": "Op welke platforms brengen jullie uit?", "an": "Voornamelijk pc (Steam) en console (Switch, PlayStation, Xbox), en voor sommige titels mobiel en VR." },
+        { "q": "Kan ik bij jullie pitchen?", "an": "Ja! Stuur een korte pitch via het contactformulier. We kijken naar games met een sterke eigen identiteit." },
+        { "q": "Doen jullie ook werk voor anderen?", "an": "Zeker — co-development en opdrachten. Vertel ons over je project, dan denken we mee." },
+        { "q": "Hebben jullie stageplekken?", "an": "Regelmatig, in code, art en design. Houd onze socials in de gaten of mail je portfolio." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Contact",
+      "title": "Druk op <em>start</em>",
+      "intro": "Een pitch, een samenwerking of gewoon hallo? We horen het graag.",
+      "submit": "Verstuur", "successTitle": "Player 2 joined!", "successText": "Bedankt — we reageren snel.",
+      "fields": [
+        { "name": "naam", "label": "Naam / studio", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Game pitchen", "Co-development", "Opdracht", "Pers", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "platform", "label": "Platform", "type": "text", "half": true, "placeholder": "PC, Switch…" },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "required": true, "placeholder": "Vertel over je game of project" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Neonburcht is een onafhankelijke game studio op Strijp-S in Eindhoven. Games met lef, stijl en een synthwave-hart.",
+    "bottom": "KvK 70338821 · Eindhoven",
+    "columns": [
+      { "title": "Studio", "links": [ { "href": "#games", "label": "Games" }, { "href": "#studio", "label": "Wat we maken" }, { "href": "#team", "label": "Team" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:play@neonburcht.gg", "label": "play@neonburcht.gg" }, { "href": "tel:+31403119240", "label": "+31 40 311 92 40" }, { "href": "#contact", "label": "Strijp-S, Eindhoven" } ] }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": 37, "slug": "37-getij", "title": "Tij — surfschool & strandclub", "sector": "sport", "scheme": "light",
+  "meta": { "title": "Tij — surfschool & strandclub aan zee", "description": "Tij is een surfschool en strandclub aan de Noordzee: lessen voor alle niveaus, boardverhuur en koffie met uitzicht.", "themeColor": "#eaf1ee" },
+  "theme": {
+    "--bg": "#eaf1ee", "--bg-2": "#d9e7e2", "--surface": "#ffffff",
+    "--ink": "#0f2e2c", "--muted": "rgba(15,46,44,.62)", "--faint": "rgba(15,46,44,.40)",
+    "--line": "rgba(15,46,44,.13)", "--line-strong": "rgba(15,46,44,.24)",
+    "--accent": "#0fa3a3", "--accent-2": "#f2a541", "--accent-soft": "rgba(15,163,163,.12)", "--on-accent": "#ffffff",
+    "--dark-bg": "#0c2422", "--dark-surface": "#123230", "--dark-ink": "#e8f3f0", "--dark-muted": "rgba(232,243,240,.62)", "--dark-line": "rgba(232,243,240,.14)",
+    "--radius": "18px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap", "serif": "Bricolage Grotesque", "grotesk": "Hanken Grotesk", "mono": "Space Mono" },
+  "brand": { "name": "Tij", "tagline": "Surfschool · Scheveningen", "email": "hoi@tijsurf.nl", "tel": "+31 70 322 65 40", "address": "Strandtent 9, Scheveningen" },
+  "nav": [ { "href": "#lessen", "label": "Lessen" }, { "href": "#verhuur", "label": "Verhuur" }, { "href": "#club", "label": "Strandclub" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Boeken" } ],
+  "headerCta": { "href": "#contact", "label": "Boek een les" },
+  "customCssFile": "recipes/37-getij.css",
+  "customJsFile": "recipes/37-getij.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='tij-hero' aria-label='Introductie'><canvas class='tij-canvas' id='tijCanvas' aria-hidden='true'></canvas><div class='container tij-inner'><p class='eyebrow'>Surfschool & strandclub · sinds 2012</p><h1>Pak je <em>golf</em>.</h1><p class='tij-lead'>Een surfschool en strandclub aan de Noordzee. Lessen voor elk niveau, boards te huur, en koffie met je voeten in het zand.</p><div class='tij-cta'><a class='btn btn-primary js-magnetic' href='#lessen'>Bekijk lessen</a><a class='btn btn-ghost' href='#club'>De strandclub</a></div></div></section>" } },
+    { "use": "features", "id": "lessen", "data": {
+      "eyebrow": "Lessen",
+      "title": "Van eerste golf tot <em>green room</em>",
+      "intro": "Gediplomeerde instructeurs, kleine groepen en gratis warme douche na afloop.",
+      "items": [
+        { "icon": "🌊", "title": "Proefles", "text": "Nog nooit gesurft? In twee uur sta je gegarandeerd een keer op je board. Wetsuit en board inbegrepen." },
+        { "icon": "🏄", "title": "Cursus (4 lessen)", "text": "Bouw je skills op in een kleine groep en leer zelfstandig de zee lezen." },
+        { "icon": "👧", "title": "Kids & jeugd", "text": "Speelse, veilige lessen voor kinderen vanaf 8 jaar, met extra begeleiding." },
+        { "icon": "👯", "title": "Privéles", "text": "Eén op één snel vooruit, of een privésessie met vrienden op jullie tempo." },
+        { "icon": "🌅", "title": "Dawn patrol", "text": "De zee voor jezelf bij zonsopkomst — voor de gevorderde surfer." },
+        { "icon": "🎉", "title": "Uitjes & teambuilding", "text": "Surfen als bedrijfsuitje of feestje, inclusief borrel in de strandclub." }
+      ]
+    }},
+    { "use": "zigzag", "id": "verhuur", "data": {
+      "eyebrow": "Verhuur & club",
+      "title": "Alles voor een dag aan <em>zee</em>",
+      "items": [
+        { "eyebrow": "Verhuur", "glyph": "🏄", "title": "Boards & wetsuits", "text": "Soft-tops, funboards en shortboards in alle maten, plus warme wetsuits — per uur of per dag.", "points": [ "Per uur of dagdeel", "Alle maten", "Korting voor cursisten" ] },
+        { "eyebrow": "Strandclub", "glyph": "☕", "title": "Koffie met uitzicht", "text": "Onze strandclub is open van het eerste licht tot zonsondergang — koffie, lunch en borrel met de voeten in het zand.", "points": [ "Verse koffie & lunch", "Borrel bij zonsondergang", "Gratis wifi & douches" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "club", "data": { "items": [
+      { "target": 2012, "label": "opgericht" },
+      { "target": 14000, "suffix": "+", "label": "surfers geleerd" },
+      { "target": 9, "label": "instructeurs" },
+      { "target": 4, "suffix": ",9", "label": "beoordeling" }
+    ]}},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Surfers",
+      "title": "Stoked <em>reviews</em>",
+      "items": [
+        { "quote": "Binnen een uur stond ik! Geduldige instructeurs en een heerlijke vibe.", "name": "Jesse", "role": "Proefles" },
+        { "quote": "De kids willen elk weekend terug. Veilig, leuk en lekker actief.", "name": "Familie Doorn", "role": "Kids-lessen" },
+        { "quote": "Beste plek voor koffie na een ochtendsessie. Voelt als thuis aan zee.", "name": "Lana", "role": "Vaste klant" }
+      ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "items": [
+        { "q": "Moet ik kunnen zwemmen?", "an": "Ja, een goede zwemvaardigheid is vereist. Je blijft tijdens de les altijd op staanbare diepte en onder begeleiding." },
+        { "q": "Heb ik eigen spullen nodig?", "an": "Nee. Board en wetsuit zitten bij de les in. Neem een handdoek, badkleding en goed humeur mee." },
+        { "q": "Gaat de les door bij slecht weer?", "an": "Bij onveilige condities verplaatsen we de les kosteloos. Een beetje regen of wind? Juist heerlijk — die zit toch onder water." },
+        { "q": "Vanaf welke leeftijd?", "an": "Kinderen kunnen vanaf 8 jaar mee in de jeugdlessen. Voor jonger overleggen we graag." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Boeken",
+      "title": "Tot in de <em>branding</em>",
+      "intro": "Boek een les of vraag iets — we reageren snel, ook als de golven goed staan.",
+      "submit": "Boek een les", "successTitle": "Stoked!", "successText": "Bedankt — we mailen je snel de details.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "soort", "label": "Soort les", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Proefles", "Cursus (4 lessen)", "Kids & jeugd", "Privéles", "Uitje / teambuilding", "Verhuur" ], "half": true, "error": "Maak een keuze." },
+        { "name": "personen", "label": "Aantal personen", "type": "number", "half": true, "placeholder": "2" },
+        { "name": "bericht", "label": "Bericht (optioneel)", "type": "textarea", "placeholder": "Niveau, voorkeursdatum, wensen…" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Tij is een surfschool en strandclub in Scheveningen: lessen voor alle niveaus, boardverhuur en koffie met uitzicht op zee.",
+    "bottom": "KvK 55102388 · Den Haag",
+    "columns": [
+      { "title": "Surf", "links": [ { "href": "#lessen", "label": "Lessen" }, { "href": "#verhuur", "label": "Verhuur" }, { "href": "#club", "label": "Strandclub" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Boeken" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:hoi@tijsurf.nl", "label": "hoi@tijsurf.nl" }, { "href": "tel:+31703226540", "label": "+31 70 322 65 40" }, { "href": "#contact", "label": "Strandtent 9, Scheveningen" } ] }
+    ]
+  }
+}

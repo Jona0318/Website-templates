@@ -1,0 +1,17 @@
+/* 36 — Inktzwart: inkt-hero (teken met je cursor) */
+.ink-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--header-h) + 2rem);padding-bottom:clamp(3rem,7vw,5rem);cursor:crosshair}
+.ink-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.ink-inner{position:relative;z-index:2;pointer-events:none}
+.ink-inner .btn{pointer-events:auto}
+.ink-hero .eyebrow{margin-bottom:1.3rem;color:var(--accent);border-color:var(--accent)}
+.ink-hero h1{font-family:var(--font-serif);font-weight:400;font-size:clamp(3.2rem,13vw,9rem);line-height:.86;letter-spacing:.01em;text-transform:uppercase}
+.ink-hero h1 em{font-style:normal;color:var(--accent);-webkit-text-stroke:2px var(--accent);color:transparent}
+.ink-lead{margin-top:1.5rem;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.3rem);max-width:42ch}
+.ink-cta{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.ink-hint{position:absolute;left:0;right:0;bottom:1.4rem;text-align:center;z-index:2;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);pointer-events:none;transition:opacity .5s}
+.ink-hero.drawn .ink-hint{opacity:0}
+html.anim-ok .ink-inner>*{opacity:0;transform:translateY(22px);animation:auroRise .9s var(--ease) forwards}
+html.anim-ok .ink-inner h1{animation-delay:.12s}
+html.anim-ok .ink-inner .ink-lead{animation-delay:.26s}
+html.anim-ok .ink-inner .ink-cta{animation-delay:.38s}
+@keyframes auroRise{to{opacity:1;transform:none}}

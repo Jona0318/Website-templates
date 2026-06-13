@@ -1,0 +1,17 @@
+/* 31 — Neonburcht: synthwave-hero */
+.syn-hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:calc(var(--header-h) + 2rem);padding-bottom:clamp(3rem,7vw,5rem)}
+.syn-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.syn-veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,var(--bg) 2%,transparent 38%)}
+.syn-inner{position:relative;z-index:2}
+.syn-hero .eyebrow{margin-bottom:1.3rem;border:1px solid var(--accent-2);color:var(--accent-2)}
+.syn-hero .eyebrow::before{background:var(--accent-2)}
+.syn-hero h1{font-family:var(--font-serif);font-weight:800;font-size:clamp(2.6rem,8.5vw,6.4rem);line-height:.95;letter-spacing:.02em;text-transform:uppercase;text-shadow:0 0 18px rgba(255,93,162,.6),0 0 46px rgba(54,231,255,.35)}
+.syn-hero h1 em{font-style:normal;color:var(--accent-2)}
+.syn-lead{margin:1.4rem auto 0;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.3rem);max-width:46ch}
+.syn-cta{margin-top:2rem;display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+.syn-hero .btn-primary{box-shadow:0 0 24px -4px var(--accent)}
+html.anim-ok .syn-inner>*{opacity:0;transform:translateY(22px);animation:auroRise .9s var(--ease) forwards}
+html.anim-ok .syn-inner h1{animation-delay:.14s}
+html.anim-ok .syn-inner .syn-lead{animation-delay:.28s}
+html.anim-ok .syn-inner .syn-cta{animation-delay:.4s}
+@keyframes auroRise{to{opacity:1;transform:none}}

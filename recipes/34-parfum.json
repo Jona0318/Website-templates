@@ -1,0 +1,82 @@
+{
+  "id": 34, "slug": "34-parfum", "title": "Sillage — geurhuis & parfumeur", "sector": "retail", "scheme": "dark",
+  "meta": { "title": "Sillage — onafhankelijk geurhuis & parfumeur", "description": "Sillage is een onafhankelijk geurhuis: nichegeuren met de hand gecomponeerd, plus een geurpiramide en parfumconsult.", "themeColor": "#16100c" },
+  "theme": {
+    "--bg": "#16100c", "--bg-2": "#1e1610", "--surface": "#241a12",
+    "--ink": "#f0e6d6", "--muted": "rgba(240,230,214,.62)", "--faint": "rgba(240,230,214,.40)",
+    "--line": "rgba(240,230,214,.13)", "--line-strong": "rgba(240,230,214,.24)",
+    "--accent": "#c9a24b", "--accent-2": "#c98a7a", "--accent-soft": "rgba(201,162,75,.12)", "--on-accent": "#16100c",
+    "--dark-bg": "#100b07", "--dark-surface": "#1e1610", "--dark-ink": "#f0e6d6", "--dark-muted": "rgba(240,230,214,.62)", "--dark-line": "rgba(240,230,214,.13)",
+    "--radius": "16px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap", "serif": "Cormorant Garamond", "grotesk": "Jost", "mono": "Space Mono" },
+  "brand": { "name": "Sillage", "tagline": "Geurhuis · Antwerpen", "email": "atelier@sillage-parfum.be", "tel": "+32 3 290 14 70", "address": "Kammenstraat 9, Antwerpen" },
+  "nav": [ { "href": "#geuren", "label": "Geuren" }, { "href": "#piramide", "label": "Geurpiramide" }, { "href": "#atelier", "label": "Atelier" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Consult" } ],
+  "headerCta": { "href": "#contact", "label": "Boek een consult" },
+  "customCssFile": "recipes/34-parfum.css",
+  "customJsFile": "recipes/34-parfum.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='sl-hero' aria-label='Introductie'><canvas class='sl-canvas' id='slCanvas' aria-hidden='true'></canvas><div class='sl-veil' aria-hidden='true'></div><div class='container sl-inner'><p class='eyebrow'>Onafhankelijk geurhuis · Antwerpen</p><h1>De geur die je <em>achterlaat</em>.</h1><p class='sl-lead'>Nichegeuren, met de hand gecomponeerd in ons atelier. Geen massa, geen ruis — alleen wat blijft hangen.</p><div class='sl-cta'><a class='btn btn-primary js-magnetic' href='#geuren'>Ontdek de geuren</a><a class='btn btn-ghost' href='#contact'>Boek een consult</a></div></div></section>" } },
+    { "use": "showcase", "id": "geuren", "data": {
+      "eyebrow": "De collectie",
+      "title": "Zeven <em>composities</em>",
+      "intro": "Elk met de hand gecomponeerd, in kleine oplages gerijpt.",
+      "items": [
+        { "tag": "houtig", "glyph": "❦", "title": "Cèdre Noir", "meta": "ceder · vetiver" },
+        { "tag": "bloemig", "glyph": "✿", "title": "Iris Pâle", "meta": "iris · poeder" },
+        { "tag": "citrus", "glyph": "❧", "title": "Bergamotte", "meta": "fris · groen" },
+        { "tag": "oriëntaals", "glyph": "✤", "title": "Ambre 7", "meta": "amber · wierook" },
+        { "tag": "leer", "glyph": "❖", "title": "Cuir", "meta": "leer · saffraan" },
+        { "tag": "aquatisch", "glyph": "✺", "title": "Brume", "meta": "zeezout · musk" }
+      ]
+    }},
+    { "use": "custom", "data": { "html": "<section class='section section--alt' id='piramide' aria-label='Geurpiramide'><div class='container'><div class='section-head center'><p class='eyebrow'>Geurpiramide</p><h2>Hoe een geur zich <em>ontvouwt</em></h2><p>Een goed parfum verandert op je huid — van de eerste indruk tot wat uren later nog blijft.</p></div><div class='pyr'><div class='pyr-tier' style='width:58%'><span class='lab'>Kopnoten</span><h3>De eerste indruk</h3><p>Bergamot, roze peper, mandarijn — fris en vluchtig.</p></div><div class='pyr-tier' style='width:80%'><span class='lab'>Hartnoten</span><h3>Het karakter</h3><p>Iris, jasmijn, saffraan — het hart dat een uur lang draagt.</p></div><div class='pyr-tier' style='width:100%'><span class='lab'>Basisnoten</span><h3>Wat blijft hangen</h3><p>Ceder, amber, vetiver, musk — het spoor, de sillage.</p></div></div></div></section>" } },
+    { "use": "zigzag", "id": "atelier", "data": {
+      "eyebrow": "Het atelier",
+      "title": "Van grondstof tot <em>spoor</em>",
+      "items": [
+        { "eyebrow": "01", "glyph": "❦", "title": "Met de hand gecomponeerd", "text": "Onze parfumeur werkt met natuurlijke en zorgvuldig gekozen synthetische grondstoffen, in kleine oplages.", "points": [ "Geen dierproeven", "Hoge concentratie (EdP)", "In kleine batches gerijpt" ] },
+        { "eyebrow": "02", "glyph": "✿", "title": "Geur op maat", "text": "Tijdens een consult vertalen we jouw verhaal naar een persoonlijke geur — exclusief voor jou.", "points": [ "Persoonlijk consult", "Eigen formule, bewaard", "Hervulbaar flacon" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "cijfers", "data": { "items": [
+      { "target": 2011, "label": "opgericht" },
+      { "target": 7, "label": "composities" },
+      { "target": 32, "suffix": "%", "label": "concentratie" },
+      { "target": 12, "suffix": " mnd", "label": "rijping" }
+    ]}},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "items": [
+        { "q": "Kan ik geuren eerst ruiken?", "an": "Ja. Vraag een ontdekset met monsters aan, of kom langs in het atelier voor een persoonlijke geurproeverij." },
+        { "q": "Wat houdt een geur op maat in?", "an": "In een consult van anderhalf uur stellen we samen een persoonlijke formule samen. Die bewaren we, zodat je altijd kunt bijbestellen." },
+        { "q": "Zijn jullie geuren dierproefvrij?", "an": "Volledig. We werken zonder dierproeven en zonder dierlijke grondstoffen." },
+        { "q": "Zijn de flacons hervulbaar?", "an": "Zeker — breng je flacon terug en wij vullen hem bij tegen een gereduceerd tarief. Mooier voor jou en de planeet." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Consult",
+      "title": "Vind jouw <em>spoor</em>",
+      "intro": "Boek een geurconsult of vraag een ontdekset aan. We nemen snel contact op.",
+      "submit": "Verstuur", "successTitle": "Met genoegen!", "successText": "Bedankt — we reageren binnen één werkdag.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "wens", "label": "Ik zoek", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Een geurconsult", "Geur op maat", "Ontdekset", "Een bestaande geur", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "voorkeur", "label": "Voorkeur", "type": "text", "half": true, "placeholder": "Houtig, fris…" },
+        { "name": "bericht", "label": "Bericht (optioneel)", "type": "textarea", "placeholder": "Vertel iets over je geurvoorkeur of gelegenheid" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Sillage is een onafhankelijk geurhuis in Antwerpen. Nichegeuren, met de hand gecomponeerd, in kleine oplages gerijpt.",
+    "bottom": "BTW BE 0644.218.770 · Antwerpen",
+    "columns": [
+      { "title": "Huis", "links": [ { "href": "#geuren", "label": "Geuren" }, { "href": "#piramide", "label": "Geurpiramide" }, { "href": "#atelier", "label": "Atelier" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Consult" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:atelier@sillage-parfum.be", "label": "atelier@sillage-parfum.be" }, { "href": "tel:+3232901470", "label": "+32 3 290 14 70" }, { "href": "#contact", "label": "Kammenstraat 9, Antwerpen" } ] }
+    ]
+  }
+}

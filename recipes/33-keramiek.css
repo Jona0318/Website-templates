@@ -1,0 +1,22 @@
+/* 33 — Draaischijf: pottenbakkers-hero */
+.kl-hero{position:relative;overflow:hidden;padding-top:calc(var(--header-h) + clamp(2rem,5vw,4rem));padding-bottom:clamp(2.5rem,5vw,4rem)}
+.kl-hero .container{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.kl-hero .container{grid-template-columns:1fr;gap:2.5rem}}
+.kl-hero .eyebrow{margin-bottom:1.2rem}
+.kl-hero h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.7rem,7.5vw,5.6rem);line-height:1;letter-spacing:-.02em}
+.kl-hero h1 em{font-style:italic;color:var(--accent)}
+.kl-lead{margin-top:1.3rem;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.28rem);max-width:42ch}
+.kl-cta{margin-top:1.8rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.kl-stage{display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+.kl-wheel{position:relative;width:100%;max-width:420px;aspect-ratio:1;border-radius:var(--radius);background:radial-gradient(120% 100% at 50% 0%,var(--surface),var(--bg-2));border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(0,0,0,.4);touch-action:none;cursor:ns-resize;overflow:hidden}
+.kl-canvas{display:block;width:100%;height:100%}
+.kl-hint{position:absolute;left:0;right:0;bottom:.7rem;text-align:center;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);pointer-events:none;transition:opacity .4s}
+.kl-wheel.touched .kl-hint{opacity:0}
+.kl-actions{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
+.kl-btn{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 1.1rem;border:1px solid var(--line-strong);border-radius:99px;color:var(--ink);transition:border-color .3s,color .3s}
+.kl-btn:hover{border-color:var(--accent);color:var(--accent)}
+html.anim-ok .kl-hero .eyebrow,html.anim-ok .kl-hero h1,html.anim-ok .kl-lead,html.anim-ok .kl-cta{opacity:0;transform:translateY(22px);animation:auroRise .9s var(--ease) forwards}
+html.anim-ok .kl-hero h1{animation-delay:.12s}
+html.anim-ok .kl-lead{animation-delay:.24s}
+html.anim-ok .kl-cta{animation-delay:.34s}
+@keyframes auroRise{to{opacity:1;transform:none}}

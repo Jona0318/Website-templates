@@ -1,0 +1,95 @@
+{
+  "id": 35, "slug": "35-data", "title": "Meetlat — data-analyse & dashboards", "sector": "tech", "scheme": "dark",
+  "meta": { "title": "Meetlat — data-analyse, dashboards & datastrategie", "description": "Meetlat helpt organisaties beslissen op basis van data: dashboards, voorspellende modellen en heldere datastrategie.", "themeColor": "#0c1018" },
+  "theme": {
+    "--bg": "#0c1018", "--bg-2": "#121826", "--surface": "#141b2b",
+    "--ink": "#eaf0fa", "--muted": "rgba(234,240,250,.62)", "--faint": "rgba(234,240,250,.40)",
+    "--line": "rgba(234,240,250,.12)", "--line-strong": "rgba(234,240,250,.22)",
+    "--accent": "#b6f23d", "--accent-2": "#4cc4ff", "--accent-soft": "rgba(182,242,61,.12)", "--on-accent": "#0c1018",
+    "--dark-bg": "#080b12", "--dark-surface": "#121826", "--dark-ink": "#eaf0fa", "--dark-muted": "rgba(234,240,250,.62)", "--dark-line": "rgba(234,240,250,.12)",
+    "--radius": "16px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap", "serif": "Space Grotesk", "grotesk": "Inter", "mono": "JetBrains Mono" },
+  "brand": { "name": "Meetlat", "tagline": "Data & dashboards", "email": "hallo@meetlat.io", "tel": "+31 20 244 70 11", "address": "B. Amsterdam, Johan Huizingalaan 763" },
+  "nav": [ { "href": "#diensten", "label": "Diensten" }, { "href": "#werk", "label": "Aanpak" }, { "href": "#cijfers", "label": "Impact" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ],
+  "headerCta": { "href": "#contact", "label": "Plan een demo" },
+  "customCssFile": "recipes/35-data.css",
+  "customJsFile": "recipes/35-data.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='mt-hero' aria-label='Introductie'><div class='container'><div><p class='eyebrow'>Data-analyse & dashboards</p><h1>Beslis op <em>data</em>, niet op gevoel.</h1><p class='mt-lead'>Meetlat verandert ruwe data in heldere dashboards en voorspellingen — zodat je team sneller en zekerder beslist.</p><div class='mt-cta'><a class='btn btn-primary js-magnetic' href='#contact'>Plan een demo</a><a class='btn btn-ghost' href='#diensten'>Wat we doen</a></div></div><div class='mt-dash'><div class='mt-dash-top'><span class='ttl'>Omzet · realtime</span><span class='mt-live'><span class='dot'></span>live</span></div><canvas class='mt-chart' id='mtChart' role='img' aria-label='Live omzetgrafiek'></canvas><dl class='mt-kpis'><div><dt>Omzet (mtd)</dt><dd>€ 2,4M <b>▲ 12%</b></dd></div><div><dt>Conversie</dt><dd>3,8% <b>▲ 0,4</b></dd></div><div><dt>Churn</dt><dd>1,9% <b>▼ 0,3</b></dd></div></dl></div></div></section>" } },
+    { "use": "features", "id": "diensten", "data": {
+      "eyebrow": "Wat we doen",
+      "title": "Van ruwe data tot <em>besluit</em>",
+      "intro": "Een datateam op afroep — strategie, techniek en visualisatie onder één dak.",
+      "items": [
+        { "icon": "▦", "title": "Dashboards", "text": "Heldere, snelle dashboards die je hele organisatie begrijpt — van directie tot werkvloer." },
+        { "icon": "◑", "title": "Voorspellende modellen", "text": "Forecasting, churn-predictie en aanbevelingen die vooruitkijken in plaats van achteruit." },
+        { "icon": "⬡", "title": "Data-engineering", "text": "Betrouwbare pijplijnen en een nette datawarehouse als fundament onder alles." },
+        { "icon": "◎", "title": "Datastrategie", "text": "Welke vragen lonen, welke data heb je nodig, en hoe word je echt data-gedreven." },
+        { "icon": "✦", "title": "Embedded analytics", "text": "Grafieken en inzichten ingebouwd in je eigen product — wit-label en snel." },
+        { "icon": "◇", "title": "Training", "text": "We leren je team zelf vragen stellen aan de data, zodat je niet afhankelijk blijft." }
+      ]
+    }},
+    { "use": "tabs", "id": "werk", "data": {
+      "eyebrow": "Aanpak",
+      "title": "Hoe we te <em>werk</em> gaan",
+      "tabs": [
+        { "label": "Verkennen", "title": "Eerst de vraag", "text": "We brengen je doelen en databronnen in kaart en kiezen de cases met de meeste impact.", "points": [ "Data-audit", "Prioritering op waarde", "Heldere scope" ] },
+        { "label": "Bouwen", "title": "Snel iets werkends", "text": "Binnen weken een eerste dashboard of model dat je echt kunt gebruiken — daarna verfijnen we.", "points": [ "Iteratief, in sprints", "Productiewaardige code", "Documentatie" ] },
+        { "label": "Borgen", "title": "Zelf verder", "text": "We dragen over en trainen je team, zodat de inzichten blijven werken zonder ons.", "points": [ "Overdracht & training", "Monitoring", "Support op afroep" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "cijfers", "data": { "items": [
+      { "target": 2017, "label": "opgericht" },
+      { "target": 140, "suffix": "+", "label": "projecten" },
+      { "target": 32, "suffix": "%", "label": "gem. besparing" },
+      { "target": 9, "suffix": ",1", "label": "klantbeoordeling" }
+    ]}},
+    { "use": "comparison", "data": {
+      "eyebrow": "Vergelijk",
+      "title": "Meetlat vs. <em>de rest</em>",
+      "columns": [ "Zelf bouwen", "Groot bureau", "Meetlat" ],
+      "highlight": 2,
+      "rows": [
+        { "label": "Werkend dashboard binnen weken", "cells": [ false, false, true ] },
+        { "label": "Vaste, transparante prijs", "cells": [ "—", false, true ] },
+        { "label": "Strategie én techniek", "cells": [ false, true, true ] },
+        { "label": "Kennisoverdracht naar je team", "cells": [ true, false, true ] },
+        { "label": "Senioren aan de knoppen", "cells": [ "wisselend", "wisselend", true ] }
+      ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Veel <em>gevraagd</em>",
+      "items": [
+        { "q": "Met welke tools werken jullie?", "an": "We zijn tool-agnostisch: van dbt, BigQuery en Snowflake tot Power BI, Looker en maatwerk in Python. We kiezen wat bij jou past." },
+        { "q": "Hoe snel zien we resultaat?", "an": "Meestal staat er binnen drie tot vijf weken een eerste bruikbaar dashboard of model; daarna verfijnen we in korte sprints." },
+        { "q": "Is onze data veilig?", "an": "Ja. We werken volgens AVG, het liefst binnen jouw eigen omgeving, met heldere afspraken over toegang en bewaartermijnen." },
+        { "q": "Kunnen jullie ons team trainen?", "an": "Graag. Kennisoverdracht zit standaard in onze aanpak, met losse trainingen op maat als je dieper wilt." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Contact",
+      "title": "Meet wat <em>telt</em>",
+      "intro": "Plan een vrijblijvende demo of stel je vraag. We reageren binnen één werkdag.",
+      "submit": "Plan een demo", "successTitle": "Tot snel!", "successText": "Bedankt — we nemen binnen één werkdag contact op.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "Werk-e-mail", "type": "email", "required": true, "half": true },
+        { "name": "bedrijf", "label": "Organisatie", "type": "text", "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Dashboards", "Voorspellende modellen", "Data-engineering", "Datastrategie", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "required": true, "placeholder": "Vertel kort over je datavraag" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Meetlat is een data-consultancy in Amsterdam: dashboards, voorspellende modellen en heldere datastrategie — zodat je beslist op data.",
+    "bottom": "KvK 69921044 · Amsterdam",
+    "columns": [
+      { "title": "Diensten", "links": [ { "href": "#diensten", "label": "Dashboards" }, { "href": "#diensten", "label": "Modellen" }, { "href": "#werk", "label": "Aanpak" } ] },
+      { "title": "Info", "links": [ { "href": "#cijfers", "label": "Impact" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:hallo@meetlat.io", "label": "hallo@meetlat.io" }, { "href": "tel:+31202447011", "label": "+31 20 244 70 11" }, { "href": "#contact", "label": "B. Amsterdam" } ] }
+    ]
+  }
+}

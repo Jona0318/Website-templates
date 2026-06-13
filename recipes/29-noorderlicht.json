@@ -1,0 +1,90 @@
+{
+  "id": 29, "slug": "29-noorderlicht", "title": "Noorderlicht — arctische reizen", "sector": "reizen", "scheme": "dark",
+  "meta": { "title": "Noorderlicht — kleinschalige reizen naar het poollicht", "description": "Noorderlicht organiseert kleinschalige reizen naar Tromsø, IJsland, Lapland en Spitsbergen — met lokale gidsen en een aurora-garantie.", "themeColor": "#060c18" },
+  "theme": {
+    "--bg": "#060c18", "--bg-2": "#0b1424", "--surface": "#0e1830",
+    "--ink": "#eaf2ff", "--muted": "rgba(234,242,255,.62)", "--faint": "rgba(234,242,255,.40)",
+    "--line": "rgba(234,242,255,.12)", "--line-strong": "rgba(234,242,255,.22)",
+    "--accent": "#5ef0b0", "--accent-2": "#9b7bff", "--accent-soft": "rgba(94,240,176,.12)", "--on-accent": "#04130c",
+    "--dark-bg": "#040a14", "--dark-surface": "#0b1424", "--dark-ink": "#eaf2ff", "--dark-muted": "rgba(234,242,255,.62)", "--dark-line": "rgba(234,242,255,.12)",
+    "--radius": "16px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap", "serif": "Spectral", "grotesk": "Hanken Grotesk", "mono": "Space Mono" },
+  "brand": { "name": "Noorderlicht", "tagline": "Arctische reizen", "email": "hallo@noorderlicht-reizen.nl", "tel": "+31 20 891 33 70", "address": "Prins Hendrikkade 48, Amsterdam" },
+  "nav": [ { "href": "#reizen", "label": "Bestemmingen" }, { "href": "#waarom", "label": "Waarom wij" }, { "href": "#cijfers", "label": "In het kort" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ],
+  "headerCta": { "href": "#contact", "label": "Plan je reis" },
+  "customCssFile": "recipes/29-noorderlicht.css",
+  "customJsFile": "recipes/29-noorderlicht.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='auro-hero' aria-label='Introductie'><canvas class='auro-canvas' id='auroCanvas' aria-hidden='true'></canvas><div class='auro-veil' aria-hidden='true'></div><div class='container auro-inner'><p class='eyebrow'>Arctische reizen · sinds 2009</p><h1>Reis naar het <em>licht</em> van het noorden.</h1><p class='auro-lead'>Kleinschalige reizen naar de donkerste, helderste plekken van Europa — met lokale gidsen die weten wáár en wanneer het poollicht danst.</p><div class='auro-cta'><a class='btn btn-primary js-magnetic' href='#reizen'>Bekijk bestemmingen</a><a class='btn btn-ghost' href='#contact'>Plan op maat</a></div><div class='auro-meta'><div><b>4–12</b><span>reizigers per groep</span></div><div><b>87%</b><span>zag het noorderlicht</span></div><div><b>15 jr</b><span>arctische ervaring</span></div></div></div></section>" } },
+    { "use": "showcase", "id": "reizen", "data": {
+      "eyebrow": "Bestemmingen",
+      "title": "Acht nachten onder het <em>poollicht</em>",
+      "intro": "Vaste vertrekken én reizen op maat, telkens in kleine groepen.",
+      "items": [
+        { "tag": "sep–mrt", "glyph": "✦", "title": "Tromsø", "meta": "Noorwegen" },
+        { "tag": "okt–apr", "glyph": "❄", "title": "IJsland", "meta": "Ringweg & vuur" },
+        { "tag": "dec–mrt", "glyph": "✧", "title": "Lapland", "meta": "Finland" },
+        { "tag": "feb–apr", "glyph": "◓", "title": "Spitsbergen", "meta": "Svalbard" },
+        { "tag": "sep–mrt", "glyph": "▲", "title": "Noordkaap", "meta": "Het uiterste noorden" },
+        { "tag": "op maat", "glyph": "◆", "title": "Groenland", "meta": "Expeditie" }
+      ]
+    }},
+    { "use": "zigzag", "id": "waarom", "data": {
+      "eyebrow": "Waarom Noorderlicht",
+      "title": "Klein, lokaal en <em>zeker</em>",
+      "items": [
+        { "eyebrow": "01", "glyph": "☾", "title": "Aurora-garantie", "text": "Zie je tijdens je reis geen noorderlicht? Dan mag je het volgende seizoen gratis nog eens proberen.", "points": [ "Beste plekken & tijden", "Flexibel jagen op heldere nachten" ] },
+        { "eyebrow": "02", "glyph": "✦", "title": "Lokale gidsen", "text": "Onze gidsen wonen er. Ze lezen de wolken, kennen de stille plekken en vertellen de verhalen.", "points": [ "Maximaal 12 reizigers", "Echte ontmoetingen" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "cijfers", "data": { "items": [
+      { "target": 2009, "label": "opgericht" },
+      { "target": 6800, "suffix": "+", "label": "reizigers" },
+      { "target": 87, "suffix": "%", "label": "zag het poollicht" },
+      { "target": 9, "suffix": ",2", "label": "reisbeoordeling" }
+    ]}},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Reizigers",
+      "title": "Verhalen uit het <em>noorden</em>",
+      "items": [
+        { "quote": "De derde nacht stond de hele hemel in groen vuur. Onvergetelijk, en perfect geregeld.", "name": "Karin & Paul", "role": "Tromsø, februari" },
+        { "quote": "Kleine groep, warme gidsen, geen massatoerisme. Precies wat we zochten.", "name": "Daan Hofman", "role": "Lapland" },
+        { "quote": "Van vluchten tot sneeuwschoenen — alles klopte. Wij hoefden alleen omhoog te kijken.", "name": "Eline Versteeg", "role": "IJsland" }
+      ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "items": [
+        { "q": "Wanneer is de beste tijd?", "an": "Tussen eind september en eind maart is het lang genoeg donker. December–februari is het koudst maar vaak het helderst." },
+        { "q": "Wat houdt de aurora-garantie in?", "an": "Zie je tijdens je reis geen noorderlicht, dan mag je in een volgend seizoen kosteloos opnieuw mee op een vergelijkbare reis." },
+        { "q": "Hoe groot zijn de groepen?", "an": "Klein: tussen 4 en 12 reizigers, zodat we wendbaar blijven en snel naar heldere plekken kunnen rijden." },
+        { "q": "Kan ik een reis op maat krijgen?", "an": "Zeker. Vertel ons je wensen en periode, dan stellen we een privéreis samen — ook naar Groenland en Spitsbergen." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Plan je reis",
+      "title": "Onder het <em>poollicht</em>, straks",
+      "intro": "Laat je gegevens achter, dan bellen we je voor een vrijblijvend reisadvies.",
+      "submit": "Vraag reisadvies aan", "successTitle": "Tot in het noorden!", "successText": "Bedankt — we nemen binnen één werkdag contact met je op.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "bestemming", "label": "Bestemming", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Tromsø", "IJsland", "Lapland", "Spitsbergen", "Noordkaap", "Groenland", "Weet ik nog niet" ], "half": true, "error": "Maak een keuze." },
+        { "name": "personen", "label": "Aantal personen", "type": "number", "half": true, "placeholder": "2" },
+        { "name": "bericht", "label": "Bericht (optioneel)", "type": "textarea", "placeholder": "Periode, wensen, droombeeld…" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Noorderlicht organiseert kleinschalige, zorgvuldige reizen naar het poollicht — met lokale gidsen en een aurora-garantie.",
+    "bottom": "SGR-gegarandeerd · KvK 51220394",
+    "columns": [
+      { "title": "Reizen", "links": [ { "href": "#reizen", "label": "Bestemmingen" }, { "href": "#waarom", "label": "Waarom wij" }, { "href": "#contact", "label": "Op maat" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#cijfers", "label": "In het kort" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:hallo@noorderlicht-reizen.nl", "label": "hallo@noorderlicht-reizen.nl" }, { "href": "tel:+31208913370", "label": "+31 20 891 33 70" }, { "href": "#contact", "label": "Prins Hendrikkade 48, Amsterdam" } ] }
+    ]
+  }
+}

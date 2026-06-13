@@ -1,0 +1,88 @@
+{
+  "id": 36, "slug": "36-tattoo", "title": "Inktzwart — tattoo studio", "sector": "creatief", "scheme": "light",
+  "meta": { "title": "Inktzwart — tattoo studio & private atelier", "description": "Inktzwart is een tattoo studio in Den Bosch: fineline, blackwork en maatwerk in een rustig privé-atelier. Teken mee in de inkt.", "themeColor": "#f2ece0" },
+  "theme": {
+    "--bg": "#f2ece0", "--bg-2": "#e7dfce", "--surface": "#ffffff",
+    "--ink": "#0d0d0d", "--muted": "rgba(13,13,13,.62)", "--faint": "rgba(13,13,13,.42)",
+    "--line": "rgba(13,13,13,.14)", "--line-strong": "rgba(13,13,13,.30)",
+    "--accent": "#d11a26", "--accent-2": "#0d0d0d", "--accent-soft": "rgba(209,26,38,.10)", "--on-accent": "#ffffff",
+    "--dark-bg": "#0d0d0d", "--dark-surface": "#161616", "--dark-ink": "#f2ece0", "--dark-muted": "rgba(242,236,224,.62)", "--dark-line": "rgba(242,236,224,.14)",
+    "--radius": "6px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap", "serif": "Anton", "grotesk": "Inter", "mono": "Space Mono" },
+  "brand": { "name": "Inktzwart", "tagline": "Tattoo studio · Den Bosch", "email": "boek@inktzwart.studio", "tel": "+31 73 614 88 02", "address": "Korte Putstraat 14, 's-Hertogenbosch" },
+  "nav": [ { "href": "#stijlen", "label": "Stijlen" }, { "href": "#werkwijze", "label": "Werkwijze" }, { "href": "#artiesten", "label": "Artiesten" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Boeken" } ],
+  "headerCta": { "href": "#contact", "label": "Boek een sessie" },
+  "customCssFile": "recipes/36-tattoo.css",
+  "customJsFile": "recipes/36-tattoo.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='ink-hero' aria-label='Introductie'><canvas class='ink-canvas' id='inkCanvas' aria-hidden='true'></canvas><div class='container ink-inner'><p class='eyebrow'>Tattoo studio · privé-atelier</p><h1>Gezet voor het <em>leven</em>.</h1><p class='ink-lead'>Fineline, blackwork en maatwerk in een rustig privé-atelier in Den Bosch. Eén klant per keer, alle tijd voor jouw verhaal.</p><div class='ink-cta'><a class='btn btn-primary js-magnetic' href='#contact'>Boek een sessie</a><a class='btn btn-ghost' href='#stijlen'>Bekijk stijlen</a></div></div><span class='ink-hint'>Beweeg je muis — teken in de inkt</span></section>" } },
+    { "use": "showcase", "id": "stijlen", "data": {
+      "eyebrow": "Stijlen",
+      "title": "Onze <em>handtekening</em>",
+      "intro": "Specialisaties van het huis — alles in overleg en op maat.",
+      "items": [
+        { "tag": "fijn", "glyph": "—", "title": "Fineline", "meta": "Dunne, precieze lijnen" },
+        { "tag": "zwart", "glyph": "◆", "title": "Blackwork", "meta": "Massief & grafisch" },
+        { "tag": "natuur", "glyph": "❧", "title": "Botanisch", "meta": "Bloemen & planten" },
+        { "tag": "klein", "glyph": "✦", "title": "Micro & symbolen", "meta": "Subtiel" },
+        { "tag": "oud", "glyph": "★", "title": "Neo-traditional", "meta": "Bold & kleur" },
+        { "tag": "letters", "glyph": "A", "title": "Lettering", "meta": "Handgezet" }
+      ]
+    }},
+    { "use": "steps", "id": "werkwijze", "data": {
+      "eyebrow": "Werkwijze",
+      "title": "Van idee tot <em>inkt</em>",
+      "items": [
+        { "title": "Vrijblijvend gesprek", "text": "We bespreken je idee, plek en stijl. Geen druk — eerst kijken of het klikt." },
+        { "title": "Ontwerp op maat", "text": "Je krijgt een uniek ontwerp dat we samen finetunen tot het precies klopt." },
+        { "title": "De sessie", "text": "In een schone, rustige studio zetten we de tattoo — met alle tijd en zorg." },
+        { "title": "Nazorg", "text": "Je gaat naar huis met heldere nazorg en wij blijven bereikbaar voor vragen." }
+      ]
+    }},
+    { "use": "metrics", "id": "cijfers", "data": { "items": [
+      { "target": 2015, "label": "geopend" },
+      { "target": 3200, "suffix": "+", "label": "tattoos gezet" },
+      { "target": 4, "suffix": ",9", "label": "beoordeling" },
+      { "target": 100, "suffix": "%", "label": "steriel & veilig" }
+    ]}},
+    { "use": "team", "id": "artiesten", "data": {
+      "eyebrow": "Het atelier",
+      "title": "Onze <em>artiesten</em>",
+      "items": [ { "name": "Bram Inkt", "role": "Blackwork & fineline" }, { "name": "Noor Vos", "role": "Botanisch" }, { "name": "Kai Mertens", "role": "Neo-traditional" }, { "name": "Saar Lentz", "role": "Lettering" } ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "items": [
+        { "q": "Hoe boek ik een afspraak?", "an": "Via het formulier hieronder. We plannen eerst een gratis intakegesprek (ook digitaal kan) voordat we iets vastleggen." },
+        { "q": "Wat kost een tattoo?", "an": "Dat hangt af van grootte, detail en plek. Kleinere stukken vanaf € 120; voor grotere werken maken we een offerte na het ontwerp." },
+        { "q": "Vanaf welke leeftijd?", "an": "Je moet 18 jaar of ouder zijn en een geldig legitimatiebewijs meenemen. Daar maken we geen uitzondering op." },
+        { "q": "Hoe zit het met hygiëne?", "an": "We werken met steriele, eenmalige naalden en volgen alle richtlijnen van de GGD. Veiligheid staat altijd voorop." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Boeken",
+      "title": "Zet je <em>verhaal</em> vast",
+      "intro": "Vertel kort over je idee, dan plannen we een vrijblijvende intake.",
+      "submit": "Vraag intake aan", "successTitle": "Tot in de studio!", "successText": "Bedankt — we reageren binnen één werkdag.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "stijl", "label": "Stijl", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Fineline", "Blackwork", "Botanisch", "Micro & symbolen", "Neo-traditional", "Lettering", "Weet ik nog niet" ], "half": true, "error": "Maak een keuze." },
+        { "name": "plek", "label": "Plek op het lichaam", "type": "text", "half": true, "placeholder": "Bijv. onderarm" },
+        { "name": "bericht", "label": "Je idee", "type": "textarea", "required": true, "placeholder": "Vertel over je ontwerp, formaat en inspiratie" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Inktzwart is een tattoo studio en privé-atelier in Den Bosch: fineline, blackwork en maatwerk — eén klant per keer.",
+    "bottom": "KvK 17288104 · 's-Hertogenbosch",
+    "columns": [
+      { "title": "Studio", "links": [ { "href": "#stijlen", "label": "Stijlen" }, { "href": "#werkwijze", "label": "Werkwijze" }, { "href": "#artiesten", "label": "Artiesten" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Boeken" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:boek@inktzwart.studio", "label": "boek@inktzwart.studio" }, { "href": "tel:+31736148802", "label": "+31 73 614 88 02" }, { "href": "#contact", "label": "Korte Putstraat 14, Den Bosch" } ] }
+    ]
+  }
+}

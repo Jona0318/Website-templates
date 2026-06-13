@@ -1,0 +1,89 @@
+{
+  "id": 32, "slug": "32-kwekerij", "title": "Wildgroei — stadskwekerij & plantenwinkel", "sector": "retail", "scheme": "light",
+  "meta": { "title": "Wildgroei — stadskwekerij & plantenwinkel", "description": "Wildgroei is een stadskwekerij en plantenwinkel: zelf gekweekte kamerplanten, advies en workshops. Zie de planten voor je ogen groeien.", "themeColor": "#f3f1e6" },
+  "theme": {
+    "--bg": "#f3f1e6", "--bg-2": "#e8e6d6", "--surface": "#ffffff",
+    "--ink": "#1f2a1c", "--muted": "rgba(31,42,28,.62)", "--faint": "rgba(31,42,28,.40)",
+    "--line": "rgba(31,42,28,.13)", "--line-strong": "rgba(31,42,28,.24)",
+    "--accent": "#3f7d3a", "--accent-2": "#d98a4e", "--accent-soft": "rgba(63,125,58,.12)", "--on-accent": "#ffffff",
+    "--dark-bg": "#172015", "--dark-surface": "#1f2a1c", "--dark-ink": "#eef3e6", "--dark-muted": "rgba(238,243,230,.62)", "--dark-line": "rgba(238,243,230,.14)",
+    "--radius": "16px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap", "serif": "Fraunces", "grotesk": "Hanken Grotesk", "mono": "Space Mono" },
+  "brand": { "name": "Wildgroei", "tagline": "Stadskwekerij · Nijmegen", "email": "hoi@wildgroei.nl", "tel": "+31 24 360 22 18", "address": "Honigcomplex, Nijmegen" },
+  "nav": [ { "href": "#planten", "label": "Planten" }, { "href": "#workshops", "label": "Workshops" }, { "href": "#kwekerij", "label": "De kwekerij" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ],
+  "headerCta": { "href": "#contact", "label": "Bezoek de kas" },
+  "customCssFile": "recipes/32-kwekerij.css",
+  "customJsFile": "recipes/32-kwekerij.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='gro-hero' aria-label='Introductie'><canvas class='gro-canvas' id='groCanvas' aria-hidden='true'></canvas><div class='container gro-inner'><p class='eyebrow'>Stadskwekerij · sinds 2016</p><h1>Laat het <em>groeien</em>.</h1><p class='gro-lead'>Een stadskwekerij en plantenwinkel in Nijmegen. Zelf opgekweekt, eerlijk advies en workshops — voor een huis dat ademt.</p><div class='gro-cta'><a class='btn btn-primary js-magnetic' href='#planten'>Bekijk planten</a><a class='btn btn-ghost' href='#workshops'>Workshops</a></div></div></section>" } },
+    { "use": "showcase", "id": "planten", "data": {
+      "eyebrow": "In de winkel",
+      "title": "Vers uit de <em>kas</em>",
+      "intro": "Zelf opgekweekt, sterk geworteld en klaar voor jouw vensterbank.",
+      "items": [
+        { "tag": "makkelijk", "glyph": "🌿", "title": "Monstera", "meta": "Gatenplant" },
+        { "tag": "luchtzuiver", "glyph": "🪴", "title": "Sansevieria", "meta": "Vrouwentong" },
+        { "tag": "hangend", "glyph": "🌱", "title": "Pothos", "meta": "Scindapsus" },
+        { "tag": "statement", "glyph": "🌾", "title": "Strelitzia", "meta": "Paradijsvogel" },
+        { "tag": "schaduw", "glyph": "☘", "title": "Calathea", "meta": "Pauwplant" },
+        { "tag": "kruiden", "glyph": "🌼", "title": "Kruidenset", "meta": "Voor de keuken" }
+      ]
+    }},
+    { "use": "zigzag", "id": "workshops", "data": {
+      "eyebrow": "Workshops",
+      "title": "Samen handen in de <em>aarde</em>",
+      "items": [
+        { "eyebrow": "01", "glyph": "🪴", "title": "Stek & verpot", "text": "Leer stekken, verpotten en je planten gezond houden — neem je eigen plant mee naar huis.", "points": [ "2 uur, kleine groep", "Inclusief pot & aarde" ] },
+        { "eyebrow": "02", "glyph": "🌿", "title": "Terrarium bouwen", "text": "Bouw je eigen mini-ecosysteem onder glas, dat bijna zichzelf verzorgt.", "points": [ "Alle materialen inbegrepen", "Ook voor groepen" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "kwekerij", "data": { "items": [
+      { "target": 2016, "label": "opgericht" },
+      { "target": 240, "suffix": "+", "label": "soorten" },
+      { "target": 18000, "suffix": "+", "label": "planten gekweekt" },
+      { "target": 4, "suffix": ",9", "label": "winkelbeoordeling" }
+    ]}},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Klanten",
+      "title": "Groene <em>handen</em>",
+      "items": [
+        { "quote": "Eerlijk advies zonder verkooppraat. Mijn monstera doet het eindelijk geweldig.", "name": "Lotte", "role": "Nijmegen" },
+        { "quote": "De terrarium-workshop was een feestje. En het ding leeft nog steeds!", "name": "Sven", "role": "Workshopdeelnemer" },
+        { "quote": "Mooiere en sterkere planten dan bij de bouwmarkt, en lokaal gekweekt.", "name": "Fatima", "role": "Vaste klant" }
+      ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "items": [
+        { "q": "Geven jullie ook plantadvies?", "an": "Altijd en gratis. Loop binnen of mail een foto van je plek en plant, dan denken we mee over licht, water en verzorging." },
+        { "q": "Kweken jullie zelf?", "an": "Het grootste deel kweken we zelf op in onze kas op het Honigcomplex — daardoor zijn de planten gewend aan het Nederlandse binnenklimaat." },
+        { "q": "Bezorgen jullie?", "an": "In Nijmegen en omstreken bezorgen we per bakfiets. Daarbuiten verzenden we kleinere planten veilig per pakket." },
+        { "q": "Kan ik een workshop privé boeken?", "an": "Ja, voor groepen vanaf zes personen — leuk als uitje of teamuitstapje. Vraag de mogelijkheden aan via het formulier." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "data": {
+      "eyebrow": "Contact",
+      "title": "Kom langs in de <em>kas</em>",
+      "intro": "Vraag, bestelling of workshop? Laat het ons weten.",
+      "submit": "Verstuur", "successTitle": "Bedankt!", "successText": "We reageren binnen één werkdag.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Plantadvies", "Workshop boeken", "Bestelling", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "aantal", "label": "Aantal personen (workshop)", "type": "text", "half": true, "placeholder": "Bijv. 6" },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "required": true, "placeholder": "Waarmee kunnen we helpen?" }
+      ]
+    }}
+  ],
+  "footer": {
+    "blurb": "Wildgroei is een stadskwekerij en plantenwinkel op het Honigcomplex in Nijmegen. Zelf gekweekt, eerlijk advies, groene workshops.",
+    "bottom": "KvK 65821190 · Nijmegen",
+    "columns": [
+      { "title": "Winkel", "links": [ { "href": "#planten", "label": "Planten" }, { "href": "#workshops", "label": "Workshops" }, { "href": "#kwekerij", "label": "De kwekerij" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:hoi@wildgroei.nl", "label": "hoi@wildgroei.nl" }, { "href": "tel:+31243602218", "label": "+31 24 360 22 18" }, { "href": "#contact", "label": "Honigcomplex, Nijmegen" } ] }
+    ]
+  }
+}

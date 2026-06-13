@@ -1,0 +1,89 @@
+{
+  "id": 33, "slug": "33-keramiek", "title": "Draaischijf — keramiekstudio", "sector": "creatief", "scheme": "light",
+  "meta": { "title": "Draaischijf — keramiekstudio & workshops", "description": "Draaischijf is een keramiekstudio in Deventer: handgemaakt servies, cursussen draaien en open studio-uren. Vorm zelf een vaas op de website.", "themeColor": "#efe7dd" },
+  "theme": {
+    "--bg": "#efe7dd", "--bg-2": "#e3d7c7", "--surface": "#fbf7f1",
+    "--ink": "#2a211a", "--muted": "rgba(42,33,26,.62)", "--faint": "rgba(42,33,26,.40)",
+    "--line": "rgba(42,33,26,.13)", "--line-strong": "rgba(42,33,26,.24)",
+    "--accent": "#b5532e", "--accent-2": "#6f7a5a", "--accent-soft": "rgba(181,83,46,.12)", "--on-accent": "#ffffff",
+    "--dark-bg": "#241c15", "--dark-surface": "#2f261d", "--dark-ink": "#f3ebe0", "--dark-muted": "rgba(243,235,224,.62)", "--dark-line": "rgba(243,235,224,.14)",
+    "--radius": "18px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap", "serif": "Spectral", "grotesk": "Inter", "mono": "Space Mono" },
+  "brand": { "name": "Draaischijf", "tagline": "Keramiekstudio · Deventer", "email": "studio@draaischijf.nl", "tel": "+31 570 612 905", "address": "Noordenbergstraat 22, Deventer" },
+  "nav": [ { "href": "#werk", "label": "Werk" }, { "href": "#cursussen", "label": "Cursussen" }, { "href": "#studio", "label": "Open studio" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ],
+  "headerCta": { "href": "#cursussen", "label": "Schrijf je in" },
+  "customCssFile": "recipes/33-keramiek.css",
+  "customJsFile": "recipes/33-keramiek.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='kl-hero' aria-label='Introductie'><div class='container'><div><p class='eyebrow'>Keramiekstudio · sinds 2013</p><h1>Vorm met je <em>handen</em>.</h1><p class='kl-lead'>Een keramiekstudio in Deventer voor handgemaakt servies, cursussen draaien en open studio-uren. Begin alvast hiernaast — sleep over de klei en vorm je eigen vaas.</p><div class='kl-cta'><a class='btn btn-primary js-magnetic' href='#cursussen'>Bekijk cursussen</a><a class='btn btn-ghost' href='#werk'>Ons werk</a></div></div><div class='kl-stage'><div class='kl-wheel' id='klWheel'><canvas class='kl-canvas' id='klCanvas' role='img' aria-label='Draaischijf: sleep omhoog en omlaag om de vaas te vormen'></canvas><span class='kl-hint'>Sleep over de klei om te vormen</span></div><div class='kl-actions'><button class='kl-btn' id='klNieuw' type='button'>↻ Nieuwe vorm</button><button class='kl-btn' id='klReset' type='button'>Terug naar begin</button></div></div></div></section>" } },
+    { "use": "showcase", "id": "werk", "data": {
+      "eyebrow": "Uit de oven",
+      "title": "Handgemaakt <em>servies</em>",
+      "intro": "Stuk voor stuk gedraaid, geglazuurd en gestookt in eigen studio.",
+      "items": [
+        { "tag": "servies", "glyph": "◖", "title": "Ontbijtkommen", "meta": "Steengoed" },
+        { "tag": "vazen", "glyph": "◗", "title": "Knopvaas", "meta": "Mat glazuur" },
+        { "tag": "borden", "glyph": "●", "title": "Dinerborden", "meta": "Set van 4" },
+        { "tag": "thee", "glyph": "◓", "title": "Theepot", "meta": "Handgevormd" },
+        { "tag": "maatwerk", "glyph": "◒", "title": "Op bestelling", "meta": "Voor restaurants" },
+        { "tag": "wabi", "glyph": "◐", "title": "Theekommen", "meta": "Raku" }
+      ]
+    }},
+    { "use": "zigzag", "id": "cursussen", "data": {
+      "eyebrow": "Cursussen",
+      "title": "Leer <em>draaien</em>",
+      "items": [
+        { "eyebrow": "Beginners", "glyph": "◍", "title": "Draaien in 6 weken", "text": "Wekelijks twee uur achter de draaischijf. Van eerste klomp klei tot een set kommen die je mee naar huis neemt.", "points": [ "Max. 8 deelnemers", "Klei & stook inbegrepen", "Avond- en daggroepen" ] },
+        { "eyebrow": "Losse workshop", "glyph": "◉", "title": "Proef de klei", "text": "Een avond kennismaken met de draaischijf — ideaal als uitje, vrijgezellenfeest of cadeau.", "points": [ "3 uur, inclusief drankje", "Geen ervaring nodig", "Ook voor groepen" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "studio", "data": { "items": [
+      { "target": 2013, "label": "opgericht" },
+      { "target": 1400, "suffix": "+", "label": "cursisten" },
+      { "target": 1240, "suffix": "°C", "label": "stooktemperatuur" },
+      { "target": 4, "suffix": ",9", "label": "cursusbeoordeling" }
+    ]}},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Cursisten",
+      "title": "Klei onder de <em>nagels</em>",
+      "items": [
+        { "quote": "Verslavend! Na zes weken sta ik nog elke week achter de schijf. Heerlijke, rustige plek.", "name": "Marloes", "role": "Beginnerscursus" },
+        { "quote": "Als uitje met vriendinnen was de proefworkshop top — en we namen echt iets moois mee.", "name": "Pien", "role": "Workshop" },
+        { "quote": "Prachtig servies voor ons restaurant, helemaal op maat gedraaid.", "name": "Restaurant Veer", "role": "Maatwerk" }
+      ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Goed om te <em>weten</em>",
+      "items": [
+        { "q": "Heb ik ervaring nodig?", "an": "Nee. Onze cursussen en workshops beginnen bij het begin; we draaien samen je eerste vorm en je leert vanzelf." },
+        { "q": "Wat kost een cursus?", "an": "De zesweekse cursus is € 245, inclusief klei, glazuren en het stoken. Losse workshops zijn € 55 per persoon." },
+        { "q": "Wanneer kan ik mijn werk ophalen?", "an": "Gedraaid werk moet drogen, biscuitstoken, glazuren en nogmaals stoken — reken op drie tot vier weken voor het klaar is." },
+        { "q": "Zijn er open studio-uren?", "an": "Ja, voor wie al kan draaien. Reserveer een plek en gebruik onze schijven, klei en ovens tegen een uurtarief." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "data": {
+      "eyebrow": "Contact",
+      "title": "Kom <em>draaien</em>",
+      "intro": "Inschrijven, bestellen of een vraag? Laat het weten.",
+      "submit": "Verstuur", "successTitle": "Tot in de studio!", "successText": "Bedankt — we reageren binnen één werkdag.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Cursus draaien", "Losse workshop", "Servies bestellen", "Open studio", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "personen", "label": "Aantal personen", "type": "text", "half": true, "placeholder": "1" },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "required": true, "placeholder": "Waarmee kunnen we helpen?" }
+      ]
+    }}
+  ],
+  "footer": {
+    "blurb": "Draaischijf is een keramiekstudio in Deventer: handgemaakt servies, cursussen draaien en open studio-uren.",
+    "bottom": "KvK 08211765 · Deventer",
+    "columns": [
+      { "title": "Studio", "links": [ { "href": "#werk", "label": "Werk" }, { "href": "#cursussen", "label": "Cursussen" }, { "href": "#studio", "label": "Open studio" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:studio@draaischijf.nl", "label": "studio@draaischijf.nl" }, { "href": "tel:+31570612905", "label": "+31 570 612 905" }, { "href": "#contact", "label": "Noordenbergstraat 22, Deventer" } ] }
+    ]
+  }
+}

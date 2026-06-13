@@ -1,0 +1,95 @@
+{
+  "id": 38, "slug": "38-lab", "title": "Synaps — AI-lab", "sector": "tech", "scheme": "dark",
+  "meta": { "title": "Synaps — toegepast AI-lab", "description": "Synaps is een toegepast AI-lab: van prototype tot productie. Taalmodellen, computer vision en betrouwbare AI op maat.", "themeColor": "#07090f" },
+  "theme": {
+    "--bg": "#07090f", "--bg-2": "#0c1018", "--surface": "#0e1422",
+    "--ink": "#eaf2ff", "--muted": "rgba(234,242,255,.62)", "--faint": "rgba(234,242,255,.40)",
+    "--line": "rgba(234,242,255,.12)", "--line-strong": "rgba(234,242,255,.22)",
+    "--accent": "#6e8cff", "--accent-2": "#2fe6e6", "--accent-soft": "rgba(110,140,255,.14)", "--on-accent": "#07090f",
+    "--dark-bg": "#05070c", "--dark-surface": "#0c1018", "--dark-ink": "#eaf2ff", "--dark-muted": "rgba(234,242,255,.62)", "--dark-line": "rgba(234,242,255,.12)",
+    "--radius": "14px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap", "serif": "Space Grotesk", "grotesk": "Inter", "mono": "JetBrains Mono" },
+  "brand": { "name": "Synaps", "tagline": "Toegepast AI-lab", "email": "lab@synaps.ai", "tel": "+31 15 760 22 30", "address": "YES!Delft, Molengraaffsingel 12" },
+  "nav": [ { "href": "#diensten", "label": "Wat we doen" }, { "href": "#aanpak", "label": "Aanpak" }, { "href": "#cijfers", "label": "Impact" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ],
+  "headerCta": { "href": "#contact", "label": "Start een proof-of-concept" },
+  "customCssFile": "recipes/38-lab.css",
+  "customJsFile": "recipes/38-lab.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='sy2-hero' aria-label='Introductie'><canvas class='sy2-canvas' id='sy2Canvas' aria-hidden='true'></canvas><div class='sy2-veil' aria-hidden='true'></div><div class='container sy2-inner'><p class='eyebrow'>Toegepast AI-lab · Delft</p><h1>AI die <em>echt</em> in productie gaat.</h1><p class='sy2-lead'>Synaps bouwt betrouwbare AI op maat — van eerste proof-of-concept tot draaiend in jullie product. Geen hype, wel resultaat.</p><div class='sy2-cta'><a class='btn btn-primary js-magnetic' href='#contact'>Start een PoC</a><a class='btn btn-ghost' href='#diensten'>Wat we doen</a></div></div><span class='sy2-hint'>Beweeg je muis door het netwerk</span></section>" } },
+    { "use": "features", "id": "diensten", "data": {
+      "eyebrow": "Wat we doen",
+      "title": "Van model tot <em>product</em>",
+      "intro": "Een AI-team op afroep dat ook echt levert — onderzoek, engineering en MLOps.",
+      "items": [
+        { "icon": "◈", "title": "Taalmodellen & RAG", "text": "Slimme assistenten, zoek en samenvatting bovenop je eigen kennisbank — accuraat en controleerbaar." },
+        { "icon": "◉", "title": "Computer vision", "text": "Detectie, inspectie en kwaliteitscontrole op beeld, in de fabriek of in het veld." },
+        { "icon": "⬡", "title": "Voorspellen", "text": "Forecasting en anomaliedetectie die ingrijpt vóórdat het misgaat." },
+        { "icon": "▦", "title": "MLOps", "text": "Modellen die niet stilvallen: monitoring, hertraining en betrouwbare pijplijnen." },
+        { "icon": "◇", "title": "Proof-of-concept", "text": "In enkele weken bewijzen of een idee werkt — mét een eerlijk go/no-go." },
+        { "icon": "✦", "title": "AI-strategie", "text": "Waar levert AI bij jou echt waarde, en hoe doe je het verantwoord en volgens de regels." }
+      ]
+    }},
+    { "use": "tabs", "id": "aanpak", "data": {
+      "eyebrow": "Aanpak",
+      "title": "Hoe we het <em>waarmaken</em>",
+      "tabs": [
+        { "label": "PoC", "title": "Bewijs het, snel", "text": "We kiezen één scherpe use-case en bouwen in weken een werkend bewijs — met heldere meetlat.", "points": [ "Scope op waarde", "Werkend in 4–6 weken", "Eerlijk go/no-go" ] },
+        { "label": "Productie", "title": "Van demo naar dienst", "text": "We harden het model, bouwen de pijplijn en zetten het veilig in productie.", "points": [ "Schaalbare architectuur", "Monitoring & hertraining", "Veilig & AVG-proof" ] },
+        { "label": "Borgen", "title": "Jullie aan het roer", "text": "We dragen over, documenteren en trainen je team, zodat de AI blijft werken zonder ons.", "points": [ "Overdracht & training", "Speelboeken", "Support op afroep" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "cijfers", "data": { "items": [
+      { "target": 2019, "label": "opgericht" },
+      { "target": 60, "suffix": "+", "label": "modellen live" },
+      { "target": 92, "suffix": "%", "label": "PoC naar productie" },
+      { "target": 11, "label": "AI-engineers" }
+    ]}},
+    { "use": "comparison", "data": {
+      "eyebrow": "Vergelijk",
+      "title": "Waarom <em>Synaps</em>",
+      "columns": [ "Generiek SaaS", "Groot bureau", "Synaps" ],
+      "highlight": 2,
+      "rows": [
+        { "label": "Op maat voor jouw data", "cells": [ false, true, true ] },
+        { "label": "Werkende PoC in weken", "cells": [ "—", false, true ] },
+        { "label": "Naar productie gebracht", "cells": [ false, "soms", true ] },
+        { "label": "Verantwoord & AVG-proof", "cells": [ "wisselend", true, true ] },
+        { "label": "Kennisoverdracht", "cells": [ false, false, true ] }
+      ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Veel <em>gevraagd</em>",
+      "items": [
+        { "q": "Beginnen we groot of klein?", "an": "Klein en bewijzend: een scherpe proof-of-concept met een duidelijke meetlat. Werkt het, dan schalen we op naar productie." },
+        { "q": "Wat gebeurt er met onze data?", "an": "Die blijft van jullie. We werken bij voorkeur binnen jullie omgeving, AVG-proof, met heldere afspraken over toegang." },
+        { "q": "Gebruiken jullie open of gesloten modellen?", "an": "Allebei — we kiezen per geval het beste model (open-source of API), afgewogen op kwaliteit, kosten en privacy." },
+        { "q": "Houden modellen het lang vol?", "an": "Met MLOps wel: we monitoren prestaties, hertrainen waar nodig en waarschuwen bij drift, zodat het scherp blijft." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Contact",
+      "title": "Leg de <em>verbinding</em>",
+      "intro": "Vertel kort over je idee of uitdaging. We reageren binnen één werkdag.",
+      "submit": "Start een PoC", "successTitle": "Verbonden!", "successText": "Bedankt — we nemen binnen één werkdag contact op.",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "Werk-e-mail", "type": "email", "required": true, "half": true },
+        { "name": "bedrijf", "label": "Organisatie", "type": "text", "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Taalmodellen & RAG", "Computer vision", "Voorspellen", "MLOps", "AI-strategie", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "required": true, "placeholder": "Vertel kort over je idee of uitdaging" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Synaps is een toegepast AI-lab in Delft. Van proof-of-concept tot productie: betrouwbare AI op maat, zonder hype.",
+    "bottom": "KvK 73910228 · Delft",
+    "columns": [
+      { "title": "Lab", "links": [ { "href": "#diensten", "label": "Wat we doen" }, { "href": "#aanpak", "label": "Aanpak" }, { "href": "#cijfers", "label": "Impact" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:lab@synaps.ai", "label": "lab@synaps.ai" }, { "href": "tel:+31157602230", "label": "+31 15 760 22 30" }, { "href": "#contact", "label": "YES!Delft, Delft" } ] }
+    ]
+  }
+}

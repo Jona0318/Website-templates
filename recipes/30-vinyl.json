@@ -1,0 +1,86 @@
+{
+  "id": 30, "slug": "30-vinyl", "title": "Groef — onafhankelijk platenlabel", "sector": "muziek", "scheme": "dark",
+  "meta": { "title": "Groef — onafhankelijk platenlabel & perserij", "description": "Groef is een onafhankelijk platenlabel uit Utrecht: vinyl, releases en een eigen perserij. Speel een groove en kijk de visualizer mee.", "themeColor": "#161009" },
+  "theme": {
+    "--bg": "#161009", "--bg-2": "#1f1810", "--surface": "#241c12",
+    "--ink": "#f3e9d8", "--muted": "rgba(243,233,216,.62)", "--faint": "rgba(243,233,216,.40)",
+    "--line": "rgba(243,233,216,.13)", "--line-strong": "rgba(243,233,216,.24)",
+    "--accent": "#e2562b", "--accent-2": "#e8a93c", "--accent-soft": "rgba(226,86,43,.12)", "--on-accent": "#1a1208",
+    "--dark-bg": "#100b06", "--dark-surface": "#1f1810", "--dark-ink": "#f3e9d8", "--dark-muted": "rgba(243,233,216,.62)", "--dark-line": "rgba(243,233,216,.13)",
+    "--radius": "12px"
+  },
+  "fonts": { "googleHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap", "serif": "Space Grotesk", "grotesk": "Inter", "mono": "Space Mono" },
+  "brand": { "name": "Groef", "tagline": "Platenlabel · Utrecht", "email": "post@groef.fm", "tel": "+31 30 207 88 12", "address": "Vlampijpstraat 79, Utrecht" },
+  "nav": [ { "href": "#releases", "label": "Releases" }, { "href": "#artiesten", "label": "Artiesten" }, { "href": "#persen", "label": "Vinyl persen" }, { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ],
+  "headerCta": { "href": "#persen", "label": "Pers je plaat" },
+  "customCssFile": "recipes/30-vinyl.css",
+  "customJsFile": "recipes/30-vinyl.js",
+  "sections": [
+    { "use": "custom", "data": { "html": "<section class='gr-hero' aria-label='Introductie'><div class='container'><div><p class='eyebrow'>Onafhankelijk label · sinds 2014</p><h1>Muziek met <em>groef</em>.</h1><p class='gr-lead'>Een onafhankelijk platenlabel en perserij uit Utrecht. Wij brengen platen uit die je wílt vasthouden — en persen ze ook voor jou.</p><div class='gr-cta'><a class='btn btn-primary js-magnetic' href='#releases'>Beluister releases</a><a class='btn btn-ghost' href='#persen'>Pers je eigen plaat</a></div></div><div class='gr-deck' id='grDeck'><div class='record spinning' id='grRecord'><span class='label'>Groef<br>Records</span><span class='hole'></span></div><div class='arm' aria-hidden='true'></div><canvas class='viz' id='grViz' aria-hidden='true'></canvas><button class='gr-play' id='grPlay' type='button'>▶ Speel een groove</button></div></div></section>" } },
+    { "use": "showcase", "id": "releases", "data": {
+      "eyebrow": "Recente releases",
+      "title": "Vers van de <em>pers</em>",
+      "intro": "Beperkte oplages, met liefde geperst op 180-grams vinyl.",
+      "items": [
+        { "tag": "GR-021", "glyph": "♪", "title": "Maanlicht — Velour", "meta": "LP · ambient" },
+        { "tag": "GR-020", "glyph": "♫", "title": "Kade 7 — Tijloos", "meta": "EP · house" },
+        { "tag": "GR-019", "glyph": "♩", "title": "Noord — Brent Kools", "meta": "LP · jazz" },
+        { "tag": "GR-018", "glyph": "♬", "title": "Echo's — Saar", "meta": "7\" · pop" },
+        { "tag": "GR-017", "glyph": "♪", "title": "Onderstroom — V/A", "meta": "2LP · compilatie" },
+        { "tag": "GR-016", "glyph": "♫", "title": "Stof — Mira Lune", "meta": "LP · electronica" }
+      ]
+    }},
+    { "use": "zigzag", "id": "persen", "data": {
+      "eyebrow": "Vinyl persen",
+      "title": "Jouw muziek op <em>plaat</em>",
+      "items": [
+        { "eyebrow": "01", "glyph": "◉", "title": "Van master tot groef", "text": "Lever je master aan, wij verzorgen het snijden, een testpersing en de volledige oplage.", "points": [ "Vanaf 100 stuks", "Kleurvinyl mogelijk", "Testpersing inbegrepen" ] },
+        { "eyebrow": "02", "glyph": "❖", "title": "Hoesje en al", "text": "Wij ontwerpen of drukken je hoes, labels en inners — een plaat die compleet aanvoelt.", "points": [ "Hoesontwerp op maat", "Gatefold & inserts", "Wereldwijde verzending" ] }
+      ]
+    }},
+    { "use": "metrics", "id": "cijfers", "data": { "items": [
+      { "target": 2014, "label": "opgericht" },
+      { "target": 120, "suffix": "+", "label": "releases" },
+      { "target": 48000, "suffix": "+", "label": "platen geperst" },
+      { "target": 34, "label": "artiesten" }
+    ]}},
+    { "use": "team", "id": "artiesten", "data": {
+      "eyebrow": "Op het label",
+      "title": "Onze <em>artiesten</em>",
+      "items": [ { "name": "Velour", "role": "Ambient" }, { "name": "Tijloos", "role": "House" }, { "name": "Brent Kools", "role": "Jazz" }, { "name": "Mira Lune", "role": "Electronica" } ]
+    }},
+    { "use": "faq", "id": "faq", "data": {
+      "eyebrow": "FAQ",
+      "title": "Veel <em>gevraagd</em>",
+      "items": [
+        { "q": "Wat is de minimale oplage?", "an": "We persen vanaf 100 stuks. Voor kleurvinyl of speciale uitvoeringen hanteren we soms een hogere ondergrens — we adviseren je graag." },
+        { "q": "Kan ik kleurvinyl krijgen?", "an": "Ja: van transparant tot splatter en marble. Bij grotere oplages zijn de mogelijkheden ruimer." },
+        { "q": "Hoe lang duurt het persen?", "an": "Reken op zes tot tien weken vanaf de goedgekeurde testpersing, afhankelijk van uitvoering en drukte." },
+        { "q": "Brengen jullie ook nieuwe artiesten uit?", "an": "Zeker. Stuur je demo via het contactformulier — we luisteren naar alles wat groef heeft." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Contact",
+      "title": "Stuur je <em>demo</em> of vraag",
+      "intro": "Persing aanvragen of je muziek laten horen? Laat het weten.",
+      "submit": "Verstuur", "successTitle": "Bedankt!", "successText": "We luisteren mee en reageren snel.",
+      "fields": [
+        { "name": "naam", "label": "Naam / act", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies…", "options": [ "Vinyl persen", "Demo insturen", "Bestelling / winkel", "Iets anders" ], "half": true, "error": "Maak een keuze." },
+        { "name": "oplage", "label": "Oplage (bij persen)", "type": "text", "half": true, "placeholder": "Bijv. 300" },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "required": true, "placeholder": "Vertel over je release of project (link naar muziek mag!)" }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Groef is een onafhankelijk platenlabel en perserij uit Utrecht. Muziek die je wilt vasthouden.",
+    "bottom": "KvK 60277104 · Utrecht",
+    "columns": [
+      { "title": "Label", "links": [ { "href": "#releases", "label": "Releases" }, { "href": "#artiesten", "label": "Artiesten" }, { "href": "#persen", "label": "Vinyl persen" } ] },
+      { "title": "Info", "links": [ { "href": "#faq", "label": "FAQ" }, { "href": "#contact", "label": "Contact" } ] },
+      { "title": "Contact", "links": [ { "href": "mailto:post@groef.fm", "label": "post@groef.fm" }, { "href": "tel:+31302078812", "label": "+31 30 207 88 12" }, { "href": "#contact", "label": "Vlampijpstraat 79, Utrecht" } ] }
+    ]
+  }
+}
