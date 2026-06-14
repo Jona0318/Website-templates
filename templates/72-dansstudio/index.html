@@ -149,26 +149,26 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   <section class="sec wrap" id="rooster">
     <div class="sec-h"><h2>Week<span>rooster</span></h2></div>
     <div class="tabs" role="tablist" data-r>
-      <button class="tab" role="tab" id="tb-1" aria-controls="d-1" aria-selected="true">Ma</button>
-      <button class="tab" role="tab" id="tb-2" aria-controls="d-2" aria-selected="false">Di</button>
-      <button class="tab" role="tab" id="tb-3" aria-controls="d-3" aria-selected="false">Do</button>
-      <button class="tab" role="tab" id="tb-4" aria-controls="d-4" aria-selected="false">Za</button>
+      <button class="tab" role="tab" id="tb-1" aria-controls="d-1" aria-selected="true" tabindex="0">Ma</button>
+      <button class="tab" role="tab" id="tb-2" aria-controls="d-2" aria-selected="false" tabindex="-1">Di</button>
+      <button class="tab" role="tab" id="tb-3" aria-controls="d-3" aria-selected="false" tabindex="-1">Do</button>
+      <button class="tab" role="tab" id="tb-4" aria-controls="d-4" aria-selected="false" tabindex="-1">Za</button>
     </div>
-    <div class="day on" id="d-1" role="tabpanel" aria-labelledby="tb-1" data-r>
+    <div class="day on" id="d-1" role="tabpanel" aria-labelledby="tb-1" tabindex="0" data-r>
       <div class="cls"><span class="t">17:30</span><h3>Hiphop — Kids</h3><span class="who">met Jaylen</span><span class="lvl">8—12 jr</span></div>
       <div class="cls"><span class="t">19:00</span><h3>Hiphop — Open</h3><span class="who">met Jaylen</span><span class="lvl">Alle niveaus</span></div>
       <div class="cls"><span class="t">20:15</span><h3>Heels</h3><span class="who">met Suze</span><span class="lvl">Beginner+</span></div>
     </div>
-    <div class="day" id="d-2" role="tabpanel" aria-labelledby="tb-2" hidden>
+    <div class="day" id="d-2" role="tabpanel" aria-labelledby="tb-2" tabindex="0" hidden>
       <div class="cls"><span class="t">18:00</span><h3>Breaking — Basis</h3><span class="who">met Driss</span><span class="lvl">Beginner</span></div>
       <div class="cls"><span class="t">19:30</span><h3>Contemporary</h3><span class="who">met Mara</span><span class="lvl">Alle niveaus</span></div>
     </div>
-    <div class="day" id="d-3" role="tabpanel" aria-labelledby="tb-3" hidden>
+    <div class="day" id="d-3" role="tabpanel" aria-labelledby="tb-3" tabindex="0" hidden>
       <div class="cls"><span class="t">18:00</span><h3>House</h3><span class="who">met Kevin</span><span class="lvl">Gevorderd</span></div>
       <div class="cls"><span class="t">19:30</span><h3>Hiphop — Intermediate</h3><span class="who">met Jaylen</span><span class="lvl">Gevorderd</span></div>
       <div class="cls"><span class="t">21:00</span><h3>Crew training</h3><span class="who">met Suze</span><span class="lvl">Op uitnodiging</span></div>
     </div>
-    <div class="day" id="d-4" role="tabpanel" aria-labelledby="tb-4" hidden>
+    <div class="day" id="d-4" role="tabpanel" aria-labelledby="tb-4" tabindex="0" hidden>
       <div class="cls"><span class="t">11:00</span><h3>Open level — Heels</h3><span class="who">met Suze</span><span class="lvl">Alle niveaus</span></div>
       <div class="cls"><span class="t">12:30</span><h3>Breaking — Jam</h3><span class="who">met Driss</span><span class="lvl">Alle niveaus</span></div>
     </div>
@@ -201,9 +201,34 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
   var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
   if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  // week tabs — WAI-ARIA tabs pattern (roving tabindex + arrow keys)
   var tabs=[].slice.call(doc.querySelectorAll('.tab'));
-  tabs.forEach(function(tab){tab.addEventListener('click',function(){tabs.forEach(function(t){t.setAttribute('aria-selected','false');var p=doc.getElementById(t.getAttribute('aria-controls'));if(p){p.classList.remove('on');p.hidden=true;}});tab.setAttribute('aria-selected','true');var pan=doc.getElementById(tab.getAttribute('aria-controls'));if(pan){pan.classList.add('on');pan.hidden=false;}});});
-  try{var dmap={1:'tb-1',2:'tb-2',4:'tb-3',6:'tb-4'};var d=new Date().getDay();if(dmap[d]){var t=doc.getElementById(dmap[d]);if(t)t.click();}}catch(e){}
+  function activate(index,opts){
+    if(index<0||index>=tabs.length)return;
+    var focus=opts&&opts.focus;
+    tabs.forEach(function(t,i){
+      var sel=i===index;
+      t.setAttribute('aria-selected',sel?'true':'false');
+      t.setAttribute('tabindex',sel?'0':'-1');
+      var p=doc.getElementById(t.getAttribute('aria-controls'));
+      if(p){p.classList.toggle('on',sel);p.hidden=!sel;}
+    });
+    if(focus)tabs[index].focus();
+  }
+  tabs.forEach(function(tab,i){
+    tab.addEventListener('click',function(){activate(i,{focus:false});});
+    tab.addEventListener('keydown',function(e){
+      var k=e.key,n=tabs.length,next=-1;
+      if(k==='ArrowRight')next=(i+1)%n;
+      else if(k==='ArrowLeft')next=(i-1+n)%n;
+      else if(k==='Home')next=0;
+      else if(k==='End')next=n-1;
+      else return;
+      e.preventDefault();
+      activate(next,{focus:true});
+    });
+  });
+  try{var dmap={1:0,2:1,4:2,6:3};var d=new Date().getDay();if(dmap.hasOwnProperty(d)){activate(dmap[d],{focus:false});}}catch(e){}
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
   var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
 })();
