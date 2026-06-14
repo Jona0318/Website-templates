@@ -67,8 +67,9 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 @media(max-width:720px){.expos{grid-template-columns:1fr}}
 .expo{border:3px solid var(--ink);background:var(--paper);overflow:hidden;transition:transform .15s,box-shadow .15s}
 .expo:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
-.expo .art{height:230px;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:3.4rem;border-bottom:3px solid var(--ink);color:var(--cream);position:relative}
-.expo:nth-child(1) .art{background:var(--red)}.expo:nth-child(2) .art{background:var(--blue)}.expo:nth-child(3) .art{background:var(--green)}.expo:nth-child(4) .art{background:var(--yellow);color:var(--ink)}
+.expo .art{aspect-ratio:16/11;border-bottom:3px solid var(--ink);position:relative}
+.expo .art img{width:100%;height:100%;object-fit:cover;display:block}
+.expo:nth-child(1) .art{background:var(--red)}.expo:nth-child(2) .art{background:var(--blue)}.expo:nth-child(3) .art{background:var(--green)}.expo:nth-child(4) .art{background:var(--yellow)}
 .expo .badge{position:absolute;top:.8rem;left:.8rem;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:.2rem .55rem}
 .expo .b{padding:1.3rem}
 .expo h3{font-family:var(--disp);font-weight:800;font-size:1.5rem;line-height:1.05}
@@ -80,8 +81,9 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .artists{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}
 @media(max-width:820px){.artists{grid-template-columns:repeat(3,1fr)}}@media(max-width:480px){.artists{grid-template-columns:1fr 1fr}}
 .ar{border:3px solid var(--ink);background:var(--paper);overflow:hidden;text-align:center}
-.ar .av{height:90px;display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:2rem;border-bottom:3px solid var(--ink);color:var(--cream)}
-.ar:nth-child(5n+1) .av{background:var(--red)}.ar:nth-child(5n+2) .av{background:var(--blue)}.ar:nth-child(5n+3) .av{background:var(--green)}.ar:nth-child(5n+4) .av{background:var(--pink)}.ar:nth-child(5n) .av{background:var(--yellow);color:var(--ink)}
+.ar .av{aspect-ratio:1;border-bottom:3px solid var(--ink)}
+.ar .av img{width:100%;height:100%;object-fit:cover;display:block}
+.ar:nth-child(5n+1) .av{background:var(--red)}.ar:nth-child(5n+2) .av{background:var(--blue)}.ar:nth-child(5n+3) .av{background:var(--green)}.ar:nth-child(5n+4) .av{background:var(--pink)}.ar:nth-child(5n) .av{background:var(--yellow)}
 .ar h3{font-family:var(--disp);font-weight:700;font-size:.95rem;padding:.7rem .4rem .2rem}
 .ar span{font-family:var(--mono);font-size:.66rem;color:#6a635a;display:block;padding-bottom:.7rem}
 
@@ -142,21 +144,21 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   <section class="sec wrap" id="nu-te-zien">
     <div class="sec-h"><h2>Nu te zien</h2><a class="all" href="#nieuws">Volledige agenda →</a></div>
     <div class="expos" data-r>
-      <article class="expo"><div class="art" aria-hidden="true">▲<span class="badge">Hoofdzaal</span></div><div class="b"><h3>Tegen het licht</h3><div class="who">Solo — Maartje Vos</div><p>Grootformaat schilderijen over licht, schaduw en alles ertussenin.</p><span class="when">t/m 20 jul</span></div></article>
-      <article class="expo"><div class="art" aria-hidden="true">◐<span class="badge">Zaal 2</span></div><div class="b"><h3>Ruis &amp; Stilte</h3><div class="who">Duo — Bram Ket &amp; Lina Aydin</div><p>Geluid wordt beeld in een installatie die je zelf activeert.</p><span class="when">t/m 3 aug</span></div></article>
-      <article class="expo"><div class="art" aria-hidden="true">✦<span class="badge">Project</span></div><div class="b"><h3>Jong Talent '26</h3><div class="who">Groep — 8 afgestudeerden</div><p>De nieuwe lichting van de kunstacademie, voor het eerst samen.</p><span class="when">12 jul — 25 aug</span></div></article>
-      <article class="expo"><div class="art" aria-hidden="true">◼<span class="badge">Binnenkort</span></div><div class="b"><h3>Materie</h3><div class="who">Solo — Joris Pellenaars</div><p>Sculpturen van gevonden materiaal uit de Brabantse industrie.</p><span class="when">vanaf 1 sep</span></div></article>
+      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=800&q=72" alt="Grootformaat abstract schilderij over licht en schaduw" loading="lazy" width="800" height="550"><span class="badge">Hoofdzaal</span></div><div class="b"><h3>Tegen het licht</h3><div class="who">Solo — Maartje Vos</div><p>Grootformaat schilderijen over licht, schaduw en alles ertussenin.</p><span class="when">t/m 20 jul</span></div></article>
+      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=800&q=72" alt="Kunstinstallatie in een galeriezaal" loading="lazy" width="800" height="550"><span class="badge">Zaal 2</span></div><div class="b"><h3>Ruis &amp; Stilte</h3><div class="who">Duo — Bram Ket &amp; Lina Aydin</div><p>Geluid wordt beeld in een installatie die je zelf activeert.</p><span class="when">t/m 3 aug</span></div></article>
+      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=800&q=72" alt="Kleurrijke schilderijen van jonge kunstenaars aan de muur" loading="lazy" width="800" height="550"><span class="badge">Project</span></div><div class="b"><h3>Jong Talent '26</h3><div class="who">Groep — 8 afgestudeerden</div><p>De nieuwe lichting van de kunstacademie, voor het eerst samen.</p><span class="when">12 jul — 25 aug</span></div></article>
+      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=800&q=72" alt="Sculptuur van gevonden materiaal in de expositieruimte" loading="lazy" width="800" height="550"><span class="badge">Binnenkort</span></div><div class="b"><h3>Materie</h3><div class="who">Solo — Joris Pellenaars</div><p>Sculpturen van gevonden materiaal uit de Brabantse industrie.</p><span class="when">vanaf 1 sep</span></div></article>
     </div>
   </section>
 
   <section class="sec wrap" id="kunstenaars">
     <div class="sec-h"><h2>Onze kunstenaars</h2></div>
     <div class="artists" data-r>
-      <div class="ar"><div class="av" aria-hidden="true">M</div><h3>Maartje Vos</h3><span>Schilderkunst</span></div>
-      <div class="ar"><div class="av" aria-hidden="true">B</div><h3>Bram Ket</h3><span>Geluid &amp; installatie</span></div>
-      <div class="ar"><div class="av" aria-hidden="true">L</div><h3>Lina Aydin</h3><span>Mixed media</span></div>
-      <div class="ar"><div class="av" aria-hidden="true">J</div><h3>Joris Pellenaars</h3><span>Sculptuur</span></div>
-      <div class="ar"><div class="av" aria-hidden="true">N</div><h3>Noor de Wit</h3><span>Fotografie</span></div>
+      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Maartje Vos" loading="lazy" width="400" height="400"></div><h3>Maartje Vos</h3><span>Schilderkunst</span></div>
+      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Bram Ket" loading="lazy" width="400" height="400"></div><h3>Bram Ket</h3><span>Geluid &amp; installatie</span></div>
+      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Lina Aydin" loading="lazy" width="400" height="400"></div><h3>Lina Aydin</h3><span>Mixed media</span></div>
+      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Joris Pellenaars" loading="lazy" width="400" height="400"></div><h3>Joris Pellenaars</h3><span>Sculptuur</span></div>
+      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Noor de Wit" loading="lazy" width="400" height="400"></div><h3>Noor de Wit</h3><span>Fotografie</span></div>
     </div>
   </section>
 

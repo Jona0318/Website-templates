@@ -1,353 +1,795 @@
 <!DOCTYPE html>
-<html lang="nl" data-theme="light">
+<html lang="nl" class="no-js">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JouwMerk — Modern bedrijf voor digitale oplossingen</title>
-  <meta name="description" content="JouwMerk helpt bedrijven groeien met moderne, betrouwbare digitale oplossingen. Bekijk onze diensten en neem contact op." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridiaan — strategie &amp; implementatie voor het MKB</title>
+<meta name="description" content="Meridiaan is een strategie- en implementatiebureau voor het MKB. Wij vertalen ambitie naar werkbare verandering: bedrijfsstrategie, digitale transformatie en procesoptimalisatie — en blijven tot het resultaat staat. Plan een vrijblijvend kennismakingsgesprek.">
+<meta name="theme-color" content="#0d1b2a">
+<meta property="og:title" content="Meridiaan — strategie &amp; implementatie voor het MKB">
+<meta property="og:description" content="Wij vertalen ambitie naar werkbare verandering: strategie, digitale transformatie en procesoptimalisatie — en blijven tot het resultaat staat.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement; h.classList.remove('no-js'); h.classList.add('js');
+  })();
+</script>
+<style>
+/* ============================================================
+   MERIDIAAN — strategie & implementatie voor het MKB
+   Handgemaakte, self-contained one-pager. Geen libraries.
+   Diep ink/navy met warme koper-accent. Serif-display + sans body.
+   ============================================================ */
+:root{
+  --bg:#fbfaf7;
+  --bg-2:#f3f0e9;
+  --surface:#ffffff;
+  --ink:#0d1b2a;
+  --ink-2:#33424f;
+  --ink-soft:rgba(13,27,42,.66);
+  --ink-faint:rgba(13,27,42,.44);
+  --line:rgba(13,27,42,.13);
+  --line-soft:rgba(13,27,42,.07);
+  --copper:#b9712f;
+  --copper-deep:#9a5a20;
+  --copper-wash:#f3e4d4;
+  --navy:#102a43;
+  --navy-2:#0d1b2a;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Inter",system-ui,-apple-system,sans-serif;
+  --maxw:1200px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --radius:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-weight:400;font-size:1.04rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--copper);color:#fff}
+:focus-visible{outline:2.5px solid var(--copper-deep);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:var(--display);font-weight:500;letter-spacing:-.012em;line-height:1.05}
+.kicker{font-family:var(--body);font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper-deep);display:inline-flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:26px;height:1.5px;background:var(--copper);display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.1rem;border-radius:8px;transition:top .25s}
+.skip:focus{top:1rem}
 
-  <!-- Open Graph / social media -->
-  <meta property="og:title" content="JouwMerk — Modern bedrijf voor digitale oplossingen" />
-  <meta property="og:description" content="Moderne, betrouwbare digitale oplossingen voor jouw bedrijf." />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="nl_NL" />
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--body);font-weight:600;font-size:.92rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s,box-shadow .25s;cursor:pointer;white-space:nowrap}
+.btn svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--copper-deep);transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(154,90,32,.7)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:var(--copper-wash);transform:translateY(-2px)}
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-  <link rel="stylesheet" href="css/style.css" />
+/* ---------- letterhead ---------- */
+.bar{background:var(--navy-2);color:rgba(255,255,255,.84);font-size:.78rem}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:42px}
+.bar .left{display:inline-flex;align-items:center;gap:.55rem;font-weight:500;letter-spacing:.02em}
+.bar .dot{width:7px;height:7px;border-radius:50%;background:var(--copper);box-shadow:0 0 0 0 rgba(185,113,47,.55);animation:pulse 2.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(185,113,47,.5)}70%{box-shadow:0 0 0 7px rgba(185,113,47,0)}100%{box-shadow:0 0 0 0 rgba(185,113,47,0)}}
+.bar .right{display:inline-flex;align-items:center;gap:1.6rem}
+.bar a{transition:color .2s}
+.bar a:hover{color:#fff}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .sep{display:none}.bar .left span.tag{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(251,250,247,.86);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 10px 30px -26px rgba(13,27,42,.6)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:inline-flex;align-items:center;gap:.65rem;font-family:var(--display);font-weight:600;font-size:1.5rem;letter-spacing:-.01em}
+.brand .mark{width:36px;height:36px;border-radius:9px;background:var(--ink);display:grid;place-items:center;flex:none}
+.brand .mark svg{width:21px;height:21px;color:var(--copper)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--body);font-weight:500;font-size:.92rem;color:var(--ink-2);position:relative;padding-block:.3rem;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--copper);border-radius:2px;transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.65rem 1.25rem;font-size:.88rem}
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:var(--surface);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:1000px){
+  .nav-links{position:fixed;inset:0;background:var(--bg);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.3rem}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(2.5rem,6vw,4.5rem);padding-bottom:clamp(2.5rem,6vw,4rem)}
+.hero::before{content:"";position:absolute;top:-10%;right:-6%;width:44vw;height:44vw;max-width:600px;max-height:600px;background:radial-gradient(circle at 30% 30%,rgba(185,113,47,.16),transparent 62%);filter:blur(6px);z-index:-1;pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.hero h1{font-family:var(--display);font-weight:500;font-size:clamp(2.5rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.02em;margin-top:1.4rem}
+.hero h1 em{font-style:italic;color:var(--copper-deep)}
+.hero-intro{margin-top:1.5rem;font-size:clamp(1.06rem,1.5vw,1.22rem);color:var(--ink-2);max-width:48ch;line-height:1.66}
+.hero-actions{margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-trust{margin-top:2.2rem;display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;font-size:.86rem;color:var(--ink-soft)}
+.hero-trust .ck{display:inline-flex;align-items:center;gap:.5rem;font-weight:500}
+.hero-trust .ck svg{width:17px;height:17px;color:var(--copper-deep);flex:none}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-2);box-shadow:0 40px 80px -50px rgba(13,27,42,.65)}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.5;object-fit:cover}
+.hero-figure .badge{position:absolute;left:-1.2rem;bottom:1.6rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;box-shadow:0 24px 50px -34px rgba(13,27,42,.55);display:flex;align-items:center;gap:.85rem;max-width:240px}
+.hero-figure .badge .ring{width:46px;height:46px;border-radius:50%;background:var(--copper-wash);display:grid;place-items:center;flex:none}
+.hero-figure .badge .ring svg{width:22px;height:22px;color:var(--copper-deep)}
+.hero-figure .badge b{font-family:var(--display);font-weight:600;display:block;font-size:1.1rem;line-height:1.15}
+.hero-figure .badge small{color:var(--ink-soft);font-size:.8rem}
+@media (max-width:520px){.hero-figure .badge{left:.6rem;padding:.8rem .9rem}}
+
+/* ---------- stats ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:clamp(2rem,4vw,2.8rem)}
+@media (max-width:760px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:1.8rem 1rem}}
+.stat{text-align:center}
+.stat .num{font-family:var(--display);font-weight:500;font-size:clamp(2.1rem,4.4vw,3rem);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.stat .num span{color:var(--copper-deep)}
+.stat .lab{margin-top:.5rem;font-size:.84rem;color:var(--ink-soft);letter-spacing:.02em;max-width:22ch;margin-inline:auto}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.8rem,8vw,7rem)}
+.sec-head{max-width:680px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;letter-spacing:-.018em;margin-top:1rem}
+.sec-head h2 em{font-style:italic;color:var(--copper-deep)}
+.sec-head p{margin-top:1.1rem;color:var(--ink-2);font-size:1.08rem}
+
+/* ---------- diensten ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:900px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.svc-grid{grid-template-columns:1fr}}
+.svc{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:1.9rem 1.7rem;background:var(--surface);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.svc::after{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.svc:hover{transform:translateY(-5px);box-shadow:0 30px 60px -42px rgba(13,27,42,.5)}
+.svc:hover::after{transform:none}
+.svc .ic{width:52px;height:52px;border-radius:13px;background:var(--bg-2);display:grid;place-items:center;margin-bottom:1.3rem;transition:background-color .35s}
+.svc:hover .ic{background:var(--copper-wash)}
+.svc .ic svg{width:26px;height:26px;color:var(--copper-deep)}
+.svc h3{font-family:var(--display);font-weight:600;font-size:1.28rem;letter-spacing:-.01em}
+.svc p{margin-top:.6rem;color:var(--ink-soft);font-size:.96rem}
+.svc ul{margin-top:1rem;display:grid;gap:.45rem}
+.svc li{display:flex;gap:.55rem;align-items:flex-start;font-size:.88rem;color:var(--ink-2)}
+.svc li svg{width:16px;height:16px;color:var(--copper-deep);flex:none;margin-top:.22rem}
+
+/* ---------- aanpak ---------- */
+.aanpak{background:var(--bg-2)}
+.steps{margin-top:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:step}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.6rem;counter-increment:step;transition:transform .35s var(--ease),box-shadow .35s}
+.step:hover{transform:translateY(-5px);box-shadow:0 30px 60px -42px rgba(13,27,42,.5)}
+.step .no{font-family:var(--display);font-weight:500;font-size:2.1rem;line-height:1;color:var(--copper);letter-spacing:-.02em}
+.step .no::before{content:"0" counter(step)}
+.step h3{font-family:var(--display);font-weight:600;font-size:1.18rem;margin-top:1rem;letter-spacing:-.01em}
+.step p{margin-top:.5rem;color:var(--ink-soft);font-size:.93rem}
+
+/* ---------- cases / resultaten ---------- */
+.cases{background:var(--navy-2);color:#fff;position:relative;overflow:hidden}
+.cases::before{content:"";position:absolute;top:-20%;left:-10%;width:50vw;height:50vw;max-width:640px;max-height:640px;background:radial-gradient(circle at 40% 40%,rgba(185,113,47,.16),transparent 64%);pointer-events:none}
+.cases .kicker{color:#e0a06a}.cases .kicker::before{background:#e0a06a}
+.cases .sec-head h2{color:#fff}
+.cases .sec-head h2 em{color:#e0a06a}
+.cases .sec-head p{color:rgba(255,255,255,.72)}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(2rem,4vw,3rem);position:relative}
+@media (max-width:900px){.case-grid{grid-template-columns:1fr}}
+.case{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:var(--radius);padding:1.9rem 1.7rem;transition:background-color .35s,border-color .35s,transform .35s var(--ease)}
+.case:hover{background:rgba(255,255,255,.08);transform:translateY(-4px)}
+.case .metric{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,4vw,2.9rem);line-height:1;color:#e0a06a;letter-spacing:-.02em}
+.case .mlab{margin-top:.4rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.case p{margin-top:1.1rem;color:rgba(255,255,255,.8);font-size:.96rem}
+.case .who{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.13);display:flex;align-items:center;gap:.8rem}
+.case .who .av{width:38px;height:38px;border-radius:50%;background:rgba(185,113,47,.25);color:#e0a06a;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:.92rem;flex:none}
+.case .who b{display:block;font-size:.9rem;font-weight:600}
+.case .who span{font-size:.8rem;color:rgba(255,255,255,.6)}
+
+/* ---------- over / team ---------- */
+.over .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.over .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.over-fig{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-2);box-shadow:0 40px 80px -54px rgba(13,27,42,.6)}
+.over-fig img{width:100%;aspect-ratio:5/4.4;object-fit:cover}
+.over-text h2{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;letter-spacing:-.018em;margin-top:1rem}
+.over-text h2 em{font-style:italic;color:var(--copper-deep)}
+.over-text>p{margin-top:1.1rem;color:var(--ink-2);max-width:48ch}
+.team{margin-top:1.8rem;display:grid;gap:1.1rem}
+.member{display:flex;gap:1rem;align-items:flex-start}
+.member .av{width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--copper);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:1rem;flex:none}
+.member b{font-family:var(--display);font-weight:600;font-size:1.04rem;display:block;letter-spacing:-.01em}
+.member .role{font-size:.84rem;color:var(--copper-deep);font-weight:500}
+.member p{font-size:.92rem;color:var(--ink-soft);margin-top:.25rem;max-width:42ch}
+
+/* ---------- faq ---------- */
+.faq-list{margin-top:clamp(2rem,4vw,3rem);max-width:840px;margin-inline:auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;padding:1.35rem .25rem;font-family:var(--display);font-weight:600;font-size:1.12rem;background:none;border:0;cursor:pointer;color:var(--ink)}
+.faq-q .pm{width:26px;height:26px;flex:none;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;position:relative;transition:background-color .3s,border-color .3s}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--ink);transition:transform .3s var(--ease),background-color .3s}
+.faq-q .pm::before{width:11px;height:1.7px}
+.faq-q .pm::after{width:1.7px;height:11px}
+.faq-item[open] .faq-q .pm{background:var(--copper-deep);border-color:var(--copper-deep)}
+.faq-item[open] .faq-q .pm::before,.faq-item[open] .faq-q .pm::after{background:#fff}
+.faq-item[open] .faq-q .pm::after{transform:scaleY(0)}
+.faq-a{overflow:hidden;color:var(--ink-soft);font-size:1rem;padding:0 .25rem;max-width:74ch}
+.faq-a p{padding-bottom:1.35rem}
+.faq-q::-webkit-details-marker{display:none}
+summary{list-style:none}
+summary::-webkit-details-marker{display:none}
+
+/* ---------- contact / offerte ---------- */
+.contact{background:var(--bg-2)}
+.contact .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:920px){.contact .wrap{grid-template-columns:1fr}}
+.contact-info h2{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,4.4vw,2.8rem);letter-spacing:-.018em;line-height:1.08;margin-top:1rem}
+.contact-info h2 em{font-style:italic;color:var(--copper-deep)}
+.contact-info p{margin-top:1.1rem;color:var(--ink-2);max-width:42ch}
+.contact-list{margin-top:2rem;display:grid;gap:1.2rem}
+.contact-list li{display:flex;gap:1rem;align-items:flex-start}
+.contact-list .ic{width:44px;height:44px;border-radius:12px;background:var(--copper-wash);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:21px;height:21px;color:var(--copper-deep)}
+.contact-list b{font-family:var(--display);font-weight:600;display:block;font-size:.98rem}
+.contact-list a,.contact-list span{color:var(--ink-soft);font-size:.95rem}
+.contact-list a:hover{color:var(--copper-deep)}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:0 40px 80px -60px rgba(13,27,42,.5)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--body);font-weight:600;font-size:.84rem;margin-bottom:.4rem}
+.field label .req{color:var(--copper-deep)}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1.5px solid var(--line);border-radius:11px;padding:.78rem .9rem;font-size:.96rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:108px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--copper-deep);background:#fff}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#d9534f;background:#fdf3f2}
+.field .err{display:none;color:#c43c38;font-size:.78rem;margin-top:.35rem}
+.field.bad .err{display:block}
+.form .btn-primary{width:100%;justify-content:center;margin-top:.4rem;font-size:.98rem}
+.form .note{margin-top:.9rem;font-size:.78rem;color:var(--ink-faint);text-align:center}
+.form .ok{display:none;text-align:center;padding:1rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:64px;height:64px;border-radius:50%;background:var(--copper-wash);display:grid;place-items:center;margin:0 auto 1.1rem}
+.form .ok .ring svg{width:32px;height:32px;color:var(--copper-deep)}
+.form .ok h3{font-family:var(--display);font-weight:600;font-size:1.5rem}
+.form .ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--navy-2);color:rgba(255,255,255,.7);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:#fff;margin-bottom:1rem;font-family:var(--display);display:inline-flex;align-items:center;gap:.65rem;font-size:1.4rem;font-weight:600}
+.footer .brand .mark{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.08);display:grid;place-items:center}
+.footer .brand .mark svg{width:20px;height:20px;color:var(--copper)}
+.footer .blurb{font-size:.92rem;max-width:36ch;color:rgba(255,255,255,.62)}
+.footer h4{font-family:var(--body);font-weight:600;color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.92rem;transition:color .2s}
+.footer ul a:hover{color:#e0a06a}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.footer .socials a{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;transition:background-color .25s,border-color .25s}
+.footer .socials a:hover{background:rgba(185,113,47,.2);border-color:transparent}
+.footer .socials svg{width:18px;height:18px;color:#fff}
+.footer .bottom{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:rgba(255,255,255,.5)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .dot{animation:none}
+}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Direct naar inhoud</a>
+<a class="skip" href="#main">Direct naar inhoud</a>
 
-  <!-- ============ HEADER ============ -->
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a href="index.html" class="logo">
-        <span class="logo__mark">◆</span>
-        JouwMerk
-      </a>
-
-      <nav class="nav" id="main-nav" aria-label="Hoofdnavigatie">
-        <ul class="nav__list">
-          <li><a class="nav__link" href="index.html" aria-current="page">Home</a></li>
-          <li><a class="nav__link" href="about.html">Over ons</a></li>
-          <li><a class="nav__link" href="services.html">Diensten</a></li>
-          <li><a class="nav__link" href="index.html#pricing">Prijzen</a></li>
-          <li><a class="nav__link" href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav__actions">
-          <a href="contact.html" class="btn btn--primary">Aan de slag</a>
-        </div>
-      </nav>
-
-      <button class="theme-toggle" type="button" aria-label="Schakel donkere modus">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
-
-      <button class="nav-toggle" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="main-nav">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="reveal">
-          <span class="eyebrow">Welkom bij JouwMerk</span>
-          <h1>Bouw sneller aan een sterkere digitale toekomst</h1>
-          <p>Wij combineren strategie, design en techniek tot oplossingen die jouw bedrijf laten groeien — betrouwbaar, schaalbaar en mensgericht.</p>
-          <div class="hero__actions">
-            <a href="contact.html" class="btn btn--primary">Gratis kennismaken</a>
-            <a href="services.html" class="btn btn--outline">Bekijk diensten</a>
-          </div>
-        </div>
-        <div class="reveal">
-          <img class="hero__image"
-               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
-               alt="Team dat samenwerkt op kantoor" loading="eager" />
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ VERTROUWD DOOR ============ -->
-    <section class="section">
-      <div class="container">
-        <p class="text-center" style="margin-bottom:1.5rem;">Vertrouwd door teams bij toonaangevende organisaties</p>
-        <div class="logos reveal">
-          <span>Acme</span><span>Globex</span><span>Initech</span><span>Umbrella</span><span>Hooli</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FEATURES ============ -->
-    <section class="section section--alt" id="features">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Waarom JouwMerk</span>
-          <h2>Alles wat je nodig hebt op één plek</h2>
-          <p>Van eerste idee tot livegang en daarna — wij staan naast je in elke fase.</p>
-        </div>
-        <div class="grid grid--3">
-          <article class="card reveal">
-            <div class="card__icon">⚡</div>
-            <h3>Snel &amp; betrouwbaar</h3>
-            <p>Razendsnelle oplossingen die altijd werken, zodat jouw klanten nooit hoeven te wachten.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card__icon">🎯</div>
-            <h3>Resultaatgericht</h3>
-            <p>We focussen op meetbare doelen en heldere KPI's die echt bijdragen aan jouw groei.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card__icon">🔒</div>
-            <h3>Veilig &amp; privacy-first</h3>
-            <p>Beveiliging en privacy zitten standaard ingebakken — volledig AVG-proof.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card__icon">📱</div>
-            <h3>Volledig responsive</h3>
-            <p>Een perfecte ervaring op elk scherm: desktop, tablet en mobiel.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card__icon">🤝</div>
-            <h3>Persoonlijke support</h3>
-            <p>Een vast team dat je kent en begrijpt, bereikbaar wanneer je ons nodig hebt.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card__icon">📈</div>
-            <h3>Schaalbaar mee</h3>
-            <p>Of je nu start of opschaalt: onze oplossingen groeien moeiteloos met je mee.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ STATISTIEKEN ============ -->
-    <section class="section">
-      <div class="container">
-        <div class="stats reveal">
-          <div class="stat">
-            <div class="stat__number">500+</div>
-            <div class="stat__label">Tevreden klanten</div>
-          </div>
-          <div class="stat">
-            <div class="stat__number">12 jr</div>
-            <div class="stat__label">Ervaring</div>
-          </div>
-          <div class="stat">
-            <div class="stat__number">99,9%</div>
-            <div class="stat__label">Uptime</div>
-          </div>
-          <div class="stat">
-            <div class="stat__number">24/7</div>
-            <div class="stat__label">Support</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ TESTIMONIALS ============ -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Wat klanten zeggen</span>
-          <h2>Bedrijven die ons vertrouwen</h2>
-        </div>
-        <div class="grid grid--3">
-          <figure class="testimonial reveal">
-            <p>"Sinds we met JouwMerk werken is onze online omzet met 40% gestegen. Een fantastisch team."</p>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__avatar">SK</span>
-              <span>
-                <span class="testimonial__name">Sanne Klaassen</span><br />
-                <span class="testimonial__role">Directeur, RetailCo</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="testimonial reveal">
-            <p>"Professioneel, snel en altijd bereikbaar. Ze denken echt mee in plaats van alleen uitvoeren."</p>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__avatar">MD</span>
-              <span>
-                <span class="testimonial__name">Mark de Vries</span><br />
-                <span class="testimonial__role">Oprichter, StartupX</span>
-              </span>
-            </figcaption>
-          </figure>
-          <figure class="testimonial reveal">
-            <p>"De beste investering die we dit jaar hebben gedaan. Aanrader voor ieder groeiend bedrijf."</p>
-            <figcaption class="testimonial__author">
-              <span class="testimonial__avatar">LP</span>
-              <span>
-                <span class="testimonial__name">Lisa Peters</span><br />
-                <span class="testimonial__role">Marketing, BrandLab</span>
-              </span>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PRIJZEN ============ -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Prijzen</span>
-          <h2>Een pakket voor elke fase</h2>
-          <p>Transparante tarieven zonder verrassingen. Maandelijks opzegbaar.</p>
-        </div>
-        <div class="grid grid--3">
-          <article class="card pricing-card reveal">
-            <h3>Starter</h3>
-            <div class="pricing-card__price">€29<span>/maand</span></div>
-            <p>Voor wie net begint</p>
-            <ul>
-              <li>1 project</li>
-              <li>Basis support</li>
-              <li>5 GB opslag</li>
-              <li>Maandelijkse rapportage</li>
-            </ul>
-            <a href="contact.html" class="btn btn--outline btn--block">Kies Starter</a>
-          </article>
-          <article class="card pricing-card pricing-card--featured reveal">
-            <span class="pricing-card__badge">Populairst</span>
-            <h3>Professional</h3>
-            <div class="pricing-card__price">€79<span>/maand</span></div>
-            <p>Voor groeiende bedrijven</p>
-            <ul>
-              <li>10 projecten</li>
-              <li>Prioriteit support</li>
-              <li>100 GB opslag</li>
-              <li>Wekelijkse rapportage</li>
-              <li>Eigen accountmanager</li>
-            </ul>
-            <a href="contact.html" class="btn btn--primary btn--block">Kies Professional</a>
-          </article>
-          <article class="card pricing-card reveal">
-            <h3>Enterprise</h3>
-            <div class="pricing-card__price">Op maat</div>
-            <p>Voor grote organisaties</p>
-            <ul>
-              <li>Onbeperkte projecten</li>
-              <li>24/7 dedicated support</li>
-              <li>Onbeperkte opslag</li>
-              <li>Realtime dashboard</li>
-              <li>SLA-garantie</li>
-            </ul>
-            <a href="contact.html" class="btn btn--outline btn--block">Neem contact op</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FAQ ============ -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">Veelgestelde vragen</span>
-          <h2>Goed om te weten</h2>
-        </div>
-        <div class="faq reveal">
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">Hoe snel kunnen we starten?</button>
-            <div class="faq-answer"><p>Na een vrijblijvend kennismakingsgesprek kunnen we doorgaans binnen één tot twee weken van start. We stemmen het tempo altijd af op jouw situatie.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">Zit ik vast aan een lang contract?</button>
-            <div class="faq-answer"><p>Nee. Onze pakketten zijn maandelijks opzegbaar. We willen je houden omdat je tevreden bent, niet omdat het moet.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">Bieden jullie ook maatwerk?</button>
-            <div class="faq-answer"><p>Zeker. Naast onze standaardpakketten leveren we volledig maatwerk. Neem contact op en we bespreken de mogelijkheden.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">Hoe zit het met privacy en data?</button>
-            <div class="faq-answer"><p>Privacy staat bij ons voorop. We werken volledig conform de AVG en delen nooit gegevens met derden zonder toestemming.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CTA ============ -->
-    <section class="section">
-      <div class="container">
-        <div class="cta reveal">
-          <h2>Klaar om te groeien?</h2>
-          <p>Plan vandaag nog een gratis kennismakingsgesprek en ontdek wat we voor jouw bedrijf kunnen betekenen.</p>
-          <a href="contact.html" class="btn btn--primary">Neem contact op</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <a href="index.html" class="logo"><span class="logo__mark">◆</span> JouwMerk</a>
-          <p>Moderne digitale oplossingen die jouw bedrijf laten groeien.</p>
-          <div class="social-links">
-            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-9h3l.5-3.5H13V7.3c0-1 .3-1.7 1.8-1.7H17V2.5c-.9-.1-1.8-.2-2.7-.2-2.7 0-4.5 1.6-4.5 4.6v2.6H7V13h2.8v9z"/></svg></a>
-            <a href="#" aria-label="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-7.3L6 22H2.9l7.5-8.6L2.5 2H9l4.5 6.7zM17.8 20h1.7L7.3 3.8H5.5z"/></svg></a>
-            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8v12H3V8zM5 3.5A2.2 2.2 0 1 1 5 8a2.2 2.2 0 0 1 0-4.5zM9 8h3.7v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 5.9V20h-3.9v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V20H9z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Bedrijf</h4>
-          <ul>
-            <li><a href="about.html">Over ons</a></li>
-            <li><a href="services.html">Diensten</a></li>
-            <li><a href="index.html#pricing">Prijzen</a></li>
-            <li><a href="#">Vacatures</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Hulp</h4>
-          <ul>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="index.html#faq">Veelgestelde vragen</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Documentatie</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Juridisch</h4>
-          <ul>
-            <li><a href="#">Privacybeleid</a></li>
-            <li><a href="#">Algemene voorwaarden</a></li>
-            <li><a href="#">Cookiebeleid</a></li>
-            <li><a href="#">Disclaimer</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; <span id="current-year">2026</span> JouwMerk. Alle rechten voorbehouden.</p>
-        <p>Gemaakt met ♥ in Nederland</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to top -->
-  <button class="back-to-top" type="button" aria-label="Terug naar boven">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
-
-  <!-- Cookie-banner -->
-  <div class="cookie-banner" hidden>
-    <p>We gebruiken cookies om je ervaring te verbeteren. Door verder te gaan ga je akkoord met ons <a href="#">cookiebeleid</a>.</p>
-    <div class="cookie-banner__actions">
-      <button class="btn btn--primary" data-cookie-action="accepted">Accepteren</button>
-      <button class="btn btn--ghost" data-cookie-action="declined">Weigeren</button>
+<!-- letterhead -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="dot" aria-hidden="true"></span> <span>Bereikbaar ma–vr 08:30–18:00</span> <span class="sep" aria-hidden="true">·</span> <span class="tag">Werkzaam in heel Nederland</span></div>
+    <div class="right">
+      <a class="email" href="mailto:hallo@meridiaan.nl">hallo@meridiaan.nl</a>
+      <a href="tel:+31302100440">030 210 04 40</a>
     </div>
   </div>
+</div>
 
-  <script src="js/main.js"></script>
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Meridiaan home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></span>
+      Meridiaan
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten</a>
+      <a href="#aanpak">Aanpak</a>
+      <a href="#cases">Resultaten</a>
+      <a href="#over">Over ons</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary desk" href="#contact">Plan een gesprek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r>Strategie &amp; implementatie · sinds 2009</span>
+      <h1 data-r style="--d:.05s">Van ambitie naar <em>werkbare</em> verandering.</h1>
+      <p class="hero-intro" data-r style="--d:.12s">Meridiaan helpt het Nederlandse MKB scherper te kiezen en sneller te bewegen. We bouwen de strategie samen met u — en blijven staan tot ze daadwerkelijk in uw organisatie verankerd is. Geen rapport in een la, maar resultaat dat blijft.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-primary" href="#contact">Plan een kennismaking <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#cases">Bekijk resultaten</a>
+      </div>
+      <div class="hero-trust" data-r style="--d:.24s">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Vast team, geen junioren op uw rekening</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Resultaat in kwartalen, niet in jaren</span>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1100&q=72" alt="Twee adviseurs in overleg aan een werktafel met een laptop" loading="eager" width="1100" height="1238">
+      </div>
+      <div class="badge">
+        <span class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg></span>
+        <div><b>+34%</b><small>gemiddelde efficiëntiewinst in onze trajecten</small></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- stats -->
+<section class="stats" aria-label="Meridiaan in cijfers">
+  <div class="wrap">
+    <div class="stat" data-r><div class="num" data-count="15" data-suffix="+"><span>15+</span></div><div class="lab">jaar ervaring in het MKB</div></div>
+    <div class="stat" data-r style="--d:.08s"><div class="num" data-count="180" data-suffix="+"><span>180+</span></div><div class="lab">afgeronde trajecten</div></div>
+    <div class="stat" data-r style="--d:.16s"><div class="num" data-count="92" data-suffix="%"><span>92%</span></div><div class="lab">van de klanten komt terug</div></div>
+    <div class="stat" data-r style="--d:.24s"><div class="num" data-count="6" data-suffix=" wk"><span>6 wk</span></div><div class="lab">tot het eerste tastbare resultaat</div></div>
+  </div>
+</section>
+
+<!-- diensten -->
+<section class="sec" id="diensten">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Diensten</span>
+      <h2>Drie sporen, <em>één</em> doel: verandering die beklijft</h2>
+      <p>We werken zelden vanuit één discipline. Strategie zonder uitvoering verzandt; uitvoering zonder richting kost geld. Daarom verbinden we de drie.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc" data-r>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>Strategie &amp; richting</h3>
+        <p>Scherpe keuzes over waar u wél en niet op inzet. We brengen markt, marges en mensen samen in één helder plan dat het hele team begrijpt.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Strategie- &amp; positioneringstraject</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Groei- en investeringsplannen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Doelen vertaald naar KPI's</li>
+        </ul>
+      </article>
+      <article class="svc" data-r style="--d:.1s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8l3 3-3 3M13 14h4"/></svg></div>
+        <h3>Digitale transformatie</h3>
+        <p>Van versnipperde systemen naar één samenhangend digitaal fundament. We kiezen pragmatisch, voeren gefaseerd in en nemen uw mensen mee.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Systeem- &amp; datalandschap op orde</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Selectie &amp; implementatie ERP/CRM</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Automatisering van handwerk</li>
+        </ul>
+      </article>
+      <article class="svc" data-r style="--d:.2s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 13 3-3 3 3 5-6"/><circle cx="7" cy="13" r="1"/><circle cx="13" cy="13" r="1"/></svg></div>
+        <h3>Procesoptimalisatie</h3>
+        <p>We leggen het echte werkproces bloot — niet het proces op papier — en halen er ruis, dubbel werk en wachttijd uit. Meetbaar, in de praktijk.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Procesanalyse &amp; herontwerp</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lean &amp; doorlooptijdverkorting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sturing op de juiste cijfers</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- aanpak -->
+<section class="sec aanpak" id="aanpak">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Onze werkwijze</span>
+      <h2>Vier fasen, geen verrassingen</h2>
+      <p>Een vaste ritmiek die u rust geeft: u weet altijd waar we staan, wat de volgende stap is en wat het oplevert.</p>
+    </div>
+    <div class="steps">
+      <article class="step" data-r>
+        <span class="no" aria-hidden="true"></span>
+        <h3>Verkennen</h3>
+        <p>We luisteren, lopen mee en analyseren de cijfers. Aan het eind van fase één weten we sámen wat het echte vraagstuk is.</p>
+      </article>
+      <article class="step" data-r style="--d:.08s">
+        <span class="no" aria-hidden="true"></span>
+        <h3>Richten</h3>
+        <p>We leggen de keuzes en de businesscase scherp op tafel. Een plan op één A3 dat iedereen begrijpt en draagt.</p>
+      </article>
+      <article class="step" data-r style="--d:.16s">
+        <span class="no" aria-hidden="true"></span>
+        <h3>Invoeren</h3>
+        <p>We bouwen mee aan de uitvoering — naast uw mensen, niet erboven. In korte sprints, met zichtbaar resultaat per stap.</p>
+      </article>
+      <article class="step" data-r style="--d:.24s">
+        <span class="no" aria-hidden="true"></span>
+        <h3>Verankeren</h3>
+        <p>We dragen over aan uw team, borgen de sturing en trekken ons terug. Het resultaat blijft — ook zonder ons.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- cases / resultaten -->
+<section class="sec cases" id="cases">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Resultaten</span>
+      <h2>Cijfers die <em>na</em> onze opdracht nog kloppen</h2>
+      <p>Een greep uit recente trajecten. Namen van contactpersonen op aanvraag herleidbaar; cijfers gemeten samen met de klant.</p>
+    </div>
+    <div class="case-grid">
+      <article class="case" data-r>
+        <div class="metric">−41%</div>
+        <div class="mlab">doorlooptijd offertes</div>
+        <p>Een technische groothandel in Apeldoorn liep vast in offertewerk. Door het proces te herontwerpen en te automatiseren ging de doorlooptijd van negen naar vijf dagen.</p>
+        <div class="who"><span class="av" aria-hidden="true">RB</span><div><b>Rik Boonstra</b><span>Directeur, Van Duren Techniek</span></div></div>
+      </article>
+      <article class="case" data-r style="--d:.1s">
+        <div class="metric">+€1,2M</div>
+        <div class="mlab">extra marge per jaar</div>
+        <p>Bij een familiebedrijf in de voedingsmiddelen herijkten we de productportfolio en prijsstrategie. Minder SKU's, scherpere marges, een rustiger fabriek.</p>
+        <div class="who"><span class="av" aria-hidden="true">MV</span><div><b>Marloes Veenstra</b><span>CFO, Hagedoorn Foods</span></div></div>
+      </article>
+      <article class="case" data-r style="--d:.2s">
+        <div class="metric">3 → 1</div>
+        <div class="mlab">systemen naar één platform</div>
+        <p>Een installatiebedrijf werkte met drie losse systemen. We selecteerden en implementeerden één platform — met 70% van het team al binnen een maand actief erop.</p>
+        <div class="who"><span class="av" aria-hidden="true">TK</span><div><b>Thijs Kuiper</b><span>COO, Stedin Installatietechniek</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- over / team -->
+<section class="sec over" id="over">
+  <div class="wrap">
+    <figure class="over-fig" data-r>
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=72" alt="Adviseurs in gesprek rond een vergadertafel bij daglicht" loading="lazy" width="1100" height="968">
+    </figure>
+    <div class="over-text" data-r style="--d:.1s">
+      <span class="kicker">Over Meridiaan</span>
+      <h2>Klein van opzet, <em>groot</em> in betrokkenheid</h2>
+      <p>Meridiaan werd in 2009 opgericht in Utrecht, vanuit een simpele overtuiging: het MKB verdient adviseurs die niet alleen meedenken, maar ook meedoen. We zijn bewust compact gebleven. U krijgt het team dat u spreekt — geen doorverkoop aan junioren.</p>
+      <div class="team">
+        <div class="member">
+          <span class="av" aria-hidden="true">SD</span>
+          <div>
+            <b>Sander Dekker</b>
+            <span class="role">Partner · Strategie</span>
+            <p>Vijftien jaar ervaring met groei- en transformatievraagstukken in productie en groothandel.</p>
+          </div>
+        </div>
+        <div class="member">
+          <span class="av" aria-hidden="true">FE</span>
+          <div>
+            <b>Fatima El Idrissi</b>
+            <span class="role">Partner · Digitaal &amp; data</span>
+            <p>Vertaalt complexe systeemvraagstukken naar pragmatische, invoerbare oplossingen.</p>
+          </div>
+        </div>
+        <div class="member">
+          <span class="av" aria-hidden="true">JV</span>
+          <div>
+            <b>Joost Verhoeven</b>
+            <span class="role">Lead · Procesverbetering</span>
+            <p>Lean-specialist die het liefst op de werkvloer staat, naast de mensen die het werk doen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- faq -->
+<section class="sec faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">Veelgestelde vragen</span>
+      <h2>Goed om te weten</h2>
+    </div>
+    <div class="faq-list" data-r>
+      <details class="faq-item">
+        <summary class="faq-q">Werken jullie ook met kleinere bedrijven? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Ja. Ons hart ligt bij het MKB, van ambitieuze bedrijven met tien medewerkers tot organisaties van een paar honderd. We stemmen scope en investering altijd af op uw situatie — een traject hoeft niet groot te zijn om waardevol te zijn.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Hoe lang duurt een gemiddeld traject? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Dat verschilt per vraagstuk, maar we werken bewust in korte fasen. Binnen zes weken leveren we doorgaans het eerste tastbare resultaat op. Een volledig strategie- of implementatietraject loopt meestal drie tot zes maanden — altijd met duidelijke tussenmomenten.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Leveren jullie een rapport, of doen jullie ook de uitvoering? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Allebei, maar het accent ligt op de uitvoering. Een advies dat in een la verdwijnt heeft geen waarde. We bouwen mee aan de invoering, naast uw mensen, en dragen pas over als het resultaat in uw organisatie verankerd is.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Hoe zit het met de kosten? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>We werken met een vaste prijs per fase, zodat u nooit voor verrassingen komt te staan. In het kennismakingsgesprek brengen we het vraagstuk in beeld; daarna ontvangt u een heldere offerte met scope, planning en investering — vrijblijvend.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">In welke regio's zijn jullie actief? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>We werken vanuit Utrecht door heel Nederland. Omdat we graag op locatie meelopen, plannen we het werk zo dat we regelmatig bij u zijn — zeker tijdens de invoeringsfase.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- contact -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info" data-r>
+      <span class="kicker">Contact &amp; offerte</span>
+      <h2>Benieuwd wat wij voor u <em>kunnen</em> betekenen?</h2>
+      <p>Plan een vrijblijvend kennismakingsgesprek of vraag een offerte aan. We reageren binnen één werkdag.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:+31302100440">030 210 04 40</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:hallo@meridiaan.nl">hallo@meridiaan.nl</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Kantoor</b><span>Maliebaan 71, 3581 CG Utrecht</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul uw naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-bedrijf">Bedrijf</label>
+            <input id="f-bedrijf" name="bedrijf" type="text" autocomplete="organization">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-email">E-mailadres <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-onderwerp">Waar kunnen we mee helpen? <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-onderwerp" name="onderwerp" required>
+            <option value="" selected disabled>Kies een onderwerp…</option>
+            <option>Strategie &amp; richting</option>
+            <option>Digitale transformatie</option>
+            <option>Procesoptimalisatie</option>
+            <option>Combinatie / nog niet zeker</option>
+          </select>
+          <span class="err">Maak een keuze.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Toelichting</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Vertel kort over uw organisatie en het vraagstuk waar u tegenaan loopt…"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Aanvraag versturen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">Vrijblijvend · reactie binnen één werkdag · uw gegevens blijven vertrouwelijk.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Bedankt!</h3>
+        <p id="ok-text">We hebben uw aanvraag ontvangen en nemen binnen één werkdag contact met u op.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="Meridiaan home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></span>
+          Meridiaan
+        </a>
+        <p class="blurb">Strategie- en implementatiebureau voor het MKB. We vertalen ambitie naar werkbare verandering — en blijven tot het resultaat staat.</p>
+        <div class="socials">
+          <a href="#top" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4z"/></svg></a>
+          <a href="#top" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-7.3L6 22H2.9l7.5-8.6L2.5 2H9l4.5 6.7zM17.8 20h1.7L7.3 3.8H5.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="#diensten">Strategie &amp; richting</a></li>
+          <li><a href="#diensten">Digitale transformatie</a></li>
+          <li><a href="#diensten">Procesoptimalisatie</a></li>
+          <li><a href="#aanpak">Onze werkwijze</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Organisatie</h4>
+        <ul>
+          <li><a href="#cases">Resultaten</a></li>
+          <li><a href="#over">Over ons</a></li>
+          <li><a href="#faq">Veelgestelde vragen</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+31302100440">030 210 04 40</a></li>
+          <li><a href="mailto:hallo@meridiaan.nl">hallo@meridiaan.nl</a></li>
+          <li><span>Maliebaan 71</span></li>
+          <li><span>3581 CG Utrecht</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="jaar">2026</span> Meridiaan Advies B.V. · KvK 30214778 · BTW NL8201.43.667.B.01</span>
+      <span>Van ambitie naar werkbare verandering.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var doc = document;
+  var reduced = false;
+  try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  /* jaartal */
+  var jaar = doc.getElementById('jaar');
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* nav: stuck + mobiel menu */
+  var nav = doc.getElementById('nav');
+  var burger = doc.getElementById('burger');
+  var links = doc.getElementById('navlinks');
+  function setMenu(open) {
+    if (links) { links.classList.toggle('open', open); }
+    if (burger) { burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    doc.body.style.overflow = open ? 'hidden' : '';
+  }
+  if (burger) { burger.addEventListener('click', function () { setMenu(!links.classList.contains('open')); }); }
+  if (links) { links.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setMenu(false); } });
+
+  var ticking = false;
+  function onScroll() { ticking = false; var y = window.pageYOffset || 0; if (nav) { nav.classList.toggle('stuck', y > 8); } }
+  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }
+  window.addEventListener('scroll', tick, { passive: true });
+  onScroll();
+
+  /* tellers */
+  function runCount(el) {
+    var raw = el.getAttribute('data-count');
+    if (raw === null) { return; }
+    var target = parseFloat(raw) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var span = el.querySelector('span') || el;
+    if (reduced || target === 0) { span.textContent = target + suffix; return; }
+    var dur = 1100, start = null;
+    function step(ts) {
+      if (start === null) { start = ts; }
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      span.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) { requestAnimationFrame(step); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* reveal */
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          var num = en.target.querySelector('[data-count]');
+          if (num) { runCount(num); }
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-r]'), function (el) { io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-r]'), function (el) { el.classList.add('in'); });
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-count]'), function (el) { runCount(el); });
+  }
+
+  /* faq: slechts één tegelijk open */
+  var items = Array.prototype.slice.call(doc.querySelectorAll('.faq-item'));
+  items.forEach(function (it) {
+    it.addEventListener('toggle', function () {
+      if (it.open) { items.forEach(function (o) { if (o !== it) { o.open = false; } }); }
+    });
+  });
+
+  /* contactformulier met live validatie */
+  var form = doc.getElementById('form');
+  if (form) {
+    function fieldOf(input) { return input.closest('.field'); }
+    function mark(input, bad) { var f = fieldOf(input); if (f) { f.classList.toggle('bad', bad); } }
+    function valid(input) {
+      var v = (input.value || '').trim(), ok = true;
+      if (input.type === 'email') { ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      else if (input.hasAttribute('required')) { ok = v.length > 0; }
+      mark(input, !ok); return ok;
+    }
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input[required], select[required]'));
+    inputs.forEach(function (i) {
+      i.addEventListener('blur', function () { valid(i); });
+      i.addEventListener('input', function () { if (fieldOf(i).classList.contains('bad')) { valid(i); } });
+      i.addEventListener('change', function () { if (fieldOf(i).classList.contains('bad')) { valid(i); } });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function (i) { if (!valid(i)) { allOk = false; if (!first) { first = i; } } });
+      if (!allOk) { if (first) { first.focus(); } return; }
+      var naam = (doc.getElementById('f-naam').value || '').trim().split(' ')[0];
+      var okt = doc.getElementById('ok-title');
+      if (okt && naam) { okt.textContent = naam + ', bedankt!'; }
+      form.classList.add('sent');
+      form.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+    });
+  }
+})();
+</script>
 </body>
 </html>

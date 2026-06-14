@@ -66,8 +66,8 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 @media(max-width:480px){.boeket{grid-template-columns:1fr}}
 .bq{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-align:center;transition:transform .35s,box-shadow .35s}
 .bq:hover{transform:translateY(-5px);box-shadow:0 24px 44px -30px rgba(44,50,42,.4)}
-.bq .sw{height:150px;display:grid;place-items:center;position:relative}
-.bq .sw::after{content:"❀";font-size:2.4rem;color:rgba(255,255,255,.75)}
+.bq .sw{height:150px;display:grid;place-items:center;position:relative;overflow:hidden}
+.bq .sw img{width:100%;height:100%;object-fit:cover}
 .bq .body{padding:1.2rem 1.2rem 1.5rem}
 .bq h3{font-family:var(--serif);font-size:1.35rem;margin-bottom:.2rem}
 .bq p{color:var(--muted);font-size:.92rem;min-height:2.6em}
@@ -129,12 +129,12 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
   <section class="sec" id="boeketten"><div class="wrap">
     <div class="sec-h" data-r><span class="kicker">Deze week</span><h2>Boeketten van het seizoen</h2><p>Elke week anders, want we binden met wat er nú mooi en vers is.</p></div>
     <div class="boeket" data-r>
-      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#e7c3c0,#cf8f8a)"></div><div class="body"><h3>Veldboeket</h3><p>Losjes en weelderig, in zachte tinten.</p><div class="pr">vanaf € 29</div></div></div>
-      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#cdd6bd,#8a9a7b)"></div><div class="body"><h3>Groen &amp; wit</h3><p>Sober en fris, voor wie van rust houdt.</p><div class="pr">vanaf € 32</div></div></div>
-      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#f0d9a8,#d9a86a)"></div><div class="body"><h3>Zon</h3><p>Warm en uitbundig, voor een goede dag.</p><div class="pr">vanaf € 27</div></div></div>
-      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#d8c4e0,#a98bc0)"></div><div class="body"><h3>Avond</h3><p>Diepe paarstinten, een tikje dramatisch.</p><div class="pr">vanaf € 34</div></div></div>
-      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#e6ddd0,#c2a98a)"></div><div class="body"><h3>Droogboeket</h3><p>Gaat maanden mee, vraagt niets terug.</p><div class="pr">vanaf € 24</div></div></div>
-      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#f2c9c2,#e08f86)"></div><div class="body"><h3>Op maat</h3><p>Vertel je gelegenheid, wij binden de rest.</p><div class="pr">in overleg</div></div></div>
+      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#e7c3c0,#cf8f8a)"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=72" alt="Weelderig veldboeket in zachte roze tinten" loading="lazy" width="800" height="600"></div><div class="body"><h3>Veldboeket</h3><p>Losjes en weelderig, in zachte tinten.</p><div class="pr">vanaf € 29</div></div></div>
+      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#cdd6bd,#8a9a7b)"><img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=72" alt="Sober boeket met groen en witte bloemen" loading="lazy" width="800" height="600"></div><div class="body"><h3>Groen &amp; wit</h3><p>Sober en fris, voor wie van rust houdt.</p><div class="pr">vanaf € 32</div></div></div>
+      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#f0d9a8,#d9a86a)"><img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=800&q=72" alt="Warm en uitbundig boeket met zonnebloemen" loading="lazy" width="800" height="600"></div><div class="body"><h3>Zon</h3><p>Warm en uitbundig, voor een goede dag.</p><div class="pr">vanaf € 27</div></div></div>
+      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#d8c4e0,#a98bc0)"><img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=800&q=72" alt="Boeket in diepe paarstinten" loading="lazy" width="800" height="600"></div><div class="body"><h3>Avond</h3><p>Diepe paarstinten, een tikje dramatisch.</p><div class="pr">vanaf € 34</div></div></div>
+      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#e6ddd0,#c2a98a)"><img src="https://images.unsplash.com/photo-1457089328109-e5d9bd499191?auto=format&fit=crop&w=800&q=72" alt="Droogboeket met gedroogde bloemen in warme tinten" loading="lazy" width="800" height="600"></div><div class="body"><h3>Droogboeket</h3><p>Gaat maanden mee, vraagt niets terug.</p><div class="pr">vanaf € 24</div></div></div>
+      <div class="bq"><div class="sw" style="background:linear-gradient(150deg,#f2c9c2,#e08f86)"><img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=800&q=72" alt="Handgebonden boeket op maat met gemengde bloemen" loading="lazy" width="800" height="600"></div><div class="body"><h3>Op maat</h3><p>Vertel je gelegenheid, wij binden de rest.</p><div class="pr">in overleg</div></div></div>
     </div>
   </div></section>
 

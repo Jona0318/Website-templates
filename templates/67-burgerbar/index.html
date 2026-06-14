@@ -69,6 +69,8 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 @media(max-width:720px){.menu-grid{grid-template-columns:1fr}}
 .item{display:grid;grid-template-columns:1fr auto;gap:.4rem 1rem;align-items:start;background:#fff;border:3px solid var(--ink);box-shadow:var(--sh);padding:1.1rem 1.3rem;transition:transform .12s,box-shadow .12s}
 .item:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
+.item .shot{grid-column:1/-1;margin:-1.1rem -1.3rem .6rem;aspect-ratio:16/10;overflow:hidden;border-bottom:3px solid var(--ink);background:var(--mustard)}
+.item .shot img{width:100%;height:100%;object-fit:cover;display:block}
 .item h3{font-family:var(--disp);font-size:1.05rem;color:var(--ink)}
 .item .pr{font-family:var(--disp);font-size:1.1rem;color:var(--red)}
 .item p{grid-column:1/-1;font-size:.92rem;color:#6a5a48}
@@ -132,12 +134,12 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   <section class="sec wrap" id="menu">
     <div class="sec-h"><h2>Het <em>menu</em></h2></div>
     <div class="menu-grid" data-r>
-      <div class="item"><h3>Classic Smash</h3><span class="pr">€8,5</span><p>Dubbele smashed patty, cheddar, ui, augurk, smashsaus.</p><div class="tags"><span class="tg">Bestseller</span></div></div>
-      <div class="item"><h3>Bacon Bomb</h3><span class="pr">€10,5</span><p>Triple patty, krokante bacon, cheddar, BBQ.</p><div class="tags"><span class="tg hot">Pittig optie</span></div></div>
-      <div class="item"><h3>Veggie Smash</h3><span class="pr">€9,0</span><p>Krokante groenteburger, oude kaas, truffelmayo.</p><div class="tags"><span class="tg veg">Veggie</span></div></div>
-      <div class="item"><h3>Blue Devil</h3><span class="pr">€11,0</span><p>Dubbel rund, blauwe kaas, gekarameliseerde ui, jalapeño.</p><div class="tags"><span class="tg hot">Heet</span></div></div>
-      <div class="item"><h3>Verse friet</h3><span class="pr">€3,5</span><p>Dik gesneden, dubbel gefrituurd, met eigen mayo.</p><div class="tags"><span class="tg veg">Veggie</span></div></div>
-      <div class="item"><h3>Loaded fries</h3><span class="pr">€6,5</span><p>Friet met cheddarsaus, bacon en bosui.</p><div class="tags"><span class="tg">Te delen</span></div></div>
+      <div class="item"><div class="shot"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=72" alt="Dubbele smashed cheeseburger met ui en augurk" loading="lazy" width="800" height="500"></div><h3>Classic Smash</h3><span class="pr">€8,5</span><p>Dubbele smashed patty, cheddar, ui, augurk, smashsaus.</p><div class="tags"><span class="tg">Bestseller</span></div></div>
+      <div class="item"><div class="shot"><img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=800&q=72" alt="Hoge burger met krokante bacon en cheddar" loading="lazy" width="800" height="500"></div><h3>Bacon Bomb</h3><span class="pr">€10,5</span><p>Triple patty, krokante bacon, cheddar, BBQ.</p><div class="tags"><span class="tg hot">Pittig optie</span></div></div>
+      <div class="item"><div class="shot"><img src="https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?auto=format&fit=crop&w=800&q=72" alt="Vegetarische groenteburger met sla" loading="lazy" width="800" height="500"></div><h3>Veggie Smash</h3><span class="pr">€9,0</span><p>Krokante groenteburger, oude kaas, truffelmayo.</p><div class="tags"><span class="tg veg">Veggie</span></div></div>
+      <div class="item"><div class="shot"><img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&fit=crop&w=800&q=72" alt="Pittige burger met jalapeño en gekarameliseerde ui" loading="lazy" width="800" height="500"></div><h3>Blue Devil</h3><span class="pr">€11,0</span><p>Dubbel rund, blauwe kaas, gekarameliseerde ui, jalapeño.</p><div class="tags"><span class="tg hot">Heet</span></div></div>
+      <div class="item"><div class="shot"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=72" alt="Dik gesneden verse friet met mayonaise" loading="lazy" width="800" height="500"></div><h3>Verse friet</h3><span class="pr">€3,5</span><p>Dik gesneden, dubbel gefrituurd, met eigen mayo.</p><div class="tags"><span class="tg veg">Veggie</span></div></div>
+      <div class="item"><div class="shot"><img src="https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=800&q=72" alt="Loaded fries met cheddarsaus en bacon" loading="lazy" width="800" height="500"></div><h3>Loaded fries</h3><span class="pr">€6,5</span><p>Friet met cheddarsaus, bacon en bosui.</p><div class="tags"><span class="tg">Te delen</span></div></div>
     </div>
   </section>
 
