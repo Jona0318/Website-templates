@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-13",
-  "count": 87,
+  "count": 86,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -3350,51 +3350,6 @@
         "contact"
       ],
       "note": "Redactioneel Swiss-grid systeem (Instrument Serif + Hanken Grotesk + Space Mono). Bewust GEEN gradient-koppen/icon-kaarten/stat-tellers/emoji. SIGNATUUR: toggle-baar kolommenraster (toets G), scroll-spy sectie-index, en live klok + cursor-coordinaat colofon. Inhoud-agnostisch — herthema via één accent-variabele."
-    },
-    {
-      "id": 87,
-      "slug": "87-dijke",
-      "path": "templates/87-dijke/",
-      "title": "Dijke Service — reparatie & onderhoud van machines",
-      "name": "Dijke Service",
-      "sector": "industrie/techniek",
-      "tier": "premium",
-      "scheme": "dark",
-      "multipage": false,
-      "palette": [
-        "#0b0d11",
-        "#14181f",
-        "#f5f6f8",
-        "#1e5cff"
-      ],
-      "fonts": [
-        "Archivo (width-axis)",
-        "Space Mono"
-      ],
-      "mechanics": [
-        "fixed-blur-nav",
-        "grid-hero",
-        "expanded-display-type",
-        "service-invert-grid",
-        "machine-cards-scrim",
-        "cta-banner",
-        "process-steps",
-        "why-split+stats",
-        "contact-form-validate",
-        "reveal-on-scroll",
-        "mobile-menu",
-        "photo-placeholders"
-      ],
-      "sections": [
-        "hero",
-        "diensten",
-        "machines",
-        "storingsband",
-        "werkwijze",
-        "waarom",
-        "contact"
-      ],
-      "note": "Geimplementeerd vanuit een Claude-Design handoff (Van Dijke bundle), STRAKKER afgewerkt: minder blauwe gloed/zware schaduwen, scherpere hairlines, strakker raster, en de drag-drop <image-slot> placeholders vervangen door zelfstandige, nette foto-frames (geen externe runtime). Industrieel zwart/grijs/wit x elektrisch blauw, Archivo expanded via width-as."
     }
   ]
 }

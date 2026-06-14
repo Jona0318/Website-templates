@@ -1,6 +1,6 @@
-# Template Galerij — 87 kant-en-klare websites
+# Template Galerij — 86 kant-en-klare websites
 
-Een verzameling van **87 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), een rij **signature-templates** met dieper uitgewerkte interactiviteit, **22 maatwerk-sites** (volledig met de hand geschreven, met echte foto's) en een nieuwe lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **86 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), een rij **signature-templates** met dieper uitgewerkte interactiviteit, **22 maatwerk-sites** (volledig met de hand geschreven, met echte foto's) en een nieuwe lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -94,7 +94,6 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 84 | `templates/84-zonnepanelen/` | ◆ Grafisch — STROOM | Zon-geel × diep groen (#0a2e22 · #ffd60a): bold-eco **zonnepanelen** met **interactieve besparings-slider** (kWh + euro live) |
 | 85 | `templates/85-kunstgalerie/` | ◆ Grafisch — KLEUR | Cream × rood/blauw/geel/groen (#2347ff · #ff3b30): **kleurblok-galerie**, bold poster-hero & exposities in kleurvlakken |
 | 86 | `templates/86-folio/` | § Editorieel — FOLIO | Warm grijs × ink × reflex-blauw (#ecebe4 · #2222ff): verfijnd **Swiss-grid ontwerpsysteem** (Instrument Serif). **Zichtbaar kolommenraster (toets G)**, scroll-spy sectie-index, werk-index met hover-accent en een live Amsterdam-klok + cursor-coördinaat in het colofon. Bewust géén gradient-koppen/icon-kaarten/stat-tellers/emoji — inhoud-agnostisch en herthema'baar via één accent-variabele |
-| 87 | `templates/87-dijke/` | ★ Dijke Service | Industrieel zwart/grijs/wit × elektrisch blauw (#0b0d11 · #1e5cff), Archivo expanded (width-axis). Diensten, specialisaties, werkwijze, "waarom" en offerteformulier. **Geïmplementeerd vanuit een Claude-Design handoff** (`van-dijke` bundle), strakker afgewerkt: minder gloed/zware schaduwen, scherpere hairlines, en de drag-drop `<image-slot>` placeholders vervangen door zelfstandige nette foto-frames (geen externe runtime) |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
