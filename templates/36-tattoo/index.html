@@ -523,6 +523,8 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
 /* 36 — Inktzwart: inkt-hero (teken met je cursor) */
 .ink-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--header-h) + 2rem);padding-bottom:clamp(3rem,7vw,5rem);cursor:crosshair}
 .ink-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+/* leesbaarheidszone: zachte scrim achter de herotekst, vóór de inkt-canvas */
+.ink-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(100deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 92%,transparent) 30%,color-mix(in srgb,var(--bg) 55%,transparent) 48%,transparent 64%)}
 .ink-inner{position:relative;z-index:2;pointer-events:none}
 .ink-inner .btn{pointer-events:auto}
 .ink-hero .eyebrow{margin-bottom:1.3rem;color:var(--accent);border-color:var(--accent)}

@@ -649,8 +649,8 @@ html:not(.js) .quote-dots{ display:none; }
   border:1px solid var(--gold-line); padding:10px; background:var(--ivory);
   box-shadow:0 30px 60px -35px rgba(11,17,13,.4);
 }
-.loc-map iframe{
-  width:100%; height:100%; border:0; display:block;
+.loc-map iframe, .loc-map img{
+  width:100%; height:100%; border:0; display:block; object-fit:cover;
   filter:sepia(.32) saturate(.78) contrast(.96);
 }
 @media (max-width: 900px){
@@ -1039,10 +1039,10 @@ html:not(.js) .quote-dots{ display:none; }
         </div>
       </div>
       <div class="loc-map reveal" style="--d:.2s">
-        <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=4.8795%2C52.3655%2C4.9015%2C52.3755&amp;layer=mapnik&amp;marker=52.3705%2C4.8905"
-          title="Kaart met de locatie van Hotel Meridiaan aan de Herengracht, Amsterdam"
-          loading="lazy"></iframe>
+        <img
+          src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?q=80&amp;w=1200&amp;auto=format&amp;fit=crop"
+          alt="De Amsterdamse grachtengordel met historische gevels langs het water nabij Hotel Meridiaan"
+          loading="lazy">
       </div>
     </div>
   </div>
