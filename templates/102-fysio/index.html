@@ -1,0 +1,2575 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balans fysiotherapie — beweeg weer vrij · Deventer</title>
+    <meta
+      name="description"
+      content="Balans is een moderne fysiotherapiepraktijk in Deventer. Van rug- en nekklachten tot sportblessures en revalidatie — een persoonlijk behandelplan, fysio, manuele therapie en dry needling. Vergoed door alle zorgverzekeraars. Maak online een afspraak."
+    />
+    <meta name="theme-color" content="#f3f8f9" />
+    <meta property="og:title" content="Balans fysiotherapie — beweeg weer vrij, Deventer" />
+    <meta
+      property="og:description"
+      content="Persoonlijke fysiotherapie in Deventer: rug & nek, knie & heup, schouder, sportblessures en revalidatie. Vergoed door alle zorgverzekeraars."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f8fa3'/%3E%3Cpath d='M5 18h5l2-7 4 14 3-9 2 4h6' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+         BALANS — fysiotherapie, Deventer
+         Handgemaakte one-pager. Fris, klinisch-warm, actief.
+         Geen libraries. Alle CSS & JS inline.
+         ============================================================ */
+      :root {
+        --bg: #f3f8f9;
+        --bg-2: #e7f1f2;
+        --surface: #ffffff;
+        --ink: #14323a;
+        --ink-2: #3d6068;
+        --muted: #5f7e84;
+        --teal: #1f8fa3;
+        --teal-deep: #157586;
+        --coral: #ef7d5a;
+        --coral-deep: #e0633e;
+        --line: rgba(20, 50, 58, 0.12);
+        --line-soft: rgba(20, 50, 58, 0.07);
+        --shadow: 0 28px 60px -38px rgba(20, 60, 70, 0.5);
+        --shadow-sm: 0 14px 34px -24px rgba(20, 60, 70, 0.42);
+        --disp: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --maxw: 1200px;
+        --gutter: clamp(1.15rem, 4.5vw, 4.5rem);
+        --r: 18px;
+        --r-lg: 28px;
+        --r-xl: 38px;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 1.04rem;
+        line-height: 1.62;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--disp);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.07;
+      }
+      ::selection {
+        background: var(--teal);
+        color: #fff;
+      }
+      :focus-visible {
+        outline: 2.5px solid var(--coral);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      .wrap {
+        width: 100%;
+        max-width: var(--maxw);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+      .eyebrow {
+        font-family: var(--disp);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--teal);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 22px;
+        height: 2px;
+        background: var(--coral);
+        border-radius: 2px;
+      }
+      .skip {
+        position: fixed;
+        top: -120px;
+        left: 1rem;
+        z-index: 300;
+        background: var(--teal);
+        color: #fff;
+        padding: 0.65rem 1.1rem;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: top 0.25s;
+      }
+      .skip:focus {
+        top: 1rem;
+      }
+
+      /* ---------- knoppen ---------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        font-family: var(--disp);
+        font-weight: 600;
+        font-size: 0.98rem;
+        padding: 0.92rem 1.6rem;
+        border-radius: 999px;
+        cursor: pointer;
+        border: 0;
+        transition:
+          transform 0.25s ease,
+          background-color 0.25s,
+          box-shadow 0.25s,
+          color 0.25s;
+      }
+      .btn svg {
+        width: 17px;
+        height: 17px;
+      }
+      .btn-primary {
+        background: var(--teal);
+        color: #fff;
+        box-shadow: 0 16px 30px -16px rgba(31, 143, 163, 0.85);
+      }
+      .btn-primary:hover {
+        background: var(--teal-deep);
+        transform: translateY(-2px);
+      }
+      .btn-coral {
+        background: var(--coral);
+        color: #fff;
+        box-shadow: 0 16px 30px -16px rgba(239, 125, 90, 0.85);
+      }
+      .btn-coral:hover {
+        background: var(--coral-deep);
+        transform: translateY(-2px);
+      }
+      .btn-soft {
+        background: var(--surface);
+        color: var(--ink);
+        box-shadow: var(--shadow-sm);
+      }
+      .btn-soft:hover {
+        transform: translateY(-2px);
+      }
+      .btn-line {
+        background: transparent;
+        color: var(--ink);
+        padding-inline: 0.3rem;
+        border-radius: 0;
+      }
+      .btn-line .u {
+        border-bottom: 2px solid var(--coral);
+        padding-bottom: 2px;
+        transition: border-color 0.25s;
+      }
+      .btn-line:hover .u {
+        border-color: var(--teal);
+        color: var(--teal-deep);
+      }
+
+      /* ---------- topbalk ---------- */
+      .topbar {
+        background: var(--ink);
+        color: #cfe6e9;
+      }
+      .topbar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        height: 40px;
+        font-size: 0.84rem;
+      }
+      .topbar .left {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .topbar .left svg {
+        width: 14px;
+        height: 14px;
+        color: #7fd4dd;
+      }
+      .topbar .ob {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        color: #fff;
+      }
+      .topbar .ob .lamp {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #59d29a;
+        box-shadow: 0 0 0 3px rgba(89, 210, 154, 0.22);
+      }
+      .topbar .ob[data-open="false"] .lamp {
+        background: #ff9b7d;
+        box-shadow: 0 0 0 3px rgba(255, 155, 125, 0.22);
+      }
+      @media (max-width: 620px) {
+        .topbar .left .addr {
+          display: none;
+        }
+      }
+
+      /* ---------- header / nav ---------- */
+      .hdr {
+        position: sticky;
+        top: 0;
+        z-index: 120;
+        background: rgba(243, 248, 249, 0.86);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        transition:
+          transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.3s,
+          background-color 0.3s;
+      }
+      .hdr.stuck {
+        box-shadow: 0 10px 34px -22px rgba(20, 60, 70, 0.45);
+      }
+      .hdr.hide {
+        transform: translateY(-100%);
+      }
+      .hdr .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 78px;
+        gap: 1rem;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--disp);
+        font-weight: 800;
+        font-size: 1.42rem;
+        letter-spacing: -0.03em;
+      }
+      .logo svg {
+        width: 34px;
+        height: 34px;
+        flex: none;
+      }
+      .logo b {
+        color: var(--teal);
+        font-weight: 800;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.7rem;
+      }
+      .nav-links a {
+        font-family: var(--disp);
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--ink-2);
+        position: relative;
+        padding-block: 0.3rem;
+        transition: color 0.2s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 100%;
+        bottom: -2px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--coral);
+        transition: right 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+      .nav-links a:hover::after {
+        right: 0;
+      }
+      .burger {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        border: 0;
+      }
+      .burger span {
+        width: 19px;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      @media (max-width: 900px) {
+        .nav-links,
+        .nav > .btn {
+          display: none;
+        }
+        .nav.open .nav-links {
+          display: flex;
+          position: fixed;
+          inset: 78px 0 auto 0;
+          background: var(--bg);
+          flex-direction: column;
+          padding: 1.6rem var(--gutter) 2.2rem;
+          gap: 1.3rem;
+          box-shadow: var(--shadow);
+          border-bottom: 1px solid var(--line);
+        }
+        .nav.open .nav-links a {
+          font-size: 1.18rem;
+        }
+        .nav.open .nav-links .m-btn {
+          display: inline-flex;
+          margin-top: 0.4rem;
+        }
+        .nav-links .m-btn {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+        .nav.open .burger span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        .nav.open .burger span:nth-child(2) {
+          opacity: 0;
+        }
+        .nav.open .burger span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        position: relative;
+        padding-block: clamp(2.4rem, 6vw, 5rem);
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -22%;
+        right: -14%;
+        width: 46vw;
+        max-width: 640px;
+        aspect-ratio: 1;
+        background: radial-gradient(
+          circle at 38% 38%,
+          rgba(31, 143, 163, 0.14),
+          rgba(31, 143, 163, 0)
+        );
+        z-index: 0;
+      }
+      .hero .wrap {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.04fr 0.96fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .hero .wrap {
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+        }
+      }
+      .hero h1 {
+        font-size: clamp(2.7rem, 6.6vw, 4.7rem);
+        font-weight: 800;
+        margin: 1.1rem 0 0;
+      }
+      .hero h1 .accent {
+        color: var(--teal);
+        position: relative;
+        white-space: nowrap;
+      }
+      .hero h1 .accent svg {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.32em;
+        width: 100%;
+        height: 0.34em;
+        color: var(--coral);
+      }
+      .hero p.lead {
+        margin-top: 1.6rem;
+        font-size: clamp(1.08rem, 1.6vw, 1.28rem);
+        color: var(--ink-2);
+        max-width: 44ch;
+      }
+      .hero-actions {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .trust-row {
+        margin-top: 2.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem 0.9rem;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--surface);
+        border: 1px solid var(--line-soft);
+        border-radius: 999px;
+        padding: 0.5rem 0.95rem;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--ink-2);
+        box-shadow: var(--shadow-sm);
+      }
+      .badge svg {
+        width: 16px;
+        height: 16px;
+        color: var(--teal);
+        flex: none;
+      }
+      .hero-figure {
+        position: relative;
+      }
+      .hero-figure .frame {
+        border-radius: var(--r-xl) var(--r-xl) var(--r-xl) 80px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background: var(--bg-2);
+      }
+      .hero-figure .frame img {
+        width: 100%;
+        aspect-ratio: 4 / 4.1;
+        object-fit: cover;
+      }
+      .hero-pill {
+        position: absolute;
+        left: -1.1rem;
+        bottom: 1.6rem;
+        background: var(--surface);
+        border-radius: 16px;
+        padding: 0.85rem 1.1rem;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .hero-pill .ic {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        background: var(--bg-2);
+        color: var(--teal-deep);
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+      .hero-pill .ic svg {
+        width: 19px;
+        height: 19px;
+      }
+      .hero-pill b {
+        display: block;
+        font-family: var(--disp);
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+      .hero-pill span {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .hero-pill[data-open="false"] .ic {
+        color: var(--coral-deep);
+      }
+      @media (max-width: 480px) {
+        .hero-pill {
+          left: 0.5rem;
+        }
+      }
+
+      /* ---------- secties ---------- */
+      .sec {
+        padding-block: clamp(3.4rem, 7vw, 6rem);
+      }
+      .sec-head {
+        max-width: 46rem;
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+      }
+      .sec-head h2 {
+        font-size: clamp(2rem, 4.6vw, 3.1rem);
+        margin: 0.85rem 0 0.7rem;
+      }
+      .sec-head p {
+        color: var(--ink-2);
+        font-size: 1.1rem;
+      }
+      .sec-head.center {
+        margin-inline: auto;
+        text-align: center;
+      }
+      .sec-head.center .eyebrow {
+        justify-content: center;
+      }
+
+      /* ---------- klacht-kiezer ---------- */
+      .kiezer {
+        background: var(--bg-2);
+      }
+      .kiezer-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: clamp(1.6rem, 4vw, 3.2rem);
+        align-items: start;
+      }
+      @media (max-width: 880px) {
+        .kiezer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-bottom: 1.6rem;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: var(--surface);
+        border: 2px solid transparent;
+        border-radius: 999px;
+        padding: 0.65rem 1.1rem;
+        font-family: var(--disp);
+        font-weight: 600;
+        font-size: 0.96rem;
+        color: var(--ink-2);
+        cursor: pointer;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform 0.2s,
+          border-color 0.2s,
+          color 0.2s,
+          background-color 0.2s;
+      }
+      .chip svg {
+        width: 18px;
+        height: 18px;
+        color: var(--teal);
+        transition: color 0.2s;
+      }
+      .chip:hover {
+        transform: translateY(-2px);
+      }
+      .chip[aria-pressed="true"] {
+        background: var(--teal);
+        color: #fff;
+        border-color: var(--teal);
+      }
+      .chip[aria-pressed="true"] svg {
+        color: #fff;
+      }
+      .kiezer-hint {
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      .kiezer-hint b {
+        color: var(--ink-2);
+      }
+      .panel {
+        background: var(--surface);
+        border-radius: var(--r-lg);
+        padding: clamp(1.5rem, 3.5vw, 2.6rem);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+      .panel::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background: var(--coral);
+      }
+      .panel-card {
+        display: none;
+      }
+      .panel-card.active {
+        display: block;
+        animation: fade 0.4s ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .panel-card.active {
+          animation: none;
+        }
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .panel-card .pc-top {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .panel-card .pc-ic {
+        width: 46px;
+        height: 46px;
+        border-radius: 13px;
+        background: var(--bg-2);
+        color: var(--teal-deep);
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+      .panel-card .pc-ic svg {
+        width: 24px;
+        height: 24px;
+      }
+      .panel-card h3 {
+        font-size: 1.5rem;
+      }
+      .panel-card .pc-sub {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 0.1rem;
+      }
+      .panel-card > p {
+        color: var(--ink-2);
+        margin-bottom: 1.1rem;
+      }
+      .panel-card .pc-label {
+        font-family: var(--disp);
+        font-weight: 700;
+        font-size: 0.74rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.7rem;
+      }
+      .pc-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .pc-tags span {
+        background: var(--bg-2);
+        color: var(--ink-2);
+        border-radius: 10px;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.88rem;
+        font-weight: 500;
+      }
+
+      /* ---------- specialisaties (klachten grid) ---------- */
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+      }
+      @media (max-width: 880px) {
+        .spec-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .spec-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .spec {
+        background: var(--surface);
+        border-radius: var(--r-lg);
+        padding: 1.7rem;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.25s, box-shadow 0.25s;
+      }
+      .spec:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+      .spec .ic {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        background: var(--bg-2);
+        color: var(--teal-deep);
+        display: grid;
+        place-items: center;
+        margin-bottom: 1.1rem;
+      }
+      .spec .ic svg {
+        width: 26px;
+        height: 26px;
+      }
+      .spec h3 {
+        font-size: 1.22rem;
+        margin-bottom: 0.45rem;
+      }
+      .spec p {
+        color: var(--ink-2);
+        font-size: 0.98rem;
+      }
+
+      /* ---------- behandelingen ---------- */
+      .beh {
+        background: var(--bg-2);
+      }
+      .beh .wrap {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: center;
+      }
+      @media (max-width: 880px) {
+        .beh .wrap {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+      }
+      .beh-fig {
+        border-radius: var(--r-xl) 80px var(--r-xl) var(--r-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .beh-fig img {
+        width: 100%;
+        aspect-ratio: 4 / 4.4;
+        object-fit: cover;
+      }
+      @media (max-width: 880px) {
+        .beh-fig {
+          order: -1;
+        }
+        .beh-fig img {
+          aspect-ratio: 16 / 11;
+        }
+      }
+      .beh-list {
+        display: grid;
+        gap: 0.2rem;
+        margin-top: 1.6rem;
+      }
+      .beh-item {
+        display: flex;
+        gap: 1rem;
+        padding: 1.15rem 0;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .beh-item:last-child {
+        border-bottom: 0;
+      }
+      .beh-item .num {
+        font-family: var(--disp);
+        font-weight: 800;
+        font-size: 0.92rem;
+        color: var(--coral);
+        flex: none;
+        padding-top: 0.18rem;
+        min-width: 1.6rem;
+      }
+      .beh-item h3 {
+        font-size: 1.16rem;
+        margin-bottom: 0.25rem;
+      }
+      .beh-item p {
+        color: var(--ink-2);
+        font-size: 0.97rem;
+      }
+
+      /* ---------- team ---------- */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(1.2rem, 3vw, 2rem);
+      }
+      @media (max-width: 820px) {
+        .team-grid {
+          grid-template-columns: 1fr;
+          max-width: 30rem;
+          margin-inline: auto;
+        }
+      }
+      .member {
+        background: var(--surface);
+        border-radius: var(--r-lg);
+        padding: 1.8rem;
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+      }
+      .member .avatar {
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        margin: 0 auto 1.1rem;
+        display: grid;
+        place-items: center;
+        font-family: var(--disp);
+        font-weight: 700;
+        font-size: 1.7rem;
+        color: #fff;
+        background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+      }
+      .member:nth-child(2) .avatar {
+        background: linear-gradient(135deg, var(--coral), var(--coral-deep));
+      }
+      .member h3 {
+        font-size: 1.24rem;
+      }
+      .member .role {
+        font-family: var(--disp);
+        font-weight: 600;
+        font-size: 0.92rem;
+        color: var(--teal);
+        margin: 0.2rem 0 0.8rem;
+      }
+      .member p {
+        color: var(--ink-2);
+        font-size: 0.96rem;
+      }
+      .member .tags {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        justify-content: center;
+      }
+      .member .tags span {
+        background: var(--bg-2);
+        color: var(--ink-2);
+        border-radius: 8px;
+        padding: 0.32rem 0.65rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      /* ---------- tarieven ---------- */
+      .tar {
+        background: var(--bg-2);
+      }
+      .tar-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(1.6rem, 4vw, 2.6rem);
+        align-items: start;
+      }
+      @media (max-width: 880px) {
+        .tar-grid {
+          grid-template-columns: 1fr;
+          gap: 1.6rem;
+        }
+      }
+      .tar-card {
+        background: var(--surface);
+        border-radius: var(--r-lg);
+        padding: clamp(1.6rem, 3.5vw, 2.4rem);
+        box-shadow: var(--shadow-sm);
+      }
+      .tar-card.feat {
+        background: var(--ink);
+        color: #dcefe9;
+        box-shadow: var(--shadow);
+      }
+      .tar-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+      }
+      .tar-card.feat h3 {
+        color: #fff;
+      }
+      .tar-card .sub {
+        color: var(--ink-2);
+        font-size: 0.98rem;
+        margin-bottom: 1.3rem;
+      }
+      .tar-card.feat .sub {
+        color: #a7d3cf;
+      }
+      .verz {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-bottom: 1.4rem;
+      }
+      .verz span {
+        background: rgba(255, 255, 255, 0.1);
+        color: #eaf6f3;
+        border-radius: 9px;
+        padding: 0.42rem 0.8rem;
+        font-size: 0.86rem;
+        font-weight: 600;
+      }
+      .tar-card .point {
+        display: flex;
+        gap: 0.7rem;
+        align-items: flex-start;
+        margin-bottom: 0.8rem;
+        font-size: 0.98rem;
+      }
+      .tar-card.feat .point {
+        color: #cfe6e2;
+      }
+      .tar-card .point svg {
+        width: 18px;
+        height: 18px;
+        flex: none;
+        margin-top: 0.18rem;
+      }
+      .tar-card.feat .point svg {
+        color: #7fe0c4;
+      }
+      .tar-card:not(.feat) .point svg {
+        color: var(--teal);
+      }
+      .price-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .price-table td {
+        padding: 0.72rem 0;
+        border-bottom: 1px solid var(--line-soft);
+        font-size: 1rem;
+      }
+      .price-table tr:last-child td {
+        border-bottom: 0;
+      }
+      .price-table td.p {
+        text-align: right;
+        font-family: var(--disp);
+        font-weight: 700;
+        color: var(--teal-deep);
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      .tar-note {
+        margin-top: 1.4rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      /* ---------- praktisch / openingstijden ---------- */
+      .prak .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+      }
+      @media (max-width: 880px) {
+        .prak .wrap {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+      }
+      .hours {
+        background: var(--surface);
+        border-radius: var(--r-lg);
+        padding: clamp(1.5rem, 3.5vw, 2.4rem);
+        box-shadow: var(--shadow-sm);
+      }
+      .hours .now {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--disp);
+        font-weight: 700;
+        color: var(--teal-deep);
+        margin-bottom: 1.2rem;
+        font-size: 1.04rem;
+      }
+      .hours .now .lamp {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 0 4px rgba(31, 143, 163, 0.18);
+      }
+      .hours .now[data-open="false"] {
+        color: var(--coral-deep);
+      }
+      .hours .now[data-open="false"] .lamp {
+        background: var(--coral);
+        box-shadow: 0 0 0 4px rgba(239, 125, 90, 0.2);
+      }
+      .hours table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .hours td {
+        padding: 0.64rem 0;
+        border-bottom: 1px solid var(--line-soft);
+        font-size: 1.02rem;
+      }
+      .hours tr:last-child td {
+        border-bottom: 0;
+      }
+      .hours td.t {
+        text-align: right;
+        color: var(--ink-2);
+        font-variant-numeric: tabular-nums;
+      }
+      .hours td.cl {
+        color: var(--muted);
+      }
+      .hours tr.today td {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .hours tr.today td:first-child {
+        position: relative;
+        padding-left: 1rem;
+      }
+      .hours tr.today td:first-child::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--coral);
+      }
+      .info-block + .info-block {
+        margin-top: 1.6rem;
+      }
+      .info-block h3 {
+        font-size: 1.16rem;
+        margin-bottom: 0.45rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
+      .info-block h3 svg {
+        width: 18px;
+        height: 18px;
+        color: var(--teal);
+      }
+      .info-block p,
+      .info-block a {
+        color: var(--ink-2);
+        font-size: 1.03rem;
+      }
+      .info-block a {
+        border-bottom: 1px solid var(--line);
+        transition: border-color 0.2s;
+      }
+      .info-block a:hover {
+        border-color: var(--teal);
+      }
+
+      /* ---------- afspraak ---------- */
+      .afs {
+        background: var(--ink);
+        color: #dcefe9;
+      }
+      .afs .wrap {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: start;
+      }
+      @media (max-width: 880px) {
+        .afs .wrap {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      .afs .eyebrow {
+        color: #7fe0c4;
+      }
+      .afs .eyebrow::before {
+        background: var(--coral);
+      }
+      .afs h2 {
+        color: #fff;
+        font-size: clamp(2rem, 4.6vw, 3.1rem);
+        margin: 0.85rem 0 1rem;
+      }
+      .afs-intro p {
+        color: #a7d3cf;
+        font-size: 1.1rem;
+        max-width: 38ch;
+      }
+      .afs-intro .phone {
+        margin-top: 1.8rem;
+        font-family: var(--disp);
+        font-size: 1.55rem;
+        font-weight: 700;
+      }
+      .afs-intro .phone a {
+        color: #fff;
+        border-bottom: 2px solid rgba(127, 224, 196, 0.45);
+      }
+      .afs-intro .phone span {
+        display: block;
+        font-family: var(--body);
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #a7d3cf;
+        margin-top: 0.3rem;
+      }
+      .afs-points {
+        margin-top: 1.8rem;
+        display: grid;
+        gap: 0.8rem;
+      }
+      .afs-points li {
+        display: flex;
+        gap: 0.7rem;
+        align-items: flex-start;
+        color: #cfe6e2;
+        font-size: 0.98rem;
+      }
+      .afs-points svg {
+        width: 18px;
+        height: 18px;
+        color: #7fe0c4;
+        flex: none;
+        margin-top: 0.18rem;
+      }
+      .fcard {
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: var(--r-lg);
+        padding: clamp(1.5rem, 3.4vw, 2.4rem);
+        box-shadow: var(--shadow);
+        position: relative;
+      }
+      .frow {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+      }
+      @media (max-width: 520px) {
+        .frow {
+          grid-template-columns: 1fr;
+        }
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      .field label {
+        font-family: var(--disp);
+        font-weight: 600;
+        font-size: 0.86rem;
+        color: var(--ink-2);
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        background: var(--bg);
+        border: 2px solid transparent;
+        border-radius: 13px;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        transition: border-color 0.2s, background-color 0.2s;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 64px;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--teal);
+        background: #fff;
+      }
+      .field.bad input,
+      .field.bad select {
+        border-color: var(--coral);
+        background: #fff;
+      }
+      .field .err {
+        font-size: 0.8rem;
+        color: var(--coral-deep);
+        display: none;
+      }
+      .field.bad .err {
+        display: block;
+      }
+      .fcard .submit {
+        margin-top: 1.4rem;
+        width: 100%;
+      }
+      .fcard .fnote {
+        margin-top: 0.9rem;
+        font-size: 0.83rem;
+        color: var(--muted);
+        text-align: center;
+      }
+      .fok {
+        display: none;
+        text-align: center;
+        padding: 1.2rem 0.5rem;
+      }
+      .fcard.sent .frow,
+      .fcard.sent .submit,
+      .fcard.sent .fnote {
+        display: none;
+      }
+      .fcard.sent .fok {
+        display: block;
+        animation: fade 0.4s ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .fcard.sent .fok {
+          animation: none;
+        }
+      }
+      .fok .big {
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+        background: var(--bg-2);
+        color: var(--teal-deep);
+        display: grid;
+        place-items: center;
+        margin: 0 auto 1rem;
+      }
+      .fok .big svg {
+        width: 32px;
+        height: 32px;
+      }
+      .fok h3 {
+        font-size: 1.45rem;
+        margin-bottom: 0.5rem;
+      }
+      .fok p {
+        color: var(--ink-2);
+      }
+
+      /* ---------- footer ---------- */
+      .foot {
+        padding-block: clamp(2.6rem, 5vw, 4rem);
+        color: var(--ink-2);
+      }
+      .foot .top {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--line);
+      }
+      @media (max-width: 760px) {
+        .foot .top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .foot .top {
+          grid-template-columns: 1fr;
+        }
+      }
+      .foot .logo {
+        color: var(--ink);
+        margin-bottom: 0.7rem;
+      }
+      .foot p {
+        font-size: 0.98rem;
+        max-width: 34ch;
+      }
+      .foot h4 {
+        font-weight: 700;
+        color: var(--ink);
+        font-size: 0.95rem;
+        margin-bottom: 0.7rem;
+      }
+      .foot li {
+        margin-bottom: 0.45rem;
+      }
+      .foot a:hover {
+        color: var(--teal-deep);
+      }
+      .foot .bottom {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      /* ---------- reveal ---------- */
+      @media (prefers-reduced-motion: no-preference) {
+        [data-r] {
+          opacity: 0;
+          transform: translateY(18px);
+          transition:
+            opacity 0.7s ease,
+            transform 0.7s ease;
+        }
+        [data-r].in {
+          opacity: 1;
+          transform: none;
+        }
+        [data-r][data-d="1"] {
+          transition-delay: 0.08s;
+        }
+        [data-r][data-d="2"] {
+          transition-delay: 0.16s;
+        }
+        [data-r][data-d="3"] {
+          transition-delay: 0.24s;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#klachten">Naar de klachten</a>
+
+    <div class="topbar">
+      <div class="wrap">
+        <span class="left">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M8 1.5C5.2 1.5 3 3.7 3 6.5c0 3.4 5 8 5 8s5-4.6 5-8c0-2.8-2.2-5-5-5Z" />
+            <circle cx="8" cy="6.5" r="1.8" />
+          </svg>
+          <span class="addr">Brinkpoortstraat 14, Deventer</span>
+        </span>
+        <span class="ob" id="ob" data-open="true">
+          <span class="lamp"></span><span id="ob-text">Nu open</span>
+        </span>
+      </div>
+    </div>
+
+    <header class="hdr" id="hdr">
+      <div class="wrap">
+        <a class="logo" href="#top" aria-label="Balans fysiotherapie, naar boven">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="9" fill="#e7f1f2" />
+            <path
+              d="M5 18h5l2-7 4 14 3-9 2 4h6"
+              fill="none"
+              stroke="#1f8fa3"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Balans<b>.</b>
+        </a>
+        <nav class="nav" id="nav" aria-label="Hoofdmenu">
+          <ul class="nav-links">
+            <li><a href="#klachten">Klachten</a></li>
+            <li><a href="#behandelingen">Behandelingen</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#tarieven">Tarieven</a></li>
+            <li><a href="#praktisch">Praktisch</a></li>
+            <li><a class="btn btn-primary m-btn" href="#afspraak">Afspraak maken</a></li>
+          </ul>
+          <a class="btn btn-primary" href="#afspraak">Afspraak maken</a>
+          <button
+            class="burger"
+            id="burger"
+            type="button"
+            aria-label="Menu openen"
+            aria-expanded="false"
+            aria-controls="nav"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero-text">
+            <span class="eyebrow">Fysiotherapie in Deventer</span>
+            <h1>
+              Beweeg weer
+              <span class="accent"
+                >vrij<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                  <path
+                    d="M2 8C40 3 90 2 130 5c25 2 50 3 68 1"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  /></svg></span>
+              en pijnvrij.
+            </h1>
+            <p class="lead">
+              Van een vastzittende rug tot een sportblessure of revalidatie na
+              een operatie — bij Balans krijg je een persoonlijk behandelplan en
+              een vaste fysiotherapeut die je weer in beweging brengt.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-coral" href="#afspraak"
+                >Afspraak maken
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M2 8h12M9 3l5 5-5 5" />
+                </svg>
+              </a>
+              <a class="btn btn-line" href="#klachten"
+                ><span class="u">Wat kunnen we doen?</span></a
+              >
+            </div>
+            <div class="trust-row">
+              <span class="badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                Vergoed door alle zorgverzekeraars
+              </span>
+              <span class="badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                Geen verwijzing nodig
+              </span>
+              <span class="badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                Binnen 48 uur terecht
+              </span>
+            </div>
+          </div>
+          <figure class="hero-figure" data-r>
+            <div class="frame">
+              <img
+                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1000&q=72"
+                alt="Fysiotherapeut begeleidt een cliënt rustig tijdens een behandeling"
+                width="1000"
+                height="1025"
+              />
+            </div>
+            <div class="hero-pill" id="hero-pill" data-open="true">
+              <span class="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3.5 2" />
+                </svg>
+              </span>
+              <span>
+                <b id="pill-open">Vandaag open</b>
+                <span id="pill-sub">tot 18:00 uur</span>
+              </span>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- KLACHT-KIEZER -->
+      <section class="sec kiezer" id="klacht-kiezer" aria-labelledby="kiezer-h">
+        <div class="wrap">
+          <div class="sec-head center" data-r>
+            <span class="eyebrow">Waar zit het?</span>
+            <h2 id="kiezer-h">Kies je klacht, wij wijzen de weg</h2>
+            <p>
+              Klik op de plek of het soort klacht waar je last van hebt — je ziet
+              meteen welke behandeling we daarvoor inzetten.
+            </p>
+          </div>
+          <div class="kiezer-grid">
+            <div data-r>
+              <div class="chips" role="group" aria-label="Kies een klacht">
+                <button class="chip" type="button" data-target="rug" aria-pressed="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="5" r="2.5" /><path d="M12 7.5v9M12 16.5l-3 4M12 16.5l3 4M8 11h8" />
+                  </svg>
+                  Rug &amp; nek
+                </button>
+                <button class="chip" type="button" data-target="knie" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M8 3v7l-2 5 4 6M16 3l-1 9 3 8" /><circle cx="11" cy="12" r="2" />
+                  </svg>
+                  Knie &amp; heup
+                </button>
+                <button class="chip" type="button" data-target="schouder" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="5" r="2.5" /><path d="M5 11c4-3 10-3 14 0M12 7.5v6M9 20l3-6 3 6" />
+                  </svg>
+                  Schouder
+                </button>
+                <button class="chip" type="button" data-target="sport" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 2.5 3 15 0 18M12 3c-3 2.5-3 15 0 18" />
+                  </svg>
+                  Sportblessure
+                </button>
+                <button class="chip" type="button" data-target="revalidatie" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M4 12h3l2-5 3 10 2-7 2 4h4" />
+                  </svg>
+                  Revalidatie
+                </button>
+              </div>
+              <p class="kiezer-hint">
+                <b>Niet zeker?</b> Geen probleem — bij je eerste afspraak doen we
+                een uitgebreide screening en stellen we samen het juiste plan op.
+              </p>
+            </div>
+
+            <div class="panel" data-r data-d="1">
+              <!-- rug -->
+              <div class="panel-card active" id="card-rug" role="region" aria-label="Rug en nek">
+                <div class="pc-top">
+                  <span class="pc-ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="5" r="2.5" /><path d="M12 7.5v9M12 16.5l-3 4M12 16.5l3 4M8 11h8" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Rug &amp; nek</h3>
+                    <p class="pc-sub">Lage rugpijn · nekklachten · uitstraling</p>
+                  </div>
+                </div>
+                <p>
+                  Een stijve onderrug, een nek die op slot zit of pijn die
+                  uitstraalt naar arm of been. We zoeken de oorzaak — houding,
+                  belasting of een geïrriteerde zenuw — en bouwen je belastbaarheid
+                  stap voor stap weer op.
+                </p>
+                <p class="pc-label">We behandelen dit met</p>
+                <div class="pc-tags">
+                  <span>Manuele therapie</span><span>Dry needling</span
+                  ><span>Oefentherapie</span><span>Houdingsadvies</span>
+                </div>
+              </div>
+              <!-- knie -->
+              <div class="panel-card" id="card-knie" role="region" aria-label="Knie en heup" hidden>
+                <div class="pc-top">
+                  <span class="pc-ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M8 3v7l-2 5 4 6M16 3l-1 9 3 8" /><circle cx="11" cy="12" r="2" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Knie &amp; heup</h3>
+                    <p class="pc-sub">Artrose · meniscus · na een prothese</p>
+                  </div>
+                </div>
+                <p>
+                  Pijn bij traplopen, een instabiel gevoel of stijfheid na rust.
+                  Of je nu net een nieuwe knie of heup hebt of last houdt van
+                  slijtage — we trainen kracht en stabiliteit zodat je weer
+                  vertrouwt op je benen.
+                </p>
+                <p class="pc-label">We behandelen dit met</p>
+                <div class="pc-tags">
+                  <span>Medische trainingstherapie</span><span>Manuele therapie</span
+                  ><span>Beweegprogramma artrose</span>
+                </div>
+              </div>
+              <!-- schouder -->
+              <div class="panel-card" id="card-schouder" role="region" aria-label="Schouder" hidden>
+                <div class="pc-top">
+                  <span class="pc-ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="5" r="2.5" /><path d="M5 11c4-3 10-3 14 0M12 7.5v6M9 20l3-6 3 6" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Schouder</h3>
+                    <p class="pc-sub">Frozen shoulder · impingement · slijmbeursontsteking</p>
+                  </div>
+                </div>
+                <p>
+                  Je arm niet meer goed omhoog krijgen, pijn bij het aankleden of
+                  's nachts. Schouderklachten hebben tijd en de juiste oefeningen
+                  nodig — wij begeleiden je nauwkeurig door elke fase van het
+                  herstel.
+                </p>
+                <p class="pc-label">We behandelen dit met</p>
+                <div class="pc-tags">
+                  <span>Fysiotherapie</span><span>Manuele therapie</span
+                  ><span>Dry needling</span><span>Gerichte oefeningen</span>
+                </div>
+              </div>
+              <!-- sport -->
+              <div class="panel-card" id="card-sport" role="region" aria-label="Sportblessure" hidden>
+                <div class="pc-top">
+                  <span class="pc-ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 2.5 3 15 0 18M12 3c-3 2.5-3 15 0 18" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Sportblessures</h3>
+                    <p class="pc-sub">Verzwikking · spierscheur · overbelasting</p>
+                  </div>
+                </div>
+                <p>
+                  Een verzwikte enkel, een verrekte hamstring of een
+                  loopblessure die maar niet overgaat. We brengen je veilig terug
+                  naar je sport — niet alleen pijnvrij, maar ook met meer
+                  veerkracht om herhaling te voorkomen.
+                </p>
+                <p class="pc-label">We behandelen dit met</p>
+                <div class="pc-tags">
+                  <span>Medische trainingstherapie</span><span>Dry needling</span
+                  ><span>Sportrevalidatie</span><span>Return-to-play</span>
+                </div>
+              </div>
+              <!-- revalidatie -->
+              <div class="panel-card" id="card-revalidatie" role="region" aria-label="Revalidatie" hidden>
+                <div class="pc-top">
+                  <span class="pc-ic">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M4 12h3l2-5 3 10 2-7 2 4h4" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>Revalidatie</h3>
+                    <p class="pc-sub">Na operatie · COPD · langdurig herstel</p>
+                  </div>
+                </div>
+                <p>
+                  Herstellen na een operatie, een lange periode van rust of een
+                  chronische aandoening. We werken met heldere tussendoelen, zodat
+                  je elke week merkbaar vooruitgaat en weer grip krijgt op je
+                  dagelijkse leven.
+                </p>
+                <p class="pc-label">We behandelen dit met</p>
+                <div class="pc-tags">
+                  <span>Medische trainingstherapie</span><span>Beweegprogramma's</span
+                  ><span>Persoonlijke begeleiding</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KLACHTEN / SPECIALISATIES -->
+      <section class="sec" id="klachten">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="eyebrow">Specialisaties</span>
+            <h2>Waar we je bij helpen</h2>
+            <p>
+              Vijf gebieden waar onze fysiotherapeuten zich in hebben verdiept —
+              elk met een aanpak op maat.
+            </p>
+          </div>
+          <div class="spec-grid">
+            <article class="spec" data-r>
+              <div class="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="5" r="2.5" /><path d="M12 7.5v9M12 16.5l-3 4M12 16.5l3 4M8 11h8" />
+                </svg>
+              </div>
+              <h3>Rug &amp; nek</h3>
+              <p>
+                Lage rugpijn, een stijve nek of uitstralende klachten. We pakken
+                de oorzaak aan en houden hem weg.
+              </p>
+            </article>
+            <article class="spec" data-r data-d="1">
+              <div class="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M8 3v7l-2 5 4 6M16 3l-1 9 3 8" /><circle cx="11" cy="12" r="2" />
+                </svg>
+              </div>
+              <h3>Knie &amp; heup</h3>
+              <p>
+                Artrose, meniscusklachten of herstel na een prothese — kracht en
+                stabiliteit terug in je benen.
+              </p>
+            </article>
+            <article class="spec" data-r data-d="2">
+              <div class="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="5" r="2.5" /><path d="M5 11c4-3 10-3 14 0M12 7.5v6M9 20l3-6 3 6" />
+                </svg>
+              </div>
+              <h3>Schouder</h3>
+              <p>
+                Frozen shoulder, impingement of een ontsteking. Geduldige
+                begeleiding door elke fase van het herstel.
+              </p>
+            </article>
+            <article class="spec" data-r>
+              <div class="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 2.5 3 15 0 18M12 3c-3 2.5-3 15 0 18" />
+                </svg>
+              </div>
+              <h3>Sportblessures</h3>
+              <p>
+                Van verzwikte enkel tot loopblessure. Veilig terug naar je sport,
+                sterker dan ervoor.
+              </p>
+            </article>
+            <article class="spec" data-r data-d="1">
+              <div class="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 12h3l2-5 3 10 2-7 2 4h4" />
+                </svg>
+              </div>
+              <h3>Revalidatie</h3>
+              <p>
+                Herstellen na een operatie of bij een chronische aandoening, met
+                heldere tussendoelen.
+              </p>
+            </article>
+            <article class="spec" data-r data-d="2">
+              <div class="ic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 21s-7-4.4-9.2-9C1.3 9 2.6 5.5 6 5.5c2 0 3.2 1.3 4 2.5.8-1.2 2-2.5 4-2.5 3.4 0 4.7 3.5 3.2 6.5C19 16.6 12 21 12 21Z" />
+                </svg>
+              </div>
+              <h3>Bekken &amp; zwangerschap</h3>
+              <p>
+                Bekkenklachten rond zwangerschap en bevalling, met zorg en de
+                juiste oefeningen.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEHANDELINGEN -->
+      <section class="sec beh" id="behandelingen">
+        <div class="wrap">
+          <figure class="beh-fig" data-r>
+            <img
+              src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80&auto=format&fit=crop"
+              alt="Fysiotherapeut behandelt de rug van een cliënt met de handen"
+              width="800"
+              height="880"
+              loading="lazy"
+            />
+          </figure>
+          <div data-r data-d="1">
+            <span class="eyebrow">Behandelingen</span>
+            <h2 style="font-size: clamp(2rem, 4.6vw, 3.1rem); margin: 0.85rem 0 0.7rem">
+              Hoe we werken
+            </h2>
+            <p style="color: var(--ink-2); font-size: 1.1rem">
+              Eén praktijk, vier specialismen onder één dak — gecombineerd tot het
+              plan dat bij jouw klacht past.
+            </p>
+            <div class="beh-list">
+              <div class="beh-item">
+                <span class="num">01</span>
+                <div>
+                  <h3>Fysiotherapie</h3>
+                  <p>
+                    De basis: onderzoek, uitleg en gerichte oefeningen om je weer
+                    soepel, sterk en pijnvrij te krijgen.
+                  </p>
+                </div>
+              </div>
+              <div class="beh-item">
+                <span class="num">02</span>
+                <div>
+                  <h3>Manuele therapie</h3>
+                  <p>
+                    Specialistische technieken voor gewrichten en wervelkolom die
+                    op slot zitten — meer ruimte en beweging.
+                  </p>
+                </div>
+              </div>
+              <div class="beh-item">
+                <span class="num">03</span>
+                <div>
+                  <h3>Dry needling</h3>
+                  <p>
+                    Een dun naaldje dat verkrampte spierknopen losmaakt, zodat de
+                    pijn afneemt en je weer vrij beweegt.
+                  </p>
+                </div>
+              </div>
+              <div class="beh-item">
+                <span class="num">04</span>
+                <div>
+                  <h3>Medische trainingstherapie</h3>
+                  <p>
+                    Begeleide training in onze oefenzaal, opgebouwd op jouw tempo
+                    — van eerste herstel tot volledige belastbaarheid.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="sec" id="team">
+        <div class="wrap">
+          <div class="sec-head center" data-r>
+            <span class="eyebrow">Het team</span>
+            <h2>Vaste gezichten die je naam onthouden</h2>
+            <p>
+              Een klein, betrokken team. Je houdt zoveel mogelijk dezelfde
+              therapeut, die jouw verhaal en je herstel kent.
+            </p>
+          </div>
+          <div class="team-grid">
+            <article class="member" data-r>
+              <div class="avatar" aria-hidden="true">SK</div>
+              <h3>Sanne Koster</h3>
+              <p class="role">Fysiotherapeut &amp; manueel therapeut</p>
+              <p>
+                Oprichter van Balans. Gespecialiseerd in rug-, nek- en
+                schouderklachten en in het rustig opbouwen van vertrouwen in
+                beweging.
+              </p>
+              <div class="tags"><span>Manuele therapie</span><span>Rug &amp; nek</span></div>
+            </article>
+            <article class="member" data-r data-d="1">
+              <div class="avatar" aria-hidden="true">TB</div>
+              <h3>Thijs Bekker</h3>
+              <p class="role">Sportfysiotherapeut</p>
+              <p>
+                Werkte jaren bij een atletiekvereniging. Brengt sporters en
+                actieve mensen via slimme opbouw veilig terug naar hun
+                belasting.
+              </p>
+              <div class="tags"><span>Sportblessures</span><span>Dry needling</span></div>
+            </article>
+            <article class="member" data-r data-d="2">
+              <div class="avatar" aria-hidden="true">LV</div>
+              <h3>Lotte Vermeer</h3>
+              <p class="role">Fysiotherapeut &amp; bekkenfysiotherapeut</p>
+              <p>
+                Rustig en zorgvuldig. Begeleidt revalidatie, artrose en
+                bekkenklachten rond zwangerschap met veel aandacht.
+              </p>
+              <div class="tags"><span>Revalidatie</span><span>Bekken</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TARIEVEN -->
+      <section class="sec tar" id="tarieven">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="eyebrow">Tarieven</span>
+            <h2>Transparant en meestal vergoed</h2>
+            <p>
+              Fysiotherapie zit voor de meeste mensen in de aanvullende
+              verzekering. Geen aanvullende dekking? Dan gelden onze losse
+              tarieven — vooraf duidelijk, zonder verrassingen.
+            </p>
+          </div>
+          <div class="tar-grid">
+            <div class="tar-card feat" data-r>
+              <h3>Via je zorgverzekeraar</h3>
+              <p class="sub">
+                We hebben contracten met alle grote zorgverzekeraars en declareren
+                rechtstreeks — jij hoeft niets voor te schieten.
+              </p>
+              <div class="verz">
+                <span>Zilveren&nbsp;Kruis</span><span>VGZ</span><span>CZ</span
+                ><span>Menzis</span><span>ONVZ</span><span>DSW</span>
+              </div>
+              <div class="point">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                <span>Rechtstreekse declaratie bij je verzekeraar</span>
+              </div>
+              <div class="point">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                <span>Geen verwijzing van de huisarts nodig</span>
+              </div>
+              <div class="point">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                <span>Kinderen tot 18 jaar uit de basisverzekering</span>
+              </div>
+              <p class="tar-note" style="color: #9cc9c4">
+                Check je polis voor het aantal vergoede behandelingen — wij denken
+                graag met je mee.
+              </p>
+            </div>
+            <div class="tar-card" data-r data-d="1">
+              <h3>Losse tarieven</h3>
+              <p class="sub">Voor wie geen aanvullende verzekering heeft.</p>
+              <table class="price-table">
+                <tbody>
+                  <tr>
+                    <td>Zitting fysiotherapie</td>
+                    <td class="p">&euro; 38</td>
+                  </tr>
+                  <tr>
+                    <td>Zitting manuele therapie</td>
+                    <td class="p">&euro; 52</td>
+                  </tr>
+                  <tr>
+                    <td>Eenmalig fysiotherapeutisch onderzoek</td>
+                    <td class="p">&euro; 60</td>
+                  </tr>
+                  <tr>
+                    <td>Dry needling</td>
+                    <td class="p">&euro; 45</td>
+                  </tr>
+                  <tr>
+                    <td>Lange zitting / aan huis</td>
+                    <td class="p">&euro; 65</td>
+                  </tr>
+                  <tr>
+                    <td>Niet of te laat afgezegd</td>
+                    <td class="p">&euro; 28</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="tar-note">
+                Tarieven gelden voor 2026. Afzeggen kan kosteloos tot 24 uur van
+                tevoren.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRAKTISCH -->
+      <section class="sec prak" id="praktisch">
+        <div class="wrap">
+          <div data-r>
+            <div class="sec-head" style="margin-bottom: 1.5rem">
+              <span class="eyebrow">Praktisch</span>
+              <h2 style="font-size: clamp(2rem, 4.6vw, 3.1rem); margin-top: 0.85rem">
+                Openingstijden
+              </h2>
+            </div>
+            <div class="hours">
+              <span class="now" id="now" data-open="true">
+                <span class="lamp"></span><span id="now-text">We zijn nu open</span>
+              </span>
+              <table>
+                <tbody id="hours-body">
+                  <!-- door JS gevuld -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div data-r data-d="1">
+            <div class="info-block">
+              <h3>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M8 1.5C5.2 1.5 3 3.7 3 6.5c0 3.4 5 8 5 8s5-4.6 5-8c0-2.8-2.2-5-5-5Z" />
+                  <circle cx="8" cy="6.5" r="1.8" />
+                </svg>
+                Adres &amp; route
+              </h3>
+              <p>Brinkpoortstraat 14<br />7411 HT Deventer</p>
+              <p style="margin-top: 0.4rem">
+                Op 8 minuten lopen van station Deventer · gratis parkeren in de
+                straat · toegankelijk voor rolstoel en rollator.
+              </p>
+            </div>
+            <div class="info-block">
+              <h3>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 .8-.7 1.5-1.5 1.3C8 19 3 14 2.4 5.5 2.3 4.7 3 4 3 3Z" />
+                </svg>
+                Contact
+              </h3>
+              <p>
+                <a href="tel:+31570745210">0570 — 745 210</a><br />
+                <a href="mailto:hallo@balansfysio-deventer.nl">hallo@balansfysio-deventer.nl</a>
+              </p>
+            </div>
+            <div class="info-block">
+              <h3>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <circle cx="8" cy="8" r="6.5" /><path d="M8 5v3.2l2.2 1.3" />
+                </svg>
+                Aan huis &amp; avonduren
+              </h3>
+              <p>
+                Kun je niet naar de praktijk komen? We behandelen ook aan huis. Op
+                dinsdag en donderdag zijn we 's avonds open — handig naast je werk.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AFSPRAAK -->
+      <section class="sec afs" id="afspraak">
+        <div class="wrap">
+          <div class="afs-intro" data-r>
+            <span class="eyebrow">Afspraak maken</span>
+            <h2>Zet de eerste stap</h2>
+            <p>
+              Vul het formulier in met je voorkeursdag en -tijd, dan plannen we je
+              eerste afspraak in. Geen verwijzing nodig — je kunt direct terecht.
+            </p>
+            <ul class="afs-points">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                Meestal binnen 48 uur een eerste afspraak
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                We bevestigen je afspraak per e-mail of telefoon
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l3.5 3.5L13 4.5" />
+                </svg>
+                Vergoed door alle zorgverzekeraars
+              </li>
+            </ul>
+            <p class="phone">
+              Liever bellen?
+              <a href="tel:+31570745210">0570 — 745 210</a>
+              <span>ma–vr van 8:00 tot 18:00 uur</span>
+            </p>
+          </div>
+          <form class="fcard" id="form" novalidate data-r data-d="1" aria-label="Afspraakformulier">
+            <div class="frow">
+              <div class="field">
+                <label for="a-naam">Naam</label>
+                <input id="a-naam" name="naam" type="text" autocomplete="name" required aria-required="true" />
+                <span class="err">Vul je naam in.</span>
+              </div>
+              <div class="field">
+                <label for="a-tel">Telefoon</label>
+                <input id="a-tel" name="tel" type="tel" autocomplete="tel" required aria-required="true" />
+                <span class="err">Vul een geldig telefoonnummer in.</span>
+              </div>
+              <div class="field">
+                <label for="a-mail">E-mail</label>
+                <input id="a-mail" name="email" type="email" autocomplete="email" required aria-required="true" />
+                <span class="err">Vul een geldig e-mailadres in.</span>
+              </div>
+              <div class="field">
+                <label for="a-klacht">Klacht</label>
+                <select id="a-klacht" name="klacht" required aria-required="true">
+                  <option value="">Kies…</option>
+                  <option>Rug &amp; nek</option>
+                  <option>Knie &amp; heup</option>
+                  <option>Schouder</option>
+                  <option>Sportblessure</option>
+                  <option>Revalidatie</option>
+                  <option>Bekken / zwangerschap</option>
+                  <option>Anders / weet ik niet</option>
+                </select>
+                <span class="err">Maak een keuze.</span>
+              </div>
+              <div class="field">
+                <label for="a-datum">Voorkeursdatum</label>
+                <input id="a-datum" name="datum" type="date" required aria-required="true" />
+                <span class="err">Kies een datum.</span>
+              </div>
+              <div class="field">
+                <label for="a-tijd">Voorkeurstijd</label>
+                <select id="a-tijd" name="tijd" required aria-required="true">
+                  <option value="">Kies…</option>
+                  <option>Ochtend (8:00–12:00)</option>
+                  <option>Middag (12:00–17:00)</option>
+                  <option>Avond (di &amp; do, 17:00–20:00)</option>
+                </select>
+                <span class="err">Kies een voorkeurstijd.</span>
+              </div>
+              <div class="field full">
+                <label for="a-opm">Opmerking (optioneel)</label>
+                <textarea
+                  id="a-opm"
+                  name="opmerking"
+                  placeholder="Vertel kort wat er speelt, of een specifieke voorkeur."
+                ></textarea>
+              </div>
+            </div>
+            <button class="btn btn-coral submit" type="submit">Aanvraag versturen</button>
+            <p class="fnote">
+              We reageren binnen één werkdag. Je gegevens gebruiken we alleen voor
+              deze afspraak.
+            </p>
+            <div class="fok" role="status">
+              <div class="big">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+                  <path d="M4 12l5 5L20 6" />
+                </svg>
+              </div>
+              <h3 id="ok-h">Bedankt!</h3>
+              <p id="ok-p">
+                We hebben je aanvraag ontvangen en nemen binnen één werkdag contact
+                met je op om de afspraak te bevestigen.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div class="top">
+          <div>
+            <a class="logo" href="#top" aria-label="Balans fysiotherapie">
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <rect width="32" height="32" rx="9" fill="#e7f1f2" />
+                <path
+                  d="M5 18h5l2-7 4 14 3-9 2 4h6"
+                  fill="none"
+                  stroke="#1f8fa3"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Balans<b style="color: var(--teal)">.</b>
+            </a>
+            <p>
+              Moderne, persoonlijke fysiotherapie in hartje Deventer. Een vaste
+              therapeut, een plan op maat en aandacht voor wat jij weer wilt
+              kunnen.
+            </p>
+          </div>
+          <div>
+            <h4>Praktijk</h4>
+            <ul>
+              <li><a href="#klachten">Klachten</a></li>
+              <li><a href="#behandelingen">Behandelingen</a></li>
+              <li><a href="#team">Team</a></li>
+              <li><a href="#tarieven">Tarieven</a></li>
+              <li><a href="#praktisch">Openingstijden</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+31570745210">0570 — 745 210</a></li>
+              <li><a href="mailto:hallo@balansfysio-deventer.nl">hallo@balansfysio-deventer.nl</a></li>
+              <li>Brinkpoortstraat 14, Deventer</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom">
+          <span>&copy; <span id="jaar">2026</span> Balans fysiotherapie · BIG-geregistreerd · KvK 71034928</span>
+          <span>Aangesloten bij het KNGF &amp; Keurmerk Fysiotherapie</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+        var doc = document;
+        var reduced = false;
+        try {
+          reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        } catch (e) {}
+
+        /* ---- openingstijden (minuten), index = getDay (0=zo) ---- */
+        var DAYS = [
+          "Zondag",
+          "Maandag",
+          "Dinsdag",
+          "Woensdag",
+          "Donderdag",
+          "Vrijdag",
+          "Zaterdag",
+        ];
+        /* ma–vr; di & do langer open; za ochtend; zo dicht */
+        var H = {
+          1: [480, 1080], // ma 08:00–18:00
+          2: [480, 1200], // di 08:00–20:00
+          3: [480, 1080], // wo 08:00–18:00
+          4: [480, 1200], // do 08:00–20:00
+          5: [480, 1020], // vr 08:00–17:00
+          6: [540, 720], // za 09:00–12:00
+          0: null, // zo gesloten
+        };
+        function fmt(m) {
+          var h = Math.floor(m / 60),
+            mm = m % 60;
+          return h + ":" + ("0" + mm).slice(-2);
+        }
+        function nlNow() {
+          try {
+            var p = new Intl.DateTimeFormat("nl-NL", {
+              weekday: "short",
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false,
+              timeZone: "Europe/Amsterdam",
+            }).formatToParts(new Date());
+            var o = {};
+            p.forEach(function (x) {
+              o[x.type] = x.value;
+            });
+            var map = { zo: 0, ma: 1, di: 2, wo: 3, do: 4, vr: 5, za: 6 };
+            var d = map[(o.weekday || "").toLowerCase().slice(0, 2)];
+            if (d === undefined) {
+              d = new Date().getDay();
+            }
+            return {
+              d: d,
+              m: parseInt(o.hour, 10) * 60 + parseInt(o.minute, 10),
+            };
+          } catch (e) {
+            var x = new Date();
+            return { d: x.getDay(), m: x.getHours() * 60 + x.getMinutes() };
+          }
+        }
+        function status() {
+          var n = nlNow(),
+            t = H[n.d];
+          if (t && n.m >= t[0] && n.m < t[1]) {
+            return { open: true, label: "tot " + fmt(t[1]) + " uur" };
+          }
+          if (t && n.m < t[0]) {
+            return { open: false, label: "vandaag open vanaf " + fmt(t[0]) };
+          }
+          for (var i = 1; i <= 7; i++) {
+            var dd = (n.d + i) % 7;
+            if (H[dd]) {
+              return {
+                open: false,
+                label:
+                  "open " + DAYS[dd].toLowerCase() + " vanaf " + fmt(H[dd][0]),
+              };
+            }
+          }
+          return { open: false, label: "tijdelijk gesloten" };
+        }
+        var st = status();
+        function setOpen(el, on) {
+          if (el) {
+            el.setAttribute("data-open", on ? "true" : "false");
+          }
+        }
+        /* topbalk */
+        setOpen(doc.getElementById("ob"), st.open);
+        var obt = doc.getElementById("ob-text");
+        if (obt) {
+          obt.textContent = st.open ? "Nu open" : "Nu gesloten";
+        }
+        /* hero pill */
+        var hp = doc.getElementById("hero-pill");
+        setOpen(hp, st.open);
+        var po = doc.getElementById("pill-open"),
+          ps = doc.getElementById("pill-sub");
+        if (po && ps) {
+          po.textContent = st.open ? "Vandaag open" : "Nu gesloten";
+          ps.textContent = st.label;
+        }
+        /* praktisch now-line */
+        var nowEl = doc.getElementById("now"),
+          nowText = doc.getElementById("now-text");
+        setOpen(nowEl, st.open);
+        if (nowText) {
+          nowText.textContent = st.open
+            ? "We zijn nu open — " + st.label
+            : "Nu gesloten — " + st.label;
+        }
+
+        /* ---- urentabel ---- */
+        var tb = doc.getElementById("hours-body");
+        if (tb) {
+          var n = nlNow();
+          [1, 2, 3, 4, 5, 6, 0].forEach(function (d) {
+            var tr = doc.createElement("tr");
+            if (d === n.d) {
+              tr.className = "today";
+            }
+            var t = H[d];
+            tr.innerHTML =
+              "<td>" +
+              DAYS[d] +
+              "</td>" +
+              (t
+                ? '<td class="t">' + fmt(t[0]) + " – " + fmt(t[1]) + "</td>"
+                : '<td class="t cl">gesloten</td>');
+            tb.appendChild(tr);
+          });
+        }
+
+        /* ---- jaar ---- */
+        var jaar = doc.getElementById("jaar");
+        if (jaar) {
+          jaar.textContent = String(new Date().getFullYear());
+        }
+
+        /* ---- datum-input minimaal vandaag ---- */
+        var dEl = doc.getElementById("a-datum");
+        if (dEl) {
+          try {
+            var t0 = new Date();
+            var iso =
+              t0.getFullYear() +
+              "-" +
+              ("0" + (t0.getMonth() + 1)).slice(-2) +
+              "-" +
+              ("0" + t0.getDate()).slice(-2);
+            dEl.min = iso;
+          } catch (e) {}
+        }
+
+        /* ---- klacht-kiezer ---- */
+        var chips = Array.prototype.slice.call(doc.querySelectorAll(".chip"));
+        var cards = Array.prototype.slice.call(
+          doc.querySelectorAll(".panel-card"),
+        );
+        function showCard(target) {
+          chips.forEach(function (c) {
+            c.setAttribute(
+              "aria-pressed",
+              c.getAttribute("data-target") === target ? "true" : "false",
+            );
+          });
+          cards.forEach(function (card) {
+            var on = card.id === "card-" + target;
+            card.classList.toggle("active", on);
+            if (on) {
+              card.removeAttribute("hidden");
+            } else {
+              card.setAttribute("hidden", "");
+            }
+          });
+        }
+        chips.forEach(function (c) {
+          c.addEventListener("click", function () {
+            showCard(c.getAttribute("data-target"));
+          });
+        });
+
+        /* ---- nav: stuck + hide-on-scroll + mobiel menu ---- */
+        var hdr = doc.getElementById("hdr"),
+          nav = doc.getElementById("nav"),
+          burger = doc.getElementById("burger");
+        function setMenu(open) {
+          nav.classList.toggle("open", open);
+          burger.setAttribute("aria-expanded", open ? "true" : "false");
+          burger.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+          doc.body.style.overflow = open ? "hidden" : "";
+        }
+        if (burger) {
+          burger.addEventListener("click", function () {
+            setMenu(!nav.classList.contains("open"));
+          });
+        }
+        if (nav) {
+          nav.addEventListener("click", function (e) {
+            if (e.target.closest("a")) {
+              setMenu(false);
+            }
+          });
+        }
+        doc.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            setMenu(false);
+          }
+        });
+
+        var lastY = window.pageYOffset || 0;
+        var ticking = false;
+        function onScroll() {
+          ticking = false;
+          var y = window.pageYOffset || 0;
+          hdr.classList.toggle("stuck", y > 8);
+          var menuOpen = nav.classList.contains("open");
+          if (!menuOpen && y > 220 && y > lastY + 4) {
+            hdr.classList.add("hide");
+          } else if (y < lastY - 4 || y <= 220) {
+            hdr.classList.remove("hide");
+          }
+          lastY = y;
+        }
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (!ticking) {
+              ticking = true;
+              requestAnimationFrame(onScroll);
+            }
+          },
+          { passive: true },
+        );
+        onScroll();
+
+        /* ---- reveal ---- */
+        if (!reduced && "IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (es) {
+              es.forEach(function (en) {
+                if (en.isIntersecting) {
+                  en.target.classList.add("in");
+                  io.unobserve(en.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+          );
+          Array.prototype.forEach.call(
+            doc.querySelectorAll("[data-r]"),
+            function (el) {
+              io.observe(el);
+            },
+          );
+        }
+
+        /* ---- afspraakformulier ---- */
+        var form = doc.getElementById("form");
+        if (form) {
+          function bad(i, on) {
+            var f = i.closest(".field");
+            if (f) {
+              f.classList.toggle("bad", on);
+            }
+          }
+          function valid(i) {
+            var v = (i.value || "").trim(),
+              ok = true;
+            if (i.type === "email") {
+              ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+            } else if (i.type === "tel") {
+              ok = v.replace(/[^0-9]/g, "").length >= 8;
+            } else if (i.hasAttribute("required")) {
+              ok = v.length > 0;
+            }
+            bad(i, !ok);
+            return ok;
+          }
+          var inputs = Array.prototype.slice.call(
+            form.querySelectorAll("input[required], select[required]"),
+          );
+          inputs.forEach(function (i) {
+            i.addEventListener("blur", function () {
+              valid(i);
+            });
+            i.addEventListener("input", function () {
+              if (i.closest(".field").classList.contains("bad")) {
+                valid(i);
+              }
+            });
+            i.addEventListener("change", function () {
+              if (i.closest(".field").classList.contains("bad")) {
+                valid(i);
+              }
+            });
+          });
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var ok = true,
+              first = null;
+            inputs.forEach(function (i) {
+              if (!valid(i)) {
+                ok = false;
+                if (!first) {
+                  first = i;
+                }
+              }
+            });
+            if (!ok) {
+              if (first) {
+                first.focus();
+              }
+              return;
+            }
+            var naam = (doc.getElementById("a-naam").value || "")
+              .trim()
+              .split(" ")[0];
+            var okh = doc.getElementById("ok-h");
+            if (okh && naam) {
+              okh.textContent = "Bedankt, " + naam + "!";
+            }
+            form.classList.add("sent");
+            form.scrollIntoView({
+              behavior: reduced ? "auto" : "smooth",
+              block: "center",
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2354 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>De Regentes — theater &amp; podium · Deventer</title>
+    <meta
+      name="description"
+      content="De Regentes is het stadstheater van Deventer: een seizoen vol toneel, dans, muziek en comedy in een warme, klassieke zaal aan de IJssel. Bekijk de programmering en reserveer kaarten online."
+    />
+    <meta name="theme-color" content="#17121c" />
+    <meta property="og:title" content="De Regentes — theater & podium, Deventer" />
+    <meta
+      property="og:description"
+      content="Een seizoen vol toneel, dans, muziek en comedy in het stadstheater aan de IJssel. Bekijk de programmering en reserveer kaarten."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2317121c'/%3E%3Cpath d='M16 4c-5 6-9 9-9 14a9 9 0 0 0 18 0c0-5-4-8-9-14z' fill='%23e8543f'/%3E%3Ccircle cx='16' cy='19' r='3' fill='%23d9a441'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+         DE REGENTES — theater & podium, Deventer
+         Handgemaakte one-pager. Dramatisch, warm, redactioneel.
+         Geen libraries. Alle CSS/JS inline.
+         ============================================================ */
+      :root {
+        --ink: #17121c; /* diep pruim/inkt */
+        --ink-2: #1f1824;
+        --ink-3: #2a212f;
+        --paper: #f3ece4; /* warm licht */
+        --paper-soft: rgba(243, 236, 228, 0.72);
+        --paper-faint: rgba(243, 236, 228, 0.46);
+        --paper-line: rgba(243, 236, 228, 0.16);
+        --paper-line-soft: rgba(243, 236, 228, 0.09);
+        --coral: #e8543f; /* spotlight koraal-rood */
+        --coral-deep: #c43c2b;
+        --gold: #d9a441; /* goud secundair */
+        --plum: #3a2540; /* warme accentvlakken */
+        --display: "Fraunces", Georgia, "Times New Roman", serif;
+        --body: "Archivo", "Inter", system-ui, sans-serif;
+        --maxw: 1180px;
+        --gutter: clamp(1.25rem, 5vw, 5rem);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+      body {
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--body);
+        font-weight: 400;
+        font-size: 1.04rem;
+        line-height: 1.62;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+      }
+      /* subtiele filmkorrel + vignet over de hele pagina */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            120% 90% at 50% 0%,
+            rgba(232, 84, 63, 0.07),
+            transparent 60%
+          ),
+          radial-gradient(
+            130% 120% at 50% 110%,
+            rgba(0, 0, 0, 0.55),
+            transparent 55%
+          );
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+        color: inherit;
+      }
+      ::selection {
+        background: var(--coral);
+        color: var(--ink);
+      }
+      :focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+      }
+      .wrap {
+        width: 100%;
+        max-width: var(--maxw);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+        position: relative;
+        z-index: 2;
+      }
+      .display {
+        font-family: var(--display);
+      }
+      .italic {
+        font-style: italic;
+      }
+      .label {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+      .skip {
+        position: fixed;
+        top: -120px;
+        left: 1rem;
+        z-index: 200;
+        background: var(--coral);
+        color: var(--ink);
+        padding: 0.65rem 1.1rem;
+        font-weight: 600;
+        transition: top 0.25s;
+      }
+      .skip:focus {
+        top: 1rem;
+      }
+
+      /* ---------- bovenbalk ---------- */
+      .topbar {
+        border-bottom: 1px solid var(--paper-line);
+        background: var(--ink-2);
+        position: relative;
+        z-index: 5;
+      }
+      .topbar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        height: 38px;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--paper-soft);
+      }
+      .topbar .kassa {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+      .topbar .kassa .lamp {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 8px 1px rgba(217, 164, 65, 0.6);
+      }
+      .topbar .kassa[data-open="false"] .lamp {
+        background: var(--coral);
+        box-shadow: 0 0 8px 1px rgba(232, 84, 63, 0.5);
+      }
+      @media (max-width: 640px) {
+        .topbar .plek {
+          display: none;
+        }
+      }
+
+      /* ---------- kop / navigatie ---------- */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: rgba(23, 18, 28, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid transparent;
+        transition:
+          transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .nav.stuck {
+        border-bottom-color: var(--paper-line);
+        box-shadow: 0 14px 40px -28px rgba(0, 0, 0, 0.9);
+      }
+      .nav.hidden {
+        transform: translateY(-100%);
+      }
+      .nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 76px;
+      }
+      .brand {
+        font-family: var(--display);
+        font-size: 1.55rem;
+        line-height: 1;
+        letter-spacing: 0.005em;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.05em;
+      }
+      .brand b {
+        font-weight: 600;
+      }
+      .brand .dot {
+        color: var(--coral);
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-links a {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--paper-soft);
+        position: relative;
+        padding-block: 0.4rem;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 100%;
+        bottom: 0.05rem;
+        height: 1.5px;
+        background: var(--coral);
+        transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .nav-links a:hover {
+        color: var(--paper);
+      }
+      .nav-links a:hover::after {
+        right: 0;
+      }
+      .nav-tickets {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--coral);
+        color: var(--coral);
+        padding: 0.55rem 1.15rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+      .nav-tickets:hover {
+        background: var(--coral);
+        color: var(--ink);
+      }
+      .nav-tickets::after {
+        display: none;
+      }
+      .burger {
+        display: none;
+        width: 42px;
+        height: 42px;
+        background: transparent;
+        border: 1px solid var(--paper-line);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .burger span {
+        width: 18px;
+        height: 1.6px;
+        background: var(--paper);
+        transition:
+          transform 0.3s,
+          opacity 0.3s;
+      }
+      @media (max-width: 880px) {
+        .nav-links {
+          position: fixed;
+          inset: 0;
+          background: var(--ink-2);
+          flex-direction: column;
+          justify-content: center;
+          gap: 1.7rem;
+          transform: translateY(-100%);
+          transition: transform 0.5s cubic-bezier(0.7, 0, 0.2, 1);
+          z-index: 70;
+        }
+        .nav-links.open {
+          transform: none;
+        }
+        .nav-links a {
+          font-size: 1.15rem;
+          letter-spacing: 0.12em;
+          color: var(--paper);
+        }
+        .nav-links .nav-tickets {
+          font-size: 0.9rem;
+          padding: 0.85rem 1.7rem;
+        }
+        .burger {
+          display: flex;
+          z-index: 80;
+        }
+        .burger.open span:nth-child(1) {
+          transform: translateY(6.6px) rotate(45deg);
+        }
+        .burger.open span:nth-child(2) {
+          opacity: 0;
+        }
+        .burger.open span:nth-child(3) {
+          transform: translateY(-6.6px) rotate(-45deg);
+        }
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid var(--paper-line);
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        filter: saturate(0.9) contrast(1.05) brightness(0.66);
+      }
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            105deg,
+            rgba(23, 18, 28, 0.95) 22%,
+            rgba(23, 18, 28, 0.6) 55%,
+            rgba(58, 37, 64, 0.35) 100%
+          ),
+          radial-gradient(
+            80% 60% at 22% 18%,
+            rgba(232, 84, 63, 0.22),
+            transparent 60%
+          );
+      }
+      .hero .wrap {
+        position: relative;
+        z-index: 2;
+        min-height: clamp(560px, 86vh, 820px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-block: clamp(3rem, 7vw, 6rem);
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        color: var(--coral);
+        margin-bottom: 1.5rem;
+      }
+      .hero-tag .bullet {
+        width: 30px;
+        height: 1.5px;
+        background: var(--coral);
+      }
+      .hero h1 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-optical-sizing: auto;
+        font-size: clamp(3rem, 11vw, 8rem);
+        line-height: 0.92;
+        letter-spacing: -0.015em;
+        max-width: 16ch;
+      }
+      .hero h1 em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold);
+      }
+      .hero-meta {
+        margin-top: 1.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.8rem 1.4rem;
+        font-size: 0.96rem;
+        color: var(--paper-soft);
+      }
+      .hero-meta .chip {
+        border: 1px solid var(--paper-line);
+        padding: 0.3rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--paper);
+      }
+      .hero-meta .chip.live {
+        border-color: var(--coral);
+        color: var(--coral);
+      }
+      .hero-intro {
+        margin-top: 1.7rem;
+        font-size: clamp(1.06rem, 1.6vw, 1.3rem);
+        color: var(--paper-soft);
+        max-width: 46ch;
+        line-height: 1.66;
+      }
+      .hero-intro .first {
+        font-style: italic;
+        color: var(--paper);
+      }
+      .hero-actions {
+        margin-top: 2.2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.95rem 1.7rem;
+        background: var(--coral);
+        color: var(--ink);
+        border: 1px solid var(--coral);
+        transition:
+          background-color 0.3s,
+          color 0.3s,
+          transform 0.3s;
+      }
+      .btn:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--paper);
+        border-color: var(--paper-line);
+      }
+      .btn.ghost:hover {
+        background: transparent;
+        border-color: var(--paper);
+        color: var(--paper);
+      }
+      .lnk {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1.5px solid var(--coral);
+        transition:
+          gap 0.3s,
+          color 0.3s;
+      }
+      .lnk:hover {
+        gap: 0.95rem;
+        color: var(--gold);
+      }
+
+      /* ---------- sectie-omhulsel ---------- */
+      .sec {
+        padding-block: clamp(3.5rem, 7vw, 6.5rem);
+        border-top: 1px solid var(--paper-line);
+        position: relative;
+        z-index: 2;
+      }
+      .sec:first-of-type {
+        border-top: 0;
+      }
+      .sec-head {
+        display: flex;
+        align-items: baseline;
+        gap: 1.1rem;
+        margin-bottom: clamp(2rem, 4vw, 3.4rem);
+      }
+      .sec-head .no {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        color: var(--coral);
+        font-variant-numeric: tabular-nums;
+      }
+      .sec-head h2 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(2.1rem, 5vw, 3.6rem);
+        line-height: 1;
+        letter-spacing: -0.015em;
+      }
+      .sec-head h2 em {
+        font-style: italic;
+        color: var(--coral);
+      }
+      .sec-head .aside {
+        margin-left: auto;
+        font-style: italic;
+        color: var(--paper-soft);
+        max-width: 32ch;
+        text-align: right;
+        font-size: 0.98rem;
+      }
+      @media (max-width: 700px) {
+        .sec-head {
+          flex-wrap: wrap;
+        }
+        .sec-head .aside {
+          margin-left: 0;
+          text-align: left;
+          width: 100%;
+        }
+      }
+
+      /* ---------- programma / filter ---------- */
+      .prog-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 2.2rem;
+      }
+      .chip-filter {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.5rem 1.05rem;
+        border: 1px solid var(--paper-line);
+        background: transparent;
+        color: var(--paper-soft);
+        border-radius: 999px;
+        cursor: pointer;
+        transition:
+          background-color 0.25s,
+          color 0.25s,
+          border-color 0.25s;
+      }
+      .chip-filter:hover {
+        border-color: var(--paper);
+        color: var(--paper);
+      }
+      .chip-filter[aria-pressed="true"] {
+        background: var(--coral);
+        border-color: var(--coral);
+        color: var(--ink);
+      }
+      .prog-count {
+        margin-left: auto;
+        font-size: 0.82rem;
+        color: var(--paper-faint);
+        letter-spacing: 0.04em;
+      }
+      .prog-count b {
+        color: var(--paper);
+        font-weight: 600;
+      }
+      @media (max-width: 560px) {
+        .prog-count {
+          margin-left: 0;
+          width: 100%;
+          order: 5;
+        }
+      }
+      .prog-list {
+        border-top: 1px solid var(--paper-line);
+      }
+      .show {
+        display: grid;
+        grid-template-columns: 7.5rem 1fr auto;
+        gap: 1.4rem 1.8rem;
+        align-items: center;
+        padding-block: 1.55rem;
+        border-bottom: 1px solid var(--paper-line-soft);
+        transition: background-color 0.25s;
+      }
+      .show:hover {
+        background: rgba(243, 236, 228, 0.03);
+      }
+      .show.is-hidden {
+        display: none;
+      }
+      .show-date {
+        font-family: var(--display);
+        line-height: 1;
+      }
+      .show-date .d {
+        display: block;
+        font-size: 1.9rem;
+        font-weight: 600;
+      }
+      .show-date .m {
+        display: block;
+        margin-top: 0.2rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--coral);
+      }
+      .show-date .wd {
+        display: block;
+        font-family: var(--body);
+        font-size: 0.74rem;
+        color: var(--paper-faint);
+        letter-spacing: 0.04em;
+      }
+      .show-main .gtag {
+        display: inline-block;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.64rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.35rem;
+      }
+      .show-main h3 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 1.42rem;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+      }
+      .show-main h3 .tonight {
+        display: inline-block;
+        margin-left: 0.55rem;
+        vertical-align: middle;
+        font-family: var(--body);
+        font-weight: 700;
+        font-size: 0.58rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        background: var(--gold);
+        padding: 0.16rem 0.5rem;
+        border-radius: 3px;
+      }
+      .show-main p {
+        margin-top: 0.4rem;
+        color: var(--paper-soft);
+        font-size: 0.95rem;
+        max-width: 52ch;
+      }
+      .show-action {
+        text-align: right;
+        white-space: nowrap;
+      }
+      .show-time {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--paper-faint);
+        margin-bottom: 0.5rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .ticket {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.5rem 0.95rem;
+        border: 1px solid var(--coral);
+        color: var(--coral);
+        transition:
+          background-color 0.25s,
+          color 0.25s;
+      }
+      .ticket:hover {
+        background: var(--coral);
+        color: var(--ink);
+      }
+      .soldout {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.5rem 0.95rem;
+        border: 1px dashed var(--paper-line);
+        color: var(--paper-faint);
+      }
+      .prog-empty {
+        display: none;
+        padding: 2.5rem 0;
+        font-style: italic;
+        color: var(--paper-soft);
+      }
+      .prog-empty.show-empty {
+        display: block;
+      }
+      @media (max-width: 680px) {
+        .show {
+          grid-template-columns: 4.6rem 1fr;
+          gap: 0.6rem 1.1rem;
+        }
+        .show-date .d {
+          font-size: 1.5rem;
+        }
+        .show-action {
+          grid-column: 2 / -1;
+          text-align: left;
+        }
+        .show-time {
+          display: inline;
+          margin-right: 0.8rem;
+          margin-bottom: 0;
+        }
+      }
+
+      /* ---------- uitgelicht ---------- */
+      .feat {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+      }
+      @media (max-width: 880px) {
+        .feat {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+      }
+      .feat-fig {
+        position: relative;
+      }
+      .feat-fig img {
+        width: 100%;
+        aspect-ratio: 5/4;
+        object-fit: cover;
+        filter: saturate(0.92) contrast(1.04) brightness(0.82);
+      }
+      .feat-fig::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          200deg,
+          transparent 45%,
+          rgba(23, 18, 28, 0.5)
+        );
+      }
+      .feat-fig .badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 2;
+        font-family: var(--body);
+        font-weight: 700;
+        font-size: 0.64rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        background: var(--coral);
+        color: var(--ink);
+        padding: 0.4rem 0.85rem;
+      }
+      .feat-body .kicker {
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+      .feat-body h3 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(2rem, 4.2vw, 3rem);
+        line-height: 1.02;
+        letter-spacing: -0.015em;
+        margin-bottom: 1.1rem;
+      }
+      .feat-body h3 em {
+        font-style: italic;
+        color: var(--coral);
+      }
+      .feat-body p {
+        color: var(--paper-soft);
+        font-size: 1.06rem;
+        line-height: 1.72;
+        max-width: 46ch;
+      }
+      .feat-body p + p {
+        margin-top: 1rem;
+      }
+      .feat-facts {
+        margin-top: 1.7rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6rem 2.4rem;
+      }
+      .feat-facts div {
+        border-left: 2px solid var(--coral);
+        padding-left: 0.9rem;
+      }
+      .feat-facts dt {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--paper-faint);
+        margin-bottom: 0.2rem;
+      }
+      .feat-facts dd {
+        font-family: var(--display);
+        font-size: 1.15rem;
+      }
+      .feat-body .feat-cta {
+        margin-top: 2rem;
+      }
+
+      /* ---------- praktisch ---------- */
+      .prak {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2.2rem, 5vw, 4.5rem);
+        align-items: start;
+      }
+      @media (max-width: 860px) {
+        .prak {
+          grid-template-columns: 1fr;
+          gap: 2.6rem;
+        }
+      }
+      .prak-cards {
+        display: grid;
+        gap: 1.3rem;
+      }
+      .pcard {
+        border: 1px solid var(--paper-line);
+        padding: 1.4rem 1.5rem;
+        background: rgba(243, 236, 228, 0.02);
+      }
+      .pcard h3 {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.7rem;
+      }
+      .pcard p {
+        color: var(--paper-soft);
+        font-size: 0.98rem;
+        line-height: 1.65;
+      }
+      .pcard .big {
+        font-family: var(--display);
+        font-size: 1.7rem;
+        color: var(--paper);
+        line-height: 1.1;
+      }
+      .prak-side {
+        position: relative;
+      }
+      .prak-fig {
+        position: relative;
+      }
+      .prak-fig img {
+        width: 100%;
+        aspect-ratio: 4/5;
+        object-fit: cover;
+        filter: saturate(0.92) contrast(1.04) brightness(0.8);
+      }
+      .prak-fig figcaption {
+        margin-top: 0.7rem;
+        font-style: italic;
+        font-size: 0.88rem;
+        color: var(--paper-faint);
+      }
+      .hours {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.7rem;
+      }
+      .hours caption {
+        text-align: left;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.6rem;
+      }
+      .hours td {
+        padding-block: 0.6rem;
+        border-bottom: 1px solid var(--paper-line-soft);
+        font-size: 0.98rem;
+      }
+      .hours td.day {
+        font-family: var(--display);
+        font-size: 1.05rem;
+      }
+      .hours td.time {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+        color: var(--paper-soft);
+      }
+      .hours tr.today td {
+        color: var(--paper);
+      }
+      .hours tr.today td.day {
+        position: relative;
+        color: var(--coral);
+      }
+      .hours tr.today td.day::before {
+        content: "";
+        position: absolute;
+        left: -0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--coral);
+      }
+      .hours td.closed {
+        color: var(--paper-faint);
+        font-style: italic;
+      }
+      .kassa-now {
+        margin-top: 1.4rem;
+        font-family: var(--display);
+        font-size: 1.25rem;
+      }
+      .kassa-now[data-open="false"] {
+        color: var(--coral);
+      }
+      .kassa-now[data-open="true"] {
+        color: var(--gold);
+      }
+
+      /* ---------- vrienden ---------- */
+      .vrienden {
+        background: var(--plum);
+        position: relative;
+        z-index: 2;
+      }
+      .vrienden-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: center;
+      }
+      @media (max-width: 820px) {
+        .vrienden-grid {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+      }
+      .vrienden-lead p {
+        color: var(--paper-soft);
+        font-size: 1.08rem;
+        line-height: 1.74;
+        max-width: 40ch;
+      }
+      .vrienden-lead p + p {
+        margin-top: 1rem;
+      }
+      .vrienden-lead .pull {
+        font-family: var(--display);
+        font-style: italic;
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+        line-height: 1.18;
+        color: var(--paper);
+        margin-bottom: 1.4rem;
+      }
+      .perks {
+        display: grid;
+        gap: 1.1rem;
+      }
+      .perk {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--paper-line);
+        padding-bottom: 1.1rem;
+      }
+      .perk .pn {
+        font-family: var(--display);
+        font-size: 1.3rem;
+        color: var(--coral);
+        line-height: 1;
+        min-width: 2rem;
+      }
+      .perk h4 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+      }
+      .perk p {
+        color: var(--paper-soft);
+        font-size: 0.95rem;
+      }
+      .vrienden-cta {
+        margin-top: 1.8rem;
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .vrienden-cta .price {
+        font-family: var(--display);
+        font-size: 1.1rem;
+        color: var(--paper-soft);
+      }
+      .vrienden-cta .price b {
+        color: var(--gold);
+        font-weight: 600;
+      }
+
+      /* ---------- tickets / contact ---------- */
+      .tickets {
+        position: relative;
+        z-index: 2;
+      }
+      .tickets-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+      }
+      @media (max-width: 880px) {
+        .tickets-grid {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+      }
+      .tickets-intro .big {
+        font-family: var(--display);
+        font-size: clamp(1.9rem, 4vw, 2.8rem);
+        line-height: 1.05;
+        margin-bottom: 1rem;
+      }
+      .tickets-intro .big em {
+        font-style: italic;
+        color: var(--coral);
+      }
+      .tickets-intro p {
+        color: var(--paper-soft);
+        font-size: 1.06rem;
+        line-height: 1.7;
+        max-width: 40ch;
+      }
+      .tickets-intro .contact-lines {
+        margin-top: 1.7rem;
+        display: grid;
+        gap: 0.55rem;
+        font-size: 1.02rem;
+      }
+      .tickets-intro .contact-lines a {
+        border-bottom: 1px solid var(--paper-line);
+        transition: border-color 0.3s;
+      }
+      .tickets-intro .contact-lines a:hover {
+        border-bottom-color: var(--coral);
+      }
+      .form {
+        position: relative;
+      }
+      .frow {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem 1.6rem;
+      }
+      @media (max-width: 520px) {
+        .frow {
+          grid-template-columns: 1fr;
+        }
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      .field label {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.66rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--paper-faint);
+        margin-bottom: 0.5rem;
+      }
+      .field input,
+      .field select {
+        background: transparent;
+        border: 0;
+        border-bottom: 1.5px solid var(--paper-line);
+        color: var(--paper);
+        padding: 0.55rem 0.1rem;
+        font-size: 1.04rem;
+        border-radius: 0;
+        transition: border-color 0.3s;
+      }
+      .field select option {
+        color: #17121c;
+      }
+      .field input:focus,
+      .field select:focus {
+        outline: none;
+        border-bottom-color: var(--coral);
+      }
+      .field.bad input,
+      .field.bad select {
+        border-bottom-color: var(--coral);
+      }
+      .field .err {
+        font-size: 0.78rem;
+        color: var(--coral);
+        margin-top: 0.35rem;
+        display: none;
+      }
+      .field.bad .err {
+        display: block;
+      }
+      .fsubmit {
+        margin-top: 1.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        background: var(--coral);
+        color: var(--ink);
+        border: 0;
+        padding: 1rem 1.9rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+      .fsubmit:hover {
+        background: var(--gold);
+      }
+      .fnote {
+        margin-top: 1rem;
+        font-size: 0.82rem;
+        color: var(--paper-faint);
+      }
+      .form-ok {
+        display: none;
+        background: rgba(243, 236, 228, 0.05);
+        border: 1px solid var(--paper-line);
+        border-left: 3px solid var(--coral);
+        padding: 1.8rem;
+      }
+      .form.sent .form-ok {
+        display: block;
+      }
+      .form.sent .frow,
+      .form.sent .fsubmit,
+      .form.sent .fnote {
+        display: none;
+      }
+      .form-ok h3 {
+        font-family: var(--display);
+        font-size: 1.7rem;
+        margin-bottom: 0.5rem;
+      }
+      .form-ok p {
+        color: var(--paper-soft);
+      }
+
+      /* ---------- footer ---------- */
+      .foot {
+        padding-block: clamp(3rem, 6vw, 5rem);
+        border-top: 1px solid var(--paper-line);
+        position: relative;
+        z-index: 2;
+      }
+      .foot-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+        flex-wrap: wrap;
+        border-bottom: 1px solid var(--paper-line);
+        padding-bottom: 2rem;
+      }
+      .foot-mark {
+        font-family: var(--display);
+        font-size: clamp(3rem, 11vw, 7rem);
+        line-height: 0.82;
+        letter-spacing: -0.02em;
+      }
+      .foot-mark .dot {
+        color: var(--coral);
+      }
+      .foot-cols {
+        display: flex;
+        gap: clamp(2rem, 5vw, 4rem);
+        flex-wrap: wrap;
+        font-size: 0.96rem;
+      }
+      .foot-cols h4 {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.66rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--paper-faint);
+        margin-bottom: 0.7rem;
+      }
+      .foot-cols a {
+        color: var(--paper-soft);
+      }
+      .foot-cols a:hover {
+        color: var(--coral);
+      }
+      .foot-cols p {
+        color: var(--paper-soft);
+        line-height: 1.7;
+      }
+      .foot-bottom {
+        margin-top: 1.6rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-size: 0.8rem;
+        color: var(--paper-faint);
+      }
+
+      /* ---------- reveal ---------- */
+      @media (prefers-reduced-motion: no-preference) {
+        [data-r] {
+          opacity: 0;
+          transform: translateY(16px);
+          transition:
+            opacity 0.7s ease,
+            transform 0.7s ease;
+        }
+        [data-r].in {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#programma">Naar de programmering</a>
+
+    <div class="topbar">
+      <div class="wrap">
+        <span class="plek">Boreelstraat 4 · Deventer</span>
+        <span class="kassa" id="kassa-top" data-open="true"
+          ><span class="lamp"></span
+          ><span id="kassa-top-text">Kassa open</span></span
+        >
+        <span>Seizoen 2026 — 2027</span>
+      </div>
+    </div>
+
+    <header class="nav" id="nav">
+      <div class="wrap">
+        <a class="brand" href="#top"
+          >De <b>Regentes</b><span class="dot">.</span></a
+        >
+        <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+          <a href="#programma">Programma</a>
+          <a href="#uitgelicht">Uitgelicht</a>
+          <a href="#praktisch">Praktisch</a>
+          <a href="#vrienden">Vrienden</a>
+          <a class="nav-tickets" href="#tickets">Kaarten</a>
+        </nav>
+        <button
+          class="burger"
+          id="burger"
+          type="button"
+          aria-label="Menu openen"
+          aria-expanded="false"
+          aria-controls="navlinks"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero" aria-label="Vanavond in De Regentes">
+        <div class="hero-bg" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1600&q=72"
+            alt=""
+            width="1600"
+            height="1067"
+            loading="eager"
+          />
+        </div>
+        <div class="wrap">
+          <p class="hero-tag label">
+            <span class="bullet"></span> Vanavond op de grote zaal
+          </p>
+          <h1 class="display">
+            Het licht gaat aan,<br />de <em>stad</em> houdt
+            <em>de adem in</em>.
+          </h1>
+          <div class="hero-meta">
+            <span class="chip live">Première</span>
+            <span class="chip">Toneel</span>
+            <span>Gezelschap Noorderlicht · <strong>De Stille Kamer</strong></span>
+            <span>· 20:15 uur · grote zaal</span>
+          </div>
+          <p class="hero-intro">
+            <span class="first"
+              >De Regentes is het stadstheater van Deventer —</span
+            >
+            een seizoen lang toneel, dans, muziek en comedy in een zaal die naar
+            fluweel en spanning ruikt. Schuif aan, het doek gaat zo op.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#tickets">Kaarten reserveren</a>
+            <a class="btn ghost" href="#programma">Bekijk het programma</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMMA -->
+      <section class="sec" id="programma">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="no">01</span>
+            <h2 class="display">Het <em>seizoen</em></h2>
+            <p class="aside">
+              Toneel, dans, muziek en comedy — filter op wat je zoekt.
+            </p>
+          </div>
+
+          <div
+            class="prog-bar"
+            role="group"
+            aria-label="Filter de programmering op genre"
+          >
+            <button
+              class="chip-filter"
+              type="button"
+              data-genre="alles"
+              aria-pressed="true"
+            >
+              Alles
+            </button>
+            <button
+              class="chip-filter"
+              type="button"
+              data-genre="toneel"
+              aria-pressed="false"
+            >
+              Toneel
+            </button>
+            <button
+              class="chip-filter"
+              type="button"
+              data-genre="dans"
+              aria-pressed="false"
+            >
+              Dans
+            </button>
+            <button
+              class="chip-filter"
+              type="button"
+              data-genre="muziek"
+              aria-pressed="false"
+            >
+              Muziek
+            </button>
+            <button
+              class="chip-filter"
+              type="button"
+              data-genre="comedy"
+              aria-pressed="false"
+            >
+              Comedy
+            </button>
+            <p class="prog-count" id="prog-count" aria-live="polite">
+              <b>0</b> voorstellingen
+            </p>
+          </div>
+
+          <div class="prog-list" id="prog-list">
+            <!-- voorstelling 1 -->
+            <article class="show" data-genre="toneel" data-r>
+              <div class="show-date">
+                <span class="d">19</span><span class="m">jun</span
+                ><span class="wd">vrijdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Toneel · première</span>
+                <h3>
+                  De Stille Kamer
+                  <span class="tonight" data-tonight hidden>Vanavond</span>
+                </h3>
+                <p>
+                  Gezelschap Noorderlicht opent het seizoen met een kamerstuk
+                  over wat er ongezegd blijft aan de keukentafel.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:15 · grote zaal</span>
+                <a class="ticket" href="#tickets">Kaarten</a>
+              </div>
+            </article>
+
+            <!-- voorstelling 2 -->
+            <article class="show" data-genre="comedy" data-r>
+              <div class="show-date">
+                <span class="d">26</span><span class="m">jun</span
+                ><span class="wd">vrijdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Comedy</span>
+                <h3>Lobke Daniëls — Hardop</h3>
+                <p>
+                  Een avond scherpe observaties over thuiswonen op je veertigste.
+                  Try-out van haar nieuwe programma.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:30 · kleine zaal</span>
+                <span class="soldout">Uitverkocht</span>
+              </div>
+            </article>
+
+            <!-- voorstelling 3 -->
+            <article class="show" data-genre="muziek" data-r>
+              <div class="show-date">
+                <span class="d">04</span><span class="m">jul</span
+                ><span class="wd">zaterdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Muziek · klassiek</span>
+                <h3>Het IJsselkwartet speelt Sjostakovitsj</h3>
+                <p>
+                  Vier strijkers, één donker en koppig kwartet — en een toegift
+                  die niemand ziet aankomen.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:00 · grote zaal</span>
+                <a class="ticket" href="#tickets">Kaarten</a>
+              </div>
+            </article>
+
+            <!-- voorstelling 4 -->
+            <article class="show" data-genre="dans" data-r>
+              <div class="show-date">
+                <span class="d">11</span><span class="m">jul</span
+                ><span class="wd">zaterdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Dans · hedendaags</span>
+                <h3>Stroomgebied — Collectief Tij</h3>
+                <p>
+                  Acht dansers, water als decor en muziek. Een voorstelling over
+                  de rivier die de stad maakte.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:15 · grote zaal</span>
+                <a class="ticket" href="#tickets">Kaarten</a>
+              </div>
+            </article>
+
+            <!-- voorstelling 5 -->
+            <article class="show" data-genre="toneel" data-r>
+              <div class="show-date">
+                <span class="d">18</span><span class="m">jul</span
+                ><span class="wd">zaterdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Toneel</span>
+                <h3>Vader, een reconstructie</h3>
+                <p>
+                  Documentair theater op basis van brieven uit een nalatenschap.
+                  Indringend, eerlijk, soms ontwapenend grappig.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:00 · kleine zaal</span>
+                <a class="ticket" href="#tickets">Kaarten</a>
+              </div>
+            </article>
+
+            <!-- voorstelling 6 -->
+            <article class="show" data-genre="muziek" data-r>
+              <div class="show-date">
+                <span class="d">29</span><span class="m">aug</span
+                ><span class="wd">zaterdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Muziek · seizoensopening</span>
+                <h3>Nachtorkest — onder de sterren</h3>
+                <p>
+                  Een tienkoppig collectief tussen jazz en chanson opent het
+                  nieuwe seizoen met de grote zaal in nachtblauw.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:30 · grote zaal</span>
+                <a class="ticket" href="#tickets">Kaarten</a>
+              </div>
+            </article>
+
+            <!-- voorstelling 7 -->
+            <article class="show" data-genre="comedy" data-r>
+              <div class="show-date">
+                <span class="d">05</span><span class="m">sep</span
+                ><span class="wd">zaterdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Comedy · improvisatie</span>
+                <h3>De Onvoorbereiden</h3>
+                <p>
+                  Volledig geïmproviseerd, niets staat vast behalve het applaus.
+                  Het publiek bepaalt waar de avond heen gaat.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:30 · kleine zaal</span>
+                <a class="ticket" href="#tickets">Kaarten</a>
+              </div>
+            </article>
+
+            <!-- voorstelling 8 -->
+            <article class="show" data-genre="dans" data-r>
+              <div class="show-date">
+                <span class="d">12</span><span class="m">sep</span
+                ><span class="wd">zaterdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Dans · jong talent</span>
+                <h3>Eerste Pas</h3>
+                <p>
+                  Afstudeervoorstelling van de dansacademie — vier choreografieën
+                  van makers die je volgend seizoen overal ziet.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">19:30 · grote zaal</span>
+                <span class="soldout">Uitverkocht</span>
+              </div>
+            </article>
+
+            <!-- voorstelling 9 -->
+            <article class="show" data-genre="toneel" data-r>
+              <div class="show-date">
+                <span class="d">26</span><span class="m">sep</span
+                ><span class="wd">zaterdag</span>
+              </div>
+              <div class="show-main">
+                <span class="gtag">Toneel · klassiek</span>
+                <h3>Hedda — naar Ibsen</h3>
+                <p>
+                  Een eigentijdse lezing van Hedda Gabler. Eén kamer, één avond,
+                  en een vrouw die geen uitweg meer ziet.
+                </p>
+              </div>
+              <div class="show-action">
+                <span class="show-time">20:00 · grote zaal</span>
+                <a class="ticket" href="#tickets">Kaarten</a>
+              </div>
+            </article>
+          </div>
+
+          <p class="prog-empty" id="prog-empty">
+            Geen voorstellingen in dit genre — bekijk
+            <a class="lnk" href="#" data-reset>alles</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- UITGELICHT -->
+      <section class="sec" id="uitgelicht">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="no">02</span>
+            <h2 class="display">Uit&shy;gelicht</h2>
+          </div>
+          <div class="feat">
+            <figure class="feat-fig" data-r>
+              <span class="badge">Seizoensopening</span>
+              <img
+                src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=1100&q=72"
+                alt="Twee acteurs in een spotlight aan een tafel in zacht, warm toneellicht"
+                width="1100"
+                height="880"
+                loading="lazy"
+              />
+            </figure>
+            <div class="feat-body" data-r>
+              <p class="kicker label">Première · 19 juni</p>
+              <h3 class="display">
+                De Stille Kamer — <em>het seizoen opent in fluwelen donker</em>
+              </h3>
+              <p>
+                Gezelschap Noorderlicht keert terug naar De Regentes met een
+                kamerstuk dat klein begint en groot eindigt: één gezin, één
+                avond, en alles wat aan de keukentafel ongezegd blijft.
+              </p>
+              <p>
+                Regisseur Mira Halsema regisseert haar eerste avondvullende stuk
+                voor de grote zaal. Verwacht lange stiltes, plotselinge humor en
+                een slotscène waar de zaal nog dagen over napraat.
+              </p>
+              <dl class="feat-facts">
+                <div>
+                  <dt>Speeldata</dt>
+                  <dd>19 — 28 juni</dd>
+                </div>
+                <div>
+                  <dt>Duur</dt>
+                  <dd>1u45 · zonder pauze</dd>
+                </div>
+                <div>
+                  <dt>Zaal</dt>
+                  <dd>Grote zaal</dd>
+                </div>
+              </dl>
+              <div class="feat-cta">
+                <a class="lnk" href="#tickets">Reserveer voor de première</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRAKTISCH -->
+      <section class="sec" id="praktisch">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="no">03</span>
+            <h2 class="display">Het <em>huis</em></h2>
+            <p class="aside">Twee zalen, één foyer, en altijd een plek voor na.</p>
+          </div>
+          <div class="prak">
+            <div class="prak-cards" data-r>
+              <div class="pcard">
+                <h3>De zalen</h3>
+                <p class="big">Grote zaal · 540 stoelen</p>
+                <p>
+                  Klassiek hoefijzer met balkon en een akoestiek die zonder
+                  versterking draagt. De kleine zaal (120 plaatsen) is vlakvloers
+                  en intiem — ideaal voor try-outs en comedy.
+                </p>
+              </div>
+              <div class="pcard">
+                <h3>Bereikbaarheid</h3>
+                <p>
+                  Acht minuten lopen vanaf station Deventer. Parkeergarage De
+                  Boreel ligt om de hoek; fietsen stallen kan gratis voor de
+                  deur. De zaal is rolstoeltoegankelijk — meld het bij het
+                  reserveren, dan houden we plek vrij.
+                </p>
+              </div>
+              <div class="pcard">
+                <h3>Foyer &amp; horeca</h3>
+                <p>
+                  De foyer opent een uur voor aanvang en blijft open tot na de
+                  voorstelling. Een glas, een hapje, en in het seizoen geregeld
+                  een nagesprek met de makers.
+                </p>
+              </div>
+            </div>
+            <div class="prak-side" data-r>
+              <figure class="prak-fig">
+                <img
+                  src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=1100&q=72"
+                  alt="Rijen rode fluwelen theaterstoelen in een lege, sfeervol verlichte zaal"
+                  width="1100"
+                  height="1375"
+                  loading="lazy"
+                />
+                <figcaption>De grote zaal, een uur voor het doek opgaat.</figcaption>
+              </figure>
+              <table class="hours" id="hours">
+                <caption>Kassa &amp; foyer</caption>
+                <tbody>
+                  <!-- door JS gevuld -->
+                </tbody>
+              </table>
+              <p class="kassa-now" id="kassa-now" data-open="true">
+                De kassa is nu open.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VRIENDEN -->
+      <section class="sec vrienden" id="vrienden">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="no">04</span>
+            <h2 class="display">Vrienden van <em>De Regentes</em></h2>
+          </div>
+          <div class="vrienden-grid">
+            <div class="vrienden-lead" data-r>
+              <p class="pull">
+                “Een stad zonder theater is een stad die zachter praat.”
+              </p>
+              <p>
+                De Regentes draait op kaartverkoop, een beetje subsidie en heel
+                veel liefde. Onze Vrienden maken het verschil: zij houden de
+                lampen aan, de jonge makers op het podium en de kaartjes
+                betaalbaar.
+              </p>
+              <p>
+                Geen harde abonnementen, geen kleine lettertjes — gewoon meer
+                theater, en het fijne gevoel dat je erbij hoort.
+              </p>
+              <div class="vrienden-cta">
+                <a class="btn" href="#tickets">Word Vriend</a>
+                <span class="price">vanaf <b>€ 7,50</b> per maand</span>
+              </div>
+            </div>
+            <div class="perks" data-r>
+              <div class="perk">
+                <span class="pn">01</span>
+                <div>
+                  <h4>Voorrang bij de kassa</h4>
+                  <p>
+                    Twee weken eerder kaarten voor het hele seizoen — vóór de
+                    populaire avonden uitverkocht raken.
+                  </p>
+                </div>
+              </div>
+              <div class="perk">
+                <span class="pn">02</span>
+                <div>
+                  <h4>Een drankje in de pauze</h4>
+                  <p>Bij elke voorstelling een consumptie van het huis, op ons.</p>
+                </div>
+              </div>
+              <div class="perk">
+                <span class="pn">03</span>
+                <div>
+                  <h4>Achter de schermen</h4>
+                  <p>
+                    Twee keer per seizoen een repetitiebezoek of nagesprek met
+                    een gezelschap. Alleen voor Vrienden.
+                  </p>
+                </div>
+              </div>
+              <div class="perk">
+                <span class="pn">04</span>
+                <div>
+                  <h4>Je naam in het programmaboek</h4>
+                  <p>
+                    Klein gebaar, groot verschil: je staat bij de mensen die dit
+                    theater dragen.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TICKETS / CONTACT -->
+      <section class="sec tickets" id="tickets">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="no">05</span>
+            <h2 class="display">Kaarten <em>reserveren</em></h2>
+          </div>
+          <div class="tickets-grid">
+            <div class="tickets-intro" data-r>
+              <p class="big display">
+                Reserveer je plek, <em>wij houden het doek voor je open.</em>
+              </p>
+              <p>
+                Vul je gegevens in, dan sturen we je een bevestiging per mail —
+                meestal binnen een paar uur. Voor groepen vanaf tien personen of
+                een besloten avond bel je ons even.
+              </p>
+              <div class="contact-lines">
+                <span>Boreelstraat 4, 7411 BB Deventer</span>
+                <a href="tel:+31570612345">0570 — 61 23 45</a>
+                <a href="mailto:kassa@deregentes-theater.nl"
+                  >kassa@deregentes-theater.nl</a
+                >
+              </div>
+            </div>
+            <form class="form" id="form" novalidate data-r>
+              <div class="frow">
+                <div class="field">
+                  <label for="t-naam">Naam</label
+                  ><input
+                    id="t-naam"
+                    name="naam"
+                    type="text"
+                    autocomplete="name"
+                    aria-required="true"
+                    required
+                  /><span class="err">Vul je naam in.</span>
+                </div>
+                <div class="field">
+                  <label for="t-mail">E-mail</label
+                  ><input
+                    id="t-mail"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    aria-required="true"
+                    required
+                  /><span class="err">Vul een geldig e-mailadres in.</span>
+                </div>
+                <div class="field full">
+                  <label for="t-show">Voorstelling</label>
+                  <select id="t-show" name="voorstelling" aria-required="true" required>
+                    <option value="">Kies een voorstelling…</option>
+                    <option>De Stille Kamer — 19 jun</option>
+                    <option>Het IJsselkwartet speelt Sjostakovitsj — 4 jul</option>
+                    <option>Stroomgebied (Collectief Tij) — 11 jul</option>
+                    <option>Vader, een reconstructie — 18 jul</option>
+                    <option>Nachtorkest — 29 aug</option>
+                    <option>De Onvoorbereiden — 5 sep</option>
+                    <option>Hedda — naar Ibsen — 26 sep</option>
+                  </select>
+                  <span class="err">Kies een voorstelling.</span>
+                </div>
+                <div class="field">
+                  <label for="t-aantal">Aantal kaarten</label>
+                  <select id="t-aantal" name="aantal" aria-required="true" required>
+                    <option value="2">2 kaarten</option>
+                    <option value="1">1 kaart</option>
+                    <option value="3">3 kaarten</option>
+                    <option value="4">4 kaarten</option>
+                    <option value="5">5 kaarten</option>
+                    <option value="6">6 kaarten</option>
+                    <option value="10">10+ — bel ons</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="t-datum">Voorkeursdatum</label
+                  ><input
+                    id="t-datum"
+                    name="datum"
+                    type="date"
+                    aria-required="true"
+                    required
+                  /><span class="err">Kies een datum.</span>
+                </div>
+              </div>
+              <button class="fsubmit" type="submit">Kaarten aanvragen</button>
+              <p class="fnote">
+                We gebruiken je gegevens alleen voor deze reservering.
+              </p>
+              <div class="form-ok" role="status">
+                <h3 class="display">Tot in de zaal.</h3>
+                <p id="ok-text">
+                  Bedankt — we hebben je aanvraag ontvangen en bevestigen je
+                  kaarten zo snel mogelijk per mail.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div class="foot-top">
+          <div class="foot-mark display">De Regentes<span class="dot">.</span></div>
+          <div class="foot-cols">
+            <div>
+              <h4>Theater</h4>
+              <p>Boreelstraat 4<br />7411 BB Deventer</p>
+            </div>
+            <div>
+              <h4>Kassa</h4>
+              <p>
+                <a href="tel:+31570612345">0570 — 61 23 45</a><br /><a
+                  href="mailto:kassa@deregentes-theater.nl"
+                  >kassa@deregentes-theater.nl</a
+                >
+              </p>
+            </div>
+            <div>
+              <h4>Volgen</h4>
+              <p>
+                <a href="#top">Instagram</a><br /><a href="#top">Nieuwsbrief</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span
+            >&copy; <span id="jaar"></span> De Regentes — theater &amp;
+            podium, Deventer</span
+          >
+          <span>Seizoen 2026 — 2027 · CultuurANBI · KvK 41246703</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+        var doc = document;
+        var reduced = false;
+        try {
+          reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        } catch (e) {}
+
+        /* ============================================================
+           Openingstijden kassa (minuten sinds middernacht)
+           index = JS getDay() (0 = zondag)
+           ============================================================ */
+        var DAYS = [
+          "zondag",
+          "maandag",
+          "dinsdag",
+          "woensdag",
+          "donderdag",
+          "vrijdag",
+          "zaterdag",
+        ];
+        var SHORT = ["zo", "ma", "di", "wo", "do", "vr", "za"];
+        var HOURS = {
+          0: null, // zo gesloten
+          1: null, // ma gesloten
+          2: [12 * 60, 18 * 60], // di 12:00–18:00
+          3: [12 * 60, 18 * 60], // wo
+          4: [12 * 60, 18 * 60], // do
+          5: [12 * 60, 21 * 60], // vr 12:00–21:00
+          6: [14 * 60, 21 * 60], // za 14:00–21:00
+        };
+        function fmt(m) {
+          m = m % (24 * 60);
+          var h = Math.floor(m / 60),
+            mm = m % 60;
+          return ("0" + h).slice(-2) + ":" + ("0" + mm).slice(-2);
+        }
+        function nlNow() {
+          try {
+            var p = new Intl.DateTimeFormat("nl-NL", {
+              weekday: "short",
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false,
+              timeZone: "Europe/Amsterdam",
+            }).formatToParts(new Date());
+            var o = {};
+            p.forEach(function (x) {
+              o[x.type] = x.value;
+            });
+            var map = { zo: 0, ma: 1, di: 2, wo: 3, do: 4, vr: 5, za: 6 };
+            var key = (o.weekday || "").toLowerCase().slice(0, 2);
+            var day = map[key];
+            if (day === undefined) {
+              day = new Date().getDay();
+            }
+            return {
+              day: day,
+              min: parseInt(o.hour, 10) * 60 + parseInt(o.minute, 10),
+            };
+          } catch (e) {
+            var d = new Date();
+            return { day: d.getDay(), min: d.getHours() * 60 + d.getMinutes() };
+          }
+        }
+        function status() {
+          var n = nlNow(),
+            today = HOURS[n.day];
+          if (today && n.min >= today[0] && n.min < today[1]) {
+            return { open: true, label: "Open tot " + fmt(today[1]) };
+          }
+          if (today && n.min < today[0]) {
+            return { open: false, label: "Vandaag open vanaf " + fmt(today[0]) };
+          }
+          for (var i = 1; i <= 7; i++) {
+            var d = (n.day + i) % 7;
+            if (HOURS[d]) {
+              return {
+                open: false,
+                label: "Open " + SHORT[d] + " vanaf " + fmt(HOURS[d][0]),
+              };
+            }
+          }
+          return { open: false, label: "Tijdelijk gesloten" };
+        }
+
+        var st = status();
+        var kTop = doc.getElementById("kassa-top");
+        var kTopText = doc.getElementById("kassa-top-text");
+        if (kTop) {
+          kTop.setAttribute("data-open", st.open ? "true" : "false");
+        }
+        if (kTopText) {
+          kTopText.textContent = st.open ? "Kassa open" : "Kassa gesloten";
+        }
+        var kNow = doc.getElementById("kassa-now");
+        if (kNow) {
+          kNow.setAttribute("data-open", st.open ? "true" : "false");
+          kNow.textContent = st.open
+            ? "De kassa is nu open — " + st.label.toLowerCase() + "."
+            : st.label + ".";
+        }
+
+        /* ---- urentabel ---- */
+        var tb = doc.querySelector("#hours tbody");
+        if (tb) {
+          var nn = nlNow();
+          var order = [2, 3, 4, 5, 6, 0, 1]; // di..ma
+          order.forEach(function (d) {
+            var tr = doc.createElement("tr");
+            if (d === nn.day) {
+              tr.className = "today";
+            }
+            var h = HOURS[d];
+            tr.innerHTML =
+              '<td class="day">' +
+              DAYS[d].charAt(0).toUpperCase() +
+              DAYS[d].slice(1) +
+              "</td>" +
+              (h
+                ? '<td class="time">' + fmt(h[0]) + " – " + fmt(h[1]) + "</td>"
+                : '<td class="time closed">gesloten</td>');
+            tb.appendChild(tr);
+          });
+        }
+
+        /* ---- footer-jaar ---- */
+        var jaar = doc.getElementById("jaar");
+        if (jaar) {
+          jaar.textContent = String(new Date().getFullYear());
+        }
+
+        /* ---- datum-input minimaal vandaag ---- */
+        var dEl = doc.getElementById("t-datum");
+        if (dEl) {
+          try {
+            var t = new Date();
+            var iso =
+              t.getFullYear() +
+              "-" +
+              ("0" + (t.getMonth() + 1)).slice(-2) +
+              "-" +
+              ("0" + t.getDate()).slice(-2);
+            dEl.min = iso;
+            dEl.value = iso;
+          } catch (e) {}
+        }
+
+        /* ============================================================
+           "Vanavond"-markering: toon de badge op een voorstelling
+           waarvan de datum overeenkomt met vandaag (dag + maand).
+           ============================================================ */
+        (function markTonight() {
+          var MND = {
+            jan: 0, feb: 1, mrt: 2, maa: 2, apr: 3, mei: 4, jun: 5,
+            jul: 6, aug: 7, sep: 8, okt: 9, nov: 10, dec: 11,
+          };
+          var now = new Date();
+          var shows = doc.querySelectorAll("#prog-list .show");
+          Array.prototype.forEach.call(shows, function (s) {
+            var dEl = s.querySelector(".show-date .d");
+            var mEl = s.querySelector(".show-date .m");
+            var badge = s.querySelector("[data-tonight]");
+            if (!dEl || !mEl || !badge) return;
+            var dd = parseInt(dEl.textContent, 10);
+            var mm = MND[(mEl.textContent || "").toLowerCase().slice(0, 3)];
+            if (dd === now.getDate() && mm === now.getMonth()) {
+              badge.hidden = false;
+            }
+          });
+        })();
+
+        /* ============================================================
+           Programma-filter — klikbare genre-chips filteren de lijst
+           in plaats, met aria-pressed en een live telling.
+           ============================================================ */
+        (function programFilter() {
+          var chips = Array.prototype.slice.call(
+            doc.querySelectorAll(".chip-filter"),
+          );
+          var shows = Array.prototype.slice.call(
+            doc.querySelectorAll("#prog-list .show"),
+          );
+          var countEl = doc.getElementById("prog-count");
+          var emptyEl = doc.getElementById("prog-empty");
+          if (!chips.length) return;
+
+          function apply(genre) {
+            var visible = 0;
+            shows.forEach(function (s) {
+              var match = genre === "alles" || s.getAttribute("data-genre") === genre;
+              s.classList.toggle("is-hidden", !match);
+              if (match) visible++;
+            });
+            if (countEl) {
+              countEl.innerHTML =
+                "<b>" +
+                visible +
+                "</b> voorstelling" +
+                (visible === 1 ? "" : "en");
+            }
+            if (emptyEl) {
+              emptyEl.classList.toggle("show-empty", visible === 0);
+            }
+            chips.forEach(function (c) {
+              c.setAttribute(
+                "aria-pressed",
+                c.getAttribute("data-genre") === genre ? "true" : "false",
+              );
+            });
+          }
+
+          chips.forEach(function (c) {
+            c.addEventListener("click", function () {
+              apply(c.getAttribute("data-genre"));
+            });
+          });
+
+          var resetLink = doc.querySelector("[data-reset]");
+          if (resetLink) {
+            resetLink.addEventListener("click", function (e) {
+              e.preventDefault();
+              apply("alles");
+            });
+          }
+
+          apply("alles"); // initiële telling
+        })();
+
+        /* ============================================================
+           Navigatie — stuck + verbergen bij scrollen omlaag,
+           tonen bij scrollen omhoog. Eén rAF-throttled handler.
+           ============================================================ */
+        var nav = doc.getElementById("nav");
+        var burger = doc.getElementById("burger");
+        var links = doc.getElementById("navlinks");
+        var menuOpen = false;
+        function setMenu(open) {
+          menuOpen = open;
+          if (links) links.classList.toggle("open", open);
+          if (burger) {
+            burger.classList.toggle("open", open);
+            burger.setAttribute("aria-expanded", open ? "true" : "false");
+            burger.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+          }
+          doc.body.style.overflow = open ? "hidden" : "";
+        }
+        if (burger) {
+          burger.addEventListener("click", function () {
+            setMenu(!menuOpen);
+          });
+        }
+        if (links) {
+          links.addEventListener("click", function (e) {
+            if (e.target.closest("a")) setMenu(false);
+          });
+        }
+        doc.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && menuOpen) setMenu(false);
+        });
+
+        var lastY = window.pageYOffset || 0;
+        var ticking = false;
+        function onScroll() {
+          ticking = false;
+          var y = window.pageYOffset || 0;
+          if (nav) {
+            nav.classList.toggle("stuck", y > 8);
+            var goingDown = y > lastY && y > 200;
+            if (!menuOpen) {
+              nav.classList.toggle("hidden", goingDown);
+            }
+          }
+          lastY = y;
+        }
+        function tick() {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(onScroll);
+          }
+        }
+        window.addEventListener("scroll", tick, { passive: true });
+        window.addEventListener("resize", tick, { passive: true });
+        onScroll();
+
+        /* ---- reveal-on-scroll met reduced-motion opt-out ---- */
+        if (!reduced && "IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (es) {
+              es.forEach(function (en) {
+                if (en.isIntersecting) {
+                  en.target.classList.add("in");
+                  io.unobserve(en.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+          );
+          Array.prototype.forEach.call(
+            doc.querySelectorAll("[data-r]"),
+            function (el) {
+              io.observe(el);
+            },
+          );
+        }
+
+        /* ============================================================
+           Reserveringsformulier — validatie per veld + succesoverlay.
+           ============================================================ */
+        var form = doc.getElementById("form");
+        if (form) {
+          function bad(input, on) {
+            var f = input.closest(".field");
+            if (f) f.classList.toggle("bad", on);
+          }
+          function valid(input) {
+            var v = (input.value || "").trim(),
+              ok = true;
+            if (input.type === "email") {
+              ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+            } else if (input.hasAttribute("required")) {
+              ok = v.length > 0;
+            }
+            bad(input, !ok);
+            return ok;
+          }
+          var inputs = Array.prototype.slice.call(
+            form.querySelectorAll("input[required], select[required]"),
+          );
+          inputs.forEach(function (i) {
+            var ev = i.tagName === "SELECT" ? "change" : "blur";
+            i.addEventListener(ev, function () {
+              valid(i);
+            });
+            i.addEventListener("input", function () {
+              if (i.closest(".field").classList.contains("bad")) valid(i);
+            });
+          });
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var allOk = true,
+              first = null;
+            inputs.forEach(function (i) {
+              if (!valid(i)) {
+                allOk = false;
+                if (!first) first = i;
+              }
+            });
+            if (!allOk) {
+              if (first) first.focus();
+              return;
+            }
+            var naam = (doc.getElementById("t-naam").value || "")
+              .trim()
+              .split(" ")[0];
+            var show = doc.getElementById("t-show");
+            var aantal = doc.getElementById("t-aantal");
+            var okt = doc.getElementById("ok-text");
+            if (okt) {
+              okt.textContent =
+                (naam ? naam + ", bedankt" : "Bedankt") +
+                " — we hebben je aanvraag voor " +
+                (aantal
+                  ? aantal.options[aantal.selectedIndex].text.toLowerCase()
+                  : "je kaarten") +
+                (show && show.value ? " (" + show.value + ")" : "") +
+                " ontvangen en bevestigen alles zo snel mogelijk per mail.";
+            }
+            form.classList.add("sent");
+            form.scrollIntoView({
+              behavior: reduced ? "auto" : "smooth",
+              block: "center",
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

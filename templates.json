@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
-  "generated": "2026-06-13",
-  "count": 86,
+  "generated": "2026-06-15",
+  "count": 101,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -2539,44 +2539,6 @@
       "note": "Warme redactionele podcast oranje × teal × cream. SIGNATUUR: speler-hero met klikbare/animerende waveform."
     },
     {
-      "id": 66,
-      "slug": "66-gym",
-      "path": "templates/66-gym/",
-      "title": "PULS — sportschool",
-      "name": "PULS",
-      "sector": "sport",
-      "tier": "grafisch",
-      "scheme": "dark",
-      "multipage": false,
-      "palette": [
-        "#111110",
-        "#d6ff00",
-        "#ff3b2e"
-      ],
-      "fonts": [
-        "Archivo Black",
-        "Barlow Condensed",
-        "Space Mono"
-      ],
-      "mechanics": [
-        "diagonal-hero",
-        "stat-blocks",
-        "marquee",
-        "day-tabs-schedule",
-        "today-auto-select",
-        "pricing",
-        "form-validate",
-        "subtle-reveal"
-      ],
-      "sections": [
-        "hero",
-        "rooster",
-        "tarieven",
-        "contact"
-      ],
-      "note": "Industrieel-brutalist beton × volt × zwart. SIGNATUUR: dag-tabs lesrooster met automatische vandaag-selectie."
-    },
-    {
       "id": 67,
       "slug": "67-burgerbar",
       "path": "templates/67-burgerbar/",
@@ -2649,44 +2611,6 @@
         "reserveren"
       ],
       "note": "Glow-poster zwart × UV-paars × acid-cyaan. SIGNATUUR: neon-hero met glow + avond-agenda."
-    },
-    {
-      "id": 69,
-      "slug": "69-tattoo",
-      "path": "templates/69-tattoo/",
-      "title": "INKT — tattoo studio",
-      "name": "INKT",
-      "sector": "lifestyle",
-      "tier": "grafisch",
-      "scheme": "dark",
-      "multipage": false,
-      "palette": [
-        "#0c0b0a",
-        "#e2231a",
-        "#ece4d6"
-      ],
-      "fonts": [
-        "Bebas Neue",
-        "Oswald",
-        "Space Mono"
-      ],
-      "mechanics": [
-        "heavy-display-hero",
-        "flash-grid",
-        "artist-cards",
-        "price-list",
-        "booking-form",
-        "form-validate",
-        "subtle-reveal"
-      ],
-      "sections": [
-        "hero",
-        "flash",
-        "artists",
-        "stijlen",
-        "boeken"
-      ],
-      "note": "Rauw bijna-zwart × bloedrood × bone. SIGNATUUR: zware Bebas-display + flash-grid van motieven."
     },
     {
       "id": 70,
@@ -3036,44 +2960,6 @@
       "note": "Editoriale poster cream-papier × diep rood. SIGNATUUR: zware Fraunces-display + redactionele programma-lijst."
     },
     {
-      "id": 79,
-      "slug": "79-makelaar",
-      "path": "templates/79-makelaar/",
-      "title": "VIERKANT — makelaars",
-      "name": "VIERKANT",
-      "sector": "zakelijk",
-      "tier": "grafisch",
-      "scheme": "dark",
-      "multipage": false,
-      "palette": [
-        "#0f1b3d",
-        "#d4ff3d",
-        "#ff6a4d",
-        "#f4f1e6"
-      ],
-      "fonts": [
-        "Space Grotesk",
-        "Space Mono"
-      ],
-      "mechanics": [
-        "geometric-hero",
-        "shape-collage",
-        "stat-strip",
-        "listing-grid",
-        "status-badges",
-        "valuation-form",
-        "form-validate",
-        "subtle-reveal"
-      ],
-      "sections": [
-        "hero",
-        "aanbod",
-        "aanpak",
-        "waardebepaling"
-      ],
-      "note": "Geometrisch diep navy × chartreuse. SIGNATUUR: vorm-collage hero + woningaanbod met status-badges."
-    },
-    {
       "id": 80,
       "slug": "80-escaperoom",
       "path": "templates/80-escaperoom/",
@@ -3350,6 +3236,276 @@
         "contact"
       ],
       "note": "Redactioneel Swiss-grid systeem (Instrument Serif + Hanken Grotesk + Space Mono). Bewust GEEN gradient-koppen/icon-kaarten/stat-tellers/emoji. SIGNATUUR: toggle-baar kolommenraster (toets G), scroll-spy sectie-index, en live klok + cursor-coordinaat colofon. Inhoud-agnostisch — herthema via één accent-variabele."
+    },
+    {
+      "slug": "87-cantorclin",
+      "path": "templates/87-cantorclin/",
+      "title": "CANTORCLIN — schoonmaakbedrijf",
+      "name": "CANTORCLIN",
+      "sector": "diensten",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f4f7f6", "#0e2230", "#0bb89e"],
+      "fonts": ["Schibsted Grotesk", "Inter"],
+      "mechanics": ["reveal-system", "count-up", "services-grid", "sector-grid", "sustainability-block", "faq-accordion", "quote-form", "form-validate", "anim-opt-in"],
+      "sections": ["hero", "diensten", "sectoren", "innovatie", "duurzaam", "werken", "contact"],
+      "note": "Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy. Hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie."
+    },
+    {
+      "slug": "88-jazzclub",
+      "path": "templates/88-jazzclub/",
+      "title": "AMBER — jazzclub",
+      "name": "AMBER",
+      "sector": "uitgaan",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": ["#0a0e1a", "#f4ede0", "#d9a441"],
+      "fonts": ["Playfair Display", "Jost"],
+      "mechanics": ["live-open-status", "program-list", "soldout-badges", "ticket-tiers", "reservation-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "programma", "over", "tickets", "openingstijden", "reserveren"],
+      "note": "Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood. Moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier."
+    },
+    {
+      "slug": "89-boerderij",
+      "path": "templates/89-boerderij/",
+      "title": "HET LANGE LAND — boerderijwinkel",
+      "name": "HET LANGE LAND",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f6efe2", "#5a7d3c", "#c2683f"],
+      "fonts": ["Fraunces", "Karla"],
+      "mechanics": ["live-open-status", "products-grid", "harvest-box-packages", "today-highlight", "order-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "producten", "verhaal", "oogstbox", "winkel", "contact"],
+      "note": "Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta. Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier."
+    },
+    {
+      "slug": "90-tandarts",
+      "path": "templates/90-tandarts/",
+      "title": "GLIMLACH — tandartspraktijk",
+      "name": "GLIMLACH",
+      "sector": "gezondheid",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f3f9f8", "#4fb8c4", "#7fd1a8"],
+      "fonts": ["Poppins", "Nunito"],
+      "mechanics": ["treatments-grid", "steps-process", "team-grid", "faq-accordion", "booking-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "behandelingen", "bezoek", "team", "vertrouwen", "faq", "contact"],
+      "note": "Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit. Grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie."
+    },
+    {
+      "slug": "91-surfschool",
+      "path": "templates/91-surfschool/",
+      "title": "WESTKUST — surfschool",
+      "name": "WESTKUST",
+      "sector": "sport",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#fdf4e3", "#0fb6c8", "#ff6b4d"],
+      "fonts": ["Archivo", "Outfit"],
+      "mechanics": ["wave-dividers", "live-conditions-widget", "lesson-packages", "reviews", "booking-form", "date-picker", "form-validate", "reveal-system"],
+      "sections": ["hero", "condities", "lessen", "over", "reviews", "boek"],
+      "note": "Vibrant kust-sport surfschool in turquoise × zand × koraal. Golvende wave-dividers, fake-live condities-widget (golf/wind/getij), lespakketten per niveau, reviews en boekformulier met datumkeuze."
+    },
+    {
+      "slug": "92-chocolatier",
+      "path": "templates/92-chocolatier/",
+      "title": "MAISON CACAEU — chocolatier",
+      "name": "MAISON CACAEU",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": ["#1f140c", "#f4ece0", "#c9a35c"],
+      "fonts": ["Cormorant Garamond", "Jost"],
+      "mechanics": ["collection-grid", "story-band", "box-builder", "live-price", "order-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "collectie", "ambacht", "doos", "cadeau", "bestel"],
+      "note": "Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream. Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, 'stel je eigen doos samen'-builder met live prijs en bestelformulier."
+    },
+    {
+      "slug": "93-izakaya",
+      "path": "templates/93-izakaya/",
+      "title": "ENSO — izakaya",
+      "name": "ENSO",
+      "sector": "horeca",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f4f1ea", "#1c1a17", "#c8362a"],
+      "fonts": ["Shippori Mincho", "Zen Kaku Gothic New"],
+      "mechanics": ["vertical-text-accents", "menu-tabs", "live-open-status", "reservation-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "kaart", "huis", "sfeer", "sake", "praktisch", "reserveren"],
+      "note": "Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen. Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier."
+    },
+    {
+      "slug": "94-bordspellen",
+      "path": "templates/94-bordspellen/",
+      "title": "MEEPLE — bordspellencafé",
+      "name": "MEEPLE",
+      "sector": "horeca",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f3e9d2", "#e8a13a", "#2b8a86"],
+      "fonts": ["Fredoka", "Baloo 2"],
+      "mechanics": ["hard-shadow-cards", "category-filter", "agenda", "reservation-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "hoe", "spellen", "kaart", "agenda", "reserveren"],
+      "note": "Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream. Chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier."
+    },
+    {
+      "slug": "95-juwelier",
+      "path": "templates/95-juwelier/",
+      "title": "ATELIER LUME — juwelier",
+      "name": "ATELIER LUME",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#fbf8f4", "#c8a96a", "#23201c"],
+      "fonts": ["Cormorant", "Jost"],
+      "mechanics": ["collection-grid", "bespoke-story", "engagement-rings", "booking-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "collectie", "ambacht", "bruidsringen", "materialen", "afspraak"],
+      "note": "Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud. Fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen en afspraakformulier."
+    },
+    {
+      "slug": "96-bergsport",
+      "path": "templates/96-bergsport/",
+      "title": "NOORDWAND — bergsport",
+      "name": "NOORDWAND",
+      "sector": "retail",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": ["#1b1f1d", "#e8671c", "#2f4a3a"],
+      "fonts": ["Oswald", "Barlow", "JetBrains Mono"],
+      "mechanics": ["topographic-lines", "gear-grid", "tours-with-stats", "difficulty-meters", "signup-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "categorieen", "gear", "tochten", "over", "contact"],
+      "note": "Rauw-technisch outdoor- & bergsportmerk in leisteen × bosgroen × signaaloranje. Topografische hoogtelijnen, Oswald-koppen, uitrusting-grid, tochten met hoogtemeters/zwaarte en inschrijfformulier."
+    },
+    {
+      "slug": "97-kinderopvang",
+      "path": "templates/97-kinderopvang/",
+      "title": "PLUK — kinderopvang",
+      "name": "PLUK",
+      "sector": "kinderopvang",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#fff7ec", "#ff7a59", "#ffd23f"],
+      "fonts": ["Baloo 2", "Nunito"],
+      "mechanics": ["blob-shapes", "wave-dividers", "color-coded-groups", "daily-timeline", "pricing-info", "tour-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "groepen", "dag", "waarden", "praktisch", "ouders", "contact"],
+      "note": "Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream. Blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier."
+    },
+    {
+      "slug": "98-optiek",
+      "path": "templates/98-optiek/",
+      "title": "VIZIER — optiek",
+      "name": "VIZIER",
+      "sector": "retail",
+      "tier": "grafisch",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f5f4f1", "#0a0a0a", "#1d3fff"],
+      "fonts": ["Archivo", "Space Grotesk"],
+      "mechanics": ["collection-filter", "live-count", "category-filter", "eye-test-service", "booking-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "collectie", "oogmeting", "stappen", "merken", "afspraak"],
+      "note": "Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt. Bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier."
+    },
+    {
+      "slug": "99-pizzeria",
+      "path": "templates/99-pizzeria/",
+      "title": "FORNO VESUVIO — pizzeria",
+      "name": "FORNO VESUVIO",
+      "sector": "horeca",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f6efe3", "#c8331f", "#3f6b32"],
+      "fonts": ["Fraunces", "Inter"],
+      "mechanics": ["menu-tabs", "live-open-status", "today-highlight", "story-band", "reservation-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "kaart", "verhaal", "oven", "bezoek", "reserveren"],
+      "note": "Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum. Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier."
+    },
+    {
+      "slug": "100-filmhuis",
+      "path": "templates/100-filmhuis/",
+      "title": "DE LICHTBAK — filmhuis",
+      "name": "DE LICHTBAK",
+      "sector": "cultuur",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": ["#0e0d0c", "#f3ece0", "#e8b53a"],
+      "fonts": ["Archivo Black", "Bebas Neue", "DM Sans", "Space Mono"],
+      "mechanics": ["film-grain", "program-schedule", "genre-filter", "category-filter", "membership", "reservation-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "programma", "foyer", "programmas", "praktisch", "contact"],
+      "note": "Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold. Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier."
+    },
+    {
+      "slug": "101-uitvaart",
+      "path": "templates/101-uitvaart/",
+      "title": "LINDE — uitvaartbegeleiding",
+      "name": "LINDE",
+      "sector": "uitvaart",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f3f1ea", "#2b2a26", "#6f7d68"],
+      "fonts": ["Cormorant Garamond", "Karla"],
+      "mechanics": ["soft-reveal", "reveal-system", "always-available-band", "cost-indication", "contact-form", "form-validate", "anim-opt-in"],
+      "sections": ["hero", "werkwijze", "vormen", "kosten", "over", "contact"],
+      "note": "Maatwerk (handgeschreven). Serene, ingetogen uitvaartonderneming in warm greige × salie, Cormorant-serif. Veel rust en wit, langzame fade-ins, een permanente 'dag en nacht bereikbaar'-band en een kalme kostenindicatie in plaats van een prijslijst. Bewust empathisch en niet-salesy."
+    },
+    {
+      "slug": "102-fysio",
+      "path": "templates/102-fysio/",
+      "title": "BALANS — fysiotherapie",
+      "name": "BALANS",
+      "sector": "gezondheid",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f3f8f9", "#1f8fa3", "#ef7d5a"],
+      "fonts": ["Outfit", "Inter"],
+      "mechanics": ["complaint-picker", "live-open-status", "treatments-grid", "team-grid", "booking-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "klacht-kiezer", "klachten", "behandelingen", "team", "tarieven", "praktisch", "afspraak"],
+      "note": "Maatwerk (handgeschreven). Frisse, klinisch-warme fysiotherapiepraktijk in mint-wit × teal × koraal, Outfit-koppen. SIGNATUUR: interactieve klacht-kiezer (chips per lichaamsdeel/klacht) die de bijbehorende behandeling toont. Live open-status uit de openingstijden en online afspraakformulier met validatie."
+    },
+    {
+      "slug": "103-notaris",
+      "path": "templates/103-notaris/",
+      "title": "MERIDIAAN — notarissen",
+      "name": "MERIDIAAN",
+      "sector": "juridisch",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": ["#f3f0ea", "#1c1a1a", "#7b2f33"],
+      "fonts": ["Cormorant Garamond", "Inter"],
+      "mechanics": ["situation-picker", "live-open-status", "practice-areas", "steps-process", "hairline-rules", "intake-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "situatie", "rechtsgebieden", "werkwijze", "tarieven", "over", "contact"],
+      "note": "Maatwerk (handgeschreven). Klassiek-gezaghebbend notariskantoor in ivoor × oxblood — bewust GEEN navy/goud, om los te staan van 42-advocaten. Fijne Cormorant-serif, hairline-regels, symmetrische compositie. SIGNATUUR: 'kies uw situatie'-keuzehulp die naar het juiste rechtsgebied + de eerstvolgende stap leidt. Transparante tarieven en intakeformulier."
+    },
+    {
+      "slug": "104-theater",
+      "path": "templates/104-theater/",
+      "title": "DE REGENTES — theater & podium",
+      "name": "DE REGENTES",
+      "sector": "cultuur",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": ["#17121c", "#e8543f", "#d9a441"],
+      "fonts": ["Fraunces", "Archivo"],
+      "mechanics": ["program-agenda", "genre-filter", "soldout-badges", "tonight-highlight", "live-open-status", "film-grain", "reservation-form", "form-validate", "reveal-system"],
+      "sections": ["hero", "programma", "uitgelicht", "praktisch", "vrienden", "tickets"],
+      "note": "Maatwerk (handgeschreven). Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud, Fraunces-display met filmkorrel/vignet. SIGNATUUR: seizoensprogramma met genre-filter (alles/toneel/dans/muziek/comedy), uitverkocht-badges en automatische 'vanavond'-markering. Live kassa-status uit de openingstijden en kaartreservering met validatie."
     }
   ]
 }

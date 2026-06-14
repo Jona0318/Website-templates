@@ -1,6 +1,6 @@
-# Template Galerij — 86 kant-en-klare websites
+# Template Galerij — 101 kant-en-klare websites
 
-Een verzameling van **86 complete, responsive website-templates**, elk met een eigen stijl — waaronder **9 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), een rij **signature-templates** met dieper uitgewerkte interactiviteit, **22 maatwerk-sites** (volledig met de hand geschreven, met echte foto's) en een nieuwe lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **101 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **14 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -73,10 +73,8 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 63 | `templates/63-festival/` | ◆ Grafisch — VOLTAGE | Acid-geel × zwart × paars (#0b0b0b · #e6ff00): **festival-poster**, Anton, line-up-hero, **dag-tabs** voor het programma & ticket-tiers |
 | 64 | `templates/64-saas/` | ◆ Grafisch — KERNEL | Cyan × magenta op bijna-zwart (#070a0f · #00e5ff): **developer-tool**, Sora/JetBrains Mono, grid-hero met **live-getypte console** |
 | 65 | `templates/65-podcast/` | ◆ Grafisch — FREQ | Oranje × teal × cream (#fff4e6 · #ff5a1f): warme **podcast**, Fraunces, speler-hero met **klikbare/animerende waveform** |
-| 66 | `templates/66-gym/` | ◆ Grafisch — PULS | Beton × volt-geel × zwart (#111110 · #d6ff00): industrieel-brutalistische **sportschool**, diagonale hero, **dag-tabs lesrooster** (vandaag automatisch) |
 | 67 | `templates/67-burgerbar/` | ◆ Grafisch — SMASH | Ketchup-rood × mosterd × cream (#ff3b30 · #ffc21c): speels-brutalistische **burgerbar**, Bungee-display, roterende sticker & afhaalformulier |
 | 68 | `templates/68-club/` | ◆ Grafisch — NOCTURN | Diepzwart × UV-paars × acid-cyaan (#08060f · #00ffd5): glow-poster **nachtclub**, Syncopate, avond-agenda & tafelreservering |
-| 69 | `templates/69-tattoo/` | ◆ Grafisch — INKT | Bijna-zwart × bloedrood × bone (#0c0b0a · #e2231a): rauwe **tattoo studio**, zware Bebas-display, **flash-grid** & artists |
 | 70 | `templates/70-platenzaak/` | ◆ Grafisch — WALS | Burnt orange × zwart × cream (#ff5e1a · #0b6e5f): retro-print **platenzaak**, **draaiende vinyl-hero** & filterbare platenbak op genre |
 | 71 | `templates/71-esports/` | ◆ Grafisch — RESPAWN | Navy × neon-groen × magenta (#080c16 · #39ff14): hoekig **esports-team**, **clip-path** kaarten, roster & win/loss-wedstrijden |
 | 72 | `templates/72-dansstudio/` | ◆ Grafisch — TEMPO | Zwart × magenta × lime (#0d0d0d · #ff1f8f): kinetische **dansstudio**, schuine type-hero, marquee & weekrooster met dag-tabs |
@@ -86,7 +84,6 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 76 | `templates/76-ijssalon/` | ◆ Grafisch — ROOM | Bubblegum-roze × mint × cream (#ff8fbf · #74e0c3): speels-pastel **ijssalon**, zwevende hoorntjes & kleurrijke smakengrid |
 | 77 | `templates/77-drankmerk/` | ◆ Grafisch — BOLT | Electric blue × lime × zwart (#0a0e2a · #c6ff2e): **energiedrank-merk**, CSS-blik dat **live van kleur & smaak wisselt** via swatches |
 | 78 | `templates/78-literairfestival/` | ◆ Grafisch — WOORD | Cream-papier × diep rood (#f3ead7 · #c2241f): editoriale **festival-poster**, zware Fraunces-titel, programma & ticket-tiers |
-| 79 | `templates/79-makelaar/` | ◆ Grafisch — VIERKANT | Diep navy × chartreuse (#0f1b3d · #d4ff3d): geometrische **makelaar**, vorm-collage hero, woningaanbod & waardebepaling |
 | 80 | `templates/80-escaperoom/` | ◆ Grafisch — ONTSNAP | Bijna-zwart × oranje × rood (#0c0a0a · #ff6a00): gespannen **escape rooms**, **aftellende klok-hero** & moeilijkheidsmeters |
 | 81 | `templates/81-nagelstudio/` | ◆ Grafisch — KROON | Hot pink × zwart × goud (#ff2d87 · #e8b14a): bold-glam **nagelstudio**, Syne-display, nail-art **kleurblokken** & prijslijst |
 | 82 | `templates/82-gamestudio/` | ◆ Grafisch — PIXELWERK | Diep paars × lime × magenta (#150a2b · #b6ff3d): speelse **game- & app-studio**, **blok-portfolio** met badges & diensten |
@@ -94,6 +91,24 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 84 | `templates/84-zonnepanelen/` | ◆ Grafisch — STROOM | Zon-geel × diep groen (#0a2e22 · #ffd60a): bold-eco **zonnepanelen** met **interactieve besparings-slider** (kWh + euro live) |
 | 85 | `templates/85-kunstgalerie/` | ◆ Grafisch — KLEUR | Cream × rood/blauw/geel/groen (#2347ff · #ff3b30): **kleurblok-galerie**, bold poster-hero & exposities in kleurvlakken |
 | 86 | `templates/86-folio/` | § Editorieel — FOLIO | Warm grijs × ink × reflex-blauw (#ecebe4 · #2222ff): verfijnd **Swiss-grid ontwerpsysteem** (Instrument Serif). **Zichtbaar kolommenraster (toets G)**, scroll-spy sectie-index, werk-index met hover-accent en een live Amsterdam-klok + cursor-coördinaat in het colofon. Bewust géén gradient-koppen/icon-kaarten/stat-tellers/emoji — inhoud-agnostisch en herthema'baar via één accent-variabele |
+| 87 | `templates/87-cantorclin/` | ★ CANTORCLIN — schoonmaakbedrijf | Off-white × teal × diep navy (#f4f7f6 · #0bb89e): fris zakelijk **schoonmaakbedrijf**, Schibsted Grotesk, hero met tevredenheid-badge, animerende cijfers, diensten- & sectorgrid, duurzaamheidsblok (ISO 14001), FAQ & offerteformulier |
+| 88 | `templates/88-jazzclub/` | ◆ Grafisch — AMBER | Middernachtblauw × amber-goud × wijnrood (#0a0e1a · #d9a441): art-deco **jazzclub**, Playfair-display, moody hero met live-status, programma met uitverkocht-badges, ticket-tiers & reservering |
+| 89 | `templates/89-boerderij/` | ★ HET LANGE LAND — boerderijwinkel | Cream × bosgroen × terracotta (#f6efe2 · #5a7d3c): warme biologische **boerderijwinkel**, Fraunces-serif, seizoensproducten met prijzen, **oogstbox-pakketten**, open-status & bestelformulier |
+| 90 | `templates/90-tandarts/` | ★ GLIMLACH — tandartspraktijk | Pastel mint × sky-blue × wit (#f3f9f8 · #4fb8c4): zacht klinische **tandartspraktijk**, Poppins, ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ & afspraakformulier |
+| 91 | `templates/91-surfschool/` | ◆ Grafisch — WESTKUST | Turquoise × zand × koraal (#fdf4e3 · #0fb6c8): vibrant kust-sport **surfschool**, Archivo, **wave-dividers**, fake-live condities-widget (golf/wind/getij), lespakketten & boekformulier met datumkeuze |
+| 92 | `templates/92-chocolatier/` | ★ MAISON CACAEU — chocolatier | Espresso-bruin × goud × cream (#1f140c · #c9a35c): luxe **bonbon-atelier**, Cormorant Garamond, collectie-grid, van-boon-tot-bonbon verhaal, **doos-builder met live prijs** & bestelformulier |
+| 93 | `templates/93-izakaya/` | ★ ENSO — izakaya | Washi-wit × sumi-inkt × vermiljoen (#f4f1ea · #c8362a): minimalistisch zen **izakaya**, Shippori Mincho, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), open-status & reservering |
+| 94 | `templates/94-bordspellen/` | ◆ Grafisch — MEEPLE | Mosterd × teal × tomaat × cream (#f3e9d2 · #e8a13a): speels retro-70s **bordspellencafé**, Fredoka, chunky hard-shadow kaarten, **spellencollectie met filter** (spelers/genre), agenda & reservering |
+| 95 | `templates/95-juwelier/` | ★ ATELIER LUME — juwelier | Gebroken wit × blush × dun goud (#fbf8f4 · #c8a96a): luchtig minimaal **sieraden-atelier**, fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen & afspraakformulier |
+| 96 | `templates/96-bergsport/` | ◆ Grafisch — NOORDWAND | Leisteen × bosgroen × signaaloranje (#1b1f1d · #e8671c): rauw-technisch **outdoor- & bergsportmerk**, Oswald, **topografische hoogtelijnen**, uitrusting-grid, tochten met hoogtemeters/zwaarte & inschrijving |
+| 97 | `templates/97-kinderopvang/` | ◆ Grafisch — PLUK | Koraal × geel × groen × lucht-blauw (#fff7ec · #ff7a59): vrolijk candy **kinderdagverblijf**, Baloo 2, **blob-vormen** & golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn & rondleidingsformulier |
+| 98 | `templates/98-optiek/` | ◆ Grafisch — VIZIER | Wit × zwart × vivid kobalt (#f5f4f1 · #1d3fff): strak modern **brillenboutique**, bold Archivo-display, **filterbare monturen-collectie** (rond/hoekig/zon) met live count, oogmeting & afspraakformulier |
+| 99 | `templates/99-pizzeria/` | ★ FORNO VESUVIO — pizzeria | Cream × tomaatrood × basilicum (#f6efe3 · #c8331f): warm rustieke Napolitaanse **houtoven-pizzeria**, Fraunces-italic, menukaart met tabs, houtoven-verhaal, open-status met vandaag-markering & reservering |
+| 100 | `templates/100-filmhuis/` | ★ DE LICHTBAK — filmhuis | Antraciet × ivoor × marigold (#0e0d0c · #e8b53a): cinematisch poster-editorial **arthouse filmhuis**, Archivo Black/Bebas, filmkorrel, programma met speeltijden + **genre-filter**, lidmaatschap & reservering |
+| 101 | `templates/101-uitvaart/` | ✎ Maatwerk — LINDE | Warm greige × salie (#f3f1ea · #6f7d68): serene **uitvaartbegeleiding**, Cormorant-serif, veel rust en wit, langzame fade-ins, permanente **"dag en nacht bereikbaar"-band** & een kalme kostenindicatie i.p.v. prijslijst |
+| 102 | `templates/102-fysio/` | ✎ Maatwerk — BALANS | Mint-wit × teal × koraal (#f3f8f9 · #1f8fa3): frisse **fysiotherapiepraktijk**, Outfit, interactieve **klacht-kiezer** die de juiste behandeling toont, live open-status & online afspraakformulier |
+| 103 | `templates/103-notaris/` | ✎ Maatwerk — MERIDIAAN | Ivoor × oxblood (#f3f0ea · #7b2f33): klassiek-gezaghebbend **notariskantoor** (bewust géén navy/goud), fijne Cormorant-serif, hairline-regels, **"kies uw situatie"-keuzehulp** naar het juiste rechtsgebied & transparante tarieven |
+| 104 | `templates/104-theater/` | ✎ Maatwerk — DE REGENTES | Diep plum × spotlight-koraal × goud (#17121c · #e8543f): dramatisch poster-editorial **stadstheater**, Fraunces-display, filmkorrel, seizoensprogramma met **genre-filter** (toneel/dans/muziek/comedy) + uitverkocht-badges, kassa-status & kaartreservering |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
@@ -116,19 +131,19 @@ template/
     │   ├── css/style.css
     │   └── js/main.js
     ├── 02-portfolio/index.html
-    ├── …                    <- 03 t/m 22, elk één zelfstandig index.html
+    ├── …                    <- 03 t/m 104, elk één zelfstandig index.html
     ├── 23-sterrenwacht/index.html   <- canvas: sterrenhemel + maanfase
     └── 24-atelier/index.html        <- canvas: generatief stroomveld
 ```
 
 > Template 01 (Bedrijf) bestaat uit meerdere pagina's met losse CSS/JS-bestanden.
-> Templates 02 t/m 24 zijn elk **één zelfstandig `index.html`-bestand** (CSS en JS inline) — makkelijk te kopiëren en hergebruiken.
+> Templates 02 t/m 104 zijn elk **één zelfstandig `index.html`-bestand** (CSS en JS inline) — makkelijk te kopiëren en hergebruiken.
 
 ## 🧭 De bibliotheek hergebruiken (en tokens besparen)
 
 Deze galerij is bedoeld als **referentiebibliotheek**: een nieuwe site bouw je door de dichtstbijzijnde template te kopiëren en aan te passen, niet vanaf nul. Twee bestanden maken dat snel én goedkoop:
 
-- **[`templates.json`](templates.json)** — doorzoekbare index van álle templates met sector, kleurenpalet, fonts, mechanics en secties. Lees dít om de juiste template te kiezen, in plaats van alle 24 `index.html`-bestanden te openen.
+- **[`templates.json`](templates.json)** — doorzoekbare index van álle templates met sector, kleurenpalet, fonts, mechanics en secties. Lees dít om de juiste template te kiezen, in plaats van alle 101 `index.html`-bestanden te openen.
 - **[`PATTERNS.md`](PATTERNS.md)** — de herbruikbare bouwblokken (animatie-opt-in, reveal-systeem, sliders, FAQ-accordion, formulier-validatie, canvas-boilerplate, toggles) met kant-en-klare snippets en een verwijzing naar de beste bron-template per patroon.
 
 Werkwijze: zoek in `templates.json` op sector + mechanics → kopieer dat `index.html` → vervang palette/fonts/teksten → hergebruik de helpers uit `PATTERNS.md`.
