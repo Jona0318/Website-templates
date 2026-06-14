@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Cacaeu — ambachtelijke chocolatier · Antwerpen</title>
+<meta name="description" content="Maison Cacaeu is een ambachtelijk bonbon-atelier in Antwerpen. Handgeschepte bonbons, pralines, truffels en repen — van boon tot bonbon, met grand cru cacao. Stel je eigen doos samen of bestel een relatiegeschenk.">
+<meta name="theme-color" content="#26190f">
+<meta property="og:title" content="Maison Cacaeu — ambachtelijke chocolatier, Antwerpen">
+<meta property="og:description" content="Handgeschepte bonbons en pralines van grand cru cacao. Van boon tot bonbon, in ons atelier aan de Schelde.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  (function(){var h=document.documentElement;h.classList.remove('no-js');h.classList.add('js');})();
+</script>
+<style>
+/* ============================================================
+   MAISON CACAEU — ambachtelijke chocolatier, Antwerpen
+   Self-contained one-pager. Handgemaakt, geen libraries.
+   Luxe & verfijnd: espresso-bruin, goud/champagne, cream.
+   ============================================================ */
+:root{
+  --espresso:#1f140c;
+  --cacao:#26190f;
+  --cacao-2:#2f2014;
+  --mocha:#3c2a1b;
+  --truffle:#4a3422;
+  --cream:#f4ece0;
+  --cream-2:#ece0cd;
+  --paper:#fbf6ee;
+  --gold:#c79a4b;
+  --gold-soft:#dcb877;
+  --gold-deep:#a67c34;
+  --champagne:#e8d4a8;
+  --ink:#231911;
+  --ink-2:#5a4836;
+  --ink-soft:rgba(35,25,17,.66);
+  --ink-faint:rgba(35,25,17,.46);
+  --line:rgba(35,25,17,.14);
+  --line-soft:rgba(35,25,17,.08);
+  --on-dark:#f1e6d6;
+  --on-dark-soft:rgba(241,230,214,.66);
+  --line-dark:rgba(231,210,170,.2);
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --body:"Jost",system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+  --gutter:clamp(1.25rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --radius:4px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-weight:300;font-size:1.02rem;line-height:1.7;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--gold);color:var(--espresso)}
+:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;border-radius:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:var(--display);font-weight:500;line-height:1.04}
+.italic{font-style:italic}
+.kicker{font-family:var(--body);font-weight:500;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.85rem}
+.kicker::before{content:"";width:30px;height:1px;background:var(--gold);display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--cacao);color:var(--cream);padding:.7rem 1.1rem;border-radius:2px;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--body);font-weight:500;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;padding:.95rem 1.7rem;border-radius:999px;border:1px solid transparent;transition:transform .3s var(--ease),background-color .3s,color .3s,border-color .3s,box-shadow .3s;cursor:pointer;white-space:nowrap}
+.btn svg{width:15px;height:15px;transition:transform .35s var(--ease)}
+.btn-primary{background:var(--cacao);color:var(--champagne);border-color:var(--cacao)}
+.btn-primary:hover{background:var(--mocha);color:var(--gold-soft);transform:translateY(-2px);box-shadow:0 16px 34px -18px rgba(31,20,12,.8)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold-soft),var(--gold-deep));color:var(--espresso);border-color:transparent}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px -16px rgba(166,124,52,.75)}
+.btn-gold:hover svg{transform:translateX(3px)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--cacao);transform:translateY(-2px)}
+.btn-ghost-light{border-color:var(--line-dark);color:var(--on-dark)}
+.btn-ghost-light:hover{border-color:var(--gold-soft);color:var(--gold-soft);transform:translateY(-2px)}
+
+/* ---------- letterhead ---------- */
+.bar{background:var(--espresso);color:var(--on-dark-soft);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:40px}
+.bar .left{display:inline-flex;align-items:center;gap:.6rem;font-weight:400}
+.bar .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(199,154,75,.5);animation:pulse 2.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(199,154,75,.5)}70%{box-shadow:0 0 0 7px rgba(199,154,75,0)}100%{box-shadow:0 0 0 0 rgba(199,154,75,0)}}
+.bar .right{display:inline-flex;align-items:center;gap:1.6rem}
+.bar a{transition:color .2s}
+.bar a:hover{color:var(--gold-soft)}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .sep{display:none}.bar .left span.tag{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(251,246,238,.86);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 12px 32px -28px rgba(35,25,17,.7)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:80px}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:600;font-size:1.65rem;line-height:1;letter-spacing:.01em}
+.brand .mark{width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;flex:none;background:var(--cacao)}
+.brand .mark svg{width:20px;height:20px;color:var(--gold-soft)}
+.brand b{font-weight:600}.brand b span{font-style:italic;color:var(--gold-deep)}
+.brand small{display:block;font-family:var(--body);font-weight:400;font-size:.52rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-faint);margin-top:.18rem}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--body);font-weight:400;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);position:relative;padding-block:.4rem;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--gold);transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.7rem 1.3rem}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:980px){
+  .nav-links{position:fixed;inset:0;background:var(--cacao);flex-direction:column;justify-content:center;gap:1.9rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.15rem;letter-spacing:.16em;color:var(--on-dark)}
+  .nav-links a:hover{color:var(--gold-soft)}
+  .nav-links a::after{background:var(--gold-soft)}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span{background:var(--ink)}
+  .burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--cacao);color:var(--on-dark);overflow:hidden}
+.hero::before{content:"";position:absolute;top:-20%;right:-10%;width:50vw;height:50vw;max-width:680px;max-height:680px;background:radial-gradient(circle at 40% 40%,rgba(199,154,75,.22),transparent 64%);z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.hero .kicker{color:var(--gold-soft)}
+.hero .kicker::before{background:var(--gold-soft)}
+.hero h1{font-family:var(--display);font-weight:500;font-size:clamp(2.9rem,7vw,5.4rem);line-height:1;letter-spacing:-.01em;margin-top:1.5rem;color:var(--cream)}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero-intro{margin-top:1.6rem;font-size:clamp(1.06rem,1.5vw,1.24rem);color:var(--on-dark-soft);max-width:44ch;line-height:1.7;font-weight:300}
+.hero-actions{margin-top:2.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-trust{margin-top:2.6rem;display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;font-size:.78rem;letter-spacing:.04em;color:var(--on-dark-soft)}
+.hero-trust .ck{display:inline-flex;align-items:center;gap:.5rem;font-weight:400}
+.hero-trust .ck svg{width:16px;height:16px;color:var(--gold-soft);flex:none}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--mocha);box-shadow:0 50px 90px -52px rgba(0,0,0,.8)}
+.hero-figure .photo::after{content:"";position:absolute;inset:0;border:1px solid var(--line-dark);border-radius:var(--radius);pointer-events:none}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.5;object-fit:cover}
+.hero-figure .badge{position:absolute;left:-1.1rem;bottom:1.8rem;background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:1rem 1.25rem;box-shadow:0 26px 54px -32px rgba(0,0,0,.7);display:flex;align-items:center;gap:.9rem;max-width:240px;border:1px solid var(--gold-soft)}
+.hero-figure .badge .ring{width:46px;height:46px;border-radius:50%;background:var(--cacao);display:grid;place-items:center;flex:none}
+.hero-figure .badge .ring svg{width:22px;height:22px;color:var(--gold-soft)}
+.hero-figure .badge b{font-family:var(--display);font-weight:600;display:block;font-size:1.2rem;line-height:1.1}
+.hero-figure .badge small{color:var(--ink-soft);font-size:.74rem;letter-spacing:.02em}
+@media (max-width:520px){.hero-figure .badge{left:.5rem;padding:.8rem .9rem}}
+
+/* ---------- maatband ---------- */
+.strip{background:var(--espresso);color:var(--on-dark-soft);border-top:1px solid var(--line-dark)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:clamp(1.8rem,3.5vw,2.6rem)}
+@media (max-width:760px){.strip .wrap{grid-template-columns:repeat(2,1fr);gap:1.8rem 1rem}}
+.stat{text-align:center}
+.stat .num{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.4vw,2.9rem);line-height:1;color:var(--gold-soft)}
+.stat .lab{margin-top:.45rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-soft)}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.8rem,8vw,7rem)}
+.sec-head{max-width:680px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:500;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.01em;margin-top:1rem}
+.sec-head h2 em{font-style:italic;color:var(--gold-deep)}
+.sec-head p{margin-top:1.1rem;color:var(--ink-2);font-size:1.08rem;font-weight:300}
+
+/* ---------- collectie ---------- */
+.col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:clamp(2.2rem,4vw,3.2rem)}
+@media (max-width:880px){.col-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.col-grid{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s,border-color .4s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 34px 64px -44px rgba(35,25,17,.55);border-color:var(--gold-soft)}
+.card .pic{position:relative;background:var(--cacao-2);overflow:hidden}
+.card .pic img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .7s var(--ease)}
+.card:hover .pic img{transform:scale(1.05)}
+.card .tag{position:absolute;top:.9rem;left:.9rem;background:var(--paper);color:var(--gold-deep);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:.32rem .7rem;border-radius:999px}
+.card .body{padding:1.5rem 1.5rem 1.7rem;display:flex;flex-direction:column;flex:1}
+.card .top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+.card h3{font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1.15}
+.card .price{font-family:var(--display);font-weight:600;font-size:1.32rem;color:var(--gold-deep);font-variant-numeric:tabular-nums;white-space:nowrap}
+.card p{margin-top:.55rem;color:var(--ink-soft);font-size:.92rem;line-height:1.6;flex:1}
+.card .meta{margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--line-soft);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+
+/* ---------- ambacht / van boon tot bonbon ---------- */
+.craft{background:var(--cacao);color:var(--on-dark)}
+.craft .kicker{color:var(--gold-soft)}.craft .kicker::before{background:var(--gold-soft)}
+.craft .sec-head h2{color:var(--cream)}
+.craft .sec-head h2 em{color:var(--gold-soft)}
+.craft .sec-head p{color:var(--on-dark-soft)}
+.craft-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;margin-top:clamp(2.2rem,4vw,3.2rem)}
+@media (max-width:920px){.craft-grid{grid-template-columns:1fr;gap:2.4rem}}
+.craft-fig{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 50px 90px -56px rgba(0,0,0,.85)}
+.craft-fig::after{content:"";position:absolute;inset:0;border:1px solid var(--line-dark);border-radius:var(--radius);pointer-events:none}
+.craft-fig img{width:100%;aspect-ratio:5/6;object-fit:cover}
+.steps{display:grid;gap:1.6rem;counter-reset:step}
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start}
+.step .no{counter-increment:step;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;flex:none;font-family:var(--display);font-style:italic;font-weight:500;font-size:1.3rem;color:var(--gold-soft)}
+.step .no::before{content:counter(step)}
+.step h3{font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1.1}
+.step p{margin-top:.4rem;color:var(--on-dark-soft);font-size:.96rem;max-width:46ch}
+
+/* ---------- doos samenstellen ---------- */
+.box{background:var(--cream)}
+.box-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem);margin-top:clamp(2.2rem,4vw,3.2rem);align-items:center}
+@media (max-width:920px){.box-grid{grid-template-columns:1fr;gap:2.4rem}}
+.box-fig{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 40px 80px -52px rgba(35,25,17,.55)}
+.box-fig img{width:100%;aspect-ratio:4/3.4;object-fit:cover;background:var(--cacao-2)}
+.builder{background:var(--paper);border:1px solid var(--gold-soft);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:0 40px 80px -60px rgba(35,25,17,.5)}
+.builder h3{font-family:var(--display);font-weight:600;font-size:1.7rem}
+.builder .sub{color:var(--ink-soft);font-size:.94rem;margin-top:.3rem}
+.builder fieldset{border:0;margin-top:1.6rem}
+.builder legend{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:500;margin-bottom:.85rem}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+@media (max-width:420px){.choices{grid-template-columns:1fr}}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;width:0;height:0}
+.choice label{display:block;text-align:center;border:1px solid var(--line);border-radius:var(--radius);padding:.95rem .6rem;cursor:pointer;transition:border-color .25s,background-color .25s,transform .25s}
+.choice label b{display:block;font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1}
+.choice label span{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:.25rem}
+.choice label:hover{border-color:var(--gold-soft)}
+.choice input:checked+label{border-color:var(--gold-deep);background:var(--cream-2);transform:translateY(-2px)}
+.choice input:focus-visible+label{outline:2px solid var(--gold-deep);outline-offset:2px}
+.opts{display:grid;gap:.65rem;margin-top:.2rem}
+.opt{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-radius:var(--radius);padding:.8rem 1rem;cursor:pointer;transition:border-color .25s,background-color .25s}
+.opt:hover{border-color:var(--gold-soft)}
+.opt input{accent-color:var(--gold-deep);width:18px;height:18px;flex:none}
+.opt .txt{flex:1}
+.opt .txt b{font-weight:500;font-size:.96rem}
+.opt .txt small{display:block;color:var(--ink-faint);font-size:.8rem}
+.opt .add{font-family:var(--display);font-weight:600;color:var(--gold-deep);font-size:1.02rem;white-space:nowrap}
+.builder .total{margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.builder .total .lab{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+.builder .total .lab b{display:block;font-family:var(--body);font-weight:500;font-size:.96rem;letter-spacing:.02em;text-transform:none;color:var(--ink);margin-top:.2rem}
+.builder .total .amt{font-family:var(--display);font-weight:700;font-size:2.4rem;line-height:1;color:var(--gold-deep);font-variant-numeric:tabular-nums}
+.builder .order{width:100%;justify-content:center;margin-top:1.4rem}
+
+/* ---------- cadeau / zakelijk ---------- */
+.gift .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:880px){.gift .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.gift-fig{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 40px 80px -54px rgba(35,25,17,.55)}
+.gift-fig img{width:100%;aspect-ratio:5/4;object-fit:cover;background:var(--cacao-2)}
+.gift h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.05;margin-top:1rem}
+.gift h2 em{font-style:italic;color:var(--gold-deep)}
+.gift p.lead{margin-top:1.1rem;color:var(--ink-2);font-size:1.08rem;max-width:46ch;font-weight:300}
+.gift ul.perks{margin-top:1.6rem;display:grid;gap:1rem}
+.gift ul.perks li{display:flex;gap:.85rem;align-items:flex-start;color:var(--ink-2)}
+.gift ul.perks svg{width:19px;height:19px;color:var(--gold-deep);flex:none;margin-top:.32rem}
+.gift ul.perks b{font-weight:500;color:var(--ink)}
+.gift .gift-cta{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ---------- bestel / contact ---------- */
+.order-sec{background:var(--espresso);color:var(--on-dark)}
+.order-sec .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:920px){.order-sec .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.order-sec .kicker{color:var(--gold-soft)}.order-sec .kicker::before{background:var(--gold-soft)}
+.order-info h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.05;color:var(--cream);margin-top:1rem}
+.order-info h2 em{font-style:italic;color:var(--gold-soft)}
+.order-info p{margin-top:1.1rem;color:var(--on-dark-soft);max-width:42ch;font-weight:300}
+.contact-list{margin-top:2rem;display:grid;gap:1.2rem}
+.contact-list li{display:flex;gap:1rem;align-items:flex-start}
+.contact-list .ic{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-dark);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:20px;height:20px;color:var(--gold-soft)}
+.contact-list b{font-family:var(--body);font-weight:500;display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-soft)}
+.contact-list a,.contact-list span{color:var(--on-dark);font-size:1.02rem}
+.contact-list a:hover{color:var(--gold-soft)}
+.form{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:0 50px 90px -54px rgba(0,0,0,.7);border:1px solid var(--gold-soft)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--body);font-weight:500;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.45rem}
+.field input,.field select,.field textarea{width:100%;background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:.8rem .9rem;font-size:.98rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:104px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold-deep);background:#fff}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#b5483b;background:#fbf0ee}
+.field .err{display:none;color:#a83d31;font-size:.78rem;margin-top:.35rem}
+.field.bad .err{display:block}
+.form .btn{width:100%;justify-content:center;margin-top:.4rem}
+.form .note{margin-top:.9rem;font-size:.76rem;color:var(--ink-faint);text-align:center;letter-spacing:.02em}
+.form .ok{display:none;text-align:center;padding:1.4rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:66px;height:66px;border-radius:50%;background:var(--cacao);display:grid;place-items:center;margin:0 auto 1.2rem}
+.form .ok .ring svg{width:32px;height:32px;color:var(--gold-soft)}
+.form .ok h3{font-family:var(--display);font-weight:600;font-size:1.7rem}
+.form .ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--cacao);color:var(--on-dark-soft);padding-block:clamp(3rem,6vw,4.5rem) 2rem;border-top:1px solid var(--line-dark)}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:var(--cream);margin-bottom:1.1rem}
+.footer .brand .mark{background:transparent}
+.footer .blurb{font-size:.92rem;max-width:34ch;color:var(--on-dark-soft);font-weight:300}
+.footer h4{font-family:var(--body);font-weight:500;color:var(--gold-soft);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.94rem;transition:color .2s;font-weight:300}
+.footer ul a:hover{color:var(--gold-soft)}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.3rem}
+.footer .socials a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-dark);display:grid;place-items:center;transition:background-color .25s,border-color .25s,color .25s}
+.footer .socials a:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.footer .socials svg{width:18px;height:18px}
+.footer .bottom{margin-top:2.8rem;padding-top:1.6rem;border-top:1px solid var(--line-dark);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;color:var(--ink-faint);letter-spacing:.02em}
+.footer .bottom span{color:var(--on-dark-soft)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .dot{animation:none}
+  .card:hover .pic img{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- letterhead -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="dot" aria-hidden="true"></span> <span>Atelier &amp; winkel · Kloosterstraat 41, Antwerpen</span> <span class="sep" aria-hidden="true">·</span> <span class="tag">Verzending door heel de Benelux</span></div>
+    <div class="right">
+      <a class="email" href="mailto:atelier@maisoncacaeu.be">atelier@maisoncacaeu.be</a>
+      <a href="tel:+3232256148">+32 3 225 61 48</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Maison Cacaeu home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 0 7 3 7 7 0 1.6-.5 3-1.4 4.2-.7 1-1 1.6-1 2.6V18a2 2 0 0 1-2 2h-5.2a2 2 0 0 1-2-2v-1.2c0-1-.3-1.6-1-2.6A6.9 6.9 0 0 1 5 10c0-4 3-7 7-7z"/><path d="M9.5 20v2M14.5 20v2"/></svg></span>
+      <span><b>Maison <span>Cacaeu</span></b><small>Chocolatier · Antwerpen</small></span>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#collectie">Collectie</a>
+      <a href="#ambacht">Het ambacht</a>
+      <a href="#doos">Eigen doos</a>
+      <a href="#cadeau">Cadeau &amp; zakelijk</a>
+      <a href="#bestel">Bestellen</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-gold desk" href="#doos">Stel je doos samen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r>Bonbon-atelier sinds 1998</span>
+      <h1 data-r style="--d:.05s">Handgemaakte chocolade, <em>met geduld</em> geschept.</h1>
+      <p class="hero-intro" data-r style="--d:.12s">In ons atelier aan de Schelde maken we elke bonbon met de hand — van het temperen van grand cru cacao tot het laatste vleugje bladgoud. Klein van schaal, weelderig van smaak.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-gold" href="#collectie">Bekijk de collectie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost-light" href="#doos">Stel je eigen doos samen</a>
+      </div>
+      <div class="hero-trust" data-r style="--d:.24s">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Grand cru cacao, single origin</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Dagvers geschept, geen bewaarmiddelen</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gekoeld verzonden in de Benelux</span>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=900&q=72" alt="Rij glanzende handgemaakte bonbons met gouden details" loading="eager" width="900" height="1012">
+      </div>
+      <div class="badge">
+        <span class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.9 6 6.6.5-5 4.3 1.6 6.4L12 16l-6.1 3.2 1.6-6.4-5-4.3 6.6-.5z"/></svg></span>
+        <div><b>Gault&amp;Millau</b><small>15,5/20 voor het bonbon-atelier</small></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- maatband -->
+<section class="strip" aria-label="Maison Cacaeu in cijfers">
+  <div class="wrap">
+    <div class="stat" data-r><div class="num">26</div><div class="lab">jaar vakmanschap</div></div>
+    <div class="stat" data-r style="--d:.08s"><div class="num">100%</div><div class="lab">met de hand geschept</div></div>
+    <div class="stat" data-r style="--d:.16s"><div class="num">7</div><div class="lab">single-origin herkomsten</div></div>
+    <div class="stat" data-r style="--d:.24s"><div class="num">48u</div><div class="lab">van atelier tot deur</div></div>
+  </div>
+</section>
+
+<!-- collectie -->
+<section class="sec" id="collectie">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">De collectie</span>
+      <h2>Een assortiment dat <em>meebeweegt</em> met het seizoen</h2>
+      <p>Elke creatie wordt in kleine series geschept en met zorg afgewerkt. Dit is wat er nu in de vitrine ligt.</p>
+    </div>
+    <div class="col-grid">
+      <article class="card" data-r>
+        <div class="pic"><span class="tag">Bonbons</span><img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=700&q=72" alt="Assortiment gevulde bonbons in een elegante doos" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <div class="top"><h3>Assortiment Maison</h3><span class="price">€ 24</span></div>
+          <p>Onze signatuurdoos: zestien gevulde bonbons met ganache van Madagaskar, gezouten karamel en praliné van geroosterde hazelnoot.</p>
+          <div class="meta">Doos van 16 · houdbaar 14 dagen</div>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.08s">
+        <div class="pic"><span class="tag">Pralines</span><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=72" alt="Glanzende pralines met fijne gouden afwerking" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <div class="top"><h3>Pralines d'Or</h3><span class="price">€ 29</span></div>
+          <p>Knapperige praliné omhuld met melkchocolade en een vleugje eetbaar bladgoud. Verfijnd, romig en net niet te zoet.</p>
+          <div class="meta">Doos van 12 · met bladgoud</div>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.16s">
+        <div class="pic"><span class="tag">Truffels</span><img src="https://images.unsplash.com/photo-1605479640828-9b3979e2a1c6?auto=format&fit=crop&w=700&q=72" alt="Met cacaopoeder bestoven truffels op een schaal" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <div class="top"><h3>Truffes Nature</h3><span class="price">€ 19</span></div>
+          <p>Smeltende truffels van pure 70% cacao, dubbel gerold door zachte ganache en afgewerkt met cacao van Tanzania.</p>
+          <div class="meta">Doos van 9 · vegetarisch</div>
+        </div>
+      </article>
+      <article class="card" data-r>
+        <div class="pic"><span class="tag">Repen</span><img src="https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=700&q=72" alt="Gebroken stukken pure chocoladereep" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <div class="top"><h3>Tablette Single Origin</h3><span class="price">€ 9</span></div>
+          <p>Een pure reep van bean-to-bar cacao uit één plantage. Verkrijgbaar in Ecuador 75%, Peru 64% en Vietnam 80%.</p>
+          <div class="meta">100 gram · drie herkomsten</div>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.08s">
+        <div class="pic"><span class="tag">Seizoen</span><img src="https://images.unsplash.com/photo-1572897546088-1f4f2d8b2c5f?auto=format&fit=crop&w=700&q=72" alt="Seizoensbonbons met warme specerijen en sinaasappel" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <div class="top"><h3>Collection Saison</h3><span class="price">€ 27</span></div>
+          <p>Onze wisselende collectie. Nu: bonbon van geroosterde sinaasappel, tonka en een hart van pure ganache met fleur de sel.</p>
+          <div class="meta">Doos van 14 · beperkte oplage</div>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.16s">
+        <div class="pic"><span class="tag">Cadeau</span><img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=72" alt="Elegant ingepakte chocoladedoos met lint" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <div class="top"><h3>Coffret Prestige</h3><span class="price">€ 52</span></div>
+          <p>Een ruime houten cassette met vierentwintig creaties uit het hele huis, gebonden met een handgeknoopt lint. Het cadeau zonder twijfel.</p>
+          <div class="meta">Doos van 24 · met handgeschreven kaart</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ambacht -->
+<section class="sec craft" id="ambacht">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Het ambacht</span>
+      <h2>Van <em>boon</em> tot bonbon</h2>
+      <p>Goede chocolade vraagt tijd, temperatuur en aandacht. Wij volgen elke stap, van de ruwe cacaoboon tot de bonbon in uw hand.</p>
+    </div>
+    <div class="craft-grid">
+      <figure class="craft-fig" data-r>
+        <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=72" alt="Chocolatier werkt aan glanzende chocolade in het atelier" loading="lazy" width="800" height="960">
+      </figure>
+      <div class="steps" data-r style="--d:.1s">
+        <div class="step">
+          <span class="no" aria-hidden="true"></span>
+          <div><h3>De boon</h3><p>We kopen rechtstreeks bij plantages die we kennen. Single-origin cacao, eerlijk betaald en op smaak geselecteerd — geen massaware.</p></div>
+        </div>
+        <div class="step">
+          <span class="no" aria-hidden="true"></span>
+          <div><h3>Branden &amp; malen</h3><p>De bonen worden zacht gebrand en langzaam gemalen tot fluweelzachte chocolademassa. Hier ontstaat het karakter van elke herkomst.</p></div>
+        </div>
+        <div class="step">
+          <span class="no" aria-hidden="true"></span>
+          <div><h3>Tempereren</h3><p>Met de hand op de marmeren werktafel getempereerd, tot de chocolade die diepe glans en knappende breuk krijgt waar we naar streven.</p></div>
+        </div>
+        <div class="step">
+          <span class="no" aria-hidden="true"></span>
+          <div><h3>Schept &amp; afwerken</h3><p>Vullen, sluiten, polijsten en — waar het past — een vleugje bladgoud. Elke bonbon verlaat ons atelier pas als hij perfect is.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- doos samenstellen -->
+<section class="sec box" id="doos">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Stel je eigen doos samen</span>
+      <h2>Een doos <em>naar uw smaak</em></h2>
+      <p>Kies een doosgrootte, voeg eventueel een verfijning toe en zie de prijs meteen meebewegen. Wij scheppen hem vers voor u.</p>
+    </div>
+    <div class="box-grid">
+      <figure class="box-fig" data-r>
+        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=72" alt="Open doos met een ruime selectie handgemaakte bonbons" loading="lazy" width="800" height="680">
+      </figure>
+      <form class="builder" id="builder" data-r style="--d:.1s" aria-label="Stel je eigen doos samen">
+        <h3>Jouw doos</h3>
+        <p class="sub">Handgeschept, dagvers — verpakt in onze signatuurdoos met lint.</p>
+
+        <fieldset>
+          <legend>Kies een doosgrootte</legend>
+          <div class="choices" role="radiogroup" aria-label="Doosgrootte">
+            <div class="choice">
+              <input type="radio" name="grootte" id="g6" value="6" data-price="14" checked>
+              <label for="g6"><b>6</b><span>bonbons · € 14</span></label>
+            </div>
+            <div class="choice">
+              <input type="radio" name="grootte" id="g12" value="12" data-price="24">
+              <label for="g12"><b>12</b><span>bonbons · € 24</span></label>
+            </div>
+            <div class="choice">
+              <input type="radio" name="grootte" id="g24" value="24" data-price="44">
+              <label for="g24"><b>24</b><span>bonbons · € 44</span></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Verfijn je doos (optioneel)</legend>
+          <div class="opts">
+            <label class="opt">
+              <input type="checkbox" id="optGoud" data-price="4">
+              <span class="txt"><b>Afwerking met bladgoud</b><small>Een vleugje 23-karaats eetbaar goud</small></span>
+              <span class="add">+ € 4</span>
+            </label>
+            <label class="opt">
+              <input type="checkbox" id="optKaart" data-price="3">
+              <span class="txt"><b>Handgeschreven kaartje</b><small>Uw persoonlijke boodschap, met de pen</small></span>
+              <span class="add">+ € 3</span>
+            </label>
+            <label class="opt">
+              <input type="checkbox" id="optGift" data-price="6">
+              <span class="txt"><b>Luxe cadeau-inpak</b><small>Houten cassette met handgeknoopt lint</small></span>
+              <span class="add">+ € 6</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="total">
+          <div class="lab">Totaal<b id="boxSummary">6 bonbons</b></div>
+          <div class="amt" id="boxTotal" aria-live="polite">€ 14</div>
+        </div>
+        <a class="btn btn-gold order" href="#bestel" id="boxOrder">Deze doos bestellen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- cadeau / zakelijk -->
+<section class="sec gift" id="cadeau">
+  <div class="wrap">
+    <figure class="gift-fig" data-r>
+      <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=800&q=72" alt="Stapel elegant ingepakte chocoladegeschenken met lint" loading="lazy" width="800" height="640">
+    </figure>
+    <div class="gift-copy" data-r style="--d:.1s">
+      <span class="kicker">Cadeau &amp; relatiegeschenken</span>
+      <h2>Indruk maken doe je <em>met zorg</em></h2>
+      <p class="lead">Voor een verjaardag, een dankjewel of een hele kerstlijst: wij denken graag mee en personaliseren tot in het lint.</p>
+      <ul class="perks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Maatwerk per stuk of per honderdtal.</b> Van één doos tot een volledige bedrijfsbestelling, met logo op het lint of de kaart.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Eigen smaak of huisstijl.</b> We stemmen de selectie en kleuren af op uw merk of de gelegenheid.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Verzending naar meerdere adressen.</b> Gekoeld bezorgd in de Benelux, ieder pakket met een persoonlijke kaart.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Vast aanspreekpunt.</b> Eén chocolatier die uw bestelling van begin tot eind begeleidt.</span></li>
+      </ul>
+      <div class="gift-cta">
+        <a class="btn btn-primary" href="#bestel">Vraag een offerte aan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="tel:+3232256148">Of bel ons</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- bestel / contact -->
+<section class="sec order-sec" id="bestel">
+  <div class="wrap">
+    <div class="order-info" data-r>
+      <span class="kicker">Bestellen &amp; contact</span>
+      <h2>Laat ons iets <em>moois</em> voor u maken</h2>
+      <p>Vul het formulier in voor een bestelling, een offerte of een vraag. We reageren binnen één werkdag — of loop gewoon binnen in het atelier.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Atelier &amp; winkel</b><span>Kloosterstraat 41, 2000 Antwerpen</span></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:+3232256148">+32 3 225 61 48</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:atelier@maisoncacaeu.be">atelier@maisoncacaeu.be</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><b>Openingstijden</b><span>di–za 10:00–18:00 · zo &amp; ma gesloten</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul uw naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-email">E-mailadres</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-onderwerp">Waarvoor kunnen we u helpen?</label>
+          <select id="f-onderwerp" name="onderwerp" required>
+            <option value="" selected disabled>Maak een keuze…</option>
+            <option>Een doos bestellen</option>
+            <option>Eigen doos samengesteld</option>
+            <option>Cadeau of relatiegeschenk</option>
+            <option>Zakelijke / grote bestelling</option>
+            <option>Atelierbezoek of proeverij</option>
+            <option>Anders</option>
+          </select>
+          <span class="err">Maak een keuze.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Uw bericht</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Vertel ons over de gelegenheid, het aantal dozen en eventuele wensen…"></textarea>
+        </div>
+        <button class="btn btn-gold" type="submit">Verstuur uw aanvraag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">Vrijblijvend · reactie binnen één werkdag · uw gegevens blijven vertrouwelijk.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Hartelijk dank</h3>
+        <p id="ok-text">We hebben uw aanvraag ontvangen en nemen binnen één werkdag persoonlijk contact met u op.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="Maison Cacaeu home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 0 7 3 7 7 0 1.6-.5 3-1.4 4.2-.7 1-1 1.6-1 2.6V18a2 2 0 0 1-2 2h-5.2a2 2 0 0 1-2-2v-1.2c0-1-.3-1.6-1-2.6A6.9 6.9 0 0 1 5 10c0-4 3-7 7-7z"/><path d="M9.5 20v2M14.5 20v2"/></svg></span>
+          <span><b>Maison <span>Cacaeu</span></b><small>Chocolatier · Antwerpen</small></span>
+        </a>
+        <p class="blurb">Ambachtelijk bonbon-atelier aan de Schelde. Van boon tot bonbon, met grand cru cacao en een eindeloos geduld.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-3a5 5 0 0 0-5 5v3H4v4h3v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#top" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c4 1 7-1.5 7-7a4 4 0 1 0-7.7 1.5"/><path d="M9 19c-.5-2 .5-5 1.3-8"/><circle cx="12" cy="12" r="10"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Collectie</h4>
+        <ul>
+          <li><a href="#collectie">Bonbons</a></li>
+          <li><a href="#collectie">Pralines &amp; truffels</a></li>
+          <li><a href="#collectie">Repen single origin</a></li>
+          <li><a href="#doos">Stel je eigen doos samen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atelier</h4>
+        <ul>
+          <li><a href="#ambacht">Van boon tot bonbon</a></li>
+          <li><a href="#cadeau">Cadeau &amp; zakelijk</a></li>
+          <li><a href="#bestel">Atelierbezoek</a></li>
+          <li><a href="#bestel">Bestellen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bezoek ons</h4>
+        <ul>
+          <li><span>Kloosterstraat 41</span></li>
+          <li><span>2000 Antwerpen</span></li>
+          <li><a href="tel:+3232256148">+32 3 225 61 48</a></li>
+          <li><span>di–za 10:00–18:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; <span id="jaar">2026</span> Maison Cacaeu — ambachtelijke chocolatier</span>
+      <span>BTW BE 0 472 318 904 · Met de hand gemaakt in Antwerpen</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var doc = document;
+  var reduced = false;
+  try { reduced = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){}
+
+  /* ---- jaartal ---- */
+  var jaar = doc.getElementById("jaar");
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* ---- nav: stuck-on-scroll + mobiel menu ---- */
+  var nav = doc.getElementById("nav");
+  var burger = doc.getElementById("burger");
+  var links = doc.getElementById("navlinks");
+  function setMenu(open){
+    if (links) { links.classList.toggle("open", open); }
+    if (burger) {
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    doc.body.style.overflow = open ? "hidden" : "";
+  }
+  if (burger) {
+    burger.addEventListener("click", function(){
+      setMenu(!links.classList.contains("open"));
+    });
+  }
+  if (links) {
+    links.addEventListener("click", function(e){
+      if (e.target.closest("a")) { setMenu(false); }
+    });
+  }
+  doc.addEventListener("keydown", function(e){
+    if (e.key === "Escape") { setMenu(false); }
+  });
+
+  var ticking = false;
+  function onScroll(){
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (nav) { nav.classList.toggle("stuck", y > 8); }
+  }
+  function tick(){
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }
+  window.addEventListener("scroll", tick, { passive:true });
+  onScroll();
+
+  /* ---- reveal on scroll ---- */
+  if (!reduced && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold:0.12, rootMargin:"0px 0px -6% 0px" });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function(el){ io.observe(el); });
+  }
+
+  /* ---- doos samenstellen: live prijs ---- */
+  var builder = doc.getElementById("builder");
+  if (builder) {
+    var totalEl = doc.getElementById("boxTotal");
+    var summaryEl = doc.getElementById("boxSummary");
+    var orderBtn = doc.getElementById("boxOrder");
+    var sizeInputs = Array.prototype.slice.call(builder.querySelectorAll('input[name="grootte"]'));
+    var addInputs = Array.prototype.slice.call(builder.querySelectorAll('.opt input[type="checkbox"]'));
+
+    function money(n){
+      return "€ " + (Math.round(n * 100) / 100).toString().replace(".", ",");
+    }
+    function update(){
+      var size = 6, base = 14;
+      sizeInputs.forEach(function(i){
+        if (i.checked) {
+          size = parseInt(i.value, 10) || 6;
+          base = parseFloat(i.getAttribute("data-price")) || 0;
+        }
+      });
+      var total = base;
+      var extras = [];
+      addInputs.forEach(function(i){
+        if (i.checked) {
+          total += parseFloat(i.getAttribute("data-price")) || 0;
+          var lab = i.closest(".opt").querySelector(".txt b");
+          if (lab) { extras.push(lab.textContent.toLowerCase()); }
+        }
+      });
+      if (totalEl) { totalEl.textContent = money(total); }
+      if (summaryEl) {
+        var txt = size + " bonbons";
+        if (extras.length) { txt += " · " + extras.length + (extras.length === 1 ? " extra" : " extra's"); }
+        summaryEl.textContent = txt;
+      }
+      if (orderBtn) {
+        orderBtn.setAttribute("aria-label", "Bestel een doos van " + size + " bonbons voor " + money(total));
+      }
+    }
+    sizeInputs.concat(addInputs).forEach(function(i){
+      i.addEventListener("change", update);
+    });
+    update();
+  }
+
+  /* ---- bestel/contactformulier: live validatie ---- */
+  var form = doc.getElementById("form");
+  if (form) {
+    function bad(input, on){
+      var f = input.closest(".field");
+      if (f) { f.classList.toggle("bad", on); }
+    }
+    function valid(input){
+      var v = (input.value || "").trim(), ok = true;
+      if (input.type === "email") {
+        ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      } else if (input.tagName === "SELECT") {
+        ok = v.length > 0;
+      } else if (input.hasAttribute("required")) {
+        ok = v.length > 0;
+      }
+      bad(input, !ok);
+      return ok;
+    }
+    var fields = Array.prototype.slice.call(
+      form.querySelectorAll("input[required], select[required]")
+    );
+    fields.forEach(function(i){
+      i.addEventListener("blur", function(){ valid(i); });
+      i.addEventListener("input", function(){
+        if (i.closest(".field").classList.contains("bad")) { valid(i); }
+      });
+      i.addEventListener("change", function(){
+        if (i.tagName === "SELECT") { valid(i); }
+      });
+    });
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var allOk = true, first = null;
+      fields.forEach(function(i){
+        if (!valid(i)) { allOk = false; if (!first) { first = i; } }
+      });
+      if (!allOk) { if (first) { first.focus(); } return; }
+      var naam = (doc.getElementById("f-naam").value || "").trim().split(" ")[0];
+      var okt = doc.getElementById("ok-text");
+      if (okt && naam) {
+        okt.textContent = naam + ", hartelijk dank — we hebben uw aanvraag ontvangen en nemen binnen één werkdag persoonlijk contact met u op.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMBER — jazzclub &amp; nachtcafé · Amsterdam</title>
+<meta name="description" content="AMBER is een intieme jazzclub en nachtcafé aan de Amsterdamse grachten. Live optredens van dinsdag tot zondag, natuurwijn, klassieke cocktails en het warme licht van een ander uur. Reserveer je tafel.">
+<meta name="theme-color" content="#0a0e1a">
+<meta property="og:title" content="AMBER — jazzclub & nachtcafé, Amsterdam">
+<meta property="og:description" content="Intieme jazzclub aan de gracht. Live muziek van dinsdag tot zondag, in het warme licht van een ander uur.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement; h.classList.remove('no-js'); h.classList.add('js');
+  })();
+</script>
+<style>
+/* ============================================================
+   AMBER — jazzclub & nachtcafé, Amsterdam
+   Nachtelijk art-deco. Handgemaakte one-pager. Geen libraries.
+   ============================================================ */
+:root{
+  --night:#0a0e1a;
+  --night-2:#0f1424;
+  --night-3:#141a2e;
+  --surface:#161d33;
+  --surface-2:#1b2440;
+  --paper:#f4ede0;
+  --paper-soft:rgba(244,237,224,.74);
+  --paper-faint:rgba(244,237,224,.5);
+  --paper-ghost:rgba(244,237,224,.12);
+  --amber:#e4a13b;
+  --amber-soft:#f0c071;
+  --amber-deep:#b97c22;
+  --wine:#8a2233;
+  --wine-soft:#b6485a;
+  --line:rgba(228,161,59,.22);
+  --line-soft:rgba(244,237,224,.1);
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --body:"Jost",system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--night);color:var(--paper);
+  font-family:var(--body);font-weight:300;font-size:1.04rem;line-height:1.66;
+  letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;position:relative;
+}
+/* subtiele korrel + vignet over de hele pagina */
+body::after{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% -10%,transparent 55%,rgba(0,0,0,.55) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  mix-blend-mode:screen;opacity:.5;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--amber);color:var(--night)}
+:focus-visible{outline:2.5px solid var(--amber);outline-offset:3px;border-radius:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);position:relative;z-index:2}
+.display{font-family:var(--display);font-weight:600;line-height:1.04}
+.italic{font-style:italic}
+.kicker{font-family:var(--body);font-weight:500;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:.7rem}
+.kicker::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,transparent,var(--amber));display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--amber);color:var(--night);padding:.7rem 1.1rem;font-weight:500;border-radius:0;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* deco-hairline scheidingen */
+.deco-rule{display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--amber)}
+.deco-rule::before,.deco-rule::after{content:"";height:1px;flex:1;max-width:120px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.deco-rule .dot{width:6px;height:6px;transform:rotate(45deg);border:1px solid var(--amber);background:transparent}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--body);font-weight:500;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;padding:.95rem 1.7rem;border:1px solid transparent;border-radius:0;cursor:pointer;white-space:nowrap;transition:transform .3s var(--ease),background-color .3s,color .3s,border-color .3s,box-shadow .3s}
+.btn svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--amber);color:var(--night);box-shadow:0 0 0 0 rgba(228,161,59,0)}
+.btn-primary:hover{background:var(--amber-soft);transform:translateY(-2px);box-shadow:0 18px 40px -20px rgba(228,161,59,.7)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{border-color:var(--line);color:var(--paper)}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber-soft);transform:translateY(-2px)}
+
+/* ---------- letterhead bar ---------- */
+.bar{background:var(--night-2);border-bottom:1px solid var(--line-soft);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-soft)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:42px}
+.bar .left{display:inline-flex;align-items:center;gap:.6rem;font-weight:400}
+.bar .lamp{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px 1px rgba(228,161,59,.7);animation:glow 2.8s ease-in-out infinite}
+.bar .lamp[data-open="false"]{background:var(--wine-soft);box-shadow:0 0 8px 1px rgba(182,72,90,.6)}
+@keyframes glow{0%,100%{opacity:1}50%{opacity:.45}}
+.bar .right{display:inline-flex;align-items:center;gap:1.6rem}
+.bar a{transition:color .25s}
+.bar a:hover{color:var(--amber-soft)}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .city{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(10,14,26,.72);backdrop-filter:saturate(1.3) blur(14px);border-bottom:1px solid transparent;transition:border-color .35s,box-shadow .35s,background-color .35s}
+.nav.stuck{border-bottom-color:var(--line);background:rgba(10,14,26,.92);box-shadow:0 14px 40px -28px rgba(0,0,0,.9)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:80px}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:.16em}
+.brand .mark{width:38px;height:38px;display:grid;place-items:center;flex:none;border:1px solid var(--amber);transform:rotate(45deg)}
+.brand .mark svg{width:19px;height:19px;color:var(--amber);transform:rotate(-45deg)}
+.brand b{font-weight:700}
+.brand b i{font-style:normal;color:var(--amber)}
+.nav-links{display:flex;align-items:center;gap:2.1rem}
+.nav-links a{font-family:var(--body);font-weight:400;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-soft);position:relative;padding-block:.4rem;transition:color .25s}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--amber);transition:right .4s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.7rem 1.3rem}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:0;background:transparent;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:1.5px;background:var(--paper);transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:980px){
+  .nav-links{position:fixed;inset:0;background:var(--night);flex-direction:column;justify-content:center;gap:1.9rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.15rem;letter-spacing:.16em}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding-top:clamp(2.5rem,6vw,4.5rem);padding-bottom:clamp(3rem,7vw,5.5rem)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05) brightness(.55)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.55) 0%,rgba(10,14,26,.78) 55%,var(--night) 100%),radial-gradient(80% 60% at 75% 30%,rgba(228,161,59,.18),transparent 60%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;min-height:clamp(440px,64vh,640px)}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:2.2rem;min-height:0}}
+.hero-status{display:inline-flex;align-items:center;gap:.7rem;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-soft);border:1px solid var(--line);padding:.5rem .95rem;margin-bottom:1.6rem}
+.hero-status .lamp{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px 1px rgba(228,161,59,.8);animation:glow 2.8s ease-in-out infinite}
+.hero-status[data-open="false"] .lamp{background:var(--wine-soft);box-shadow:0 0 8px 1px rgba(182,72,90,.6)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(3.4rem,11vw,7rem);line-height:.92;letter-spacing:.04em;text-shadow:0 2px 40px rgba(0,0,0,.5)}
+.hero h1 .sub{display:block;font-size:clamp(1rem,2.4vw,1.5rem);font-weight:500;font-style:italic;letter-spacing:.04em;color:var(--amber-soft);margin-top:.8rem;text-shadow:none}
+.hero-intro{margin-top:1.7rem;font-size:clamp(1.05rem,1.5vw,1.22rem);color:var(--paper-soft);max-width:44ch;line-height:1.7}
+.hero-actions{margin-top:2.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-card{background:rgba(22,29,51,.66);backdrop-filter:blur(6px);border:1px solid var(--line);padding:clamp(1.6rem,3vw,2.2rem)}
+.hero-card .lbl{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--amber)}
+.hero-card h3{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3vw,2rem);line-height:1.1;margin-top:.6rem}
+.hero-card .meta{margin-top:.5rem;color:var(--paper-soft);font-size:.96rem}
+.hero-card .meta b{color:var(--paper);font-weight:500}
+.hero-card .when{margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid var(--line-soft);display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.hero-card .when .day{font-family:var(--display);font-style:italic;font-size:1.2rem}
+.hero-card .when .time{font-weight:500;letter-spacing:.06em;color:var(--amber-soft)}
+
+/* ---------- marquee ---------- */
+.strip{background:var(--amber);color:var(--night);overflow:hidden;border-block:1px solid var(--amber-deep)}
+.strip .track{display:flex;white-space:nowrap;will-change:transform;animation:slide 32s linear infinite}
+.strip span{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.04rem;letter-spacing:.02em;padding:.85rem 0}
+.strip span::after{content:"·";padding-inline:1.4rem;opacity:.55}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.strip:hover .track{animation-play-state:paused}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.8rem,8vw,7rem)}
+.sec-head{max-width:680px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.04;letter-spacing:.01em;margin-top:1.1rem}
+.sec-head h2 em{font-style:italic;color:var(--amber)}
+.sec-head p{margin-top:1.1rem;color:var(--paper-soft);font-size:1.06rem;max-width:54ch}
+
+/* ---------- programma ---------- */
+.programma{background:var(--night-2);border-block:1px solid var(--line-soft)}
+.prog-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.prog-list{margin-top:clamp(2.2rem,4vw,3.2rem);border-top:1px solid var(--line)}
+.gig{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:clamp(1rem,3vw,2.4rem);padding:1.5rem .4rem;border-bottom:1px solid var(--line-soft);transition:background-color .35s,padding-left .35s}
+.gig:hover{background:rgba(228,161,59,.05);padding-left:1.1rem}
+@media (max-width:760px){.gig{grid-template-columns:auto 1fr;gap:.6rem 1.2rem;padding-block:1.4rem}}
+.gig .date{text-align:center;border:1px solid var(--line);padding:.55rem .7rem;min-width:74px;background:var(--surface)}
+.gig .date .d{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1}
+.gig .date .m{display:block;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-top:.25rem}
+.gig .body .who{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.12}
+.gig .body .what{margin-top:.25rem;color:var(--paper-soft);font-size:.94rem}
+.gig .body .genre{display:inline-block;margin-top:.55rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-soft);border:1px solid var(--line);padding:.25rem .6rem}
+.gig .time{font-variant-numeric:tabular-nums;font-weight:400;letter-spacing:.08em;color:var(--paper-soft);font-size:.96rem}
+.gig .cta{justify-self:end}
+@media (max-width:760px){
+  .gig .time{grid-column:2;font-size:.86rem;color:var(--paper-faint)}
+  .gig .cta{grid-column:1 / -1;justify-self:start;margin-top:.4rem}
+}
+.tag-sold{display:inline-flex;align-items:center;gap:.45rem;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wine-soft);border:1px solid rgba(182,72,90,.5);padding:.55rem 1rem;white-space:nowrap}
+.tag-free{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.prog-note{margin-top:2rem;font-style:italic;color:var(--paper-faint);font-size:.96rem}
+
+/* ---------- over / sfeer ---------- */
+.over .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.over .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.over-copy p{color:var(--paper-soft);font-size:1.08rem;line-height:1.78}
+.over-copy p + p{margin-top:1.1rem}
+.over-copy p.lead::first-letter{font-family:var(--display);font-size:3.6rem;line-height:.72;float:left;margin:.34rem .6rem 0 0;color:var(--amber)}
+.pull{font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,3vw,2rem);line-height:1.24;color:var(--paper);margin:1.9rem 0;padding-left:1.3rem;border-left:2px solid var(--amber)}
+.signoff{margin-top:1.6rem;font-style:italic;color:var(--paper-faint)}
+.signoff b{font-style:normal;font-weight:500;color:var(--paper)}
+.over-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:.9rem}
+.over-gallery figure{position:relative;overflow:hidden;background:var(--surface)}
+.over-gallery figure.tall{grid-row:span 2}
+.over-gallery img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) brightness(.82) contrast(1.04);transition:transform .8s var(--ease),filter .6s}
+.over-gallery figure:hover img{transform:scale(1.06);filter:saturate(1) brightness(.95)}
+.over-gallery figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
+
+/* ---------- tickets / tiers ---------- */
+.tickets{background:var(--night-2);border-block:1px solid var(--line-soft)}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(2.2rem,4vw,3.2rem)}
+@media (max-width:860px){.tier-grid{grid-template-columns:1fr}}
+.tier{position:relative;border:1px solid var(--line);background:var(--surface);padding:2.2rem 1.9rem;display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.tier:hover{transform:translateY(-6px);box-shadow:0 34px 60px -40px rgba(0,0,0,.8);border-color:var(--amber)}
+.tier.feat{background:linear-gradient(180deg,var(--surface-2),var(--surface));border-color:var(--amber)}
+.tier .ribbon{position:absolute;top:-1px;right:1.4rem;background:var(--amber);color:var(--night);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:.4rem .8rem}
+.tier .name{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.4rem;color:var(--amber-soft)}
+.tier .price{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,5vw,3.2rem);line-height:1;margin-top:.7rem}
+.tier .price small{font-family:var(--body);font-weight:400;font-size:.9rem;color:var(--paper-faint);letter-spacing:.04em}
+.tier .desc{margin-top:.8rem;color:var(--paper-soft);font-size:.95rem}
+.tier ul{margin-top:1.4rem;display:grid;gap:.7rem;flex:1}
+.tier ul li{display:flex;gap:.7rem;align-items:flex-start;font-size:.94rem;color:var(--paper-soft)}
+.tier ul svg{width:17px;height:17px;color:var(--amber);flex:none;margin-top:.28rem}
+.tier .btn{margin-top:1.8rem;justify-content:center;width:100%}
+
+/* ---------- openingstijden ---------- */
+.hoursrow .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:860px){.hoursrow .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.hours{width:100%;border-collapse:collapse}
+.hours th{text-align:left;font-family:var(--body);font-weight:500;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);padding-bottom:.9rem;border-bottom:1px solid var(--line)}
+.hours td{padding-block:.85rem;border-bottom:1px solid var(--line-soft);font-size:1.04rem}
+.hours td.day{font-family:var(--display);font-size:1.12rem}
+.hours td.time{text-align:right;font-variant-numeric:tabular-nums;color:var(--paper-soft);letter-spacing:.04em}
+.hours tr.today td{background:rgba(228,161,59,.07)}
+.hours tr.today td.day{position:relative}
+.hours tr.today td.day::before{content:"";position:absolute;left:-.9rem;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px 1px rgba(228,161,59,.8)}
+.hours td.closed{color:var(--paper-faint);font-style:italic}
+.hours-side .now{font-family:var(--display);font-style:italic;font-size:1.5rem;margin-bottom:.5rem}
+.hours-side .now[data-open="false"]{color:var(--wine-soft)}
+.hours-side p{color:var(--paper-soft)}
+.hours-side .lines{margin-top:1.8rem;display:grid;gap:.6rem;font-size:1.02rem}
+.hours-side .lines a{border-bottom:1px solid var(--line);transition:border-color .3s,color .3s;display:inline-block}
+.hours-side .lines a:hover{border-bottom-color:var(--amber);color:var(--amber-soft)}
+
+/* ---------- reserveren / contact ---------- */
+.resv{background:var(--night-3);border-top:1px solid var(--line-soft)}
+.resv .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4.5rem)}
+@media (max-width:920px){.resv .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.resv-info h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3rem);line-height:1.06;letter-spacing:.01em;margin-top:1.1rem}
+.resv-info h2 em{font-style:italic;color:var(--amber)}
+.resv-info p{margin-top:1.1rem;color:var(--paper-soft);max-width:42ch;line-height:1.74}
+.resv-info .phone{margin-top:1.8rem;font-family:var(--display);font-size:1.5rem}
+.resv-info .phone a{border-bottom:1px solid var(--line);transition:border-color .3s}
+.resv-info .phone a:hover{border-bottom-color:var(--amber)}
+.resv-list{margin-top:2rem;display:grid;gap:1.1rem}
+.resv-list li{display:flex;gap:.9rem;align-items:flex-start}
+.resv-list svg{width:19px;height:19px;color:var(--amber);flex:none;margin-top:.3rem}
+.resv-list b{font-weight:500;color:var(--paper)}
+.resv-list span,.resv-list a{color:var(--paper-soft);font-size:.98rem}
+.resv-list a:hover{color:var(--amber-soft)}
+.form{background:var(--surface);border:1px solid var(--line);padding:clamp(1.7rem,3vw,2.5rem);position:relative}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 1.4rem}
+@media (max-width:520px){.frow{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column}
+.field.full{grid-column:1 / -1}
+.field label{font-family:var(--body);font-weight:500;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-faint);margin-bottom:.5rem}
+.field input,.field select,.field textarea{background:var(--night-2);border:0;border-bottom:1.5px solid var(--paper-ghost);color:var(--paper);padding:.6rem .2rem;font-size:1.02rem;border-radius:0;transition:border-color .3s,background-color .3s}
+.field textarea{resize:vertical;min-height:74px}
+.field select option{color:#211b15;background:#f4ede0}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--amber)}
+.field.bad input,.field.bad select{border-bottom-color:var(--wine-soft)}
+.field .err{display:none;font-size:.78rem;color:var(--wine-soft);margin-top:.4rem;letter-spacing:.02em}
+.field.bad .err{display:block}
+.form .submit{margin-top:1.9rem;width:100%;justify-content:center}
+.form .fnote{margin-top:1rem;font-size:.8rem;color:var(--paper-faint);text-align:center;letter-spacing:.02em}
+.form-ok{display:none;text-align:center;padding:1.4rem .5rem}
+.form.sent .form-body{display:none}
+.form.sent .form-ok{display:block}
+.form-ok .ring{width:64px;height:64px;border-radius:50%;border:1px solid var(--amber);display:grid;place-items:center;margin:0 auto 1.2rem;box-shadow:0 0 24px -6px rgba(228,161,59,.6)}
+.form-ok .ring svg{width:30px;height:30px;color:var(--amber)}
+.form-ok h3{font-family:var(--display);font-weight:600;font-size:1.6rem}
+.form-ok p{margin-top:.6rem;color:var(--paper-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--night-2);border-top:1px solid var(--line);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:2.2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .mark{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,7vw,4rem);line-height:.85;letter-spacing:.06em}
+.footer .mark i{font-style:normal;color:var(--amber)}
+.footer .blurb{margin-top:1rem;font-size:.94rem;color:var(--paper-soft);max-width:32ch;line-height:1.7}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.4rem}
+.footer .socials a{width:40px;height:40px;border:1px solid var(--line);display:grid;place-items:center;transition:background-color .3s,border-color .3s,transform .3s}
+.footer .socials a:hover{background:rgba(228,161,59,.14);border-color:var(--amber);transform:translateY(-2px)}
+.footer .socials svg{width:18px;height:18px;color:var(--amber)}
+.footer h4{font-family:var(--body);font-weight:500;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.footer ul li{margin-bottom:.65rem}
+.footer ul a,.footer ul span{font-size:.94rem;color:var(--paper-soft);transition:color .25s}
+.footer ul a:hover{color:var(--amber-soft)}
+.footer .bottom{margin-top:2.8rem;padding-top:1.7rem;border-top:1px solid var(--line-soft);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;letter-spacing:.04em;color:var(--paper-faint)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .lamp,.hero-status .lamp{animation:none}
+  .strip .track{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar programma</a>
+
+<!-- letterhead -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="lamp" id="bar-lamp" data-open="true" aria-hidden="true"></span> <span id="bar-status">Vanavond live</span> <span class="city" aria-hidden="true">· Reguliersgracht 14, Amsterdam</span></div>
+    <div class="right">
+      <a class="email" href="mailto:welkom@amberjazz.nl">welkom@amberjazz.nl</a>
+      <a href="tel:+31203301947">020 — 330 19 47</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="AMBER home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span>
+      <b>AMB<i>E</i>R</b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#programma">Programma</a>
+      <a href="#over">De club</a>
+      <a href="#tickets">Tickets</a>
+      <a href="#openingstijden">Openingstijden</a>
+      <a href="#reserveren">Reserveren</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary desk" href="#reserveren">Reserveer een tafel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<a id="top"></a>
+
+<!-- hero -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=1100&q=72" alt="" loading="eager" width="1100" height="733">
+  </div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="hero-status" id="hero-status" data-open="true" data-r><span class="lamp" aria-hidden="true"></span> <span id="hero-status-text">Vanavond live · deuren om 20:00</span></span>
+      <h1 data-r style="--d:.05s">AMBER<span class="sub">jazzclub &amp; nachtcafé aan de gracht</span></h1>
+      <p class="hero-intro" data-r style="--d:.12s">Een kleine zaal, koperkleurig licht en muziek die pas écht begint als de stad slaapt. Zes avonden per week live jazz, natuurwijn en klassieke cocktails — midden in Amsterdam.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-primary" href="#programma">Bekijk het programma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#reserveren">Reserveer een tafel</a>
+      </div>
+    </div>
+    <aside class="hero-card" data-r style="--d:.16s" aria-label="Optreden vanavond">
+      <span class="lbl">Vanavond op het podium</span>
+      <h3>Het Lieve Mok Trio</h3>
+      <p class="meta"><b>Modern hardbop</b> — piano, contrabas &amp; brushes, met gastsolist op tenorsax.</p>
+      <div class="when">
+        <span class="day">Twee sets</span>
+        <span class="time">20:30 &amp; 22:30</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- marquee strip -->
+<div class="strip" aria-hidden="true">
+  <div class="track" id="strip-track">
+    <span>Live jazz, zes avonden per week</span><span>Natuurwijn per glas</span><span>Klassieke cocktails</span><span>Late sets tot diep in de nacht</span><span>Walk-ins welkom aan de bar</span><span>Reguliersgracht 14, Amsterdam</span>
+    <span>Live jazz, zes avonden per week</span><span>Natuurwijn per glas</span><span>Klassieke cocktails</span><span>Late sets tot diep in de nacht</span><span>Walk-ins welkom aan de bar</span><span>Reguliersgracht 14, Amsterdam</span>
+  </div>
+</div>
+
+<!-- programma -->
+<section class="sec programma" id="programma">
+  <div class="wrap">
+    <div class="prog-head">
+      <div class="sec-head" data-r>
+        <span class="kicker">Programma · komende weken</span>
+        <h2>Wie er <em>speelt</em></h2>
+        <p>Van vaste huisbands tot reizende kwartetten. De late set is altijd net even rauwer dan de eerste — en bijna nooit hetzelfde.</p>
+      </div>
+      <a class="btn btn-ghost" href="#reserveren" data-r style="--d:.1s">Volledige agenda</a>
+    </div>
+    <div class="prog-list" data-r>
+      <article class="gig">
+        <div class="date"><span class="d">14</span><span class="m">jun</span></div>
+        <div class="body">
+          <p class="who">Het Lieve Mok Trio</p>
+          <p class="what">Huisband · met gastsolist op tenorsax</p>
+          <span class="genre">Modern hardbop</span>
+        </div>
+        <span class="time">20:30 &amp; 22:30</span>
+        <span class="cta tag-free">Vrije inloop</span>
+      </article>
+      <article class="gig">
+        <div class="date"><span class="d">15</span><span class="m">jun</span></div>
+        <div class="body">
+          <p class="who">Selma Vandenberg Quartet</p>
+          <p class="what">Stem &amp; piano · van Billie Holiday tot eigen werk</p>
+          <span class="genre">Vocal jazz</span>
+        </div>
+        <span class="time">21:00 &amp; 23:00</span>
+        <span class="cta tag-sold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="width:13px;height:13px"><circle cx="12" cy="12" r="9"/><path d="m15 9-6 6M9 9l6 6"/></svg> Uitverkocht</span>
+      </article>
+      <article class="gig">
+        <div class="date"><span class="d">17</span><span class="m">jun</span></div>
+        <div class="body">
+          <p class="who">Nocturne Sessions — open podium</p>
+          <p class="what">Jam-avond · neem je instrument mee, de huisband begeleidt</p>
+          <span class="genre">Open jam</span>
+        </div>
+        <span class="time">vanaf 21:30</span>
+        <span class="cta tag-free">Vrije inloop</span>
+      </article>
+      <article class="gig">
+        <div class="date"><span class="d">19</span><span class="m">jun</span></div>
+        <div class="body">
+          <p class="who">Brass &amp; the Copper Section</p>
+          <p class="what">Zevenkoppige band · New Orleans tot funk</p>
+          <span class="genre">Brass / soul-jazz</span>
+        </div>
+        <span class="time">21:00 &amp; 23:30</span>
+        <a class="cta btn btn-primary" href="#tickets">Tickets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="gig">
+        <div class="date"><span class="d">21</span><span class="m">jun</span></div>
+        <div class="body">
+          <p class="who">Théo Marchand Trio (FR)</p>
+          <p class="what">Op doorreis uit Parijs · ingetogen, melodisch</p>
+          <span class="genre">European jazz</span>
+        </div>
+        <span class="time">20:30 &amp; 22:45</span>
+        <a class="cta btn btn-primary" href="#tickets">Tickets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="gig">
+        <div class="date"><span class="d">22</span><span class="m">jun</span></div>
+        <div class="body">
+          <p class="who">Late Night Bebop Collective</p>
+          <p class="what">Onze beruchte zondagnacht · één lange set</p>
+          <span class="genre">Bebop</span>
+        </div>
+        <span class="time">vanaf 22:00</span>
+        <span class="cta tag-free">Vrije inloop</span>
+      </article>
+    </div>
+    <p class="prog-note">Vrije-inloopavonden kennen geen entree — een vrijwillige bijdrage voor de muzikanten stellen we op prijs. Voor avonden met tickets reserveren we het liefst een tafel vooruit.</p>
+  </div>
+</section>
+
+<!-- over / sfeer -->
+<section class="sec over" id="over">
+  <div class="wrap">
+    <div class="over-copy" data-r>
+      <span class="kicker">De club</span>
+      <h2 class="sec-head" style="margin:0"><span style="display:block;font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.04;margin:1.1rem 0 1.4rem">Een ander <em style="font-style:italic;color:var(--amber)">uur</em></span></h2>
+      <p class="lead">AMBER opende in 2014 in een voormalig pakhuis aan de Reguliersgracht — drie verdiepingen diep, lage plafonds, en akoestiek die je niet kunt ontwerpen maar alleen vinden. We hielden de bakstenen, de koperen lampen en de gewoonte om de avond nooit te haasten.</p>
+      <p>De zaal telt tweeënveertig stoelen en een handvol barkrukken. Dichtbij genoeg om de brushes op het snaredrum te horen, ver genoeg om je glas niet te morsen. We programmeren zelf — van vaste huisbands tot muzikanten die op doorreis even komen spelen.</p>
+      <blockquote class="pull">“Hier dimmen we het licht tot de muziek het overneemt.”</blockquote>
+      <p class="signoff">— <b>Hella &amp; Boudewijn</b>, oprichters en gastvrouw/gastheer</p>
+    </div>
+    <div class="over-gallery" data-r style="--d:.12s">
+      <figure class="tall">
+        <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1100&q=72" alt="Saxofonist op een sfeervol verlicht podium" width="700" height="900" loading="lazy">
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1100&q=72" alt="Publiek in een donkere, warm verlichte concertzaal" width="600" height="440" loading="lazy">
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1100&q=72" alt="Klassieke cocktail op een marmeren bar in zacht licht" width="600" height="440" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- deco rule -->
+<div class="wrap"><div class="deco-rule" aria-hidden="true"><span class="dot"></span></div></div>
+
+<!-- tickets -->
+<section class="sec tickets" id="tickets">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">Tickets &amp; tafels</span>
+      <h2>Kies je <em>plek</em></h2>
+      <p style="margin-inline:auto">Voor de vrije-inloopavonden loop je gewoon binnen. Voor optredens met entree kies je vooraf een plek — van een kruk aan de bar tot de loge met uitzicht op het podium.</p>
+    </div>
+    <div class="tier-grid">
+      <article class="tier" data-r>
+        <span class="name">Aan de bar</span>
+        <div class="price">€ 12<small> / avond</small></div>
+        <p class="desc">Sta of zit aan de koperen bar, dicht bij het glaswerk en de jam.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Toegang tot beide sets</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Vrije plaatskeuze aan de bar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Geen tafelreservering nodig</li>
+        </ul>
+        <a class="btn btn-ghost" href="#reserveren">Reserveren</a>
+      </article>
+      <article class="tier feat" data-r style="--d:.1s">
+        <span class="ribbon">Favoriet</span>
+        <span class="name">Tafel in de zaal</span>
+        <div class="price">€ 24<small> / persoon</small></div>
+        <p class="desc">Een eigen tafel met zicht op het podium, voor twee tot vier personen.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gereserveerde tafel, beide sets</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Welkomstdrankje per gast</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bediening aan tafel</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tafel blijft de hele avond van jou</li>
+        </ul>
+        <a class="btn btn-primary" href="#reserveren">Reserveren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="tier" data-r style="--d:.2s">
+        <span class="name">De loge</span>
+        <div class="price">€ 220<small> / 4 pers.</small></div>
+        <p class="desc">Onze verhoogde loge boven de zaal — privé, met eigen serveerster.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Privéloge voor vier personen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Fles huiscava of natuurwijn</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Eigen serveerster de hele avond</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Het beste zicht op het podium</li>
+        </ul>
+        <a class="btn btn-ghost" href="#reserveren">Reserveren</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- openingstijden -->
+<section class="sec hoursrow" id="openingstijden">
+  <div class="wrap">
+    <div data-r>
+      <div class="sec-head" style="margin-bottom:clamp(1.6rem,3vw,2.4rem)">
+        <span class="kicker">Openingstijden</span>
+        <h2>De avonden van <em>AMBER</em></h2>
+      </div>
+      <table class="hours" id="hours">
+        <thead>
+          <tr>
+            <th>Avond</th>
+            <th style="text-align:right">Deuren open</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- door JS gevuld -->
+        </tbody>
+      </table>
+    </div>
+    <div class="hours-side" data-r style="--d:.1s">
+      <p class="now" id="now-line" data-open="true">We zijn nu open.</p>
+      <p>Maandag is de zaal donker. De rest van de week openen de deuren rond achten; de eerste set begint zo rond half negen, de late set als de stad echt slaapt. Een tafel reserveren we het liefst even vooruit — aan de bar ben je altijd welkom binnen te lopen.</p>
+      <div class="lines">
+        <span>Reguliersgracht 14, 1017 LP Amsterdam</span>
+        <a href="tel:+31203301947">020 — 330 19 47</a>
+        <a href="mailto:welkom@amberjazz.nl">welkom@amberjazz.nl</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- reserveren -->
+<section class="sec resv" id="reserveren">
+  <div class="wrap">
+    <div class="resv-info" data-r>
+      <span class="kicker">Reserveren</span>
+      <h2>Schuif aan, <em>blijf</em> hangen</h2>
+      <p>Vul hiernaast je gegevens in, dan bevestigen we je tafel per mail — meestal binnen een paar uur. Voor de loge of groepen vanaf zes personen bel je ons even.</p>
+      <ul class="resv-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>AMBER jazzclub</b><br><span>Reguliersgracht 14, 1017 LP Amsterdam</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><div><b>E-mail</b><br><a href="mailto:welkom@amberjazz.nl">welkom@amberjazz.nl</a></div></li>
+      </ul>
+      <p class="phone">Liever bellen? <a href="tel:+31203301947">020 — 330 19 47</a></p>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="frow">
+          <div class="field">
+            <label for="r-naam">Naam</label>
+            <input id="r-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="r-tel">Telefoon</label>
+            <input id="r-tel" name="tel" type="tel" autocomplete="tel" required>
+            <span class="err">Vul een telefoonnummer in.</span>
+          </div>
+          <div class="field">
+            <label for="r-mail">E-mail</label>
+            <input id="r-mail" name="email" type="email" autocomplete="email" required>
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+          <div class="field">
+            <label for="r-pers">Personen</label>
+            <select id="r-pers" name="personen" required>
+              <option value="2">2 personen</option>
+              <option value="1">1 persoon</option>
+              <option value="3">3 personen</option>
+              <option value="4">4 personen</option>
+              <option value="5">5 personen</option>
+              <option value="6">6+ — bel ons</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="r-datum">Avond</label>
+            <input id="r-datum" name="datum" type="date" required>
+            <span class="err">Kies een avond.</span>
+          </div>
+          <div class="field">
+            <label for="r-plek">Plek</label>
+            <select id="r-plek" name="plek" required>
+              <option value="" selected disabled>Kies een plek…</option>
+              <option>Aan de bar</option>
+              <option>Tafel in de zaal</option>
+              <option>De loge (4 pers.)</option>
+            </select>
+            <span class="err">Maak een keuze.</span>
+          </div>
+          <div class="field full">
+            <label for="r-opm">Opmerking (gelegenheid, voorkeur set…)</label>
+            <textarea id="r-opm" name="opmerking"></textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary submit" type="submit">Tafel reserveren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="fnote">We gebruiken je gegevens alleen voor deze reservering.</p>
+      </div>
+      <div class="form-ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Tot vanavond bij AMBER.</h3>
+        <p id="ok-text">Bedankt — we hebben je aanvraag ontvangen en bevestigen je tafel zo snel mogelijk per mail.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="mark">AMB<i>E</i>R</div>
+        <p class="blurb">Jazzclub &amp; nachtcafé aan de Reguliersgracht. Live muziek in het warme licht van een ander uur.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.8-.1-1.6-.15-2.4-.15-2.4 0-4.05 1.46-4.05 4.15v2.3H7.5V13h2.75v8z"/></svg></a>
+          <a href="#top" aria-label="Spotify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M7 9.5c3.5-1 7-.5 9.5 1M7.5 13c2.8-.8 5.6-.4 7.7 1M8 16c2-.6 4-.3 5.5.8"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Bezoek</h4>
+        <ul>
+          <li><a href="#programma">Programma</a></li>
+          <li><a href="#tickets">Tickets &amp; tafels</a></li>
+          <li><a href="#openingstijden">Openingstijden</a></li>
+          <li><a href="#reserveren">Reserveren</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>De club</h4>
+        <ul>
+          <li><a href="#over">Over AMBER</a></li>
+          <li><a href="#over">De zaal</a></li>
+          <li><a href="#programma">Open podium</a></li>
+          <li><a href="#reserveren">Privéavonden</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><span>Reguliersgracht 14</span></li>
+          <li><span>1017 LP Amsterdam</span></li>
+          <li><a href="tel:+31203301947">020 — 330 19 47</a></li>
+          <li><a href="mailto:welkom@amberjazz.nl">welkom@amberjazz.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="jaar">2026</span> AMBER jazzclub &amp; nachtcafé · KvK 56128043</span>
+      <span>Muziek tot diep in de nacht — Amsterdam</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var doc = document;
+  var reduced = false;
+  try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  /* ---- openingstijden (minuten; sluit kan > 1440 voor na middernacht) ---- */
+  var DAYS = ["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"];
+  var SHORT = ["zo","ma","di","wo","do","vr","za"];
+  /* index = JS getDay() (0=zo). Avondclub: openen 's avonds, sluiten na middernacht. */
+  var HOURS = {
+    0: [19 * 60, 24 * 60 + 1 * 60],   // zo 19:00 – 01:00
+    1: null,                          // ma gesloten
+    2: [20 * 60, 24 * 60 + 1 * 60],   // di 20:00 – 01:00
+    3: [20 * 60, 24 * 60 + 1 * 60],   // wo
+    4: [20 * 60, 24 * 60 + 2 * 60],   // do 20:00 – 02:00
+    5: [20 * 60, 24 * 60 + 3 * 60],   // vr 20:00 – 03:00
+    6: [20 * 60, 24 * 60 + 3 * 60]    // za 20:00 – 03:00
+  };
+  function fmt(m) {
+    m = m % (24 * 60);
+    var h = Math.floor(m / 60), mm = m % 60;
+    return ("0" + h).slice(-2) + ":" + ("0" + mm).slice(-2);
+  }
+  function nlNow() {
+    try {
+      var p = new Intl.DateTimeFormat("nl-NL", {
+        weekday: "short", hour: "2-digit", minute: "2-digit",
+        hour12: false, timeZone: "Europe/Amsterdam"
+      }).formatToParts(new Date());
+      var o = {}; p.forEach(function (x) { o[x.type] = x.value; });
+      var map = { zo: 0, ma: 1, di: 2, wo: 3, do: 4, vr: 5, za: 6 };
+      var key = (o.weekday || "").toLowerCase().slice(0, 2);
+      var day = map[key];
+      if (day === undefined) { day = new Date().getDay(); }
+      return { day: day, min: parseInt(o.hour, 10) * 60 + parseInt(o.minute, 10) };
+    } catch (e) {
+      var d = new Date();
+      return { day: d.getDay(), min: d.getHours() * 60 + d.getMinutes() };
+    }
+  }
+  function status() {
+    var n = nlNow(), today = HOURS[n.day];
+    /* check ook gisteren-na-middernacht */
+    var yest = HOURS[(n.day + 6) % 7];
+    if (yest && yest[1] > 24 * 60 && n.min < yest[1] - 24 * 60) {
+      return { open: true, label: "Open tot " + fmt(yest[1]) };
+    }
+    if (today && n.min >= today[0] && n.min < today[1]) {
+      return { open: true, label: "Open tot " + fmt(today[1]) };
+    }
+    if (today && n.min < today[0]) {
+      return { open: false, label: "Vanavond open vanaf " + fmt(today[0]) };
+    }
+    for (var i = 1; i <= 7; i++) {
+      var d = (n.day + i) % 7;
+      if (HOURS[d]) {
+        return { open: false, label: "Open " + SHORT[d] + " vanaf " + fmt(HOURS[d][0]) };
+      }
+    }
+    return { open: false, label: "Tijdelijk gesloten" };
+  }
+
+  var st = status();
+
+  /* letterhead bar */
+  var barLamp = doc.getElementById("bar-lamp");
+  var barStatus = doc.getElementById("bar-status");
+  if (barLamp) { barLamp.setAttribute("data-open", st.open ? "true" : "false"); }
+  if (barStatus) { barStatus.textContent = st.open ? "Nu open · " + st.label.toLowerCase() : st.label; }
+
+  /* hero status */
+  var heroStatus = doc.getElementById("hero-status");
+  var heroStatusText = doc.getElementById("hero-status-text");
+  if (heroStatus) { heroStatus.setAttribute("data-open", st.open ? "true" : "false"); }
+  if (heroStatusText) {
+    heroStatusText.textContent = st.open
+      ? "Vanavond live · " + st.label.toLowerCase()
+      : st.label;
+  }
+
+  /* now-line bij openingstijden */
+  var nowLine = doc.getElementById("now-line");
+  if (nowLine) {
+    nowLine.setAttribute("data-open", st.open ? "true" : "false");
+    nowLine.textContent = st.open
+      ? "We zijn nu open — " + st.label.toLowerCase() + "."
+      : st.label + ".";
+  }
+
+  /* ---- urentabel ---- */
+  var tb = doc.querySelector("#hours tbody");
+  if (tb) {
+    var n = nlNow();
+    var order = [2, 3, 4, 5, 6, 0, 1]; // di..ma (maandag dicht onderaan)
+    order.forEach(function (d) {
+      var tr = doc.createElement("tr");
+      if (d === n.day) { tr.className = "today"; }
+      var h = HOURS[d];
+      tr.innerHTML =
+        '<td class="day">' + DAYS[d].charAt(0).toUpperCase() + DAYS[d].slice(1) + "</td>" +
+        (h ? '<td class="time">' + fmt(h[0]) + " – " + fmt(h[1]) + "</td>"
+           : '<td class="time closed">gesloten</td>');
+      tb.appendChild(tr);
+    });
+  }
+
+  /* ---- jaartal ---- */
+  var jaar = doc.getElementById("jaar");
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* ---- datum-input minimaal vandaag ---- */
+  var dEl = doc.getElementById("r-datum");
+  if (dEl) {
+    try {
+      var t = new Date();
+      var iso = t.getFullYear() + "-" + ("0" + (t.getMonth() + 1)).slice(-2) + "-" + ("0" + t.getDate()).slice(-2);
+      dEl.min = iso; dEl.value = iso;
+    } catch (e) {}
+  }
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav = doc.getElementById("nav");
+  var burger = doc.getElementById("burger");
+  var links = doc.getElementById("navlinks");
+  function setMenu(open) {
+    if (links) { links.classList.toggle("open", open); }
+    if (burger) { burger.classList.toggle("open", open); burger.setAttribute("aria-expanded", open ? "true" : "false"); }
+    doc.body.style.overflow = open ? "hidden" : "";
+  }
+  if (burger) { burger.addEventListener("click", function () { setMenu(!links.classList.contains("open")); }); }
+  if (links) { links.addEventListener("click", function (e) { if (e.target.closest("a")) { setMenu(false); } }); }
+  doc.addEventListener("keydown", function (e) { if (e.key === "Escape") { setMenu(false); } });
+
+  /* ---- nav stuck on scroll ---- */
+  var ticking = false;
+  function onScroll() { ticking = false; var y = window.pageYOffset || 0; if (nav) { nav.classList.toggle("stuck", y > 8); } }
+  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }
+  window.addEventListener("scroll", tick, { passive: true });
+  onScroll();
+
+  /* ---- reveal ---- */
+  if (!reduced && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function (el) { io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function (el) { el.classList.add("in"); });
+  }
+
+  /* ---- reserveringsformulier ---- */
+  var form = doc.getElementById("form");
+  if (form) {
+    function fieldOf(input) { return input.closest(".field"); }
+    function mark(input, bad) { var f = fieldOf(input); if (f) { f.classList.toggle("bad", bad); } }
+    function valid(input) {
+      var v = (input.value || "").trim(), ok = true;
+      if (input.type === "email") { ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      else if (input.hasAttribute("required")) { ok = v.length > 0; }
+      mark(input, !ok); return ok;
+    }
+    var inputs = Array.prototype.slice.call(form.querySelectorAll("input[required], select[required]"));
+    inputs.forEach(function (i) {
+      i.addEventListener("blur", function () { valid(i); });
+      i.addEventListener("input", function () { if (fieldOf(i).classList.contains("bad")) { valid(i); } });
+      i.addEventListener("change", function () { if (fieldOf(i).classList.contains("bad")) { valid(i); } });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function (i) { if (!valid(i)) { allOk = false; if (!first) { first = i; } } });
+      if (!allOk) { if (first) { first.focus(); } return; }
+      var naam = (doc.getElementById("r-naam").value || "").trim().split(" ")[0];
+      var pers = doc.getElementById("r-pers");
+      var okt = doc.getElementById("ok-title");
+      var okx = doc.getElementById("ok-text");
+      if (okt) { okt.textContent = (naam ? naam + ", tot snel bij AMBER." : "Tot snel bij AMBER."); }
+      if (okx && pers) {
+        okx.textContent = "Bedankt — we hebben je aanvraag voor " +
+          pers.options[pers.selectedIndex].text.toLowerCase() +
+          " ontvangen en bevestigen je tafel zo snel mogelijk per mail.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+    });
+  }
+})();
+</script>
+</body>
+</html>

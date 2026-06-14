@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Westkust Surf School — leer surfen aan zee in Scheveningen</title>
+<meta name="description" content="Westkust Surf School aan het strand van Scheveningen. Leer surfen bij gediplomeerde instructeurs — van eerste golf tot gevorderde sessies, privéles en kids-camp. Boek vandaag je les en spring de zee in.">
+<meta name="theme-color" content="#06b6d4">
+<meta property="og:title" content="Westkust Surf School — leer surfen aan zee">
+<meta property="og:description" content="Surfles aan het strand van Scheveningen voor beginners, gevorderden en kids. Boek je les en spring de zee in.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement; h.classList.remove('no-js'); h.classList.add('js');
+  })();
+</script>
+<style>
+/* ============================================================
+   WESTKUST SURF SCHOOL — Scheveningen
+   Vibrant kust-sport one-pager. Handgemaakt, inline, geen libraries.
+   ============================================================ */
+:root{
+  --sea:#06b6d4;          /* helder oceaanblauw/turquoise */
+  --sea-deep:#0e7490;     /* dieper zeeblauw */
+  --sea-ink:#063b4a;      /* donker diepwater */
+  --sea-wash:#d4f4fa;     /* lichte zee-wash */
+  --sand:#fdf4e3;         /* warm zand/cream */
+  --sand-2:#f7e9cf;       /* dieper zand */
+  --coral:#ff6b3d;        /* koraal/oranje accent */
+  --coral-deep:#e8521f;
+  --sun:#ffc24b;          /* zonnig geel */
+  --ink:#11343d;
+  --ink-2:#2f5660;
+  --ink-soft:rgba(17,52,61,.66);
+  --ink-faint:rgba(17,52,61,.45);
+  --line:rgba(17,52,61,.13);
+  --line-soft:rgba(17,52,61,.07);
+  --surface:#ffffff;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Outfit",system-ui,-apple-system,sans-serif;
+  --maxw:1200px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --radius:22px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--sand);color:var(--ink);
+  font-family:var(--body);font-weight:400;font-size:1.05rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--coral);color:#fff}
+:focus-visible{outline:3px solid var(--sea-deep);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.02}
+.kicker{font-family:var(--display);font-weight:700;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sea-deep);display:inline-flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:28px;height:3px;border-radius:3px;background:var(--coral);display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.1rem;border-radius:10px;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:700;font-size:.94rem;padding:.92rem 1.6rem;border-radius:999px;border:2.5px solid transparent;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s,box-shadow .25s;cursor:pointer;white-space:nowrap}
+.btn svg{width:17px;height:17px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 14px 30px -14px rgba(232,82,31,.65)}
+.btn-primary:hover{background:var(--coral-deep);transform:translateY(-3px);box-shadow:0 20px 38px -16px rgba(232,82,31,.75)}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-sea{background:var(--sea-deep);color:#fff}
+.btn-sea:hover{background:var(--sea-ink);transform:translateY(-3px)}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--sand);transform:translateY(-3px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{transform:translateY(-3px);box-shadow:0 16px 34px -16px rgba(0,0,0,.35)}
+
+/* ---------- topbar ---------- */
+.bar{background:var(--sea-ink);color:rgba(255,255,255,.86);font-size:.8rem}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:42px}
+.bar .left{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:600;letter-spacing:.03em}
+.bar .dot{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 0 rgba(255,194,75,.6);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,194,75,.55)}70%{box-shadow:0 0 0 8px rgba(255,194,75,0)}100%{box-shadow:0 0 0 0 rgba(255,194,75,0)}}
+.bar .right{display:inline-flex;align-items:center;gap:1.6rem}
+.bar a{transition:color .2s}
+.bar a:hover{color:#fff}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .sep{display:none}.bar .left span.tag{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(253,244,227,.82);backdrop-filter:saturate(1.4) blur(12px);border-bottom:2px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 12px 34px -28px rgba(6,59,74,.7)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:inline-flex;align-items:center;gap:.65rem;font-family:var(--display);font-weight:900;font-size:1.5rem;letter-spacing:-.02em}
+.brand .mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,var(--sea),var(--sea-deep));display:grid;place-items:center;flex:none;box-shadow:0 8px 18px -8px rgba(14,116,144,.7)}
+.brand .mark svg{width:23px;height:23px;color:#fff}
+.brand b{font-weight:900}.brand b span{color:var(--coral)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--display);font-weight:600;font-size:.94rem;color:var(--ink-2);position:relative;padding-block:.3rem;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:3px;background:var(--coral);border-radius:3px;transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.68rem 1.3rem;font-size:.9rem}
+.burger{display:none;width:44px;height:44px;border:2px solid var(--line);border-radius:12px;background:var(--surface);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:19px;height:2.5px;background:var(--ink);border-radius:3px;transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:980px){
+  .nav-links{position:fixed;inset:0;background:var(--sand);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.4rem}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+}
+
+/* ---------- wave dividers ---------- */
+.wave-divider{display:block;width:100%;height:auto;line-height:0}
+.wave-divider svg{display:block;width:100%;height:clamp(48px,7vw,96px)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:linear-gradient(165deg,#7fe3f0 0%,var(--sea) 48%,var(--sea-deep) 100%);color:#fff;padding-top:clamp(2.6rem,6vw,4.5rem);padding-bottom:clamp(1rem,3vw,2rem);overflow:hidden}
+.hero::before{content:"";position:absolute;top:-15%;right:-10%;width:48vw;height:48vw;max-width:640px;max-height:640px;background:radial-gradient(circle at 35% 35%,rgba(255,194,75,.4),transparent 64%);pointer-events:none;z-index:0}
+.hero::after{content:"";position:absolute;bottom:-12%;left:-12%;width:42vw;height:42vw;max-width:520px;max-height:520px;background:radial-gradient(circle at 50% 50%,rgba(255,107,61,.28),transparent 66%);pointer-events:none;z-index:0}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.hero .kicker{color:#fff}
+.hero .kicker::before{background:var(--sun)}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(2.8rem,7.2vw,5.2rem);line-height:.98;letter-spacing:-.03em;margin-top:1.3rem;text-shadow:0 4px 24px rgba(6,59,74,.18)}
+.hero h1 em{font-style:normal;color:var(--sun);position:relative;white-space:nowrap}
+.hero-intro{margin-top:1.5rem;font-size:clamp(1.06rem,1.6vw,1.26rem);color:rgba(255,255,255,.94);max-width:44ch;line-height:1.62}
+.hero-actions{margin-top:2.1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-trust{margin-top:2.3rem;display:flex;align-items:center;gap:1.3rem;flex-wrap:wrap;font-size:.88rem;color:rgba(255,255,255,.92)}
+.hero-trust .ck{display:inline-flex;align-items:center;gap:.5rem;font-weight:600}
+.hero-trust .ck svg{width:18px;height:18px;color:var(--sun);flex:none}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--sea-deep);box-shadow:0 44px 90px -50px rgba(6,59,74,.8);transform:rotate(-1.6deg)}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.5;object-fit:cover}
+.hero-figure .badge{position:absolute;right:-1rem;bottom:1.4rem;background:var(--surface);color:var(--ink);border-radius:18px;padding:1rem 1.2rem;box-shadow:0 24px 50px -28px rgba(6,59,74,.6);display:flex;align-items:center;gap:.85rem;max-width:240px;transform:rotate(2deg)}
+.hero-figure .badge .ring{width:48px;height:48px;border-radius:50%;background:var(--sand-2);display:grid;place-items:center;flex:none}
+.hero-figure .badge .ring svg{width:24px;height:24px;color:var(--coral)}
+.hero-figure .badge b{font-family:var(--display);font-weight:800;display:block;font-size:1.1rem;line-height:1.1}
+.hero-figure .badge small{color:var(--ink-soft);font-size:.82rem}
+@media (max-width:520px){.hero-figure .badge{right:.4rem;padding:.8rem .9rem}}
+
+/* ---------- condities widget ---------- */
+.cond{background:var(--sea-ink);color:#fff;position:relative}
+.cond .wrap{padding-block:clamp(1.6rem,3vw,2.2rem)}
+.cond-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}
+.cond-head .ttl{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:700;font-size:1.06rem}
+.cond-head .ttl .live{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);font-weight:700}
+.cond-head .ttl .live .blip{width:9px;height:9px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 0 rgba(255,194,75,.7);animation:pulse 2.2s infinite}
+.cond-head .upd{font-size:.82rem;color:rgba(255,255,255,.7)}
+.cond-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden}
+@media (max-width:760px){.cond-grid{grid-template-columns:repeat(2,1fr)}}
+.cond-cell{background:var(--sea-ink);padding:1.3rem 1.2rem;display:flex;align-items:center;gap:.95rem;transition:background-color .3s}
+.cond-cell:hover{background:#0a2c38}
+.cond-cell .ic{width:44px;height:44px;border-radius:12px;background:rgba(127,227,240,.16);display:grid;place-items:center;flex:none}
+.cond-cell .ic svg{width:23px;height:23px;color:#7fe3f0}
+.cond-cell .lab{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.cond-cell .val{font-family:var(--display);font-weight:800;font-size:1.45rem;line-height:1.05;margin-top:.1rem}
+.cond-cell .val small{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.7)}
+
+/* ---------- stats ---------- */
+.stats{background:var(--surface)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:clamp(2rem,4vw,2.8rem)}
+@media (max-width:760px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:1.8rem 1rem}}
+.stat{text-align:center}
+.stat .num{font-family:var(--display);font-weight:900;font-size:clamp(2.1rem,4.6vw,3.1rem);line-height:1;letter-spacing:-.02em;color:var(--sea-deep)}
+.stat .lab{margin-top:.5rem;font-size:.86rem;color:var(--ink-soft);letter-spacing:.02em}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.8rem,8vw,7rem)}
+.sec-head{max-width:680px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.8vw,3.2rem);line-height:1.04;letter-spacing:-.025em;margin-top:1rem}
+.sec-head p{margin-top:1.1rem;color:var(--ink-2);font-size:1.1rem}
+
+/* ---------- lessen / pakketten ---------- */
+.lessen .wrap{position:relative}
+.les-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:1040px){.les-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.les-grid{grid-template-columns:1fr}}
+.les{position:relative;display:flex;flex-direction:column;background:var(--surface);border:2px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.6rem;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.les:hover{transform:translateY(-7px);box-shadow:0 34px 64px -42px rgba(6,59,74,.5);border-color:var(--sea)}
+.les.feat{border-color:var(--coral);background:linear-gradient(180deg,#fff,#fff7f3)}
+.les .tag{position:absolute;top:-13px;left:1.6rem;background:var(--coral);color:#fff;font-family:var(--display);font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.34rem .7rem;border-radius:999px}
+.les .ic{width:52px;height:52px;border-radius:15px;background:var(--sea-wash);display:grid;place-items:center;margin-bottom:1.1rem}
+.les .ic svg{width:27px;height:27px;color:var(--sea-deep)}
+.les h3{font-family:var(--display);font-weight:800;font-size:1.34rem;letter-spacing:-.01em}
+.les .who{margin-top:.25rem;font-size:.86rem;color:var(--sea-deep);font-weight:600}
+.les .price{font-family:var(--display);font-weight:900;font-size:2.1rem;line-height:1;letter-spacing:-.02em;margin:1rem 0 .2rem;color:var(--ink)}
+.les .price span{font-size:.9rem;font-weight:600;color:var(--ink-soft)}
+.les ul{margin-top:1.1rem;display:grid;gap:.6rem;flex:1}
+.les ul li{display:flex;gap:.6rem;align-items:flex-start;font-size:.94rem;color:var(--ink-2)}
+.les ul li svg{width:18px;height:18px;color:var(--coral);flex:none;margin-top:.2rem}
+.les .btn{width:100%;justify-content:center;margin-top:1.5rem}
+
+/* ---------- over ons / instructeurs ---------- */
+.over{background:var(--sand-2)}
+.over-top{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:920px){.over-top{grid-template-columns:1fr;gap:2.2rem}}
+.over-fig{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 40px 80px -52px rgba(6,59,74,.55)}
+.over-fig img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.over-copy p{margin-top:1.1rem;color:var(--ink-2);font-size:1.08rem;line-height:1.72;max-width:48ch}
+.over-copy .sign{margin-top:1.4rem;font-style:italic;color:var(--ink-soft)}
+.over-copy .sign b{font-style:normal;font-weight:700;font-family:var(--display)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:clamp(2.4rem,5vw,3.4rem)}
+@media (max-width:820px){.team-grid{grid-template-columns:1fr}}
+.coach{background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 50px -42px rgba(6,59,74,.45);transition:transform .35s var(--ease)}
+.coach:hover{transform:translateY(-5px)}
+.coach img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+.coach .body{padding:1.3rem 1.4rem 1.6rem}
+.coach h3{font-family:var(--display);font-weight:800;font-size:1.2rem}
+.coach .role{font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);margin-top:.2rem}
+.coach p{margin-top:.7rem;font-size:.94rem;color:var(--ink-soft)}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--sea-ink);color:#fff}
+.reviews .kicker{color:#7fe3f0}
+.reviews .kicker::before{background:var(--sun)}
+.reviews .sec-head h2{color:#fff}
+.reviews .sec-head p{color:rgba(255,255,255,.74)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:860px){.rev-grid{grid-template-columns:1fr}}
+.rev{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:1.8rem 1.7rem;backdrop-filter:blur(4px)}
+.rev .stars{display:flex;gap:.18rem;color:var(--sun);margin-bottom:1rem}
+.rev .stars svg{width:18px;height:18px}
+.rev blockquote{font-size:1.04rem;line-height:1.6;color:rgba(255,255,255,.94)}
+.rev .who{margin-top:1.2rem;display:flex;align-items:center;gap:.8rem}
+.rev .who .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(140deg,var(--sea),var(--coral));display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#fff;flex:none}
+.rev .who b{font-family:var(--display);font-weight:700;display:block;font-size:.98rem}
+.rev .who span{font-size:.84rem;color:rgba(255,255,255,.65)}
+
+/* ---------- boek / contact ---------- */
+.boek .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:920px){.boek .wrap{grid-template-columns:1fr}}
+.boek-info h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3rem);letter-spacing:-.025em;line-height:1.04;margin-top:1rem}
+.boek-info p{margin-top:1.1rem;color:var(--ink-2);max-width:42ch}
+.boek-list{margin-top:2rem;display:grid;gap:1.2rem}
+.boek-list li{display:flex;gap:1rem;align-items:flex-start}
+.boek-list .ic{width:46px;height:46px;border-radius:13px;background:var(--sea-wash);display:grid;place-items:center;flex:none}
+.boek-list .ic svg{width:22px;height:22px;color:var(--sea-deep)}
+.boek-list b{font-family:var(--display);font-weight:700;display:block;font-size:.98rem}
+.boek-list a,.boek-list span{color:var(--ink-soft);font-size:.96rem}
+.boek-list a:hover{color:var(--coral)}
+.form{background:var(--surface);border:2px solid var(--line);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:0 44px 90px -62px rgba(6,59,74,.5)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--display);font-weight:600;font-size:.86rem;margin-bottom:.4rem}
+.field input,.field select,.field textarea{width:100%;background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:.78rem .9rem;font-size:.98rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:108px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sea-deep);background:#fff}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#e0453b;background:#fdf2f1}
+.field .err{display:none;color:#c43c38;font-size:.8rem;margin-top:.35rem;font-weight:500}
+.field.bad .err{display:block}
+.form .btn-primary{width:100%;justify-content:center;margin-top:.4rem;font-size:1rem}
+.form .note{margin-top:.9rem;font-size:.8rem;color:var(--ink-faint);text-align:center}
+.form .ok{display:none;text-align:center;padding:1.4rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:68px;height:68px;border-radius:50%;background:var(--sea-wash);display:grid;place-items:center;margin:0 auto 1.1rem}
+.form .ok .ring svg{width:34px;height:34px;color:var(--sea-deep)}
+.form .ok h3{font-family:var(--display);font-weight:800;font-size:1.5rem}
+.form .ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--sea-ink);color:rgba(255,255,255,.72);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:#fff;margin-bottom:1rem}
+.footer .brand b span{color:var(--sun)}
+.footer .blurb{font-size:.94rem;max-width:36ch;color:rgba(255,255,255,.64)}
+.footer h4{font-family:var(--display);font-weight:700;color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.94rem;transition:color .2s}
+.footer ul a:hover{color:var(--sun)}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.footer .socials a{width:40px;height:40px;border-radius:11px;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;transition:background-color .25s,border-color .25s,transform .25s}
+.footer .socials a:hover{background:var(--coral);border-color:transparent;transform:translateY(-3px)}
+.footer .socials svg{width:19px;height:19px;color:#fff}
+.footer .bottom{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.13);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.5)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .dot,.cond-head .ttl .live .blip{animation:none}
+  .hero-figure .photo,.hero-figure .badge{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- topbar -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="dot" aria-hidden="true"></span> <span>Strandpaviljoen 12 · Scheveningen</span> <span class="sep" aria-hidden="true">·</span> <span class="tag">Lessen het hele jaar door</span></div>
+    <div class="right">
+      <a class="email" href="mailto:hoi@westkustsurf.nl">hoi@westkustsurf.nl</a>
+      <a href="tel:0701234567">070 123 45 67</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Westkust Surf School home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5S16 18 18 18s2-1.5 4-1.5"/><path d="M2 13c2 0 2-1.5 4-1.5S8 13 10 13s2-1.5 4-1.5S16 13 18 13s2-1.5 4-1.5"/><path d="M16 4c-3 1-6 4-7 9"/></svg></span>
+      <b>West<span>kust</span></b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#condities">Condities</a>
+      <a href="#lessen">Lessen</a>
+      <a href="#over">Over ons</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#boek">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#boek">Boek je les <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<a id="top"></a>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r>Surfschool aan zee · Scheveningen sinds 2009</span>
+      <h1 data-r style="--d:.05s">Pak je eerste <em>golf</em> te pakken.</h1>
+      <p class="hero-intro" data-r style="--d:.12s">Bij Westkust Surf School leer je surfen op het strand van Scheveningen — warme wetsuits, gediplomeerde instructeurs en kleine groepjes. Geen ervaring nodig, alleen zin in zout water en zon.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-primary" href="#boek">Boek je les <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-light" href="#lessen">Bekijk de lessen</a>
+      </div>
+      <div class="hero-trust" data-r style="--d:.24s">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> ISA-gecertificeerde coaches</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Wetsuit &amp; board inbegrepen</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Max. 6 per groep</span>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1100&q=72" alt="Surfer rijdt op een golf met opspattend water in de avondzon" loading="eager" width="1100" height="1238">
+      </div>
+      <div class="badge">
+        <span class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg></span>
+        <div><b>4,9 / 5</b><small>op basis van 380+ reviews van cursisten</small></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- wave divider: hero -> condities -->
+<div class="wave-divider" aria-hidden="true" style="background:var(--sea-deep)">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="background:transparent"><path fill="#063b4a" d="M0,40 C180,90 360,90 540,55 C720,20 900,20 1080,50 C1260,80 1350,75 1440,55 L1440,90 L0,90 Z"></path></svg>
+</div>
+
+<!-- condities vandaag -->
+<section class="cond" id="condities" aria-label="Condities vandaag">
+  <div class="wrap">
+    <div class="cond-head">
+      <div class="ttl">
+        <span>Condities vandaag op Scheveningen</span>
+        <span class="live"><span class="blip" aria-hidden="true"></span> Live</span>
+      </div>
+      <div class="upd" id="cond-upd">Laatst bijgewerkt om —</div>
+    </div>
+    <div class="cond-grid">
+      <div class="cond-cell">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M2 12c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M2 7c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/></svg></span>
+        <div><div class="lab">Golfhoogte</div><div class="val" id="cv-golf">1,1 <small>m</small></div></div>
+      </div>
+      <div class="cond-cell">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 20l8-4 8 4z"/></svg></span>
+        <div><div class="lab">Wind</div><div class="val" id="cv-wind">ZW <small>14 kn</small></div></div>
+      </div>
+      <div class="cond-cell">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg></span>
+        <div><div class="lab">Watertemp.</div><div class="val" id="cv-temp">15 <small>°C</small></div></div>
+      </div>
+      <div class="cond-cell">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></span>
+        <div><div class="lab">Getij</div><div class="val" id="cv-getij">Opkomend</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave divider: condities -> lessen -->
+<div class="wave-divider" aria-hidden="true" style="background:var(--sea-ink)">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#fdf4e3" d="M0,55 C160,15 340,15 540,45 C740,75 900,75 1080,45 C1240,20 1340,25 1440,45 L1440,90 L0,90 Z"></path></svg>
+</div>
+
+<!-- stats -->
+<section class="stats" aria-label="Westkust in cijfers">
+  <div class="wrap">
+    <div class="stat" data-r><div class="num">15+</div><div class="lab">jaar surfles aan de kust</div></div>
+    <div class="stat" data-r style="--d:.08s"><div class="num">9000+</div><div class="lab">cursisten op een board gezet</div></div>
+    <div class="stat" data-r style="--d:.16s"><div class="num">12</div><div class="lab">gediplomeerde instructeurs</div></div>
+    <div class="stat" data-r style="--d:.24s"><div class="num">100%</div><div class="lab">droge wetsuits &amp; warme douches</div></div>
+  </div>
+</section>
+
+<!-- lessen / pakketten -->
+<section class="sec lessen" id="lessen">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Lessen &amp; pakketten</span>
+      <h2>Voor elk niveau de juiste golf</h2>
+      <p>Of je nu nooit op een board hebt gestaan of je bottom turn wil aanscherpen — we hebben een les die bij je past. Prijzen zijn inclusief wetsuit, board en gebruik van de kleedkamers.</p>
+    </div>
+    <div class="les-grid">
+      <article class="les" data-r>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5S16 18 18 18s2-1.5 4-1.5"/><path d="M16 4c-3 1-6 4-7 9"/></svg></span>
+        <h3>Beginners</h3>
+        <div class="who">Nooit gesurft · 1,5 uur</div>
+        <div class="price">€45<span> /&nbsp;les</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Veiligheid &amp; lezen van de zee</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pop-up techniek op het droge</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Je eerste witwater-golven</li>
+        </ul>
+        <a class="btn btn-sea" href="#boek">Boek beginners</a>
+      </article>
+      <article class="les feat" data-r style="--d:.08s">
+        <span class="tag">Populair</span>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg></span>
+        <h3>Gevorderd</h3>
+        <div class="who">Sta al op groene golven · 2 uur</div>
+        <div class="price">€55<span> /&nbsp;les</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Take-off op ongebroken golven</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bottom turn &amp; lijn kiezen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Video-analyse na de sessie</li>
+        </ul>
+        <a class="btn btn-primary" href="#boek">Boek gevorderd</a>
+      </article>
+      <article class="les" data-r style="--d:.16s">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-1.5-1.5"/></svg></span>
+        <h3>Privéles</h3>
+        <div class="who">1-op-1 coaching · 1 uur</div>
+        <div class="price">€75<span> /&nbsp;les</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Volledig op jouw tempo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Doelgericht plan per sessie</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flexibele tijden, ook vroeg</li>
+        </ul>
+        <a class="btn btn-sea" href="#boek">Boek privéles</a>
+      </article>
+      <article class="les" data-r style="--d:.24s">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><path d="M12 8v6M8 22l4-8 4 8M6 12h12"/></svg></span>
+        <h3>Kids-camp</h3>
+        <div class="who">7 t/m 14 jaar · 3 dagen</div>
+        <div class="price">€135<span> /&nbsp;camp</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Spelenderwijs leren surfen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Strandspellen &amp; lunch</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Kleine groepjes, extra toezicht</li>
+        </ul>
+        <a class="btn btn-sea" href="#boek">Boek kids-camp</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- wave divider: lessen -> over (naar sand-2) -->
+<div class="wave-divider" aria-hidden="true" style="background:var(--sand)">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#f7e9cf" d="M0,50 C200,80 360,80 540,50 C720,20 920,20 1080,50 C1240,78 1340,72 1440,50 L1440,90 L0,90 Z"></path></svg>
+</div>
+
+<!-- over ons / instructeurs -->
+<section class="sec over" id="over">
+  <div class="wrap">
+    <div class="over-top">
+      <figure class="over-fig" data-r>
+        <img src="https://images.unsplash.com/photo-1531722569936-825d3dd91b15?auto=format&fit=crop&w=1100&q=72" alt="Groep surfers met boards onder de arm loopt richting de branding" loading="lazy" width="1100" height="880">
+      </figure>
+      <div class="over-copy" data-r style="--d:.1s">
+        <span class="kicker">Over Westkust</span>
+        <h2 style="font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3rem);line-height:1.04;letter-spacing:-.025em;margin-top:1rem">Surfen leer je van mensen die er gek op zijn</h2>
+        <p>We begonnen in 2009 met twee boards en een bestelbus op de boulevard. Inmiddels staan we elke ochtend op het strand, regen of zon, met een team dat zelf opgroeide in de Noordzee.</p>
+        <p>Onze filosofie is simpel: kleine groepen, veel water-tijd en lol voorop. We leren je niet alleen staan, maar ook de zee begrijpen — stromingen, golven en wanneer het juist beter is om aan de kant te blijven.</p>
+        <p class="sign">— <b>Sanne &amp; Joren</b>, oprichters &amp; head coaches</p>
+      </div>
+    </div>
+    <div class="team-grid">
+      <article class="coach" data-r>
+        <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?auto=format&fit=crop&w=700&q=72" alt="Lachende surfinstructeur met nat haar op het strand" loading="lazy" width="700" height="595">
+        <div class="body">
+          <h3>Sanne de Vos</h3>
+          <div class="role">Head coach · longboard</div>
+          <p>Surft sinds haar twaalfde en weet als geen ander hoe je angst voor het water omzet in vertrouwen. Geduldig, aanstekelijk enthousiast.</p>
+        </div>
+      </article>
+      <article class="coach" data-r style="--d:.1s">
+        <img src="https://images.unsplash.com/photo-1521146764736-56c929d59c83?auto=format&fit=crop&w=700&q=72" alt="Surfinstructeur in wetsuit kijkt uit over de zee" loading="lazy" width="700" height="595">
+        <div class="body">
+          <h3>Joren Bakker</h3>
+          <div class="role">Coach · shortboard &amp; video</div>
+          <p>Ex-wedstrijdsurfer met een scherp oog voor techniek. Zijn video-analyses laten je in één sessie sprongen maken.</p>
+        </div>
+      </article>
+      <article class="coach" data-r style="--d:.2s">
+        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=700&q=72" alt="Jonge surfinstructeur draagt een board over het strand" loading="lazy" width="700" height="595">
+        <div class="body">
+          <h3>Milou Jansen</h3>
+          <div class="role">Coach · kids-camp</div>
+          <p>Maakt van elke kids-camp een feest. Met spelletjes, gekke namen voor elke golf en eindeloos geduld krijgt ze iedereen op het board.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- wave divider: over -> reviews -->
+<div class="wave-divider" aria-hidden="true" style="background:var(--sand-2)">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#063b4a" d="M0,45 C180,80 360,80 540,50 C720,20 900,20 1080,50 C1260,80 1350,75 1440,50 L1440,90 L0,90 Z"></path></svg>
+</div>
+
+<!-- reviews -->
+<section class="sec reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">Wat cursisten zeggen</span>
+      <h2>Iedereen stond op zijn eerste golf</h2>
+      <p>Een greep uit de 380+ reviews die we ophaalden na een ochtend in de branding.</p>
+    </div>
+    <div class="rev-grid">
+      <article class="rev" data-r>
+        <div class="stars" aria-label="5 van 5 sterren">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        </div>
+        <blockquote>"Binnen een uur stond ik op het board. Sanne legt alles zo rustig uit dat je gewoon durft. Mijn dag was meteen goed."</blockquote>
+        <div class="who"><span class="av" aria-hidden="true">EK</span><div><b>Emma Koster</b><span>Beginnersles · juni</span></div></div>
+      </article>
+      <article class="rev" data-r style="--d:.1s">
+        <div class="stars" aria-label="5 van 5 sterren">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        </div>
+        <blockquote>"De video-analyse van Joren was eye-opening. Ik surf al jaren maar maakte hier in één sessie de meeste vooruitgang ooit."</blockquote>
+        <div class="who"><span class="av" aria-hidden="true">TM</span><div><b>Thijs Mol</b><span>Gevorderd · mei</span></div></div>
+      </article>
+      <article class="rev" data-r style="--d:.2s">
+        <div class="stars" aria-label="5 van 5 sterren">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+        </div>
+        <blockquote>"Onze dochter van 9 wilde na het kids-camp niet meer uit het water. Milou is een topper — volgend jaar weer!"</blockquote>
+        <div class="who"><span class="av" aria-hidden="true">RV</span><div><b>Rianne Visser</b><span>Kids-camp · juli</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- wave divider: reviews -> boek -->
+<div class="wave-divider" aria-hidden="true" style="background:var(--sea-ink)">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#fdf4e3" d="M0,55 C160,15 340,15 540,45 C740,75 900,75 1080,45 C1240,20 1340,25 1440,45 L1440,90 L0,90 Z"></path></svg>
+</div>
+
+<!-- boek / contact -->
+<section class="sec boek" id="boek">
+  <div class="wrap">
+    <div class="boek-info" data-r>
+      <span class="kicker">Boek &amp; contact</span>
+      <h2>Klaar om de zee in te springen?</h2>
+      <p>Vul het formulier in en we bevestigen je les binnen één dag per mail. Liever even bellen of langskomen? Je vindt ons elke ochtend bij het strandpaviljoen.</p>
+      <ul class="boek-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:0701234567">070 123 45 67</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:hoi@westkustsurf.nl">hoi@westkustsurf.nl</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Op het strand</b><span>Strandpaviljoen 12, Strandweg, 2586 Scheveningen</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-email">E-mailadres</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-niveau">Welke les?</label>
+            <select id="f-niveau" name="niveau" required>
+              <option value="" selected disabled>Kies je niveau…</option>
+              <option>Beginners — €45</option>
+              <option>Gevorderd — €55</option>
+              <option>Privéles — €75</option>
+              <option>Kids-camp — €135</option>
+            </select>
+            <span class="err">Maak een keuze.</span>
+          </div>
+          <div class="field">
+            <label for="f-datum">Voorkeursdatum</label>
+            <input id="f-datum" name="datum" type="date" required>
+            <span class="err">Kies een datum.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-pers">Aantal personen</label>
+          <select id="f-pers" name="personen">
+            <option value="1">1 persoon</option>
+            <option value="2">2 personen</option>
+            <option value="3">3 personen</option>
+            <option value="4">4 personen</option>
+            <option value="5">5 personen</option>
+            <option value="6">6 personen</option>
+            <option value="7">Meer dan 6 — bel ons</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Bericht (optioneel)</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Ervaring, gelegenheid of een vraag? Laat het weten…"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Boek je les <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">Vrijblijvend · bevestiging binnen één dag · gratis annuleren tot 24 uur vooraf.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Tot in de branding!</h3>
+        <p id="ok-text">We hebben je aanvraag ontvangen en bevestigen je les binnen één dag per mail.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- wave divider: boek -> footer -->
+<div class="wave-divider" aria-hidden="true" style="background:var(--sand)">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#063b4a" d="M0,50 C200,82 360,82 540,52 C720,22 920,22 1080,52 C1240,80 1340,74 1440,52 L1440,90 L0,90 Z"></path></svg>
+</div>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="Westkust Surf School home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5S16 18 18 18s2-1.5 4-1.5"/><path d="M2 13c2 0 2-1.5 4-1.5S8 13 10 13s2-1.5 4-1.5S16 13 18 13s2-1.5 4-1.5"/><path d="M16 4c-3 1-6 4-7 9"/></svg></span>
+          <b>West<span>kust</span></b>
+        </a>
+        <p class="blurb">Surfschool aan het strand van Scheveningen. Leer surfen, voel de zee en kom terug voor meer.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#top" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3v3.3a6 6 0 0 0 4 1.6V11a8.9 8.9 0 0 1-4-1v6.2A5.2 5.2 0 1 1 11 11v3.1a2.2 2.2 0 1 0 2 2.2V3z"/></svg></a>
+          <a href="#top" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Lessen</h4>
+        <ul>
+          <li><a href="#lessen">Beginners</a></li>
+          <li><a href="#lessen">Gevorderd</a></li>
+          <li><a href="#lessen">Privéles</a></li>
+          <li><a href="#lessen">Kids-camp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>School</h4>
+        <ul>
+          <li><a href="#over">Over ons</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#condities">Condities</a></li>
+          <li><a href="#boek">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Vind ons</h4>
+        <ul>
+          <li><span>Strandpaviljoen 12</span></li>
+          <li><span>2586 Scheveningen</span></li>
+          <li><a href="tel:0701234567">070 123 45 67</a></li>
+          <li><a href="mailto:hoi@westkustsurf.nl">hoi@westkustsurf.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; <span id="jaar">2026</span> Westkust Surf School — Scheveningen</span>
+      <span>KvK 27384910 · ISA-erkende surfschool</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var doc = document;
+  var reduced = false;
+  try { reduced = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+
+  /* ---- jaartal ---- */
+  var jaar = doc.getElementById("jaar");
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* ---- condities-widget: plausibele waarden + dynamisch tintje ---- */
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+  function setCond() {
+    var golf = (0.8 + Math.random() * 1.0);                       // 0,8 – 1,8 m
+    var windDir = pick(["ZW", "W", "NW", "Z", "WZW"]);
+    var windKn = 8 + Math.floor(Math.random() * 12);              // 8 – 19 kn
+    var temp = 13 + Math.floor(Math.random() * 5);                // 13 – 17 °C
+    var getij = pick(["Opkomend", "Aflopend", "Hoogwater", "Laagwater"]);
+    var g = doc.getElementById("cv-golf"),
+        w = doc.getElementById("cv-wind"),
+        t = doc.getElementById("cv-temp"),
+        gt = doc.getElementById("cv-getij");
+    if (g) { g.innerHTML = golf.toFixed(1).replace(".", ",") + ' <small>m</small>'; }
+    if (w) { w.innerHTML = windDir + ' <small>' + windKn + ' kn</small>'; }
+    if (t) { t.innerHTML = temp + ' <small>°C</small>'; }
+    if (gt) { gt.textContent = getij; }
+    var upd = doc.getElementById("cond-upd");
+    if (upd) {
+      var d = new Date();
+      var hh = ("0" + d.getHours()).slice(-2);
+      var mm = ("0" + d.getMinutes()).slice(-2);
+      upd.textContent = "Laatst bijgewerkt om " + hh + ":" + mm;
+    }
+  }
+  setCond();
+  if (!reduced) { setInterval(setCond, 45000); } // ververst voor een live-gevoel
+
+  /* ---- datum-input minimaal vandaag ---- */
+  var dEl = doc.getElementById("f-datum");
+  if (dEl) {
+    try {
+      var td = new Date();
+      var iso = td.getFullYear() + "-" +
+        ("0" + (td.getMonth() + 1)).slice(-2) + "-" +
+        ("0" + td.getDate()).slice(-2);
+      dEl.min = iso;
+      dEl.value = iso;
+    } catch (e) {}
+  }
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav = doc.getElementById("nav");
+  var burger = doc.getElementById("burger");
+  var links = doc.getElementById("navlinks");
+  function setMenu(open) {
+    if (links) { links.classList.toggle("open", open); }
+    if (burger) {
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    doc.body.style.overflow = open ? "hidden" : "";
+  }
+  if (burger) {
+    burger.addEventListener("click", function () {
+      setMenu(!links.classList.contains("open"));
+    });
+  }
+  if (links) {
+    links.addEventListener("click", function (e) {
+      if (e.target.closest("a")) { setMenu(false); }
+    });
+  }
+  doc.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { setMenu(false); }
+  });
+
+  /* ---- nav stuck op scroll ---- */
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (nav) { nav.classList.toggle("stuck", y > 8); }
+  }
+  function tick() {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }
+  window.addEventListener("scroll", tick, { passive: true });
+  onScroll();
+
+  /* ---- reveal on scroll ---- */
+  if (!reduced && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function (el) {
+      io.observe(el);
+    });
+  } else {
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function (el) {
+      el.classList.add("in");
+    });
+  }
+
+  /* ---- boekingsformulier met live validatie ---- */
+  var form = doc.getElementById("form");
+  if (form) {
+    function bad(input, on) {
+      var f = input.closest(".field");
+      if (f) { f.classList.toggle("bad", on); }
+    }
+    function valid(input) {
+      var v = (input.value || "").trim(), ok = true;
+      if (input.type === "email") {
+        ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      } else if (input.hasAttribute("required")) {
+        ok = v.length > 0;
+      }
+      bad(input, !ok);
+      return ok;
+    }
+    var inputs = Array.prototype.slice.call(
+      form.querySelectorAll("input[required], select[required]")
+    );
+    inputs.forEach(function (i) {
+      i.addEventListener("blur", function () { valid(i); });
+      i.addEventListener("input", function () {
+        if (i.closest(".field").classList.contains("bad")) { valid(i); }
+      });
+      i.addEventListener("change", function () {
+        if (i.closest(".field").classList.contains("bad")) { valid(i); }
+      });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function (i) {
+        if (!valid(i)) { allOk = false; if (!first) { first = i; } }
+      });
+      if (!allOk) { if (first) { first.focus(); } return; }
+      var naam = (doc.getElementById("f-naam").value || "").trim().split(" ")[0];
+      var niveau = doc.getElementById("f-niveau");
+      var okt = doc.getElementById("ok-text");
+      if (okt) {
+        var lesTxt = niveau ? niveau.options[niveau.selectedIndex].text.split(" —")[0].toLowerCase() : "";
+        okt.textContent =
+          (naam ? naam + ", tot in de branding!" : "Tot in de branding!") +
+          " We hebben je aanvraag voor " + lesTxt +
+          " ontvangen en bevestigen je les binnen één dag per mail.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+    });
+  }
+})();
+</script>
+</body>
+</html>

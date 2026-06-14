@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Het Lange Land — biologische boerderijwinkel · Achterhoek</title>
+<meta name="description" content="Het Lange Land is een biologische boerderij en streekwinkel in de Achterhoek. Groente recht van het land, eigen kaas en eieren, een oogstbox per week en een winkel waar je de boer nog kent. Vers van het land, elke dag.">
+<meta name="theme-color" content="#f6efe2">
+<meta property="og:title" content="Het Lange Land — biologische boerderijwinkel, Achterhoek">
+<meta property="og:description" content="Groente recht van het land, eigen kaas en eieren, en een wekelijkse oogstbox. Vers van het land.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;h.classList.remove('no-js');h.classList.add('js');})();</script>
+<style>
+/* ============================================================
+   HET LANGE LAND — biologische boerderijwinkel
+   Warme, rustieke one-pager. Handgemaakt, inline, geen libraries.
+   ============================================================ */
+:root{
+  --paper:#f6efe2;
+  --paper-2:#efe5d2;
+  --paper-3:#e7dac2;
+  --cream:#fbf6ec;
+  --ink:#26201a;
+  --ink-2:#4d4339;
+  --ink-soft:rgba(38,32,26,.66);
+  --ink-faint:rgba(38,32,26,.44);
+  --forest:#3c5a3a;
+  --forest-deep:#2c4329;
+  --forest-wash:#e3ebda;
+  --terra:#bd6234;
+  --terra-deep:#9c4d27;
+  --oker:#cc9a3f;
+  --line:rgba(38,32,26,.16);
+  --line-soft:rgba(38,32,26,.09);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Karla",system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+  --gutter:clamp(1.25rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --radius:22px;
+  --radius-sm:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:400;font-size:1.05rem;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--forest);color:var(--cream)}
+:focus-visible{outline:2.5px solid var(--forest);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.serif{font-family:var(--serif)}
+.italic{font-style:italic}
+.kicker{font-family:var(--sans);font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra-deep);display:inline-flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:24px;height:2px;background:var(--oker);display:inline-block;border-radius:2px}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--forest);color:var(--cream);padding:.7rem 1.1rem;border-radius:10px;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--sans);font-weight:700;font-size:.92rem;padding:.85rem 1.55rem;border-radius:999px;border:2px solid transparent;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s,box-shadow .25s;cursor:pointer;white-space:nowrap}
+.btn svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--forest);color:var(--cream)}
+.btn-primary:hover{background:var(--forest-deep);transform:translateY(-2px);box-shadow:0 16px 32px -18px rgba(44,67,41,.8)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-terra{background:var(--terra);color:var(--cream)}
+.btn-terra:hover{background:var(--terra-deep);transform:translateY(-2px);box-shadow:0 16px 32px -18px rgba(156,77,39,.7)}
+.btn-terra:hover svg{transform:translateX(3px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+
+/* ---------- letterhead ---------- */
+.bar{background:var(--forest-deep);color:rgba(251,246,236,.86);font-size:.78rem}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:40px;padding-block:.4rem}
+.bar .left{display:inline-flex;align-items:center;gap:.55rem;font-weight:500;letter-spacing:.03em}
+.bar .seed{width:14px;height:14px;flex:none;color:var(--oker)}
+.bar .right{display:inline-flex;align-items:center;gap:1.4rem}
+.bar a{transition:color .2s}
+.bar a:hover{color:var(--cream)}
+@media (max-width:680px){.bar .right a.email{display:none}}
+@media (max-width:480px){.bar .left .tag{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(246,239,226,.88);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 12px 30px -26px rgba(38,32,26,.6)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:-.01em;line-height:1}
+.brand .mark{width:42px;height:42px;border-radius:50%;background:var(--forest);display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 2px var(--oker)}
+.brand .mark svg{width:24px;height:24px;color:var(--cream)}
+.brand b{font-weight:600}.brand b span{color:var(--terra)}
+.nav-links{display:flex;align-items:center;gap:1.9rem}
+.nav-links a{font-family:var(--sans);font-weight:600;font-size:.92rem;color:var(--ink-2);position:relative;padding-block:.3rem;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--terra);border-radius:2px;transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.62rem 1.25rem;font-size:.88rem}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--cream);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:980px){
+  .nav-links{position:fixed;inset:0;background:var(--paper);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.4rem;font-family:var(--serif);font-weight:500}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(2.5rem,6vw,4.5rem);padding-bottom:clamp(2.5rem,6vw,4rem)}
+.hero::before{content:"";position:absolute;top:-14%;left:-10%;width:42vw;height:42vw;max-width:560px;max-height:560px;background:radial-gradient(circle at 40% 40%,rgba(204,154,63,.22),transparent 64%);z-index:-1;pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.7rem,6.6vw,4.8rem);line-height:1;letter-spacing:-.02em;margin-top:1.4rem}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--terra)}
+.hero-intro{margin-top:1.5rem;font-size:clamp(1.06rem,1.5vw,1.24rem);color:var(--ink-2);max-width:46ch;line-height:1.68}
+.hero-intro .first{font-style:italic}
+.hero-actions{margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-trust{margin-top:2.2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;font-size:.86rem;color:var(--ink-soft)}
+.hero-trust .ck{display:inline-flex;align-items:center;gap:.5rem;font-weight:500}
+.hero-trust .ck svg{width:18px;height:18px;color:var(--forest);flex:none}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--paper-3);box-shadow:0 44px 80px -52px rgba(38,32,26,.7);transform:rotate(-1.2deg)}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.5;object-fit:cover;filter:saturate(1.02)}
+.hero-figure .badge{position:absolute;right:-1rem;bottom:1.8rem;background:var(--cream);border:1px solid var(--line);border-radius:50%;width:128px;height:128px;display:grid;place-content:center;text-align:center;box-shadow:0 26px 50px -34px rgba(38,32,26,.6);transform:rotate(6deg);padding:.6rem}
+.hero-figure .badge b{font-family:var(--serif);font-weight:600;display:block;font-size:1.6rem;line-height:1;color:var(--forest)}
+.hero-figure .badge small{color:var(--ink-soft);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;display:block;margin-top:.3rem}
+@media (max-width:520px){.hero-figure .badge{right:.4rem;width:104px;height:104px}.hero-figure .badge b{font-size:1.3rem}}
+
+/* ---------- stats strip ---------- */
+.strip{background:var(--forest);color:var(--cream)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:clamp(2rem,4vw,2.6rem)}
+@media (max-width:760px){.strip .wrap{grid-template-columns:repeat(2,1fr);gap:1.8rem 1rem}}
+.stat{text-align:center}
+.stat .num{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.4vw,2.9rem);line-height:1;letter-spacing:-.02em}
+.stat .num span{color:var(--oker)}
+.stat .lab{margin-top:.5rem;font-size:.82rem;color:rgba(251,246,236,.78);letter-spacing:.02em}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.8rem,8vw,6.5rem)}
+.sec-head{max-width:660px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.05;letter-spacing:-.02em;margin-top:1rem}
+.sec-head h2 em{font-style:italic;font-weight:500;color:var(--terra)}
+.sec-head p{margin-top:1.1rem;color:var(--ink-2);font-size:1.08rem}
+
+/* ---------- producten ---------- */
+.prod{background:var(--paper-2)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:900px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.prod-grid{grid-template-columns:1fr}}
+.card{background:var(--cream);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s}
+.card:hover{transform:translateY(-5px);box-shadow:0 32px 60px -44px rgba(38,32,26,.55)}
+.card .pic{position:relative;aspect-ratio:4/3;background:var(--paper-3);overflow:hidden}
+.card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.card:hover .pic img{transform:scale(1.05)}
+.card .seizoen{position:absolute;top:.8rem;left:.8rem;background:var(--cream);color:var(--forest-deep);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.32rem .7rem;border-radius:999px;box-shadow:0 6px 14px -8px rgba(38,32,26,.5)}
+.card .body{padding:1.3rem 1.4rem 1.5rem}
+.card .body .top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+.card h3{font-family:var(--serif);font-weight:600;font-size:1.28rem;line-height:1.2}
+.card .price{font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--terra-deep);white-space:nowrap}
+.card .price small{font-family:var(--sans);font-weight:500;font-size:.74rem;color:var(--ink-faint)}
+.card p{margin-top:.5rem;color:var(--ink-soft);font-size:.95rem}
+.card .tag{display:inline-block;margin-top:.9rem;font-size:.74rem;font-weight:600;color:var(--forest);background:var(--forest-wash);padding:.28rem .65rem;border-radius:999px}
+.prod-note{margin-top:clamp(2rem,4vw,2.6rem);font-style:italic;color:var(--ink-soft);max-width:60ch}
+
+/* ---------- ons verhaal ---------- */
+.verhaal .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.verhaal .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.verhaal-figs{position:relative}
+.verhaal-figs .big{border-radius:var(--radius);overflow:hidden;box-shadow:0 40px 80px -54px rgba(38,32,26,.6)}
+.verhaal-figs .big img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.verhaal-figs .small{position:absolute;right:-1.4rem;bottom:-1.6rem;width:46%;border:6px solid var(--cream);border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 30px 50px -34px rgba(38,32,26,.6)}
+.verhaal-figs .small img{width:100%;aspect-ratio:1/1;object-fit:cover}
+@media (max-width:520px){.verhaal-figs .small{right:.4rem;bottom:-1rem;width:42%}}
+.verhaal-text p{font-size:1.08rem;line-height:1.74;color:var(--ink-2)}
+.verhaal-text p+p{margin-top:1.1rem}
+.verhaal-text p.lead::first-letter{font-family:var(--serif);font-size:3.6rem;line-height:.72;float:left;margin:.34rem .6rem 0 0;color:var(--terra)}
+.pull{font-family:var(--serif);font-weight:500;font-style:italic;font-size:clamp(1.4rem,2.8vw,1.9rem);line-height:1.22;color:var(--ink);margin:1.8rem 0;padding-left:1.2rem;border-left:3px solid var(--oker)}
+.signoff{margin-top:1.6rem;font-style:italic;color:var(--ink-soft)}
+.signoff b{font-style:normal;font-weight:700;color:var(--ink)}
+
+/* ---------- waarden ---------- */
+.values{background:var(--forest);color:var(--cream)}
+.values .kicker{color:var(--oker)}.values .kicker::before{background:var(--oker)}
+.values .sec-head h2{color:var(--cream)}
+.values .sec-head h2 em{color:#e8c477}
+.values .sec-head p{color:rgba(251,246,236,.78)}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:860px){.value-grid{grid-template-columns:1fr}}
+.value{background:rgba(251,246,236,.07);border:1px solid rgba(251,246,236,.16);border-radius:var(--radius);padding:2rem 1.8rem}
+.value .ic{width:54px;height:54px;border-radius:50%;background:rgba(204,154,63,.2);display:grid;place-items:center;margin-bottom:1.2rem}
+.value .ic svg{width:26px;height:26px;color:#e8c477}
+.value h3{font-family:var(--serif);font-weight:600;font-size:1.3rem}
+.value p{margin-top:.6rem;color:rgba(251,246,236,.76);font-size:.97rem}
+
+/* ---------- oogstbox ---------- */
+.box-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:860px){.box-grid{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+.pkg{position:relative;background:var(--cream);border:1.5px solid var(--line);border-radius:var(--radius);padding:2rem 1.8rem;display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.pkg:hover{transform:translateY(-5px);box-shadow:0 32px 60px -44px rgba(38,32,26,.5)}
+.pkg.featured{border-color:var(--forest);background:var(--forest-wash)}
+.pkg .ribbon{position:absolute;top:-.85rem;right:1.6rem;background:var(--terra);color:var(--cream);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:999px;box-shadow:0 8px 16px -8px rgba(156,77,39,.7)}
+.pkg .pname{font-family:var(--serif);font-weight:600;font-size:1.5rem}
+.pkg .psub{color:var(--ink-soft);font-size:.92rem;margin-top:.2rem}
+.pkg .pprice{font-family:var(--serif);font-weight:600;font-size:2.4rem;line-height:1;margin-top:1.2rem;color:var(--forest-deep)}
+.pkg .pprice small{font-family:var(--sans);font-weight:500;font-size:.9rem;color:var(--ink-faint)}
+.pkg ul{margin-top:1.4rem;display:grid;gap:.7rem;flex:1}
+.pkg ul li{display:flex;gap:.6rem;align-items:flex-start;font-size:.96rem;color:var(--ink-2)}
+.pkg ul svg{width:18px;height:18px;color:var(--forest);flex:none;margin-top:.28rem}
+.pkg .btn{margin-top:1.6rem;width:100%;justify-content:center}
+.box-note{margin-top:clamp(1.8rem,3vw,2.4rem);text-align:center;font-style:italic;color:var(--ink-soft);max-width:62ch;margin-inline:auto}
+
+/* ---------- openingstijden + winkel ---------- */
+.winkel{background:var(--paper-2)}
+.winkel .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:880px){.winkel .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.hours{width:100%;border-collapse:collapse;margin-top:1.6rem}
+.hours th{text-align:left;font-family:var(--sans);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra-deep);padding-bottom:.8rem;border-bottom:1px solid var(--line)}
+.hours td{padding-block:.78rem;border-bottom:1px solid var(--line-soft);font-size:1.02rem}
+.hours td.day{font-family:var(--serif);font-weight:500;font-size:1.12rem}
+.hours td.time{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.hours tr.today td{background:var(--cream)}
+.hours tr.today td.day{position:relative;color:var(--forest-deep);font-weight:600}
+.hours tr.today td.day::before{content:"";position:absolute;left:-.9rem;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:var(--terra)}
+.hours tr.today td.time{color:var(--forest-deep);font-weight:600}
+.hours td.closed{color:var(--ink-faint);font-style:italic}
+.winkel-side .now{font-family:var(--serif);font-weight:600;font-size:1.5rem;line-height:1.2;color:var(--forest)}
+.winkel-side .now[data-open="false"]{color:var(--terra-deep)}
+.winkel-side .lamp{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--forest);margin-right:.4rem;vertical-align:.05em}
+.winkel-side .now[data-open="false"] .lamp{background:var(--terra)}
+.winkel-side .blurb{margin-top:.8rem;color:var(--ink-2);max-width:44ch}
+.winkel-side .pic{margin-top:1.8rem;border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 60px -44px rgba(38,32,26,.55)}
+.winkel-side .pic img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.adres-lines{margin-top:1.6rem;display:grid;gap:.5rem;font-size:1.02rem}
+.adres-lines a{border-bottom:1px solid var(--line);transition:border-color .3s,color .3s}
+.adres-lines a:hover{border-bottom-color:var(--terra);color:var(--terra-deep)}
+
+/* ---------- contact / bestel ---------- */
+.contact .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:920px){.contact .wrap{grid-template-columns:1fr}}
+.contact-info h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.6vw,2.9rem);letter-spacing:-.02em;line-height:1.05;margin-top:1rem}
+.contact-info h2 em{font-style:italic;font-weight:500;color:var(--terra)}
+.contact-info p{margin-top:1.1rem;color:var(--ink-2);max-width:42ch}
+.contact-list{margin-top:2rem;display:grid;gap:1.2rem}
+.contact-list li{display:flex;gap:1rem;align-items:flex-start}
+.contact-list .ic{width:46px;height:46px;border-radius:50%;background:var(--forest-wash);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:21px;height:21px;color:var(--forest)}
+.contact-list b{font-family:var(--sans);font-weight:700;display:block;font-size:.95rem}
+.contact-list a,.contact-list span{color:var(--ink-soft);font-size:.96rem}
+.contact-list a:hover{color:var(--terra-deep)}
+.form{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:0 40px 80px -60px rgba(38,32,26,.5)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--sans);font-weight:600;font-size:.84rem;margin-bottom:.4rem}
+.field input,.field select,.field textarea{width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:.78rem .9rem;font-size:.96rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--forest);background:var(--cream)}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#c0492f;background:#fbf1ee}
+.field .err{display:none;color:#a83f29;font-size:.78rem;margin-top:.35rem}
+.field.bad .err{display:block}
+.form .btn{width:100%;justify-content:center;margin-top:.4rem;font-size:.98rem}
+.form .note{margin-top:.9rem;font-size:.78rem;color:var(--ink-faint);text-align:center}
+.form .ok{display:none;text-align:center;padding:1.4rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:66px;height:66px;border-radius:50%;background:var(--forest-wash);display:grid;place-items:center;margin:0 auto 1.1rem}
+.form .ok .ring svg{width:32px;height:32px;color:var(--forest)}
+.form .ok h3{font-family:var(--serif);font-weight:600;font-size:1.5rem}
+.form .ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--forest-deep);color:rgba(251,246,236,.72);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:var(--cream);margin-bottom:1rem}
+.footer .brand .mark{background:rgba(251,246,236,.1);box-shadow:inset 0 0 0 2px var(--oker)}
+.footer .brand b span{color:var(--oker)}
+.footer .blurb{font-size:.94rem;max-width:34ch;color:rgba(251,246,236,.64);line-height:1.7}
+.footer h4{font-family:var(--sans);font-weight:700;color:var(--cream);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.94rem;transition:color .2s}
+.footer ul a:hover{color:var(--oker)}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.footer .socials a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(251,246,236,.2);display:grid;place-items:center;transition:background-color .25s,border-color .25s,transform .25s}
+.footer .socials a:hover{background:rgba(204,154,63,.2);border-color:transparent;transform:translateY(-2px)}
+.footer .socials svg{width:18px;height:18px;color:var(--cream)}
+.footer .bottom{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(251,246,236,.14);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:rgba(251,246,236,.5)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .hero-figure .photo{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- letterhead -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left">
+      <svg class="seed" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7 7 4 11 4 15a8 8 0 0 0 16 0c0-4-3-8-8-13z"/></svg>
+      <span>Boerderijwinkel · Lievelde, Achterhoek</span> <span class="tag">· biologisch sinds 1998</span>
+    </div>
+    <div class="right">
+      <a class="email" href="mailto:hallo@hetlangeland.nl">hallo@hetlangeland.nl</a>
+      <a href="tel:0544370112">0544 — 37 01 12</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Het Lange Land home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c0-6 0-9 0-9"/><path d="M12 13c-4 0-7-2-7-6 4 0 7 2 7 6z"/><path d="M12 11c0-4 3-7 7-7 0 4-3 7-7 7z"/></svg></span>
+      <b>Het Lange <span>Land</span></b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#producten">Uit de winkel</a>
+      <a href="#verhaal">Ons verhaal</a>
+      <a href="#oogstbox">Oogstbox</a>
+      <a href="#winkel">Openingstijden</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary desk" href="#oogstbox">Bestel een box <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<a id="top"></a>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r>Biologische boerderij &amp; streekwinkel</span>
+      <h1 data-r style="--d:.05s">Vers van het land,<br>recht in je <em>mand</em>.</h1>
+      <p class="hero-intro" data-r style="--d:.12s"><span class="first">Groente die vanmorgen nog in de grond stond,</span> eigen kaas en eieren, en een winkel waar je de boer nog gewoon kent. Aan de rand van Lievelde, midden in de Achterhoek.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-terra" href="#oogstbox">Neem een oogstbox <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#producten">Bekijk de winkel</a>
+      </div>
+      <div class="hero-trust" data-r style="--d:.24s">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> SKAL biologisch</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Geen bestrijdingsmiddelen</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Van eigen land</span>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=1100&q=72" alt="Net geoogste groenten in een houten kist op de boerderij" loading="eager" width="900" height="1012">
+      </div>
+      <div class="badge" aria-hidden="true">
+        <span><b>26</b><small>jaar biologisch</small></span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- stats strip -->
+<section class="strip" aria-label="Het Lange Land in cijfers">
+  <div class="wrap">
+    <div class="stat" data-r><div class="num"><span>18</span> ha</div><div class="lab">vruchtbaar land, ploegvrij bewerkt</div></div>
+    <div class="stat" data-r style="--d:.08s"><div class="num"><span>60+</span></div><div class="lab">soorten groente &amp; fruit per jaar</div></div>
+    <div class="stat" data-r style="--d:.16s"><div class="num"><span>240</span></div><div class="lab">scharrelkippen, vrij op de wei</div></div>
+    <div class="stat" data-r style="--d:.24s"><div class="num"><span>0</span> km</div><div class="lab">van het land tot in de winkel</div></div>
+  </div>
+</section>
+
+<!-- producten -->
+<section class="sec prod" id="producten">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Uit de winkel · deze week</span>
+      <h2>Wat er <em>nu</em> op het land staat</h2>
+      <p>De winkel wisselt mee met de seizoenen. Dit is een greep uit wat er deze week vers binnen is — zolang de voorraad strekt.</p>
+    </div>
+    <div class="prod-grid">
+      <article class="card" data-r>
+        <div class="pic"><img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=700&q=72" alt="Verse wortelen met groen loof" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <span class="seizoen">Zomer</span>
+          <div class="top"><h3>Bospeen</h3><span class="price">€ 2,25 <small>/ bos</small></span></div>
+          <p>Knapperige zomerwortel met loof, ’s ochtends gerooid. Zoet en mals — zo uit het zand.</p>
+          <span class="tag">Open teelt</span>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.06s">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1546470427-e26264be0b0d?auto=format&fit=crop&w=700&q=72" alt="Rijpe trostomaten in een mand" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <span class="seizoen">Zomer</span>
+          <div class="top"><h3>Trostomaten</h3><span class="price">€ 3,50 <small>/ kg</small></span></div>
+          <p>Volrijp geplukt uit de onverwarmde kas. Vlezig, geurig en met de smaak van vroeger.</p>
+          <span class="tag">Onverwarmde kas</span>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.12s">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?auto=format&fit=crop&w=700&q=72" alt="Verse aardbeien in een houten bakje" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <span class="seizoen">Zomer</span>
+          <div class="top"><h3>Aardbeien</h3><span class="price">€ 3,95 <small>/ bakje</small></span></div>
+          <p>Geteeld op de volle grond, geplukt op het moment dat ze het lekkerst zijn. Op = op.</p>
+          <span class="tag">Volle grond</span>
+        </div>
+      </article>
+      <article class="card" data-r>
+        <div class="pic"><img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=700&q=72" alt="Wiggen boerenkaas op een houten plank" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <span class="seizoen">Het hele jaar</span>
+          <div class="top"><h3>Belegen boerenkaas</h3><span class="price">€ 14,50 <small>/ kg</small></span></div>
+          <p>Van de melk van onze buurman uit Vragender, op ambachtelijke wijze gerijpt. Vol en rond van smaak.</p>
+          <span class="tag">Van de buren</span>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.06s">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=700&q=72" alt="Verse scharreleieren in een eierdoos" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <span class="seizoen">Het hele jaar</span>
+          <div class="top"><h3>Scharreleieren</h3><span class="price">€ 3,25 <small>/ 10 st</small></span></div>
+          <p>Van onze eigen kippen, die de hele dag los op de wei scharrelen. Oranje dooiers, gegarandeerd.</p>
+          <span class="tag">Eigen kippen</span>
+        </div>
+      </article>
+      <article class="card" data-r style="--d:.12s">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=700&q=72" alt="Volkorenbrood en granen op tafel" loading="lazy" width="700" height="525"></div>
+        <div class="body">
+          <span class="seizoen">Vr &amp; za</span>
+          <div class="top"><h3>Desembrood</h3><span class="price">€ 4,75 <small>/ stuk</small></span></div>
+          <p>Met onze eigen tarwe gebakken door bakker Te Brake. Lange rijs, knapperige korst. Vrijdag &amp; zaterdag vers.</p>
+          <span class="tag">Eigen tarwe</span>
+        </div>
+      </article>
+    </div>
+    <p class="prod-note" data-r>Bonen, courgette, snijbiet, rabarber, honing van de imker en seizoensjam staan ook in de schappen. Liever vooruit bestellen? Bel of mail ons gerust — we zetten het klaar.</p>
+  </div>
+</section>
+
+<!-- ons verhaal -->
+<section class="sec verhaal" id="verhaal">
+  <div class="wrap">
+    <div class="verhaal-figs" data-r>
+      <figure class="big"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=72" alt="Akker met gewassen in de avondzon" loading="lazy" width="900" height="1125"></figure>
+      <figure class="small"><img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=500&q=72" alt="Handen die verse aarde en een jong plantje vasthouden" loading="lazy" width="500" height="500"></figure>
+    </div>
+    <div class="verhaal-text" data-r style="--d:.1s">
+      <span class="kicker">Ons verhaal</span>
+      <h2 style="font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.05;letter-spacing:-.02em;margin-top:1rem">Drie generaties op<br>hetzelfde lange land</h2>
+      <p class="lead" style="margin-top:1.3rem">Het Lange Land dankt zijn naam aan de smalle, langgerekte percelen die hier al generaties in de familie zijn. In 1998 maakte mijn vader de overstap naar biologisch — geen kunstmest, geen gif, gewoon goede zorg voor de grond. Dat we daarmee tegen de stroom in roeiden, deerde hem niet.</p>
+      <blockquote class="pull">“Een gezonde bodem geeft je alles terug. Je hoeft hem alleen niet kapot te maken.”</blockquote>
+      <p>Inmiddels runnen mijn vrouw Hanneke en ik de boerderij, met onze dochter die in de zomer in de winkel staat. We werken met vaste teelten, vruchtwisseling en een land vol bloemenranden voor de bijen. Wat hier groeit, gaat dezelfde dag de winkel in — verser krijg je het niet.</p>
+      <p class="signoff">— <b>Gert &amp; Hanneke Wolthuis</b>, boer en boerin</p>
+    </div>
+  </div>
+</section>
+
+<!-- waarden -->
+<section class="sec values">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">Hoe wij boeren</span>
+      <h2>Met respect voor de <em>grond</em></h2>
+      <p>Biologisch is voor ons geen keurmerk maar een manier van werken. Voor de bodem, voor de dieren en voor wat er uiteindelijk op je bord komt.</p>
+    </div>
+    <div class="value-grid">
+      <article class="value" data-r>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C8 12 5 9 5 5c4 0 7 3 7 7z"/><path d="M12 10c0-4 3-7 7-7 0 4-3 7-7 7z"/></svg></div>
+        <h3>Levende bodem</h3>
+        <p>We ploegen niet en bemesten met eigen compost en groenbemesters. Een bodem vol leven heeft geen kunstmest nodig.</p>
+      </article>
+      <article class="value" data-r style="--d:.1s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>Op het ritme van het seizoen</h3>
+        <p>Geen tomaten in december. We telen wat bij het jaargetijde past — zo proef je elk gewas op zijn allerbest.</p>
+      </article>
+      <article class="value" data-r style="--d:.2s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg></div>
+        <h3>Korte keten</h3>
+        <p>Van het land tot in de winkel zonder tussenstop. Geen vrachtwagens, geen koelhuizen — alles vers en dichtbij.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- oogstbox -->
+<section class="sec" id="oogstbox">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">De oogstbox</span>
+      <h2>Een week vol <em>verse</em> oogst</h2>
+      <p>Elke week stellen wij een box samen van wat er op dat moment het mooist is. Haal hem op in de winkel of laat hem in de buurt bezorgen. Wekelijks opzegbaar.</p>
+    </div>
+    <div class="box-grid">
+      <article class="pkg" data-r>
+        <div class="pname">De Kleine</div>
+        <div class="psub">Voor 1 à 2 personen</div>
+        <div class="pprice">€ 14,50 <small>/ week</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>6–7 soorten seizoensgroente</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wisselend stukje fruit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Receptkaart van Hanneke</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Kies de Kleine</a>
+      </article>
+      <article class="pkg featured" data-r style="--d:.1s">
+        <span class="ribbon">Meest gekozen</span>
+        <div class="pname">De Gezinsbox</div>
+        <div class="psub">Voor 3 à 4 personen</div>
+        <div class="pprice">€ 24,50 <small>/ week</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>9–10 soorten seizoensgroente</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fruit &amp; verse kruiden</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>10 scharreleieren</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Twee receptkaarten</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">Kies de Gezinsbox</a>
+      </article>
+      <article class="pkg" data-r style="--d:.2s">
+        <div class="pname">De Hofbox</div>
+        <div class="psub">Het hele assortiment</div>
+        <div class="pprice">€ 36,50 <small>/ week</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ruime groente- &amp; fruitbox</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Wig boerenkaas &amp; eieren</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Desembrood op vrijdag</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Potje honing of jam</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Kies de Hofbox</a>
+      </article>
+    </div>
+    <p class="box-note" data-r>Ophalen kan altijd tijdens openingstijden. Bezorgen doen we op woensdag binnen 10 km van de boerderij (€ 2,50). Geen abonnement zonder einddatum — je zegt op wanneer je wilt.</p>
+  </div>
+</section>
+
+<!-- openingstijden + winkel -->
+<section class="sec winkel" id="winkel">
+  <div class="wrap">
+    <div data-r>
+      <span class="kicker">De winkel</span>
+      <h2 style="font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.05;letter-spacing:-.02em;margin-top:1rem">Loop gerust de schuur in</h2>
+      <p style="margin-top:1rem;color:var(--ink-2);max-width:46ch">Onze winkel zit in de oude koeienstal, een paar passen van het land. Vers geoogst, eerlijk geprijsd, en de boer staat er vaak zelf bij.</p>
+      <table class="hours" id="hours">
+        <thead>
+          <tr>
+            <th>Dag</th>
+            <th style="text-align:right">Winkel open</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- door JS gevuld -->
+        </tbody>
+      </table>
+    </div>
+    <div class="winkel-side" data-r style="--d:.1s">
+      <p class="now" id="now-line" data-open="true"><span class="lamp" aria-hidden="true"></span>We zijn nu open.</p>
+      <p class="blurb">Liever pinnen of contant — beide kan. Je eigen mand of tas meenemen waarderen we zeer; verpakking sparen we graag uit.</p>
+      <div class="adres-lines">
+        <span>Larixweg 4, 7137 RT Lievelde</span>
+        <a href="tel:0544370112">0544 — 37 01 12</a>
+        <a href="mailto:hallo@hetlangeland.nl">hallo@hetlangeland.nl</a>
+      </div>
+      <figure class="pic">
+        <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=900&q=72" alt="Houten kratten vol verse groenten in de boerderijwinkel" loading="lazy" width="900" height="563">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- contact / bestel -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info" data-r>
+      <span class="kicker">Bestellen &amp; contact</span>
+      <h2>Vraag iets, of <em>reserveer</em> je box</h2>
+      <p>Een box bestellen, een grote bestelling vooruit klaarzetten of gewoon een vraag? Laat hieronder een bericht achter — we reageren meestal nog dezelfde dag.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:0544370112">0544 — 37 01 12</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:hallo@hetlangeland.nl">hallo@hetlangeland.nl</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Adres</b><span>Larixweg 4, 7137 RT Lievelde</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mailadres</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <span class="err">Vul een geldig e-mailadres in.</span>
+        </div>
+        <div class="field">
+          <label for="f-onderwerp">Waar gaat het over?</label>
+          <select id="f-onderwerp" name="onderwerp" required>
+            <option value="" selected disabled>Kies een onderwerp…</option>
+            <option>Oogstbox bestellen</option>
+            <option>Bestelling vooruit klaarzetten</option>
+            <option>Bezorging in de buurt</option>
+            <option>Groepsbezoek of rondleiding</option>
+            <option>Iets anders</option>
+          </select>
+          <span class="err">Maak een keuze.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Je bericht</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Welke box, hoeveel, vanaf wanneer of welke vraag…"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Verstuur bericht <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">We reageren meestal dezelfde dag · je gegevens blijven bij ons op de boerderij.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Bedankt!</h3>
+        <p id="ok-text">We hebben je bericht ontvangen en nemen snel contact met je op.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="Het Lange Land home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c0-6 0-9 0-9"/><path d="M12 13c-4 0-7-2-7-6 4 0 7 2 7 6z"/><path d="M12 11c0-4 3-7 7-7 0 4-3 7-7 7z"/></svg></span>
+          <b>Het Lange <span>Land</span></b>
+        </a>
+        <p class="blurb">Biologische boerderij &amp; streekwinkel in Lievelde, Achterhoek. Vers van het land, elke dag opnieuw.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#top" aria-label="Nieuwsbrief"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>De winkel</h4>
+        <ul>
+          <li><a href="#producten">Uit de winkel</a></li>
+          <li><a href="#oogstbox">Oogstbox</a></li>
+          <li><a href="#winkel">Openingstijden</a></li>
+          <li><a href="#verhaal">Ons verhaal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bezoek ons</h4>
+        <ul>
+          <li><span>Larixweg 4</span></li>
+          <li><span>7137 RT Lievelde</span></li>
+          <li><a href="tel:0544370112">0544 — 37 01 12</a></li>
+          <li><a href="mailto:hallo@hetlangeland.nl">hallo@hetlangeland.nl</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Goed om te weten</h4>
+        <ul>
+          <li><span>SKAL biologisch gecertificeerd</span></li>
+          <li><span>Pin &amp; contant welkom</span></li>
+          <li><span>Eigen tas meenemen mag</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; <span id="jaar">2026</span> Het Lange Land · boerderij &amp; streekwinkel</span>
+      <span>SKAL 0042 · KvK 09188204 · Lievelde</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var doc=document;
+  var reduced=false;
+  try{reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+
+  /* ---- openingstijden (minuten na middernacht); index = JS getDay() (0=zo) ---- */
+  var DAYS=["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"];
+  var SHORT=["zo","ma","di","wo","do","vr","za"];
+  var HOURS={
+    0:null,                  // zondag gesloten
+    1:null,                  // maandag gesloten
+    2:[9*60,18*60],          // di 09:00–18:00
+    3:[9*60,18*60],          // wo
+    4:[9*60,18*60],          // do
+    5:[9*60,18*60],          // vr
+    6:[9*60,16*60]           // za 09:00–16:00
+  };
+  function fmt(m){m=m%(24*60);var h=Math.floor(m/60),mm=m%60;return ("0"+h).slice(-2)+":"+("0"+mm).slice(-2);}
+  function nlNow(){
+    try{
+      var p=new Intl.DateTimeFormat("nl-NL",{weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Europe/Amsterdam"}).formatToParts(new Date());
+      var o={};p.forEach(function(x){o[x.type]=x.value;});
+      var map={zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6};
+      var key=(o.weekday||"").toLowerCase().slice(0,2);
+      var day=map[key];
+      if(day===undefined){day=new Date().getDay();}
+      return {day:day,min:parseInt(o.hour,10)*60+parseInt(o.minute,10)};
+    }catch(e){
+      var d=new Date();
+      return {day:d.getDay(),min:d.getHours()*60+d.getMinutes()};
+    }
+  }
+  function status(){
+    var n=nlNow(),today=HOURS[n.day];
+    if(today&&n.min>=today[0]&&n.min<today[1]){
+      return {open:true,label:"Open tot "+fmt(today[1])};
+    }
+    if(today&&n.min<today[0]){
+      return {open:false,label:"Vandaag open vanaf "+fmt(today[0])};
+    }
+    for(var i=1;i<=7;i++){
+      var d=(n.day+i)%7;
+      if(HOURS[d]){
+        return {open:false,label:"Weer open "+SHORT[d]+" vanaf "+fmt(HOURS[d][0])};
+      }
+    }
+    return {open:false,label:"Tijdelijk gesloten"};
+  }
+
+  var st=status();
+  var nowLine=doc.getElementById("now-line");
+  if(nowLine){
+    nowLine.setAttribute("data-open",st.open?"true":"false");
+    nowLine.innerHTML='<span class="lamp" aria-hidden="true"></span>'+(st.open?"We zijn nu open — "+st.label.toLowerCase()+".":st.label+".");
+  }
+
+  /* ---- urentabel met vandaag gemarkeerd ---- */
+  var tb=doc.querySelector("#hours tbody");
+  if(tb){
+    var n=nlNow();
+    var order=[1,2,3,4,5,6,0]; // ma..zo
+    order.forEach(function(d){
+      var tr=doc.createElement("tr");
+      if(d===n.day){tr.className="today";}
+      var h=HOURS[d];
+      var dayName=DAYS[d].charAt(0).toUpperCase()+DAYS[d].slice(1);
+      tr.innerHTML='<td class="day">'+dayName+(d===n.day?' · vandaag':'')+"</td>"+
+        (h?'<td class="time">'+fmt(h[0])+" – "+fmt(h[1])+"</td>":'<td class="time closed">gesloten</td>');
+      tb.appendChild(tr);
+    });
+  }
+
+  /* ---- jaar in footer ---- */
+  var jaar=doc.getElementById("jaar");
+  if(jaar){jaar.textContent=String(new Date().getFullYear());}
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav=doc.getElementById("nav");
+  var burger=doc.getElementById("burger");
+  var links=doc.getElementById("navlinks");
+  function setMenu(open){
+    if(links){links.classList.toggle("open",open);}
+    if(burger){
+      burger.classList.toggle("open",open);
+      burger.setAttribute("aria-expanded",open?"true":"false");
+    }
+    doc.body.style.overflow=open?"hidden":"";
+  }
+  if(burger){
+    burger.addEventListener("click",function(){setMenu(!links.classList.contains("open"));});
+  }
+  if(links){
+    links.addEventListener("click",function(e){if(e.target.closest("a")){setMenu(false);}});
+  }
+  doc.addEventListener("keydown",function(e){if(e.key==="Escape"){setMenu(false);}});
+
+  /* ---- nav stuck on scroll (1 rAF-listener) ---- */
+  var ticking=false;
+  function onScroll(){
+    ticking=false;
+    var y=window.pageYOffset||0;
+    if(nav){nav.classList.toggle("stuck",y>8);}
+  }
+  function tick(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}}
+  window.addEventListener("scroll",tick,{passive:true});
+  onScroll();
+
+  /* ---- reveal on scroll ---- */
+  if(!reduced&&"IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:0.12,rootMargin:"0px 0px -6% 0px"});
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"),function(el){io.observe(el);});
+  }
+
+  /* ---- contact/bestelformulier met live validatie ---- */
+  var form=doc.getElementById("form");
+  if(form){
+    function bad(input,on){
+      var f=input.closest(".field");
+      if(f){f.classList.toggle("bad",on);}
+    }
+    function valid(input){
+      var v=(input.value||"").trim(),ok=true;
+      if(input.type==="email"){
+        ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      }else if(input.hasAttribute("required")){
+        ok=v.length>0;
+      }
+      bad(input,!ok);
+      return ok;
+    }
+    var inputs=Array.prototype.slice.call(form.querySelectorAll("input[required], select[required]"));
+    inputs.forEach(function(i){
+      i.addEventListener("blur",function(){valid(i);});
+      i.addEventListener("input",function(){
+        if(i.closest(".field").classList.contains("bad")){valid(i);}
+      });
+      i.addEventListener("change",function(){
+        if(i.closest(".field").classList.contains("bad")){valid(i);}
+      });
+    });
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      var allOk=true,first=null;
+      inputs.forEach(function(i){
+        if(!valid(i)){allOk=false;if(!first){first=i;}}
+      });
+      if(!allOk){if(first){first.focus();}return;}
+      var naam=(doc.getElementById("f-naam").value||"").trim().split(" ")[0];
+      var okt=doc.getElementById("ok-text");
+      if(okt){
+        okt.textContent=(naam?naam+", bedankt":"Bedankt")+" — we hebben je bericht ontvangen en nemen meestal nog dezelfde dag contact met je op.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({behavior:reduced?"auto":"smooth",block:"center"});
+    });
+  }
+})();
+</script>
+</body>
+</html>
