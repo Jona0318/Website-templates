@@ -1,0 +1,2390 @@
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forno Vesuvio — pizza napoletana uit de houtoven · Utrecht</title>
+    <meta
+      name="description"
+      content="Forno Vesuvio bakt echte pizza napoletana in een houtoven van 480°C — 48 uur gerezen deeg, San Marzano-tomaten en mozzarella di bufala. Antipasti, dolci en Italiaanse wijn in een warme trattoria in Utrecht. Reserveer een tafel."
+    />
+    <meta name="theme-color" content="#f6efe3" />
+    <meta property="og:title" content="Forno Vesuvio — pizza napoletana uit de houtoven" />
+    <meta
+      property="og:description"
+      content="Echte Napolitaanse pizza uit de houtoven, antipasti en dolci in een warme trattoria in Utrecht. Reserveer online."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var h = document.documentElement;
+        h.classList.remove("no-js");
+        h.classList.add("js");
+      })();
+    </script>
+    <style>
+      /* ============================================================
+         FORNO VESUVIO — pizza napoletana uit de houtoven, Utrecht
+         Warm rustiek / trattoria. Handgemaakte one-pager, geen libraries.
+         ============================================================ */
+      :root {
+        --cream: #f6efe3;
+        --cream-2: #efe5d3;
+        --cream-3: #e7d9c1;
+        --ink: #2b1d16;
+        --ink-2: #4c382c;
+        --ink-soft: rgba(43, 29, 22, 0.66);
+        --ink-faint: rgba(43, 29, 22, 0.44);
+        --tomato: #b5301f;
+        --tomato-deep: #8c2316;
+        --basil: #4f6b35;
+        --basil-deep: #3a5026;
+        --char: #241a14;
+        --gold: #d99a3c;
+        --line: rgba(43, 29, 22, 0.16);
+        --line-soft: rgba(43, 29, 22, 0.09);
+        --display: "Fraunces", Georgia, "Times New Roman", serif;
+        --body: "Inter", system-ui, -apple-system, sans-serif;
+        --maxw: 1180px;
+        --gutter: clamp(1.25rem, 5vw, 5rem);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --radius: 6px;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--body);
+        font-weight: 400;
+        font-size: 1.04rem;
+        line-height: 1.64;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+        color: inherit;
+      }
+      ::selection {
+        background: var(--tomato);
+        color: var(--cream);
+      }
+      :focus-visible {
+        outline: 2.5px solid var(--tomato);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+      .wrap {
+        width: 100%;
+        max-width: var(--maxw);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+      .display {
+        font-family: var(--display);
+        font-weight: 500;
+        line-height: 1.04;
+      }
+      .italic {
+        font-style: italic;
+      }
+      .kicker {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--tomato-deep);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .kicker::before {
+        content: "";
+        width: 26px;
+        height: 1.5px;
+        background: var(--tomato);
+        display: inline-block;
+      }
+      .kicker.center {
+        justify-content: center;
+      }
+      .skip {
+        position: fixed;
+        top: -100px;
+        left: 1rem;
+        z-index: 200;
+        background: var(--char);
+        color: var(--cream);
+        padding: 0.7rem 1.1rem;
+        border-radius: 6px;
+        transition: top 0.25s;
+      }
+      .skip:focus {
+        top: 1rem;
+      }
+
+      /* ---------- knoppen ---------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
+        padding: 0.85rem 1.55rem;
+        border-radius: 999px;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          transform 0.25s var(--ease),
+          background-color 0.25s,
+          color 0.25s,
+          border-color 0.25s,
+          box-shadow 0.25s;
+      }
+      .btn svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s var(--ease);
+      }
+      .btn-primary {
+        background: var(--tomato);
+        color: var(--cream);
+      }
+      .btn-primary:hover {
+        background: var(--tomato-deep);
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px -16px rgba(140, 35, 22, 0.75);
+      }
+      .btn-primary:hover svg {
+        transform: translateX(3px);
+      }
+      .btn-ghost {
+        border-color: var(--line);
+        color: var(--ink);
+      }
+      .btn-ghost:hover {
+        border-color: var(--ink);
+        transform: translateY(-2px);
+      }
+      .btn-light {
+        background: var(--cream);
+        color: var(--char);
+      }
+      .btn-light:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px -16px rgba(0, 0, 0, 0.45);
+      }
+
+      /* ---------- briefhoofd ---------- */
+      .bar {
+        background: var(--char);
+        color: rgba(246, 239, 227, 0.82);
+        font-size: 0.74rem;
+        letter-spacing: 0.06em;
+      }
+      .bar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        height: 40px;
+      }
+      .bar .left {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+      .bar .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--basil);
+        box-shadow: 0 0 0 0 rgba(79, 107, 53, 0.55);
+        animation: pulse 2.6s infinite;
+      }
+      .bar .left[data-open="false"] .dot {
+        background: var(--gold);
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(79, 107, 53, 0.5);
+        }
+        70% {
+          box-shadow: 0 0 0 7px rgba(79, 107, 53, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(79, 107, 53, 0);
+        }
+      }
+      .bar .right {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .bar a {
+        transition: color 0.2s;
+      }
+      .bar a:hover {
+        color: var(--cream);
+      }
+      @media (max-width: 680px) {
+        .bar .right a.email {
+          display: none;
+        }
+      }
+      @media (max-width: 480px) {
+        .bar .left span.tag {
+          display: none;
+        }
+      }
+
+      /* ---------- nav ---------- */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 90;
+        background: rgba(246, 239, 227, 0.88);
+        backdrop-filter: saturate(1.3) blur(12px);
+        border-bottom: 1px solid transparent;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s,
+          background-color 0.3s;
+      }
+      .nav.stuck {
+        border-bottom-color: var(--line);
+        box-shadow: 0 10px 30px -26px rgba(43, 29, 22, 0.7);
+      }
+      .nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 76px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: 1.5rem;
+        letter-spacing: 0.005em;
+        line-height: 1;
+      }
+      .brand .mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, var(--gold), var(--tomato) 70%);
+        display: grid;
+        place-items: center;
+        flex: none;
+        box-shadow: inset 0 0 0 2px rgba(36, 26, 20, 0.18);
+      }
+      .brand .mark svg {
+        width: 21px;
+        height: 21px;
+        color: var(--cream);
+      }
+      .brand b {
+        font-weight: 600;
+      }
+      .brand b span {
+        color: var(--tomato);
+        font-style: italic;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-links a {
+        font-family: var(--body);
+        font-weight: 500;
+        font-size: 0.74rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        position: relative;
+        padding-block: 0.35rem;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 100%;
+        bottom: 0;
+        height: 2px;
+        background: var(--tomato);
+        border-radius: 2px;
+        transition: right 0.35s var(--ease);
+      }
+      .nav-links a:hover::after {
+        right: 0;
+      }
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.1rem;
+      }
+      .nav-cta .btn {
+        padding: 0.62rem 1.2rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .burger {
+        display: none;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--cream);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+      .burger span {
+        width: 18px;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        transition:
+          transform 0.3s var(--ease),
+          opacity 0.2s;
+      }
+      @media (max-width: 940px) {
+        .nav-links {
+          position: fixed;
+          inset: 0;
+          background: var(--cream);
+          flex-direction: column;
+          justify-content: center;
+          gap: 1.8rem;
+          transform: translateY(-101%);
+          transition: transform 0.5s cubic-bezier(0.7, 0, 0.2, 1);
+          z-index: 80;
+        }
+        .nav-links.open {
+          transform: none;
+        }
+        .nav-links a {
+          font-size: 1.05rem;
+          letter-spacing: 0.12em;
+        }
+        .nav-cta .desk {
+          display: none;
+        }
+        .burger {
+          display: flex;
+          z-index: 95;
+        }
+        .burger.open span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        .burger.open span:nth-child(2) {
+          opacity: 0;
+        }
+        .burger.open span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        position: relative;
+        padding-top: clamp(2.5rem, 6vw, 4.5rem);
+        padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -14%;
+        right: -10%;
+        width: 48vw;
+        height: 48vw;
+        max-width: 680px;
+        max-height: 680px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(217, 154, 60, 0.22),
+          transparent 64%
+        );
+        filter: blur(6px);
+        z-index: -1;
+        pointer-events: none;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .hero .wrap {
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+        }
+      }
+      .hero h1 {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(2.8rem, 7vw, 5rem);
+        line-height: 1;
+        letter-spacing: -0.015em;
+        margin-top: 1.3rem;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--tomato);
+      }
+      .hero-intro {
+        margin-top: 1.5rem;
+        font-size: clamp(1.06rem, 1.5vw, 1.2rem);
+        color: var(--ink-2);
+        max-width: 44ch;
+        line-height: 1.68;
+      }
+      .hero-intro .first {
+        font-family: var(--display);
+        font-style: italic;
+        color: var(--ink);
+      }
+      .hero-actions {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .hero-trust {
+        margin-top: 2.2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+        font-size: 0.84rem;
+        color: var(--ink-soft);
+      }
+      .hero-trust .ck {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+      }
+      .hero-trust .ck svg {
+        width: 17px;
+        height: 17px;
+        color: var(--basil-deep);
+        flex: none;
+      }
+      .hero-figure {
+        position: relative;
+      }
+      .hero-figure .photo {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--cream-3);
+        box-shadow: 0 40px 80px -50px rgba(43, 29, 22, 0.7);
+      }
+      .hero-figure .photo img {
+        width: 100%;
+        aspect-ratio: 4 / 4.5;
+        object-fit: cover;
+        filter: saturate(1.02) contrast(1.02);
+      }
+      .hero-figure .badge {
+        position: absolute;
+        left: -1.2rem;
+        bottom: 1.6rem;
+        background: var(--cream);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.95rem 1.15rem;
+        box-shadow: 0 24px 50px -34px rgba(43, 29, 22, 0.6);
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        max-width: 240px;
+      }
+      .hero-figure .badge .ring {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, var(--gold), var(--tomato) 75%);
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+      .hero-figure .badge .ring svg {
+        width: 24px;
+        height: 24px;
+        color: var(--cream);
+      }
+      .hero-figure .badge b {
+        font-family: var(--display);
+        font-weight: 600;
+        display: block;
+        font-size: 1.06rem;
+        line-height: 1.15;
+      }
+      .hero-figure .badge small {
+        color: var(--ink-soft);
+        font-size: 0.78rem;
+      }
+      @media (max-width: 520px) {
+        .hero-figure .badge {
+          left: 0.6rem;
+          padding: 0.8rem 0.9rem;
+        }
+      }
+
+      /* ---------- band met cijfers ---------- */
+      .strip {
+        background: var(--char);
+        color: var(--cream);
+      }
+      .strip .wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        padding-block: clamp(2rem, 4vw, 2.8rem);
+      }
+      @media (max-width: 760px) {
+        .strip .wrap {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.8rem 1rem;
+        }
+      }
+      .stat {
+        text-align: center;
+      }
+      .stat .num {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(2rem, 4.4vw, 2.9rem);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--cream);
+      }
+      .stat .num span {
+        color: var(--gold);
+      }
+      .stat .lab {
+        margin-top: 0.5rem;
+        font-size: 0.82rem;
+        color: rgba(246, 239, 227, 0.66);
+        letter-spacing: 0.02em;
+      }
+
+      /* ---------- sectiekader ---------- */
+      .sec {
+        padding-block: clamp(3.8rem, 8vw, 7rem);
+      }
+      .sec-head {
+        max-width: 700px;
+      }
+      .sec-head.center {
+        margin-inline: auto;
+        text-align: center;
+      }
+      .sec-head h2 {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(2rem, 4.6vw, 3.1rem);
+        line-height: 1.04;
+        letter-spacing: -0.015em;
+        margin-top: 1rem;
+      }
+      .sec-head h2 em {
+        font-style: italic;
+        color: var(--tomato);
+      }
+      .sec-head p {
+        margin-top: 1.1rem;
+        color: var(--ink-2);
+        font-size: 1.06rem;
+      }
+
+      /* ---------- de kaart ---------- */
+      .menu {
+        background: var(--cream-2);
+        position: relative;
+      }
+      .menu-tabs {
+        margin-top: clamp(1.8rem, 4vw, 2.6rem);
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        background: var(--cream);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.4rem;
+      }
+      .menu-tab {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        background: none;
+        border: 0;
+        padding: 0.55rem 1.15rem;
+        border-radius: 999px;
+        cursor: pointer;
+        transition:
+          background-color 0.25s,
+          color 0.25s;
+      }
+      .menu-tab[aria-selected="true"] {
+        background: var(--tomato);
+        color: var(--cream);
+      }
+      .menu-tab:hover:not([aria-selected="true"]) {
+        background: var(--cream-3);
+      }
+      .menu-panel {
+        margin-top: clamp(2rem, 4vw, 3rem);
+      }
+      .menu-panel[hidden] {
+        display: none;
+      }
+      .menu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(1.6rem, 4vw, 3rem) clamp(2.5rem, 6vw, 5.5rem);
+      }
+      @media (max-width: 760px) {
+        .menu-grid {
+          grid-template-columns: 1fr;
+          gap: 1.4rem;
+        }
+      }
+      .dish {
+        padding-bottom: 1.1rem;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .dish-top {
+        display: flex;
+        align-items: baseline;
+        gap: 0.4rem;
+      }
+      .dish-name {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1.2;
+      }
+      .dish-name .veg {
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.66rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--basil-deep);
+        background: rgba(79, 107, 53, 0.12);
+        padding: 0.12rem 0.45rem;
+        border-radius: 999px;
+        margin-left: 0.45rem;
+        position: relative;
+        top: -0.15rem;
+      }
+      .dish-lead {
+        flex: 1;
+        position: relative;
+        top: -0.32rem;
+        border-bottom: 1.5px dotted var(--line);
+      }
+      .dish-price {
+        font-family: var(--body);
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        font-size: 1.02rem;
+        color: var(--tomato-deep);
+      }
+      .dish-desc {
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 0.94rem;
+        margin-top: 0.18rem;
+        max-width: 44ch;
+      }
+      .menu-note {
+        margin-top: clamp(2.2rem, 5vw, 3rem);
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 0.98rem;
+        max-width: 62ch;
+      }
+
+      /* ---------- het verhaal / de houtoven ---------- */
+      .story .wrap {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+      }
+      @media (max-width: 920px) {
+        .story .wrap {
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+        }
+      }
+      .story-copy p {
+        color: var(--ink-2);
+        font-size: 1.08rem;
+        line-height: 1.74;
+      }
+      .story-copy p + p {
+        margin-top: 1.05rem;
+      }
+      .story-copy p.lead::first-letter {
+        font-family: var(--display);
+        font-size: 3.6rem;
+        line-height: 0.72;
+        float: left;
+        margin: 0.32rem 0.6rem 0 0;
+        color: var(--tomato);
+      }
+      .pull {
+        font-family: var(--display);
+        font-style: italic;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        line-height: 1.2;
+        color: var(--ink);
+        margin: 1.7rem 0;
+        padding-left: 1.2rem;
+        border-left: 3px solid var(--tomato);
+      }
+      .signoff {
+        margin-top: 1.6rem;
+        font-style: italic;
+        color: var(--ink-soft);
+      }
+      .signoff b {
+        font-style: normal;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .story-figs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.9rem;
+      }
+      .story-figs figure {
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--cream-3);
+        box-shadow: 0 30px 60px -48px rgba(43, 29, 22, 0.6);
+      }
+      .story-figs figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(1.02);
+      }
+      .story-figs .big {
+        grid-column: 1 / -1;
+        aspect-ratio: 16 / 9;
+      }
+      .story-figs .sq {
+        aspect-ratio: 1 / 1;
+      }
+
+      /* ---------- proces / ambacht ---------- */
+      .craft {
+        background: var(--char);
+        color: var(--cream);
+      }
+      .craft .kicker {
+        color: var(--gold);
+      }
+      .craft .kicker::before {
+        background: var(--gold);
+      }
+      .craft .sec-head h2 {
+        color: var(--cream);
+      }
+      .craft .sec-head h2 em {
+        color: var(--gold);
+      }
+      .craft .sec-head p {
+        color: rgba(246, 239, 227, 0.72);
+      }
+      .craft-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+        margin-top: clamp(2rem, 4vw, 3rem);
+      }
+      @media (max-width: 860px) {
+        .craft-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .craft-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .craft-step {
+        border: 1px solid rgba(246, 239, 227, 0.16);
+        border-radius: var(--radius);
+        padding: 1.7rem 1.5rem;
+        background: rgba(246, 239, 227, 0.04);
+        transition:
+          transform 0.35s var(--ease),
+          border-color 0.35s;
+      }
+      .craft-step:hover {
+        transform: translateY(-5px);
+        border-color: rgba(217, 154, 60, 0.5);
+      }
+      .craft-step .no {
+        font-family: var(--display);
+        font-style: italic;
+        font-size: 1.6rem;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .craft-step h3 {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.22rem;
+        margin-top: 0.7rem;
+      }
+      .craft-step p {
+        margin-top: 0.55rem;
+        color: rgba(246, 239, 227, 0.7);
+        font-size: 0.94rem;
+      }
+
+      /* ---------- openingstijden + praktisch ---------- */
+      .hours-sec .wrap {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .hours-sec .wrap {
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+        }
+      }
+      .hours {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.6rem;
+      }
+      .hours th {
+        text-align: left;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--tomato-deep);
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .hours td {
+        padding-block: 0.72rem;
+        padding-inline: 0.85rem;
+        border-bottom: 1px solid var(--line-soft);
+        font-size: 1.02rem;
+      }
+      .hours td.day {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.1rem;
+        position: relative;
+      }
+      .hours td.time {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-2);
+      }
+      .hours tr.today td {
+        background: var(--cream-3);
+      }
+      .hours tr.today td.day::before {
+        content: "";
+        position: absolute;
+        left: -0.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--tomato);
+      }
+      .hours tr.today td.day {
+        padding-left: 1rem;
+      }
+      .hours td.closed {
+        color: var(--ink-faint);
+        font-style: italic;
+      }
+      .practical {
+        background: var(--cream-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: clamp(1.6rem, 3vw, 2.2rem);
+      }
+      .now-line {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.35rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .now-line .lamp {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--basil);
+        flex: none;
+      }
+      .now-line[data-open="false"] {
+        color: var(--tomato-deep);
+      }
+      .now-line[data-open="false"] .lamp {
+        background: var(--gold);
+      }
+      .practical p {
+        margin-top: 0.6rem;
+        color: var(--ink-2);
+      }
+      .contact-list {
+        margin-top: 1.6rem;
+        display: grid;
+        gap: 1rem;
+      }
+      .contact-list li {
+        display: flex;
+        gap: 0.9rem;
+        align-items: flex-start;
+      }
+      .contact-list .ic {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(181, 48, 31, 0.1);
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+      .contact-list .ic svg {
+        width: 19px;
+        height: 19px;
+        color: var(--tomato-deep);
+      }
+      .contact-list b {
+        font-family: var(--display);
+        font-weight: 500;
+        display: block;
+        font-size: 1rem;
+      }
+      .contact-list a,
+      .contact-list span {
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+      }
+      .contact-list a {
+        transition: color 0.2s;
+      }
+      .contact-list a:hover {
+        color: var(--tomato-deep);
+      }
+
+      /* ---------- reserveren ---------- */
+      .resv {
+        background: var(--tomato);
+        color: var(--cream);
+      }
+      .resv .kicker {
+        color: rgba(246, 239, 227, 0.85);
+      }
+      .resv .kicker::before {
+        background: rgba(246, 239, 227, 0.85);
+      }
+      .resv .wrap {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .resv .wrap {
+          grid-template-columns: 1fr;
+          gap: 2.4rem;
+        }
+      }
+      .resv-intro h2 {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: clamp(2rem, 4.6vw, 3.1rem);
+        line-height: 1.04;
+        letter-spacing: -0.015em;
+        margin-top: 1rem;
+        color: var(--cream);
+      }
+      .resv-intro h2 em {
+        font-style: italic;
+      }
+      .resv-intro p {
+        margin-top: 1.1rem;
+        color: rgba(246, 239, 227, 0.86);
+        font-size: 1.08rem;
+        line-height: 1.7;
+        max-width: 42ch;
+      }
+      .resv-intro .phone {
+        margin-top: 1.6rem;
+        font-family: var(--display);
+        font-style: italic;
+        font-size: 1.4rem;
+      }
+      .resv-intro .phone a {
+        border-bottom: 1px solid rgba(246, 239, 227, 0.4);
+        transition: border-color 0.3s;
+      }
+      .resv-intro .phone a:hover {
+        border-color: var(--cream);
+      }
+      .form {
+        background: var(--cream);
+        color: var(--ink);
+        border-radius: var(--radius);
+        padding: clamp(1.6rem, 3vw, 2.4rem);
+        box-shadow: 0 40px 80px -60px rgba(43, 29, 22, 0.6);
+      }
+      .form .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      @media (max-width: 540px) {
+        .form .row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .field {
+        margin-bottom: 1.05rem;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      .field label {
+        display: block;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+        margin-bottom: 0.4rem;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        background: var(--cream-2);
+        border: 1.5px solid var(--line);
+        border-radius: 8px;
+        padding: 0.78rem 0.9rem;
+        font-size: 0.96rem;
+        transition:
+          border-color 0.2s,
+          background-color 0.2s;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 96px;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--tomato);
+        background: #fff;
+      }
+      .field.bad input,
+      .field.bad select,
+      .field.bad textarea {
+        border-color: var(--tomato);
+        background: #fbf1ef;
+      }
+      .field .err {
+        display: none;
+        color: var(--tomato-deep);
+        font-size: 0.78rem;
+        margin-top: 0.35rem;
+      }
+      .field.bad .err {
+        display: block;
+      }
+      .form .btn-primary {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.4rem;
+        font-size: 0.96rem;
+      }
+      .form .note {
+        margin-top: 0.9rem;
+        font-size: 0.78rem;
+        color: var(--ink-faint);
+        text-align: center;
+      }
+      .form .ok {
+        display: none;
+        text-align: center;
+        padding: 1rem 0;
+      }
+      .form.sent .form-body {
+        display: none;
+      }
+      .form.sent .ok {
+        display: block;
+      }
+      .form .ok .ring {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 30%, var(--gold), var(--tomato) 75%);
+        display: grid;
+        place-items: center;
+        margin: 0 auto 1.1rem;
+      }
+      .form .ok .ring svg {
+        width: 32px;
+        height: 32px;
+        color: var(--cream);
+      }
+      .form .ok h3 {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+      .form .ok p {
+        margin-top: 0.6rem;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- footer ---------- */
+      .footer {
+        background: var(--char);
+        color: rgba(246, 239, 227, 0.72);
+        padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
+      }
+      .footer .top {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 860px) {
+        .footer .top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .footer .top {
+          grid-template-columns: 1fr;
+        }
+      }
+      .footer .brand {
+        color: var(--cream);
+        margin-bottom: 1rem;
+      }
+      .footer .brand b span {
+        color: var(--gold);
+      }
+      .footer .brand .mark {
+        box-shadow: inset 0 0 0 2px rgba(246, 239, 227, 0.2);
+      }
+      .footer .blurb {
+        font-size: 0.92rem;
+        max-width: 34ch;
+        color: rgba(246, 239, 227, 0.62);
+      }
+      .footer h4 {
+        font-family: var(--body);
+        font-weight: 600;
+        color: var(--cream);
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      .footer ul li {
+        margin-bottom: 0.6rem;
+      }
+      .footer ul a,
+      .footer ul span {
+        font-size: 0.92rem;
+        transition: color 0.2s;
+      }
+      .footer ul a:hover {
+        color: var(--gold);
+      }
+      .footer .socials {
+        display: flex;
+        gap: 0.7rem;
+        margin-top: 1.2rem;
+      }
+      .footer .socials a {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        border: 1px solid rgba(246, 239, 227, 0.18);
+        display: grid;
+        place-items: center;
+        transition:
+          background-color 0.25s,
+          border-color 0.25s;
+      }
+      .footer .socials a:hover {
+        background: rgba(217, 154, 60, 0.18);
+        border-color: transparent;
+      }
+      .footer .socials svg {
+        width: 18px;
+        height: 18px;
+        color: var(--cream);
+      }
+      .footer .bottom {
+        margin-top: 2.6rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid rgba(246, 239, 227, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-size: 0.82rem;
+        color: rgba(246, 239, 227, 0.5);
+      }
+
+      /* ---------- reveal ---------- */
+      .js [data-r] {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s var(--ease),
+          transform 0.7s var(--ease);
+      }
+      .js [data-r].in {
+        opacity: 1;
+        transform: none;
+      }
+      [data-r][style*="--d"] {
+        transition-delay: var(--d);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .js [data-r] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        .bar .dot {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Direct naar inhoud</a>
+
+    <!-- briefhoofd -->
+    <div class="bar">
+      <div class="wrap">
+        <div class="left" id="bar-status" data-open="true">
+          <span class="dot" aria-hidden="true"></span>
+          <span id="bar-status-text">Vandaag geopend</span>
+          <span class="tag" aria-hidden="true">· Hoge der A 12, Utrecht</span>
+        </div>
+        <div class="right">
+          <a class="email" href="mailto:ciao@fornovesuvio.nl">ciao@fornovesuvio.nl</a>
+          <a href="tel:+31302345678">030 — 234 56 78</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- nav -->
+    <header class="nav" id="nav">
+      <div class="wrap">
+        <a class="brand" href="#top" aria-label="Forno Vesuvio home">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="9" cy="9.5" r="1.1" fill="currentColor" stroke="none" />
+              <circle cx="14.5" cy="11" r="1.1" fill="currentColor" stroke="none" />
+              <circle cx="10.5" cy="14.5" r="1.1" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
+          <b>Forno <span>Vesuvio</span></b>
+        </a>
+        <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+          <a href="#kaart">De kaart</a>
+          <a href="#verhaal">Het verhaal</a>
+          <a href="#oven">De houtoven</a>
+          <a href="#bezoek">Bezoek</a>
+          <a href="#reserveren">Reserveren</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-primary" href="#reserveren"
+            >Reserveer
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+          <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <span id="top"></span>
+
+      <!-- hero -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero-copy">
+            <span class="kicker" data-r>Pizza napoletana · sinds 2014</span>
+            <h1 data-r style="--d: 0.05s">
+              Vuur, deeg<br />en <em>geduld</em>.
+            </h1>
+            <p class="hero-intro" data-r style="--d: 0.12s">
+              <span class="first">Achtenveertig uur gerezen deeg,</span>
+              San Marzano-tomaten van de zonnige hellingen van de Vesuvius, en
+              negentig seconden in een houtoven van 480 graden. Zo simpel, zo
+              eerlijk — dat is pizza napoletana bij ons aan de werf.
+            </p>
+            <div class="hero-actions" data-r style="--d: 0.18s">
+              <a class="btn btn-primary" href="#reserveren"
+                >Reserveer een tafel
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a class="btn btn-ghost" href="#kaart">Bekijk de kaart</a>
+            </div>
+            <div class="hero-trust" data-r style="--d: 0.24s">
+              <span class="ck">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                Echte houtoven
+              </span>
+              <span class="ck">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                Mozzarella di bufala
+              </span>
+              <span class="ck">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                Italiaanse natuurwijn
+              </span>
+            </div>
+          </div>
+          <figure class="hero-figure" data-r style="--d: 0.1s">
+            <div class="photo">
+              <img
+                src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1100&q=72"
+                alt="Verse Napolitaanse pizza margherita met basilicum, net uit de houtoven"
+                loading="eager"
+                width="1000"
+                height="1125"
+              />
+            </div>
+            <div class="badge">
+              <span class="ring" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.5 14c-2 0-4 1.5-4 4 0 0 3 1.5 6.5-2M12 12c4-4 9-4 9-4s0 5-4 9c-1.8 1.8-3.6 2-4.8 1.8" />
+                  <path d="M14 13l-2 2" />
+                </svg>
+              </span>
+              <div>
+                <b>90 seconden</b>
+                <small>in de houtoven, op 480°C — niet langer, niet korter</small>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- band met cijfers -->
+      <section class="strip" aria-label="Forno Vesuvio in het kort">
+        <div class="wrap">
+          <div class="stat" data-r>
+            <div class="num"><span>48</span> u</div>
+            <div class="lab">rijstijd van het deeg</div>
+          </div>
+          <div class="stat" data-r style="--d: 0.08s">
+            <div class="num"><span>480</span>°C</div>
+            <div class="lab">in de houtoven</div>
+          </div>
+          <div class="stat" data-r style="--d: 0.16s">
+            <div class="num"><span>3</span></div>
+            <div class="lab">ingrediënten in een margherita</div>
+          </div>
+          <div class="stat" data-r style="--d: 0.24s">
+            <div class="num"><span>2014</span></div>
+            <div class="lab">het jaar dat de oven ging branden</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- de kaart -->
+      <section class="sec menu" id="kaart">
+        <div class="wrap">
+          <div class="sec-head" data-r>
+            <span class="kicker">La carta</span>
+            <h2>De <em>kaart</em></h2>
+            <p>
+              Een korte kaart, want we maken liever weinig dingen heel goed. De
+              pizza's draaien om het deeg; de rest is er om ervan te genieten.
+            </p>
+          </div>
+
+          <div class="menu-tabs" role="tablist" aria-label="Menucategorieën" data-r>
+            <button class="menu-tab" id="tab-pizze" role="tab" aria-selected="true" aria-controls="panel-pizze" type="button">Pizze</button>
+            <button class="menu-tab" id="tab-anti" role="tab" aria-selected="false" aria-controls="panel-anti" type="button">Antipasti</button>
+            <button class="menu-tab" id="tab-dolci" role="tab" aria-selected="false" aria-controls="panel-dolci" type="button">Dolci</button>
+            <button class="menu-tab" id="tab-vino" role="tab" aria-selected="false" aria-controls="panel-vino" type="button">Vino</button>
+          </div>
+
+          <!-- pizze -->
+          <div class="menu-panel" id="panel-pizze" role="tabpanel" aria-labelledby="tab-pizze" data-r>
+            <div class="menu-grid">
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Margherita <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">12,5</span>
+                  </div>
+                  <p class="dish-desc">San Marzano, fior di latte, verse basilicum, olijfolie</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Bufala DOP <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">15</span>
+                  </div>
+                  <p class="dish-desc">mozzarella di bufala campana, San Marzano, basilicum</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Diavola</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">15,5</span>
+                  </div>
+                  <p class="dish-desc">pittige spianata-salami, fior di latte, een vleugje chilihoning</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Marinara <span class="veg">vegan</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">11</span>
+                  </div>
+                  <p class="dish-desc">tomaat, knoflook, oregano, olijfolie — geen kaas, zoals het hoort</p>
+                </div>
+              </div>
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Capricciosa</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">16,5</span>
+                  </div>
+                  <p class="dish-desc">ham, artisjok, champignon, olijf, fior di latte</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Friarielli e salsiccia</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">17</span>
+                  </div>
+                  <p class="dish-desc">Napolitaanse worst, bittere broccoli, provola affumicata</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Quattro formaggi <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">16</span>
+                  </div>
+                  <p class="dish-desc">fior di latte, gorgonzola, pecorino, provola, walnoot</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Tartufo</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">18,5</span>
+                  </div>
+                  <p class="dish-desc">truffelroom, fior di latte, gepocheerd ei, rucola, pecorino</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- antipasti -->
+          <div class="menu-panel" id="panel-anti" role="tabpanel" aria-labelledby="tab-anti" hidden>
+            <div class="menu-grid">
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Burrata pugliese <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">11</span>
+                  </div>
+                  <p class="dish-desc">romige burrata, datterino-tomaatjes, basilicumolie, focaccia</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Tagliere di salumi</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">14</span>
+                  </div>
+                  <p class="dish-desc">plankje Italiaanse vleeswaren, taralli, gegrilde groenten</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Polpette al sugo</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">9,5</span>
+                  </div>
+                  <p class="dish-desc">gehaktballetjes in tomatensaus van oma Carmela, pecorino</p>
+                </div>
+              </div>
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Parmigiana di melanzane <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">9</span>
+                  </div>
+                  <p class="dish-desc">gelaagde aubergine, tomaat, basilicum, parmezaan, provola</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Bruschette del forno <span class="veg">vegan</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">7,5</span>
+                  </div>
+                  <p class="dish-desc">geroosterd ovenbrood, tomaat, knoflook, oregano</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Olive ascolane</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">7</span>
+                  </div>
+                  <p class="dish-desc">gefrituurde gevulde olijven uit de Marche</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- dolci -->
+          <div class="menu-panel" id="panel-dolci" role="tabpanel" aria-labelledby="tab-dolci" hidden>
+            <div class="menu-grid">
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Tiramisù della casa <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">7,5</span>
+                  </div>
+                  <p class="dish-desc">mascarpone, espresso, savoiardi — gemaakt zoals het hoort</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Cannolo siciliano <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">6,5</span>
+                  </div>
+                  <p class="dish-desc">krokant rolletje, ricotta, gekonfijte sinaasappel, pistache</p>
+                </div>
+              </div>
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Affogato al caffè <span class="veg">vega</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">5,5</span>
+                  </div>
+                  <p class="dish-desc">vanille-ijs verdronken in een warme espresso</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Sorbetto al limone <span class="veg">vegan</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">5</span>
+                  </div>
+                  <p class="dish-desc">huisgemaakt citroensorbet uit Amalfi-citroenen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- vino -->
+          <div class="menu-panel" id="panel-vino" role="tabpanel" aria-labelledby="tab-vino" hidden>
+            <div class="menu-grid">
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Falanghina <span class="veg">wit · Campania</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">6</span>
+                  </div>
+                  <p class="dish-desc">fris en bloemig, van de vulkanische grond rond de Vesuvius</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Aglianico <span class="veg">rood · Basilicata</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">6,5</span>
+                  </div>
+                  <p class="dish-desc">stevig en kruidig, gemaakt voor pizza met salsiccia</p>
+                </div>
+              </div>
+              <div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Lambrusco secco <span class="veg">mousserend rood</span></span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">6</span>
+                  </div>
+                  <p class="dish-desc">licht bruisend, droog — verrassend lekker bij diavola</p>
+                </div>
+                <div class="dish">
+                  <div class="dish-top">
+                    <span class="dish-name">Negroni del Forno</span>
+                    <span class="dish-lead"></span>
+                    <span class="dish-price">9</span>
+                  </div>
+                  <p class="dish-desc">gin, Campari, rode vermout — onze aperitivo van het huis</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="menu-note">
+            Een glutenvrije bodem maken we graag — meld het bij het reserveren.
+            Allergieën of dieetwensen? Zeg het gerust aan tafel; de keuken denkt
+            graag mee. Prijzen zijn in euro's, inclusief btw.
+          </p>
+        </div>
+      </section>
+
+      <!-- het verhaal -->
+      <section class="sec story" id="verhaal">
+        <div class="wrap">
+          <div class="story-copy" data-r>
+            <span class="kicker">La nostra storia</span>
+            <h2 style="font-family: var(--display); font-weight: 500; font-size: clamp(2rem, 4.6vw, 3.1rem); line-height: 1.04; letter-spacing: -0.015em; margin-top: 1rem; margin-bottom: 1.4rem">
+              Van Napels naar de <em>werf</em>
+            </h2>
+            <p class="lead">
+              Marco groeide op tussen de pizzaioli van de Spaccanapoli, waar de
+              ovens nooit uitgaan en het deeg gaat zoals het al generaties gaat.
+              In 2014 laadde hij een tweedehands houtoven op een aanhanger,
+              reed naar Utrecht en bouwde hem steen voor steen weer op aan de
+              Hoge der A.
+            </p>
+            <blockquote class="pull">
+              “Een goede pizza heeft geen tien ingrediënten nodig. Hij heeft
+              tijd nodig, en vuur.”
+            </blockquote>
+            <p>
+              We malen onze eigen bloem niet, maar we kiezen hem wel met zorg:
+              een zachte Italiaanse tipo 00 die het deeg lucht en bite geeft.
+              Het rijst minstens 48 uur op kamertemperatuur, zodat het licht
+              verteerbaar wordt en die typische geblakerde, luchtige rand
+              krijgt — de <span class="italic">cornicione</span>.
+            </p>
+            <p class="signoff">— <b>Marco &amp; Giulia</b>, pizzaiolo en gastvrouw</p>
+          </div>
+          <div class="story-figs" data-r style="--d: 0.1s">
+            <figure class="big">
+              <img
+                src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=1100&q=72"
+                alt="Pizzaiolo schuift een pizza in de gloeiende houtoven"
+                loading="lazy"
+                width="1000"
+                height="563"
+              />
+            </figure>
+            <figure class="sq">
+              <img
+                src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=72"
+                alt="Handen kneden een bol pizzadeeg op een met bloem bestoven werkblad"
+                loading="lazy"
+                width="600"
+                height="600"
+              />
+            </figure>
+            <figure class="sq">
+              <img
+                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=72"
+                alt="Rijpe trostomaten en verse basilicum op een houten plank"
+                loading="lazy"
+                width="600"
+                height="600"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- de houtoven / proces -->
+      <section class="sec craft" id="oven">
+        <div class="wrap">
+          <div class="sec-head center" data-r>
+            <span class="kicker center">Il forno a legna</span>
+            <h2>Vier dingen, en <em>geduld</em></h2>
+            <p>
+              Pizza napoletana is geen recept maar een ritueel. Dit is hoe een
+              bol deeg bij ons in negentig seconden een pizza wordt.
+            </p>
+          </div>
+          <div class="craft-grid">
+            <article class="craft-step" data-r>
+              <span class="no">01</span>
+              <h3>Het deeg</h3>
+              <p>
+                Tipo 00, water, gist en zeezout. Met de hand gemengd en daarna
+                48 uur rust — geen haast, geen machines die het werk versnellen.
+              </p>
+            </article>
+            <article class="craft-step" data-r style="--d: 0.08s">
+              <span class="no">02</span>
+              <h3>De tomaat</h3>
+              <p>
+                Hele San Marzano-tomaten van de voet van de Vesuvius, met de hand
+                geplet. Geen suiker, geen concentraat — alleen zon en zout.
+              </p>
+            </article>
+            <article class="craft-step" data-r style="--d: 0.16s">
+              <span class="no">03</span>
+              <h3>De vlam</h3>
+              <p>
+                Beukenhout houdt de koepel op 480°C. De pizzaiolo draait elke
+                pizza in de oven, zodat de rand overal even mooi blakert.
+              </p>
+            </article>
+            <article class="craft-step" data-r style="--d: 0.24s">
+              <span class="no">04</span>
+              <h3>Het moment</h3>
+              <p>
+                Negentig seconden, niet meer. Direct op tafel, want een
+                Napolitaanse pizza wacht op niemand — ook niet op jou.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- bezoek / openingstijden -->
+      <section class="sec hours-sec" id="bezoek">
+        <div class="wrap">
+          <div data-r>
+            <span class="kicker">Quando &amp; dove</span>
+            <h2 style="font-family: var(--display); font-weight: 500; font-size: clamp(2rem, 4.6vw, 3.1rem); line-height: 1.04; letter-spacing: -0.015em; margin-top: 1rem">
+              Wanneer brandt de oven?
+            </h2>
+            <p style="margin-top: 1.1rem; color: var(--ink-2); max-width: 42ch">
+              We zijn een avondzaak; de oven moet eerst op temperatuur komen.
+              Loop gerust binnen voor een aperitivo aan de bar — voor een tafel
+              reserveren we het liefst even vooruit.
+            </p>
+            <table class="hours" id="hours">
+              <thead>
+                <tr>
+                  <th>Dag</th>
+                  <th style="text-align: right">Keuken open</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- door JS gevuld -->
+              </tbody>
+            </table>
+          </div>
+          <aside class="practical" data-r style="--d: 0.1s">
+            <p class="now-line" id="now-line" data-open="true">
+              <span class="lamp" aria-hidden="true"></span>
+              <span id="now-text">We zijn nu open.</span>
+            </p>
+            <p>
+              Een tafel voor een grote groep of een hele avond afhuren? Bel ons
+              even, dan regelen we het samen.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                </span>
+                <div><b>Adres</b><span>Hoge der A 12, 3511 GL Utrecht</span></div>
+              </li>
+              <li>
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
+                </span>
+                <div><b>Telefoon</b><a href="tel:+31302345678">030 — 234 56 78</a></div>
+              </li>
+              <li>
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></svg>
+                </span>
+                <div><b>E-mail</b><a href="mailto:ciao@fornovesuvio.nl">ciao@fornovesuvio.nl</a></div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- reserveren -->
+      <section class="sec resv" id="reserveren">
+        <div class="wrap">
+          <div class="resv-intro" data-r>
+            <span class="kicker">Prenotazione</span>
+            <h2>Schuif aan onze <em>tafel</em></h2>
+            <p>
+              Vul je gegevens in, dan bevestigen we je tafel per mail — meestal
+              binnen een paar uur. Voor groepen vanaf acht personen bel je ons
+              even, dan zetten we de grote tafel bij de oven voor je klaar.
+            </p>
+            <p class="phone">
+              Liever bellen? <a href="tel:+31302345678">030 — 234 56 78</a>
+            </p>
+          </div>
+
+          <form class="form" id="form" novalidate data-r style="--d: 0.1s">
+            <div class="form-body">
+              <div class="row">
+                <div class="field">
+                  <label for="r-naam">Naam</label>
+                  <input id="r-naam" name="naam" type="text" autocomplete="name" required />
+                  <span class="err">Vul je naam in.</span>
+                </div>
+                <div class="field">
+                  <label for="r-tel">Telefoon</label>
+                  <input id="r-tel" name="telefoon" type="tel" autocomplete="tel" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="r-email">E-mailadres</label>
+                <input id="r-email" name="email" type="email" autocomplete="email" required />
+                <span class="err">Vul een geldig e-mailadres in.</span>
+              </div>
+              <div class="row">
+                <div class="field">
+                  <label for="r-datum">Datum</label>
+                  <input id="r-datum" name="datum" type="date" required />
+                  <span class="err">Kies een datum.</span>
+                </div>
+                <div class="field">
+                  <label for="r-tijd">Tijd</label>
+                  <input id="r-tijd" name="tijd" type="time" value="19:00" required />
+                  <span class="err">Kies een tijd.</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="r-pers">Aantal personen</label>
+                <select id="r-pers" name="personen" required>
+                  <option value="2">2 personen</option>
+                  <option value="1">1 persoon</option>
+                  <option value="3">3 personen</option>
+                  <option value="4">4 personen</option>
+                  <option value="5">5 personen</option>
+                  <option value="6">6 personen</option>
+                  <option value="7">7 personen</option>
+                  <option value="8">8+ — bel ons even</option>
+                </select>
+                <span class="err">Maak een keuze.</span>
+              </div>
+              <div class="field full">
+                <label for="r-opm">Opmerking (allergie, gelegenheid, glutenvrij…)</label>
+                <textarea id="r-opm" name="opmerking" placeholder="Bijvoorbeeld: één glutenvrije bodem, of we vieren een verjaardag."></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">
+                Tafel reserveren
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </button>
+              <p class="note">We gebruiken je gegevens alleen voor deze reservering.</p>
+            </div>
+            <div class="ok" role="status">
+              <div class="ring" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+              </div>
+              <h3 id="ok-title">Tot snel bij Forno Vesuvio!</h3>
+              <p id="ok-text">
+                Bedankt — we hebben je aanvraag ontvangen en bevestigen je tafel
+                zo snel mogelijk per mail.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="wrap">
+        <div class="top">
+          <div>
+            <a class="brand" href="#top" aria-label="Forno Vesuvio home">
+              <span class="mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="9" cy="9.5" r="1.1" fill="currentColor" stroke="none" />
+                  <circle cx="14.5" cy="11" r="1.1" fill="currentColor" stroke="none" />
+                  <circle cx="10.5" cy="14.5" r="1.1" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+              <b>Forno <span>Vesuvio</span></b>
+            </a>
+            <p class="blurb">
+              Echte pizza napoletana uit de houtoven, aan de Hoge der A in
+              Utrecht. 48 uur deeg, San Marzano-tomaten en een vlam die nooit
+              uitgaat.
+            </p>
+            <div class="socials">
+              <a href="#top" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" /></svg>
+              </a>
+              <a href="#top" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
+              </a>
+              <a href="#top" aria-label="TripAdvisor">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="13" r="4" /><circle cx="17" cy="13" r="4" /><path d="M7 13h.01M17 13h.01M9 8c2-1 4-1 6 0M3 9l2-1M21 9l-2-1" /></svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4>Menu</h4>
+            <ul>
+              <li><a href="#kaart">Pizze</a></li>
+              <li><a href="#kaart">Antipasti</a></li>
+              <li><a href="#kaart">Dolci</a></li>
+              <li><a href="#kaart">Vino</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Bezoek</h4>
+            <ul>
+              <li><span>Hoge der A 12</span></li>
+              <li><span>3511 GL Utrecht</span></li>
+              <li><a href="tel:+31302345678">030 — 234 56 78</a></li>
+              <li><a href="mailto:ciao@fornovesuvio.nl">ciao@fornovesuvio.nl</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Meer</h4>
+            <ul>
+              <li><a href="#verhaal">Het verhaal</a></li>
+              <li><a href="#oven">De houtoven</a></li>
+              <li><a href="#reserveren">Reserveren</a></li>
+              <li><a href="#top">Cadeaubon</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom">
+          <span>&copy; <span id="jaar">2026</span> Forno Vesuvio — pizza napoletana · Utrecht</span>
+          <span>KvK 67234189 · Met liefde gebakken sinds 2014</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+        var doc = document;
+        var reduced = false;
+        try {
+          reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        } catch (e) {}
+
+        /* ---- openingstijden (minuten; >1440 = na middernacht) ---- */
+        var DAYS = [
+          "zondag",
+          "maandag",
+          "dinsdag",
+          "woensdag",
+          "donderdag",
+          "vrijdag",
+          "zaterdag",
+        ];
+        var SHORT = ["zo", "ma", "di", "wo", "do", "vr", "za"];
+        /* index = JS getDay() (0=zo) */
+        var HOURS = {
+          0: [16 * 60, 21 * 60 + 30], // zo 16:00–21:30
+          1: null, // ma gesloten
+          2: [17 * 60, 22 * 60], // di
+          3: [17 * 60, 22 * 60], // wo
+          4: [17 * 60, 22 * 60], // do
+          5: [17 * 60, 23 * 60], // vr 17:00–23:00
+          6: [16 * 60, 23 * 60], // za 16:00–23:00
+        };
+        function fmt(m) {
+          m = m % (24 * 60);
+          var h = Math.floor(m / 60),
+            mm = m % 60;
+          return ("0" + h).slice(-2) + ":" + ("0" + mm).slice(-2);
+        }
+        function nlNow() {
+          try {
+            var p = new Intl.DateTimeFormat("nl-NL", {
+              weekday: "short",
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false,
+              timeZone: "Europe/Amsterdam",
+            }).formatToParts(new Date());
+            var o = {};
+            p.forEach(function (x) {
+              o[x.type] = x.value;
+            });
+            var map = { zo: 0, ma: 1, di: 2, wo: 3, do: 4, vr: 5, za: 6 };
+            var key = (o.weekday || "").toLowerCase().slice(0, 2);
+            var day = map[key];
+            if (day === undefined) {
+              day = new Date().getDay();
+            }
+            return {
+              day: day,
+              min: parseInt(o.hour, 10) * 60 + parseInt(o.minute, 10),
+            };
+          } catch (e) {
+            var d = new Date();
+            return { day: d.getDay(), min: d.getHours() * 60 + d.getMinutes() };
+          }
+        }
+        function status() {
+          var n = nlNow(),
+            today = HOURS[n.day];
+          var yest = HOURS[(n.day + 6) % 7];
+          if (yest && yest[1] > 24 * 60 && n.min < yest[1] - 24 * 60) {
+            return { open: true, label: "Open tot " + fmt(yest[1]) };
+          }
+          if (today && n.min >= today[0] && n.min < today[1]) {
+            return { open: true, label: "Open tot " + fmt(today[1]) };
+          }
+          if (today && n.min < today[0]) {
+            return { open: false, label: "Vandaag open vanaf " + fmt(today[0]) };
+          }
+          for (var i = 1; i <= 7; i++) {
+            var d = (n.day + i) % 7;
+            if (HOURS[d]) {
+              return {
+                open: false,
+                label: "Open " + SHORT[d] + " vanaf " + fmt(HOURS[d][0]),
+              };
+            }
+          }
+          return { open: false, label: "Tijdelijk gesloten" };
+        }
+
+        var st = status();
+
+        /* briefhoofd-status */
+        var barStatus = doc.getElementById("bar-status");
+        var barText = doc.getElementById("bar-status-text");
+        if (barStatus) {
+          barStatus.setAttribute("data-open", st.open ? "true" : "false");
+        }
+        if (barText) {
+          barText.textContent = st.open ? st.label : st.label;
+        }
+
+        /* praktisch: nu open? */
+        var nowLine = doc.getElementById("now-line");
+        var nowText = doc.getElementById("now-text");
+        if (nowLine) {
+          nowLine.setAttribute("data-open", st.open ? "true" : "false");
+        }
+        if (nowText) {
+          nowText.textContent = st.open
+            ? "We zijn nu open — " + st.label.toLowerCase() + "."
+            : st.label + ".";
+        }
+
+        /* ---- urentabel ---- */
+        var tb = doc.querySelector("#hours tbody");
+        if (tb) {
+          var nn = nlNow();
+          var order = [1, 2, 3, 4, 5, 6, 0]; // ma..zo
+          order.forEach(function (d) {
+            var tr = doc.createElement("tr");
+            if (d === nn.day) {
+              tr.className = "today";
+            }
+            var h = HOURS[d];
+            tr.innerHTML =
+              '<td class="day">' +
+              DAYS[d].charAt(0).toUpperCase() +
+              DAYS[d].slice(1) +
+              "</td>" +
+              (h
+                ? '<td class="time">' + fmt(h[0]) + " – " + fmt(h[1]) + "</td>"
+                : '<td class="time closed">gesloten</td>');
+            tb.appendChild(tr);
+          });
+        }
+
+        /* ---- jaar ---- */
+        var jaar = doc.getElementById("jaar");
+        if (jaar) {
+          jaar.textContent = String(new Date().getFullYear());
+        }
+
+        /* ---- datum-input minimaal vandaag ---- */
+        var dEl = doc.getElementById("r-datum");
+        if (dEl) {
+          try {
+            var t = new Date();
+            var iso =
+              t.getFullYear() +
+              "-" +
+              ("0" + (t.getMonth() + 1)).slice(-2) +
+              "-" +
+              ("0" + t.getDate()).slice(-2);
+            dEl.min = iso;
+            dEl.value = iso;
+          } catch (e) {}
+        }
+
+        /* ---- nav: stuck + mobiel menu ---- */
+        var nav = doc.getElementById("nav");
+        var burger = doc.getElementById("burger");
+        var links = doc.getElementById("navlinks");
+        function setMenu(open) {
+          if (links) {
+            links.classList.toggle("open", open);
+          }
+          if (burger) {
+            burger.classList.toggle("open", open);
+            burger.setAttribute("aria-expanded", open ? "true" : "false");
+          }
+          doc.body.style.overflow = open ? "hidden" : "";
+        }
+        if (burger) {
+          burger.addEventListener("click", function () {
+            setMenu(!links.classList.contains("open"));
+          });
+        }
+        if (links) {
+          links.addEventListener("click", function (e) {
+            if (e.target.closest("a")) {
+              setMenu(false);
+            }
+          });
+        }
+        doc.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            setMenu(false);
+          }
+        });
+
+        /* ---- nav stuck on scroll ---- */
+        var ticking = false;
+        function onScroll() {
+          ticking = false;
+          var y = window.pageYOffset || 0;
+          if (nav) {
+            nav.classList.toggle("stuck", y > 8);
+          }
+        }
+        function tick() {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(onScroll);
+          }
+        }
+        window.addEventListener("scroll", tick, { passive: true });
+        window.addEventListener("resize", tick, { passive: true });
+        onScroll();
+
+        /* ---- menu-tabs ---- */
+        var tabs = Array.prototype.slice.call(
+          doc.querySelectorAll(".menu-tab")
+        );
+        function selectTab(tab) {
+          tabs.forEach(function (t) {
+            var on = t === tab;
+            t.setAttribute("aria-selected", on ? "true" : "false");
+            var panel = doc.getElementById(t.getAttribute("aria-controls"));
+            if (panel) {
+              panel.hidden = !on;
+            }
+          });
+        }
+        tabs.forEach(function (t, idx) {
+          t.addEventListener("click", function () {
+            selectTab(t);
+          });
+          t.addEventListener("keydown", function (e) {
+            var i = null;
+            if (e.key === "ArrowRight") {
+              i = (idx + 1) % tabs.length;
+            } else if (e.key === "ArrowLeft") {
+              i = (idx - 1 + tabs.length) % tabs.length;
+            }
+            if (i !== null) {
+              e.preventDefault();
+              tabs[i].focus();
+              selectTab(tabs[i]);
+            }
+          });
+        });
+
+        /* ---- reveal ---- */
+        if (!reduced && "IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (es) {
+              es.forEach(function (en) {
+                if (en.isIntersecting) {
+                  en.target.classList.add("in");
+                  io.unobserve(en.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+          );
+          Array.prototype.forEach.call(
+            doc.querySelectorAll("[data-r]"),
+            function (el) {
+              io.observe(el);
+            }
+          );
+        }
+
+        /* ---- reserveringsformulier ---- */
+        var form = doc.getElementById("form");
+        if (form) {
+          var bad = function (input, on) {
+            var f = input.closest(".field");
+            if (f) {
+              f.classList.toggle("bad", on);
+            }
+          };
+          var valid = function (input) {
+            var v = (input.value || "").trim(),
+              ok = true;
+            if (input.type === "email") {
+              ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+            } else if (input.hasAttribute("required")) {
+              ok = v.length > 0;
+            }
+            bad(input, !ok);
+            return ok;
+          };
+          var inputs = Array.prototype.slice.call(
+            form.querySelectorAll("input[required], select[required]")
+          );
+          inputs.forEach(function (i) {
+            i.addEventListener("blur", function () {
+              valid(i);
+            });
+            i.addEventListener("input", function () {
+              if (i.closest(".field").classList.contains("bad")) {
+                valid(i);
+              }
+            });
+          });
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var allOk = true,
+              first = null;
+            inputs.forEach(function (i) {
+              if (!valid(i)) {
+                allOk = false;
+                if (!first) {
+                  first = i;
+                }
+              }
+            });
+            if (!allOk) {
+              if (first) {
+                first.focus();
+              }
+              return;
+            }
+            var naam = (doc.getElementById("r-naam").value || "")
+              .trim()
+              .split(" ")[0];
+            var pers = doc.getElementById("r-pers");
+            var okt = doc.getElementById("ok-text");
+            if (okt) {
+              okt.textContent =
+                (naam ? naam + ", bedankt" : "Bedankt") +
+                " — we hebben je aanvraag voor " +
+                (pers
+                  ? pers.options[pers.selectedIndex].text.toLowerCase()
+                  : "") +
+                " ontvangen en bevestigen je tafel zo snel mogelijk per mail.";
+            }
+            form.classList.add("sent");
+            form.scrollIntoView({
+              behavior: reduced ? "auto" : "smooth",
+              block: "center",
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

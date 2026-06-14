@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIZIER — optiek &amp; brillenboutique · Rotterdam</title>
+<meta name="description" content="VIZIER is een design-gedreven brillenboutique in Rotterdam. Scherpe monturen, gepolariseerde zonnebrillen en een gratis oogmeting door erkende opticiens. Maak online een afspraak.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="VIZIER — optiek &amp; brillenboutique, Rotterdam">
+<meta property="og:description" content="Scherpe monturen, gepolariseerde zonnebrillen en een gratis oogmeting door erkende opticiens. Design-forward optiek in Rotterdam.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement; h.classList.remove('no-js'); h.classList.add('js');
+  })();
+</script>
+<style>
+/* ============================================================
+   VIZIER — optiek & brillenboutique, Rotterdam
+   Strak modern fashion-grafisch. Wit/zwart + kobalt-accent.
+   Handgemaakte one-pager. Geen libraries, alles inline.
+   ============================================================ */
+:root{
+  --paper:#f5f4f1;
+  --paper-2:#eceae4;
+  --white:#ffffff;
+  --ink:#0a0a0a;
+  --ink-2:#2a2a2a;
+  --ink-soft:rgba(10,10,10,.62);
+  --ink-faint:rgba(10,10,10,.42);
+  --line:rgba(10,10,10,.16);
+  --line-soft:rgba(10,10,10,.08);
+  --cobalt:#1d3fff;
+  --cobalt-deep:#1530c4;
+  --cobalt-wash:#e3e7ff;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Space Grotesk",system-ui,-apple-system,sans-serif;
+  --maxw:1280px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-weight:400;font-size:1.04rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--cobalt);color:#fff}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:.98}
+.kicker{font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.7rem;color:var(--cobalt-deep)}
+.kicker::before{content:"";width:30px;height:2px;background:var(--cobalt);display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.1rem;font-family:var(--display);font-weight:600;font-size:.84rem;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:700;font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;padding:.95rem 1.7rem;border:2px solid var(--ink);background:none;cursor:pointer;white-space:nowrap;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s,box-shadow .25s}
+.btn svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--cobalt);border-color:var(--cobalt);transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff;transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--cobalt)}
+.btn-cobalt{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+.btn-cobalt:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn-cobalt:hover svg{transform:translateX(3px)}
+
+/* ---------- ticker / topbar ---------- */
+.bar{background:var(--ink);color:#fff;font-size:.74rem;overflow:hidden}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:40px}
+.bar .left{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.bar .dot{width:8px;height:8px;background:var(--cobalt);display:inline-block;animation:blink 2.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.bar .right{display:inline-flex;align-items:center;gap:1.6rem;letter-spacing:.08em;text-transform:uppercase;font-family:var(--display);font-weight:600}
+.bar a{transition:color .2s}
+.bar a:hover{color:var(--cobalt)}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .tag{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(245,244,241,.88);backdrop-filter:saturate(1.4) blur(12px);border-bottom:2px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--ink)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:900;font-size:1.5rem;letter-spacing:.04em}
+.brand .mark{width:36px;height:36px;background:var(--ink);display:grid;place-items:center;flex:none}
+.brand .mark svg{width:24px;height:24px;color:#fff}
+.brand b span{color:var(--cobalt)}
+.nav-links{display:flex;align-items:center;gap:2.1rem}
+.nav-links a{font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);position:relative;padding-block:.35rem;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--cobalt);transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.7rem 1.25rem;font-size:.76rem}
+.burger{display:none;width:44px;height:44px;border:2px solid var(--ink);background:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:20px;height:2px;background:var(--ink);transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:1000px){
+  .nav-links{position:fixed;inset:0;background:var(--paper);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.35rem}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(2.5rem,6vw,4.5rem);padding-bottom:clamp(2rem,5vw,3.5rem)}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:940px){.hero .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(3rem,9.5vw,7.4rem);line-height:.9;letter-spacing:-.04em;margin-top:1.5rem;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--cobalt);display:block}
+.hero-intro{margin-top:1.7rem;font-size:clamp(1.06rem,1.5vw,1.24rem);color:var(--ink-2);max-width:44ch;line-height:1.62}
+.hero-actions{margin-top:2.1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-trust{margin-top:2.4rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-trust .ck{display:inline-flex;align-items:center;gap:.45rem}
+.hero-trust .ck svg{width:16px;height:16px;color:var(--cobalt-deep);flex:none}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;overflow:hidden;background:var(--paper-2);border:2px solid var(--ink)}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.6;object-fit:cover;filter:contrast(1.04)}
+.hero-figure .tag{position:absolute;top:-2px;left:-2px;background:var(--cobalt);color:#fff;font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:.5rem .9rem}
+.hero-figure .badge{position:absolute;right:-1.1rem;bottom:1.6rem;background:var(--ink);color:#fff;padding:1.1rem 1.3rem;max-width:230px;border:2px solid var(--ink)}
+.hero-figure .badge b{font-family:var(--display);font-weight:800;display:block;font-size:1.6rem;line-height:1;letter-spacing:-.02em}
+.hero-figure .badge b span{color:var(--cobalt)}
+.hero-figure .badge small{display:block;margin-top:.4rem;font-size:.76rem;color:rgba(255,255,255,.7);letter-spacing:.02em}
+@media (max-width:520px){.hero-figure .badge{right:.6rem;padding:.85rem .95rem}}
+
+/* ---------- marquee ---------- */
+.marquee{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);color:#fff;overflow:hidden;white-space:nowrap}
+.marquee .track{display:inline-flex;align-items:center;gap:2.4rem;padding-block:.85rem;animation:scroll 28s linear infinite;will-change:transform}
+.marquee span{font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:2.4rem}
+.marquee span::after{content:"";width:8px;height:8px;background:var(--cobalt);display:inline-block;transform:rotate(45deg)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee .track{animation:none}}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.6rem,8vw,6.5rem)}
+.sec-head{max-width:760px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1;letter-spacing:-.03em;margin-top:1.1rem;text-transform:uppercase}
+.sec-head p{margin-top:1.2rem;color:var(--ink-2);font-size:1.08rem;max-width:54ch}
+
+/* ---------- collectie ---------- */
+.coll-bar{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:clamp(2rem,4vw,2.8rem)}
+.filters{display:flex;gap:.6rem;flex-wrap:wrap}
+.filters button{font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:.6rem 1.1rem;border:2px solid var(--line);background:none;cursor:pointer;transition:border-color .25s,background-color .25s,color .25s}
+.filters button:hover{border-color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.coll-count{font-family:var(--display);font-weight:600;font-size:.82rem;color:var(--ink-soft);letter-spacing:.04em}
+.coll-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}
+@media (max-width:1000px){.coll-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){.coll-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:440px){.coll-grid{grid-template-columns:1fr}}
+.frame{border:2px solid var(--ink);background:var(--white);display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
+.frame:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--cobalt)}
+.frame.hide{display:none}
+.frame .img{position:relative;overflow:hidden;background:var(--paper-2);aspect-ratio:4/3}
+.frame .img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.frame:hover .img img{transform:scale(1.05)}
+.frame .cat{position:absolute;top:.6rem;left:.6rem;background:var(--white);border:1.5px solid var(--ink);font-family:var(--display);font-weight:700;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .55rem}
+.frame .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.25rem;border-top:2px solid var(--ink);flex:1}
+.frame .body .meta{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cobalt-deep)}
+.frame .body h3{font-family:var(--display);font-weight:800;font-size:1.18rem;letter-spacing:-.01em}
+.frame .body p{font-size:.86rem;color:var(--ink-soft);line-height:1.5}
+.frame .body .price{margin-top:auto;padding-top:.7rem;font-family:var(--display);font-weight:800;font-size:1.3rem;font-variant-numeric:tabular-nums}
+.frame .body .price small{font-family:var(--body);font-weight:400;font-size:.74rem;color:var(--ink-faint);letter-spacing:0;text-transform:none}
+.coll-empty{display:none;margin-top:1.8rem;padding:2rem;border:2px dashed var(--line);text-align:center;color:var(--ink-soft);font-family:var(--display);font-weight:600}
+.coll-empty.show{display:block}
+
+/* ---------- oogmeting / service ---------- */
+.service{background:var(--ink);color:#fff}
+.service .kicker{color:#8aa0ff}
+.service .kicker::before{background:#8aa0ff}
+.service .sec-head h2{color:#fff}
+.service .sec-head p{color:rgba(255,255,255,.74)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:clamp(2rem,4vw,3rem);border:2px solid rgba(255,255,255,.22)}
+@media (max-width:820px){.svc-grid{grid-template-columns:1fr}}
+.svc{padding:2.2rem 1.9rem;border-right:2px solid rgba(255,255,255,.22);transition:background-color .3s}
+.svc:last-child{border-right:0}
+@media (max-width:820px){.svc{border-right:0;border-bottom:2px solid rgba(255,255,255,.22)}.svc:last-child{border-bottom:0}}
+.svc:hover{background:rgba(29,63,255,.16)}
+.svc .ic{width:54px;height:54px;border:2px solid var(--cobalt);display:grid;place-items:center;margin-bottom:1.3rem}
+.svc .ic svg{width:26px;height:26px;color:#8aa0ff}
+.svc .no{font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.1em;color:#8aa0ff}
+.svc h3{font-family:var(--display);font-weight:800;font-size:1.4rem;margin-top:.4rem;letter-spacing:-.01em;text-transform:uppercase}
+.svc p{margin-top:.7rem;color:rgba(255,255,255,.72);font-size:.96rem}
+.svc ul{margin-top:1.1rem;display:grid;gap:.55rem}
+.svc li{display:flex;gap:.6rem;align-items:flex-start;font-size:.9rem;color:rgba(255,255,255,.82)}
+.svc li svg{width:16px;height:16px;color:#8aa0ff;flex:none;margin-top:.28rem}
+
+/* ---------- stappen ---------- */
+.steps{background:var(--cobalt);color:#fff}
+.steps .kicker{color:#fff}
+.steps .kicker::before{background:#fff}
+.steps .sec-head h2{color:#fff}
+.steps .sec-head p{color:rgba(255,255,255,.85)}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:clamp(2rem,4vw,3rem);counter-reset:step}
+@media (max-width:880px){.step-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.step-grid{grid-template-columns:1fr}}
+.step{background:#fff;color:var(--ink);border:2px solid var(--ink);padding:1.8rem 1.6rem;position:relative;transition:transform .3s var(--ease),box-shadow .3s}
+.step:hover{transform:translateY(-4px);box-shadow:6px 6px 0 var(--ink)}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--display);font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.04em;color:var(--cobalt);display:block;margin-bottom:1rem}
+.step h3{font-family:var(--display);font-weight:800;font-size:1.18rem;letter-spacing:-.01em;text-transform:uppercase}
+.step p{margin-top:.55rem;color:var(--ink-soft);font-size:.92rem}
+
+/* ---------- merken / editorial split ---------- */
+.brands .wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.brands .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.brands-fig{position:relative;border:2px solid var(--ink);overflow:hidden}
+.brands-fig img{width:100%;aspect-ratio:5/4;object-fit:cover;filter:contrast(1.04)}
+.brand-list{margin-top:1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink)}
+.brand-list li{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;padding:1rem 1.1rem;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transition:background-color .25s,color .25s}
+.brand-list li:nth-child(2n){border-right:0}
+.brand-list li:nth-last-child(-n+2){border-bottom:0}
+.brand-list li:hover{background:var(--cobalt);color:#fff}
+@media (max-width:480px){.brand-list{grid-template-columns:1fr}.brand-list li{border-right:0}}
+
+/* ---------- afspraak / contact ---------- */
+.contact .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:940px){.contact .wrap{grid-template-columns:1fr}}
+.contact-info h2{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1;margin-top:1.1rem;text-transform:uppercase}
+.contact-info p{margin-top:1.2rem;color:var(--ink-2);max-width:42ch}
+.contact-list{margin-top:2.2rem;display:grid;gap:0;border:2px solid var(--ink)}
+.contact-list li{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 1.3rem;border-bottom:2px solid var(--ink)}
+.contact-list li:last-child{border-bottom:0}
+.contact-list .ic{width:42px;height:42px;border:2px solid var(--ink);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:20px;height:20px;color:var(--cobalt-deep)}
+.contact-list b{font-family:var(--display);font-weight:700;display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.15rem}
+.contact-list a,.contact-list span{font-size:1rem}
+.contact-list a:hover{color:var(--cobalt-deep)}
+.form{background:var(--white);border:2px solid var(--ink);padding:clamp(1.6rem,3vw,2.4rem)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-family:var(--display);font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.45rem}
+.field input,.field select,.field textarea{width:100%;background:var(--paper);border:2px solid var(--line);padding:.78rem .9rem;font-size:.96rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:104px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--cobalt);background:#fff}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#d32f2f;background:#fdf3f2}
+.field .err{display:none;color:#c62828;font-size:.78rem;font-weight:600;margin-top:.35rem}
+.field.bad .err{display:block}
+.form .btn-primary{width:100%;justify-content:center;margin-top:.3rem}
+.form .note{margin-top:1rem;font-size:.78rem;color:var(--ink-faint);text-align:center}
+.form .ok{display:none;text-align:center;padding:1.4rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:66px;height:66px;background:var(--cobalt);display:grid;place-items:center;margin:0 auto 1.2rem}
+.form .ok .ring svg{width:34px;height:34px;color:#fff}
+.form .ok h3{font-family:var(--display);font-weight:800;font-size:1.5rem;text-transform:uppercase;letter-spacing:-.01em}
+.form .ok p{margin-top:.7rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--ink);color:rgba(255,255,255,.68);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:#fff;margin-bottom:1.1rem}
+.footer .brand .mark{background:var(--cobalt)}
+.footer .brand b span{color:var(--cobalt)}
+.footer .blurb{font-size:.92rem;max-width:36ch;color:rgba(255,255,255,.6)}
+.footer h4{font-family:var(--display);font-weight:700;color:#fff;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.92rem;transition:color .2s}
+.footer ul a:hover{color:var(--cobalt)}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.3rem}
+.footer .socials a{width:40px;height:40px;border:2px solid rgba(255,255,255,.22);display:grid;place-items:center;transition:background-color .25s,border-color .25s}
+.footer .socials a:hover{background:var(--cobalt);border-color:var(--cobalt)}
+.footer .socials svg{width:18px;height:18px;color:#fff}
+.footer .bottom{margin-top:2.8rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:rgba(255,255,255,.5)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .dot{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- topbar -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="dot" aria-hidden="true"></span> <span class="tag">Gratis oogmeting · zonder afspraak welkom</span></div>
+    <div class="right">
+      <a class="email" href="mailto:hallo@vizier-optiek.nl">hallo@vizier-optiek.nl</a>
+      <a href="tel:0102201540">010 220 15 40</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="VIZIER home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="13" r="4"/><circle cx="18" cy="13" r="4"/><path d="M10 11.5h4M2 11l2-2M22 11l-2-2"/></svg></span>
+      <b>VIZIER<span>.</span></b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#collectie">Collectie</a>
+      <a href="#oogmeting">Oogmeting</a>
+      <a href="#stappen">Zo werkt het</a>
+      <a href="#merken">Merken</a>
+      <a href="#afspraak">Afspraak</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary desk" href="#afspraak">Afspraak maken <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- hero -->
+<section class="hero" id="main">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r>Optiek &amp; brillenboutique · Rotterdam</span>
+      <h1 data-r style="--d:.05s">Zie scherp.<em>Sta scherp.</em></h1>
+      <p class="hero-intro" data-r style="--d:.12s">Een montuur is geen detail — het is je gezicht. Bij VIZIER combineren we een vakkundige oogmeting met monturen die durven. Strak, grafisch, en gemaakt om gezien te worden.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-primary" href="#afspraak">Plan een oogmeting <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#collectie">Bekijk de collectie</a>
+      </div>
+      <div class="hero-trust" data-r style="--d:.24s">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Erkende opticiens</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gratis oogmeting</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 2 jaar garantie</span>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <div class="photo">
+        <span class="tag">Najaar '26</span>
+        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=1100&q=72" alt="Modieus portret van een persoon met een opvallend bril­montuur" loading="eager" width="900" height="1035">
+      </div>
+      <div class="badge">
+        <b>4,9<span>/5</span></b>
+        <small>op basis van 680+ reviews over advies &amp; pasvorm</small>
+      </div>
+    </figure>
+  </div>
+</section>
+
+</main>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Monturen op sterkte</span><span>Gepolariseerde zonnebrillen</span><span>Gratis oogmeting</span><span>Blauwlichtfilter</span><span>Op maat geslepen</span><span>2 jaar garantie</span>
+    <span>Monturen op sterkte</span><span>Gepolariseerde zonnebrillen</span><span>Gratis oogmeting</span><span>Blauwlichtfilter</span><span>Op maat geslepen</span><span>2 jaar garantie</span>
+  </div>
+</div>
+
+<main>
+
+<!-- collectie -->
+<section class="sec" id="collectie">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">De collectie</span>
+      <h2>Monturen met karakter</h2>
+      <p>Van strakke rondingen tot scherpe hoeken. Filter op stijl en vind het montuur dat bij jouw gezicht past — alle prijzen inclusief standaardglazen op sterkte.</p>
+    </div>
+
+    <div class="coll-bar" data-r>
+      <div class="filters" id="filters" role="group" aria-label="Filter collectie op categorie">
+        <button type="button" data-filter="all" aria-pressed="true">Alles</button>
+        <button type="button" data-filter="rond" aria-pressed="false">Rond</button>
+        <button type="button" data-filter="hoekig" aria-pressed="false">Hoekig</button>
+        <button type="button" data-filter="zonnebril" aria-pressed="false">Zonnebril</button>
+        <button type="button" data-filter="kinderen" aria-pressed="false">Kinderen</button>
+      </div>
+      <span class="coll-count" id="collCount" aria-live="polite">8 monturen</span>
+    </div>
+
+    <div class="coll-grid" id="collGrid">
+      <article class="frame" data-cat="hoekig" data-r>
+        <div class="img"><span class="cat">Hoekig</span><img src="https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=600&q=72" alt="Zwart hoekig acetaat brilmontuur" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Acetaat · unisex</span><h3>Kade 04</h3><p>Strak rechthoekig montuur in diep mat zwart.</p><div class="price">€ 149 <small>incl. glazen</small></div></div>
+      </article>
+      <article class="frame" data-cat="rond" data-r style="--d:.06s">
+        <div class="img"><span class="cat">Rond</span><img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=600&q=72" alt="Rond metalen brilmontuur in goudtint" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Titanium · dames</span><h3>Maas 11</h3><p>Licht rond titaniummontuur, bijna gewichtloos.</p><div class="price">€ 189 <small>incl. glazen</small></div></div>
+      </article>
+      <article class="frame" data-cat="zonnebril" data-r style="--d:.12s">
+        <div class="img"><span class="cat">Zonnebril</span><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=72" alt="Zwarte zonnebril met getinte glazen" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Gepolariseerd · unisex</span><h3>Solar 02</h3><p>Gepolariseerde glazen, UV400 en op sterkte leverbaar.</p><div class="price">€ 169 <small>op sterkte +€60</small></div></div>
+      </article>
+      <article class="frame" data-cat="hoekig" data-r style="--d:.18s">
+        <div class="img"><span class="cat">Hoekig</span><img src="https://images.unsplash.com/photo-1633621533308-8760e96fbabe?auto=format&fit=crop&w=600&q=72" alt="Hoekig transparant brilmontuur" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Acetaat · heren</span><h3>Werf 07</h3><p>Markant hoekig montuur in helder kristal.</p><div class="price">€ 159 <small>incl. glazen</small></div></div>
+      </article>
+      <article class="frame" data-cat="rond" data-r>
+        <div class="img"><span class="cat">Rond</span><img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=600&q=72" alt="Persoon met rond schildpad brilmontuur" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Acetaat · unisex</span><h3>Kralingen 06</h3><p>Warm schildpadpatroon met een zachte ronding.</p><div class="price">€ 139 <small>incl. glazen</small></div></div>
+      </article>
+      <article class="frame" data-cat="zonnebril" data-r style="--d:.06s">
+        <div class="img"><span class="cat">Zonnebril</span><img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=600&q=72" alt="Klassieke zonnebril op een tafel" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Gepolariseerd · dames</span><h3>Solar 05</h3><p>Slank cat-eye silhouet met spiegelende glazen.</p><div class="price">€ 179 <small>op sterkte +€60</small></div></div>
+      </article>
+      <article class="frame" data-cat="kinderen" data-r style="--d:.12s">
+        <div class="img"><span class="cat">Kinderen</span><img src="https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&w=600&q=72" alt="Kleurrijk en flexibel kinderbrilmontuur" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Flexibel TR90 · kids</span><h3>Mini 01</h3><p>Onverwoestbaar, buigzaam en knalfris gekleurd.</p><div class="price">€ 89 <small>incl. glazen</small></div></div>
+      </article>
+      <article class="frame" data-cat="hoekig" data-r style="--d:.18s">
+        <div class="img"><span class="cat">Hoekig</span><img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&w=600&q=72" alt="Modern hoekig brilmontuur met dunne pootjes" loading="lazy" width="600" height="450"></div>
+        <div class="body"><span class="meta">Titanium · unisex</span><h3>Blaak 09</h3><p>Industrieel hoekig in geborsteld kobaltblauw.</p><div class="price">€ 199 <small>incl. glazen</small></div></div>
+      </article>
+    </div>
+    <div class="coll-empty" id="collEmpty">Geen monturen in deze categorie — bekijk gerust alles.</div>
+  </div>
+</section>
+
+<!-- oogmeting & service -->
+<section class="sec service" id="oogmeting">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Oogmeting &amp; service</span>
+      <h2>Begint bij een goede meting</h2>
+      <p>Een mooi montuur is niets waard zonder de juiste glazen. Onze erkende opticiens nemen ruim de tijd — en de oogmeting is altijd gratis.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc" data-r>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <span class="no">01</span>
+        <h3>Gratis oogmeting</h3>
+        <p>Een uitgebreide meting van scherpte, sterkte en oogdruk. Altijd gratis, ook als je nog niet zeker weet of je een bril nodig hebt.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ruim 30 minuten de tijd</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Digitale refractie</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Advies zonder verplichting</li>
+        </ul>
+      </article>
+      <article class="svc" data-r style="--d:.1s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div>
+        <span class="no">02</span>
+        <h3>Glazen op sterkte</h3>
+        <p>Enkelvoudig, multifocaal of met blauwlichtfilter. We slijpen elk glas precies op jouw montuur en pupilafstand.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Anti-reflex standaard</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Multifocaal &amp; blauwlicht</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Vaak klaar binnen een week</li>
+        </ul>
+      </article>
+      <article class="svc" data-r style="--d:.2s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <span class="no">03</span>
+        <h3>2 jaar garantie</h3>
+        <p>Op montuur én glazen. Verandert je sterkte binnen het jaar? Dan passen we de glazen kosteloos aan.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gratis nameting &amp; bijstellen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Levenslang afstellen gratis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tevredenheidsgarantie</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- stappen -->
+<section class="sec steps" id="stappen">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">Zo werkt het</span>
+      <h2>Kies jouw bril in vier stappen</h2>
+      <p>Van binnenlopen tot opzetten. Geen druk, geen gedoe — wel een montuur dat klopt.</p>
+    </div>
+    <div class="step-grid">
+      <article class="step" data-r>
+        <h3>Kom langs</h3>
+        <p>Loop binnen of plan online een afspraak. Een kop koffie staat klaar.</p>
+      </article>
+      <article class="step" data-r style="--d:.08s">
+        <h3>Meet je ogen</h3>
+        <p>Onze opticien meet je sterkte en bespreekt wat je nodig hebt.</p>
+      </article>
+      <article class="step" data-r style="--d:.16s">
+        <h3>Pas &amp; kies</h3>
+        <p>Pas net zoveel monturen als je wilt — wij geven eerlijk advies.</p>
+      </article>
+      <article class="step" data-r style="--d:.24s">
+        <h3>Klaar &amp; scherp</h3>
+        <p>Wij slijpen de glazen op maat. Meestal binnen een week scherp.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- merken -->
+<section class="sec brands" id="merken">
+  <div class="wrap">
+    <figure class="brands-fig" data-r>
+      <img src="https://images.unsplash.com/photo-1556015048-4d3aa10df74c?auto=format&fit=crop&w=1100&q=72" alt="Wand vol brilmonturen in een moderne optiekzaak" loading="lazy" width="900" height="720">
+    </figure>
+    <div class="brands-copy" data-r style="--d:.1s">
+      <span class="kicker">Merken &amp; makers</span>
+      <h2 style="font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,5vw,3.4rem);line-height:1;letter-spacing:-.03em;margin-top:1.1rem;text-transform:uppercase">Een selectie<br>met smaak</h2>
+      <p style="margin-top:1.2rem;color:var(--ink-2);max-width:44ch">We werken niet met alles. We kiezen merken die durven — onafhankelijke ontwerpers, eigenzinnige Europese ateliers en ons eigen huismerk VIZIER Studio.</p>
+      <ul class="brand-list">
+        <li>Vizier Studio</li>
+        <li>Atelier Noord</li>
+        <li>Form &amp; Frame</li>
+        <li>Kade Optics</li>
+        <li>Lijn 9</li>
+        <li>Mono Mono</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- afspraak / contact -->
+<section class="sec contact" id="afspraak">
+  <div class="wrap">
+    <div class="contact-info" data-r>
+      <span class="kicker">Afspraak &amp; bezoek</span>
+      <h2>Plan je oogmeting</h2>
+      <p>Vul het formulier in, dan bevestigen we je afspraak per mail — meestal binnen een paar uur. Liever bellen of zonder afspraak langskomen? Ook prima.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Boutique</b><span>Witte de Withstraat 48, 3012 BR Rotterdam</span></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:0102201540">010 220 15 40</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><b>Openingstijden</b><span>Di–za 09:30–18:00 · do tot 21:00 · zo/ma gesloten</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-email">E-mailadres</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+          <div class="field">
+            <label for="f-datum">Voorkeursdatum</label>
+            <input id="f-datum" name="datum" type="date">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-reden">Waar kunnen we mee helpen?</label>
+          <select id="f-reden" name="reden" required>
+            <option value="" selected disabled>Maak een keuze…</option>
+            <option>Gratis oogmeting</option>
+            <option>Nieuw montuur uitzoeken</option>
+            <option>Zonnebril op sterkte</option>
+            <option>Multifocale glazen</option>
+            <option>Kinderbril</option>
+            <option>Reparatie of bijstellen</option>
+            <option>Iets anders</option>
+          </select>
+          <span class="err">Maak een keuze.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Toelichting</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Vertel kort waar je naar op zoek bent…"></textarea>
+        </div>
+        <button class="btn btn-cobalt" type="submit">Afspraak aanvragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">Vrijblijvend · reactie binnen een paar uur · je gegevens blijven vertrouwelijk.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Tot snel bij VIZIER!</h3>
+        <p id="ok-text">We hebben je aanvraag ontvangen en bevestigen je afspraak zo snel mogelijk per mail.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="VIZIER home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="13" r="4"/><circle cx="18" cy="13" r="4"/><path d="M10 11.5h4M2 11l2-2M22 11l-2-2"/></svg></span>
+          <b>VIZIER<span>.</span></b>
+        </a>
+        <p class="blurb">Design-gedreven optiek &amp; brillenboutique in hartje Rotterdam. Scherp zien, scherp staan.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5.5h-3c-2.2 0-4 1.8-4 4V12H7v3.5h3V22h3.5v-6.5H16L17 12h-3.5V9.5c0-.3.2-.5.5-.5z"/></svg></a>
+          <a href="#top" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.8 1.5 1.8 1.8 0 3.1-1.9 3.1-4.6 0-2.4-1.7-4.1-4.2-4.1-2.9 0-4.6 2.1-4.6 4.4 0 .9.3 1.8.7 2.3l-.3 1.2c0 .2-.2.2-.3.1-1.1-.5-1.8-2.1-1.8-3.4 0-2.8 2-5.3 5.8-5.3 3.1 0 5.4 2.2 5.4 5.1 0 3.1-1.9 5.5-4.6 5.5-.9 0-1.7-.5-2-1l-.6 2.1c-.2.8-.7 1.7-1 2.3A10 10 0 1 0 12 2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Boutique</h4>
+        <ul>
+          <li><a href="#collectie">Collectie</a></li>
+          <li><a href="#merken">Merken</a></li>
+          <li><a href="#oogmeting">Zonnebrillen</a></li>
+          <li><a href="#oogmeting">Glazen op sterkte</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Service</h4>
+        <ul>
+          <li><a href="#oogmeting">Gratis oogmeting</a></li>
+          <li><a href="#stappen">Zo werkt het</a></li>
+          <li><a href="#oogmeting">Garantie</a></li>
+          <li><a href="#afspraak">Afspraak maken</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bezoek</h4>
+        <ul>
+          <li><span>Witte de Withstraat 48</span></li>
+          <li><span>3012 BR Rotterdam</span></li>
+          <li><a href="tel:0102201540">010 220 15 40</a></li>
+          <li><a href="mailto:hallo@vizier-optiek.nl">hallo@vizier-optiek.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; <span id="jaar">2026</span> VIZIER optiek — Rotterdam · KvK 71204488</span>
+      <span>Erkend opticiensbedrijf · alle prijzen incl. btw</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var doc = document;
+  var reduced = false;
+  try { reduced = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+
+  /* ---- jaar ---- */
+  var jaar = doc.getElementById("jaar");
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* ---- datum-input minimaal vandaag ---- */
+  var dEl = doc.getElementById("f-datum");
+  if (dEl) {
+    try {
+      var t = new Date();
+      var iso = t.getFullYear() + "-" +
+        ("0" + (t.getMonth() + 1)).slice(-2) + "-" +
+        ("0" + t.getDate()).slice(-2);
+      dEl.min = iso;
+    } catch (e) {}
+  }
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav = doc.getElementById("nav");
+  var burger = doc.getElementById("burger");
+  var links = doc.getElementById("navlinks");
+  function setMenu(open) {
+    if (links) { links.classList.toggle("open", open); }
+    if (burger) {
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    doc.body.style.overflow = open ? "hidden" : "";
+  }
+  if (burger) {
+    burger.addEventListener("click", function () {
+      setMenu(!links.classList.contains("open"));
+    });
+  }
+  if (links) {
+    links.addEventListener("click", function (e) {
+      if (e.target.closest("a")) { setMenu(false); }
+    });
+  }
+  doc.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { setMenu(false); }
+  });
+
+  /* ---- nav stuck op scroll ---- */
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (nav) { nav.classList.toggle("stuck", y > 8); }
+  }
+  function tick() {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }
+  window.addEventListener("scroll", tick, { passive: true });
+  onScroll();
+
+  /* ---- collectie filter ---- */
+  var filterWrap = doc.getElementById("filters");
+  var grid = doc.getElementById("collGrid");
+  var count = doc.getElementById("collCount");
+  var empty = doc.getElementById("collEmpty");
+  if (filterWrap && grid) {
+    var frames = Array.prototype.slice.call(grid.querySelectorAll(".frame"));
+    var btns = Array.prototype.slice.call(filterWrap.querySelectorAll("button"));
+    function applyFilter(cat) {
+      var shown = 0;
+      frames.forEach(function (f) {
+        var match = cat === "all" || f.getAttribute("data-cat") === cat;
+        f.classList.toggle("hide", !match);
+        if (match) { shown++; }
+      });
+      if (count) {
+        count.textContent = shown + (shown === 1 ? " montuur" : " monturen");
+      }
+      if (empty) { empty.classList.toggle("show", shown === 0); }
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        applyFilter(b.getAttribute("data-filter"));
+      });
+    });
+  }
+
+  /* ---- reveal ---- */
+  if (!reduced && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function (el) {
+      io.observe(el);
+    });
+  }
+
+  /* ---- afspraakformulier ---- */
+  var form = doc.getElementById("form");
+  if (form) {
+    function bad(input, on) {
+      var f = input.closest(".field");
+      if (f) { f.classList.toggle("bad", on); }
+    }
+    function valid(input) {
+      var v = (input.value || "").trim(), ok = true;
+      if (input.type === "email") {
+        ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      } else if (input.hasAttribute("required")) {
+        ok = v.length > 0;
+      }
+      bad(input, !ok);
+      return ok;
+    }
+    var inputs = Array.prototype.slice.call(
+      form.querySelectorAll("input[required], select[required]")
+    );
+    inputs.forEach(function (i) {
+      i.addEventListener("blur", function () { valid(i); });
+      i.addEventListener("input", function () {
+        if (i.closest(".field").classList.contains("bad")) { valid(i); }
+      });
+      i.addEventListener("change", function () {
+        if (i.closest(".field").classList.contains("bad")) { valid(i); }
+      });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function (i) {
+        if (!valid(i)) { allOk = false; if (!first) { first = i; } }
+      });
+      if (!allOk) {
+        if (first) { first.focus(); }
+        return;
+      }
+      var naam = (doc.getElementById("f-naam").value || "").trim().split(" ")[0];
+      var okt = doc.getElementById("ok-text");
+      if (okt && naam) {
+        okt.textContent = naam + ", bedankt! We hebben je aanvraag ontvangen en bevestigen je afspraak zo snel mogelijk per mail.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+    });
+  }
+})();
+</script>
+</body>
+</html>

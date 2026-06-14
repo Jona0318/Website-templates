@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Lichtbak — arthouse filmhuis &amp; filmcafé · Utrecht</title>
+<meta name="description" content="De Lichtbak is een onafhankelijk filmhuis in Utrecht: auteursfilms, klassiekers en documentaires op het grote doek, met een warm filmcafé in de foyer. Bekijk het programma en reserveer online.">
+<meta name="theme-color" content="#0e0d0c">
+<meta property="og:title" content="De Lichtbak — arthouse filmhuis &amp; filmcafé, Utrecht">
+<meta property="og:description" content="Auteursfilms, klassiekers en documentaires op het grote doek. Plus een warm filmcafé in de foyer.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;h.classList.remove('no-js');h.classList.add('js');})();</script>
+<style>
+/* ============================================================
+   DE LICHTBAK — arthouse filmhuis & filmcafé, Utrecht
+   Cinematisch poster-editorial. Handgemaakt, inline, geen libraries.
+   ============================================================ */
+:root{
+  --black:#0e0d0c;
+  --black-2:#161412;
+  --panel:#1c1916;
+  --panel-2:#23201c;
+  --line:rgba(243,236,224,.13);
+  --line-soft:rgba(243,236,224,.07);
+  --cream:#f3ece0;
+  --cream-2:#cfc6b6;
+  --cream-soft:rgba(243,236,224,.66);
+  --cream-faint:rgba(243,236,224,.42);
+  --gold:#f0a500;
+  --gold-deep:#c98700;
+  --gold-wash:rgba(240,165,0,.14);
+  --red:#c0362b;
+  --display:"Archivo Black","Arial Black",sans-serif;
+  --poster:"Bebas Neue","Arial Narrow",sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,sans-serif;
+  --mono:"Space Mono","Courier New",monospace;
+  --maxw:1240px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--black);color:var(--cream);
+  font-family:var(--body);font-weight:400;font-size:1.04rem;line-height:1.64;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;position:relative;
+}
+/* filmkorrel + vignet over de hele pagina */
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 120% at 50% 40%,transparent 52%,rgba(0,0,0,.55) 100%);
+  mix-blend-mode:multiply;
+}
+body::after{
+  content:"";position:fixed;inset:-50%;z-index:2;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--gold);color:var(--black)}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);position:relative;z-index:3}
+.mono{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+.kicker{font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem}
+.kicker::before{content:"";width:30px;height:1.5px;background:var(--gold);display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--gold);color:var(--black);padding:.7rem 1.1rem;font-family:var(--mono);font-size:.8rem;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.95rem 1.6rem;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s,box-shadow .25s}
+.btn svg{width:15px;height:15px;transition:transform .3s var(--ease)}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 16px 34px -18px rgba(240,165,0,.7)}
+.btn-gold:hover svg{transform:translateX(3px)}
+.btn-ghost{border-color:var(--line);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--cream);background:rgba(243,236,224,.05);transform:translateY(-2px)}
+
+/* ---------- ticker / letterhead ---------- */
+.bar{background:var(--black-2);border-bottom:1px solid var(--line);color:var(--cream-soft);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:40px}
+.bar .left{display:inline-flex;align-items:center;gap:.6rem}
+.bar .lamp{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(240,165,0,.6);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(240,165,0,.5)}70%{box-shadow:0 0 0 7px rgba(240,165,0,0)}100%{box-shadow:0 0 0 0 rgba(240,165,0,0)}}
+.bar .right{display:inline-flex;align-items:center;gap:1.4rem}
+.bar a{transition:color .2s}.bar a:hover{color:var(--gold)}
+@media (max-width:640px){.bar .right .hide-sm{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(14,13,12,.82);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 12px 34px -28px #000}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:inline-flex;align-items:center;gap:.65rem;font-family:var(--poster);font-size:1.95rem;letter-spacing:.04em;line-height:1}
+.brand .mark{width:36px;height:36px;border:1.5px solid var(--gold);display:grid;place-items:center;flex:none;position:relative}
+.brand .mark::before{content:"";position:absolute;inset:6px;border:1.5px solid var(--gold);border-radius:50%}
+.brand .mark span{width:7px;height:7px;border-radius:50%;background:var(--gold);position:relative;z-index:1}
+.brand b{font-weight:400}.brand b i{font-style:normal;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-soft);position:relative;padding-block:.35rem;transition:color .2s}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--gold);transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.7rem 1.2rem}
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);background:var(--panel);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:2px;background:var(--cream);transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:1000px){
+  .nav-links{position:fixed;inset:0;background:var(--black);flex-direction:column;justify-content:center;gap:1.7rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.25rem;letter-spacing:.18em}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.04) brightness(.5)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,13,12,.55),rgba(14,13,12,.78) 60%,var(--black)),linear-gradient(90deg,rgba(14,13,12,.7),transparent 70%)}
+.hero .wrap{position:relative;z-index:3;padding-top:clamp(3rem,8vw,6rem);padding-bottom:clamp(3rem,8vw,6rem);min-height:min(80vh,720px);display:flex;flex-direction:column;justify-content:center}
+.hero .now-playing{font-family:var(--mono);font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.5rem}
+.hero .now-playing .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-family:var(--display);font-size:clamp(3rem,11vw,8.5rem);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;max-width:16ch}
+.hero h1 .acc{color:var(--gold)}
+.hero-tag{margin-top:1.6rem;font-size:clamp(1.06rem,1.6vw,1.32rem);color:var(--cream-2);max-width:48ch;line-height:1.62}
+.hero-actions{margin-top:2.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-meta{margin-top:2.4rem;display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-soft)}
+.hero-meta .pipe{width:1px;height:14px;background:var(--line)}
+
+/* perforatie-strip (filmrand) */
+.perf{height:26px;background:var(--black-2);display:flex;align-items:center;gap:14px;padding-inline:18px;overflow:hidden;border-bottom:1px solid var(--line)}
+.perf span{flex:none;width:14px;height:11px;border-radius:2px;background:var(--black);border:1px solid var(--line)}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.8rem,8vw,7rem)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(2.2rem,4vw,3.4rem)}
+.sec-head .lead{max-width:680px}
+.sec-head h2{font-family:var(--display);font-size:clamp(1.9rem,5vw,3.4rem);line-height:.98;letter-spacing:-.01em;text-transform:uppercase;margin-top:.9rem}
+.sec-head .aside{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--cream-soft);max-width:30ch;text-align:right}
+@media (max-width:680px){.sec-head .aside{text-align:left;max-width:none}}
+
+/* ---------- programma / filter ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:clamp(2rem,4vw,2.8rem)}
+.filter{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.55rem 1rem;border:1.5px solid var(--line);background:transparent;color:var(--cream-soft);cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
+.filter:hover{color:var(--cream);border-color:var(--cream-faint)}
+.filter[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--black);font-weight:700}
+.films{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,1.8rem)}
+@media (max-width:920px){.films{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.films{grid-template-columns:1fr}}
+.film{background:var(--panel);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.film:hover{transform:translateY(-6px);box-shadow:0 34px 60px -38px #000;border-color:var(--gold-deep)}
+.film.hide{display:none}
+.film-poster{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--panel-2)}
+.film-poster img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) contrast(1.03);transition:transform .6s var(--ease),filter .4s}
+.film:hover .film-poster img{transform:scale(1.05);filter:grayscale(0) contrast(1.05)}
+.film-poster .genre{position:absolute;top:.8rem;left:.8rem;font-family:var(--mono);font-weight:700;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--gold);padding:.32rem .6rem;border:1px solid var(--gold-deep)}
+.film-poster .rt{position:absolute;bottom:.8rem;right:.8rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;background:rgba(14,13,12,.82);color:var(--cream);padding:.3rem .55rem}
+.film-body{padding:1.2rem 1.2rem 1.4rem;display:flex;flex-direction:column;flex:1}
+.film h3{font-family:var(--poster);font-size:1.7rem;letter-spacing:.02em;line-height:1;color:var(--cream)}
+.film .dir{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;color:var(--gold);margin-top:.45rem}
+.film .meta{margin-top:.4rem;font-size:.86rem;color:var(--cream-soft)}
+.film .times{margin-top:1.05rem;padding-top:1rem;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;gap:.45rem}
+.film .times .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--cream);border:1px solid var(--line);padding:.32rem .55rem;transition:border-color .2s,color .2s,background-color .2s}
+.film .times .t:hover{border-color:var(--gold);color:var(--gold)}
+.film .times .day{align-self:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-faint);margin-right:.2rem}
+.no-results{display:none;text-align:center;padding:3rem 1rem;font-family:var(--mono);color:var(--cream-soft);letter-spacing:.06em}
+.no-results.show{display:block}
+
+/* ---------- over / foyer ---------- */
+.foyer{background:var(--black-2);border-block:1px solid var(--line)}
+.foyer .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.foyer .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.foyer-text h2{font-family:var(--display);font-size:clamp(1.9rem,5vw,3.2rem);line-height:.98;text-transform:uppercase;letter-spacing:-.01em;margin-top:.9rem}
+.foyer-text p{margin-top:1.2rem;color:var(--cream-2);font-size:1.06rem;line-height:1.72;max-width:50ch}
+.foyer-text .pull{font-family:var(--poster);font-size:clamp(1.5rem,3.4vw,2.3rem);letter-spacing:.01em;line-height:1.12;color:var(--cream);margin:1.7rem 0;padding-left:1.2rem;border-left:2px solid var(--gold)}
+.foyer-text .sign{margin-top:1.4rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--cream-soft)}
+.foyer-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:.8rem}
+.foyer-gallery figure{position:relative;overflow:hidden;background:var(--panel)}
+.foyer-gallery figure:first-child{grid-column:1 / -1}
+.foyer-gallery img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) contrast(1.03);transition:transform .6s var(--ease),filter .4s}
+.foyer-gallery figure:hover img{transform:scale(1.04);filter:grayscale(0)}
+.foyer-gallery figure:first-child img{aspect-ratio:16/9}
+.foyer-gallery figure:not(:first-child) img{aspect-ratio:1/1}
+.foyer-gallery figcaption{position:absolute;left:0;bottom:0;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(14,13,12,.78);color:var(--cream);padding:.3rem .5rem}
+
+/* ---------- programma's / lidmaatschap ---------- */
+.progs .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media (max-width:880px){.progs .prog-grid{grid-template-columns:1fr}}
+.prog{position:relative;border:1px solid var(--line);background:var(--panel);padding:2rem 1.8rem;overflow:hidden;transition:transform .35s var(--ease),border-color .35s,background-color .35s}
+.prog::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-wash),transparent 60%);opacity:0;transition:opacity .35s}
+.prog:hover{transform:translateY(-5px);border-color:var(--gold-deep)}
+.prog:hover::after{opacity:1}
+.prog .ic{width:52px;height:52px;border:1.5px solid var(--gold);display:grid;place-items:center;margin-bottom:1.3rem;position:relative;z-index:1}
+.prog .ic svg{width:26px;height:26px;color:var(--gold)}
+.prog h3{font-family:var(--poster);font-size:1.65rem;letter-spacing:.02em;position:relative;z-index:1}
+.prog .tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);position:relative;z-index:1}
+.prog p{margin-top:.7rem;color:var(--cream-soft);font-size:.97rem;position:relative;z-index:1}
+
+/* ---------- praktisch: zalen / prijzen / tijden ---------- */
+.prak{background:var(--black-2);border-block:1px solid var(--line)}
+.prak-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(1.4rem,3vw,2.6rem)}
+@media (max-width:880px){.prak-grid{grid-template-columns:1fr;gap:2.6rem}}
+.prak-block h3{font-family:var(--mono);font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding-bottom:.8rem;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
+.prices li,.zalen li{display:flex;align-items:baseline;gap:.5rem;padding-block:.7rem;border-bottom:1px solid var(--line-soft)}
+.prices li .name,.zalen li .name{flex:1}
+.prices li .name b,.zalen li .name b{font-weight:600}
+.prices li .name small,.zalen li .name small{display:block;color:var(--cream-soft);font-size:.84rem}
+.prices li .val{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--gold)}
+.zalen li .val{font-family:var(--mono);font-size:.8rem;color:var(--cream-soft)}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding-block:.62rem;border-bottom:1px solid var(--line-soft);font-size:.96rem}
+.hours td.day{font-weight:600}
+.hours td.time{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--cream-soft)}
+.hours tr.today td{background:var(--panel)}
+.hours tr.today td.day{color:var(--gold)}
+.hours td.closed{color:var(--cream-faint);font-style:italic}
+
+/* ---------- contact / nieuwsbrief ---------- */
+.contact .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4.5rem)}
+@media (max-width:920px){.contact .wrap{grid-template-columns:1fr}}
+.contact-info h2{font-family:var(--display);font-size:clamp(1.9rem,5vw,3rem);line-height:.98;text-transform:uppercase;letter-spacing:-.01em;margin-top:.9rem}
+.contact-info p{margin-top:1.2rem;color:var(--cream-2);max-width:42ch}
+.contact-list{margin-top:2rem;display:grid;gap:1.2rem}
+.contact-list li{display:flex;gap:1rem;align-items:flex-start}
+.contact-list .ic{width:44px;height:44px;border:1px solid var(--line);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:20px;height:20px;color:var(--gold)}
+.contact-list b{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-soft);display:block;margin-bottom:.2rem}
+.contact-list a,.contact-list span{color:var(--cream)}
+.contact-list a:hover{color:var(--gold)}
+.form{background:var(--panel);border:1px solid var(--line);padding:clamp(1.6rem,3vw,2.4rem);position:relative}
+.form .ticket-edge{position:absolute;top:0;bottom:0;left:-1px;width:6px;background-image:radial-gradient(circle at 0 50%,transparent 0 4px,var(--line) 4px 5px);background-size:6px 16px;background-repeat:repeat-y;display:none}
+.form h3{font-family:var(--poster);font-size:1.8rem;letter-spacing:.02em;margin-bottom:.3rem}
+.form .sub{color:var(--cream-soft);font-size:.92rem;margin-bottom:1.5rem}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-soft);margin-bottom:.45rem}
+.field input,.field select,.field textarea{width:100%;background:var(--black-2);border:1.5px solid var(--line);color:var(--cream);padding:.78rem .9rem;font-size:.96rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:#100f0d}
+.field select option{color:#100f0d}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:var(--red);background:rgba(192,54,43,.08)}
+.field .err{display:none;color:#e08a80;font-size:.78rem;margin-top:.35rem;font-family:var(--mono);letter-spacing:.02em}
+.field.bad .err{display:block}
+.form .btn-gold{width:100%;justify-content:center;margin-top:.4rem}
+.form .note{margin-top:.9rem;font-size:.74rem;color:var(--cream-faint);text-align:center;font-family:var(--mono);letter-spacing:.04em}
+.form .ok{display:none;text-align:center;padding:1.6rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:64px;height:64px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 1.2rem}
+.form .ok .ring svg{width:30px;height:30px;color:var(--gold)}
+.form .ok h3{font-family:var(--poster);font-size:1.9rem}
+.form .ok p{margin-top:.6rem;color:var(--cream-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--black-2);border-top:1px solid var(--line);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{margin-bottom:1rem}
+.footer .blurb{font-size:.92rem;max-width:34ch;color:var(--cream-soft)}
+.footer h4{font-family:var(--mono);font-weight:700;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-faint);margin-bottom:1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.92rem;color:var(--cream-soft);transition:color .2s}
+.footer ul a:hover{color:var(--gold)}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.3rem}
+.footer .socials a{width:38px;height:38px;border:1px solid var(--line);display:grid;place-items:center;transition:background-color .25s,border-color .25s,color .25s;color:var(--cream)}
+.footer .socials a:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.footer .socials svg{width:18px;height:18px}
+.footer .bottom{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--cream-faint)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .lamp,.hero .now-playing .dot{animation:none}
+  .hero-bg img,.film-poster img,.foyer-gallery img{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- ticker -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="lamp" aria-hidden="true"></span> <span>Vandaag geopend — laatste voorstelling 22:15</span></div>
+    <div class="right">
+      <span class="hide-sm">Wittevrouwenstraat 9 · Utrecht</span>
+      <a href="tel:0302311900">030 231 19 00</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="De Lichtbak home">
+      <span class="mark" aria-hidden="true"><span></span></span>
+      <b>De&nbsp;<i>Lichtbak</i></b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#programma">Programma</a>
+      <a href="#foyer">Het filmhuis</a>
+      <a href="#programmas">Speciaal</a>
+      <a href="#praktisch">Praktisch</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-gold desk" href="#programma">Reserveren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- hero -->
+<section class="hero" aria-label="Welkom">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=72" alt="" loading="eager" width="1600" height="900">
+  </div>
+  <div class="wrap">
+    <span class="now-playing" data-r><span class="dot" aria-hidden="true"></span> Nu te zien · seizoen winter</span>
+    <h1 data-r style="--d:.05s">Film zoals<br>het <span class="acc">bedoeld</span> is.</h1>
+    <p class="hero-tag" data-r style="--d:.12s">Een onafhankelijk filmhuis in hartje Utrecht. Auteursfilms, vergeten klassiekers en eigenzinnige documentaires op het grote doek — gevolgd door een glas in onze foyer.</p>
+    <div class="hero-actions" data-r style="--d:.18s">
+      <a class="btn btn-gold" href="#programma">Bekijk het programma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#programmas">Word filmclublid</a>
+    </div>
+    <div class="hero-meta" data-r style="--d:.24s">
+      <span>3 zalen · 248 stoelen</span><span class="pipe" aria-hidden="true"></span>
+      <span>Sinds 1981</span><span class="pipe" aria-hidden="true"></span>
+      <span>35mm &amp; 4K projectie</span>
+    </div>
+  </div>
+</section>
+
+<div class="perf" aria-hidden="true"></div>
+
+<!-- programma -->
+<section class="sec" id="programma">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <div class="lead">
+        <span class="kicker">Nu te zien</span>
+        <h2>Het programma</h2>
+      </div>
+      <p class="aside">Wekelijks nieuw — selecteer een genre om te filteren.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter op genre" data-r>
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">Alles</button>
+      <button class="filter" type="button" data-filter="drama" aria-pressed="false">Drama</button>
+      <button class="filter" type="button" data-filter="klassieker" aria-pressed="false">Klassieker</button>
+      <button class="filter" type="button" data-filter="documentaire" aria-pressed="false">Documentaire</button>
+      <button class="filter" type="button" data-filter="wereldcinema" aria-pressed="false">Wereldcinema</button>
+    </div>
+
+    <div class="films" id="films">
+
+      <article class="film" data-genre="drama" data-r>
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=700&q=72" alt="Filmstill: silhouet in tegenlicht bij een raam" loading="lazy" width="700" height="933">
+          <span class="genre">Drama</span>
+          <span class="rt">112 min</span>
+        </div>
+        <div class="film-body">
+          <h3>Het Late Uur</h3>
+          <p class="dir">regie · Lieke Vermeer · 2024</p>
+          <p class="meta">NL · gesproken Nederlands · vanaf 12 jaar</p>
+          <div class="times"><span class="day">do–zo</span><span class="t">14:30</span><span class="t">19:15</span><span class="t">21:45</span></div>
+        </div>
+      </article>
+
+      <article class="film" data-genre="klassieker" data-r style="--d:.06s">
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=72" alt="Filmstill: oude projectorlamp in een donkere zaal" loading="lazy" width="700" height="933">
+          <span class="genre">Klassieker</span>
+          <span class="rt">119 min</span>
+        </div>
+        <div class="film-body">
+          <h3>La Notte</h3>
+          <p class="dir">regie · Michelangelo Antonioni · 1961</p>
+          <p class="meta">IT · Italiaans, NL ondertiteld · 35mm</p>
+          <div class="times"><span class="day">zo</span><span class="t">16:00</span><span class="day">di</span><span class="t">20:00</span></div>
+        </div>
+      </article>
+
+      <article class="film" data-genre="documentaire" data-r style="--d:.12s">
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=72" alt="Filmstill: weids landschap bij ochtendlicht" loading="lazy" width="700" height="933">
+          <span class="genre">Documentaire</span>
+          <span class="rt">96 min</span>
+        </div>
+        <div class="film-body">
+          <h3>Wachten op Regen</h3>
+          <p class="dir">regie · Samuel Okonkwo · 2023</p>
+          <p class="meta">KE/NL · Swahili, Engels · NL ondertiteld</p>
+          <div class="times"><span class="day">wo–vr</span><span class="t">17:30</span><span class="t">20:30</span></div>
+        </div>
+      </article>
+
+      <article class="film" data-genre="wereldcinema" data-r>
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=700&q=72" alt="Filmstill: neonverlichte straat 's nachts" loading="lazy" width="700" height="933">
+          <span class="genre">Wereldcinema</span>
+          <span class="rt">128 min</span>
+        </div>
+        <div class="film-body">
+          <h3>Nachttrein naar Busan</h3>
+          <p class="dir">regie · Park Hyun-woo · 2024</p>
+          <p class="meta">KR · Koreaans · NL ondertiteld · vanaf 16 jaar</p>
+          <div class="times"><span class="day">do–za</span><span class="t">18:45</span><span class="t">21:30</span></div>
+        </div>
+      </article>
+
+      <article class="film" data-genre="drama" data-r style="--d:.06s">
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&w=700&q=72" alt="Filmstill: twee figuren aan een tafel in zacht licht" loading="lazy" width="700" height="933">
+          <span class="genre">Drama</span>
+          <span class="rt">104 min</span>
+        </div>
+        <div class="film-body">
+          <h3>Zout &amp; As</h3>
+          <p class="dir">regie · Clara Bensoussan · 2024</p>
+          <p class="meta">FR/BE · Frans · NL ondertiteld</p>
+          <div class="times"><span class="day">vr–zo</span><span class="t">15:45</span><span class="t">19:00</span><span class="t">21:15</span></div>
+        </div>
+      </article>
+
+      <article class="film" data-genre="klassieker" data-r style="--d:.12s">
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=700&q=72" alt="Filmstill: filmrol en celluloid in close-up" loading="lazy" width="700" height="933">
+          <span class="genre">Klassieker</span>
+          <span class="rt">88 min</span>
+        </div>
+        <div class="film-body">
+          <h3>À bout de souffle</h3>
+          <p class="dir">regie · Jean-Luc Godard · 1960</p>
+          <p class="meta">FR · Frans · NL ondertiteld · restauratie 4K</p>
+          <div class="times"><span class="day">ma</span><span class="t">20:15</span><span class="day">do</span><span class="t">16:30</span></div>
+        </div>
+      </article>
+
+      <article class="film" data-genre="documentaire" data-r>
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1500099817043-86d46000d58f?auto=format&fit=crop&w=700&q=72" alt="Filmstill: handen van een ambachtsman aan het werk" loading="lazy" width="700" height="933">
+          <span class="genre">Documentaire</span>
+          <span class="rt">82 min</span>
+        </div>
+        <div class="film-body">
+          <h3>De Laatste Drukpers</h3>
+          <p class="dir">regie · Anneke de Boer · 2024</p>
+          <p class="meta">NL · Nederlands · alle leeftijden</p>
+          <div class="times"><span class="day">za–zo</span><span class="t">13:00</span><span class="t">17:00</span></div>
+        </div>
+      </article>
+
+      <article class="film" data-genre="wereldcinema" data-r style="--d:.06s">
+        <div class="film-poster">
+          <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=700&q=72" alt="Filmstill: rode bioscoopstoelen in een lege zaal" loading="lazy" width="700" height="933">
+          <span class="genre">Wereldcinema</span>
+          <span class="rt">141 min</span>
+        </div>
+        <div class="film-body">
+          <h3>Het Hart van de Steppe</h3>
+          <p class="dir">regie · Aizhan Tulegenova · 2023</p>
+          <p class="meta">KZ · Kazachs · NL ondertiteld</p>
+          <div class="times"><span class="day">di–wo</span><span class="t">19:30</span></div>
+        </div>
+      </article>
+
+    </div>
+    <p class="no-results" id="noResults">Geen films in dit genre deze week — kies een ander genre.</p>
+  </div>
+</section>
+
+<!-- foyer / het filmhuis -->
+<section class="sec foyer" id="foyer">
+  <div class="wrap">
+    <div class="foyer-text" data-r>
+      <span class="kicker">Het filmhuis</span>
+      <h2>Meer dan een<br>donkere zaal</h2>
+      <p>De Lichtbak begon in 1981 in een voormalig ketelhuis, met één projector, tweedehands stoelen en een onbedwingbare liefde voor film. Ruim veertig jaar later draaien we nog steeds wat de multiplex links laat liggen — en is de foyer uitgegroeid tot een van de fijnste filmcafés van de stad.</p>
+      <blockquote class="pull">“Een goede film verdient een goede nazit. Bij ons begint het gesprek pas als de aftiteling loopt.”</blockquote>
+      <p>Voor de voorstelling, in de pauze of lang na de laatste scène: in onze foyer schenken we natuurwijn, lokaal bier en sterke koffie, met een korte kaart van kleine gerechten. Op zondagochtend draaien we klassiekers met verse croissants.</p>
+      <p class="sign">— Het team van De Lichtbak</p>
+    </div>
+    <div class="foyer-gallery" data-r style="--d:.1s">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=72" alt="De grote zaal van het filmhuis met rijen stoelen" loading="lazy" width="900" height="506">
+        <figcaption>Zaal 1 — 142 stoelen</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=72" alt="Sfeervol filmcafé met warm licht en planten" loading="lazy" width="600" height="600">
+        <figcaption>De foyer</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=600&q=72" alt="Rode bioscoopstoelen van dichtbij" loading="lazy" width="600" height="600">
+        <figcaption>Zaal 2 — pluche</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- speciale programma's -->
+<section class="sec progs" id="programmas">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <div class="lead">
+        <span class="kicker">Speciaal programma</span>
+        <h2>Voor wie verder kijkt</h2>
+      </div>
+      <p class="aside">Lidmaatschap, festivals en premières — het hele jaar door.</p>
+    </div>
+    <div class="prog-grid">
+      <article class="prog" data-r>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M7 5v14M17 5v14M2.5 9h4.5M17 9h4.5M2.5 15h4.5M17 15h4.5"/></svg></div>
+        <span class="tag">Lidmaatschap</span>
+        <h3>De Filmclub</h3>
+        <p>Word lid en kijk het hele jaar voor €6,50 per film, met voorrang bij premières, een gratis welkomstdrankje en onze maandelijkse clubavond met nagesprek.</p>
+      </article>
+      <article class="prog" data-r style="--d:.1s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h9l5 5v13"/><path d="M9 21v-6h6v6M14 3v5h5"/></svg></div>
+        <span class="tag">Jaarlijks festival</span>
+        <h3>Nacht van de Korte Film</h3>
+        <p>Eén nacht, twaalf kortfilms, doorlopend programma tot zonsopgang. Met makers in de zaal, soep om middernacht en een publieksprijs. Eind november.</p>
+      </article>
+      <article class="prog" data-r style="--d:.2s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.4 6.9H21l-5.3 4.1 2 6.9L12 16l-5.7 3.9 2-6.9L3 8.9h6.6z"/></svg></div>
+        <span class="tag">Première &amp; ontmoeting</span>
+        <h3>Regisseur te gast</h3>
+        <p>Bij geselecteerde premières strijken makers neer in onze foyer voor een nagesprek onder leiding van een gastcurator. Houd het programma in de gaten.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- praktisch -->
+<section class="sec prak" id="praktisch">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <div class="lead">
+        <span class="kicker">Praktisch</span>
+        <h2>Goed om te weten</h2>
+      </div>
+      <p class="aside">Zalen, prijzen en openingstijden op een rij.</p>
+    </div>
+    <div class="prak-grid">
+      <div class="prak-block" data-r>
+        <h3>De zalen</h3>
+        <ul class="zalen">
+          <li><span class="name"><b>Zaal 1 — De Lamp</b><small>4K laser &amp; Dolby 7.1</small></span><span class="val">142 st.</span></li>
+          <li><span class="name"><b>Zaal 2 — Het Pluche</b><small>35mm &amp; 4K, pluche stoelen</small></span><span class="val">68 st.</span></li>
+          <li><span class="name"><b>Zaal 3 — De Studio</b><small>intiem, voor debuut &amp; kort</small></span><span class="val">38 st.</span></li>
+          <li><span class="name"><b>Toegankelijk</b><small>ringleiding &amp; rolstoelplekken</small></span><span class="val">alle zalen</span></li>
+        </ul>
+      </div>
+      <div class="prak-block" data-r style="--d:.1s">
+        <h3>Prijzen</h3>
+        <ul class="prices">
+          <li><span class="name"><b>Regulier</b></span><span class="val">€ 11,50</span></li>
+          <li><span class="name"><b>Studenten &amp; 65+</b><small>op vertoon van pas</small></span><span class="val">€ 9,50</span></li>
+          <li><span class="name"><b>Filmclublid</b><small>per voorstelling</small></span><span class="val">€ 6,50</span></li>
+          <li><span class="name"><b>Matinee vóór 17:00</b></span><span class="val">€ 8,50</span></li>
+          <li><span class="name"><b>Jeugd t/m 12 jr</b></span><span class="val">€ 7,00</span></li>
+        </ul>
+      </div>
+      <div class="prak-block" data-r style="--d:.2s">
+        <h3>Openingstijden</h3>
+        <table class="hours" id="hours" aria-label="Openingstijden filmhuis">
+          <tbody><!-- door JS gevuld --></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- contact / nieuwsbrief -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info" data-r>
+      <span class="kicker">Contact &amp; nieuwsbrief</span>
+      <h2>Mis geen<br>voorstelling</h2>
+      <p>Reserveer een plek, stel je vraag of laat je je e-mailadres achter voor het weekprogramma. Elke donderdag in je inbox — nooit vaker.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Adres</b><span>Wittevrouwenstraat 9, 3512 CT Utrecht</span></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:0302311900">030 231 19 00</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:kassa@delichtbak.nl">kassa@delichtbak.nl</a></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <span class="ticket-edge" aria-hidden="true"></span>
+      <div class="form-body">
+        <h3>Reserveer of blijf op de hoogte</h3>
+        <p class="sub">Vul je gegevens in — we bevestigen per mail.</p>
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-email">E-mailadres</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-film">Voorstelling</label>
+            <select id="f-film" name="film">
+              <option value="" selected disabled>Kies een film…</option>
+              <option>Het Late Uur</option>
+              <option>La Notte</option>
+              <option>Wachten op Regen</option>
+              <option>Nachttrein naar Busan</option>
+              <option>Zout &amp; As</option>
+              <option>Anders / alleen nieuwsbrief</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-aantal">Aantal kaarten</label>
+            <select id="f-aantal" name="aantal">
+              <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Opmerking (optioneel)</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Voorkeur voor een tijdstip, toegankelijkheid, of een vraag…"></textarea>
+        </div>
+        <button class="btn btn-gold" type="submit">Verstuur reservering <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">We gebruiken je gegevens alleen voor deze reservering en de nieuwsbrief.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Tot in het donker!</h3>
+        <p id="ok-text">We hebben je aanvraag ontvangen en bevestigen je plek zo snel mogelijk per mail.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="De Lichtbak home">
+          <span class="mark" aria-hidden="true"><span></span></span>
+          <b>De&nbsp;<i>Lichtbak</i></b>
+        </a>
+        <p class="blurb">Onafhankelijk arthouse filmhuis &amp; filmcafé in hartje Utrecht. Auteursfilms, klassiekers en documentaires sinds 1981.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#top" aria-label="Letterboxd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="12" cy="12" r="3"/><circle cx="18" cy="12" r="3"/></svg></a>
+          <a href="#top" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Bezoek</h4>
+        <ul>
+          <li><a href="#programma">Programma</a></li>
+          <li><a href="#praktisch">Prijzen</a></li>
+          <li><a href="#praktisch">Openingstijden</a></li>
+          <li><a href="#contact">Reserveren</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Het filmhuis</h4>
+        <ul>
+          <li><a href="#foyer">Over ons</a></li>
+          <li><a href="#programmas">De Filmclub</a></li>
+          <li><a href="#programmas">Festivals</a></li>
+          <li><a href="#foyer">De foyer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><span>Wittevrouwenstraat 9</span></li>
+          <li><span>3512 CT Utrecht</span></li>
+          <li><a href="tel:0302311900">030 231 19 00</a></li>
+          <li><a href="mailto:kassa@delichtbak.nl">kassa@delichtbak.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; <span id="jaar">2026</span> De Lichtbak — filmhuis &amp; filmcafé</span>
+      <span>Gesteund door vrienden van het filmhuis · KvK 30148822</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var doc=document;
+  var reduced=false;
+  try{reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+
+  /* ---- jaartal ---- */
+  var jaar=doc.getElementById("jaar");
+  if(jaar){jaar.textContent=String(new Date().getFullYear());}
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav=doc.getElementById("nav");
+  var burger=doc.getElementById("burger");
+  var links=doc.getElementById("navlinks");
+  function setMenu(open){
+    if(links){links.classList.toggle("open",open);}
+    if(burger){
+      burger.classList.toggle("open",open);
+      burger.setAttribute("aria-expanded",open?"true":"false");
+    }
+    doc.body.style.overflow=open?"hidden":"";
+  }
+  if(burger){
+    burger.addEventListener("click",function(){
+      setMenu(!links.classList.contains("open"));
+    });
+  }
+  if(links){
+    links.addEventListener("click",function(e){
+      if(e.target.closest("a")){setMenu(false);}
+    });
+  }
+  doc.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){setMenu(false);}
+  });
+
+  /* ---- scroll: nav stuck (één listener via rAF) ---- */
+  var ticking=false;
+  function onScroll(){
+    ticking=false;
+    var y=window.pageYOffset||0;
+    if(nav){nav.classList.toggle("stuck",y>8);}
+  }
+  function tick(){
+    if(!ticking){ticking=true;requestAnimationFrame(onScroll);}
+  }
+  window.addEventListener("scroll",tick,{passive:true});
+  onScroll();
+
+  /* ---- reveal on scroll ---- */
+  if(!reduced&&"IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"),function(el){io.observe(el);});
+  }
+
+  /* ---- programma filter ---- */
+  var filterBtns=Array.prototype.slice.call(doc.querySelectorAll(".filter"));
+  var films=Array.prototype.slice.call(doc.querySelectorAll("#films .film"));
+  var noRes=doc.getElementById("noResults");
+  function applyFilter(genre){
+    var shown=0;
+    films.forEach(function(f){
+      var match=(genre==="all"||f.getAttribute("data-genre")===genre);
+      f.classList.toggle("hide",!match);
+      if(match){shown++;}
+    });
+    if(noRes){noRes.classList.toggle("show",shown===0);}
+  }
+  filterBtns.forEach(function(b){
+    b.addEventListener("click",function(){
+      filterBtns.forEach(function(o){o.setAttribute("aria-pressed","false");});
+      b.setAttribute("aria-pressed","true");
+      applyFilter(b.getAttribute("data-filter"));
+    });
+  });
+
+  /* ---- openingstijden tabel ---- */
+  var DAYS=["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"];
+  /* index = getDay() (0=zo); waarden zijn weergavetekst */
+  var HOURS={
+    0:"13:00 – 22:30",
+    1:null,
+    2:"15:00 – 23:00",
+    3:"15:00 – 23:00",
+    4:"15:00 – 23:30",
+    5:"14:00 – 00:30",
+    6:"13:00 – 00:30"
+  };
+  function nlDay(){
+    try{
+      var p=new Intl.DateTimeFormat("nl-NL",{weekday:"short",timeZone:"Europe/Amsterdam"}).formatToParts(new Date());
+      var wd="";
+      p.forEach(function(x){if(x.type==="weekday"){wd=x.value;}});
+      var map={zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6};
+      var key=wd.toLowerCase().slice(0,2);
+      if(map[key]!==undefined){return map[key];}
+    }catch(e){}
+    return new Date().getDay();
+  }
+  var tb=doc.querySelector("#hours tbody");
+  if(tb){
+    var today=nlDay();
+    var order=[1,2,3,4,5,6,0]; // ma..zo
+    order.forEach(function(d){
+      var tr=doc.createElement("tr");
+      if(d===today){tr.className="today";}
+      var h=HOURS[d];
+      tr.innerHTML='<td class="day">'+DAYS[d]+'</td>'+
+        (h?'<td class="time">'+h+'</td>':'<td class="time closed">gesloten</td>');
+      tb.appendChild(tr);
+    });
+  }
+
+  /* ---- reserveer / nieuwsbrief formulier ---- */
+  var form=doc.getElementById("form");
+  if(form){
+    var setBad=function(input,on){
+      var f=input.closest(".field");
+      if(f){f.classList.toggle("bad",on);}
+    };
+    var valid=function(input){
+      var v=(input.value||"").trim(),ok=true;
+      if(input.type==="email"){
+        ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      }else if(input.hasAttribute("required")){
+        ok=v.length>0;
+      }
+      setBad(input,!ok);
+      return ok;
+    };
+    var inputs=Array.prototype.slice.call(form.querySelectorAll("input[required]"));
+    inputs.forEach(function(i){
+      i.addEventListener("blur",function(){valid(i);});
+      i.addEventListener("input",function(){
+        if(i.closest(".field").classList.contains("bad")){valid(i);}
+      });
+    });
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      var allOk=true,first=null;
+      inputs.forEach(function(i){
+        if(!valid(i)){allOk=false;if(!first){first=i;}}
+      });
+      if(!allOk){if(first){first.focus();}return;}
+      var naam=(doc.getElementById("f-naam").value||"").trim().split(" ")[0];
+      var filmSel=doc.getElementById("f-film");
+      var film=filmSel&&filmSel.value?filmSel.value:"";
+      var okt=doc.getElementById("ok-text");
+      if(okt){
+        okt.textContent=(naam?naam+", bedankt":"Bedankt")+" — "+
+          (film&&film.indexOf("nieuwsbrief")===-1
+            ? "we hebben je reservering voor “"+film+"” ontvangen en bevestigen je plek per mail."
+            : "je staat op de lijst voor het weekprogramma. Tot in het donker.");
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({behavior:reduced?"auto":"smooth",block:"center"});
+    });
+  }
+
+  /* ---- perforatie-strip vullen ---- */
+  var perf=doc.querySelector(".perf");
+  if(perf){
+    var n=Math.min(60,Math.ceil(window.innerWidth/30));
+    var html="";
+    for(var i=0;i<n;i++){html+="<span></span>";}
+    perf.innerHTML=html;
+  }
+})();
+</script>
+</body>
+</html>
