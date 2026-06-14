@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cantorclin — een frisse kijk op schoonmaak</title>
+<meta name="description" content="Cantorclin is een landelijk schoonmaakbedrijf met ruim 65 jaar vakmanschap. Dagelijks onderhoud, glasbewassing, vloeronderhoud en specialistische reiniging — betrouwbaar, duurzaam en aantoonbaar. Vraag vrijblijvend een offerte aan.">
+<meta name="theme-color" content="#f4f7f6">
+<meta property="og:title" content="Cantorclin — een frisse kijk op schoonmaak">
+<meta property="og:description" content="Landelijk schoonmaakbedrijf met ruim 65 jaar vakmanschap. Betrouwbaar, trots en betrokken.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement; h.classList.remove('no-js'); h.classList.add('js');
+  })();
+</script>
+<style>
+/* ============================================================
+   CANTORCLIN — een frisse kijk op schoonmaak
+   Herontworpen one-pager. Handgemaakt, inline, geen libraries.
+   ============================================================ */
+:root{
+  --bg:#f4f7f6;
+  --bg-2:#eaf1ef;
+  --surface:#ffffff;
+  --ink:#0e2230;
+  --ink-2:#3a4f5b;
+  --ink-soft:rgba(14,34,48,.64);
+  --ink-faint:rgba(14,34,48,.42);
+  --line:rgba(14,34,48,.12);
+  --line-soft:rgba(14,34,48,.07);
+  --aqua:#0bb89e;
+  --aqua-deep:#067a66;
+  --aqua-wash:#dcf1ec;
+  --sky:#2e9bd6;
+  --display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"Inter",system-ui,-apple-system,sans-serif;
+  --maxw:1200px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --radius:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-weight:400;font-size:1.04rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--aqua);color:#fff}
+:focus-visible{outline:2.5px solid var(--aqua-deep);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.04}
+.kicker{font-family:var(--display);font-weight:600;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--aqua-deep);display:inline-flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:26px;height:1.5px;background:var(--aqua);display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:#fff;padding:.7rem 1.1rem;border-radius:8px;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:600;font-size:.92rem;padding:.85rem 1.5rem;border-radius:999px;border:1.5px solid transparent;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s,box-shadow .25s;cursor:pointer;white-space:nowrap}
+.btn svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--aqua-deep);transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(6,122,102,.7)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(0,0,0,.4)}
+
+/* ---------- letterhead ---------- */
+.bar{background:var(--ink);color:rgba(255,255,255,.86);font-size:.78rem}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:40px}
+.bar .left{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:500;letter-spacing:.04em}
+.bar .dot{width:7px;height:7px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 0 rgba(11,184,158,.55);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(11,184,158,.5)}70%{box-shadow:0 0 0 7px rgba(11,184,158,0)}100%{box-shadow:0 0 0 0 rgba(11,184,158,0)}}
+.bar .right{display:inline-flex;align-items:center;gap:1.6rem}
+.bar a{transition:color .2s}
+.bar a:hover{color:#fff}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .sep{display:none}.bar .left span.tag{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(244,247,246,.86);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 10px 30px -26px rgba(14,34,48,.6)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:-.02em}
+.brand .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--aqua),var(--sky));display:grid;place-items:center;flex:none}
+.brand .mark svg{width:20px;height:20px;color:#fff}
+.brand b{font-weight:800}.brand b span{color:var(--aqua-deep)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--display);font-weight:500;font-size:.92rem;color:var(--ink-2);position:relative;padding-block:.3rem;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--aqua);border-radius:2px;transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.65rem 1.25rem;font-size:.88rem}
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:var(--surface);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:980px){
+  .nav-links{position:fixed;inset:0;background:var(--bg);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.3rem}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(2.5rem,6vw,4.5rem);padding-bottom:clamp(2.5rem,6vw,4rem)}
+.hero::before{content:"";position:absolute;top:-12%;right:-8%;width:46vw;height:46vw;max-width:640px;max-height:640px;background:radial-gradient(circle at 30% 30%,rgba(11,184,158,.18),transparent 62%);filter:blur(6px);z-index:-1;pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:1.02;letter-spacing:-.03em;margin-top:1.4rem}
+.hero h1 em{font-style:normal;color:var(--aqua-deep);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.14em;background:var(--aqua);opacity:.35;border-radius:3px}
+.hero-intro{margin-top:1.5rem;font-size:clamp(1.06rem,1.5vw,1.22rem);color:var(--ink-2);max-width:46ch;line-height:1.66}
+.hero-actions{margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-trust{margin-top:2.2rem;display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;font-size:.86rem;color:var(--ink-soft)}
+.hero-trust .ck{display:inline-flex;align-items:center;gap:.5rem;font-weight:500}
+.hero-trust .ck svg{width:17px;height:17px;color:var(--aqua-deep);flex:none}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-2);box-shadow:0 40px 80px -50px rgba(14,34,48,.65)}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.4;object-fit:cover}
+.hero-figure .badge{position:absolute;left:-1.2rem;bottom:1.6rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1rem 1.2rem;box-shadow:0 24px 50px -34px rgba(14,34,48,.55);display:flex;align-items:center;gap:.85rem;max-width:230px}
+.hero-figure .badge .ring{width:46px;height:46px;border-radius:50%;background:var(--aqua-wash);display:grid;place-items:center;flex:none}
+.hero-figure .badge .ring svg{width:22px;height:22px;color:var(--aqua-deep)}
+.hero-figure .badge b{font-family:var(--display);font-weight:700;display:block;font-size:1.04rem;line-height:1.15}
+.hero-figure .badge small{color:var(--ink-soft);font-size:.8rem}
+@media (max-width:520px){.hero-figure .badge{left:.6rem;padding:.8rem .9rem}}
+
+/* ---------- stats ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:clamp(2rem,4vw,2.8rem)}
+@media (max-width:760px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:1.8rem 1rem}}
+.stat{text-align:center}
+.stat .num{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,4.4vw,3rem);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.stat .num span{color:var(--aqua-deep)}
+.stat .lab{margin-top:.5rem;font-size:.84rem;color:var(--ink-soft);letter-spacing:.02em}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.8rem,8vw,7rem)}
+.sec-head{max-width:680px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.06;letter-spacing:-.025em;margin-top:1rem}
+.sec-head p{margin-top:1.1rem;color:var(--ink-2);font-size:1.08rem}
+
+/* ---------- values ---------- */
+.values{background:var(--bg-2)}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:860px){.value-grid{grid-template-columns:1fr}}
+.value{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:2rem 1.8rem;transition:transform .35s var(--ease),box-shadow .35s}
+.value:hover{transform:translateY(-5px);box-shadow:0 30px 60px -42px rgba(14,34,48,.5)}
+.value .ic{width:52px;height:52px;border-radius:14px;background:var(--aqua-wash);display:grid;place-items:center;margin-bottom:1.2rem}
+.value .ic svg{width:26px;height:26px;color:var(--aqua-deep)}
+.value h3{font-family:var(--display);font-weight:700;font-size:1.28rem;letter-spacing:-.01em}
+.value p{margin-top:.6rem;color:var(--ink-soft);font-size:.98rem}
+
+/* ---------- diensten ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:760px){.svc-grid{grid-template-columns:1fr}}
+.svc{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;background:var(--surface);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.svc::after{content:"";position:absolute;inset:0;border-radius:var(--radius);background:linear-gradient(135deg,rgba(11,184,158,.07),transparent 60%);opacity:0;transition:opacity .35s}
+.svc:hover{transform:translateY(-5px);box-shadow:0 30px 60px -42px rgba(14,34,48,.5);border-color:transparent}
+.svc:hover::after{opacity:1}
+.svc .no{font-family:var(--display);font-weight:600;font-size:.8rem;color:var(--aqua-deep);letter-spacing:.04em}
+.svc h3{font-family:var(--display);font-weight:700;font-size:1.32rem;margin-top:.5rem;letter-spacing:-.01em}
+.svc p{margin-top:.6rem;color:var(--ink-soft);font-size:.96rem}
+.svc ul{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.svc li{font-size:.8rem;font-weight:500;color:var(--ink-2);background:var(--bg);border:1px solid var(--line-soft);padding:.32rem .7rem;border-radius:999px}
+
+/* ---------- sectoren ---------- */
+.sectors{background:var(--ink);color:#fff}
+.sectors .kicker{color:#5fe6cf}
+.sectors .kicker::before{background:#5fe6cf}
+.sectors .sec-head h2{color:#fff}
+.sectors .sec-head p{color:rgba(255,255,255,.72)}
+.sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:clamp(2rem,4vw,3rem);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);overflow:hidden}
+@media (max-width:820px){.sector-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.sector-grid{grid-template-columns:1fr}}
+.sector{background:var(--ink);padding:1.8rem;transition:background-color .35s}
+.sector:hover{background:#16323f}
+.sector .ic{width:44px;height:44px;border-radius:12px;background:rgba(95,230,207,.14);display:grid;place-items:center;margin-bottom:1.1rem}
+.sector .ic svg{width:22px;height:22px;color:#5fe6cf}
+.sector h3{font-family:var(--display);font-weight:600;font-size:1.16rem}
+.sector p{margin-top:.45rem;color:rgba(255,255,255,.66);font-size:.92rem}
+
+/* ---------- innovatie / digitaal ---------- */
+.inno-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:860px){.inno-grid{grid-template-columns:1fr}}
+.inno{border:1px solid var(--line);border-radius:var(--radius);padding:2rem 1.8rem;background:var(--surface);position:relative}
+.inno .tag{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--aqua-deep)}
+.inno h3{font-family:var(--display);font-weight:700;font-size:1.34rem;margin-top:.7rem;letter-spacing:-.01em}
+.inno p{margin-top:.7rem;color:var(--ink-soft);font-size:.97rem}
+.inno .ico{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--aqua),var(--sky));display:grid;place-items:center;margin-bottom:1.3rem}
+.inno .ico svg{width:26px;height:26px;color:#fff}
+
+/* ---------- duurzaam ---------- */
+.green{background:linear-gradient(160deg,#0c4a3f,#067a66 80%);color:#fff;border-radius:0}
+.green .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:920px){.green .wrap{grid-template-columns:1fr}}
+.green .kicker{color:#a9f0e0}.green .kicker::before{background:#a9f0e0}
+.green h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.06;letter-spacing:-.025em;margin-top:1rem}
+.green p{margin-top:1.1rem;color:rgba(255,255,255,.82);font-size:1.06rem;max-width:48ch}
+.green .leaf-list{margin-top:1.6rem;display:grid;gap:.9rem}
+.green .leaf-list li{display:flex;gap:.8rem;align-items:flex-start}
+.green .leaf-list svg{width:20px;height:20px;color:#a9f0e0;flex:none;margin-top:.2rem}
+.green .leaf-list b{font-weight:600}
+.certs{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media (max-width:480px){.certs{grid-template-columns:1fr}}
+.cert{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:1.4rem 1.3rem;backdrop-filter:blur(4px)}
+.cert b{font-family:var(--display);font-weight:700;font-size:1.05rem;display:block}
+.cert span{font-size:.86rem;color:rgba(255,255,255,.72)}
+
+/* ---------- werken bij ---------- */
+.jobs .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:920px){.jobs .wrap{grid-template-columns:1fr}}
+.jobs-photo{border-radius:var(--radius);overflow:hidden;box-shadow:0 40px 80px -54px rgba(14,34,48,.6)}
+.jobs-photo img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.jobs ul.perks{margin-top:1.4rem;display:grid;gap:.8rem}
+.jobs ul.perks li{display:flex;gap:.7rem;align-items:flex-start;color:var(--ink-2)}
+.jobs ul.perks svg{width:19px;height:19px;color:var(--aqua-deep);flex:none;margin-top:.25rem}
+
+/* ---------- faq ---------- */
+.faq{background:var(--bg-2)}
+.faq-list{margin-top:clamp(2rem,4vw,3rem);max-width:840px;margin-inline:auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;padding:1.35rem .25rem;font-family:var(--display);font-weight:600;font-size:1.1rem;background:none;border:0;cursor:pointer;color:var(--ink)}
+.faq-q .pm{width:26px;height:26px;flex:none;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;position:relative;transition:background-color .3s,border-color .3s}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--ink);transition:transform .3s var(--ease),background-color .3s}
+.faq-q .pm::before{width:11px;height:1.7px}
+.faq-q .pm::after{width:1.7px;height:11px}
+.faq-item[open] .faq-q .pm{background:var(--aqua-deep);border-color:var(--aqua-deep)}
+.faq-item[open] .faq-q .pm::before,.faq-item[open] .faq-q .pm::after{background:#fff}
+.faq-item[open] .faq-q .pm::after{transform:scaleY(0)}
+.faq-a{overflow:hidden;color:var(--ink-soft);font-size:1rem;padding:0 .25rem;max-width:74ch}
+.faq-a p{padding-bottom:1.35rem}
+.faq-q::-webkit-details-marker{display:none}
+
+/* ---------- contact / offerte ---------- */
+.contact .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:920px){.contact .wrap{grid-template-columns:1fr}}
+.contact-info h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.4vw,2.8rem);letter-spacing:-.025em;line-height:1.06;margin-top:1rem}
+.contact-info p{margin-top:1.1rem;color:var(--ink-2);max-width:42ch}
+.contact-list{margin-top:2rem;display:grid;gap:1.2rem}
+.contact-list li{display:flex;gap:1rem;align-items:flex-start}
+.contact-list .ic{width:44px;height:44px;border-radius:12px;background:var(--aqua-wash);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:21px;height:21px;color:var(--aqua-deep)}
+.contact-list b{font-family:var(--display);font-weight:600;display:block;font-size:.95rem}
+.contact-list a,.contact-list span{color:var(--ink-soft);font-size:.95rem}
+.contact-list a:hover{color:var(--aqua-deep)}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:0 40px 80px -60px rgba(14,34,48,.5)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--display);font-weight:500;font-size:.84rem;margin-bottom:.4rem}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1.5px solid var(--line);border-radius:11px;padding:.78rem .9rem;font-size:.96rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:108px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--aqua-deep);background:#fff}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#d9534f;background:#fdf3f2}
+.field .err{display:none;color:#c43c38;font-size:.78rem;margin-top:.35rem}
+.field.bad .err{display:block}
+.form .btn-primary{width:100%;justify-content:center;margin-top:.4rem;font-size:.98rem}
+.form .note{margin-top:.9rem;font-size:.78rem;color:var(--ink-faint);text-align:center}
+.form .ok{display:none;text-align:center;padding:1rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:64px;height:64px;border-radius:50%;background:var(--aqua-wash);display:grid;place-items:center;margin:0 auto 1.1rem}
+.form .ok .ring svg{width:32px;height:32px;color:var(--aqua-deep)}
+.form .ok h3{font-family:var(--display);font-weight:700;font-size:1.4rem}
+.form .ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--ink);color:rgba(255,255,255,.7);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:#fff;margin-bottom:1rem}
+.footer .brand b span{color:#5fe6cf}
+.footer .blurb{font-size:.92rem;max-width:34ch;color:rgba(255,255,255,.62)}
+.footer h4{font-family:var(--display);font-weight:600;color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.92rem;transition:color .2s}
+.footer ul a:hover{color:#5fe6cf}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.footer .socials a{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;transition:background-color .25s,border-color .25s}
+.footer .socials a:hover{background:rgba(95,230,207,.16);border-color:transparent}
+.footer .socials svg{width:18px;height:18px;color:#fff}
+.footer .bottom{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:rgba(255,255,255,.5)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .dot{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- letterhead -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="dot" aria-hidden="true"></span> <span>Bereikbaar ma–vr 08:00–17:00</span> <span class="sep" aria-hidden="true">·</span> <span class="tag">Landelijk actief</span></div>
+    <div class="right">
+      <a class="email" href="mailto:info@cantorclin.nl">info@cantorclin.nl</a>
+      <a href="tel:0880018800">088 00 188 00</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Cantorclin home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3.5 4.2 5.5 7 5.5 10a5.5 5.5 0 1 1-11 0c0-3 2-5.8 5.5-10z"/></svg></span>
+      <b>Cantor<span>clin</span></b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten</a>
+      <a href="#sectoren">Specialismen</a>
+      <a href="#innovatie">Innovatie</a>
+      <a href="#duurzaam">Duurzaam</a>
+      <a href="#werken">Werken bij</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#contact">Offerte aanvragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r>Schoonmaak sinds 1959 · ruim 65 jaar vakmanschap</span>
+      <h1 data-r style="--d:.05s">Een <em>frisse</em> kijk op schoonmaak.</h1>
+      <p class="hero-intro" data-r style="--d:.12s">Betrouwbaar, trots en betrokken. Cantorclin houdt al ruim 65 jaar werkomgevingen door heel Nederland fris, gezond en representatief — met vakmensen, slimme techniek en een aantoonbaar resultaat.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-primary" href="#contact">Offerte aanvragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#diensten">Bekijk onze diensten</a>
+      </div>
+      <div class="hero-trust" data-r style="--d:.24s">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> ISO 14001 gecertificeerd</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Code Verantwoordelijk Marktgedrag</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Eigen Academy</span>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=72" alt="Schoonmaakmedewerker aan het werk in een lichte werkruimte" loading="eager" width="900" height="990">
+      </div>
+      <div class="badge">
+        <span class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><b>9,1 / 10</b><small>klanttevredenheid op kwaliteit &amp; communicatie</small></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- stats -->
+<section class="stats" aria-label="Cantorclin in cijfers">
+  <div class="wrap">
+    <div class="stat" data-r><div class="num" data-count="65" data-suffix="+"><span>65+</span></div><div class="lab">jaar vakmanschap</div></div>
+    <div class="stat" data-r style="--d:.08s"><div class="num" data-count="1200" data-suffix=""><span>1200</span></div><div class="lab">medewerkers</div></div>
+    <div class="stat" data-r style="--d:.16s"><div class="num" data-count="100" data-suffix="%"><span>100%</span></div><div class="lab">biologisch afbreekbare middelen</div></div>
+    <div class="stat" data-r style="--d:.24s"><div class="num" data-count="1" data-suffix="" data-text="Landelijk">Landelijk</div><div class="lab">actief, met lokale teams</div></div>
+  </div>
+</section>
+
+<!-- waarden -->
+<section class="sec values">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Onze belofte</span>
+      <h2>Betrouwbaar, trots en betrokken</h2>
+      <p>Schoonmaak draait om mensen. Wij investeren in vakmanschap, korte lijnen en een resultaat dat u elke dag ziet — niet alleen op papier.</p>
+    </div>
+    <div class="value-grid">
+      <article class="value" data-r>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/></svg></div>
+        <h3>Betrouwbaar</h3>
+        <p>Vaste teams, heldere afspraken en aantoonbare kwaliteit. U weet precies wat er gebeurt en wanneer — elke dag opnieuw.</p>
+      </article>
+      <article class="value" data-r style="--d:.1s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="m9 19-1 3M15 19l1 3M5 6l-2-2M19 6l2-2"/></svg></div>
+        <h3>Trots</h3>
+        <p>Onze mensen zijn vakspecialisten. Via de Cantorclin Academy blijven ze leren — want trots vakmanschap zie je terug in het resultaat.</p>
+      </article>
+      <article class="value" data-r style="--d:.2s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></div>
+        <h3>Betrokken</h3>
+        <p>Eén vast aanspreekpunt, korte lijnen en oprechte aandacht voor uw pand én onze mensen. Betrokkenheid die u merkt.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- diensten -->
+<section class="sec" id="diensten">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Diensten</span>
+      <h2>Schoonmaak van dagelijks onderhoud tot specialistisch werk</h2>
+      <p>Eén partner voor uw hele pand. We stemmen elk programma af op uw locatie, gebruik en budget.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc" data-r>
+        <span class="no">01</span>
+        <h3>Dagelijks onderhoud</h3>
+        <p>Periodieke schoonmaak overdag of in de avonduren, afgestemd op uw bedrijfsritme zodat uw mensen ongestoord doorwerken.</p>
+        <ul><li>Dagschoonmaak</li><li>Avonduren</li><li>Sanitair &amp; pantry</li><li>Opleveringsschoonmaak</li></ul>
+      </article>
+      <article class="svc" data-r style="--d:.08s">
+        <span class="no">02</span>
+        <h3>Glasbewassing</h3>
+        <p>Streeploze ramen, binnen en buiten. Tot grote hoogte met telescooptechniek en gezuiverd water — veilig en zonder steiger.</p>
+        <ul><li>Binnen &amp; buiten</li><li>Telescoopreiniging</li><li>Kozijnreiniging</li><li>Op hoogte</li></ul>
+      </article>
+      <article class="svc" data-r style="--d:.16s">
+        <span class="no">03</span>
+        <h3>Vloeronderhoud</h3>
+        <p>Specialistisch onderhoud dat de levensduur en uitstraling van uw vloer verlengt — voor elk type ondergrond.</p>
+        <ul><li>Gietvloer</li><li>Linoleum &amp; marmoleum</li><li>Natuursteen</li><li>Tapijtreiniging</li></ul>
+      </article>
+      <article class="svc" data-r style="--d:.24s">
+        <span class="no">04</span>
+        <h3>Specialistische reiniging</h3>
+        <p>Het zware werk waar techniek en ervaring samenkomen — van gevel tot dakgoot, in één keer goed gedaan.</p>
+        <ul><li>Gevelreiniging</li><li>Graffiti verwijderen</li><li>Hogedruk &amp; mosbestrijding</li><li>Dakgootreiniging</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- sectoren -->
+<section class="sec sectors" id="sectoren">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Specialismen</span>
+      <h2>Elke branche stelt eigen eisen</h2>
+      <p>We kennen de protocollen, hygiënenormen en het ritme van uw sector — en richten de schoonmaak daar volledig op in.</p>
+    </div>
+    <div class="sector-grid">
+      <article class="sector" data-r>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Cleanrooms</h3>
+        <p>Cleanroomreiniging volgens strikte protocollen en classificaties — waar stofvrij geen optie maar eis is.</p>
+      </article>
+      <article class="sector" data-r style="--d:.06s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M15 7h3M15 11h3M15 15h3"/></svg></div>
+        <h3>Kantoren</h3>
+        <p>Een frisse, representatieve werkomgeving die bijdraagt aan gezondheid, focus en de uitstraling van uw organisatie.</p>
+      </article>
+      <article class="sector" data-r style="--d:.12s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 4 4h16l1 5M5 9v11h14V9M9 13h6"/></svg></div>
+        <h3>Retail</h3>
+        <p>Een uitnodigende winkelomgeving, ook tijdens openingstijden — discreet, snel en zonder uw klanten te storen.</p>
+      </article>
+      <article class="sector" data-r>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+        <h3>Onderwijs</h3>
+        <p>Veilige, hygiënische scholen en onderwijsinstellingen waar leerlingen en docenten met een gerust hart leren en werken.</p>
+      </article>
+      <article class="sector" data-r style="--d:.06s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+        <h3>Zorg</h3>
+        <p>Schoonmaak in de zorg volgens de strengste hygiëne-eisen — met vakmensen die begrijpen dat schoon hier samenvalt met veilig.</p>
+      </article>
+      <article class="sector" data-r style="--d:.12s">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9h.01M9 13h.01M9 17h.01"/></svg></div>
+        <h3>Industrie &amp; logistiek</h3>
+        <p>Van productiehallen tot distributiecentra — robuuste reiniging die rekening houdt met uw processen en veiligheidseisen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- innovatie -->
+<section class="sec" id="innovatie">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">Slim &amp; transparant</span>
+      <h2>Schoonmaak die u kunt volgen</h2>
+      <p>Techniek maakt onze schoonmaak meetbaar en inzichtelijk. U ziet wat er gebeurt — en wij sturen continu bij op kwaliteit.</p>
+    </div>
+    <div class="inno-grid">
+      <article class="inno" data-r>
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+        <span class="tag">App</span>
+        <h3>Cantorclin Schoonmaak-app</h3>
+        <p>Alle pandinformatie, werkprogramma's en communicatie op één plek. Medewerkers registreren hun werk live; u blijft realtime op de hoogte.</p>
+      </article>
+      <article class="inno" data-r style="--d:.1s">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 4-6"/></svg></div>
+        <span class="tag">Kwaliteit</span>
+        <h3>Cantorclin Digitaal</h3>
+        <p>Onafhankelijke kwaliteitsmetingen volgens objectieve normen. Resultaten en trends inzichtelijk in een helder online dashboard.</p>
+      </article>
+      <article class="inno" data-r style="--d:.2s">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5M22 10v6"/></svg></div>
+        <span class="tag">Opleiding</span>
+        <h3>Cantorclin Academy</h3>
+        <p>Ons eigen opleidingsinstituut. Vakopleidingen, trainingen en begeleiding houden onze mensen scherp — en uw schoonmaak op niveau.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- duurzaam -->
+<section class="sec green" id="duurzaam">
+  <div class="wrap">
+    <div class="green-copy" data-r>
+      <span class="kicker">Duurzaam ondernemen</span>
+      <h2>Schoon werk dat ook de wereld schoonhoudt</h2>
+      <p>Duurzaam ondernemen is bij Cantorclin een kernbegrip — geen sluitpost, maar onderdeel van hoe we elke dag werken.</p>
+      <ul class="leaf-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>100% biologisch afbreekbaar.</b> We werken met NJOY — zeepvrije, volledig biologisch afbreekbare reinigingsmiddelen.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Minder verbruik.</b> Geconcentreerde middelen, gezuiverd water en slimme dosering beperken water- en chemiegebruik.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Lagere CO₂-voetafdruk.</b> We meten onze uitstoot en sturen actief op verlaging, met lokale teams en efficiënte routes.</span></li>
+      </ul>
+    </div>
+    <div class="certs" data-r style="--d:.12s">
+      <div class="cert"><b>ISO 14001</b><span>Gecertificeerd milieumanagement­systeem</span></div>
+      <div class="cert"><b>CO₂-footprint</b><span>Gemeten en aantoonbaar gereduceerd</span></div>
+      <div class="cert"><b>NJOY</b><span>Zeepvrij &amp; 100% biologisch afbreekbaar</span></div>
+      <div class="cert"><b>Code VM</b><span>Code Verantwoordelijk Marktgedrag</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- werken bij -->
+<section class="sec jobs" id="werken">
+  <div class="wrap">
+    <div class="jobs-photo" data-r>
+      <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&w=900&q=72" alt="Twee collega's overleggen lachend in een lichte ruimte" loading="lazy" width="900" height="720">
+    </div>
+    <div class="jobs-copy" data-r style="--d:.1s">
+      <span class="kicker">Werken bij Cantorclin</span>
+      <h2 style="font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.06;letter-spacing:-.025em;margin-top:1rem">Word onderdeel van een trots vakteam</h2>
+      <p style="margin-top:1.1rem;color:var(--ink-2);max-width:46ch">Bij Cantorclin sta je er nooit alleen voor. We investeren in je vak, je groei en een werksfeer waarin je gezien wordt.</p>
+      <ul class="perks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Vaste teams en een eigen aanspreekpunt — geen wisselende adressen elke dag.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Gratis opleidingen en doorgroei via de Cantorclin Academy.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Werktijden die passen bij jouw leven, dicht bij huis.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Goede arbeidsvoorwaarden volgens de cao Schoonmaak.</span></li>
+      </ul>
+      <div style="margin-top:1.8rem"><a class="btn btn-primary" href="#contact">Bekijk onze vacatures <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- faq -->
+<section class="sec faq">
+  <div class="wrap">
+    <div class="sec-head center" data-r>
+      <span class="kicker">Veelgestelde vragen</span>
+      <h2>Goed om te weten</h2>
+    </div>
+    <div class="faq-list" data-r>
+      <details class="faq-item">
+        <summary class="faq-q">Hoe snel kunnen jullie starten? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Na een vrijblijvende rondgang en offerte stellen we samen een werkprogramma op. In de meeste gevallen kunnen we binnen enkele weken van start — bij spoed denken we graag mee over een snellere oplossing.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Werken jullie ook buiten kantooruren? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Ja. We plannen de schoonmaak rond uw bedrijfsritme — overdag, in de avonduren of juist vroeg in de ochtend. Dagschoonmaak is bovendien duurzamer en zichtbaar betrokken.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Hoe borgen jullie de kwaliteit? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Met Cantorclin Digitaal voeren we objectieve kwaliteitsmetingen uit en houden we resultaten en trends inzichtelijk in een online dashboard. Zo sturen we continu bij en weet u precies waar u aan toe bent.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Zijn jullie middelen milieuvriendelijk? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>We werken met NJOY: zeepvrije, 100% biologisch afbreekbare reinigingsmiddelen. Daarnaast zijn we ISO 14001-gecertificeerd en meten en verlagen we actief onze CO₂-voetafdruk.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">In welke regio's zijn jullie actief? <span class="pm" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>Cantorclin is landelijk actief met lokale teams, vanuit onze vestiging in Meppel. Zo combineren we de slagkracht van een groot bedrijf met de korte lijnen van een lokale partner.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- contact -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info" data-r>
+      <span class="kicker">Contact &amp; offerte</span>
+      <h2>Wilt u weten wat wij voor u kunnen betekenen?</h2>
+      <p>Vraag vrijblijvend een offerte aan of plan een rondgang. We reageren binnen één werkdag.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:0880018800">088 00 188 00</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:info@cantorclin.nl">info@cantorclin.nl</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Adres</b><span>Oeverlandenweg 2c, 7944 HZ Meppel</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul uw naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-bedrijf">Bedrijf</label>
+            <input id="f-bedrijf" name="bedrijf" type="text" autocomplete="organization">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-email">E-mailadres</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-dienst">Waar kunnen we mee helpen?</label>
+          <select id="f-dienst" name="dienst" required>
+            <option value="" selected disabled>Kies een dienst…</option>
+            <option>Dagelijks onderhoud</option>
+            <option>Glasbewassing</option>
+            <option>Vloeronderhoud</option>
+            <option>Specialistische reiniging</option>
+            <option>Cleanroom / zorg / onderwijs</option>
+            <option>Anders / nog niet zeker</option>
+          </select>
+          <span class="err">Maak een keuze.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Toelichting</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Vertel kort over uw pand, oppervlakte en wensen…"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Offerte aanvragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">Vrijblijvend · reactie binnen één werkdag · uw gegevens blijven vertrouwelijk.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Bedankt!</h3>
+        <p id="ok-text">We hebben uw aanvraag ontvangen en nemen binnen één werkdag contact met u op.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#" aria-label="Cantorclin home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3.5 4.2 5.5 7 5.5 10a5.5 5.5 0 1 1-11 0c0-3 2-5.8 5.5-10z"/></svg></span>
+          <b>Cantor<span>clin</span></b>
+        </a>
+        <p class="blurb">Een frisse kijk op schoonmaak. Landelijk schoonmaakbedrijf met ruim 65 jaar vakmanschap — betrouwbaar, trots en betrokken.</p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.8-.1-1.6-.15-2.4-.15-2.4 0-4.05 1.46-4.05 4.15v2.3H7.5V13h2.75v8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="#diensten">Dagelijks onderhoud</a></li>
+          <li><a href="#diensten">Glasbewassing</a></li>
+          <li><a href="#diensten">Vloeronderhoud</a></li>
+          <li><a href="#diensten">Specialistisch werk</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Organisatie</h4>
+        <ul>
+          <li><a href="#sectoren">Specialismen</a></li>
+          <li><a href="#innovatie">Innovatie</a></li>
+          <li><a href="#duurzaam">Duurzaam</a></li>
+          <li><a href="#werken">Werken bij</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0880018800">088 00 188 00</a></li>
+          <li><a href="mailto:info@cantorclin.nl">info@cantorclin.nl</a></li>
+          <li><span>Oeverlandenweg 2c</span></li>
+          <li><span>7944 HZ Meppel</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="jaar">2026</span> Cantorclin Schoonmaak B.V. · KvK 39074588 · BTW NL8092.88.618.B.01</span>
+      <span>Een frisse kijk op schoonmaak.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var doc = document;
+  var reduced = false;
+  try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  /* jaartal */
+  var jaar = doc.getElementById('jaar');
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* nav: stuck + mobiel menu */
+  var nav = doc.getElementById('nav');
+  var burger = doc.getElementById('burger');
+  var links = doc.getElementById('navlinks');
+  function setMenu(open) {
+    if (links) { links.classList.toggle('open', open); }
+    if (burger) { burger.classList.toggle('open', open); burger.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    doc.body.style.overflow = open ? 'hidden' : '';
+  }
+  if (burger) { burger.addEventListener('click', function () { setMenu(!links.classList.contains('open')); }); }
+  if (links) { links.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setMenu(false); } });
+
+  var ticking = false;
+  function onScroll() { ticking = false; var y = window.pageYOffset || 0; if (nav) { nav.classList.toggle('stuck', y > 8); } }
+  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }
+  window.addEventListener('scroll', tick, { passive: true });
+  onScroll();
+
+  /* reveal + tellers */
+  function runCount(el) {
+    if (el.getAttribute('data-text')) { return; } // niet-numerieke waarde behouden
+    var target = parseFloat(el.getAttribute('data-count')) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var span = el.querySelector('span') || el;
+    if (reduced || target === 0) { span.textContent = target + suffix; return; }
+    var dur = 1100, start = null;
+    function step(ts) {
+      if (start === null) { start = ts; }
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      span.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) { requestAnimationFrame(step); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          var num = en.target.querySelector('[data-count]');
+          if (num) { runCount(num); }
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-r]'), function (el) { io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-r]'), function (el) { el.classList.add('in'); });
+    Array.prototype.forEach.call(doc.querySelectorAll('[data-count]'), function (el) { runCount(el); });
+  }
+
+  /* faq: slechts één tegelijk open */
+  var items = Array.prototype.slice.call(doc.querySelectorAll('.faq-item'));
+  items.forEach(function (it) {
+    it.addEventListener('toggle', function () {
+      if (it.open) { items.forEach(function (o) { if (o !== it) { o.open = false; } }); }
+    });
+  });
+
+  /* formulier */
+  var form = doc.getElementById('form');
+  if (form) {
+    function fieldOf(input) { return input.closest('.field'); }
+    function mark(input, bad) { var f = fieldOf(input); if (f) { f.classList.toggle('bad', bad); } }
+    function valid(input) {
+      var v = (input.value || '').trim(), ok = true;
+      if (input.type === 'email') { ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      else if (input.hasAttribute('required')) { ok = v.length > 0; }
+      mark(input, !ok); return ok;
+    }
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input[required], select[required]'));
+    inputs.forEach(function (i) {
+      i.addEventListener('blur', function () { valid(i); });
+      i.addEventListener('input', function () { if (fieldOf(i).classList.contains('bad')) { valid(i); } });
+      i.addEventListener('change', function () { if (fieldOf(i).classList.contains('bad')) { valid(i); } });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function (i) { if (!valid(i)) { allOk = false; if (!first) { first = i; } } });
+      if (!allOk) { if (first) { first.focus(); } return; }
+      var naam = (doc.getElementById('f-naam').value || '').trim().split(' ')[0];
+      var okt = doc.getElementById('ok-title');
+      if (okt && naam) { okt.textContent = naam + ', bedankt!'; }
+      form.classList.add('sent');
+      form.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+    });
+  }
+})();
+</script>
+</body>
+</html>
