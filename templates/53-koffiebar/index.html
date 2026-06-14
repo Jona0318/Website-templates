@@ -12,6 +12,7 @@
 <style>
 /* ============================================================
    TUSSEN — koffiebar, Tilburg. Helder, modern, cream × kobalt.
+   Archetype D: full-bleed beeld-hero + overlappende kaarten.
    Signatuur: dag-afhankelijke 'vandaag'-special.
    ============================================================ */
 :root{
@@ -31,33 +32,48 @@ button,input{font:inherit;color:inherit}::selection{background:var(--cobalt);col
 .kicker{font-family:var(--disp);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cobalt)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--cobalt);color:#fff;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-.hdr{position:sticky;top:0;z-index:50;background:rgba(247,243,234,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:box-shadow .3s}
-.hdr.stuck{box-shadow:0 10px 28px -22px rgba(23,23,26,.5)}
+/* ---- NAV: transparant over de beeld-hero, wordt vast bij scrollen ---- */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background-color .4s,box-shadow .4s,color .4s;color:#fff}
+.hdr.stuck{background:rgba(247,243,234,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 10px 28px -22px rgba(23,23,26,.5);color:var(--ink)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo{font-family:var(--disp);font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
-.logo b{color:var(--cobalt)}
+.hdr.stuck .logo b{color:var(--cobalt)}
 .nav{display:flex;align-items:center;gap:1.8rem}
-.nav a{font-weight:500;font-size:.94rem;color:var(--ink-2)}.nav a:hover{color:var(--cobalt)}
-.nav .cta{background:var(--ink);color:var(--paper);padding:.55rem 1.1rem;border-radius:99px;font-size:.88rem}.nav .cta:hover{background:var(--cobalt)}
-.burger{display:none;border:1px solid var(--line);border-radius:99px;padding:.5rem .9rem;font-weight:600;font-size:.86rem}
-@media(max-width:820px){.nav{position:fixed;inset:72px 0 auto;background:var(--paper);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+.nav a{font-weight:500;font-size:.94rem;opacity:.9}.nav a:hover{opacity:1}
+.hdr.stuck .nav a{color:var(--ink-2)}.hdr.stuck .nav a:hover{color:var(--cobalt)}
+.nav .cta{background:#fff;color:var(--ink);padding:.55rem 1.1rem;border-radius:99px;font-size:.88rem;opacity:1}
+.hdr.stuck .nav .cta{background:var(--ink);color:var(--paper)}.nav .cta:hover{background:var(--cobalt);color:#fff}
+.burger{display:none;border:1px solid currentColor;border-radius:99px;padding:.5rem .9rem;font-weight:600;font-size:.86rem;background:transparent}
+@media(max-width:820px){.nav{position:fixed;inset:72px 0 auto;background:var(--paper);color:var(--ink);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.nav a{color:var(--ink-2);opacity:1}.nav .cta{background:var(--ink);color:var(--paper)}.burger{display:inline-block}}
 
-.hero{padding-block:clamp(2.2rem,5vw,4rem)}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-@media(max-width:840px){.hero .wrap{grid-template-columns:1fr;gap:2rem}}
-.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.8rem,8vw,5.6rem);line-height:.98;letter-spacing:-.03em;margin:1rem 0 0}
-.hero h1 em{font-style:normal;color:var(--cobalt)}
-.hero p.lead{margin-top:1.2rem;color:var(--ink-2);max-width:36ch;font-size:1.15rem}
-.hero-act{margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+/* ---- HERO: schermvullende foto + overlay ---- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,6,.82) 0%,rgba(15,12,6,.28) 42%,rgba(15,12,6,.12) 100%)}
+.hero .wrap{position:relative;z-index:2;color:#fff;padding-bottom:clamp(7rem,16vw,11rem);padding-top:6rem}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.8rem,9vw,6.4rem);line-height:.96;letter-spacing:-.03em;max-width:15ch;margin-top:1rem}
+.hero h1 em{font-style:normal;color:var(--sun)}
+.hero p.lead{margin-top:1.2rem;color:rgba(255,255,255,.86);max-width:42ch;font-size:1.18rem}
+.hero-act{margin-top:1.9rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 .btn{background:var(--cobalt);color:#fff;padding:.9rem 1.6rem;border-radius:99px;font-family:var(--disp);font-weight:600;font-size:1rem;display:inline-block;transition:background-color .25s,transform .25s}
 .btn:hover{background:var(--cobalt-2);transform:translateY(-2px)}
-.lnk{font-weight:600;border-bottom:2px solid var(--sun);padding-bottom:2px}.lnk:hover{color:var(--cobalt)}
-.hero-fig{position:relative}
-.hero-fig img{width:100%;aspect-ratio:4/3.4;object-fit:cover;border-radius:var(--r)}
-.hero-fig .today{position:absolute;left:-1rem;bottom:-1rem;background:var(--sun);color:#3a2a00;border-radius:16px;padding:1rem 1.2rem;max-width:240px;box-shadow:0 20px 40px -24px rgba(0,0,0,.5)}
-.hero-fig .today .lab{font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
-.hero-fig .today .v{font-family:var(--disp);font-weight:700;font-size:1.15rem;margin-top:.2rem;line-height:1.15}
-@media(max-width:840px){.hero-fig .today{left:.6rem;bottom:.6rem}}
+.lnk{font-weight:600;color:#fff;border-bottom:2px solid var(--sun);padding-bottom:2px}.lnk:hover{color:var(--sun)}
+.scroll-cue{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-family:var(--disp);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+
+/* ---- SIGNATURE: overlappende kaartenrij die over de hero-rand valt ---- */
+.cards{position:relative;z-index:5;margin-top:clamp(-7rem,-9vw,-5.5rem)}
+.cards .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+@media(max-width:820px){.cards .grid{grid-template-columns:1fr}}
+.card{background:var(--paper);border-radius:var(--r);padding:1.6rem 1.5rem;box-shadow:0 30px 60px -36px rgba(23,23,26,.55);border:1px solid var(--line-soft)}
+.card.accent{background:var(--cobalt);color:#fff}
+.card.accent .kicker{color:rgba(255,255,255,.8)}
+.card .lab{font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card.sun{background:var(--sun);color:#3a2a00}
+.card.sun .lab{color:#6b4e00}
+.card h3{font-family:var(--disp);font-weight:700;font-size:1.4rem;line-height:1.12;margin-top:.5rem}
+.card p{margin-top:.5rem;font-size:.96rem;color:var(--ink-2)}
+.card.accent p{color:rgba(255,255,255,.85)}
+.card .v{font-family:var(--disp);font-weight:700;font-size:1.2rem;margin-top:.4rem;line-height:1.18}
 
 .sec{padding-block:clamp(3rem,6vw,5rem)}
 .sec-h{margin-bottom:clamp(1.8rem,4vw,2.6rem)}
@@ -102,7 +118,7 @@ button,input{font:inherit;color:inherit}::selection{background:var(--cobalt);col
 
 .foot{padding-block:2.2rem}
 .foot .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.84rem}
-.foot .logo{font-size:1.3rem}
+.foot .logo{font-size:1.3rem;color:var(--ink)}.foot .logo b{color:var(--cobalt)}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}[data-r].in{opacity:1;transform:none}}
 </style>
 </head>
@@ -115,18 +131,34 @@ button,input{font:inherit;color:inherit}::selection{background:var(--cobalt);col
 </div></header>
 
 <main>
-  <section class="hero"><div class="wrap">
-    <div>
-      <span class="kicker">Koffiebar · Tilburg</span>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=72" alt="Warm en licht interieur van de koffiebar met grote ramen" width="1600" height="1067" fetchpriority="high">
+    <div class="wrap">
+      <span class="kicker" style="color:var(--sun)">Koffiebar · Tilburg</span>
       <h1>Ergens <em>tussen</em> werk en weekend.</h1>
       <p class="lead">Specialty koffie, een korte lunchkaart en een plek waar niemand raar opkijkt als je twee uur over één cappuccino doet.</p>
       <div class="hero-act"><a class="btn" href="#menu">Bekijk de kaart</a><a class="lnk" href="#bezoek">Waar &amp; wanneer</a></div>
     </div>
-    <figure class="hero-fig" data-r>
-      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=72" alt="Warm en licht interieur van de koffiebar" width="1000" height="850">
-      <div class="today"><div class="lab">Vandaag</div><div class="v" id="today">—</div></div>
-    </figure>
-  </div></section>
+    <span class="scroll-cue" aria-hidden="true">Scroll ↓</span>
+  </section>
+
+  <section class="cards"><div class="wrap"><div class="grid" data-r>
+    <div class="card sun">
+      <div class="lab">Vandaag</div>
+      <div class="v" id="today">—</div>
+      <p>Onze dag-special staat klaar — kom langs zolang het kan.</p>
+    </div>
+    <div class="card accent">
+      <span class="kicker">Nu</span>
+      <h3 id="cardNow">Even kijken…</h3>
+      <p>We checken live of we open zijn. Anders zie je hieronder vanaf wanneer wel.</p>
+    </div>
+    <div class="card">
+      <div class="lab">Goed om te weten</div>
+      <h3>Werken mag, reserveren hoeft niet</h3>
+      <p>Wifi, stopcontacten en geen tijdslimiet. Op zondag liever de laptops dicht.</p>
+    </div>
+  </div></div></section>
 
   <section class="sec menu" id="menu"><div class="wrap">
     <div class="sec-h" data-r><span class="kicker">De kaart</span><h2>Klein, vers, elke dag</h2><p>Bonen van een Rotterdamse brander, brood van de buurman, en lekker veel groen op de lunchkaart.</p></div>
@@ -189,7 +221,7 @@ button,input{font:inherit;color:inherit}::selection{background:var(--cobalt);col
 </main>
 
 <footer class="foot"><div class="wrap">
-  <span class="logo">Tus<b style="color:var(--cobalt)">sen</b></span>
+  <span class="logo">Tus<b>sen</b></span>
   <span>&copy; <span id="jaar">2026</span> Tussen koffiebar · Korte Heuvel 14, Tilburg · KvK 70554120</span>
 </div></footer>
 
@@ -203,13 +235,15 @@ button,input{font:inherit;color:inherit}::selection{background:var(--cobalt);col
   function now(){try{var p=new Intl.DateTimeFormat('nl-NL',{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Amsterdam'}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value;});var m={zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6},d=m[(o.weekday||'').toLowerCase().slice(0,2)];if(d===undefined)d=new Date().getDay();return{d:d,m:+o.hour*60+ +o.minute};}catch(e){var x=new Date();return{d:x.getDay(),m:x.getHours()*60+x.getMinutes()};}}
   var n=now();
   var td=doc.getElementById('today');if(td)td.textContent=(SPECIAL[n.d]||'').replace(/^[A-Za-z]+ — /,'');
-  var t=H[n.d],nw=doc.getElementById('now');
-  if(nw){if(t&&n.m>=t[0]&&n.m<t[1])nw.textContent='Nu open — tot '+fmt(t[1]);else nw.textContent='Nu gesloten — open vanaf '+fmt((t||[480])[0]);}
+  var t=H[n.d],nw=doc.getElementById('now'),cardNow=doc.getElementById('cardNow');
+  var openNow=t&&n.m>=t[0]&&n.m<t[1];
+  if(nw){if(openNow)nw.textContent='Nu open — tot '+fmt(t[1]);else nw.textContent='Nu gesloten — open vanaf '+fmt((t||[480])[0]);}
+  if(cardNow){if(openNow)cardNow.textContent='We zijn open tot '+fmt(t[1]);else cardNow.textContent='Nu dicht — open vanaf '+fmt((t||[480])[0]);}
   var hb=doc.getElementById('hb');if(hb){[1,2,3,4,5,6,0].forEach(function(d){var x=H[d],tr=doc.createElement('tr');if(d===n.d)tr.className='now';tr.innerHTML='<td>'+DAY[d]+'</td><td class="t">'+fmt(x[0])+' – '+fmt(x[1])+'</td>';hb.appendChild(tr);});}
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
   var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');
   if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
-  var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('stuck',(window.pageYOffset||0)>8);});}},{passive:true});
+  var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('stuck',(window.pageYOffset||0)>(window.innerHeight*0.7));});}},{passive:true});
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
   var nb=doc.getElementById('nb'),bez=doc.getElementById('bez');if(nb){nb.addEventListener('click',function(){var v=doc.getElementById('ne').value.trim();if(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v))bez.classList.add('sent');else doc.getElementById('ne').focus();});}
 })();

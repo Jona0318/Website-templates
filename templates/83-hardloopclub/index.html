@@ -12,41 +12,63 @@
 <style>
 /* ============================================================
    SPRINT — running crew. Oranje × zwart × beton. Energiek, sportief.
+   ARCHETYPE F: zijbalk-nav + reuze outline-typografie hero +
+   horizontaal scrollende, scroll-snap, toetsenbord-bedienbare runs-strip.
    ============================================================ */
 :root{
   --bg:#0f0f0e; --panel:#181816; --concrete:#e9e7e1; --ink:#0f0f0e; --paper:#f6f4ef; --orange:#ff4d00; --lime:#d4f23d;
   --disp:"Archivo Black",system-ui,sans-serif; --body:"Archivo",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
-  --maxw:1160px; --gutter:clamp(1rem,4vw,3rem);
+  --rail:248px; --gutter:clamp(1rem,4vw,3rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:600;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
+img{display:block;max-width:100%}
 ::selection{background:var(--orange);color:#fff}
 :focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--orange);color:#fff;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--paper);border-bottom:4px solid var(--orange)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-family:var(--disp);font-size:1.5rem;letter-spacing:.02em}.logo span{color:var(--orange)}
-.menu{display:flex;align-items:center;gap:.3rem}
-.menu a{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;padding:.45rem .65rem;color:#d8d6cf}
-.menu a:hover{color:var(--orange)}
-.menu .cta{background:var(--orange);color:#fff;font-family:var(--disp);font-size:.8rem;padding:.5rem .9rem;text-transform:uppercase}
-.menu .cta:hover{background:var(--lime);color:var(--ink)}
-.burger{display:none;border:2px solid var(--orange);color:var(--orange);background:none;padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.78rem}
-@media(max-width:840px){.menu{position:fixed;inset:64px 0 auto;background:var(--ink);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:4px solid var(--orange);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid #2a2a26}.burger{display:inline-block}}
+/* ---- App shell: vaste verticale zijbalk-nav + content rechts ---- */
+.shell{min-height:100vh}
+.rail{position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:60;background:var(--ink);color:var(--paper);border-right:4px solid var(--orange);display:flex;flex-direction:column;padding:1.6rem 1.4rem}
+.rail .logo{font-family:var(--disp);font-size:1.6rem;letter-spacing:.02em;line-height:.95}.rail .logo span{color:var(--orange)}
+.rail .tag{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;color:#8a8a82;margin-top:.5rem;letter-spacing:.08em}
+.railnav{display:flex;flex-direction:column;gap:.1rem;margin-top:2.4rem}
+.railnav a{font-family:var(--mono);font-size:.82rem;text-transform:uppercase;padding:.55rem 0;color:#d8d6cf;border-bottom:2px solid #26261f;display:flex;align-items:center;gap:.6rem}
+.railnav a::before{content:"";width:9px;height:9px;background:#3a3a32}
+.railnav a:hover{color:var(--orange)}.railnav a:hover::before{background:var(--orange)}
+.rail .cta{margin-top:auto;display:block;text-align:center;background:var(--orange);color:#fff;font-family:var(--disp);font-size:.85rem;text-transform:uppercase;padding:.8rem;border:3px solid var(--orange)}
+.rail .cta:hover{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.content{margin-left:var(--rail)}
 
-/* hero */
+/* topbar alleen mobiel */
+.topbar{display:none;position:sticky;top:0;z-index:55;background:var(--ink);color:var(--paper);border-bottom:4px solid var(--orange);align-items:center;justify-content:space-between;height:60px;padding:0 var(--gutter)}
+.topbar .logo{font-family:var(--disp);font-size:1.3rem}.topbar .logo span{color:var(--orange)}
+.burger{border:2px solid var(--orange);color:var(--orange);background:none;padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.78rem}
+.mob{display:none}
+
+@media(max-width:900px){
+  .rail{display:none}
+  .content{margin-left:0}
+  .topbar{display:flex}
+  .mob{display:flex;flex-direction:column;position:fixed;inset:60px 0 auto;z-index:54;background:var(--ink);padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:4px solid var(--orange);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}
+  .mob.open{transform:none}
+  .mob a{font-family:var(--mono);font-size:.82rem;text-transform:uppercase;color:#d8d6cf;border:2px solid #2a2a26;padding:.55rem .7rem}
+  .mob a.cta{background:var(--orange);color:#fff;border-color:var(--orange);font-family:var(--disp)}
+}
+
+.inner{padding:0 var(--gutter)}
+
+/* ---- HERO: reuze outline-typografie ---- */
 .hero{background:var(--orange);color:var(--paper);border-bottom:4px solid var(--ink);overflow:hidden;position:relative}
-.hero .wrap{padding-block:clamp(2.4rem,6vw,5rem);position:relative}
+.hero .inner{padding-block:clamp(2.6rem,7vw,6rem)}
 .hero .kick{font-family:var(--mono);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--orange);display:inline-block;padding:.3rem .8rem}
-.hero h1{font-family:var(--disp);text-transform:uppercase;font-size:clamp(3rem,14vw,9.5rem);line-height:.82;margin:1rem 0 .4rem}
-.hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--paper)}
-.hero p{font-size:1.3rem;max-width:34ch;font-weight:700}
-.hero .cta{display:inline-block;margin-top:1.4rem;font-family:var(--disp);text-transform:uppercase;font-size:1.05rem;background:var(--ink);color:var(--paper);padding:.9rem 1.7rem;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--paper);transition:transform .15s,box-shadow .15s}
+.hero h1{font-family:var(--disp);text-transform:uppercase;font-size:clamp(3.4rem,17vw,13rem);line-height:.8;margin:1rem 0 .3rem;letter-spacing:-.01em}
+.hero h1 .o{color:transparent;-webkit-text-stroke:clamp(1.5px,.4vw,3px) var(--paper)}
+.herofoot{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:flex-end;justify-content:space-between;margin-top:1.2rem}
+.hero p{font-size:1.25rem;max-width:34ch;font-weight:700}
+.hero .cta{display:inline-block;font-family:var(--disp);text-transform:uppercase;font-size:1.05rem;background:var(--ink);color:var(--paper);padding:.9rem 1.7rem;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--paper);transition:transform .15s,box-shadow .15s;white-space:nowrap}
 .hero .cta:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--paper)}
 
 /* ticker */
@@ -56,21 +78,32 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 @keyframes tk{to{transform:translateX(-50%)}}
 .tk .row span{display:inline-flex;gap:2rem}.tk .row span::after{content:"→";color:var(--orange)}
 
-.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec{padding-block:clamp(2.6rem,5vw,4.5rem)}
 .sec-h{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
 .sec-h h2{font-family:var(--disp);text-transform:uppercase;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1}
 .sec-h .bar{flex:1;height:4px;background:var(--orange)}
+.sec-h .hint{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:#5a5a52;white-space:nowrap}
 
-/* runs */
-.runs{display:grid;gap:.7rem}
-.run{display:grid;grid-template-columns:auto 1fr auto auto;gap:1.2rem;align-items:center;background:var(--concrete);border:3px solid var(--ink);padding:1rem 1.2rem;transition:transform .12s,box-shadow .12s}
-.run:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink);background:var(--lime)}
-.run .day{font-family:var(--disp);text-transform:uppercase;font-size:1.1rem;white-space:nowrap}
-.run .day b{display:block;font-size:.74rem;font-family:var(--mono);color:#5a5a52;font-weight:400}
-.run h3{font-family:var(--disp);text-transform:uppercase;font-size:1.15rem}
+/* ---- HORIZONTAAL scrollende runs-strip (scroll-snap) ---- */
+.scroller{position:relative}
+.track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1.4rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--orange) var(--concrete)}
+.track::-webkit-scrollbar{height:10px}.track::-webkit-scrollbar-track{background:var(--concrete)}.track::-webkit-scrollbar-thumb{background:var(--orange)}
+.run{scroll-snap-align:start;flex:0 0 clamp(260px,32vw,340px);display:flex;flex-direction:column;gap:.6rem;background:var(--concrete);border:3px solid var(--ink);padding:1.3rem 1.3rem 1.5rem;transition:transform .12s,box-shadow .12s,background .12s}
+.run:hover,.run:focus-within{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink);background:var(--lime)}
+.run .top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+.run .day{font-family:var(--disp);text-transform:uppercase;font-size:1.6rem;line-height:.9}
+.run .day b{display:block;font-size:.78rem;font-family:var(--mono);color:#5a5a52;font-weight:400;margin-top:.25rem}
+.run .pace{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;border:2px solid var(--ink);padding:.2rem .5rem;white-space:nowrap;align-self:flex-start}
+.run h3{font-family:var(--disp);text-transform:uppercase;font-size:1.25rem;line-height:1.05;margin-top:.4rem}
 .run .dist{font-family:var(--mono);font-size:.85rem}
-.run .pace{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;border:2px solid var(--ink);padding:.2rem .5rem;white-space:nowrap}
-@media(max-width:620px){.run{grid-template-columns:auto 1fr}.run .dist,.run .pace{grid-column:2;justify-self:start}}
+.run .meet{font-size:.86rem;color:#3a3a34;margin-top:auto}
+.track .end{scroll-snap-align:end;flex:0 0 clamp(200px,26vw,280px);display:flex;flex-direction:column;justify-content:center;gap:.6rem;background:var(--orange);color:var(--paper);border:3px solid var(--ink);padding:1.3rem}
+.track .end h3{font-family:var(--disp);text-transform:uppercase;font-size:1.3rem;line-height:1}
+.track .end a{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;text-decoration:underline}
+.scroll-ctl{display:flex;gap:.5rem;justify-content:flex-end;margin-top:-.6rem}
+.scroll-ctl button{cursor:pointer;width:46px;height:46px;border:3px solid var(--ink);background:var(--paper);font-family:var(--disp);font-size:1.2rem;line-height:1;transition:background .12s}
+.scroll-ctl button:hover{background:var(--lime)}
+.scroll-ctl button[disabled]{opacity:.35;cursor:not-allowed}
 
 /* niveaus / paces */
 .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem)}
@@ -83,14 +116,14 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 
 /* stats band */
 .band{background:var(--ink);color:var(--paper);border-block:4px solid var(--orange)}
-.band .wrap{padding-block:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
-@media(max-width:560px){.band .wrap{grid-template-columns:1fr 1fr}}
+.band .inner{padding-block:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+@media(max-width:560px){.band .inner{grid-template-columns:1fr 1fr}}
 .band .b b{font-family:var(--disp);font-size:2rem;display:block;color:var(--orange)}
 .band .b span{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:#b8b6ae}
 
 /* join */
-.join .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
-@media(max-width:780px){.join .wrap{grid-template-columns:1fr}}
+.join .inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media(max-width:780px){.join .inner{grid-template-columns:1fr}}
 .join h2{font-family:var(--disp);text-transform:uppercase;font-size:clamp(2rem,6vw,3.4rem);line-height:.9}
 .join h2 span{color:var(--orange)}
 .join p{margin-top:1rem;max-width:38ch}
@@ -107,8 +140,8 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
 
 .foot{background:var(--ink);color:var(--paper);padding-block:clamp(1.8rem,3vw,2.6rem)}
-.foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
-.foot .logo span{color:var(--orange)}
+.foot .inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.foot .logo{font-family:var(--disp);font-size:1.4rem}.foot .logo span{color:var(--orange)}
 .foot .tag{font-family:var(--mono);font-size:.76rem;color:#8a8a82}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
 </style>
@@ -116,75 +149,139 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 <body id="top">
 <a class="skip" href="#runs">Naar de runs</a>
 
-<header class="nav"><div class="wrap">
-  <a class="logo" href="#top">SPRINT<span>→</span></a>
-  <nav class="menu" id="menu"><a href="#runs">Runs</a><a href="#niveaus">Niveaus</a><a href="#mee">Meelopen</a><a class="cta" href="#mee">Loop mee</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
-</div></header>
+<div class="shell">
+  <!-- vaste zijbalk-nav (desktop) -->
+  <aside class="rail">
+    <a class="logo" href="#top">SPRINT<span>→</span></a>
+    <span class="tag">Running crew · Rotterdam</span>
+    <nav class="railnav" aria-label="Hoofdmenu">
+      <a href="#runs">Runs</a>
+      <a href="#niveaus">Niveaus</a>
+      <a href="#cijfers">Cijfers</a>
+      <a href="#mee">Meelopen</a>
+    </nav>
+    <a class="cta" href="#mee">Loop mee →</a>
+  </aside>
 
-<main>
-  <section class="hero"><div class="wrap">
-    <span class="kick">// Running crew · Rotterdam · gratis</span>
-    <h1>Samen<br>ren je<br><span class="o">verder.</span></h1>
-    <p>Drie keer per week samen de stad door. Alle niveaus, geen contributie, altijd na afloop koffie.</p>
-    <a class="cta" href="#mee">Loop een keer mee →</a>
-  </div></section>
+  <!-- mobiele topbar -->
+  <header class="topbar">
+    <a class="logo" href="#top">SPRINT<span>→</span></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mob">Menu</button>
+  </header>
+  <nav class="mob" id="mob" aria-label="Mobiel menu">
+    <a href="#runs">Runs</a><a href="#niveaus">Niveaus</a><a href="#cijfers">Cijfers</a><a href="#mee">Meelopen</a><a class="cta" href="#mee">Loop mee →</a>
+  </nav>
 
-  <div class="tk" aria-hidden="true"><div class="row"><span>GRATIS&nbsp;&nbsp;ALLE NIVEAUS&nbsp;&nbsp;3X PER WEEK&nbsp;&nbsp;KOFFIE NA&nbsp;&nbsp;</span><span>GRATIS&nbsp;&nbsp;ALLE NIVEAUS&nbsp;&nbsp;3X PER WEEK&nbsp;&nbsp;KOFFIE NA&nbsp;&nbsp;</span></div></div>
+  <div class="content">
+  <main>
+    <section class="hero">
+      <div class="inner">
+        <span class="kick">// Running crew · Rotterdam · gratis</span>
+        <h1>Samen<br>ren je<br><span class="o">verder.</span></h1>
+        <div class="herofoot">
+          <p>Drie keer per week samen de stad door. Alle niveaus, geen contributie, altijd na afloop koffie.</p>
+          <a class="cta" href="#mee">Loop een keer mee →</a>
+        </div>
+      </div>
+    </section>
 
-  <section class="sec wrap" id="runs">
-    <div class="sec-h"><h2>Vaste runs</h2><span class="bar" aria-hidden="true"></span></div>
-    <div class="runs" data-r>
-      <div class="run"><div class="day">Di<b>18:30</b></div><h3>Intervaltraining</h3><span class="dist">~8 km · baan</span><span class="pace">Snel</span></div>
-      <div class="run"><div class="day">Do<b>19:00</b></div><h3>Tempo langs de Maas</h3><span class="dist">~10 km</span><span class="pace">Gemiddeld</span></div>
-      <div class="run"><div class="day">Zo<b>09:30</b></div><h3>Lange duurloop</h3><span class="dist">12—18 km</span><span class="pace">Rustig</span></div>
-      <div class="run"><div class="day">Za<b>09:00</b></div><h3>Beginnersloop</h3><span class="dist">~5 km</span><span class="pace">Instap</span></div>
-    </div>
-  </section>
+    <div class="tk" aria-hidden="true"><div class="row"><span>GRATIS&nbsp;&nbsp;ALLE NIVEAUS&nbsp;&nbsp;3X PER WEEK&nbsp;&nbsp;KOFFIE NA&nbsp;&nbsp;</span><span>GRATIS&nbsp;&nbsp;ALLE NIVEAUS&nbsp;&nbsp;3X PER WEEK&nbsp;&nbsp;KOFFIE NA&nbsp;&nbsp;</span></div></div>
 
-  <section class="sec wrap" id="niveaus">
-    <div class="sec-h"><h2>Voor wie?</h2><span class="bar" aria-hidden="true"></span></div>
-    <div class="levels" data-r>
-      <div class="lv"><h3>Instap</h3><div class="p">5:30—6:30 /km</div><p>Nooit eerder gerend? Begin hier. We laten niemand achter.</p></div>
-      <div class="lv"><h3>Gemiddeld</h3><div class="p">4:45—5:30 /km</div><p>Loopt al wat? Sluit aan bij de tempo- en duurlopen.</p></div>
-      <div class="lv"><h3>Snel</h3><div class="p">< 4:45 /km</div><p>Intervallen, tempo en wedstrijdvoorbereiding.</p></div>
-    </div>
-  </section>
+    <section class="sec inner" id="runs">
+      <div class="sec-h"><h2>Vaste runs</h2><span class="bar" aria-hidden="true"></span><span class="hint">← sleep / pijltjes →</span></div>
+      <div class="scroller">
+        <div class="track" id="track" tabindex="0" role="group" aria-label="Vaste runs, horizontaal scrollbaar met de pijltjestoetsen">
+          <article class="run">
+            <div class="top"><div class="day">Di<b>18:30</b></div><span class="pace">Snel</span></div>
+            <h3>Intervaltraining</h3><span class="dist">~8 km · op de baan</span>
+            <span class="meet">Verzamelen: atletiekbaan Nesselande</span>
+          </article>
+          <article class="run">
+            <div class="top"><div class="day">Do<b>19:00</b></div><span class="pace">Gemiddeld</span></div>
+            <h3>Tempo langs de Maas</h3><span class="dist">~10 km</span>
+            <span class="meet">Verzamelen: Het Park, bij de molen</span>
+          </article>
+          <article class="run">
+            <div class="top"><div class="day">Zo<b>09:30</b></div><span class="pace">Rustig</span></div>
+            <h3>Lange duurloop</h3><span class="dist">12—18 km</span>
+            <span class="meet">Verzamelen: Kralingse Plas, oostkant</span>
+          </article>
+          <article class="run">
+            <div class="top"><div class="day">Za<b>09:00</b></div><span class="pace">Instap</span></div>
+            <h3>Beginnersloop</h3><span class="dist">~5 km</span>
+            <span class="meet">Verzamelen: Het Park, bij de molen</span>
+          </article>
+          <div class="end">
+            <h3>Eerste keer?</h3>
+            <p style="font-size:.9rem">Begin bij de beginnersloop op zaterdag. Gewoon komen.</p>
+            <a href="#mee">Schrijf je in →</a>
+          </div>
+        </div>
+        <div class="scroll-ctl" aria-hidden="true">
+          <button type="button" id="prev" aria-label="Vorige runs" tabindex="-1">←</button>
+          <button type="button" id="next" aria-label="Volgende runs" tabindex="-1">→</button>
+        </div>
+      </div>
+    </section>
 
-  <section class="band" data-r><div class="wrap">
-    <div class="b"><b>180+</b><span>leden</span></div>
-    <div class="b"><b>3x</b><span>per week</span></div>
-    <div class="b"><b>€0</b><span>contributie</span></div>
-    <div class="b"><b>2019</b><span>opgericht</span></div>
-  </div></section>
+    <section class="sec inner" id="niveaus">
+      <div class="sec-h"><h2>Voor wie?</h2><span class="bar" aria-hidden="true"></span></div>
+      <div class="levels" data-r>
+        <div class="lv"><h3>Instap</h3><div class="p">5:30—6:30 /km</div><p>Nooit eerder gerend? Begin hier. We laten niemand achter.</p></div>
+        <div class="lv"><h3>Gemiddeld</h3><div class="p">4:45—5:30 /km</div><p>Loopt al wat? Sluit aan bij de tempo- en duurlopen.</p></div>
+        <div class="lv"><h3>Snel</h3><div class="p">&lt; 4:45 /km</div><p>Intervallen, tempo en wedstrijdvoorbereiding.</p></div>
+      </div>
+    </section>
 
-  <section class="sec join" id="mee"><div class="wrap">
-    <div data-r>
-      <h2>Loop een<br>keer <span>mee.</span></h2>
-      <p>Gewoon komen. Laat je gegevens achter en kies een run — we vertellen je waar we verzamelen.</p>
-      <p style="font-family:var(--mono);font-size:.85rem;margin-top:1rem">Verzamelen: Het Park, bij de molen · @sprint.rtm</p>
-    </div>
-    <form class="form" id="form" novalidate data-r>
-      <div class="fld"><label for="s-naam">Naam</label><input id="s-naam" type="text" required><span class="err">Vul je naam in.</span></div>
-      <div class="fld"><label for="s-mail">E-mail</label><input id="s-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
-      <div class="fld"><label for="s-run">Welke run?</label><select id="s-run"><option>Beginnersloop (za)</option><option>Intervaltraining (di)</option><option>Tempo Maas (do)</option><option>Lange duurloop (zo)</option></select></div>
-      <button type="submit">Ik loop mee →</button>
-      <div class="ok" role="status">→ Vet! Tot bij de start.</div>
-    </form>
-  </div></section>
-</main>
+    <section class="band" id="cijfers" data-r><div class="inner">
+      <div class="b"><b>180+</b><span>leden</span></div>
+      <div class="b"><b>3x</b><span>per week</span></div>
+      <div class="b"><b>€0</b><span>contributie</span></div>
+      <div class="b"><b>2019</b><span>opgericht</span></div>
+    </div></section>
 
-<footer class="foot"><div class="wrap">
-  <a class="logo" href="#top">SPRINT<span>→</span></a>
-  <span class="tag">&copy; <span id="jaar">2026</span> SPRINT Running Crew · Rotterdam · gratis &amp; voor iedereen</span>
-</div></footer>
+    <section class="sec join inner" id="mee">
+      <div data-r>
+        <h2>Loop een<br>keer <span>mee.</span></h2>
+        <p>Gewoon komen. Laat je gegevens achter en kies een run — we vertellen je waar we verzamelen.</p>
+        <p style="font-family:var(--mono);font-size:.85rem;margin-top:1rem">Verzamelen: Het Park, bij de molen · @sprint.rtm</p>
+      </div>
+      <form class="form" id="form" novalidate data-r>
+        <div class="fld"><label for="s-naam">Naam</label><input id="s-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+        <div class="fld"><label for="s-mail">E-mail</label><input id="s-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+        <div class="fld"><label for="s-run">Welke run?</label><select id="s-run"><option>Beginnersloop (za)</option><option>Intervaltraining (di)</option><option>Tempo Maas (do)</option><option>Lange duurloop (zo)</option></select></div>
+        <button type="submit">Ik loop mee →</button>
+        <div class="ok" role="status">→ Vet! Tot bij de start.</div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot"><div class="inner">
+    <a class="logo" href="#top">SPRINT<span>→</span></a>
+    <span class="tag">&copy; <span id="jaar">2026</span> SPRINT Running Crew · Rotterdam · gratis &amp; voor iedereen</span>
+  </div></footer>
+  </div>
+</div>
 
 <script>
 (function(){
   var doc=document,reduced=false;try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
-  var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
-  if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  var mob=doc.getElementById('mob'),bg=doc.getElementById('burger');
+  if(bg){bg.addEventListener('click',function(){var o=!mob.classList.contains('open');mob.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});mob.addEventListener('click',function(e){if(e.target.closest('a'))mob.classList.remove('open');});}
+
+  // horizontale runs-strip: pijltjesknoppen + toetsenbord + disabled-state
+  var track=doc.getElementById('track'),prev=doc.getElementById('prev'),next=doc.getElementById('next');
+  if(track){
+    function step(){var c=track.querySelector('.run');return c?c.offsetWidth+16:300;}
+    function upd(){if(!prev||!next)return;var max=track.scrollWidth-track.clientWidth-2;prev.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=max;}
+    if(prev)prev.addEventListener('click',function(){track.scrollBy({left:-step(),behavior:reduced?'auto':'smooth'});});
+    if(next)next.addEventListener('click',function(){track.scrollBy({left:step(),behavior:reduced?'auto':'smooth'});});
+    track.addEventListener('scroll',upd,{passive:true});
+    track.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();track.scrollBy({left:step(),behavior:reduced?'auto':'smooth'});}else if(e.key==='ArrowLeft'){e.preventDefault();track.scrollBy({left:-step(),behavior:reduced?'auto':'smooth'});}});
+    window.addEventListener('resize',upd);upd();
+  }
+
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
   var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
 })();

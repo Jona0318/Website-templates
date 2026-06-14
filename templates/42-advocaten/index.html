@@ -11,14 +11,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   HAGEDOORN & VIS — advocaten, Den Haag. Klassiek, gezaghebbend.
+   HAGEDOORN & VIS — advocaten, Den Haag.
+   ARCHETYPE A: STICKY SIDE-RAIL NAV.
+   Vaste verticale merk-/navigatiekolom links; rustige verticale
+   inhoudssecties rechts die voorbij scrollen. Sober, gezaghebbend.
    ============================================================ */
 :root{
   --navy:#13213a; --navy-2:#1b2e4d; --ivory:#f5f2ea; --ivory-2:#ebe6d8;
   --ink:#16202f; --ink-2:#46566b; --muted:#6b7888; --gold:#b08d4f; --gold-2:#caa765;
   --line:rgba(19,33,58,.16); --line-d:rgba(245,242,234,.18);
   --serif:"Playfair Display",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
-  --maxw:1160px; --gutter:clamp(1.2rem,5vw,4.5rem);
+  --rail:300px; --gutter:clamp(1.4rem,4vw,4rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -26,76 +29,98 @@ body{background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:
 img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}ul{list-style:none}
 button,input,select,textarea{font:inherit;color:inherit}::selection{background:var(--gold);color:var(--navy)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .serif{font-family:var(--serif)}
 .kicker{font-size:.74rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
 .rule{width:46px;height:1px;background:var(--gold);margin:1.1rem 0}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--navy);color:var(--ivory);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-.hdr{position:sticky;top:0;z-index:50;background:var(--navy);color:var(--ivory)}
-.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:80px}
-.brand{font-family:var(--serif);font-weight:600;font-size:1.4rem;letter-spacing:.01em}
-.brand span{color:var(--gold-2)}
-.nav{display:flex;align-items:center;gap:2rem}
-.nav a{font-size:.84rem;font-weight:500;letter-spacing:.04em;color:#c7d0dc}
-.nav a:hover{color:#fff}
-.nav .cta{border:1px solid var(--gold);color:var(--gold-2);padding:.6rem 1.1rem;letter-spacing:.06em;font-size:.78rem;text-transform:uppercase}
-.nav .cta:hover{background:var(--gold);color:var(--navy)}
-.burger{display:none;color:var(--ivory);border:1px solid var(--line-d);padding:.5rem .8rem;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:860px){.nav{position:fixed;inset:80px 0 auto;background:var(--navy);flex-direction:column;align-items:flex-start;padding:1.5rem var(--gutter) 2rem;gap:1.2rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+/* ---- SHELL: rail links + scrollende content rechts ---- */
+.shell{display:grid;grid-template-columns:var(--rail) 1fr;min-height:100vh}
+@media(max-width:900px){.shell{grid-template-columns:1fr}}
 
-.hero{background:var(--navy);color:var(--ivory)}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch;min-height:clamp(440px,66vh,640px)}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
-.hero-text{padding:clamp(2.5rem,6vw,5rem) clamp(1.5rem,4vw,3.5rem) clamp(2.5rem,6vw,5rem) 0;align-self:center}
-@media(max-width:860px){.hero-text{padding-right:0}}
-.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.5rem,6vw,4.4rem);line-height:1.08;letter-spacing:.005em}
-.hero p{margin-top:1.3rem;color:#c2cbd8;max-width:44ch;font-size:1.12rem}
-.hero-act{margin-top:2rem;display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
-.btn{background:var(--gold);color:var(--navy);padding:.9rem 1.6rem;font-weight:600;font-size:.92rem;letter-spacing:.03em;display:inline-block;transition:background-color .25s}
-.btn:hover{background:var(--gold-2)}
-.lnk{color:var(--ivory);border-bottom:1px solid var(--gold);padding-bottom:3px;font-size:.92rem}
-.hero-fig{position:relative;overflow:hidden}
-.hero-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy),transparent 30%)}
-@media(max-width:860px){.hero-fig{height:300px}.hero-fig img{position:static;height:300px}.hero-fig::after{background:linear-gradient(0deg,var(--navy),transparent 50%)}}
+/* ---- STICKY SIDE-RAIL (verticale merk + nav) ---- */
+.rail{position:sticky;top:0;align-self:start;height:100vh;background:var(--navy);color:var(--ivory);display:flex;flex-direction:column;padding:clamp(1.8rem,3vw,2.6rem) clamp(1.4rem,2.4vw,2.4rem);border-right:1px solid var(--line-d)}
+.rail .brand{font-family:var(--serif);font-weight:600;font-size:1.55rem;letter-spacing:.01em;line-height:1.15}
+.rail .brand span{color:var(--gold-2)}
+.rail .est{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+.rail nav{margin-top:clamp(2rem,5vh,3.5rem);display:flex;flex-direction:column;gap:.1rem}
+.rail nav a{display:flex;align-items:center;gap:.9rem;padding:.7rem 0;font-size:.92rem;font-weight:500;letter-spacing:.02em;color:#c7d0dc;border-bottom:1px solid var(--line-d);transition:color .2s,padding-left .25s}
+.rail nav a .no{font-family:var(--serif);font-size:.85rem;color:var(--gold);width:1.4rem}
+.rail nav a:hover{color:#fff}
+.rail nav a.active{color:#fff;padding-left:.5rem}
+.rail nav a.active .no{color:var(--gold-2)}
+.rail .foot-rail{margin-top:auto;font-size:.78rem;color:var(--muted);line-height:1.7}
+.rail .foot-rail a{color:#c7d0dc;border-bottom:1px solid var(--line-d)}
+.rail .foot-rail .open{color:var(--gold-2);display:block;margin-bottom:.5rem}
+.rail .cta{display:inline-block;margin-top:1.1rem;border:1px solid var(--gold);color:var(--gold-2);padding:.6rem 1.1rem;letter-spacing:.06em;font-size:.76rem;text-transform:uppercase;text-align:center}
+.rail .cta:hover{background:var(--gold);color:var(--navy)}
 
-.sec{padding-block:clamp(3.5rem,7vw,6rem)}
+/* ---- MOBILE TOPBAR (rail wordt uitklapbaar paneel) ---- */
+.mobar{display:none;position:sticky;top:0;z-index:50;background:var(--navy);color:var(--ivory);align-items:center;justify-content:space-between;padding:.9rem var(--gutter);border-bottom:1px solid var(--line-d)}
+.mobar .brand{font-family:var(--serif);font-weight:600;font-size:1.25rem}
+.mobar .brand span{color:var(--gold-2)}
+.burger{color:var(--ivory);border:1px solid var(--line-d);padding:.5rem .8rem;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:transparent}
+@media(max-width:900px){
+  .mobar{display:flex}
+  .rail{position:fixed;inset:0 0 0 auto;width:min(320px,86vw);height:100vh;z-index:60;transform:translateX(105%);transition:transform .4s cubic-bezier(.7,0,.2,1);border-right:0;border-left:1px solid var(--line-d)}
+  .rail.open{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(8,14,26,.55);opacity:0;visibility:hidden;transition:opacity .3s;z-index:55}
+  .scrim.show{opacity:1;visibility:visible}
+}
+
+/* ---- CONTENT ---- */
+.main{min-width:0}
+.sec{padding:clamp(3rem,7vw,6rem) var(--gutter);border-bottom:1px solid var(--line)}
+.inner{max-width:60rem;margin-inline:auto}
 .sec-h{max-width:46rem;margin-bottom:clamp(2rem,4vw,3rem)}
 .sec-h h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.4vw,3rem);margin-top:.9rem}
 .sec-h p{color:var(--ink-2);margin-top:.8rem;font-size:1.1rem}
 
-/* rechtsgebieden */
-.areas{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2rem,5vw,4rem)}
-@media(max-width:760px){.areas{grid-template-columns:1fr}}
-.area{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1.6rem 0;border-top:1px solid var(--line)}
-.area .no{font-family:var(--serif);font-size:1.1rem;color:var(--gold);padding-top:.1rem}
-.area h3{font-family:var(--serif);font-weight:600;font-size:1.4rem;margin-bottom:.4rem}
-.area p{color:var(--ink-2);font-size:1rem}
+/* hero / openingssectie */
+.intro{position:relative;padding:clamp(3.5rem,8vw,7rem) var(--gutter);background:var(--navy);color:var(--ivory);overflow:hidden}
+.intro .inner{position:relative;z-index:2}
+.intro h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,5.5vw,4.4rem);line-height:1.08;letter-spacing:.005em}
+.intro p{margin-top:1.3rem;color:#c2cbd8;max-width:46ch;font-size:1.14rem}
+.intro .hero-act{margin-top:2rem;display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
+.btn{background:var(--gold);color:var(--navy);padding:.9rem 1.6rem;font-weight:600;font-size:.92rem;letter-spacing:.03em;display:inline-block;transition:background-color .25s}
+.btn:hover{background:var(--gold-2)}
+.lnk{color:var(--ivory);border-bottom:1px solid var(--gold);padding-bottom:3px;font-size:.92rem}
+.intro .stats{display:flex;gap:clamp(1.5rem,4vw,3rem);margin-top:clamp(2.5rem,5vw,3.5rem);flex-wrap:wrap;border-top:1px solid var(--line-d);padding-top:1.8rem}
+.intro .stat .big{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--gold-2);line-height:1}
+.intro .stat .lab{font-size:.78rem;letter-spacing:.06em;color:#9fb0c4;margin-top:.4rem}
+.intro .glow{position:absolute;right:-10%;top:-20%;width:55%;height:140%;background:radial-gradient(circle,var(--navy-2),transparent 70%);opacity:.7}
+
+/* rechtsgebieden — rustige verticale rij i.p.v. 2-koloms blok */
+.areas{display:grid;gap:0}
+.area{display:grid;grid-template-columns:auto 1fr;gap:clamp(1rem,3vw,2.4rem);padding:1.8rem 0;border-top:1px solid var(--line);align-items:baseline}
+.area:last-child{border-bottom:1px solid var(--line)}
+.area .no{font-family:var(--serif);font-size:1.4rem;color:var(--gold)}
+.area h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin-bottom:.4rem}
+.area p{color:var(--ink-2);font-size:1.02rem;max-width:60ch}
 
 /* aanpak */
 .aanpak{background:var(--navy-2);color:var(--ivory)}
 .aanpak .sec-h h2{color:#fff}.aanpak .sec-h p{color:#c2cbd8}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,2.5rem)}
-@media(max-width:760px){.steps{grid-template-columns:1fr}}
-.step{border-top:2px solid var(--gold);padding-top:1.2rem}
-.step .n{font-family:var(--serif);font-size:1.6rem;color:var(--gold-2)}
-.step h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin:.4rem 0 .5rem}
-.step p{color:#c2cbd8;font-size:.98rem}
+.steps{display:grid;gap:1.4rem}
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;border-left:2px solid var(--gold);padding:.4rem 0 .4rem 1.4rem}
+.step .n{font-family:var(--serif);font-size:1.6rem;color:var(--gold-2);line-height:1}
+.step h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:.35rem}
+.step p{color:#c2cbd8;font-size:.98rem;max-width:58ch}
 
 /* team */
-.team{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(2rem,4vw,3.5rem)}
-@media(max-width:760px){.team{grid-template-columns:1fr}}
-.adv{padding:1.6rem 0;border-top:1px solid var(--line)}
-.adv h3{font-family:var(--serif);font-weight:600;font-size:1.35rem}
-.adv .role{color:var(--gold);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin:.3rem 0 .6rem}
-.adv p{color:var(--ink-2);font-size:.96rem}
+.team{display:grid;gap:0}
+.adv{display:grid;grid-template-columns:1fr 2fr;gap:clamp(1rem,3vw,2.4rem);padding:1.8rem 0;border-top:1px solid var(--line);align-items:start}
+.adv:last-child{border-bottom:1px solid var(--line)}
+@media(max-width:560px){.adv{grid-template-columns:1fr;gap:.4rem}}
+.adv h3{font-family:var(--serif);font-weight:600;font-size:1.4rem}
+.adv .role{color:var(--gold);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem}
+.adv p{color:var(--ink-2);font-size:.98rem}
 .adv .em{display:inline-block;margin-top:.6rem;font-size:.9rem;color:var(--ink-2);border-bottom:1px solid var(--line)}
 
 /* contact */
 .cta-sec{background:var(--navy);color:var(--ivory)}
-.cta-sec .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem)}
-@media(max-width:860px){.cta-sec .wrap{grid-template-columns:1fr;gap:2rem}}
+.cta-sec .inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);max-width:64rem}
+@media(max-width:760px){.cta-sec .inner{grid-template-columns:1fr;gap:2rem}}
 .cta-sec h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.4vw,3rem);color:#fff;margin-top:.9rem}
 .cta-sec .lead{color:#c2cbd8;margin-top:1rem;max-width:38ch;font-size:1.1rem}
 .coord{margin-top:1.8rem;display:grid;gap:.5rem;color:#c2cbd8}
@@ -118,94 +143,119 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .form .ok{display:none;padding:1rem 0}.form.sent .row,.form.sent button,.form.sent .note{display:none}.form.sent .ok{display:block}
 .form .ok h3{font-family:var(--serif);font-size:1.4rem;margin-bottom:.4rem}
 
-.foot{background:var(--navy);color:#9fb0c4;border-top:1px solid var(--line-d);padding-block:2rem}
-.foot .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem}
-.foot .brand{font-size:1.1rem}
+.foot{background:var(--navy);color:#9fb0c4;border-top:1px solid var(--line-d);padding:2rem var(--gutter)}
+.foot .inner{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;max-width:60rem;margin-inline:auto}
+.foot .brand{font-size:1.1rem;font-family:var(--serif);color:var(--ivory)}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}[data-r].in{opacity:1;transform:none}}
 </style>
 </head>
 <body id="top">
 <a class="skip" href="#rechtsgebieden">Naar de rechtsgebieden</a>
-<header class="hdr"><div class="wrap">
+
+<div class="mobar">
   <a class="brand" href="#top">Hagedoorn <span>&amp;</span> Vis</a>
-  <nav class="nav" id="nav">
-    <a href="#rechtsgebieden">Rechtsgebieden</a><a href="#aanpak">Aanpak</a><a href="#team">Advocaten</a>
-    <a class="cta" href="#contact">Kennismaken</a>
-  </nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
-</div></header>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="rail">Menu</button>
+</div>
+<div class="scrim" id="scrim"></div>
 
-<main>
-  <section class="hero"><div class="wrap">
-    <div class="hero-text">
-      <span class="kicker">Advocaten · Den Haag · sinds 1994</span>
-      <div class="rule"></div>
-      <h1>Helder advies,<br>als het erop aankomt.</h1>
-      <p>Betrokken juristen die de zaak begrijpen en in gewone taal uitleggen waar je staat — en wat de verstandigste volgende stap is.</p>
-      <div class="hero-act"><a class="btn" href="#contact">Plan een kennismaking</a><a class="lnk" href="#rechtsgebieden">Onze rechtsgebieden</a></div>
+<div class="shell">
+  <aside class="rail" id="rail">
+    <div>
+      <a class="brand" href="#top">Hagedoorn <span>&amp;</span> Vis</a>
+      <div class="est">Advocaten · Den Haag · 1994</div>
     </div>
-    <div class="hero-fig" data-r><img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1100&q=72" alt="Klassieke bibliotheek met boekenkasten en bustes" width="1100" height="700"></div>
-  </div></section>
-
-  <section class="sec" id="rechtsgebieden"><div class="wrap">
-    <div class="sec-h" data-r><span class="kicker">Rechtsgebieden</span><h2>Waarin wij u bijstaan</h2><p>Vier specialismen, één vast aanspreekpunt. Loopt uw kwestie over meerdere gebieden? Dan schakelen we intern, niet u.</p></div>
-    <div class="areas" data-r>
-      <div class="area"><span class="no">I</span><div><h3>Arbeidsrecht</h3><p>Ontslag, vaststellingsovereenkomsten, reorganisatie en geschillen — voor werkgever én werknemer, scherp en pragmatisch.</p></div></div>
-      <div class="area"><span class="no">II</span><div><h3>Ondernemingsrecht</h3><p>Contracten, samenwerkingen, aandeelhoudersgeschillen en bedrijfsovernames, met oog voor de commerciële realiteit.</p></div></div>
-      <div class="area"><span class="no">III</span><div><h3>Familie- &amp; erfrecht</h3><p>Echtscheiding, alimentatie, ouderschap en nalatenschappen — zorgvuldig, en zo veel mogelijk in onderling overleg.</p></div></div>
-      <div class="area"><span class="no">IV</span><div><h3>Vastgoed &amp; huur</h3><p>Koop, huur, bouwgeschillen en burenrecht voor particulieren, ondernemers en verhuurders.</p></div></div>
+    <nav aria-label="Hoofdnavigatie" id="railnav">
+      <a href="#intro"><span class="no">·</span>Kantoor</a>
+      <a href="#rechtsgebieden"><span class="no">I</span>Rechtsgebieden</a>
+      <a href="#aanpak"><span class="no">II</span>Aanpak</a>
+      <a href="#team"><span class="no">III</span>Advocaten</a>
+      <a href="#contact"><span class="no">IV</span>Kennismaken</a>
+    </nav>
+    <a class="cta" href="#contact">Plan een kennismaking</a>
+    <div class="foot-rail">
+      <span class="open" id="open">Vandaag bereikbaar</span>
+      Lange Voorhout 31, Den Haag<br>
+      <a href="tel:+31703920140">070 — 392 01 40</a>
     </div>
-  </div></section>
+  </aside>
 
-  <section class="sec aanpak" id="aanpak"><div class="wrap">
-    <div class="sec-h" data-r><span class="kicker">Onze aanpak</span><h2>Geen verrassingen</h2></div>
-    <div class="steps" data-r>
-      <div class="step"><div class="n">01</div><h3>Kennismaken</h3><p>Een vrijblijvend gesprek waarin we uw situatie en doel scherp krijgen. U weet daarna of en hoe wij kunnen helpen.</p></div>
-      <div class="step"><div class="n">02</div><h3>Heldere afspraken</h3><p>Een plan van aanpak met een duidelijke inschatting van kosten en kansen. Geen uurtje-factuurtje zonder uitleg.</p></div>
-      <div class="step"><div class="n">03</div><h3>Resultaat</h3><p>We schikken waar het kan en procederen waar het moet — altijd met u aan het stuur en in begrijpelijke taal.</p></div>
-    </div>
-  </div></section>
-
-  <section class="sec" id="team"><div class="wrap">
-    <div class="sec-h" data-r><span class="kicker">De advocaten</span><h2>Met wie u te maken krijgt</h2></div>
-    <div class="team" data-r>
-      <div class="adv"><h3>mr. Eline Hagedoorn</h3><div class="role">Arbeids- &amp; ondernemingsrecht</div><p>Twintig jaar ervaring aan de onderhandelingstafel en in de rechtszaal. Nuchter, scherp en recht door zee.</p><a class="em" href="mailto:hagedoorn@hagedoornvis.nl">hagedoorn@hagedoornvis.nl</a></div>
-      <div class="adv"><h3>mr. Daan Vis</h3><div class="role">Vastgoed &amp; huurrecht</div><p>Kent de bouw- en vastgoedwereld van binnenuit. Vertaalt complexe dossiers naar begrijpelijke keuzes.</p><a class="em" href="mailto:vis@hagedoornvis.nl">vis@hagedoornvis.nl</a></div>
-      <div class="adv"><h3>mr. Soraya Bouali</h3><div class="role">Familie- &amp; erfrecht</div><p>Betrokken en zorgvuldig in gevoelige zaken, met een sterke voorkeur voor oplossingen in overleg.</p><a class="em" href="mailto:bouali@hagedoornvis.nl">bouali@hagedoornvis.nl</a></div>
-    </div>
-  </div></section>
-
-  <section class="sec cta-sec" id="contact"><div class="wrap">
-    <div data-r>
-      <span class="kicker">Kennismaken</span>
-      <h2>Een eerste gesprek<br>kost u niets</h2>
-      <p class="lead">Laat uw gegevens achter, dan bellen we u terug om een afspraak te plannen — discreet en zonder verplichtingen.</p>
-      <div class="coord">
-        <span class="open" id="open">Vandaag bereikbaar</span>
-        <span>Lange Voorhout 31, 2514 EC Den Haag</span>
-        <a href="tel:+31703920140">070 — 392 01 40</a>
-        <a href="mailto:contact@hagedoornvis.nl">contact@hagedoornvis.nl</a>
+  <div class="main" role="main" id="main">
+    <section class="intro" id="intro">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="inner">
+        <span class="kicker">Advocaten · Den Haag · sinds 1994</span>
+        <div class="rule"></div>
+        <h1>Helder advies,<br>als het erop aankomt.</h1>
+        <p>Betrokken juristen die de zaak begrijpen en in gewone taal uitleggen waar je staat — en wat de verstandigste volgende stap is.</p>
+        <div class="hero-act"><a class="btn" href="#contact">Plan een kennismaking</a><a class="lnk" href="#rechtsgebieden">Onze rechtsgebieden</a></div>
+        <div class="stats">
+          <div class="stat"><div class="big">30 jaar</div><div class="lab">aan het Lange Voorhout</div></div>
+          <div class="stat"><div class="big">4</div><div class="lab">specialismen, één aanspreekpunt</div></div>
+          <div class="stat"><div class="big">1 dag</div><div class="lab">reactietermijn op uw aanvraag</div></div>
+        </div>
       </div>
-    </div>
-    <form class="form" id="form" novalidate data-r>
-      <div class="row">
-        <div class="fld"><label for="c-naam">Naam</label><input id="c-naam" type="text" required><span class="err">Vul uw naam in.</span></div>
-        <div class="fld"><label for="c-tel">Telefoon</label><input id="c-tel" type="tel" required><span class="err">Vul uw telefoonnummer in.</span></div>
-        <div class="fld"><label for="c-mail">E-mail</label><input id="c-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
-        <div class="fld"><label for="c-geb">Rechtsgebied</label><select id="c-geb" required><option value="">Kies…</option><option>Arbeidsrecht</option><option>Ondernemingsrecht</option><option>Familie- &amp; erfrecht</option><option>Vastgoed &amp; huur</option><option>Anders / weet niet</option></select><span class="err">Maak een keuze.</span></div>
-        <div class="fld full"><label for="c-ber">Korte toelichting</label><textarea id="c-ber"></textarea></div>
-      </div>
-      <button type="submit">Verstuur aanvraag</button>
-      <p class="note">Uw bericht wordt vertrouwelijk behandeld.</p>
-      <div class="ok" role="status"><h3>Bedankt voor uw bericht.</h3><p>We nemen binnen één werkdag discreet contact met u op.</p></div>
-    </form>
-  </div></section>
-</main>
+    </section>
 
-<footer class="foot"><div class="wrap">
-  <span class="brand serif">Hagedoorn &amp; Vis</span>
-  <span>&copy; <span id="jaar">2026</span> · Lange Voorhout 31, Den Haag · Ingeschreven bij de Nederlandse Orde van Advocaten · KvK 27290188</span>
-</div></footer>
+    <section class="sec" id="rechtsgebieden"><div class="inner">
+      <div class="sec-h" data-r><span class="kicker">Rechtsgebieden</span><h2>Waarin wij u bijstaan</h2><p>Vier specialismen, één vast aanspreekpunt. Loopt uw kwestie over meerdere gebieden? Dan schakelen we intern, niet u.</p></div>
+      <div class="areas" data-r>
+        <div class="area"><span class="no">I</span><div><h3>Arbeidsrecht</h3><p>Ontslag, vaststellingsovereenkomsten, reorganisatie en geschillen — voor werkgever én werknemer, scherp en pragmatisch.</p></div></div>
+        <div class="area"><span class="no">II</span><div><h3>Ondernemingsrecht</h3><p>Contracten, samenwerkingen, aandeelhoudersgeschillen en bedrijfsovernames, met oog voor de commerciële realiteit.</p></div></div>
+        <div class="area"><span class="no">III</span><div><h3>Familie- &amp; erfrecht</h3><p>Echtscheiding, alimentatie, ouderschap en nalatenschappen — zorgvuldig, en zo veel mogelijk in onderling overleg.</p></div></div>
+        <div class="area"><span class="no">IV</span><div><h3>Vastgoed &amp; huur</h3><p>Koop, huur, bouwgeschillen en burenrecht voor particulieren, ondernemers en verhuurders.</p></div></div>
+      </div>
+    </div></section>
+
+    <section class="sec aanpak" id="aanpak"><div class="inner">
+      <div class="sec-h" data-r><span class="kicker">Onze aanpak</span><h2>Geen verrassingen</h2></div>
+      <div class="steps" data-r>
+        <div class="step"><div class="n">01</div><div><h3>Kennismaken</h3><p>Een vrijblijvend gesprek waarin we uw situatie en doel scherp krijgen. U weet daarna of en hoe wij kunnen helpen.</p></div></div>
+        <div class="step"><div class="n">02</div><div><h3>Heldere afspraken</h3><p>Een plan van aanpak met een duidelijke inschatting van kosten en kansen. Geen uurtje-factuurtje zonder uitleg.</p></div></div>
+        <div class="step"><div class="n">03</div><div><h3>Resultaat</h3><p>We schikken waar het kan en procederen waar het moet — altijd met u aan het stuur en in begrijpelijke taal.</p></div></div>
+      </div>
+    </div></section>
+
+    <section class="sec" id="team"><div class="inner">
+      <div class="sec-h" data-r><span class="kicker">De advocaten</span><h2>Met wie u te maken krijgt</h2></div>
+      <div class="team" data-r>
+        <div class="adv"><div><h3>mr. Eline Hagedoorn</h3><div class="role">Arbeids- &amp; ondernemingsrecht</div></div><div><p>Twintig jaar ervaring aan de onderhandelingstafel en in de rechtszaal. Nuchter, scherp en recht door zee.</p><a class="em" href="mailto:hagedoorn@hagedoornvis.nl">hagedoorn@hagedoornvis.nl</a></div></div>
+        <div class="adv"><div><h3>mr. Daan Vis</h3><div class="role">Vastgoed &amp; huurrecht</div></div><div><p>Kent de bouw- en vastgoedwereld van binnenuit. Vertaalt complexe dossiers naar begrijpelijke keuzes.</p><a class="em" href="mailto:vis@hagedoornvis.nl">vis@hagedoornvis.nl</a></div></div>
+        <div class="adv"><div><h3>mr. Soraya Bouali</h3><div class="role">Familie- &amp; erfrecht</div></div><div><p>Betrokken en zorgvuldig in gevoelige zaken, met een sterke voorkeur voor oplossingen in overleg.</p><a class="em" href="mailto:bouali@hagedoornvis.nl">bouali@hagedoornvis.nl</a></div></div>
+      </div>
+    </div></section>
+
+    <section class="sec cta-sec" id="contact"><div class="inner">
+      <div data-r>
+        <span class="kicker">Kennismaken</span>
+        <h2>Een eerste gesprek<br>kost u niets</h2>
+        <p class="lead">Laat uw gegevens achter, dan bellen we u terug om een afspraak te plannen — discreet en zonder verplichtingen.</p>
+        <div class="coord">
+          <span class="open" id="open2">Vandaag bereikbaar</span>
+          <span>Lange Voorhout 31, 2514 EC Den Haag</span>
+          <a href="tel:+31703920140">070 — 392 01 40</a>
+          <a href="mailto:contact@hagedoornvis.nl">contact@hagedoornvis.nl</a>
+        </div>
+      </div>
+      <form class="form" id="form" novalidate data-r>
+        <div class="row">
+          <div class="fld"><label for="c-naam">Naam</label><input id="c-naam" type="text" required><span class="err">Vul uw naam in.</span></div>
+          <div class="fld"><label for="c-tel">Telefoon</label><input id="c-tel" type="tel" required><span class="err">Vul uw telefoonnummer in.</span></div>
+          <div class="fld"><label for="c-mail">E-mail</label><input id="c-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+          <div class="fld"><label for="c-geb">Rechtsgebied</label><select id="c-geb" required><option value="">Kies…</option><option>Arbeidsrecht</option><option>Ondernemingsrecht</option><option>Familie- &amp; erfrecht</option><option>Vastgoed &amp; huur</option><option>Anders / weet niet</option></select><span class="err">Maak een keuze.</span></div>
+          <div class="fld full"><label for="c-ber">Korte toelichting</label><textarea id="c-ber"></textarea></div>
+        </div>
+        <button type="submit">Verstuur aanvraag</button>
+        <p class="note">Uw bericht wordt vertrouwelijk behandeld.</p>
+        <div class="ok" role="status"><h3>Bedankt voor uw bericht.</h3><p>We nemen binnen één werkdag discreet contact met u op.</p></div>
+      </form>
+    </div></section>
+
+    <footer class="foot"><div class="inner">
+      <span class="brand">Hagedoorn &amp; Vis</span>
+      <span>&copy; <span id="jaar">2026</span> · Lange Voorhout 31, Den Haag · Ingeschreven bij de Nederlandse Orde van Advocaten · KvK 27290188</span>
+    </div></footer>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -213,12 +263,25 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
   var H={1:[540,1050],2:[540,1050],3:[540,1050],4:[540,1050],5:[540,1020],6:null,0:null};
   function now(){try{var p=new Intl.DateTimeFormat('nl-NL',{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Amsterdam'}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value;});var m={zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6},d=m[(o.weekday||'').toLowerCase().slice(0,2)];if(d===undefined)d=new Date().getDay();return{d:d,m:+o.hour*60+ +o.minute};}catch(e){var x=new Date();return{d:x.getDay(),m:x.getHours()*60+x.getMinutes()};}}
   function fmt(m){return Math.floor(m/60)+':'+('0'+m%60).slice(-2);}
-  var n=now(),t=H[n.d],op=doc.getElementById('open');
-  if(op){if(t&&n.m>=t[0]&&n.m<t[1])op.textContent='Vandaag bereikbaar tot '+fmt(t[1]);else op.textContent='Ma–vr bereikbaar van 9:00 tot 17:30';}
+  var n=now(),t=H[n.d],txt;
+  if(t&&n.m>=t[0]&&n.m<t[1])txt='Vandaag bereikbaar tot '+fmt(t[1]);else txt='Ma–vr bereikbaar van 9:00 tot 17:30';
+  ['open','open2'].forEach(function(id){var el=doc.getElementById(id);if(el)el.textContent=txt;});
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
-  var nav=doc.getElementById('nav'),bg=doc.getElementById('burger');
-  if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
+  // mobile rail toggle
+  var rail=doc.getElementById('rail'),bg=doc.getElementById('burger'),scrim=doc.getElementById('scrim');
+  function close(){rail.classList.remove('open');scrim.classList.remove('show');bg.setAttribute('aria-expanded','false');}
+  if(bg){bg.addEventListener('click',function(){var o=!rail.classList.contains('open');rail.classList.toggle('open',o);scrim.classList.toggle('show',o);bg.setAttribute('aria-expanded',o);});}
+  if(scrim)scrim.addEventListener('click',close);
+  rail.addEventListener('click',function(e){if(e.target.closest('a'))close();});
+  // reveal
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+  // SIGNATURE: scroll-spy markeert de actieve sectie in de side-rail
+  var links=[].slice.call(doc.querySelectorAll('#railnav a')),secs=[].slice.call(doc.querySelectorAll('.intro, .sec'));
+  if(links.length&&'IntersectionObserver'in window){
+    var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+    var spy=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.remove('active');});var a=map[en.target.id];if(a)a.classList.add('active');}});},{rootMargin:'-25% 0px -60% 0px',threshold:0});
+    secs.forEach(function(s){spy.observe(s);});
+  }
   var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else if(i.hasAttribute('required'))ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],select[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');form.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});});}
 })();
 </script>

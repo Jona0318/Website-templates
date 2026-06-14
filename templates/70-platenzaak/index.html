@@ -12,11 +12,13 @@
 <style>
 /* ============================================================
    WALS — platenzaak. Burnt orange × zwart × cream. Retro-print + draaiende plaat.
+   STRUCTUUR: side-rail nav (verticaal) + full-bleed grote-type hero met
+   draaiende plaat als anker + horizontaal scrollende platenbak (crate strip).
    ============================================================ */
 :root{
   --cream:#f6ead2; --ink:#161310; --orange:#ff5e1a; --teal:#0b6e5f; --yellow:#ffc43d;
   --disp:"Climate Crisis",system-ui,sans-serif; --body:"Space Grotesk",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
-  --maxw:1180px; --gutter:clamp(1rem,4vw,3rem); --sh:5px 5px 0 var(--ink);
+  --maxw:1180px; --gutter:clamp(1rem,4vw,3rem); --rail:84px; --sh:5px 5px 0 var(--ink);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -27,34 +29,43 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--orange);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:3px solid var(--ink)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-family:var(--disp);font-size:1.4rem;color:var(--orange);line-height:1}
-.menu{display:flex;align-items:center;gap:.3rem}
-.menu a{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;padding:.45rem .65rem}
-.menu a:hover{background:var(--yellow)}
-.menu .cta{background:var(--ink);color:var(--cream);font-family:var(--mono);padding:.45rem .85rem}
-.menu .cta:hover{background:var(--orange)}
-.burger{display:none;border:2px solid var(--ink);background:var(--yellow);padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.78rem}
-@media(max-width:840px){.menu{position:fixed;inset:64px 0 auto;background:var(--cream);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:3px solid var(--ink);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid var(--ink)}.burger{display:inline-block}}
+/* ---- verticale side-rail nav ---- */
+.rail{position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:60;background:var(--ink);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:1.1rem 0;border-right:3px solid var(--ink)}
+.rail .logo{font-family:var(--disp);font-size:1.5rem;color:var(--orange);line-height:1}
+.rail .rmenu{display:flex;flex-direction:column;gap:1.4rem;align-items:center}
+.rail .rmenu a{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.18em;writing-mode:vertical-rl;transform:rotate(180deg);padding:.2rem 0}
+.rail .rmenu a:hover{color:var(--yellow)}
+.rail .rcta{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;background:var(--orange);color:var(--ink);padding:.5rem .4rem;writing-mode:vertical-rl;transform:rotate(180deg);border:2px solid var(--cream)}
+.rail .rcta:hover{background:var(--yellow)}
+/* mobiele topbar (vervangt rail < 860px) */
+.topbar{display:none}
+@media(max-width:860px){
+  .rail{display:none}
+  .topbar{display:flex;position:sticky;top:0;z-index:60;background:var(--cream);border-bottom:3px solid var(--ink);align-items:center;justify-content:space-between;height:60px;padding-inline:var(--gutter)}
+  .topbar .logo{font-family:var(--disp);font-size:1.4rem;color:var(--orange)}
+  .burger{border:2px solid var(--ink);background:var(--yellow);padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.78rem}
+  .menu{position:fixed;inset:60px 0 auto;background:var(--cream);display:flex;flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:3px solid var(--ink);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1);z-index:55}
+  .menu.open{transform:none}
+  .menu a{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;border:2px solid var(--ink);padding:.55rem .7rem}
+}
+.menu{display:none}
+@media(min-width:861px){.shell{padding-left:var(--rail)}}
 
-/* hero */
-.hero{background:var(--orange);color:var(--ink);border-bottom:3px solid var(--ink);overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding-block:clamp(2.4rem,6vw,4.5rem)}
-@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;text-align:center}}
+/* ---- full-bleed grote-type hero ---- */
+.hero{background:var(--orange);color:var(--ink);border-bottom:3px solid var(--ink);overflow:hidden;position:relative}
+.hero .inner{padding:clamp(2.4rem,6vw,5rem) var(--gutter) clamp(2rem,5vw,4rem);max-width:1240px;margin-inline:auto}
 .hero .kick{font-family:var(--mono);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--orange);display:inline-block;padding:.3rem .8rem}
-.hero h1{font-family:var(--disp);font-size:clamp(3rem,12vw,8rem);line-height:.9;margin:1rem 0;color:var(--cream);text-shadow:5px 5px 0 var(--ink)}
-.hero p{font-size:1.2rem;max-width:36ch;font-weight:500}
-@media(max-width:820px){.hero p{margin-inline:auto}}
-.hero .cta{display:inline-block;margin-top:1.4rem;font-family:var(--mono);font-weight:700;text-transform:uppercase;font-size:.85rem;background:var(--ink);color:var(--cream);padding:.9rem 1.6rem;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--cream);transition:transform .15s,box-shadow .15s}
+.hero h1{font-family:var(--disp);font-size:clamp(3.6rem,18vw,13rem);line-height:.82;margin:1.1rem 0 .4rem;color:var(--cream);text-shadow:6px 6px 0 var(--ink);letter-spacing:-.01em}
+.hero .lead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1.4rem;justify-content:space-between}
+.hero p{font-size:1.2rem;max-width:34ch;font-weight:500}
+.hero .cta{display:inline-block;font-family:var(--mono);font-weight:700;text-transform:uppercase;font-size:.85rem;background:var(--ink);color:var(--cream);padding:.9rem 1.6rem;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--cream);transition:transform .15s,box-shadow .15s;white-space:nowrap}
 .hero .cta:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--cream)}
-/* draaiende plaat */
-.disc{justify-self:center;width:min(280px,70vw);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#0e0c0a 0 2px,#1b1714 2px 5px);position:relative;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.disc{position:absolute;right:clamp(-90px,-4vw,-40px);top:50%;transform:translateY(-50%);width:min(360px,42vw);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#0e0c0a 0 2px,#1b1714 2px 5px);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);pointer-events:none}
 @media (prefers-reduced-motion:no-preference){.disc{animation:spin 4s linear infinite}}
-@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
 .disc::before{content:"";position:absolute;inset:30%;border-radius:50%;background:var(--yellow);border:3px solid var(--ink)}
 .disc::after{content:"";position:absolute;left:calc(50% - 7px);top:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:var(--cream);border:2px solid var(--ink);z-index:1}
+@media(max-width:860px){.disc{display:none}}
 
 /* ticker */
 .tk{background:var(--ink);color:var(--cream);overflow:hidden}
@@ -68,15 +79,18 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .sec-h h2{font-family:var(--disp);font-size:clamp(1.6rem,5vw,2.8rem);line-height:1}
 .sec-h .all{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;border-bottom:3px solid var(--orange)}
 
-/* filter + crate */
-.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem}
+/* ---- filter + horizontaal scrollende crate ---- */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
 .fbtn{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;padding:.45rem .9rem;border:2px solid var(--ink);background:var(--cream);cursor:pointer}
 .fbtn[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
-.crate{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.8rem,2vw,1.3rem)}
-@media(max-width:820px){.crate{grid-template-columns:1fr 1fr}}@media(max-width:480px){.crate{grid-template-columns:1fr}}
-.rec{border:3px solid var(--ink);background:#fff;box-shadow:var(--sh);transition:transform .12s,box-shadow .12s}
-.rec:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
-.rec .cov{aspect-ratio:1;display:grid;place-items:center;font-family:var(--disp);font-size:2.4rem;color:var(--cream);border-bottom:3px solid var(--ink)}
+.cratewrap{position:relative}
+.crate{display:flex;gap:clamp(.8rem,2vw,1.3rem);overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1.4rem;scrollbar-color:var(--ink) var(--cream)}
+.crate::-webkit-scrollbar{height:12px}
+.crate::-webkit-scrollbar-track{background:var(--cream);border:2px solid var(--ink)}
+.crate::-webkit-scrollbar-thumb{background:var(--ink)}
+.rec{flex:0 0 clamp(200px,42vw,250px);scroll-snap-align:start;border:3px solid var(--ink);background:#fff;box-shadow:var(--sh);transition:transform .12s,box-shadow .12s}
+.rec:hover,.rec:focus-within{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
+.rec .cov{aspect-ratio:1;display:grid;place-items:center;font-family:var(--disp);font-size:2.8rem;color:var(--cream);border-bottom:3px solid var(--ink)}
 .rec:nth-child(4n+1) .cov{background:var(--teal)}.rec:nth-child(4n+2) .cov{background:var(--orange)}.rec:nth-child(4n+3) .cov{background:var(--ink)}.rec:nth-child(4n) .cov{background:#8a3bd6}
 .rec .b{padding:.8rem .9rem}
 .rec h3{font-size:1rem;font-weight:700;line-height:1.15}
@@ -84,6 +98,11 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .rec .meta{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem}
 .rec .gn{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;border:2px solid var(--ink);padding:.1rem .4rem}
 .rec .pr{font-family:var(--disp);font-size:1rem;color:var(--orange)}
+.crate-nav{display:flex;gap:.5rem;margin-top:.2rem}
+.cbtn{font-family:var(--mono);font-size:1rem;width:46px;height:46px;border:3px solid var(--ink);background:var(--yellow);cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.cbtn:hover{background:var(--orange);color:#fff}
+.cbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.hint{font-family:var(--mono);font-size:.72rem;color:#6a5d4a;align-self:center;margin-left:.4rem}
 .empty{display:none;font-family:var(--mono);color:#6a5d4a;padding:1rem 0}
 
 /* info band */
@@ -112,29 +131,46 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 
 .foot{background:var(--ink);color:var(--cream);padding-block:clamp(1.6rem,3vw,2.4rem)}
 .foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.foot .logo{font-family:var(--disp);font-size:1.4rem;color:var(--orange)}
 .foot .tag{font-family:var(--mono);font-size:.76rem;color:#9a8d7c}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.crate{scroll-behavior:auto}}
 </style>
 </head>
 <body id="top">
 <a class="skip" href="#crate">Naar de platen</a>
 
-<header class="nav"><div class="wrap">
+<!-- verticale side-rail (desktop) -->
+<header class="rail">
   <a class="logo" href="#top">WALS</a>
-  <nav class="menu" id="menu"><a href="#crate">Nieuw binnen</a><a href="#winkel">Winkel</a><a href="#nieuws">Mailing</a><a class="cta" href="#crate">Draai mee</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
-</div></header>
+  <nav class="rmenu" aria-label="Hoofdmenu">
+    <a href="#crate">Nieuw binnen</a>
+    <a href="#winkel">Winkel</a>
+    <a href="#nieuws">Mailing</a>
+  </nav>
+  <a class="rcta" href="#crate">Draai mee</a>
+</header>
 
+<!-- mobiele topbar -->
+<div class="topbar">
+  <a class="logo" href="#top">WALS</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+</div>
+<nav class="menu" id="menu" aria-label="Mobiel menu"><a href="#crate">Nieuw binnen</a><a href="#winkel">Winkel</a><a href="#nieuws">Mailing</a><a href="#crate">Draai mee</a></nav>
+
+<div class="shell">
 <main>
-  <section class="hero"><div class="wrap">
-    <div>
+  <section class="hero">
+    <div class="inner">
       <span class="kick">Platenzaak · Utrecht</span>
-      <h1>Draai<br>mee.</h1>
-      <p>Nieuw en tweedehands vinyl, van jazz tot techno. Snuffel in de bakken, luister aan de bar, ga naar huis met iets goeds.</p>
-      <a class="cta" href="#crate">Bekijk wat er binnen is →</a>
+      <h1>Draai mee.</h1>
+      <div class="lead">
+        <p>Nieuw en tweedehands vinyl, van jazz tot techno. Snuffel in de bakken, luister aan de bar, ga naar huis met iets goeds.</p>
+        <a class="cta" href="#crate">Bekijk wat er binnen is →</a>
+      </div>
     </div>
     <div class="disc" aria-hidden="true"></div>
-  </div></section>
+  </section>
 
   <div class="tk" aria-hidden="true"><div class="row"><span>NIEUW BINNEN&nbsp;&nbsp;TWEEDEHANDS&nbsp;&nbsp;LUISTERBAR&nbsp;&nbsp;INKOOP&nbsp;&nbsp;</span><span>NIEUW BINNEN&nbsp;&nbsp;TWEEDEHANDS&nbsp;&nbsp;LUISTERBAR&nbsp;&nbsp;INKOOP&nbsp;&nbsp;</span></div></div>
 
@@ -147,20 +183,27 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
       <button class="fbtn" data-f="soul" aria-pressed="false">Soul / Funk</button>
       <button class="fbtn" data-f="rock" aria-pressed="false">Rock</button>
     </div>
-    <div class="crate" id="crateGrid" data-r>
-      <article class="rec" data-g="jazz"><div class="cov" aria-hidden="true">♪</div><div class="b"><h3>Blue Hour</h3><div class="ar">Mira Quartet</div><div class="meta"><span class="gn">Jazz</span><span class="pr">€28</span></div></div></article>
-      <article class="rec" data-g="house"><div class="cov" aria-hidden="true">◓</div><div class="b"><h3>Subcurrent</h3><div class="ar">Vektor</div><div class="meta"><span class="gn">Techno</span><span class="pr">€22</span></div></div></article>
-      <article class="rec" data-g="soul"><div class="cov" aria-hidden="true">✺</div><div class="b"><h3>Golden Hours</h3><div class="ar">The Embers</div><div class="meta"><span class="gn">Soul</span><span class="pr">€19</span></div></div></article>
-      <article class="rec" data-g="rock"><div class="cov" aria-hidden="true">⚡</div><div class="b"><h3>Static Noise</h3><div class="ar">Roest</div><div class="meta"><span class="gn">Rock</span><span class="pr">€24</span></div></div></article>
-      <article class="rec" data-g="house"><div class="cov" aria-hidden="true">◑</div><div class="b"><h3>Deep End</h3><div class="ar">Halftone</div><div class="meta"><span class="gn">House</span><span class="pr">€21</span></div></div></article>
-      <article class="rec" data-g="jazz"><div class="cov" aria-hidden="true">♫</div><div class="b"><h3>Nocturne</h3><div class="ar">Daan Kuipers Trio</div><div class="meta"><span class="gn">Jazz</span><span class="pr">€26</span></div></div></article>
-      <article class="rec" data-g="soul"><div class="cov" aria-hidden="true">❂</div><div class="b"><h3>Velvet</h3><div class="ar">Noor &amp; the Keys</div><div class="meta"><span class="gn">Funk</span><span class="pr">€23</span></div></div></article>
-      <article class="rec" data-g="rock"><div class="cov" aria-hidden="true">▲</div><div class="b"><h3>Lage Landen</h3><div class="ar">Klei</div><div class="meta"><span class="gn">Indie</span><span class="pr">€20</span></div></div></article>
+    <div class="cratewrap" data-r>
+      <div class="crate" id="crateGrid" tabindex="0" role="group" aria-label="Platenbak — scroll horizontaal door de nieuwe platen">
+        <article class="rec" data-g="jazz"><div class="cov" aria-hidden="true">♪</div><div class="b"><h3>Blue Hour</h3><div class="ar">Mira Quartet</div><div class="meta"><span class="gn">Jazz</span><span class="pr">€28</span></div></div></article>
+        <article class="rec" data-g="house"><div class="cov" aria-hidden="true">◓</div><div class="b"><h3>Subcurrent</h3><div class="ar">Vektor</div><div class="meta"><span class="gn">Techno</span><span class="pr">€22</span></div></div></article>
+        <article class="rec" data-g="soul"><div class="cov" aria-hidden="true">✺</div><div class="b"><h3>Golden Hours</h3><div class="ar">The Embers</div><div class="meta"><span class="gn">Soul</span><span class="pr">€19</span></div></div></article>
+        <article class="rec" data-g="rock"><div class="cov" aria-hidden="true">⚡</div><div class="b"><h3>Static Noise</h3><div class="ar">Roest</div><div class="meta"><span class="gn">Rock</span><span class="pr">€24</span></div></div></article>
+        <article class="rec" data-g="house"><div class="cov" aria-hidden="true">◑</div><div class="b"><h3>Deep End</h3><div class="ar">Halftone</div><div class="meta"><span class="gn">House</span><span class="pr">€21</span></div></div></article>
+        <article class="rec" data-g="jazz"><div class="cov" aria-hidden="true">♫</div><div class="b"><h3>Nocturne</h3><div class="ar">Daan Kuipers Trio</div><div class="meta"><span class="gn">Jazz</span><span class="pr">€26</span></div></div></article>
+        <article class="rec" data-g="soul"><div class="cov" aria-hidden="true">❂</div><div class="b"><h3>Velvet</h3><div class="ar">Noor &amp; the Keys</div><div class="meta"><span class="gn">Funk</span><span class="pr">€23</span></div></div></article>
+        <article class="rec" data-g="rock"><div class="cov" aria-hidden="true">▲</div><div class="b"><h3>Lage Landen</h3><div class="ar">Klei</div><div class="meta"><span class="gn">Indie</span><span class="pr">€20</span></div></div></article>
+      </div>
+      <div class="crate-nav">
+        <button class="cbtn" id="cprev" aria-label="Scroll naar vorige platen">←</button>
+        <button class="cbtn" id="cnext" aria-label="Scroll naar volgende platen">→</button>
+        <span class="hint" aria-hidden="true">Sleep of scroll door de bak →</span>
+      </div>
+      <p class="empty" id="empty">Niks in dit genre — kom snuffelen in de winkel.</p>
     </div>
-    <p class="empty" id="empty">Niks in dit genre — kom snuffelen in de winkel.</p>
   </section>
 
-  <section class="band" data-r><div class="wrap">
+  <section class="band" id="winkel" data-r><div class="wrap">
     <div class="c"><h3>Open</h3><p>Di t/m za · 11:00 — 18:00<br>Zondag · 12:00 — 17:00</p></div>
     <div class="c"><h3>Luisterbar</h3><p>Pak een plaat, leg 'm op en luister met een koffie of biertje aan de bar.</p></div>
     <div class="c"><h3>Inkoop</h3><p>Goede collectie te koop? We kopen verzamelingen in — loop binnen of mail ons.</p></div>
@@ -181,9 +224,10 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 </main>
 
 <footer class="foot"><div class="wrap">
-  <a class="logo" href="#top" style="color:var(--orange)">WALS</a>
+  <a class="logo" href="#top">WALS</a>
   <span class="tag">&copy; <span id="jaar">2026</span> WALS Utrecht · Twijnstraat 22 · KvK 30291847</span>
 </div></footer>
+</div>
 
 <script>
 (function(){
@@ -194,6 +238,15 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   // genre-filter
   var fbtns=[].slice.call(doc.querySelectorAll('.fbtn')),recs=[].slice.call(doc.querySelectorAll('#crateGrid .rec')),empty=doc.getElementById('empty');
   fbtns.forEach(function(b){b.addEventListener('click',function(){fbtns.forEach(function(x){x.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');var f=b.getAttribute('data-f'),shown=0;recs.forEach(function(r){var on=(f==='all'||r.getAttribute('data-g')===f);r.style.display=on?'':'none';if(on)shown++;});if(empty)empty.style.display=shown?'none':'block';});});
+  // horizontaal scrollende crate — knoppen
+  var crate=doc.getElementById('crateGrid'),cprev=doc.getElementById('cprev'),cnext=doc.getElementById('cnext');
+  if(crate&&cprev&&cnext){
+    function step(){var card=crate.querySelector('.rec');var w=card?card.getBoundingClientRect().width:240;return w+20;}
+    function go(dir){crate.scrollBy({left:dir*step(),behavior:reduced?'auto':'smooth'});}
+    cprev.addEventListener('click',function(){go(-1);});
+    cnext.addEventListener('click',function(){go(1);});
+    crate.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(1);}else if(e.key==='ArrowLeft'){e.preventDefault();go(-1);}else if(e.key==='Home'){e.preventDefault();crate.scrollTo({left:0,behavior:reduced?'auto':'smooth'});}else if(e.key==='End'){e.preventDefault();crate.scrollTo({left:crate.scrollWidth,behavior:reduced?'auto':'smooth'});}});
+  }
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
   var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
 })();

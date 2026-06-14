@@ -12,12 +12,16 @@
 <style>
 /* ============================================================
    KAM — kapsalon, Groningen. Chic, modern, off-white × mauve.
+   ARCHETYPE H: minimaal & gecentreerd. Veel witruimte, grote
+   rustige typografie, centrale as. Geen bovenbalk-met-links:
+   minimale gecentreerde merk-header, hairline-menu, gestapelde
+   gecentreerde secties met luchtige scheidingslijnen.
    ============================================================ */
 :root{
   --paper:#f4f1ee; --paper-2:#eae5e0; --ink:#1a1817; --ink-2:#56514d; --muted:#8b847e;
   --mauve:#a4737f; --mauve-2:#8a5965; --line:rgba(26,24,23,.14); --line-soft:rgba(26,24,23,.07);
   --disp:"Jost",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif;
-  --maxw:1140px; --gutter:clamp(1.2rem,5vw,4.5rem);
+  --maxw:1140px; --readw:760px; --gutter:clamp(1.2rem,5vw,4.5rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -26,69 +30,75 @@ img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:non
 button,input,select,textarea{font:inherit;color:inherit}::selection{background:var(--mauve);color:#fff}
 :focus-visible{outline:2px solid var(--mauve-2);outline-offset:3px}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.read{max-width:var(--readw);margin-inline:auto;padding-inline:var(--gutter)}
 .disp{font-family:var(--disp)}
-.eyebrow{font-family:var(--disp);font-weight:500;font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mauve-2)}
+.eyebrow{font-family:var(--disp);font-weight:500;font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mauve-2)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--mauve-2);color:#fff;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-.hdr{position:sticky;top:0;z-index:50;background:rgba(244,241,238,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:box-shadow .3s}
+/* ---- minimale gecentreerde merk-header ---- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(244,241,238,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:box-shadow .3s;text-align:center}
 .hdr.stuck{box-shadow:0 10px 28px -22px rgba(26,24,23,.4)}
-.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
-.logo{font-family:var(--disp);font-weight:500;font-size:1.7rem;letter-spacing:.22em;text-transform:uppercase}
-.nav{display:flex;align-items:center;gap:2rem}
-.nav a{font-family:var(--disp);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}.nav a:hover{color:var(--mauve-2)}
-.nav .cta{background:var(--ink);color:var(--paper);padding:.6rem 1.2rem;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase}.nav .cta:hover{background:var(--mauve-2)}
-.burger{display:none;border:1px solid var(--line);padding:.5rem .85rem;font-family:var(--disp);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase}
-@media(max-width:820px){.nav{position:fixed;inset:76px 0 auto;background:var(--paper);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.2rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+.hdr .bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.logo{grid-column:2;font-family:var(--disp);font-weight:400;font-size:1.65rem;letter-spacing:.4em;text-transform:uppercase;padding-left:.4em}
+.nav{grid-column:3;justify-self:end;display:flex;align-items:center;gap:1.8rem}
+.nav a{font-family:var(--disp);font-weight:500;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}.nav a:hover{color:var(--mauve-2)}
+.nav .cta{border:1px solid var(--ink);color:var(--ink);padding:.5rem 1.05rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;transition:background-color .25s,color .25s}.nav .cta:hover{background:var(--ink);color:var(--paper)}
+.burger{grid-column:3;justify-self:end;display:none;border:1px solid var(--line);padding:.5rem .85rem;font-family:var(--disp);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;background:none}
+@media(max-width:820px){.nav{position:fixed;inset:78px 0 auto;background:var(--paper);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.2rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1);border-bottom:1px solid var(--line-soft)}.nav.open{transform:none}.burger{display:inline-block}}
 
-.hero{padding-block:clamp(2.4rem,5vw,4rem)}
-.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
-@media(max-width:840px){.hero .wrap{grid-template-columns:1fr;gap:2rem}}
-.hero h1{font-family:var(--disp);font-weight:300;font-size:clamp(2.8rem,7.5vw,5.4rem);line-height:1.04;letter-spacing:-.01em;margin:1rem 0 0}
-.hero h1 em{font-style:normal;color:var(--mauve-2)}
-.hero p.lead{margin-top:1.3rem;color:var(--ink-2);max-width:36ch;font-size:1.14rem}
-.hero-act{margin-top:1.9rem;display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
-.btn{background:var(--ink);color:var(--paper);padding:.9rem 1.7rem;font-family:var(--disp);font-weight:500;letter-spacing:.06em;font-size:.92rem;display:inline-block;transition:background-color .25s,transform .25s}
+/* ---- gecentreerde hero, beeld als rustig anker eronder ---- */
+.hero{text-align:center;padding-top:clamp(3.5rem,9vw,7rem);padding-bottom:clamp(2rem,5vw,3.5rem)}
+.hero .eyebrow{display:block}
+.hero h1{font-family:var(--disp);font-weight:300;font-size:clamp(2.9rem,9vw,6.4rem);line-height:1.02;letter-spacing:-.015em;margin:1.4rem auto 0;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--mauve-2)}
+.hero p.lead{margin:1.6rem auto 0;color:var(--ink-2);max-width:48ch;font-size:1.16rem}
+.hero-act{margin-top:2.2rem;display:flex;gap:1.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.btn{background:var(--ink);color:var(--paper);padding:.95rem 1.9rem;font-family:var(--disp);font-weight:500;letter-spacing:.06em;font-size:.92rem;display:inline-block;transition:background-color .25s,transform .25s}
 .btn:hover{background:var(--mauve-2);transform:translateY(-2px)}
 .lnk{font-family:var(--disp);letter-spacing:.06em;border-bottom:1.5px solid var(--mauve);padding-bottom:3px}
-.hero-fig img{width:100%;aspect-ratio:4/4.2;object-fit:cover}
+.hero-fig{margin-top:clamp(2.6rem,6vw,4.5rem)}
+.hero-fig img{width:100%;max-width:980px;margin-inline:auto;aspect-ratio:16/8;object-fit:cover}
 
-.sec{padding-block:clamp(3rem,6vw,5rem)}
-.sec-h{margin-bottom:clamp(1.8rem,4vw,2.6rem)}
-.sec-h h2{font-family:var(--disp);font-weight:300;font-size:clamp(2rem,4.6vw,3rem);letter-spacing:-.01em}
-.sec-h p{color:var(--ink-2);margin-top:.5rem;max-width:46ch}
+/* dunne sierscheiding tussen secties */
+.rule{width:100%;max-width:var(--maxw);margin:0 auto;border:0;border-top:1px solid var(--line-soft)}
+.mark{display:block;text-align:center;font-family:var(--disp);color:var(--mauve);font-size:1.2rem;margin-block:clamp(2.2rem,5vw,3.4rem)}
 
-/* prijslijst */
-.price{background:var(--paper-2)}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2.5rem,6vw,5rem)}
-@media(max-width:760px){.price-grid{grid-template-columns:1fr}}
-.price h3{font-family:var(--disp);font-weight:500;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mauve-2);padding-bottom:.6rem;margin:1.6rem 0 .4rem;border-bottom:1px solid var(--line)}
+.sec{padding-block:clamp(3rem,7vw,5.5rem)}
+.sec-h{text-align:center;margin-bottom:clamp(2.2rem,5vw,3.2rem)}
+.sec-h .eyebrow{display:block;margin-bottom:.9rem}
+.sec-h h2{font-family:var(--disp);font-weight:300;font-size:clamp(2rem,5.4vw,3.2rem);letter-spacing:-.01em}
+.sec-h p{color:var(--ink-2);margin:.8rem auto 0;max-width:50ch}
+
+/* prijslijst — gecentreerde leeskolom */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2.5rem,7vw,6rem);max-width:920px;margin-inline:auto}
+@media(max-width:720px){.price-grid{grid-template-columns:1fr}}
+.price h3{font-family:var(--disp);font-weight:500;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mauve-2);text-align:center;padding-bottom:.7rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line)}
 .price h3:first-child{margin-top:0}
 .it{display:flex;align-items:baseline;gap:.6rem;padding:.7rem 0}
 .it .nm{font-size:1.05rem}.it .nm small{display:block;color:var(--muted);font-size:.86rem}
 .it .dots{flex:1;border-bottom:1px dotted var(--line);position:relative;top:-.32rem}
 .it .pr{font-variant-numeric:tabular-nums;color:var(--ink-2);font-family:var(--disp);font-weight:500}
-.price-note{margin-top:1.6rem;color:var(--muted);font-size:.9rem}
+.price-note{margin:2.4rem auto 0;color:var(--muted);font-size:.92rem;text-align:center;max-width:54ch}
 
-/* over split */
-.over .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-@media(max-width:840px){.over .wrap{grid-template-columns:1fr}}
-.over img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(.15)}
-.over h2{font-family:var(--disp);font-weight:300;font-size:clamp(2rem,4.4vw,3rem);margin:.5rem 0 1rem}
-.over p{color:var(--ink-2);font-size:1.1rem}.over p+p{margin-top:1rem}
-.over .tags{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.5rem}
-.over .tags span{font-family:var(--disp);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:.4rem .9rem;color:var(--ink-2)}
+/* over — gecentreerd, beeld eronder gecentreerd */
+.over{text-align:center}
+.over h2{font-family:var(--disp);font-weight:300;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.2rem}
+.over .read p{color:var(--ink-2);font-size:1.12rem}.over .read p+p{margin-top:1.1rem}
+.over .tags{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+.over .tags span{font-family:var(--disp);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:.45rem 1rem;color:var(--ink-2)}
+.over figure{margin-top:clamp(2.4rem,5vw,3.6rem)}
+.over figure img{width:100%;max-width:820px;margin-inline:auto;aspect-ratio:16/8;object-fit:cover;filter:grayscale(.15)}
 
-/* boeken */
-.book .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem)}
-@media(max-width:820px){.book .wrap{grid-template-columns:1fr;gap:2rem}}
-.book h2{font-family:var(--disp);font-weight:300;font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:1rem}
-.book .now{font-family:var(--disp);color:var(--mauve-2);margin-bottom:1rem}.book .now[data-open=false]{color:var(--muted)}
-.hours{width:100%;border-collapse:collapse}
+/* boeken — gecentreerde stapel: openingstijden boven, formulier eronder */
+.book{background:var(--paper-2)}
+.book .now{font-family:var(--disp);color:var(--mauve-2);text-align:center;margin-bottom:1.4rem}.book .now[data-open=false]{color:var(--muted)}
+.hours{width:100%;max-width:440px;margin:0 auto;border-collapse:collapse}
 .hours td{padding:.55rem 0;border-bottom:1px solid var(--line-soft)}
 .hours td.t{text-align:right;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .hours tr.now td{font-family:var(--disp);font-weight:500;color:var(--mauve-2)}.hours td.cl{font-style:italic;color:var(--muted)}
-.book address{font-style:normal;color:var(--ink-2);line-height:1.9;margin-top:1.2rem}.book address a{border-bottom:1px solid var(--line)}
-.fcard{background:var(--paper-2);padding:clamp(1.5rem,3vw,2.2rem)}
+.book address{font-style:normal;color:var(--ink-2);line-height:1.9;margin-top:1.4rem;text-align:center}.book address a{border-bottom:1px solid var(--line)}
+.fcard{background:var(--paper);padding:clamp(1.6rem,4vw,2.6rem);max-width:620px;margin:clamp(2.4rem,5vw,3.4rem) auto 0;border:1px solid var(--line-soft)}
+.fcard h3{font-family:var(--disp);font-weight:300;font-size:1.7rem;text-align:center;margin-bottom:1.4rem}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:480px){.row{grid-template-columns:1fr}}
 .fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}.fld.full{grid-column:1/-1}
 .fld label{font-family:var(--disp);font-weight:500;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
@@ -100,31 +110,30 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .fcard .ok{display:none;text-align:center;padding:.5rem 0}.fcard.sent .row,.fcard.sent .fld,.fcard.sent button{display:none}.fcard.sent .ok{display:block}
 .fcard .ok h3{font-family:var(--disp);font-weight:400;font-size:1.5rem;margin-bottom:.4rem}
 
-.foot{background:var(--ink);color:#b3aca6;padding-block:clamp(2.5rem,5vw,3.5rem)}
-.foot .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
-.foot .logo{color:#fff}.foot .small{font-size:.84rem;text-align:right}@media(max-width:560px){.foot .small{text-align:left}}
+.foot{background:var(--ink);color:#b3aca6;padding-block:clamp(2.5rem,5vw,3.5rem);text-align:center}
+.foot .logo{display:block;grid-column:auto;justify-self:auto;color:#fff;padding-left:0;margin-bottom:.6rem}
+.foot .small{font-size:.84rem}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}[data-r].in{opacity:1;transform:none}}
 </style>
 </head>
 <body id="top">
 <a class="skip" href="#prijzen">Naar de prijzen</a>
-<header class="hdr" id="hdr"><div class="wrap">
+<header class="hdr" id="hdr"><div class="bar">
   <a class="logo" href="#top">Kam</a>
   <nav class="nav" id="nav"><a href="#prijzen">Prijzen</a><a href="#over">Over</a><a href="#boeken">Openingstijden</a><a class="cta" href="#boeken">Boek een stoel</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
 </div></header>
 
 <main>
   <section class="hero"><div class="wrap">
-    <div>
-      <span class="eyebrow">Kapsalon · Groningen</span>
-      <h1>Goed haar,<br><em>geen</em> gedoe.</h1>
-      <p class="lead">Een moderne salon voor iedereen. We nemen de tijd, luisteren echt, en knippen wat bij jóu past — niet wat toevallig in is.</p>
-      <div class="hero-act"><a class="btn" href="#boeken">Boek een stoel</a><a class="lnk" href="#prijzen">Bekijk prijzen</a></div>
-    </div>
-    <figure class="hero-fig" data-r><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=72" alt="Kapper aan het werk met een klant" width="900" height="945"></figure>
+    <span class="eyebrow">Kapsalon · Groningen</span>
+    <h1>Goed haar,<br><em>geen</em> gedoe.</h1>
+    <p class="lead">Een moderne salon voor iedereen. We nemen de tijd, luisteren echt, en knippen wat bij jóu past — niet wat toevallig in is.</p>
+    <div class="hero-act"><a class="btn" href="#boeken">Boek een stoel</a><a class="lnk" href="#prijzen">Bekijk prijzen</a></div>
+    <figure class="hero-fig" data-r><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1400&q=72" alt="Kapper aan het werk met een klant" width="1400" height="700"></figure>
   </div></section>
 
+  <hr class="rule">
   <section class="sec price" id="prijzen"><div class="wrap">
     <div class="sec-h" data-r><span class="eyebrow">Prijzen</span><h2>Eerlijk &amp; overzichtelijk</h2><p>Prijs hangt af van de tijd, niet van je geslacht. Twijfel je wat je nodig hebt? We adviseren graag.</p></div>
     <div class="price-grid" data-r>
@@ -152,29 +161,30 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
     <p class="price-note" data-r>Een kleurbehandeling combineren we altijd met knippen. Eerste keer kleuren? Dan doen we vooraf een gratis kleuradvies.</p>
   </div></section>
 
-  <section class="sec over" id="over"><div class="wrap">
-    <figure data-r><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=950&q=72" alt="Lichte, rustige salon met stoelen en spiegels" width="950" height="712" loading="lazy"></figure>
-    <div data-r>
+  <span class="mark" aria-hidden="true">✶</span>
+  <section class="sec over" id="over"><div class="read" data-r>
       <span class="eyebrow">Over Kam</span>
-      <h2>Een salon zonder hokjes</h2>
+      <h2 style="margin-top:.9rem">Een salon zonder hokjes</h2>
       <p>Bij Kam ben je welkom wie je ook bent. We werken met een klein, vast team dat luistert voordat de schaar erin gaat — en eerlijk is over wat wel en niet werkt bij jouw haar.</p>
       <p>Rustige muziek, goede koffie en de tijd om gewoon even te zitten. Geen lopende band.</p>
       <div class="tags"><span>Voor iedereen</span><span>Duurzame producten</span><span>Vast team</span><span>Kleuradvies gratis</span></div>
     </div>
-  </div></section>
+    <figure data-r><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=72" alt="Lichte, rustige salon met stoelen en spiegels" width="1400" height="700" loading="lazy"></figure>
+  </section>
 
+  <hr class="rule">
   <section class="sec book" id="boeken"><div class="wrap">
+    <div class="sec-h" data-r><span class="eyebrow">Openingstijden &amp; afspraak</span><h2>Kom langs bij Kam</h2></div>
     <div data-r>
-      <h2>Openingstijden</h2>
       <p class="now" id="now">Nu open</p>
       <table class="hours"><tbody id="hb"></tbody></table>
       <address>
-        Folkingestraat 30<br>9711 JW Groningen<br>
+        Folkingestraat 30 · 9711 JW Groningen<br>
         <a href="tel:+31503130660">050 — 313 06 60</a>
       </address>
     </div>
     <form class="fcard" id="form" novalidate data-r>
-      <h2 style="margin-bottom:1rem">Boek een stoel</h2>
+      <h3>Boek een stoel</h3>
       <div class="row">
         <div class="fld"><label for="k-naam">Naam</label><input id="k-naam" type="text" required><span class="err">Vul je naam in.</span></div>
         <div class="fld"><label for="k-tel">Telefoon</label><input id="k-tel" type="tel" required><span class="err">Vul je nummer in.</span></div>

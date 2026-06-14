@@ -11,25 +11,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   KLEUR — kunstgalerie. Cream × kleurblokken (rood/blauw/geel/groen) × ink. Bold-graphic.
+   KLEUR — kunstgalerie. Cream × kleurblokken (rood/blauw/geel/groen) × ink.
+   ARCHETYPE E: magazine/redactioneel met sticky sectie-index + scroll-spy.
+   Editoriale lead-expo, asymmetrisch magazine-grid. Echte Unsplash-foto's.
    ============================================================ */
 :root{
   --cream:#f2efe6; --paper:#fbf9f2; --ink:#141210; --red:#ff3b30; --blue:#2347ff; --yellow:#ffc400; --green:#11a05f; --pink:#ff5da8;
   --disp:"Syne",system-ui,sans-serif; --body:"Space Grotesk",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
-  --maxw:1200px; --gutter:clamp(1rem,4vw,3rem);
+  --maxw:1240px; --gutter:clamp(1rem,4vw,3rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
+img{display:block;max-width:100%}
 ::selection{background:var(--yellow)}
 :focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--yellow);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-/* nav */
+/* nav — slanke redactionele kop met datumlijn */
 .nav{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:3px solid var(--ink)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
 .logo{font-family:var(--disp);font-weight:800;font-size:1.5rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.45rem}
 .logo .dots{display:flex;gap:3px}.logo .dots i{width:11px;height:11px;border-radius:50%}
 .logo .dots i:nth-child(1){background:var(--red)}.logo .dots i:nth-child(2){background:var(--blue)}.logo .dots i:nth-child(3){background:var(--yellow)}
@@ -39,13 +42,18 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .menu .cta{background:var(--ink);color:var(--cream);font-family:var(--disp);font-weight:700;padding:.5rem 1rem}
 .menu .cta:hover{background:var(--red)}
 .burger{display:none;border:2px solid var(--ink);background:var(--yellow);padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.76rem}
-@media(max-width:840px){.menu{position:fixed;inset:66px 0 auto;background:var(--cream);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:3px solid var(--ink);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid var(--ink)}.burger{display:inline-block}}
+@media(max-width:840px){.menu{position:fixed;inset:62px 0 auto;background:var(--cream);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:3px solid var(--ink);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid var(--ink)}.burger{display:inline-block}}
 
-/* hero — kleurblokken */
+/* masthead-strip: redactionele info-band */
+.masthead{border-bottom:3px solid var(--ink);background:var(--ink);color:var(--cream)}
+.masthead .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;padding-block:.45rem;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
+.masthead .wrap span:nth-child(2){color:var(--yellow)}
+
+/* ---- HERO: redactionele kop, editorial typografie ---- */
 .hero{border-bottom:3px solid var(--ink);overflow:hidden}
-.hero .wrap{padding-block:clamp(2.4rem,6vw,4.5rem)}
+.hero .wrap{padding-block:clamp(2.2rem,5vw,4rem)}
 .hero .kick{font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
-.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(3rem,13vw,9.5rem);line-height:.86;letter-spacing:-.03em;margin:.8rem 0}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(2.8rem,11vw,8rem);line-height:.86;letter-spacing:-.03em;margin:.8rem 0}
 .hero h1 .r{color:var(--red)}.hero h1 .b{color:var(--blue)}.hero h1 .y{color:var(--yellow);-webkit-text-stroke:2px var(--ink)}.hero h1 .g{color:var(--green)}
 .hero .sub{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;align-items:flex-start;margin-top:1.4rem}
 .hero p{font-size:1.15rem;max-width:42ch}
@@ -57,50 +65,84 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .cb div{flex:1;height:16px}
 .cb .a{background:var(--red)}.cb .b{background:var(--blue)}.cb .c{background:var(--yellow)}.cb .d{background:var(--green)}.cb .e{background:var(--pink)}
 
-.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
-.sec-h{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
-.sec-h h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:-.02em}
-.sec-h .all{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;border-bottom:3px solid var(--red)}
+/* ---- MAGAZINE layout: sticky sectie-index | redactionele content ---- */
+.mag{display:grid;grid-template-columns:210px 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+@media(max-width:900px){.mag{grid-template-columns:1fr}}
+.index{position:sticky;top:80px;align-self:start}
+@media(max-width:900px){.index{position:static;top:auto;border-bottom:3px solid var(--ink);padding-bottom:1.2rem}}
+.index .ix-h{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#6a635a;margin-bottom:.8rem}
+.index ol{counter-reset:ix;display:flex;flex-direction:column;gap:.1rem}
+@media(max-width:900px){.index ol{flex-direction:row;flex-wrap:wrap;gap:.4rem}}
+.index li{counter-increment:ix}
+.index a{display:flex;gap:.6rem;align-items:baseline;font-family:var(--disp);font-weight:700;font-size:1rem;padding:.5rem 0;border-top:2px solid var(--ink);color:#8a847b}
+@media(max-width:900px){.index a{border-top:none;border:2px solid var(--ink);padding:.35rem .6rem;font-size:.85rem}}
+.index a::before{content:counter(ix,decimal-leading-zero);font-family:var(--mono);font-size:.74rem;color:var(--red)}
+.index a:hover{color:var(--ink)}
+.index a.active{color:var(--ink)}
+.index a.active::before{color:var(--blue)}
+@media(min-width:901px){.index a.active{box-shadow:inset 4px 0 0 var(--blue);padding-left:.7rem;margin-left:-.7rem}}
 
-/* exposities */
-.expos{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2vw,1.6rem)}
-@media(max-width:720px){.expos{grid-template-columns:1fr}}
-.expo{border:3px solid var(--ink);background:var(--paper);overflow:hidden;transition:transform .15s,box-shadow .15s}
+.mag-main{min-width:0}
+.block{padding-block:clamp(2rem,4vw,3.4rem);border-bottom:3px solid var(--ink)}
+.block:first-child{padding-top:clamp(1.4rem,3vw,2rem)}
+.block:last-child{border-bottom:none}
+.block-h{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem}
+.block-h h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,5vw,2.8rem);letter-spacing:-.02em}
+.block-h .all{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;border-bottom:3px solid var(--red)}
+
+/* lead-expo: groot redactioneel openingsstuk */
+.lead{display:grid;grid-template-columns:1.3fr .9fr;gap:clamp(1rem,3vw,2rem);align-items:center;border:3px solid var(--ink);background:var(--paper);overflow:hidden;margin-bottom:clamp(1rem,2vw,1.6rem)}
+@media(max-width:680px){.lead{grid-template-columns:1fr}}
+.lead .art{position:relative;aspect-ratio:4/3;border-right:3px solid var(--ink)}
+@media(max-width:680px){.lead .art{border-right:none;border-bottom:3px solid var(--ink)}}
+.lead .art img{width:100%;height:100%;object-fit:cover}
+.lead .badge{position:absolute;top:.8rem;left:.8rem;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:.2rem .55rem}
+.lead .body{padding:clamp(1.2rem,2.5vw,1.8rem)}
+.lead .label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--red)}
+.lead h3{font-family:var(--disp);font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.02;margin:.3rem 0}
+.lead .who{font-family:var(--mono);font-size:.82rem;color:#6a635a;margin-bottom:.6rem}
+.lead p{font-size:1rem;color:#4a443c;max-width:46ch}
+.lead .when{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.76rem;border:2px solid var(--ink);padding:.25rem .7rem}
+
+/* overige exposities: asymmetrisch magazine-grid */
+.expos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.6rem)}
+@media(max-width:720px){.expos{grid-template-columns:1fr 1fr}}@media(max-width:480px){.expos{grid-template-columns:1fr}}
+.expo{border:3px solid var(--ink);background:var(--paper);overflow:hidden;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
 .expo:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
-.expo .art{aspect-ratio:16/11;border-bottom:3px solid var(--ink);position:relative}
-.expo .art img{width:100%;height:100%;object-fit:cover;display:block}
-.expo:nth-child(1) .art{background:var(--red)}.expo:nth-child(2) .art{background:var(--blue)}.expo:nth-child(3) .art{background:var(--green)}.expo:nth-child(4) .art{background:var(--yellow)}
-.expo .badge{position:absolute;top:.8rem;left:.8rem;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:.2rem .55rem}
-.expo .b{padding:1.3rem}
-.expo h3{font-family:var(--disp);font-weight:800;font-size:1.5rem;line-height:1.05}
-.expo .who{font-family:var(--mono);font-size:.78rem;color:#6a635a;margin:.3rem 0 .6rem}
-.expo p{font-size:.92rem;color:#4a443c}
-.expo .when{display:inline-block;margin-top:.8rem;font-family:var(--mono);font-size:.74rem;border:2px solid var(--ink);padding:.2rem .6rem}
+.expo .art{aspect-ratio:4/3;border-bottom:3px solid var(--ink);position:relative}
+.expo .art img{width:100%;height:100%;object-fit:cover}
+.expo .badge{position:absolute;top:.8rem;left:.8rem;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:.2rem .55rem}
+.expo .b{padding:1.1rem;display:flex;flex-direction:column;flex:1}
+.expo h3{font-family:var(--disp);font-weight:800;font-size:1.3rem;line-height:1.05}
+.expo .who{font-family:var(--mono);font-size:.74rem;color:#6a635a;margin:.3rem 0 .5rem}
+.expo p{font-size:.9rem;color:#4a443c}
+.expo .when{display:inline-block;margin-top:auto;padding-top:.8rem;font-family:var(--mono);font-size:.72rem}
 
 /* kunstenaars */
 .artists{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}
 @media(max-width:820px){.artists{grid-template-columns:repeat(3,1fr)}}@media(max-width:480px){.artists{grid-template-columns:1fr 1fr}}
 .ar{border:3px solid var(--ink);background:var(--paper);overflow:hidden;text-align:center}
 .ar .av{aspect-ratio:1;border-bottom:3px solid var(--ink)}
-.ar .av img{width:100%;height:100%;object-fit:cover;display:block}
-.ar:nth-child(5n+1) .av{background:var(--red)}.ar:nth-child(5n+2) .av{background:var(--blue)}.ar:nth-child(5n+3) .av{background:var(--green)}.ar:nth-child(5n+4) .av{background:var(--pink)}.ar:nth-child(5n) .av{background:var(--yellow)}
+.ar .av img{width:100%;height:100%;object-fit:cover}
 .ar h3{font-family:var(--disp);font-weight:700;font-size:.95rem;padding:.7rem .4rem .2rem}
 .ar span{font-family:var(--mono);font-size:.66rem;color:#6a635a;display:block;padding-bottom:.7rem}
 
-/* bezoek band */
-.visit{background:var(--ink);color:var(--cream);border-block:3px solid var(--ink)}
-.visit .wrap{padding-block:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-@media(max-width:720px){.visit .wrap{grid-template-columns:1fr}}
-.visit .c h3{font-family:var(--disp);font-weight:700;font-size:1.2rem;margin-bottom:.4rem}
-.visit .c:nth-child(1) h3{color:var(--red)}.visit .c:nth-child(2) h3{color:var(--yellow)}.visit .c:nth-child(3) h3{color:var(--green)}
-.visit .c p{font-size:.95rem;color:#cfccc2}
+/* bezoek — redactionele info-kaarten */
+.visit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid var(--ink)}
+@media(max-width:720px){.visit-grid{grid-template-columns:1fr}}
+.visit-grid .c{padding:1.4rem;border-right:3px solid var(--ink)}
+.visit-grid .c:last-child{border-right:none}
+@media(max-width:720px){.visit-grid .c{border-right:none;border-bottom:3px solid var(--ink)}.visit-grid .c:last-child{border-bottom:none}}
+.visit-grid .c h3{font-family:var(--disp);font-weight:800;font-size:1.2rem;margin-bottom:.4rem}
+.visit-grid .c:nth-child(1) h3{color:var(--red)}.visit-grid .c:nth-child(2) h3{color:var(--green)}.visit-grid .c:nth-child(3) h3{color:var(--blue)}
+.visit-grid .c p{font-size:.95rem;color:#4a443c}
 
 /* nieuwsbrief */
-.news .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
-@media(max-width:780px){.news .wrap{grid-template-columns:1fr}}
-.news h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-.02em;line-height:1}
-.news h2 span{color:var(--blue)}
-.news p{margin-top:.9rem;max-width:40ch;color:#4a443c}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media(max-width:780px){.news-grid{grid-template-columns:1fr}}
+.news-grid h3.big{font-family:var(--disp);font-weight:800;font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-.02em;line-height:1}
+.news-grid h3.big span{color:var(--blue)}
+.news-grid p{margin-top:.9rem;max-width:40ch;color:#4a443c}
 .form{border:3px solid var(--ink);background:var(--paper);padding:clamp(1.2rem,3vw,1.8rem);box-shadow:6px 6px 0 var(--ink)}
 .fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
 .fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase}
@@ -113,7 +155,7 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .form .ok{display:none;font-family:var(--disp);font-weight:700;color:var(--green);padding:.4rem 0}
 .form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
 
-.foot{background:var(--ink);color:var(--cream);padding-block:clamp(1.8rem,3vw,2.6rem)}
+.foot{background:var(--ink);color:var(--cream);padding-block:clamp(1.8rem,3vw,2.6rem);border-top:3px solid var(--ink)}
 .foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
 .foot .logo{color:var(--cream)}
 .foot .tag{font-family:var(--mono);font-size:.76rem;color:#9a9286}
@@ -129,6 +171,12 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   <button class="burger" id="burger" aria-expanded="false">Menu</button>
 </div></header>
 
+<div class="masthead"><div class="wrap">
+  <span>Galerie voor hedendaagse kunst</span>
+  <span>Editie · zomer 2026</span>
+  <span>Den Bosch · gratis entree</span>
+</div></div>
+
 <main>
   <section class="hero"><div class="wrap">
     <span class="kick">// Galerie voor hedendaagse kunst · Den Bosch</span>
@@ -141,45 +189,79 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 
   <div class="cb" aria-hidden="true"><div class="a"></div><div class="b"></div><div class="c"></div><div class="d"></div><div class="e"></div></div>
 
-  <section class="sec wrap" id="nu-te-zien">
-    <div class="sec-h"><h2>Nu te zien</h2><a class="all" href="#nieuws">Volledige agenda →</a></div>
-    <div class="expos" data-r>
-      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=800&q=72" alt="Grootformaat abstract schilderij over licht en schaduw" loading="lazy" width="800" height="550"><span class="badge">Hoofdzaal</span></div><div class="b"><h3>Tegen het licht</h3><div class="who">Solo — Maartje Vos</div><p>Grootformaat schilderijen over licht, schaduw en alles ertussenin.</p><span class="when">t/m 20 jul</span></div></article>
-      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=800&q=72" alt="Kunstinstallatie in een galeriezaal" loading="lazy" width="800" height="550"><span class="badge">Zaal 2</span></div><div class="b"><h3>Ruis &amp; Stilte</h3><div class="who">Duo — Bram Ket &amp; Lina Aydin</div><p>Geluid wordt beeld in een installatie die je zelf activeert.</p><span class="when">t/m 3 aug</span></div></article>
-      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=800&q=72" alt="Kleurrijke schilderijen van jonge kunstenaars aan de muur" loading="lazy" width="800" height="550"><span class="badge">Project</span></div><div class="b"><h3>Jong Talent '26</h3><div class="who">Groep — 8 afgestudeerden</div><p>De nieuwe lichting van de kunstacademie, voor het eerst samen.</p><span class="when">12 jul — 25 aug</span></div></article>
-      <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=800&q=72" alt="Sculptuur van gevonden materiaal in de expositieruimte" loading="lazy" width="800" height="550"><span class="badge">Binnenkort</span></div><div class="b"><h3>Materie</h3><div class="who">Solo — Joris Pellenaars</div><p>Sculpturen van gevonden materiaal uit de Brabantse industrie.</p><span class="when">vanaf 1 sep</span></div></article>
-    </div>
-  </section>
+  <div class="wrap">
+    <div class="mag">
+      <!-- sticky redactionele sectie-index met scroll-spy -->
+      <nav class="index" aria-label="Inhoud">
+        <p class="ix-h">In deze editie</p>
+        <ol>
+          <li><a href="#nu-te-zien" data-spy>Nu te zien</a></li>
+          <li><a href="#kunstenaars" data-spy>Kunstenaars</a></li>
+          <li><a href="#bezoek" data-spy>Bezoek</a></li>
+          <li><a href="#nieuws" data-spy>Op de hoogte</a></li>
+        </ol>
+      </nav>
 
-  <section class="sec wrap" id="kunstenaars">
-    <div class="sec-h"><h2>Onze kunstenaars</h2></div>
-    <div class="artists" data-r>
-      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Maartje Vos" loading="lazy" width="400" height="400"></div><h3>Maartje Vos</h3><span>Schilderkunst</span></div>
-      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Bram Ket" loading="lazy" width="400" height="400"></div><h3>Bram Ket</h3><span>Geluid &amp; installatie</span></div>
-      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Lina Aydin" loading="lazy" width="400" height="400"></div><h3>Lina Aydin</h3><span>Mixed media</span></div>
-      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Joris Pellenaars" loading="lazy" width="400" height="400"></div><h3>Joris Pellenaars</h3><span>Sculptuur</span></div>
-      <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Noor de Wit" loading="lazy" width="400" height="400"></div><h3>Noor de Wit</h3><span>Fotografie</span></div>
-    </div>
-  </section>
+      <div class="mag-main">
+        <section class="block" id="nu-te-zien">
+          <div class="block-h"><h2>Nu te zien</h2><a class="all" href="#nieuws">Volledige agenda →</a></div>
 
-  <section class="visit" id="bezoek" data-r><div class="wrap">
-    <div class="c"><h3>Openingstijden</h3><p>Wo t/m zo · 11:00 — 17:00<br>Maandag &amp; dinsdag gesloten</p></div>
-    <div class="c"><h3>Entree</h3><p>Gratis voor iedereen.<br>Rondleiding op zondag om 14:00.</p></div>
-    <div class="c"><h3>Adres</h3><p>Verwersstraat 9, Den Bosch<br>5 min van het station</p></div>
-  </div></section>
+          <article class="lead" data-r>
+            <div class="art"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1000&q=72" alt="Grootformaat abstract schilderij over licht en schaduw" loading="lazy" width="1000" height="750"><span class="badge">Hoofdzaal</span></div>
+            <div class="body">
+              <span class="label">Uitgelicht — solo</span>
+              <h3>Tegen het licht</h3>
+              <div class="who">Maartje Vos</div>
+              <p>Grootformaat schilderijen over licht, schaduw en alles ertussenin. Vos werkt met dunne lagen olieverf die het licht in de zaal lijken te vangen — afhankelijk van het uur van de dag verandert het werk mee.</p>
+              <span class="when">t/m 20 jul</span>
+            </div>
+          </article>
 
-  <section class="sec news" id="nieuws"><div class="wrap">
-    <div data-r>
-      <h2>Mis geen<br><span>opening.</span></h2>
-      <p>Eén mail per expositie met een uitnodiging voor de opening. Geen ruis, alleen kunst.</p>
+          <div class="expos" data-r>
+            <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=800&q=72" alt="Kunstinstallatie in een galeriezaal" loading="lazy" width="800" height="600"><span class="badge">Zaal 2</span></div><div class="b"><h3>Ruis &amp; Stilte</h3><div class="who">Duo — Bram Ket &amp; Lina Aydin</div><p>Geluid wordt beeld in een installatie die je zelf activeert.</p><span class="when">t/m 3 aug</span></div></article>
+            <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=800&q=72" alt="Kleurrijke schilderijen van jonge kunstenaars aan de muur" loading="lazy" width="800" height="600"><span class="badge">Project</span></div><div class="b"><h3>Jong Talent '26</h3><div class="who">Groep — 8 afgestudeerden</div><p>De nieuwe lichting van de kunstacademie, voor het eerst samen.</p><span class="when">12 jul — 25 aug</span></div></article>
+            <article class="expo"><div class="art"><img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?auto=format&fit=crop&w=800&q=72" alt="Sculptuur van gevonden materiaal in de expositieruimte" loading="lazy" width="800" height="600"><span class="badge">Binnenkort</span></div><div class="b"><h3>Materie</h3><div class="who">Solo — Joris Pellenaars</div><p>Sculpturen van gevonden materiaal uit de Brabantse industrie.</p><span class="when">vanaf 1 sep</span></div></article>
+          </div>
+        </section>
+
+        <section class="block" id="kunstenaars">
+          <div class="block-h"><h2>Onze kunstenaars</h2></div>
+          <div class="artists" data-r>
+            <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Maartje Vos" loading="lazy" width="400" height="400"></div><h3>Maartje Vos</h3><span>Schilderkunst</span></div>
+            <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Bram Ket" loading="lazy" width="400" height="400"></div><h3>Bram Ket</h3><span>Geluid &amp; installatie</span></div>
+            <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Lina Aydin" loading="lazy" width="400" height="400"></div><h3>Lina Aydin</h3><span>Mixed media</span></div>
+            <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Joris Pellenaars" loading="lazy" width="400" height="400"></div><h3>Joris Pellenaars</h3><span>Sculptuur</span></div>
+            <div class="ar"><div class="av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=72" alt="Portret van kunstenaar Noor de Wit" loading="lazy" width="400" height="400"></div><h3>Noor de Wit</h3><span>Fotografie</span></div>
+          </div>
+        </section>
+
+        <section class="block" id="bezoek">
+          <div class="block-h"><h2>Bezoek</h2></div>
+          <div class="visit-grid" data-r>
+            <div class="c"><h3>Openingstijden</h3><p>Wo t/m zo · 11:00 — 17:00<br>Maandag &amp; dinsdag gesloten</p></div>
+            <div class="c"><h3>Entree</h3><p>Gratis voor iedereen.<br>Rondleiding op zondag om 14:00.</p></div>
+            <div class="c"><h3>Adres</h3><p>Verwersstraat 9, Den Bosch<br>5 min van het station</p></div>
+          </div>
+        </section>
+
+        <section class="block" id="nieuws">
+          <div class="block-h"><h2>Op de hoogte</h2></div>
+          <div class="news-grid">
+            <div data-r>
+              <h3 class="big">Mis geen<br><span>opening.</span></h3>
+              <p>Eén mail per expositie met een uitnodiging voor de opening. Geen ruis, alleen kunst.</p>
+            </div>
+            <form class="form" id="form" novalidate data-r>
+              <div class="fld"><label for="kl-naam">Naam</label><input id="kl-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+              <div class="fld"><label for="kl-mail">E-mail</label><input id="kl-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+              <button type="submit">Houd me op de hoogte →</button>
+              <div class="ok" role="status">✦ Dankjewel! Tot bij de opening.</div>
+            </form>
+          </div>
+        </section>
+      </div>
     </div>
-    <form class="form" id="form" novalidate data-r>
-      <div class="fld"><label for="kl-naam">Naam</label><input id="kl-naam" type="text" required><span class="err">Vul je naam in.</span></div>
-      <div class="fld"><label for="kl-mail">E-mail</label><input id="kl-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
-      <button type="submit">Houd me op de hoogte →</button>
-      <div class="ok" role="status">✦ Dankjewel! Tot bij de opening.</div>
-    </form>
-  </div></section>
+  </div>
 </main>
 
 <footer class="foot"><div class="wrap">
@@ -193,6 +275,22 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
   var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
   if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+
+  // scroll-spy: markeer actieve sectie in de sticky index
+  var spies=[].slice.call(doc.querySelectorAll('.index a[data-spy]'));
+  if(spies.length&&'IntersectionObserver'in window){
+    var map={};spies.forEach(function(a){var id=a.getAttribute('href').slice(1);map[id]=a;});
+    var visible={};
+    function setActive(){
+      var best=null,bestTop=Infinity;
+      Object.keys(visible).forEach(function(id){if(visible[id]){var t=Math.abs(visible[id]);if(t<bestTop){bestTop=t;best=id;}}});
+      spies.forEach(function(a){a.classList.remove('active');a.removeAttribute('aria-current');});
+      if(best&&map[best]){map[best].classList.add('active');map[best].setAttribute('aria-current','true');}
+    }
+    var so=new IntersectionObserver(function(es){es.forEach(function(en){var id=en.target.id;if(en.isIntersecting)visible[id]=en.boundingClientRect.top;else delete visible[id];});setActive();},{rootMargin:'-30% 0px -55% 0px',threshold:0});
+    Object.keys(map).forEach(function(id){var s=doc.getElementById(id);if(s)so.observe(s);});
+  }
+
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
   var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
 })();

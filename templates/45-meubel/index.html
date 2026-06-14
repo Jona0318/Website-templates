@@ -12,16 +12,18 @@
 <style>
 /* ============================================================
    EIK & ES — meubels & interieur. Minimaal, neutraal, ruim.
+   ARCHETYPE I: BENTO-GRID. Modulair raster van ongelijke tegels
+   (hero, producten, USP's, beeld, spec) — strak en modern.
    ============================================================ */
 :root{
-  --paper:#f3f0e9; --paper-2:#eae4d9; --ink:#211e19; --ink-2:#5a544b; --muted:#857d70;
+  --paper:#f3f0e9; --paper-2:#eae4d9; --card:#fbf9f4; --ink:#211e19; --ink-2:#5a544b; --muted:#857d70;
   --tan:#9a7b56; --tan-2:#7d6244; --line:rgba(33,30,25,.15); --line-soft:rgba(33,30,25,.08);
   --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
-  --maxw:1200px; --gutter:clamp(1.2rem,5vw,5rem);
+  --maxw:1280px; --gutter:clamp(1.2rem,5vw,4rem); --r:14px; --gap:clamp(.8rem,1.6vw,1.3rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.05rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:1.05rem;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}ul{list-style:none}
 button,input,select,textarea{font:inherit;color:inherit}::selection{background:var(--tan);color:#fff}
 :focus-visible{outline:2px solid var(--tan-2);outline-offset:3px}
@@ -30,79 +32,111 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .kicker{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--paper);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-.hdr{position:sticky;top:0;z-index:50;background:var(--paper);transition:border-color .3s;border-bottom:1px solid transparent}
-.hdr.stuck{border-color:var(--line)}
-.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
-.logo{font-family:var(--serif);font-weight:400;font-size:1.5rem;letter-spacing:.02em}
+/* ---- pill-nav die vrij over het raster zweeft ---- */
+.hdr{position:sticky;top:0;z-index:50;padding-top:clamp(.8rem,2vw,1.2rem)}
+.hdr .wrap{display:flex;justify-content:center}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;width:100%;max-width:var(--maxw);background:rgba(251,249,244,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:99px;padding:.55rem .6rem .55rem 1.4rem;transition:box-shadow .3s}
+.hdr.stuck .bar{box-shadow:0 16px 40px -28px rgba(33,30,25,.55)}
+.logo{font-family:var(--serif);font-weight:400;font-size:1.4rem;letter-spacing:.02em;white-space:nowrap}
 .logo b{font-weight:500}
-.nav{display:flex;align-items:center;gap:2.2rem}
-.nav a{font-size:.84rem;letter-spacing:.08em;color:var(--ink-2)}.nav a:hover{color:var(--ink)}
-.nav .cta{letter-spacing:.1em;text-transform:uppercase;font-size:.74rem;border-bottom:1px solid var(--tan);padding-bottom:3px;color:var(--ink)}
-.burger{display:none;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:.5rem .8rem}
-@media(max-width:860px){.nav{position:fixed;inset:84px 0 auto;background:var(--paper);flex-direction:column;align-items:flex-start;padding:1.5rem var(--gutter) 2rem;gap:1.2rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+.nav{display:flex;align-items:center;gap:1.8rem}
+.nav a{font-size:.82rem;letter-spacing:.06em;color:var(--ink-2)}.nav a:hover{color:var(--ink)}
+.nav .cta{background:var(--ink);color:var(--paper);padding:.55rem 1.2rem;border-radius:99px;letter-spacing:.06em;font-size:.78rem;text-transform:uppercase}
+.nav .cta:hover{background:var(--tan-2)}
+.burger{display:none;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:.55rem 1rem;background:transparent}
+@media(max-width:880px){
+  .nav{position:fixed;inset:auto;top:74px;left:var(--gutter);right:var(--gutter);background:var(--card);flex-direction:column;align-items:flex-start;padding:1.3rem 1.5rem 1.6rem;gap:1.1rem;border:1px solid var(--line);border-radius:var(--r);transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}
+  .nav.open{transform:none}.burger{display:inline-block}
+}
 
-.hero{padding-block:clamp(3rem,7vw,6rem)}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:center}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:2.5rem}}
-.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.8rem,7.5vw,5.8rem);line-height:1.02;letter-spacing:-.01em}
-.hero h1 em{font-style:italic;font-weight:400;color:var(--tan-2)}
-.hero p.lead{margin-top:1.6rem;color:var(--ink-2);max-width:40ch;font-size:1.16rem}
-.hero-act{margin-top:2rem;display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap}
+/* ---- BENTO RASTER ---- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap);grid-auto-rows:minmax(120px,auto);margin-top:clamp(1.2rem,3vw,2rem)}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.3rem,2.4vw,2.1rem);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.tile--img{padding:0}
+.tile--img img{width:100%;height:100%;object-fit:cover;flex:1}
+.tile--ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tile--ink .kicker{color:#cdbfa6}
+.tile--tan{background:var(--tan-2);color:#fbf3e6;border-color:var(--tan-2)}
+.tile--tan .kicker{color:#f0e2cc}
+
+/* hero-tegel */
+.t-hero{grid-column:span 4;grid-row:span 2;justify-content:center}
+.t-hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5.6vw,4.6rem);line-height:1.02;letter-spacing:-.01em;margin-top:1rem}
+.t-hero h1 em{font-style:italic;font-weight:400;color:var(--tan-2)}
+.t-hero p{margin-top:1.2rem;color:var(--ink-2);max-width:42ch;font-size:1.1rem}
+.t-hero .act{margin-top:1.8rem;display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
 .lnk{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--tan);padding-bottom:4px}.lnk:hover{color:var(--tan-2)}
 .lnk.g{border-color:var(--line);color:var(--ink-2)}
-.hero-fig img{width:100%;aspect-ratio:4/4.6;object-fit:cover;background:var(--paper-2)}
+.cta-btn{background:var(--ink);color:var(--paper);padding:.8rem 1.5rem;border-radius:99px;font-size:.84rem;letter-spacing:.05em;transition:background-color .25s,transform .25s}
+.cta-btn:hover{background:var(--tan-2);transform:translateY(-2px)}
 
-.meta{border-block:1px solid var(--line)}
-.meta .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding-block:1.3rem;font-size:.86rem;letter-spacing:.04em;color:var(--ink-2)}
-.meta b{font-family:var(--serif);font-weight:500;color:var(--ink)}
+.t-heroimg{grid-column:span 2;grid-row:span 2}
 
-.sec{padding-block:clamp(3.5rem,7vw,6.5rem)}
-.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(2rem,4vw,3rem)}
-.sec-h h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.4vw,3.1rem);letter-spacing:-.01em}
-.sec-h .a{color:var(--muted);font-size:.95rem;max-width:30ch;text-align:right}
+/* USP-tegels */
+.t-usp{grid-column:span 2;justify-content:flex-end}
+.t-usp b{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);display:block;line-height:1.1}
+.t-usp span{color:var(--ink-2);font-size:.92rem;margin-top:.4rem;display:block}
+.tile--ink .t-usp span,.tile--ink span{color:#cdbfa6}
 
-/* collecties */
-.col{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,1.6rem)}
-@media(max-width:860px){.col{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.col{grid-template-columns:1fr}}
-.cl-it{display:block}
-.cl-it .sw{aspect-ratio:3/4;border:1px solid var(--line);display:grid;place-items:center;transition:background-color .3s;overflow:hidden;background:var(--paper-2)}
-.cl-it .sw img{width:100%;height:100%;object-fit:cover}
-.cl-it:hover .sw{background:var(--paper-2)}
-.cl-it h3{font-family:var(--serif);font-weight:500;font-size:1.2rem;margin-top:.9rem}
-.cl-it p{color:var(--muted);font-size:.9rem}
+/* sectiekop als brede tegel */
+.t-head{grid-column:span 6;background:transparent;border:0;padding:clamp(1rem,2vw,1.6rem) .4rem .2rem;flex-direction:row;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.t-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.01em}
+.t-head .a{color:var(--muted);font-size:.95rem;max-width:32ch}
 
-/* interieur split */
-.int{background:var(--paper-2)}
-.int .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
-@media(max-width:860px){.int .wrap{grid-template-columns:1fr}}
-.int img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.int h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.4vw,3rem);margin:.8rem 0 1.1rem}
-.int p{color:var(--ink-2);font-size:1.1rem}.int p+p{margin-top:1rem}
-.spec{margin-top:1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
-@media(max-width:480px){.spec{grid-template-columns:1fr}}
-.spec dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
-.spec dd{font-family:var(--serif);font-size:1.15rem}
+/* product-tegels */
+.t-prod{grid-column:span 3;padding:0;overflow:hidden}
+.t-prod .ph{aspect-ratio:16/10;overflow:hidden;background:var(--paper-2)}
+.t-prod .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.t-prod:hover .ph img{transform:scale(1.04)}
+.t-prod .cap{padding:1.1rem 1.4rem 1.4rem}
+.t-prod h3{font-family:var(--serif);font-weight:500;font-size:1.3rem}
+.t-prod p{color:var(--muted);font-size:.9rem;margin-top:.15rem}
+.t-prod .arr{margin-top:.7rem;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tan-2)}
 
-/* showroom */
-.show .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
-@media(max-width:820px){.show .wrap{grid-template-columns:1fr;gap:2rem}}
-.show h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1rem}
-.show .now{color:var(--tan-2);margin-bottom:1rem;font-size:.96rem}.show .now[data-open=false]{color:#a9583e}
+/* werkplaats: groot beeld + spec-tegel */
+.t-wkimg{grid-column:span 3;grid-row:span 2;padding:0}
+.t-wktxt{grid-column:span 3}
+.t-wktxt h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3.4vw,2.6rem);margin:.6rem 0 .9rem}
+.t-wktxt p{color:var(--ink-2);font-size:1.02rem}.t-wktxt p+p{margin-top:.8rem}
+.t-spec{grid-column:span 3;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 1.6rem;align-content:center}
+.t-spec dt{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+.t-spec dd{font-family:var(--serif);font-size:1.12rem}
+
+/* showroom-blok: openingstijden-tegel + formulier-tegel */
+.t-hours{grid-column:span 3}
+.t-hours h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.5rem}
+.t-hours .now{color:var(--tan-2);margin-bottom:.8rem;font-size:.94rem}.t-hours .now[data-open=false]{color:#a9583e}
 .hours{width:100%;border-collapse:collapse}
-.hours td{padding:.6rem 0;border-bottom:1px solid var(--line-soft)}
+.hours td{padding:.5rem 0;border-bottom:1px solid var(--line-soft);font-size:.96rem}
 .hours td.t{text-align:right;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .hours tr.now td{font-weight:600;color:var(--ink)}.hours td.cl{font-style:italic;color:var(--muted)}
-.show address{font-style:normal;color:var(--ink-2);line-height:1.9}.show address a{border-bottom:1px solid var(--line)}
-.show .form{margin-top:1.4rem;display:grid;gap:.9rem}
-.show .form input,.show .form textarea{border:1px solid var(--line);background:var(--paper);padding:.8rem .9rem}
-.show .form textarea{min-height:80px;resize:vertical}
-.show .form input:focus,.show .form textarea:focus{outline:none;border-color:var(--tan)}
-.show .form button{justify-self:start;background:var(--ink);color:var(--paper);border:0;padding:.85rem 1.7rem;letter-spacing:.06em;font-size:.86rem;cursor:pointer}
-.show .form button:hover{background:var(--tan-2)}
-.show .ok{display:none;color:var(--tan-2)}.show .form.sent>*{display:none}.show .form.sent .ok{display:block}
+.t-hours address{font-style:normal;color:var(--ink-2);line-height:1.85;margin-top:1.1rem;font-size:.96rem}.t-hours address a{border-bottom:1px solid var(--line)}
+.t-form{grid-column:span 3}
+.t-form h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.5rem}
+.t-form .lead{color:var(--ink-2);font-size:.96rem;margin-bottom:1rem}
+.t-form .form{display:grid;gap:.8rem}
+.t-form input,.t-form textarea{border:1px solid var(--line);background:var(--paper);padding:.8rem .9rem;border-radius:8px}
+.t-form textarea{min-height:74px;resize:vertical}
+.t-form input:focus,.t-form textarea:focus{outline:none;border-color:var(--tan)}
+.t-form button{justify-self:start;background:var(--ink);color:var(--paper);border:0;padding:.85rem 1.7rem;border-radius:99px;letter-spacing:.06em;font-size:.84rem;cursor:pointer}
+.t-form button:hover{background:var(--tan-2)}
+.t-form .ok{display:none;color:var(--tan-2)}.t-form .form.sent>*{display:none}.t-form .form.sent .ok{display:block}
 
-.foot{border-top:1px solid var(--line);padding-block:2.5rem}
+@media(max-width:880px){
+  .bento{grid-template-columns:repeat(4,1fr)}
+  .t-hero{grid-column:span 4;grid-row:auto}
+  .t-heroimg{grid-column:span 4;grid-row:auto;min-height:320px}
+  .t-usp{grid-column:span 2}
+  .t-head,.t-prod,.t-wkimg,.t-wktxt,.t-spec,.t-hours,.t-form{grid-column:span 4;grid-row:auto}
+  .t-wkimg{min-height:280px}
+}
+@media(max-width:540px){
+  .bento{grid-template-columns:1fr}
+  .t-hero,.t-heroimg,.t-usp,.t-head,.t-prod,.t-wkimg,.t-wktxt,.t-spec,.t-hours,.t-form{grid-column:1}
+  .t-spec{grid-template-columns:1fr 1fr}
+}
+
+.foot{border-top:1px solid var(--line);padding-block:2.5rem;margin-top:clamp(2rem,4vw,3.5rem)}
 .foot .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:.84rem}
 .foot .logo{font-size:1.25rem}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}[data-r].in{opacity:1;transform:none}}
@@ -111,68 +145,68 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 <body id="top">
 <a class="skip" href="#collecties">Naar de collecties</a>
 <header class="hdr" id="hdr"><div class="wrap">
-  <a class="logo" href="#top">Eik <b>&amp; Es</b></a>
-  <nav class="nav" id="nav"><a href="#collecties">Collecties</a><a href="#werkplaats">Werkplaats</a><a href="#showroom">Showroom</a><a class="cta" href="#showroom">Op maat</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+  <div class="bar">
+    <a class="logo" href="#top">Eik <b>&amp; Es</b></a>
+    <nav class="nav" id="nav"><a href="#collecties">Collecties</a><a href="#werkplaats">Werkplaats</a><a href="#showroom">Showroom</a><a class="cta" href="#showroom">Op maat</a></nav>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
 </div></header>
 
-<main>
-  <section class="hero"><div class="wrap">
-    <div>
+<main class="wrap">
+  <!-- BENTO: hero + beeld + USP's -->
+  <section class="bento" aria-label="Introductie">
+    <div class="tile t-hero" data-r>
       <span class="kicker">Meubels &amp; interieur · Utrecht</span>
-      <h1 style="margin-top:1.2rem">Hout dat een<br>leven lang <em>meegaat</em>.</h1>
-      <p class="lead">Eerlijke meubels van massief eiken en essen, tijdloos ontworpen en met de hand gemaakt in onze eigen werkplaats.</p>
-      <div class="hero-act"><a class="lnk" href="#collecties">Bekijk de collecties</a><a class="lnk g" href="#showroom">Bezoek de showroom</a></div>
+      <h1>Hout dat een<br>leven lang <em>meegaat</em>.</h1>
+      <p>Eerlijke meubels van massief eiken en essen, tijdloos ontworpen en met de hand gemaakt in onze eigen werkplaats.</p>
+      <div class="act"><a class="cta-btn" href="#collecties">Bekijk collecties</a><a class="lnk g" href="#showroom">Bezoek de showroom</a></div>
     </div>
-    <figure class="hero-fig" data-r><img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=850&q=72" alt="Een fauteuil tegen een lichte achtergrond" width="850" height="980"></figure>
-  </div></section>
+    <figure class="tile tile--img t-heroimg" data-r><img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=850&q=72" alt="Een fauteuil tegen een lichte achtergrond" width="850" height="1040" fetchpriority="high"></figure>
+    <div class="tile tile--ink t-usp" data-r><span class="kicker">Materiaal</span><b>Massief eiken &amp; essen</b><span>Geen fineer, geen spaanplaat.</span></div>
+    <div class="tile t-usp" data-r><span class="kicker">Gemaakt</span><b>Eigen werkplaats</b><span>Eén maker, van plank tot meubel.</span></div>
+    <div class="tile tile--tan t-usp" data-r><span class="kicker">Op maat</span><b>Jouw maat, jouw kamer</b><span>In de houtsoort die je kiest.</span></div>
+  </section>
 
-  <div class="meta"><div class="wrap">
-    <span>Massief <b>eiken &amp; essen</b></span>
-    <span>Gemaakt in <b>eigen werkplaats</b></span>
-    <span><b>Op maat</b> mogelijk</span>
-    <span><b>10 jaar</b> garantie</span>
-  </div></div>
+  <!-- BENTO: collecties -->
+  <section class="bento" id="collecties">
+    <div class="tile t-head" data-r><h2>Collecties</h2><span class="a">Elk stuk staat ook in de showroom om uit te proberen.</span></div>
+    <a class="tile t-prod" href="#showroom" data-r><div class="ph"><img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=900&q=72" alt="Massief houten eettafel" loading="lazy" width="900" height="563"></div><div class="cap"><h3>Eettafels</h3><p>Op maat, in elk formaat</p><span class="arr">Bekijk →</span></div></a>
+    <a class="tile t-prod" href="#showroom" data-r><div class="ph"><img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=900&q=72" alt="Design fauteuil met houten frame" loading="lazy" width="900" height="563"></div><div class="cap"><h3>Stoelen &amp; banken</h3><p>Zitcomfort dat blijft</p><span class="arr">Bekijk →</span></div></a>
+    <a class="tile t-prod" href="#showroom" data-r><div class="ph"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=900&q=72" alt="Strakke houten kast in een interieur" loading="lazy" width="900" height="563"></div><div class="cap"><h3>Kasten</h3><p>Strak en ruim</p><span class="arr">Bekijk →</span></div></a>
+    <a class="tile t-prod" href="#showroom" data-r><div class="ph"><img src="https://images.unsplash.com/photo-1513506003011-3f3a0e1f4b7c?auto=format&fit=crop&w=900&q=72" alt="Warme ingetogen interieurverlichting" loading="lazy" width="900" height="563"></div><div class="cap"><h3>Verlichting</h3><p>Warm en ingetogen</p><span class="arr">Bekijk →</span></div></a>
+  </section>
 
-  <section class="sec" id="collecties"><div class="wrap">
-    <div class="sec-h" data-r><h2>Collecties</h2><span class="a">Elk stuk staat ook in de showroom om uit te proberen.</span></div>
-    <div class="col" data-r>
-      <a class="cl-it" href="#showroom"><div class="sw"><img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=800&q=72" alt="Massief houten eettafel" loading="lazy" width="800" height="1067"></div><h3>Eettafels</h3><p>Op maat, in elk formaat</p></a>
-      <a class="cl-it" href="#showroom"><div class="sw"><img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=72" alt="Design fauteuil met houten frame" loading="lazy" width="800" height="1067"></div><h3>Stoelen &amp; banken</h3><p>Zitcomfort dat blijft</p></a>
-      <a class="cl-it" href="#showroom"><div class="sw"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=72" alt="Strakke houten kast in een interieur" loading="lazy" width="800" height="1067"></div><h3>Kasten</h3><p>Strak en ruim</p></a>
-      <a class="cl-it" href="#showroom"><div class="sw"><img src="https://images.unsplash.com/photo-1513506003011-3f3a0e1f4b7c?auto=format&fit=crop&w=800&q=72" alt="Warme ingetogen interieurverlichting" loading="lazy" width="800" height="1067"></div><h3>Verlichting</h3><p>Warm en ingetogen</p></a>
-    </div>
-  </div></section>
-
-  <section class="sec int" id="werkplaats"><div class="wrap">
-    <figure data-r><img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=950&q=72" alt="Interieur met houten meubels in een licht atelier" width="950" height="712" loading="lazy"></figure>
-    <div data-r>
+  <!-- BENTO: werkplaats (groot beeld + tekst + spec) -->
+  <section class="bento" id="werkplaats">
+    <figure class="tile tile--img t-wkimg" data-r><img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=950&q=72" alt="Interieur met houten meubels in een licht atelier" width="950" height="712" loading="lazy"></figure>
+    <div class="tile t-wktxt" data-r>
       <span class="kicker">De werkplaats</span>
       <h2>Eén maker, van plank tot meubel</h2>
       <p>We kopen hout in bij Europese bossen met goed bosbeheer en bewerken het zelf — zagen, schaven, verbinden en oliën. Geen lopende band, geen wegwerpmeubels.</p>
       <p>Wil je een tafel die precies in jouw kamer past? We maken hem op maat, in de houtsoort en afwerking die je kiest.</p>
-      <dl class="spec">
-        <div><dt>Houtsoorten</dt><dd>Eiken, essen, noten</dd></div>
-        <div><dt>Afwerking</dt><dd>Natuurlijke olie</dd></div>
-        <div><dt>Levertijd op maat</dt><dd>6 – 8 weken</dd></div>
-        <div><dt>Garantie</dt><dd>10 jaar</dd></div>
-      </dl>
     </div>
-  </div></section>
+    <dl class="tile tile--ink t-spec" data-r>
+      <div><dt>Houtsoorten</dt><dd>Eiken, essen, noten</dd></div>
+      <div><dt>Afwerking</dt><dd>Natuurlijke olie</dd></div>
+      <div><dt>Levertijd op maat</dt><dd>6 – 8 weken</dd></div>
+      <div><dt>Garantie</dt><dd>10 jaar</dd></div>
+    </dl>
+  </section>
 
-  <section class="sec show" id="showroom"><div class="wrap">
-    <div data-r>
-      <h2>Showroom</h2>
+  <!-- BENTO: showroom (openingstijden + formulier) -->
+  <section class="bento" id="showroom">
+    <div class="tile t-head" data-r><h2>Showroom</h2><span class="a">Loop binnen aan de Oudegracht of stel je vraag.</span></div>
+    <div class="tile t-hours" data-r>
       <p class="now" id="now" data-open="true">Nu geopend.</p>
       <table class="hours"><tbody id="hb"></tbody></table>
-      <address style="margin-top:1.2rem">
+      <address>
         Oudegracht 187<br>3511 AL Utrecht<br>
         <a href="tel:+31302311760">030 — 231 17 60</a>
       </address>
     </div>
-    <div data-r>
+    <div class="tile t-form" data-r>
       <h2>Stel je vraag</h2>
-      <p style="color:var(--ink-2)">Benieuwd naar de mogelijkheden of een prijs op maat? Laat een bericht achter.</p>
+      <p class="lead">Benieuwd naar de mogelijkheden of een prijs op maat? Laat een bericht achter.</p>
       <form class="form" id="form" novalidate>
         <input id="m-naam" type="text" placeholder="Naam" aria-label="Naam" required>
         <input id="m-mail" type="email" placeholder="E-mail" aria-label="E-mail" required>
@@ -181,7 +215,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
         <p class="ok" role="status">Bedankt — we reageren binnen twee werkdagen.</p>
       </form>
     </div>
-  </div></section>
+  </section>
 </main>
 
 <footer class="foot"><div class="wrap">

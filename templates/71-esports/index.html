@@ -12,6 +12,9 @@
 <style>
 /* ============================================================
    RESPAWN — esports. Diep navy × neon-groen × magenta. Hoekig / clip-path.
+   STRUCTUUR: poster / asymmetrisch-diagonaal. Gekantelde nav-balk, split
+   poster-hero met diagonale clip + speler-portret, schuin doorsneden
+   secties die in elkaar grijpen.
    ============================================================ */
 :root{
   --bg:#080c16; --panel:#0e1424; --panel2:#121a2e; --ink:#eaf0ff; --dim:#8493b8;
@@ -21,72 +24,82 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,textarea{font:inherit;color:inherit}
 ::selection{background:var(--green);color:#000}
 :focus-visible{outline:2px solid var(--green);outline-offset:2px}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--green);color:#000;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(8,12,22,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.logo{font-family:var(--disp);font-weight:700;font-size:1.4rem;letter-spacing:.08em;text-transform:uppercase}.logo span{color:var(--green)}
+/* ---- gekantelde nav-balk ---- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(8,12,22,.92);backdrop-filter:blur(10px);border-bottom:2px solid var(--green);clip-path:polygon(0 0,100% 0,100% 100%,0 calc(100% - 12px))}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;padding-bottom:10px}
+.logo{font-family:var(--disp);font-weight:700;font-size:1.4rem;letter-spacing:.08em;text-transform:uppercase;transform:skewX(-8deg)}.logo span{color:var(--green)}
 .menu{display:flex;align-items:center;gap:.4rem}
 .menu a{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;color:var(--dim);padding:.45rem .7rem}
 .menu a:hover{color:var(--green)}
 .menu .cta{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--green);color:#000;padding:.4rem 1rem;clip-path:var(--clip)}
 .menu .cta:hover{background:var(--cyan)}
 .burger{display:none;border:1px solid var(--line);background:none;color:var(--ink);padding:.4rem .65rem;font-family:var(--mono);font-size:.78rem}
-@media(max-width:840px){.menu{position:fixed;inset:62px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid var(--line)}.burger{display:inline-block}}
+@media(max-width:840px){.nav{clip-path:none}.menu{position:fixed;inset:66px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid var(--line)}.burger{display:inline-block}}
 
-/* hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+/* ---- poster-hero: asymmetrische split met diagonaal ---- */
+.hero{position:relative;overflow:hidden;border-bottom:2px solid var(--mag);background:var(--bg)}
 .hero::before{content:"";position:absolute;inset:0;background:
   linear-gradient(115deg,rgba(57,255,20,.12),transparent 40%),
   radial-gradient(circle at 85% 20%,rgba(255,45,146,.22),transparent 45%);
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px}
-.hero .wrap{position:relative;padding-block:clamp(2.6rem,7vw,5.5rem)}
+.hero .grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;align-items:stretch;max-width:1260px;margin-inline:auto}
+.hero .copy{padding:clamp(2.6rem,7vw,5.5rem) clamp(1rem,4vw,3rem);align-self:center;z-index:2}
 .hero .kick{font-family:var(--mono);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
-.hero h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(3rem,13vw,9rem);line-height:.86;letter-spacing:.01em;margin:.6rem 0}
+.hero h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(3rem,11vw,8rem);line-height:.86;letter-spacing:.01em;margin:.6rem 0;transform:skewX(-6deg)}
 .hero h1 .g{color:var(--green);text-shadow:0 0 24px rgba(57,255,20,.6)}
 .hero h1 .m{color:var(--mag)}
 .hero p{font-size:1.15rem;max-width:42ch;color:var(--dim)}
 .hero .row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+.hero .poster{position:relative;min-height:340px}
+.hero .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;clip-path:polygon(22% 0,100% 0,100% 100%,0 100%);filter:saturate(1.05) contrast(1.05)}
+.hero .poster::after{content:"";position:absolute;inset:0;clip-path:polygon(22% 0,100% 0,100% 100%,0 100%);background:linear-gradient(120deg,rgba(8,12,22,.85),transparent 42%),linear-gradient(0deg,rgba(255,45,146,.28),transparent 55%);pointer-events:none}
+.hero .poster .badge{position:absolute;left:24%;bottom:1.2rem;z-index:3;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--green);background:rgba(8,12,22,.8);padding:.35rem .7rem;border:1px solid var(--green)}
+@media(max-width:780px){.hero .grid{grid-template-columns:1fr}.hero .poster{min-height:280px;order:-1}.hero .poster img,.hero .poster::after{clip-path:polygon(0 0,100% 0,100% 86%,0 100%)}.hero .poster .badge{left:auto;right:1rem}}
 .btn{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.95rem;padding:.85rem 1.5rem;cursor:pointer;clip-path:var(--clip)}
 .btn.p{background:var(--green);color:#000}.btn.p:hover{background:var(--cyan)}
 .btn.s{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}.btn.s:hover{border-color:var(--mag);color:var(--mag)}
 
-/* stat strip */
-.stats{border-bottom:1px solid var(--line);background:var(--panel)}
-.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:1.4rem;text-align:center}
+/* ---- diagonale stat-strip ---- */
+.stats{background:var(--mag);color:#000;transform:skewY(-1.4deg);margin-block:-1px;border-block:2px solid #000}
+.stats .wrap{transform:skewY(1.4deg);display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:1.6rem;text-align:center}
 @media(max-width:560px){.stats .wrap{grid-template-columns:1fr 1fr}}
-.stat b{font-family:var(--disp);font-weight:700;font-size:1.9rem;display:block;color:var(--green)}
-.stat span{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--dim)}
+.stat b{font-family:var(--disp);font-weight:700;font-size:2rem;display:block;color:#000}
+.stat span{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:#2a0a1a}
 
-.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec{padding-block:clamp(2.8rem,5vw,4.8rem)}
 .sec-h{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
-.sec-h h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,5vw,2.8rem);letter-spacing:.03em}
+.sec-h h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,5vw,2.8rem);letter-spacing:.03em;transform:skewX(-6deg)}
 .sec-h .bar{flex:1;height:2px;background:linear-gradient(90deg,var(--green),transparent)}
 
-/* roster */
-.roster{display:grid;grid-template-columns:repeat(5,1fr);gap:.9rem}
+/* ---- roster: gekantelde poster-kaarten ---- */
+.roster{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
 @media(max-width:900px){.roster{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.roster{grid-template-columns:1fr 1fr}}
-.player{background:var(--panel);border:1px solid var(--line);clip-path:var(--clip);overflow:hidden;transition:transform .15s,border-color .2s}
-.player:hover{transform:translateY(-4px);border-color:var(--green)}
-.player .av{aspect-ratio:1/1;overflow:hidden;background:linear-gradient(135deg,var(--green),#1aa30a)}
+.player{position:relative;background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:transform .18s,border-color .2s;clip-path:polygon(0 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%)}
+.player:nth-child(even){clip-path:polygon(18px 0,100% 0,100% 100%,0 100%,0 18px)}
+.player:hover{transform:translateY(-5px) rotate(-1deg);border-color:var(--green)}
+.player:nth-child(even):hover{transform:translateY(-5px) rotate(1deg)}
+.player .av{aspect-ratio:3/4;overflow:hidden;background:linear-gradient(135deg,var(--green),#1aa30a)}
 .player .av img{width:100%;height:100%;object-fit:cover}
 .player:nth-child(2) .av{background:linear-gradient(135deg,var(--mag),#a01060)}
 .player:nth-child(3) .av{background:linear-gradient(135deg,var(--cyan),#0a7e96)}
 .player:nth-child(4) .av{background:linear-gradient(135deg,#b06bff,#5a2bb0)}
 .player:nth-child(5) .av{background:linear-gradient(135deg,#ffb43d,#b07310)}
-.player .b{padding:.8rem .9rem}
+.player .b{padding:.7rem .9rem .9rem}
 .player h3{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.1rem}
 .player .role{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;color:var(--dim)}
 
-/* matches */
+/* ---- matches: schuin doorsneden band ---- */
+.matchsec{position:relative;background:var(--panel);border-block:2px solid var(--line)}
 .matches{display:grid;gap:.7rem}
-.match{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;background:var(--panel);border:1px solid var(--line);clip-path:var(--clip);padding:.9rem 1.2rem}
+.match{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;background:var(--bg);border:1px solid var(--line);clip-path:var(--clip);padding:.9rem 1.2rem;transition:transform .15s}
+.match:hover{transform:translateX(6px)}
 .match .d{font-family:var(--mono);font-size:.8rem;color:var(--green);text-align:center;border-right:1px solid var(--line);padding-right:1rem}
 .match .vs{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.1rem}
 .match .vs em{font-style:normal;color:var(--dim);font-size:.85rem;margin:0 .5rem}
@@ -95,11 +108,12 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .match .res{font-family:var(--disp);font-weight:700}
 @media(max-width:600px){.match{grid-template-columns:auto 1fr}.match .game{grid-column:2;justify-self:start}}
 
-/* join */
-.join{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--bg))}
-.join .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;padding-block:clamp(2.5rem,5vw,4.5rem)}
+/* ---- join: diagonale split ---- */
+.join{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--panel),var(--bg));border-top:2px solid var(--green)}
+.join::before{content:"";position:absolute;top:0;left:0;width:48%;height:100%;background:linear-gradient(135deg,rgba(57,255,20,.08),transparent 60%);clip-path:polygon(0 0,100% 0,72% 100%,0 100%);pointer-events:none}
+.join .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;padding-block:clamp(2.8rem,5vw,4.8rem)}
 @media(max-width:780px){.join .wrap{grid-template-columns:1fr}}
-.join h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:.03em;line-height:1}
+.join h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:.03em;line-height:1;transform:skewX(-6deg)}
 .join h2 span{color:var(--green)}
 .join p{color:var(--dim);margin-top:.9rem}
 .form{border:1px solid var(--line);background:var(--panel);clip-path:var(--clip);padding:clamp(1.2rem,3vw,1.8rem)}
@@ -118,6 +132,7 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .foot .logo span{color:var(--green)}
 .foot .tag{font-family:var(--mono);font-size:.76rem;color:var(--dim)}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.stats{transform:none}.stats .wrap{transform:none}}
 </style>
 </head>
 <body id="top">
@@ -126,19 +141,27 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 <header class="nav"><div class="wrap">
   <a class="logo" href="#top">RE<span>SPAWN</span></a>
   <nav class="menu" id="menu"><a href="#roster">Roster</a><a href="#wedstrijden">Wedstrijden</a><a href="#join">Tryouts</a><a class="cta" href="#join">Word lid</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">≡</button>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">≡</button>
 </div></header>
 
 <main>
-  <section class="hero"><div class="wrap">
-    <span class="kick">// Esports organisatie · NL</span>
-    <h1>Geen<br><span class="g">tweede</span> <span class="m">kans</span><br>nodig.</h1>
-    <p>Vijf line-ups, één mentaliteit. We trainen hard, spelen scherp en spelen om te winnen — niet om mee te doen.</p>
-    <div class="row">
-      <a class="btn p" href="#wedstrijden">Bekijk wedstrijden</a>
-      <a class="btn s" href="#join">Doe mee aan tryouts</a>
+  <section class="hero">
+    <div class="grid">
+      <div class="copy">
+        <span class="kick">// Esports organisatie · NL</span>
+        <h1>Geen<br><span class="g">tweede</span> <span class="m">kans</span><br>nodig.</h1>
+        <p>Vijf line-ups, één mentaliteit. We trainen hard, spelen scherp en spelen om te winnen — niet om mee te doen.</p>
+        <div class="row">
+          <a class="btn p" href="#wedstrijden">Bekijk wedstrijden</a>
+          <a class="btn s" href="#join">Doe mee aan tryouts</a>
+        </div>
+      </div>
+      <div class="poster">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=72" alt="RESPAWN-speler achter een gaming-setup" loading="eager" width="900" height="1200">
+        <span class="badge">// MAIN ROSTER</span>
+      </div>
     </div>
-  </div></section>
+  </section>
 
   <section class="stats"><div class="wrap">
     <div class="stat"><b>5</b><span>line-ups</span></div>
@@ -150,15 +173,15 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   <section class="sec wrap" id="roster">
     <div class="sec-h"><h2>Hoofd-roster</h2><span class="bar" aria-hidden="true"></span></div>
     <div class="roster" data-r>
-      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Vortex" loading="lazy" width="800" height="800"></div><div class="b"><h3>Vortex</h3><div class="role">IGL / Entry</div></div></div>
-      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Nyx" loading="lazy" width="800" height="800"></div><div class="b"><h3>Nyx</h3><div class="role">AWP</div></div></div>
-      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Kilo" loading="lazy" width="800" height="800"></div><div class="b"><h3>Kilo</h3><div class="role">Support</div></div></div>
-      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Zephyr" loading="lazy" width="800" height="800"></div><div class="b"><h3>Zephyr</h3><div class="role">Lurker</div></div></div>
-      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Rook" loading="lazy" width="800" height="800"></div><div class="b"><h3>Rook</h3><div class="role">Rifler</div></div></div>
+      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Vortex" loading="lazy" width="800" height="1066"></div><div class="b"><h3>Vortex</h3><div class="role">IGL / Entry</div></div></div>
+      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Nyx" loading="lazy" width="800" height="1066"></div><div class="b"><h3>Nyx</h3><div class="role">AWP</div></div></div>
+      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Kilo" loading="lazy" width="800" height="1066"></div><div class="b"><h3>Kilo</h3><div class="role">Support</div></div></div>
+      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Zephyr" loading="lazy" width="800" height="1066"></div><div class="b"><h3>Zephyr</h3><div class="role">Lurker</div></div></div>
+      <div class="player"><div class="av"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=800&q=72" alt="Portret van speler Rook" loading="lazy" width="800" height="1066"></div><div class="b"><h3>Rook</h3><div class="role">Rifler</div></div></div>
     </div>
   </section>
 
-  <section class="sec wrap" id="wedstrijden">
+  <section class="matchsec sec" id="wedstrijden"><div class="wrap">
     <div class="sec-h"><h2>Wedstrijden</h2><span class="bar" aria-hidden="true"></span></div>
     <div class="matches" data-r>
       <div class="match"><div class="d"><b>za 14</b><br>20:00</div><div class="vs">RESPAWN <em>vs</em> Helix</div><span class="game">Aankomend</span></div>
@@ -167,7 +190,7 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
       <div class="match win"><div class="d"><b>do 5</b><br>—</div><div class="vs">RESPAWN <em>vs</em> Phantom <span class="res">2—1</span></div><span class="game">Gewonnen</span></div>
       <div class="match loss"><div class="d"><b>zo 1</b><br>—</div><div class="vs">RESPAWN <em>vs</em> Apex <span class="res">12—16</span></div><span class="game">Verloren</span></div>
     </div>
-  </section>
+  </div></section>
 
   <section class="join" id="join"><div class="wrap">
     <div data-r>

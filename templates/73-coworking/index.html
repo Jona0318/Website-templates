@@ -11,12 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   HUB — co-working. Cream × chartreuse × ink × kobalt. Geometrisch raster.
+   HUB — co-working. Cream × chartreuse × ink × kobalt.
+   ARCHETYPE I: BENTO-GRID — modulair raster van ongelijke tegels.
+   Neo-brutalist: dikke randen, harde schaduwen, mono-labels.
    ============================================================ */
 :root{
   --bg:#f0eee6; --paper:#fbfaf5; --ink:#15140f; --char:#cdff3a; --cobalt:#1f49ff; --coral:#ff5b46;
   --line:#15140f; --disp:"Space Grotesk",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
-  --maxw:1200px; --gutter:clamp(1rem,4vw,3rem);
+  --maxw:1240px; --gutter:clamp(1rem,4vw,3rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -27,156 +29,194 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--char);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:2px solid var(--ink)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+/* ===== floating pill nav (geen klassieke balk) ===== */
+.nav{position:sticky;top:0;z-index:50;padding-top:clamp(.7rem,2vw,1.1rem);pointer-events:none}
+.nav .bar{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--paper);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:.55rem .65rem .55rem 1.1rem;border-radius:14px}
 .logo{font-family:var(--disp);font-weight:700;font-size:1.4rem;letter-spacing:-.02em;display:flex;align-items:center;gap:.5rem}
 .logo .sq{width:18px;height:18px;background:var(--cobalt)}
-.menu{display:flex;align-items:center;gap:.4rem}
-.menu a{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;padding:.45rem .65rem}
+.menu{display:flex;align-items:center;gap:.3rem}
+.menu a{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;padding:.45rem .65rem;border-radius:8px}
 .menu a:hover{background:var(--char)}
 .menu .cta{background:var(--cobalt);color:#fff;font-weight:700;padding:.5rem 1rem}
 .menu .cta:hover{background:var(--ink)}
-.burger{display:none;border:2px solid var(--ink);background:var(--char);padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.78rem}
-@media(max-width:840px){.menu{position:fixed;inset:66px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:2px solid var(--ink);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid var(--ink)}.burger{display:inline-block}}
+.burger{display:none;border:2px solid var(--ink);background:var(--char);padding:.45rem .8rem;border-radius:8px;font-family:var(--mono);text-transform:uppercase;font-size:.76rem}
+@media(max-width:860px){.menu{position:absolute;top:calc(100% + .5rem);right:var(--gutter);left:var(--gutter);background:var(--paper);flex-direction:column;align-items:stretch;padding:.7rem;gap:.4rem;border:2px solid var(--ink);border-radius:14px;box-shadow:5px 5px 0 var(--ink);transform:translateY(-12px);opacity:0;visibility:hidden;transition:transform .3s cubic-bezier(.7,0,.2,1),opacity .3s,visibility .3s}.menu.open{transform:none;opacity:1;visibility:visible}.menu a{border:2px solid var(--ink);text-align:center}.burger{display:inline-block}}
 
-/* hero geometric */
-.hero{border-bottom:2px solid var(--ink);overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding-block:clamp(2.4rem,6vw,5rem)}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
-.hero .kick{font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt)}
-.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.8rem,9vw,6.5rem);line-height:.92;letter-spacing:-.03em;margin:1rem 0}
-.hero h1 mark{background:var(--char);padding:0 .1em}
-.hero p{font-size:1.15rem;max-width:42ch;color:#4a4840}
-.hero .cta{display:inline-block;margin-top:1.6rem;font-family:var(--disp);font-weight:700;font-size:1rem;background:var(--ink);color:var(--bg);padding:.9rem 1.6rem;transition:transform .15s,box-shadow .15s;box-shadow:5px 5px 0 var(--cobalt)}
-.hero .cta:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--cobalt)}
-/* geometrisch blok */
-.geo{aspect-ratio:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;max-width:420px;justify-self:center;width:100%}
-.geo div{border:2px solid var(--ink)}
-.geo .a{background:var(--cobalt);border-radius:0 50% 50% 50%}
-.geo .b{background:var(--char)}
-.geo .c{background:var(--coral);border-radius:50%}
-.geo .d{background:var(--paper);display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;text-align:center;padding:.5rem}
-@media (prefers-reduced-motion:no-preference){.geo .c{animation:bob 5s ease-in-out infinite}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* ===== bento grid ===== */
+main{padding-block:clamp(1.2rem,3vw,2rem) clamp(2.5rem,5vw,4rem)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(.7rem,1.6vw,1.1rem);grid-auto-flow:dense}
+.tile{border:2px solid var(--ink);background:var(--paper);border-radius:16px;overflow:hidden;position:relative;min-height:140px}
+.tile.pad{padding:clamp(1.2rem,2.6vw,1.9rem)}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#6a6860}
+/* span helpers */
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}
+.c5{grid-column:span 5}.c4{grid-column:span 4}.c3{grid-column:span 3}
+@media(max-width:900px){.c8,.c7,.c6,.c5{grid-column:span 12}.c4,.c3{grid-column:span 6}}
+@media(max-width:560px){.c4,.c3{grid-column:span 12}}
 
-/* logos */
-.trust{border-bottom:2px solid var(--ink)}
-.trust .wrap{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;align-items:center;justify-content:center;padding-block:1.3rem;font-family:var(--mono);font-size:.92rem;color:#6a6860}
-.trust b{color:var(--ink)}
+/* hero tile */
+.t-hero{background:var(--bg);display:flex;flex-direction:column;justify-content:center}
+.t-hero .kick{font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt)}
+.t-hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.6rem,7vw,5rem);line-height:.92;letter-spacing:-.03em;margin:.8rem 0}
+.t-hero h1 mark{background:var(--char);padding:0 .1em}
+.t-hero p{font-size:1.1rem;max-width:38ch;color:#4a4840}
+.t-hero .cta{align-self:flex-start;display:inline-block;margin-top:1.4rem;font-family:var(--disp);font-weight:700;font-size:1rem;background:var(--ink);color:var(--bg);padding:.85rem 1.5rem;border-radius:10px;transition:transform .15s,box-shadow .15s;box-shadow:5px 5px 0 var(--cobalt)}
+.t-hero .cta:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--cobalt)}
 
-.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
-.sec-h{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem}
-.sec-h .n{font-family:var(--mono);font-size:.8rem;background:var(--ink);color:var(--char);padding:.2rem .6rem}
-.sec-h h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:-.02em}
+/* geo tile (signature shapes) */
+.t-geo{background:var(--cobalt);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;padding:clamp(1rem,2vw,1.4rem)}
+.t-geo div{border:2px solid var(--ink);border-radius:8px}
+.t-geo .a{background:var(--char);border-radius:0 50% 50% 50%}
+.t-geo .b{background:var(--paper)}
+.t-geo .c{background:var(--coral);border-radius:50%}
+.t-geo .d{background:var(--ink);color:var(--char);display:grid;place-items:center;font-family:var(--mono);font-size:.78rem;text-align:center;padding:.5rem}
+@media (prefers-reduced-motion:no-preference){.t-geo .c{animation:bob 5s ease-in-out infinite}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-/* spaces */
-.spaces{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem)}
-@media(max-width:820px){.spaces{grid-template-columns:1fr}}
-.space{border:2px solid var(--ink);background:var(--paper);overflow:hidden;transition:transform .15s,box-shadow .15s}
-.space:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--ink)}
-.space .top{height:130px;display:grid;place-items:center;font-size:2.6rem;border-bottom:2px solid var(--ink)}
-.space:nth-child(1) .top{background:var(--char)}.space:nth-child(2) .top{background:var(--cobalt);color:#fff}.space:nth-child(3) .top{background:var(--coral);color:#fff}
-.space .b{padding:1.3rem}
-.space h3{font-family:var(--disp);font-weight:700;font-size:1.3rem}
-.space .pr{font-family:var(--mono);font-size:.9rem;color:var(--cobalt);margin:.3rem 0 .6rem}
-.space p{color:#4a4840;font-size:.92rem}
-.space ul{margin-top:.8rem;display:grid;gap:.4rem;font-size:.88rem}
-.space li{padding-left:1.3rem;position:relative}.space li::before{content:"→";position:absolute;left:0;color:var(--cobalt)}
+/* stat tiles */
+.t-stat{display:flex;flex-direction:column;justify-content:center;gap:.2rem}
+.t-stat.fill-char{background:var(--char)}
+.t-stat .num{font-family:var(--disp);font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;letter-spacing:-.02em}
+.t-stat .lab{font-family:var(--mono);font-size:.78rem;color:#4a4840}
+.t-stat.fill-char .lab{color:var(--ink)}
 
-/* amenities band */
-.am{background:var(--ink);color:var(--bg);border-block:2px solid var(--ink)}
-.am .wrap{padding-block:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
-@media(max-width:680px){.am .wrap{grid-template-columns:1fr 1fr}}
-.am .a .ic{font-size:1.6rem;color:var(--char)}
-.am .a h3{font-family:var(--disp);font-weight:700;font-size:1.05rem;margin:.5rem 0 .3rem}
-.am .a p{font-size:.85rem;color:#b8b6ac}
+/* space tiles (image + body) */
+.t-space{display:flex;flex-direction:column}
+.t-space .img{position:relative;overflow:hidden;border-bottom:2px solid var(--ink);aspect-ratio:16/10}
+.t-space .img img{width:100%;height:100%;object-fit:cover;display:block}
+.t-space .badge{position:absolute;top:.7rem;left:.7rem;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;background:var(--ink);color:var(--char);padding:.25rem .55rem;border-radius:6px}
+.t-space .body{padding:1.2rem;flex:1;display:flex;flex-direction:column}
+.t-space h3{font-family:var(--disp);font-weight:700;font-size:1.25rem}
+.t-space .pr{font-family:var(--mono);font-size:.88rem;color:var(--cobalt);margin:.25rem 0 .5rem}
+.t-space p{color:#4a4840;font-size:.9rem}
+.t-space ul{margin-top:.8rem;display:grid;gap:.35rem;font-size:.86rem}
+.t-space li{padding-left:1.3rem;position:relative}.t-space li::before{content:"\2192";position:absolute;left:0;color:var(--cobalt)}
 
-/* tour */
-.tour .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
-@media(max-width:780px){.tour .wrap{grid-template-columns:1fr}}
-.tour h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-.02em;line-height:1}
-.tour p{color:#4a4840;margin-top:.9rem;max-width:40ch}
-.form{border:2px solid var(--ink);background:var(--paper);padding:clamp(1.2rem,3vw,1.8rem);box-shadow:5px 5px 0 var(--ink)}
+/* amenity tiles */
+.t-am{display:flex;flex-direction:column;justify-content:flex-end;gap:.3rem}
+.t-am.dark{background:var(--ink);color:var(--bg)}
+.t-am .ic{font-size:1.7rem}
+.t-am.dark .ic{color:var(--char)}
+.t-am h3{font-family:var(--disp);font-weight:700;font-size:1.05rem}
+.t-am p{font-size:.84rem;color:#4a4840}
+.t-am.dark p{color:#b8b6ac}
+
+/* heading tile */
+.t-head{display:flex;align-items:flex-end}
+.t-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1}
+.t-head .n{font-family:var(--mono);font-size:.78rem;background:var(--ink);color:var(--char);padding:.2rem .6rem;border-radius:6px;margin-right:.7rem;align-self:flex-start}
+
+/* tour / form tile */
+.t-tour{background:var(--char)}
+.t-tour h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1}
+.t-tour p{color:#2a2924;margin-top:.8rem;max-width:34ch}
+.t-tour .addr{font-family:var(--mono);font-size:.82rem;margin-top:1rem;color:#3a3930}
+.form{display:flex;flex-direction:column}
+.form .fh{font-family:var(--disp);font-weight:700;font-size:1.15rem;margin-bottom:1rem}
 .fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
 .fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase}
-.fld input,.fld select{border:2px solid var(--ink);padding:.7rem .8rem;background:#fff}
+.fld input,.fld select{border:2px solid var(--ink);padding:.7rem .8rem;background:#fff;border-radius:8px}
 .fld input:focus,.fld select:focus{outline:none;background:var(--char)}
 .fld.bad input{background:#ffd9d3}
 .fld .err{display:none;font-size:.78rem;color:var(--coral)}.fld.bad .err{display:block}
-.form button{width:100%;cursor:pointer;font-family:var(--disp);font-weight:700;padding:.85rem;border:2px solid var(--ink);background:var(--cobalt);color:#fff;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.form button{margin-top:.2rem;cursor:pointer;font-family:var(--disp);font-weight:700;padding:.85rem;border:2px solid var(--ink);background:var(--cobalt);color:#fff;border-radius:10px;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
 .form button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .form .ok{display:none;font-family:var(--disp);font-weight:700;color:var(--cobalt);padding:.4rem 0}
-.form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
+.form.sent .fld,.form.sent button,.form.sent .fh{display:none}.form.sent .ok{display:block}
 
-.foot{background:var(--ink);color:var(--bg);padding-block:clamp(1.8rem,3vw,2.6rem)}
+/* trust strip tile */
+.t-trust{display:flex;flex-wrap:wrap;gap:.8rem 2rem;align-items:center;font-family:var(--mono);font-size:.9rem;color:#6a6860}
+.t-trust b{color:var(--ink)}
+
+.foot{background:var(--ink);color:var(--bg);padding-block:clamp(1.8rem,3vw,2.6rem);margin-top:clamp(1.5rem,3vw,2.5rem)}
 .foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
 .foot .logo{color:var(--bg)}.foot .logo .sq{background:var(--char)}
-.foot .tag{font-family:var(--mono);font-size:.76rem;color:#9a988e}
+.foot .tag2{font-family:var(--mono);font-size:.76rem;color:#9a988e}
 @media (prefers-reduced-motion:no-preference){[data-r]{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}[data-r].in{opacity:1;transform:none}}
 </style>
 </head>
 <body id="top">
 <a class="skip" href="#ruimtes">Naar de ruimtes</a>
 
-<header class="nav"><div class="wrap">
+<header class="nav"><div class="wrap"><div class="bar">
   <a class="logo" href="#top"><span class="sq" aria-hidden="true"></span>HUB</a>
   <nav class="menu" id="menu"><a href="#ruimtes">Ruimtes</a><a href="#voorzieningen">Voorzieningen</a><a href="#tour">Rondleiding</a><a class="cta" href="#tour">Plan een tour</a></nav>
   <button class="burger" id="burger" aria-expanded="false">Menu</button>
-</div></header>
+</div></div></header>
 
-<main>
-  <section class="hero"><div class="wrap">
-    <div>
+<main><div class="wrap">
+  <div class="bento">
+
+    <!-- HERO + signature geo -->
+    <section class="tile pad t-hero c8" aria-labelledby="hero-h">
       <span class="kick">// Co-working · Rotterdam-West</span>
-      <h1>Werk waar het<br><mark>klikt.</mark></h1>
+      <h1 id="hero-h">Werk waar het<br><mark>klikt.</mark></h1>
       <p>Flexplekken, vaste bureaus en eigen kantoren onder één dak. Snel internet, eindeloze koffie en mensen die ook iets bouwen.</p>
       <a class="cta" href="#tour">Plan een rondleiding →</a>
-    </div>
-    <div class="geo" aria-hidden="true">
+    </section>
+    <div class="tile t-geo c4" aria-hidden="true">
       <div class="a"></div><div class="b"></div><div class="c"></div><div class="d">120 plekken · 1 dak</div>
     </div>
-  </div></section>
 
-  <div class="trust"><div class="wrap">
-    <span>Thuisbasis voor o.a.</span><b>Kade.io</b><b>Stipt</b><b>Roest&nbsp;&amp;&nbsp;Co</b><b>Lumen</b><b>Brcompute</b>
-  </div></div>
+    <!-- stat tiles -->
+    <div class="tile pad t-stat fill-char c3"><span class="num">120</span><span class="lab">flexplekken</span></div>
+    <div class="tile pad t-stat c3"><span class="num">1<small style="font-size:.5em"> Gbit</small></span><span class="lab">glasvezel</span></div>
+    <div class="tile pad t-stat c3"><span class="num">8</span><span class="lab">belcellen</span></div>
+    <div class="tile pad t-stat c3"><span class="num">24/7</span><span class="lab">toegang voor leden</span></div>
 
-  <section class="sec wrap" id="ruimtes">
-    <div class="sec-h"><span class="n">01</span><h2>Kies je plek</h2></div>
-    <div class="spaces" data-r>
-      <div class="space"><div class="top" aria-hidden="true">💺</div><div class="b"><h3>Flexplek</h3><div class="pr">vanaf €19 / dag</div><p>Pak een plek waar je wilt. Ideaal voor freelancers en losse dagen.</p><ul><li>Onbeperkt koffie</li><li>Snel wifi</li><li>Toegang lounge</li></ul></div></div>
-      <div class="space"><div class="top" aria-hidden="true">🖥️</div><div class="b"><h3>Vast bureau</h3><div class="pr">€229 / maand</div><p>Je eigen bureau, je eigen scherm, je eigen rommel. 24/7 toegang.</p><ul><li>Eigen bureau + kast</li><li>24/7 toegang</li><li>Post-adres</li></ul></div></div>
-      <div class="space"><div class="top" aria-hidden="true">🚪</div><div class="b"><h3>Teamkantoor</h3><div class="pr">op aanvraag</div><p>Afsluitbaar kantoor voor 4 tot 20 mensen. Richt het in zoals jij wilt.</p><ul><li>Eigen ruimte</li><li>Naambord op de deur</li><li>Vergaderuren inbegrepen</li></ul></div></div>
-    </div>
-  </section>
+    <!-- RUIMTES heading -->
+    <div class="tile pad t-head c12" id="ruimtes"><span class="n">01</span><h2>Kies je plek</h2></div>
 
-  <section class="am" data-r><div class="wrap">
-    <div class="a"><div class="ic" aria-hidden="true">⚡</div><h3>1 Gbit glasvezel</h3><p>Symmetrisch, redundant, nooit traag.</p></div>
-    <div class="a"><div class="ic" aria-hidden="true">☕</div><h3>Barista-koffie</h3><p>Onbeperkt, van een echte machine.</p></div>
-    <div class="a"><div class="ic" aria-hidden="true">📞</div><h3>Belcellen</h3><p>Acht stille hokjes voor je calls.</p></div>
-    <div class="a"><div class="ic" aria-hidden="true">🚲</div><h3>Fietsenstalling</h3><p>Overdekt, met douches en lockers.</p></div>
-  </div></section>
+    <!-- space tiles met echte foto's -->
+    <section class="tile t-space c4" data-r aria-label="Flexplek">
+      <div class="img"><span class="badge">Flexplek</span><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=72" alt="Open werkplek met bureaus en planten" loading="lazy" width="800" height="500"></div>
+      <div class="body"><h3>Flexplek</h3><div class="pr">vanaf €19 / dag</div><p>Pak een plek waar je wilt. Ideaal voor freelancers en losse dagen.</p><ul><li>Onbeperkt koffie</li><li>Snel wifi</li><li>Toegang lounge</li></ul></div>
+    </section>
+    <section class="tile t-space c4" data-r aria-label="Vast bureau">
+      <div class="img"><span class="badge">Vast bureau</span><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=72" alt="Eigen bureau met monitor in een kantoor" loading="lazy" width="800" height="500"></div>
+      <div class="body"><h3>Vast bureau</h3><div class="pr">€229 / maand</div><p>Je eigen bureau, je eigen scherm, je eigen rommel. 24/7 toegang.</p><ul><li>Eigen bureau + kast</li><li>24/7 toegang</li><li>Post-adres</li></ul></div>
+    </section>
+    <section class="tile t-space c4" data-r aria-label="Teamkantoor">
+      <div class="img"><span class="badge">Teamkantoor</span><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=72" alt="Afsluitbaar teamkantoor met vergadertafel" loading="lazy" width="800" height="500"></div>
+      <div class="body"><h3>Teamkantoor</h3><div class="pr">op aanvraag</div><p>Afsluitbaar kantoor voor 4 tot 20 mensen. Richt het in zoals jij wilt.</p><ul><li>Eigen ruimte</li><li>Naambord op de deur</li><li>Vergaderuren inbegrepen</li></ul></div>
+    </section>
 
-  <section class="sec tour" id="tour"><div class="wrap">
-    <div data-r>
-      <div class="sec-h"><span class="n">02</span><h2>Kom eens kijken</h2></div>
+    <!-- VOORZIENINGEN heading -->
+    <div class="tile pad t-head c12" id="voorzieningen"><span class="n">02</span><h2>Alles geregeld</h2></div>
+
+    <!-- amenity tiles, ongelijke spans -->
+    <div class="tile pad t-am dark c3" data-r><div class="ic" aria-hidden="true">⚡</div><h3>1 Gbit glasvezel</h3><p>Symmetrisch, redundant, nooit traag.</p></div>
+    <div class="tile pad t-am c3" data-r><div class="ic" aria-hidden="true">☕</div><h3>Barista-koffie</h3><p>Onbeperkt, van een echte machine.</p></div>
+    <div class="tile pad t-am c3" data-r><div class="ic" aria-hidden="true">📞</div><h3>Belcellen</h3><p>Acht stille hokjes voor je calls.</p></div>
+    <div class="tile pad t-am dark c3" data-r><div class="ic" aria-hidden="true">🚲</div><h3>Fietsenstalling</h3><p>Overdekt, met douches en lockers.</p></div>
+
+    <!-- trust strip -->
+    <div class="tile pad t-trust c12" data-r><span>Thuisbasis voor o.a.</span><b>Kade.io</b><b>Stipt</b><b>Roest&nbsp;&amp;&nbsp;Co</b><b>Lumen</b><b>Brcompute</b></div>
+
+    <!-- TOUR copy + FORM (split bento) -->
+    <section class="tile pad t-tour c5" id="tour" data-r>
+      <span class="n" style="font-family:var(--mono);font-size:.78rem;background:var(--ink);color:var(--char);padding:.2rem .6rem;border-radius:6px">03</span>
+      <h2 style="margin-top:.8rem">Kom eens kijken</h2>
       <p>Een rondleiding van 20 minuten, een kop koffie en alle tijd om te voelen of het klikt. Laat je gegevens achter, dan plannen we het in.</p>
-      <p style="font-family:var(--mono);font-size:.85rem;margin-top:1rem;color:#6a6860">Vierhavensstraat 40, Rotterdam · 010 — 820 30 30</p>
+      <p class="addr">Vierhavensstraat 40, Rotterdam · 010 — 820 30 30</p>
+    </section>
+    <div class="tile pad c7" data-r>
+      <form class="form" id="form" novalidate>
+        <div class="fh">Plan jouw rondleiding</div>
+        <div class="fld"><label for="h-naam">Naam</label><input id="h-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+        <div class="fld"><label for="h-mail">E-mail</label><input id="h-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+        <div class="fld"><label for="h-type">Waar zoek je naar?</label><select id="h-type"><option>Flexplek</option><option>Vast bureau</option><option>Teamkantoor</option></select></div>
+        <button type="submit">Plan mijn rondleiding →</button>
+        <div class="ok" role="status">→ Top! We bevestigen per mail.</div>
+      </form>
     </div>
-    <form class="form" id="form" novalidate data-r>
-      <div class="fld"><label for="h-naam">Naam</label><input id="h-naam" type="text" required><span class="err">Vul je naam in.</span></div>
-      <div class="fld"><label for="h-mail">E-mail</label><input id="h-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
-      <div class="fld"><label for="h-type">Waar zoek je naar?</label><select id="h-type"><option>Flexplek</option><option>Vast bureau</option><option>Teamkantoor</option></select></div>
-      <button type="submit">Plan mijn rondleiding →</button>
-      <div class="ok" role="status">→ Top! We bevestigen per mail.</div>
-    </form>
-  </div></section>
-</main>
+
+  </div>
+</div></main>
 
 <footer class="foot"><div class="wrap">
   <a class="logo" href="#top"><span class="sq" aria-hidden="true"></span>HUB</a>
-  <span class="tag">&copy; <span id="jaar">2026</span> HUB Rotterdam · KvK 24910384 · hoi@hub-rotterdam.nl</span>
+  <span class="tag2">&copy; <span id="jaar">2026</span> HUB Rotterdam · KvK 24910384 · hoi@hub-rotterdam.nl</span>
 </div></footer>
 
 <script>

@@ -11,7 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   POOT & PELS — dierenarts, Groningen. Vriendelijk, rond, vrolijk.
+   POOT & PELS — dierenarts, Groningen.
+   ARCHETYPE G — spoed-/utilitybalk + klassieke nav + zigzag-secties.
    ============================================================ */
 :root{
   --paper:#fffaf0; --paper-2:#fff2da; --ink:#28282f; --ink-2:#565663; --muted:#83838f;
@@ -31,12 +32,21 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .kicker{font-family:var(--disp);font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-2)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--blue);color:#fff;padding:.6rem 1rem;border-radius:10px;transition:top .25s}.skip:focus{top:1rem}
 
-.strip{background:var(--blue);color:#fff}
-.strip .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;font-size:.84rem}
-.strip a{font-weight:600;border-bottom:1px solid rgba(255,255,255,.5)}
-@media(max-width:560px){.strip .tag{display:none}}
+/* UTILITY-/SPOEDBALK — opvallend, met telefoon, openingsstatus en spoednummer */
+.util{background:var(--blue);color:#fff}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:42px;font-size:.86rem;flex-wrap:wrap;padding-block:.35rem}
+.util .left{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
+.util .item{display:inline-flex;gap:.4rem;align-items:center}
+.util .item .ico{opacity:.9}
+.util a{font-weight:600;border-bottom:1px solid rgba(255,255,255,.5)}
+.util .spoed{background:var(--coral);color:#3a1410;font-family:var(--disp);font-weight:600;padding:.25rem .8rem;border-radius:99px;border:0}
+.util .spoed a{color:#3a1410;border:0}
+.util .dotnow{width:8px;height:8px;border-radius:50%;background:#bfe6c2;display:inline-block}
+.util .dotnow[data-open=false]{background:#ffd1c6}
+@media(max-width:640px){.util .left .status,.util .left .adr{display:none}}
 
-.hdr{position:sticky;top:0;z-index:50;background:rgba(255,250,240,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:box-shadow .3s}
+/* KLASSIEKE NAV — logo links, horizontale links, knop rechts */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,250,240,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:box-shadow .3s}
 .hdr.stuck{box-shadow:0 10px 30px -22px rgba(40,40,47,.4)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
 .logo{font-family:var(--disp);font-weight:700;font-size:1.5rem;display:inline-flex;align-items:center;gap:.5rem}
@@ -48,6 +58,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .burger{display:none;border:1px solid var(--line);border-radius:99px;padding:.5rem .9rem;font-weight:600;font-size:.86rem}
 @media(max-width:840px){.nav{position:fixed;inset:74px 0 auto;background:var(--paper);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
 
+/* HERO — klassieke intro met beeld rechts, badge */
 .hero{padding-block:clamp(2.5rem,5vw,4.5rem)}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
 @media(max-width:840px){.hero .wrap{grid-template-columns:1fr;gap:2rem}}
@@ -63,33 +74,37 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .hero-fig .badge{position:absolute;left:-.8rem;bottom:1.2rem;background:#fff;border-radius:16px;padding:.7rem 1rem;box-shadow:0 18px 36px -22px rgba(40,40,47,.5);font-family:var(--disp);font-weight:600;font-size:.92rem}
 .hero-fig .badge span{display:block;font-family:var(--sans);font-weight:400;font-size:.78rem;color:var(--muted)}
 
-.sec{padding-block:clamp(3rem,6vw,5rem)}
-.sec-h{text-align:center;max-width:40rem;margin:0 auto clamp(2rem,4vw,3rem)}
+.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec-h{max-width:42rem;margin:0 0 clamp(1.6rem,3vw,2.4rem)}
 .sec-h h2{font-family:var(--disp);font-weight:700;font-size:clamp(2rem,4.6vw,3rem);margin-top:.5rem}
 .sec-h p{color:var(--ink-2);margin-top:.5rem}
 
-/* diensten */
-.dn{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,1.8rem)}
-@media(max-width:760px){.dn{grid-template-columns:1fr 1fr}}@media(max-width:480px){.dn{grid-template-columns:1fr}}
-.card{background:#fff;border-radius:var(--r);padding:1.7rem;box-shadow:0 18px 40px -34px rgba(40,40,47,.5)}
-.card .ic{width:50px;height:50px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;font-size:1.5rem;margin-bottom:1rem}
-.card:nth-child(2) .ic{background:#e2ecfb}.card:nth-child(4) .ic{background:#ffe4de}.card:nth-child(5) .ic{background:#e2ecfb}
-.card h3{font-family:var(--disp);font-weight:600;font-size:1.3rem;margin-bottom:.35rem}
-.card p{color:var(--ink-2);font-size:.96rem}
+/* ZIGZAG — afwisselend beeld/tekst, geruststellend, met losse vorm */
+.zig{padding-block:clamp(2rem,5vw,3.5rem)}
+.zig .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.zig:nth-of-type(even){background:var(--paper-2)}
+.zig.flip .media{order:2}
+@media(max-width:840px){.zig .wrap{grid-template-columns:1fr;gap:1.8rem}.zig.flip .media{order:0}}
+.zig .media{position:relative}
+.zig .media img{width:100%;aspect-ratio:4/3.2;object-fit:cover;border-radius:var(--r)}
+.zig .media .pill{position:absolute;top:1rem;right:1rem;background:#fff;border-radius:99px;padding:.45rem .9rem;font-family:var(--disp);font-weight:600;font-size:.82rem;box-shadow:0 14px 30px -22px rgba(40,40,47,.6)}
+.zig h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.8rem,4vw,2.7rem);margin:.5rem 0 1rem}
+.zig p{color:var(--ink-2);font-size:1.08rem}
+.zig ul{margin-top:1.3rem;display:grid;gap:.8rem}
+.zig li{display:flex;gap:.8rem;align-items:flex-start}
+.zig .tick{width:26px;height:26px;border-radius:50%;background:var(--yellow);color:var(--ink);display:grid;place-items:center;flex:none;font-weight:700;font-size:.85rem}
+.zig li b{font-family:var(--disp);font-weight:600}.zig li span.sub{color:var(--muted);font-size:.94rem;display:block}
 
-/* over split */
-.over{background:var(--paper-2)}
-.over .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-@media(max-width:840px){.over .wrap{grid-template-columns:1fr}}
-.over img{width:100%;aspect-ratio:4/4.4;object-fit:cover;border-radius:var(--r)}
-.over h2{font-family:var(--disp);font-weight:700;font-size:clamp(2rem,4.4vw,3rem);margin:.5rem 0 1rem}
-.over p{color:var(--ink-2);font-size:1.1rem}
-.over ul{margin-top:1.4rem;display:grid;gap:.8rem}
-.over li{display:flex;gap:.8rem;align-items:flex-start}
-.over .tick{width:26px;height:26px;border-radius:50%;background:var(--yellow);color:var(--ink);display:grid;place-items:center;flex:none;font-weight:700;font-size:.85rem}
-.over li b{font-family:var(--disp);font-weight:600}.over li span{color:var(--muted);font-size:.94rem;display:block}
+/* DIENSTEN — compacte rij chips binnen zigzag-tekstkolom */
+.svc{margin-top:1.3rem;display:grid;grid-template-columns:1fr 1fr;gap:.7rem 1rem}
+@media(max-width:480px){.svc{grid-template-columns:1fr}}
+.svc .it{display:flex;gap:.7rem;align-items:flex-start}
+.svc .it .ic{width:38px;height:38px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;font-size:1.1rem;flex:none}
+.svc .it:nth-child(2) .ic{background:#e2ecfb}.svc .it:nth-child(4) .ic{background:#ffe4de}.svc .it:nth-child(6) .ic{background:#e2ecfb}
+.svc .it b{font-family:var(--disp);font-weight:600;display:block;font-size:.98rem}
+.svc .it span.sub{color:var(--muted);font-size:.86rem}
 
-/* spoed */
+/* SPOED-band binnen de flow blijft als geruststellende onderbreking */
 .spoed{background:var(--coral);color:#3a1410}
 .spoed .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-block:clamp(1.8rem,4vw,2.6rem)}
 .spoed h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.5rem,3.5vw,2.2rem)}
@@ -97,7 +112,8 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .spoed a{background:#3a1410;color:#fff;padding:.85rem 1.6rem;border-radius:99px;font-family:var(--disp);font-weight:600;white-space:nowrap}
 .spoed a:hover{background:#000}
 
-/* afspraak */
+/* AFSPRAAK */
+.afs{padding-block:clamp(2.5rem,5vw,4.5rem)}
 .afs .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
 @media(max-width:820px){.afs .wrap{grid-template-columns:1fr;gap:2rem}}
 .afs h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1rem}
@@ -128,7 +144,16 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 </head>
 <body id="top">
 <a class="skip" href="#diensten">Naar de diensten</a>
-<div class="strip"><div class="wrap"><span class="tag">Vriendelijke dierenarts in Groningen-Zuid</span><span>Spoed 24/7: <a href="tel:+31505770088">050 — 577 00 88</a></span></div></div>
+
+<div class="util"><div class="wrap">
+  <div class="left">
+    <span class="item adr"><span class="ico" aria-hidden="true">📍</span>Hereweg 102, Groningen-Zuid</span>
+    <span class="item status"><span class="dotnow" id="utilDot" data-open="true" aria-hidden="true"></span><span id="utilStatus">Nu geopend</span></span>
+    <span class="item"><span class="ico" aria-hidden="true">☎</span><a href="tel:+31505770088">050 — 577 00 88</a></span>
+  </div>
+  <span class="spoed">Spoed 24/7: <a href="tel:+31505770088">050 — 577 00 88</a></span>
+</div></div>
+
 <header class="hdr" id="hdr"><div class="wrap">
   <a class="logo" href="#top"><span class="paw" aria-hidden="true">🐾</span>Poot &amp; Pels</a>
   <nav class="nav" id="nav"><a href="#diensten">Diensten</a><a href="#over">Over ons</a><a href="#afspraak">Openingstijden</a><a class="cta" href="#afspraak">Maak afspraak</a></nav>
@@ -138,7 +163,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 <main>
   <section class="hero"><div class="wrap">
     <div>
-      <span class="kicker">Dierenartsenpraktijk</span>
+      <span class="kicker">Dierenartsenpraktijk · Groningen</span>
       <h1>Goede zorg voor je <em>beste vriend</em>.</h1>
       <p class="lead">Een kleine, vriendelijke praktijk waar je dier op zijn gemak is en jij alle tijd krijgt. Voor hond, kat en alles wat piept of knaagt.</p>
       <div class="hero-act"><a class="btn" href="#afspraak">Maak een afspraak</a><a class="lnk" href="#diensten">Wat we doen</a></div>
@@ -149,29 +174,42 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
     </figure>
   </div></section>
 
-  <section class="sec" id="diensten"><div class="wrap">
-    <div class="sec-h" data-r><span class="kicker">Wat we doen</span><h2>Alle zorg onder één dak</h2><p>Van het jaarlijkse prik-moment tot een spannende operatie — rustig en met aandacht.</p></div>
-    <div class="dn" data-r>
-      <div class="card"><div class="ic">🩺</div><h3>Consult &amp; controle</h3><p>Een luisterend oor en een grondig onderzoek, met alle tijd voor je vragen.</p></div>
-      <div class="card"><div class="ic">💉</div><h3>Vaccinaties</h3><p>Enten, ontwormen en chippen — overzichtelijk bijgehouden, met herinnering.</p></div>
-      <div class="card"><div class="ic">🦷</div><h3>Gebitsverzorging</h3><p>Controle en reiniging onder narcose, voor een frisse en gezonde bek.</p></div>
-      <div class="card"><div class="ic">⚕️</div><h3>Chirurgie</h3><p>Sterilisatie, castratie en operaties in onze eigen, goed uitgeruste OK.</p></div>
-      <div class="card"><div class="ic">🐰</div><h3>Knaagdieren &amp; konijnen</h3><p>Ook de kleine huisgenoten zijn bij ons in goede, ervaren handen.</p></div>
-      <div class="card"><div class="ic">🚑</div><h3>Spoed 24/7</h3><p>Dag en nacht bereikbaar als het echt niet kan wachten.</p></div>
+  <!-- ZIGZAG 1 — diensten: beeld links, tekst + servicelijst rechts -->
+  <section class="zig" id="diensten"><div class="wrap">
+    <figure class="media" data-r>
+      <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=900&q=72" alt="Dierenarts onderzoekt rustig een kat op tafel" width="900" height="720" loading="lazy">
+      <span class="pill">🩺 Alle tijd voor je vragen</span>
+    </figure>
+    <div data-r>
+      <span class="kicker">Wat we doen</span>
+      <h2>Alle zorg onder één dak</h2>
+      <p>Van het jaarlijkse prik-moment tot een spannende operatie — rustig, grondig en met aandacht voor jou én je dier.</p>
+      <div class="svc">
+        <div class="it"><span class="ic" aria-hidden="true">🩺</span><div><b>Consult &amp; controle</b><span class="sub">grondig onderzoek, alle tijd</span></div></div>
+        <div class="it"><span class="ic" aria-hidden="true">💉</span><div><b>Vaccinaties</b><span class="sub">enten, ontwormen, chippen</span></div></div>
+        <div class="it"><span class="ic" aria-hidden="true">🦷</span><div><b>Gebitsverzorging</b><span class="sub">controle en reiniging</span></div></div>
+        <div class="it"><span class="ic" aria-hidden="true">⚕️</span><div><b>Chirurgie</b><span class="sub">eigen, uitgeruste OK</span></div></div>
+        <div class="it"><span class="ic" aria-hidden="true">🐰</span><div><b>Knaagdieren</b><span class="sub">konijn, cavia &amp; co</span></div></div>
+        <div class="it"><span class="ic" aria-hidden="true">🚑</span><div><b>Spoed 24/7</b><span class="sub">dag en nacht bereikbaar</span></div></div>
+      </div>
     </div>
   </div></section>
 
-  <section class="sec over" id="over"><div class="wrap">
-    <figure data-r><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=850&q=72" alt="Schattige Franse buldog pup in een geel jasje" width="850" height="935" loading="lazy"></figure>
+  <!-- ZIGZAG 2 — over ons: tekst links, beeld rechts (flip) -->
+  <section class="zig flip" id="over"><div class="wrap">
+    <figure class="media" data-r>
+      <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=850&q=72" alt="Schattige Franse buldog pup in een geel jasje" width="850" height="680" loading="lazy">
+      <span class="pill">🐾 Op jullie tempo</span>
+    </figure>
     <div data-r>
       <span class="kicker">Over ons</span>
       <h2>Geen haast, wel hart</h2>
       <p>We plannen ruim, zodat je dier rustig kan wennen en jij niet wordt opgejaagd. Bang baasje of bang beestje? Dat snappen we — we doen het op jullie tempo.</p>
       <ul>
-        <li><span class="tick">✓</span><span><b>Vaste dierenarts</b><span>die je dier door de jaren heen kent</span></span></li>
-        <li><span class="tick">✓</span><span><b>Eerlijke prijzen</b><span>vooraf duidelijk, geen verrassingen</span></span></li>
-        <li><span class="tick">✓</span><span><b>Kat-vriendelijk</b><span>aparte wachtruimte voor katten</span></span></li>
-        <li><span class="tick">✓</span><span><b>Gratis kennismaking</b><span>voor nieuwe huisdieren</span></span></li>
+        <li><span class="tick">✓</span><span><b>Vaste dierenarts</b><span class="sub">die je dier door de jaren heen kent</span></span></li>
+        <li><span class="tick">✓</span><span><b>Eerlijke prijzen</b><span class="sub">vooraf duidelijk, geen verrassingen</span></span></li>
+        <li><span class="tick">✓</span><span><b>Kat-vriendelijk</b><span class="sub">aparte wachtruimte voor katten</span></span></li>
+        <li><span class="tick">✓</span><span><b>Gratis kennismaking</b><span class="sub">voor nieuwe huisdieren</span></span></li>
       </ul>
     </div>
   </div></section>
@@ -181,7 +219,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
     <a href="tel:+31505770088">Bel 050 — 577 00 88</a>
   </div></section>
 
-  <section class="sec afs" id="afspraak"><div class="wrap">
+  <section class="afs" id="afspraak"><div class="wrap">
     <div data-r>
       <h2>Openingstijden</h2>
       <p class="now" id="now" data-open="true">Nu geopend</p>
@@ -220,6 +258,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
   function now(){try{var p=new Intl.DateTimeFormat('nl-NL',{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Amsterdam'}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value;});var m={zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6},d=m[(o.weekday||'').toLowerCase().slice(0,2)];if(d===undefined)d=new Date().getDay();return{d:d,m:+o.hour*60+ +o.minute};}catch(e){var x=new Date();return{d:x.getDay(),m:x.getHours()*60+x.getMinutes()};}}
   function st(){var n=now(),t=H[n.d];if(t&&n.m>=t[0]&&n.m<t[1])return{o:true,l:'open tot '+fmt(t[1])};if(t&&n.m<t[0])return{o:false,l:'vandaag open vanaf '+fmt(t[0])};for(var i=1;i<=7;i++){var d=(n.d+i)%7;if(H[d])return{o:false,l:'open '+DAY[d].toLowerCase()+' vanaf '+fmt(H[d][0])};}return{o:false,l:'gesloten'};}
   var s=st(),nw=doc.getElementById('now');if(nw){nw.setAttribute('data-open',s.o);nw.textContent=s.o?'Nu geopend — '+s.l:'Nu gesloten — '+s.l+' (spoed 24/7)';}
+  var ud=doc.getElementById('utilDot'),us=doc.getElementById('utilStatus');if(ud)ud.setAttribute('data-open',s.o);if(us)us.textContent=s.o?'Nu geopend · '+s.l:'Nu gesloten · '+s.l;
   var hb=doc.getElementById('hb');if(hb){var n=now();[1,2,3,4,5,6,0].forEach(function(d){var t=H[d],tr=doc.createElement('tr');if(d===n.d)tr.className='now';tr.innerHTML='<td>'+DAY[d]+'</td>'+(t?'<td class="t">'+fmt(t[0])+' – '+fmt(t[1])+'</td>':'<td class="t cl">gesloten</td>');hb.appendChild(tr);});}
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
   var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');

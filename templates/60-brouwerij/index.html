@@ -12,7 +12,10 @@
 <style>
 /* ============================================================
    SCHUIM — stadsbrouwerij & proeflokaal. Donker, amber, bold.
-   Signatuur: tap-lijst "op het vat nu" met ABV.
+   ARCHETYPE K: TABBED / SEGMENTED CONTENT-HUB.
+   De tap-lijst is het kloppend hart: een toegankelijke tabset
+   (Vast op vat / Wisselend / Binnenkort) met volledig WAI-ARIA
+   tabs-toetsenbordpatroon. Nav is een segmented control.
    ============================================================ */
 :root{
   --bg:#15140f; --bg-2:#1e1c14; --bg-3:#27241a; --cream:#f1ead8; --cream-2:#c9bfa6; --muted:#9a917b;
@@ -33,38 +36,51 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 
 .hdr{position:sticky;top:0;z-index:50;background:rgba(21,20,15,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
 .hdr.stuck{border-color:var(--line)}
-.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-.logo{font-family:var(--disp);font-weight:800;font-size:1.7rem;text-transform:uppercase;letter-spacing:.02em}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
+.logo{font-family:var(--disp);font-weight:800;font-size:1.7rem;text-transform:uppercase;letter-spacing:.02em;flex:none}
 .logo b{color:var(--hop)}
-.nav{display:flex;align-items:center;gap:1.9rem}
-.nav a{font-family:var(--disp);font-weight:600;font-size:.86rem;text-transform:uppercase;letter-spacing:.06em;color:#cdc4ad}.nav a:hover{color:var(--cream)}
-.nav .cta{background:var(--hop);color:var(--bg);padding:.55rem 1.1rem}.nav .cta:hover{background:var(--hop-2)}
-.burger{display:none;border:1px solid var(--line);padding:.5rem .85rem;font-family:var(--disp);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:820px){.nav{position:fixed;inset:74px 0 auto;background:var(--bg-2);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
+/* segmented-control nav */
+.nav{display:flex;align-items:center;gap:.3rem;background:var(--bg-2);border:1px solid var(--line);border-radius:99px;padding:.3rem}
+.nav a{font-family:var(--disp);font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:#cdc4ad;padding:.5rem .95rem;border-radius:99px;transition:background-color .2s,color .2s}.nav a:hover{color:var(--cream)}
+.nav .cta{background:var(--hop);color:var(--bg)}.nav .cta:hover{background:var(--hop-2);color:var(--bg)}
+.burger{display:none;border:1px solid var(--line);padding:.5rem .85rem;font-family:var(--disp);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:none}
+@media(max-width:880px){.nav{position:fixed;inset:74px 0 auto;background:var(--bg-2);flex-direction:column;align-items:stretch;border-radius:0;border:0;border-bottom:1px solid var(--line);padding:1.2rem var(--gutter) 1.8rem;gap:.5rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.nav a{text-align:center}.burger{display:inline-block}}
 
-.hero{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden}
+/* compacte hero: kort intro + directe sprong naar de tab-hub */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,20,15,.5),rgba(21,20,15,.2) 40%,var(--bg))}
-.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(2.5rem,6vw,5rem)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,20,15,.45),rgba(21,20,15,.55) 50%,var(--bg))}
+.hero .wrap{position:relative;z-index:2;padding-block:clamp(2.8rem,7vw,4.8rem)}
 .hero .kicker{display:inline-flex;align-items:center;gap:.5rem}
 .hero .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
-.hero h1{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(3rem,11vw,8rem);line-height:.88;margin:1rem 0 0}
+.hero h1{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(2.6rem,8.5vw,6rem);line-height:.9;margin:.9rem 0 0;max-width:14ch}
 .hero h1 span{color:var(--hop)}
-.hero p{margin-top:1.2rem;max-width:40ch;font-size:1.16rem;color:#e0d8c4}
-.hero-act{margin-top:1.8rem;display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center}
-.btn{background:var(--hop);color:var(--bg);font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.95rem 1.7rem;font-size:.95rem;display:inline-block;transition:background-color .25s,transform .25s}
+.hero p{margin-top:1.1rem;max-width:42ch;font-size:1.12rem;color:#e0d8c4}
+.hero-act{margin-top:1.6rem;display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center}
+.btn{background:var(--hop);color:var(--bg);font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.95rem 1.7rem;font-size:.95rem;display:inline-block;border:0;cursor:pointer;transition:background-color .25s,transform .25s}
 .btn:hover{background:var(--hop-2);transform:translateY(-2px)}
 .lnk{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--hop);padding-bottom:3px}
 
 .sec{padding-block:clamp(3.5rem,7vw,6rem)}
-.sec-h{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.8rem,4vw,2.6rem)}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.6rem,3.5vw,2.4rem)}
 .sec-h h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(2rem,5vw,3.4rem);line-height:.95}
 .sec-h .live{font-family:var(--disp);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:.5rem}
 .sec-h .live .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
 
-/* tap-lijst */
+/* ---- TAB-HUB: het kloppend hart ---- */
+.taphub{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tablist{display:flex;gap:.4rem;padding:.6rem;border-bottom:1px solid var(--line);background:var(--bg-3);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tablist [role=tab]{flex:none;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.86rem;color:var(--cream-2);background:transparent;border:1px solid transparent;border-radius:99px;padding:.6rem 1.15rem;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;transition:background-color .2s,color .2s,border-color .2s}
+.tablist [role=tab]:hover{color:var(--cream)}
+.tablist [role=tab][aria-selected=true]{background:var(--hop);color:var(--bg);border-color:var(--hop)}
+.tablist [role=tab] .cnt{font-size:.74rem;font-weight:700;background:rgba(241,234,216,.12);color:var(--cream-2);border-radius:99px;padding:.05rem .5rem;font-variant-numeric:tabular-nums}
+.tablist [role=tab][aria-selected=true] .cnt{background:rgba(21,20,15,.22);color:var(--bg)}
+.tabpanel{padding:clamp(1rem,3vw,1.8rem) clamp(1.2rem,3.5vw,2.4rem) clamp(1.4rem,4vw,2.4rem)}
+.tabpanel[hidden]{display:none}
+.tabpanel>.lead{color:var(--cream-2);font-size:.96rem;margin-bottom:.4rem}
 .taps{display:grid;gap:0}
 .tap{display:grid;grid-template-columns:auto 1fr auto auto;gap:1.2rem;align-items:center;padding:1.2rem 0;border-bottom:1px solid var(--line-soft)}
+.tap:last-child{border-bottom:0}
 .tap .nr{font-family:var(--disp);font-weight:800;font-size:1.1rem;color:var(--hop);width:1.8rem}
 .tap .info h3{font-family:var(--disp);font-weight:700;font-size:1.35rem}
 .tap .info p{color:var(--muted);font-size:.9rem;margin-top:.1rem}
@@ -75,6 +91,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .tap .st.soon{background:rgba(241,234,216,.1);color:var(--muted)}
 @media(max-width:620px){.tap{grid-template-columns:auto 1fr;gap:.6rem 1rem}.tap .abv{grid-column:2}.tap .st{grid-column:2;justify-self:start}}
 .taps-note{margin-top:1.6rem;color:var(--muted);font-size:.92rem}
+@media (prefers-reduced-motion:no-preference){.tabpanel:not([hidden]) .tap{animation:fadeUp .45s both}.tabpanel:not([hidden]) .tap:nth-child(2){animation-delay:.05s}.tabpanel:not([hidden]) .tap:nth-child(3){animation-delay:.1s}.tabpanel:not([hidden]) .tap:nth-child(4){animation-delay:.15s}@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
 
 /* over split */
 .over{background:var(--bg-2)}
@@ -120,7 +137,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 <header class="hdr" id="hdr"><div class="wrap">
   <a class="logo" href="#top">SCHU<b>IM</b></a>
   <nav class="nav" id="nav"><a href="#taps">Op het vat</a><a href="#brouwerij">Brouwerij</a><a href="#proeflokaal">Proeflokaal</a><a class="cta" href="#proeflokaal">Rondleiding</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
 </div></header>
 
 <main>
@@ -128,23 +145,47 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
     <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=1500&q=72" alt="Vers bier wordt van het vat getapt" width="1500" height="1000">
     <div class="wrap">
       <span class="kicker"><span class="dot"></span>Stadsbrouwerij · Nijmegen</span>
-      <h1>Vers van het<br><span>vat.</span></h1>
+      <h1>Vers van het <span>vat.</span></h1>
       <p>We brouwen om de hoek en tappen het hier. Tien kranen, eigen bier, en een proeflokaal dat aanvoelt als je stamkroeg.</p>
       <div class="hero-act"><a class="btn" href="#taps">Wat staat er op?</a><a class="lnk" href="#proeflokaal">Plan een rondleiding</a></div>
     </div>
   </section>
 
   <section class="sec" id="taps"><div class="wrap">
-    <div class="sec-h" data-r><h2>Op het vat nu</h2><span class="live"><span class="dot"></span>Live · 10 kranen</span></div>
-    <div class="taps" data-r>
-      <div class="tap"><span class="nr">01</span><div class="info"><h3>Schuimkop Pils</h3><p>Helder, droog, ondergistend — ons huisbier</p></div><span class="abv">5,0%</span><span class="st vat">Op vat</span></div>
-      <div class="tap"><span class="nr">02</span><div class="info"><h3>Waalwater Weizen</h3><p>Troebel tarwebier, banaan &amp; kruidnagel</p></div><span class="abv">5,2%</span><span class="st vat">Op vat</span></div>
-      <div class="tap"><span class="nr">03</span><div class="info"><h3>Hoppergracht IPA</h3><p>Vol citrus en dennen, stevig bitter</p></div><span class="abv">6,5%</span><span class="st vat">Op vat</span></div>
-      <div class="tap"><span class="nr">04</span><div class="info"><h3>Keizer Karel Tripel</h3><p>Goudblond, warm, gevaarlijk drinkbaar</p></div><span class="abv">8,5%</span><span class="st last">Laatste vat</span></div>
-      <div class="tap"><span class="nr">05</span><div class="info"><h3>Nachtwacht Stout</h3><p>Koffie, chocola, fluweelzacht</p></div><span class="abv">7,0%</span><span class="st vat">Op vat</span></div>
-      <div class="tap"><span class="nr">06</span><div class="info"><h3>Zomerzoen Saison</h3><p>Kruidig, fris, lichtzurig</p></div><span class="abv">5,8%</span><span class="st vat">Op vat</span></div>
-      <div class="tap"><span class="nr">07</span><div class="info"><h3>Kersenkwartier Kriek</h3><p>Wilde gisting, zure morellen</p></div><span class="abv">4,5%</span><span class="st soon">Binnenkort</span></div>
-      <div class="tap"><span class="nr">08</span><div class="info"><h3>Gast op de tap</h3><p>Wisselend bier van een bevriende brouwer</p></div><span class="abv">?%</span><span class="st soon">Verrassing</span></div>
+    <div class="sec-h" data-r><h2>De tapkast</h2><span class="live"><span class="dot"></span>Live · 10 kranen</span></div>
+    <div class="taphub" data-r>
+      <div class="tablist" role="tablist" aria-label="Bierkaart per categorie">
+        <button role="tab" id="tab-vat" aria-controls="panel-vat" aria-selected="true" tabindex="0">Vast op vat <span class="cnt">5</span></button>
+        <button role="tab" id="tab-wissel" aria-controls="panel-wissel" aria-selected="false" tabindex="-1">Wisselend <span class="cnt">2</span></button>
+        <button role="tab" id="tab-soon" aria-controls="panel-soon" aria-selected="false" tabindex="-1">Binnenkort <span class="cnt">2</span></button>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-vat" aria-labelledby="tab-vat" tabindex="0">
+        <p class="lead">Onze vaste kern — altijd op de tap, vers uit eigen ketel.</p>
+        <div class="taps">
+          <div class="tap"><span class="nr">01</span><div class="info"><h3>Schuimkop Pils</h3><p>Helder, droog, ondergistend — ons huisbier</p></div><span class="abv">5,0%</span><span class="st vat">Op vat</span></div>
+          <div class="tap"><span class="nr">02</span><div class="info"><h3>Waalwater Weizen</h3><p>Troebel tarwebier, banaan &amp; kruidnagel</p></div><span class="abv">5,2%</span><span class="st vat">Op vat</span></div>
+          <div class="tap"><span class="nr">03</span><div class="info"><h3>Hoppergracht IPA</h3><p>Vol citrus en dennen, stevig bitter</p></div><span class="abv">6,5%</span><span class="st vat">Op vat</span></div>
+          <div class="tap"><span class="nr">05</span><div class="info"><h3>Nachtwacht Stout</h3><p>Koffie, chocola, fluweelzacht</p></div><span class="abv">7,0%</span><span class="st vat">Op vat</span></div>
+          <div class="tap"><span class="nr">06</span><div class="info"><h3>Zomerzoen Saison</h3><p>Kruidig, fris, lichtzurig</p></div><span class="abv">5,8%</span><span class="st vat">Op vat</span></div>
+        </div>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-wissel" aria-labelledby="tab-wissel" tabindex="0" hidden>
+        <p class="lead">Wat nú op is of wisselt — wees er snel bij.</p>
+        <div class="taps">
+          <div class="tap"><span class="nr">04</span><div class="info"><h3>Keizer Karel Tripel</h3><p>Goudblond, warm, gevaarlijk drinkbaar</p></div><span class="abv">8,5%</span><span class="st last">Laatste vat</span></div>
+          <div class="tap"><span class="nr">08</span><div class="info"><h3>Gast op de tap</h3><p>Wisselend bier van een bevriende brouwer</p></div><span class="abv">?%</span><span class="st soon">Verrassing</span></div>
+        </div>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-soon" aria-labelledby="tab-soon" tabindex="0" hidden>
+        <p class="lead">Rijpt nog in de kelder — binnenkort op het vat.</p>
+        <div class="taps">
+          <div class="tap"><span class="nr">07</span><div class="info"><h3>Kersenkwartier Kriek</h3><p>Wilde gisting, zure morellen</p></div><span class="abv">4,5%</span><span class="st soon">Binnenkort</span></div>
+          <div class="tap"><span class="nr">09</span><div class="info"><h3>Winterwaal Bock</h3><p>Donker, moutig, karamel — voor de koude maanden</p></div><span class="abv">6,8%</span><span class="st soon">Binnenkort</span></div>
+        </div>
+      </div>
     </div>
     <p class="taps-note" data-r>Geen idee waar te beginnen? Neem een proefplankje van vier kwartglazen — kies zelf, of laat de tapper kiezen.</p>
   </div></section>
@@ -208,6 +249,37 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
   if(bg){bg.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});nav.addEventListener('click',function(e){if(e.target.closest('a'))nav.classList.remove('open');});}
   var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;hdr.classList.toggle('stuck',(window.pageYOffset||0)>8);});}},{passive:true});
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
+
+  /* ---- WAI-ARIA tabs: roving tabindex, automatic activation,
+     ArrowLeft/Right met wrap, Home/End ---- */
+  var tablist=doc.querySelector('[role=tablist]');
+  if(tablist){
+    var tabs=[].slice.call(tablist.querySelectorAll('[role=tab]'));
+    function panelFor(tab){return doc.getElementById(tab.getAttribute('aria-controls'));}
+    function activate(tab,setFocus){
+      tabs.forEach(function(t){
+        var sel=t===tab;
+        t.setAttribute('aria-selected',sel?'true':'false');
+        t.tabIndex=sel?0:-1;
+        var p=panelFor(t);if(p){if(sel)p.removeAttribute('hidden');else p.setAttribute('hidden','');}
+      });
+      if(setFocus)tab.focus();
+    }
+    tabs.forEach(function(tab,i){
+      tab.addEventListener('click',function(){activate(tab,true);});
+      tab.addEventListener('keydown',function(e){
+        var k=e.key,idx=-1;
+        if(k==='ArrowRight'||k==='ArrowDown')idx=(i+1)%tabs.length;
+        else if(k==='ArrowLeft'||k==='ArrowUp')idx=(i-1+tabs.length)%tabs.length;
+        else if(k==='Home')idx=0;
+        else if(k==='End')idx=tabs.length-1;
+        else return;
+        e.preventDefault();
+        activate(tabs[idx],true); /* automatic activation */
+      });
+    });
+  }
+
   var form=doc.getElementById('form');if(form){form.addEventListener('submit',function(e){e.preventDefault();var n=doc.getElementById('b-naam'),m=doc.getElementById('b-mail'),p=doc.getElementById('b-pers');if(!n.value.trim()){n.focus();return;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m.value.trim())){m.focus();return;}if(!p.value){p.focus();return;}form.classList.add('sent');});}
 })();
 </script>

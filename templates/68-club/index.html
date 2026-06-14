@@ -11,7 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   NOCTURN — nachtclub. Diepzwart × UV-paars × acid-cyaan. Glow-poster.
+   NOCTURN — nachtclub. Diepzwart × UV-paars × acid-cyaan.
+   ARCHETYPE D: full-bleed donkere beeld-hero + agenda-kaarten over de hero-rand.
    ============================================================ */
 :root{
   --bg:#08060f; --panel:#0f0b1c; --ink:#f3f0ff; --dim:#9a93c0; --uv:#8b2fff; --cyan:#00ffd5; --pink:#ff2d92;
@@ -27,38 +28,41 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--cyan);color:#000;padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(8,6,15,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(139,47,255,.4)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+/* nav — transparant over de hero */
+.nav{position:absolute;top:0;left:0;right:0;z-index:50}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
 .logo{font-family:var(--disp);font-weight:700;font-size:1.1rem;letter-spacing:.22em;color:var(--ink)}
 .menu{display:flex;align-items:center;gap:.4rem}
-.menu a{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;color:var(--dim);padding:.45rem .7rem}
+.menu a{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;color:var(--ink);padding:.45rem .7rem}
 .menu a:hover{color:var(--cyan)}
 .menu .cta{font-family:var(--mono);font-weight:700;background:var(--cyan);color:#000;padding:.5rem 1rem;border-radius:99px}
 .menu .cta:hover{background:var(--pink);color:#fff}
-.burger{display:none;border:1px solid var(--uv);background:none;color:var(--ink);padding:.4rem .65rem;font-family:var(--mono);font-size:.78rem}
-@media(max-width:840px){.menu{position:fixed;inset:62px 0 auto;background:var(--bg);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--uv);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid rgba(139,47,255,.3)}.burger{display:inline-block}}
+.burger{display:none;border:1px solid var(--uv);background:rgba(8,6,15,.4);color:var(--ink);padding:.4rem .65rem;font-family:var(--mono);font-size:.9rem}
+@media(max-width:840px){.menu{position:fixed;inset:74px 0 auto;background:rgba(8,6,15,.97);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:1px solid var(--uv);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:1px solid rgba(139,47,255,.3)}.burger{display:inline-block}}
 
-/* hero poster */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(139,47,255,.4)}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(circle at 20% 18%,rgba(139,47,255,.55),transparent 45%),
-  radial-gradient(circle at 82% 84%,rgba(0,255,213,.32),transparent 48%),
-  radial-gradient(circle at 60% 40%,rgba(255,45,146,.22),transparent 55%)}
-.hero .wrap{position:relative;text-align:center;padding-block:clamp(3rem,8vw,6rem)}
+/* ---- full-bleed beeld-hero ---- */
+.hero{position:relative;min-height:clamp(560px,92vh,860px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-2}
+.hero .bg img{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.05)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(circle at 22% 24%,rgba(139,47,255,.55),transparent 46%),
+  radial-gradient(circle at 84% 78%,rgba(0,255,213,.32),transparent 50%),
+  radial-gradient(circle at 60% 50%,rgba(255,45,146,.22),transparent 58%),
+  linear-gradient(180deg,rgba(8,6,15,.55) 0%,rgba(8,6,15,.2) 35%,rgba(8,6,15,.92) 100%)}
+.hero .wrap{position:relative;padding-bottom:clamp(7rem,16vw,11rem);padding-top:6rem}
 .hero .date{font-family:var(--mono);font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan)}
-.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.6rem,11vw,8rem);line-height:.95;letter-spacing:.04em;margin:1rem 0;color:var(--ink);text-shadow:0 0 30px rgba(139,47,255,.8)}
-.hero .sub{font-family:var(--mono);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.6rem,12vw,8.5rem);line-height:.95;letter-spacing:.04em;margin:1rem 0;color:var(--ink);text-shadow:0 0 30px rgba(139,47,255,.8)}
+.hero .sub{font-family:var(--mono);font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
 .hero .cta{display:inline-block;margin-top:2rem;font-family:var(--mono);font-weight:700;text-transform:uppercase;font-size:.85rem;letter-spacing:.06em;background:var(--cyan);color:#000;padding:.9rem 1.8rem;border-radius:99px;transition:transform .15s,box-shadow .15s;box-shadow:0 0 24px rgba(0,255,213,.6)}
 .hero .cta:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,255,213,.9)}
 
-/* agenda */
-.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
-.sec-h{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
-.sec-h h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.06em;text-transform:uppercase}
-.sec-h .all{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;color:var(--cyan)}
+/* ---- agenda over de hero-rand ---- */
+.agenda-wrap{position:relative;margin-top:clamp(-6rem,-9vw,-4.5rem);z-index:5}
+.agenda-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem}
+.agenda-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.3rem,4vw,2rem);letter-spacing:.06em;text-transform:uppercase}
+.agenda-head .all{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;color:var(--cyan)}
 .agenda{display:grid;gap:.8rem}
-.night{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:center;background:var(--panel);border:1px solid rgba(139,47,255,.3);border-radius:14px;padding:1.1rem 1.3rem;transition:border-color .2s,transform .15s}
+.night{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:center;background:rgba(15,11,28,.92);backdrop-filter:blur(8px);border:1px solid rgba(139,47,255,.35);border-radius:14px;padding:1.1rem 1.3rem;box-shadow:0 24px 50px -28px rgba(0,0,0,.9);transition:border-color .2s,transform .15s}
 .night:hover{border-color:var(--cyan);transform:translateY(-3px)}
 .night .d{text-align:center;font-family:var(--mono);line-height:1;flex:none;border-right:1px solid rgba(139,47,255,.3);padding-right:1.2rem}
 .night .d b{font-size:1.7rem;display:block;color:var(--cyan)}
@@ -69,6 +73,10 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .night.sold{opacity:.55}
 .night.sold .gen{border-color:var(--pink);color:var(--pink)}
 @media(max-width:600px){.night{grid-template-columns:auto 1fr}.night .gen{grid-column:2;justify-self:start}}
+
+.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
+.sec-h{margin-bottom:1.8rem}
+.sec-h h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.06em;text-transform:uppercase}
 
 /* info grid */
 .info-g{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem)}
@@ -111,32 +119,37 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 </div></header>
 
 <main>
-  <section class="hero"><div class="wrap">
-    <div class="date">Dit weekend · 13 — 14 juni</div>
-    <h1>NOCTURN</h1>
-    <div class="sub">House · Techno · Disco — tot zonsopkomst</div>
-    <a class="cta" href="#agenda">Bekijk de agenda</a>
-  </div></section>
-
-  <section class="sec wrap" id="agenda">
-    <div class="sec-h"><h2>Agenda</h2><span class="all">Aan de Maas · 22:00 — 06:00</span></div>
-    <div class="agenda" data-r>
-      <article class="night"><div class="d"><b>13</b><span>vr jun</span></div><div><h3>Subsonic — all night long</h3><div class="line">met resident Mila Kraft &amp; Vektor</div></div><span class="gen">Techno</span></article>
-      <article class="night"><div class="d"><b>14</b><span>za jun</span></div><div><h3>Disco Inferno</h3><div class="line">special guest Frankie Dust (UK)</div></div><span class="gen">Disco</span></article>
-      <article class="night sold"><div class="d"><b>20</b><span>vr jun</span></div><div><h3>Deep Current</h3><div class="line">uitverkocht — wachtlijst open</div></div><span class="gen">Uitverkocht</span></article>
-      <article class="night"><div class="d"><b>21</b><span>za jun</span></div><div><h3>Pulse — label night</h3><div class="line">Halftone · Sander Kleff · Noor</div></div><span class="gen">House</span></article>
-      <article class="night"><div class="d"><b>28</b><span>za jun</span></div><div><h3>Solstice Rooftop</h3><div class="line">vroege start 18:00 · dak open</div></div><span class="gen">Open air</span></article>
+  <section class="hero">
+    <div class="bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?auto=format&fit=crop&w=1600&q=70" alt="" width="1600" height="900" loading="eager"></div>
+    <div class="wrap">
+      <div class="date">Dit weekend · 13 — 14 juni</div>
+      <h1>NOCTURN</h1>
+      <div class="sub">House · Techno · Disco — tot zonsopkomst</div>
+      <a class="cta" href="#agenda">Bekijk de agenda</a>
     </div>
   </section>
 
-  <section class="sec wrap" id="info">
-    <div class="sec-h"><h2>Goed om te weten</h2></div>
-    <div class="info-g" data-r>
-      <div class="icard"><div class="ic" aria-hidden="true">🕒</div><h3>Openingstijden</h3><p>Vrijdag &amp; zaterdag 22:00 — 06:00. Deuren dicht om 04:00.</p></div>
-      <div class="icard"><div class="ic" aria-hidden="true">🪪</div><h3>Entree</h3><p>18+ · legitimatie verplicht. Deurbeleid: kom zoals je bent, respecteer elkaar.</p></div>
-      <div class="icard"><div class="ic" aria-hidden="true">📍</div><h3>Locatie</h3><p>Maaskade 140, Rotterdam. 8 min van Rotterdam Blaak. Geen parkeren.</p></div>
-    </div>
-  </section>
+  <div class="wrap">
+    <section class="agenda-wrap" id="agenda">
+      <div class="agenda-head"><h2>Agenda</h2><span class="all">Aan de Maas · 22:00 — 06:00</span></div>
+      <div class="agenda" data-r>
+        <article class="night"><div class="d"><b>13</b><span>vr jun</span></div><div><h3>Subsonic — all night long</h3><div class="line">met resident Mila Kraft &amp; Vektor</div></div><span class="gen">Techno</span></article>
+        <article class="night"><div class="d"><b>14</b><span>za jun</span></div><div><h3>Disco Inferno</h3><div class="line">special guest Frankie Dust (UK)</div></div><span class="gen">Disco</span></article>
+        <article class="night sold"><div class="d"><b>20</b><span>vr jun</span></div><div><h3>Deep Current</h3><div class="line">uitverkocht — wachtlijst open</div></div><span class="gen">Uitverkocht</span></article>
+        <article class="night"><div class="d"><b>21</b><span>za jun</span></div><div><h3>Pulse — label night</h3><div class="line">Halftone · Sander Kleff · Noor</div></div><span class="gen">House</span></article>
+        <article class="night"><div class="d"><b>28</b><span>za jun</span></div><div><h3>Solstice Rooftop</h3><div class="line">vroege start 18:00 · dak open</div></div><span class="gen">Open air</span></article>
+      </div>
+    </section>
+
+    <section class="sec" id="info">
+      <div class="sec-h"><h2>Goed om te weten</h2></div>
+      <div class="info-g" data-r>
+        <div class="icard"><div class="ic" aria-hidden="true">🕒</div><h3>Openingstijden</h3><p>Vrijdag &amp; zaterdag 22:00 — 06:00. Deuren dicht om 04:00.</p></div>
+        <div class="icard"><div class="ic" aria-hidden="true">🪪</div><h3>Entree</h3><p>18+ · legitimatie verplicht. Deurbeleid: kom zoals je bent, respecteer elkaar.</p></div>
+        <div class="icard"><div class="ic" aria-hidden="true">📍</div><h3>Locatie</h3><p>Maaskade 140, Rotterdam. 8 min van Rotterdam Blaak. Geen parkeren.</p></div>
+      </div>
+    </section>
+  </div>
 
   <section class="res" id="reserveer"><div class="wrap">
     <div data-r>

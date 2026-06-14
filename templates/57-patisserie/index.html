@@ -12,12 +12,14 @@
 <style>
 /* ============================================================
    SUIKER — patisserie, Maastricht. Verfijnd, rozig, goud.
+   ARCHETYPE I: BENTO-GRID. Modulair raster van ongelijke
+   tegels — hero, producten, USP's en beeld door elkaar.
    ============================================================ */
 :root{
   --paper:#fbf3ef; --paper-2:#f4e6df; --ink:#3a2926; --ink-2:#76605b; --muted:#9c847e;
   --rose:#cf8493; --rose-2:#b9637a; --gold:#bb924f; --cocoa:#5a3b34; --line:rgba(58,41,38,.14); --line-soft:rgba(58,41,38,.07);
   --serif:"Italiana",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
-  --maxw:1120px; --gutter:clamp(1.2rem,5vw,4.5rem);
+  --maxw:1180px; --gutter:clamp(1.2rem,5vw,4.5rem); --r:18px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -40,32 +42,52 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .burger{display:none;border:1px solid var(--line);border-radius:99px;padding:.5rem .9rem;font-size:.82rem}
 @media(max-width:820px){.nav{position:fixed;inset:78px 0 auto;background:var(--paper);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
 
-.hero{padding-block:clamp(2.4rem,5vw,4rem)}
-.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
-@media(max-width:840px){.hero .wrap{grid-template-columns:1fr;gap:2rem}}
-.hero h1{font-family:var(--serif);font-size:clamp(3rem,7.5vw,5.4rem);line-height:1.05;letter-spacing:.01em;margin:1rem 0 0}
-.hero h1 em{color:var(--rose-2)}
-.hero p.lead{margin-top:1.3rem;color:var(--ink-2);max-width:36ch;font-size:1.14rem}
-.hero-act{margin-top:1.9rem;display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
-.btn{background:var(--rose-2);color:#fff;padding:.85rem 1.6rem;border-radius:99px;font-weight:600;font-size:.95rem;display:inline-block;transition:background-color .25s,transform .25s}
+/* ---- BENTO HERO: tekst-tegel + beeld-tegels in één raster ---- */
+.hero{padding-block:clamp(1.6rem,4vw,3rem)}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,18vw,210px);gap:clamp(.8rem,1.6vw,1.2rem)}
+.tile{border-radius:var(--r);overflow:hidden;position:relative;background:var(--paper-2)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile.intro{grid-column:span 2;grid-row:span 2;background:var(--cocoa);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:clamp(1.6rem,3vw,2.6rem)}
+.tile.intro .eyebrow{color:#e6b48a}
+.tile.intro h1{font-family:var(--serif);font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.04;letter-spacing:.01em;margin:.8rem 0 0}
+.tile.intro h1 em{color:#e6a3b3}
+.tile.intro p.lead{margin-top:1rem;color:rgba(255,255,255,.82);font-size:1.04rem;max-width:32ch}
+.hero-act{margin-top:1.4rem;display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.btn{background:var(--rose-2);color:#fff;padding:.8rem 1.5rem;border-radius:99px;font-weight:600;font-size:.95rem;display:inline-block;transition:background-color .25s,transform .25s}
 .btn:hover{background:var(--rose);transform:translateY(-2px)}
-.lnk{border-bottom:1.5px solid var(--gold);padding-bottom:3px;font-weight:500}.lnk:hover{color:var(--gold)}
-.hero-fig img{width:100%;aspect-ratio:4/4.3;object-fit:cover;border-radius:240px 240px 14px 14px}
+.lnk{color:#fff;border-bottom:1.5px solid var(--gold);padding-bottom:3px;font-weight:500}.lnk:hover{color:var(--gold)}
+.tile.tall{grid-row:span 2}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;background:linear-gradient(to top,rgba(58,41,38,.78),transparent);color:#fff;font-family:var(--serif);font-size:1.1rem;z-index:2}
+@media(max-width:820px){.bento{grid-template-columns:repeat(2,1fr)}.tile.intro{grid-column:1/-1;grid-row:span 1;min-height:300px}.tile.tall{grid-row:span 1}}
+@media(max-width:460px){.bento{grid-template-columns:1fr;grid-auto-rows:clamp(150px,46vw,200px)}.tile.intro{min-height:340px}}
 
 .sec{padding-block:clamp(3rem,6vw,5rem)}
 .sec-h{text-align:center;max-width:40rem;margin:0 auto clamp(2rem,4vw,3rem)}
 .sec-h h2{font-family:var(--serif);font-size:clamp(2.2rem,4.8vw,3.4rem);margin-top:.6rem}
 .sec-h p{color:var(--ink-2);margin-top:.6rem}
 
-/* assortiment */
-.ass{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,2.5vw,1.8rem)}
-@media(max-width:820px){.ass{grid-template-columns:1fr 1fr}}@media(max-width:440px){.ass{grid-template-columns:1fr}}
-.cat{text-align:center}
-.cat .sw{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-size:2rem;margin:0 auto .9rem;width:84%;color:#fff;overflow:hidden}
-.cat .sw img{width:100%;height:100%;object-fit:cover}
-.cat h3{font-family:var(--serif);font-size:1.4rem}
-.cat p{color:var(--muted);font-size:.9rem;margin-top:.2rem}
-.cat .pr{color:var(--gold);font-weight:600;margin-top:.5rem;font-size:.92rem}
+/* ---- assortiment als BENTO: ongelijke product- + USP-tegels ---- */
+.ass{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(140px,16vw,200px);gap:clamp(.8rem,1.6vw,1.2rem)}
+.cell{border-radius:var(--r);overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:flex-end}
+.cell.prod{color:#fff}
+.cell.prod img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.cell.prod::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(58,41,38,.8),rgba(58,41,38,.05) 60%);z-index:1}
+.cell.prod>*{position:relative;z-index:2}
+.cell.prod .pad{padding:1.1rem 1.2rem}
+.cell.prod h3{font-family:var(--serif);font-size:1.5rem;line-height:1.1}
+.cell.prod p{font-size:.84rem;opacity:.9;margin-top:.15rem}
+.cell.prod .pr{margin-top:.35rem;font-weight:600;font-size:.88rem;color:#f0d2a0}
+.cell.big{grid-column:span 2;grid-row:span 2}
+.cell.wide{grid-column:span 2}
+.cell.note{background:var(--paper-2);justify-content:center;padding:1.4rem 1.4rem;grid-row:span 2}
+.cell.note .eyebrow{color:var(--gold)}
+.cell.note h3{font-family:var(--serif);font-size:1.7rem;margin:.5rem 0 .4rem}
+.cell.note p{color:var(--ink-2);font-size:.92rem}
+.cell.accent{background:var(--rose);color:#fff;justify-content:center;padding:1.3rem}
+.cell.accent .big-n{font-family:var(--serif);font-size:2.6rem;line-height:1}
+.cell.accent p{font-size:.86rem;opacity:.95;margin-top:.3rem}
+@media(max-width:820px){.ass{grid-template-columns:repeat(2,1fr)}.cell.big{grid-column:span 2}.cell.note{grid-row:span 1}}
+@media(max-width:460px){.ass{grid-template-columns:1fr}.cell.big,.cell.wide{grid-column:1/-1}}
 
 /* ambacht split */
 .amb{background:var(--paper-2)}
@@ -110,27 +132,33 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 <header class="hdr" id="hdr"><div class="wrap">
   <a class="logo" href="#top">Suiker</a>
   <nav class="nav" id="nav"><a href="#assortiment">Assortiment</a><a href="#ambacht">Ambacht</a><a href="#bezoek">Bezoek</a><a class="cta" href="#bezoek">Taart bestellen</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
 </div></header>
 
 <main>
   <section class="hero"><div class="wrap">
-    <div>
-      <span class="eyebrow">Patisserie · Maastricht</span>
-      <h1>Klein geluk, met <em>zorg</em> gemaakt.</h1>
-      <p class="lead">Fijne taarten, gebak en bonbons — van echte boter, pure chocolade en fruit van het seizoen. Iets te vieren? Wij maken het zoet.</p>
-      <div class="hero-act"><a class="btn" href="#bezoek">Bestel een taart</a><a class="lnk" href="#assortiment">Bekijk assortiment</a></div>
+    <div class="bento" data-r>
+      <div class="tile intro">
+        <span class="eyebrow">Patisserie · Maastricht</span>
+        <h1>Klein geluk, met <em>zorg</em> gemaakt.</h1>
+        <p class="lead">Fijne taarten, gebak en bonbons — van echte boter, pure chocolade en fruit van het seizoen.</p>
+        <div class="hero-act"><a class="btn" href="#bezoek">Bestel een taart</a><a class="lnk" href="#assortiment">Bekijk assortiment</a></div>
+      </div>
+      <div class="tile tall"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=72" alt="Verfijnde dessertjes met aardbei" width="800" height="900"><span class="cap">Aardbei-dessert</span></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=72" alt="Handgeschepte bonbons van pure chocolade" loading="lazy" width="700" height="500"></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=72" alt="Vers gebak in de vitrine" loading="lazy" width="700" height="500"></div>
     </div>
-    <figure class="hero-fig" data-r><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=72" alt="Verfijnde dessertjes met aardbei" width="900" height="970"></figure>
   </div></section>
 
   <section class="sec" id="assortiment"><div class="wrap">
     <div class="sec-h" data-r><span class="eyebrow">Het assortiment</span><h2>Voor elke gelegenheid</h2><p>Dagvers in de vitrine, en op bestelling precies wat je wilt.</p></div>
     <div class="ass" data-r>
-      <div class="cat"><div class="sw" style="background:linear-gradient(150deg,#e2a6b1,#cf8493)"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=72" alt="Fijne taart met fruit" loading="lazy" width="800" height="800"></div><h3>Taarten</h3><p>Op bestelling, elk formaat</p><div class="pr">vanaf € 28</div></div>
-      <div class="cat"><div class="sw" style="background:linear-gradient(150deg,#d8b27a,#bb924f)"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=72" alt="Vers gebak in de vitrine" loading="lazy" width="800" height="800"></div><h3>Gebak</h3><p>Dagvers in de vitrine</p><div class="pr">vanaf € 3,50</div></div>
-      <div class="cat"><div class="sw" style="background:linear-gradient(150deg,#8a5b4f,#5a3b34)"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=72" alt="Handgeschepte bonbons van pure chocolade" loading="lazy" width="800" height="800"></div><h3>Bonbons</h3><p>Handgeschept, per stuk of doos</p><div class="pr">vanaf € 1,20</div></div>
-      <div class="cat"><div class="sw" style="background:linear-gradient(150deg,#cdb5d2,#a98bc0)"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=800&q=72" alt="Taart op maat voor bruiloft en feest" loading="lazy" width="800" height="800"></div><h3>Op maat</h3><p>Bruiloft &amp; feest</p><div class="pr">in overleg</div></div>
+      <div class="cell prod big"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=72" alt="Fijne taart met fruit" loading="lazy" width="900" height="900"><div class="pad"><h3>Taarten</h3><p>Op bestelling, elk formaat</p><div class="pr">vanaf € 28</div></div></div>
+      <div class="cell note"><span class="eyebrow">Dagvers</span><h3>Elke ochtend opnieuw</h3><p>Geen pakjes, geen kunstmatige smaken — wel echte vanille en Belgische chocolade.</p></div>
+      <div class="cell prod"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=72" alt="Vers gebak in de vitrine" loading="lazy" width="700" height="500"><div class="pad"><h3>Gebak</h3><div class="pr">vanaf € 3,50</div></div></div>
+      <div class="cell prod"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=72" alt="Handgeschepte bonbons van pure chocolade" loading="lazy" width="700" height="500"><div class="pad"><h3>Bonbons</h3><div class="pr">vanaf € 1,20</div></div></div>
+      <div class="cell prod wide"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=900&q=72" alt="Taart op maat voor bruiloft en feest" loading="lazy" width="900" height="500"><div class="pad"><h3>Op maat — bruiloft &amp; feest</h3><p>Van smaak tot het laatste suikerbloemetje</p><div class="pr">in overleg</div></div></div>
+      <div class="cell accent"><span class="big-n">2 dagen</span><p>vooruit bestellen voor taart op maat</p></div>
     </div>
   </div></section>
 

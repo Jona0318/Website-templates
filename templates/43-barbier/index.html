@@ -12,12 +12,16 @@
 <style>
 /* ============================================================
    STOPPEL — barbier, Rotterdam. Donker, stoer, brick & amber.
+   ARCHETYPE D: FULL-BLEED BEELD-HERO + OVERLAPPENDE KAARTEN.
+   Schermvullende foto met overlay; een rij info-/prijskaarten
+   schuift over de onderrand van de hero heen. Centrale topbalk
+   blijft minimaal — het draait om beeld en overlap.
    ============================================================ */
 :root{
   --bg:#15110d; --bg-2:#1f1812; --bg-3:#272019; --cream:#f0e7d8;
   --muted:#a99a86; --amber:#d98a3a; --amber-2:#eaa85b; --line:rgba(240,231,216,.14);
   --disp:"Oswald",Impact,sans-serif; --sans:"Inter",system-ui,sans-serif;
-  --maxw:1140px; --gutter:clamp(1.2rem,5vw,4.5rem);
+  --maxw:1180px; --gutter:clamp(1.2rem,5vw,4.5rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -30,8 +34,9 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .kicker{font-family:var(--disp);text-transform:uppercase;letter-spacing:.28em;font-weight:500;font-size:.8rem;color:var(--amber)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--amber);color:var(--bg);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-.hdr{position:sticky;top:0;z-index:50;background:rgba(21,17,13,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
-.hdr.stuck{border-color:var(--line)}
+/* ---- minimal top-bar over de hero (transparant, wordt vast bij scroll) ---- */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;border-bottom:1px solid transparent;transition:background-color .3s,border-color .3s}
+.hdr.stuck{background:rgba(21,17,13,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:var(--line)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
 .logo{font-family:var(--disp);font-weight:700;font-size:1.7rem;text-transform:uppercase;letter-spacing:.06em}
 .logo b{color:var(--amber)}
@@ -40,22 +45,38 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .nav a:hover{color:var(--cream)}
 .nav .cta{background:var(--amber);color:var(--bg);padding:.55rem 1.1rem;font-size:.84rem}
 .nav .cta:hover{background:var(--amber-2)}
-.burger{display:none;font-family:var(--disp);text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);padding:.45rem .8rem}
+.burger{display:none;font-family:var(--disp);text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);padding:.45rem .8rem;background:transparent;color:var(--cream)}
 @media(max-width:820px){.nav{position:fixed;inset:74px 0 auto;background:var(--bg-2);flex-direction:column;padding:1.5rem var(--gutter) 2rem;gap:1.1rem;transform:translateY(-130%);transition:transform .45s cubic-bezier(.7,0,.2,1)}.nav.open{transform:none}.burger{display:inline-block}}
 
-.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden}
+/* ---- FULL-BLEED HERO ---- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,17,13,.55),rgba(21,17,13,.35) 40%,var(--bg))}
-.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(2.5rem,6vw,5rem)}
-.hero h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(3.2rem,12vw,8.5rem);line-height:.9;margin:1rem 0 0;text-shadow:0 6px 30px rgba(0,0,0,.4)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,17,13,.65),rgba(21,17,13,.25) 45%,rgba(21,17,13,.9))}
+.hero .wrap{position:relative;z-index:2;padding-block:clamp(5rem,12vw,8rem)}
+.hero h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(3.4rem,13vw,9rem);line-height:.86;margin:1rem 0 0;text-shadow:0 6px 30px rgba(0,0,0,.5)}
 .hero h1 span{color:var(--amber)}
-.hero p{margin-top:1.3rem;max-width:42ch;font-size:1.18rem;color:#e3d8c5}
-.hero-act{margin-top:1.8rem;display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center}
+.hero p{margin-top:1.4rem;max-width:42ch;font-size:1.2rem;color:#e3d8c5}
+.hero-act{margin-top:2rem;display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center}
 .btn{background:var(--amber);color:var(--bg);font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;font-weight:600;padding:.95rem 1.7rem;font-size:1rem;display:inline-block;transition:background-color .25s,transform .25s}
 .btn:hover{background:var(--amber-2);transform:translateY(-2px)}
 .lnk{font-family:var(--disp);text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid var(--amber);padding-bottom:3px}
+.scrollcue{position:absolute;left:50%;bottom:clamp(7rem,16vw,9rem);transform:translateX(-50%);z-index:3;font-family:var(--disp);text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.scrollcue{animation:bob 2.4s ease-in-out infinite}}
+@keyframes bob{50%{transform:translate(-50%,-6px)}}
 
-.marq{background:var(--amber);color:var(--bg);overflow:hidden;border-block:0}
+/* ---- SIGNATURE: overlappende kaarten die over de hero-onderrand schuiven ---- */
+.overlap{position:relative;z-index:5;margin-top:clamp(-7rem,-9vw,-5rem)}
+.overlap .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.5vw,1.6rem)}
+@media(max-width:820px){.overlap .grid{grid-template-columns:1fr}}
+.card{background:var(--bg-2);border:1px solid var(--line);border-top:3px solid var(--amber);padding:clamp(1.4rem,2.5vw,1.9rem);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.card .icn{font-family:var(--disp);font-size:1.6rem;color:var(--amber);line-height:1}
+.card h3{font-family:var(--disp);text-transform:uppercase;font-weight:600;font-size:1.3rem;margin:.7rem 0 .5rem}
+.card p{color:#bcae9a;font-size:.98rem}
+.card.live .open{font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;color:var(--amber-2);font-size:1.1rem}
+.card.live .open[data-open=false]{color:#e87a52}
+.card.live .nx{color:#bcae9a;font-size:.92rem;margin-top:.3rem}
+
+.marq{background:var(--amber);color:var(--bg);overflow:hidden;margin-top:clamp(3rem,6vw,5rem)}
 .marq .row{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;padding:.7rem 0;font-family:var(--disp);text-transform:uppercase;font-weight:600;letter-spacing:.05em;font-size:1.1rem}
 @media (prefers-reduced-motion:no-preference){.marq .row{animation:m 26s linear infinite}}
 @keyframes m{to{transform:translateX(-50%)}}
@@ -66,16 +87,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .sec-h h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(2.2rem,6vw,4rem);line-height:.95}
 .sec-h p{color:#bcae9a;margin-top:.7rem;max-width:46ch;font-size:1.08rem}
 
-/* prijslijst */
-.price{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2.5rem,6vw,5rem)}
-@media(max-width:760px){.price{grid-template-columns:1fr}}
-.pr{display:flex;align-items:baseline;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
-.pr .nm{font-family:var(--disp);text-transform:uppercase;font-weight:600;font-size:1.4rem;letter-spacing:.02em}
-.pr .nm small{display:block;font-family:var(--sans);text-transform:none;letter-spacing:0;font-weight:400;font-size:.92rem;color:var(--muted);margin-top:.15rem}
-.pr .dots{flex:1;border-bottom:2px dotted var(--line);position:relative;top:-.35rem}
-.pr .amt{font-family:var(--disp);font-size:1.5rem;color:var(--amber-2)}
-
-/* split detail */
+/* split detail eerst — beeldgedreven, sluit aan op de hero-stijl */
 .split{background:var(--bg-2)}
 .split .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
 @media(max-width:820px){.split .wrap{grid-template-columns:1fr}}
@@ -84,6 +96,15 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 .split p{color:#bcae9a;font-size:1.1rem}.split p+p{margin-top:1rem}
 .feat{margin-top:1.6rem;display:grid;gap:.7rem}
 .feat li{display:flex;gap:.7rem;align-items:baseline}.feat li::before{content:"✦";color:var(--amber)}
+
+/* prijslijst */
+.price{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2.5rem,6vw,5rem)}
+@media(max-width:760px){.price{grid-template-columns:1fr}}
+.pr{display:flex;align-items:baseline;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.pr .nm{font-family:var(--disp);text-transform:uppercase;font-weight:600;font-size:1.4rem;letter-spacing:.02em}
+.pr .nm small{display:block;font-family:var(--sans);text-transform:none;letter-spacing:0;font-weight:400;font-size:.92rem;color:var(--muted);margin-top:.15rem}
+.pr .dots{flex:1;border-bottom:2px dotted var(--line);position:relative;top:-.35rem}
+.pr .amt{font-family:var(--disp);font-size:1.5rem;color:var(--amber-2)}
 
 /* boeken */
 .book{background:var(--bg-3)}
@@ -122,7 +143,7 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
 <a class="skip" href="#prijzen">Naar de prijzen</a>
 <header class="hdr" id="hdr"><div class="wrap">
   <a class="logo" href="#top">STOP<b>PEL</b></a>
-  <nav class="nav" id="nav"><a href="#prijzen">Prijzen</a><a href="#vakwerk">Vakwerk</a><a href="#boeken">Openingstijden</a><a class="cta" href="#boeken">Boek een stoel</a></nav>
+  <nav class="nav" id="nav"><a href="#vakwerk">Vakwerk</a><a href="#prijzen">Prijzen</a><a href="#boeken">Openingstijden</a><a class="cta" href="#boeken">Boek een stoel</a></nav>
   <button class="burger" id="burger" aria-expanded="false">Menu</button>
 </div></header>
 
@@ -135,23 +156,30 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
       <p>Een ouderwetse barbier met het scheermes erbij, strakke fades en alle tijd voor een goed verhaal.</p>
       <div class="hero-act"><a class="btn" href="#boeken">Boek een stoel</a><a class="lnk" href="#prijzen">Bekijk prijzen</a></div>
     </div>
+    <div class="scrollcue" aria-hidden="true">Scroll · ✂</div>
   </section>
 
-  <div class="marq" aria-hidden="true"><div class="row"><span>Fade&nbsp;&nbsp;Beard trim&nbsp;&nbsp;Hot towel&nbsp;&nbsp;Klassiek scheren&nbsp;&nbsp;Vader &amp; zoon&nbsp;&nbsp;</span><span>Fade&nbsp;&nbsp;Beard trim&nbsp;&nbsp;Hot towel&nbsp;&nbsp;Klassiek scheren&nbsp;&nbsp;Vader &amp; zoon&nbsp;&nbsp;</span></div></div>
-
-  <section class="sec" id="prijzen"><div class="wrap">
-    <div class="sec-h" data-r><span class="kicker">De prijslijst</span><h2>Vaste prijzen,<br>geen verrassingen</h2></div>
-    <div class="price" data-r>
-      <div><div class="pr"><span class="nm">Knippen<small>incl. wassen &amp; styling</small></span><span class="dots"></span><span class="amt">€ 29</span></div>
-      <div class="pr"><span class="nm">Fade / skin fade<small>strak afgewerkt</small></span><span class="dots"></span><span class="amt">€ 32</span></div>
-      <div class="pr"><span class="nm">Baard trimmen<small>scheren met het mes</small></span><span class="dots"></span><span class="amt">€ 19</span></div>
-      <div class="pr"><span class="nm">Knip + baard<small>het complete pakket</small></span><span class="dots"></span><span class="amt">€ 44</span></div></div>
-      <div><div class="pr"><span class="nm">Klassiek scheren<small>hot towel &amp; massage</small></span><span class="dots"></span><span class="amt">€ 27</span></div>
-      <div class="pr"><span class="nm">Kind t/m 12<small>op de boostzitting</small></span><span class="dots"></span><span class="amt">€ 18</span></div>
-      <div class="pr"><span class="nm">Vader &amp; zoon<small>samen in de stoel</small></span><span class="dots"></span><span class="amt">€ 42</span></div>
-      <div class="pr"><span class="nm">Grijs camoufleren<small>natuurlijk resultaat</small></span><span class="dots"></span><span class="amt">€ 24</span></div></div>
+  <!-- SIGNATURE: kaarten overlappen de onderrand van de hero -->
+  <section class="overlap"><div class="wrap"><div class="grid">
+    <div class="card live" data-r>
+      <div class="icn">●</div>
+      <h3>Vandaag</h3>
+      <p class="open" id="open-card" data-open="true">Nu open</p>
+      <p class="nx" id="open-nx"></p>
     </div>
-  </div></section>
+    <div class="card" data-r>
+      <div class="icn">✂</div>
+      <h3>Inloop &amp; afspraak</h3>
+      <p>Loop gerust binnen, of boek vooraf je vaste tijd online. Geen nummertje — een vaste barbier die je naam onthoudt.</p>
+    </div>
+    <div class="card" data-r>
+      <div class="icn">⌖</div>
+      <h3>Waar</h3>
+      <p>Nieuwe Binnenweg 142, Rotterdam-West.<br><a href="tel:+31102765512" style="color:var(--amber-2);border-bottom:1px solid var(--line)">010 — 276 55 12</a></p>
+    </div>
+  </div></div></section>
+
+  <div class="marq" aria-hidden="true"><div class="row"><span>Fade&nbsp;&nbsp;Beard trim&nbsp;&nbsp;Hot towel&nbsp;&nbsp;Klassiek scheren&nbsp;&nbsp;Vader &amp; zoon&nbsp;&nbsp;</span><span>Fade&nbsp;&nbsp;Beard trim&nbsp;&nbsp;Hot towel&nbsp;&nbsp;Klassiek scheren&nbsp;&nbsp;Vader &amp; zoon&nbsp;&nbsp;</span></div></div>
 
   <section class="sec split" id="vakwerk"><div class="wrap">
     <figure data-r><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=72" alt="Barbier werkt met scheermes aan een strakke lijn" width="900" height="1020" loading="lazy"></figure>
@@ -165,6 +193,20 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
         <li>Koffie of een biertje van de buurman erbij</li>
         <li>Loop binnen of boek vooraf je vaste tijd</li>
       </ul>
+    </div>
+  </div></section>
+
+  <section class="sec" id="prijzen"><div class="wrap">
+    <div class="sec-h" data-r><span class="kicker">De prijslijst</span><h2>Vaste prijzen,<br>geen verrassingen</h2></div>
+    <div class="price" data-r>
+      <div><div class="pr"><span class="nm">Knippen<small>incl. wassen &amp; styling</small></span><span class="dots"></span><span class="amt">€ 29</span></div>
+      <div class="pr"><span class="nm">Fade / skin fade<small>strak afgewerkt</small></span><span class="dots"></span><span class="amt">€ 32</span></div>
+      <div class="pr"><span class="nm">Baard trimmen<small>scheren met het mes</small></span><span class="dots"></span><span class="amt">€ 19</span></div>
+      <div class="pr"><span class="nm">Knip + baard<small>het complete pakket</small></span><span class="dots"></span><span class="amt">€ 44</span></div></div>
+      <div><div class="pr"><span class="nm">Klassiek scheren<small>hot towel &amp; massage</small></span><span class="dots"></span><span class="amt">€ 27</span></div>
+      <div class="pr"><span class="nm">Kind t/m 12<small>op de boostzitting</small></span><span class="dots"></span><span class="amt">€ 18</span></div>
+      <div class="pr"><span class="nm">Vader &amp; zoon<small>samen in de stoel</small></span><span class="dots"></span><span class="amt">€ 42</span></div>
+      <div class="pr"><span class="nm">Grijs camoufleren<small>natuurlijk resultaat</small></span><span class="dots"></span><span class="amt">€ 24</span></div></div>
     </div>
   </div></section>
 
@@ -205,7 +247,10 @@ button,input,select,textarea{font:inherit;color:inherit}::selection{background:v
   function fmt(m){return Math.floor(m/60)+':'+('0'+m%60).slice(-2);}
   function now(){try{var p=new Intl.DateTimeFormat('nl-NL',{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Amsterdam'}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value;});var m={zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6},d=m[(o.weekday||'').toLowerCase().slice(0,2)];if(d===undefined)d=new Date().getDay();return{d:d,m:+o.hour*60+ +o.minute};}catch(e){var x=new Date();return{d:x.getDay(),m:x.getHours()*60+x.getMinutes()};}}
   function st(){var n=now(),t=H[n.d];if(t&&n.m>=t[0]&&n.m<t[1])return{o:true,l:'open tot '+fmt(t[1])};if(t&&n.m<t[0])return{o:false,l:'vandaag open vanaf '+fmt(t[0])};for(var i=1;i<=7;i++){var d=(n.d+i)%7;if(H[d])return{o:false,l:'open '+DAY[d].toLowerCase()+' vanaf '+fmt(H[d][0])};}return{o:false,l:'gesloten'};}
-  var s=st(),op=doc.getElementById('open');if(op){op.setAttribute('data-open',s.o);op.textContent=s.o?'Nu open — '+s.l:'Nu gesloten — '+s.l;}
+  var s=st();
+  var op=doc.getElementById('open');if(op){op.setAttribute('data-open',s.o);op.textContent=s.o?'Nu open — '+s.l:'Nu gesloten — '+s.l;}
+  var opc=doc.getElementById('open-card');if(opc){opc.setAttribute('data-open',s.o);opc.textContent=s.o?'Nu open':'Nu gesloten';}
+  var opn=doc.getElementById('open-nx');if(opn){opn.textContent=s.l.charAt(0).toUpperCase()+s.l.slice(1);}
   var hb=doc.getElementById('hb');if(hb){var n=now();[1,2,3,4,5,6,0].forEach(function(d){var t=H[d],tr=doc.createElement('tr');if(d===n.d)tr.className='now';tr.innerHTML='<td>'+DAY[d]+'</td>'+(t?'<td class="t">'+fmt(t[0])+' – '+fmt(t[1])+'</td>':'<td class="t cl">gesloten</td>');hb.appendChild(tr);});}
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
   var hdr=doc.getElementById('hdr'),nav=doc.getElementById('nav'),bg=doc.getElementById('burger');

@@ -12,11 +12,13 @@
 <style>
 /* ============================================================
    WOORD — literair festival. Cream-papier × diep rood × ink. Editoriale poster.
+   ARCHETYPE E: magazine/redactioneel met sticky sectie-index (scroll-spy) naast
+   een meerkoloms inhoudskolom. Asymmetrische redactionele hero (geen poster-midden).
    ============================================================ */
 :root{
   --paper:#f3ead7; --paper2:#fbf5e8; --ink:#1a1410; --red:#c2241f; --deep:#7a1410; --gold:#c08a2e;
   --disp:"Fraunces",Georgia,serif; --body:"Space Grotesk",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
-  --maxw:1140px; --gutter:clamp(1rem,4vw,3rem);
+  --maxw:1180px; --gutter:clamp(1rem,4vw,3rem); --rail:230px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -27,9 +29,9 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--paper);padding:.6rem 1rem;transition:top .25s}.skip:focus{top:1rem}
 
-/* nav */
+/* nav (slank, met masthead-streep) */
 .nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:2px solid var(--ink)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{font-family:var(--disp);font-weight:900;font-size:1.6rem;letter-spacing:-.01em}.logo span{color:var(--red)}
 .menu{display:flex;align-items:center;gap:.4rem}
 .menu a{font-family:var(--mono);font-size:.76rem;text-transform:uppercase;padding:.45rem .65rem}
@@ -37,54 +39,77 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .menu .cta{background:var(--red);color:var(--paper);font-family:var(--disp);font-weight:800;padding:.4rem 1rem}
 .menu .cta:hover{background:var(--ink)}
 .burger{display:none;border:2px solid var(--ink);background:none;padding:.4rem .65rem;font-family:var(--mono);text-transform:uppercase;font-size:.76rem}
-@media(max-width:840px){.menu{position:fixed;inset:64px 0 auto;background:var(--paper);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:2px solid var(--ink);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid var(--ink)}.burger{display:inline-block}}
+@media(max-width:840px){.menu{position:fixed;inset:60px 0 auto;background:var(--paper);flex-direction:column;align-items:stretch;padding:1rem var(--gutter) 1.3rem;gap:.4rem;border-bottom:2px solid var(--ink);transform:translateY(-130%);transition:transform .35s cubic-bezier(.7,0,.2,1)}.menu.open{transform:none}.menu a{border:2px solid var(--ink)}.burger{display:inline-block}}
 
-/* poster hero */
-.hero{border-bottom:2px solid var(--ink);position:relative;overflow:hidden}
-.hero .wrap{text-align:center;padding-block:clamp(2.4rem,6vw,4.5rem)}
-.hero .date{font-family:var(--mono);font-size:.9rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
-.hero h1{font-family:var(--disp);font-weight:900;font-size:clamp(4rem,20vw,15rem);line-height:.82;letter-spacing:-.02em;margin:.6rem 0 .2rem}
-.hero .where{font-family:var(--disp);font-style:italic;font-weight:600;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--deep)}
-.hero .names{margin-top:1.4rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.1rem;font-family:var(--disp);font-weight:600;font-size:clamp(.95rem,2.4vw,1.4rem)}
-.hero .names .dot{color:var(--red)}
-.hero .cta{display:inline-block;margin-top:1.8rem;font-family:var(--disp);font-weight:800;font-size:1.05rem;background:var(--ink);color:var(--paper);padding:.85rem 1.8rem;transition:transform .15s,box-shadow .15s;box-shadow:5px 5px 0 var(--red)}
+/* ---- redactionele, asymmetrische hero ---- */
+.hero{border-bottom:2px solid var(--ink)}
+.hero .wrap{display:grid;grid-template-columns:1.4fr .9fr;gap:clamp(1.5rem,4vw,3rem);padding-block:clamp(2.2rem,5vw,4rem);align-items:end}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}}
+.hero .date{font-family:var(--mono);font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.hero h1{font-family:var(--disp);font-weight:900;font-size:clamp(4rem,17vw,13rem);line-height:.82;letter-spacing:-.02em;margin:.4rem 0 .2rem}
+.hero .where{font-family:var(--disp);font-style:italic;font-weight:600;font-size:clamp(1.1rem,3vw,1.7rem);color:var(--deep)}
+.hero .cta{display:inline-block;margin-top:1.6rem;font-family:var(--disp);font-weight:800;font-size:1.05rem;background:var(--ink);color:var(--paper);padding:.85rem 1.8rem;transition:transform .15s,box-shadow .15s;box-shadow:5px 5px 0 var(--red)}
 .hero .cta:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--red)}
+/* redactioneel intro-blok (kop in 2 kolommen) */
+.lede{border-left:3px solid var(--red);padding-left:1.2rem}
+.lede .names-h{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);margin-bottom:.6rem}
+.lede .names{font-family:var(--disp);font-weight:600;font-size:clamp(1rem,2.2vw,1.3rem);line-height:1.35}
+.lede .names .dot{color:var(--red)}
+.lede p{margin-top:1rem;font-size:.96rem;color:var(--deep)}
 
-/* rule */
+/* rule strook */
 .rule{border-bottom:2px solid var(--ink);background:var(--red)}
 .rule .wrap{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;padding:.6rem 0;font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--paper)}
 
-.sec{padding-block:clamp(2.5rem,5vw,4.5rem)}
-.sec-h{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem;border-bottom:2px solid var(--ink);padding-bottom:.6rem}
-.sec-h h2{font-family:var(--disp);font-weight:900;font-size:clamp(1.8rem,5vw,3rem)}
+/* ---- magazine-layout: sticky index + inhoudskolom ---- */
+.mag{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);display:grid;grid-template-columns:var(--rail) 1fr;gap:clamp(1.6rem,4vw,3.5rem);align-items:start;padding-block:clamp(2rem,4vw,3rem)}
+@media(max-width:880px){.mag{grid-template-columns:1fr}}
+.index{position:sticky;top:78px;align-self:start}
+@media(max-width:880px){.index{position:static;border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:.5rem}}
+.index .ih{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);border-bottom:2px solid var(--ink);padding-bottom:.5rem;margin-bottom:.6rem}
+.index ol{list-style:none;display:grid;gap:.1rem}
+.index a{display:flex;gap:.6rem;align-items:baseline;font-family:var(--disp);font-weight:600;font-size:1rem;padding:.3rem 0;color:var(--ink);border-left:2px solid transparent;padding-left:.6rem;transition:border-color .2s,color .2s}
+.index a .n{font-family:var(--mono);font-size:.72rem;color:var(--red)}
+.index a:hover,.index a.on{border-left-color:var(--red);color:var(--red)}
+@media(max-width:880px){.index ol{grid-auto-flow:column;grid-auto-columns:max-content;gap:.4rem;overflow-x:auto}.index a{border-left:none;border-bottom:2px solid transparent;padding:.2rem 0}.index a:hover,.index a.on{border-bottom-color:var(--red)}}
+
+.col{min-width:0}
+.sec{padding-block:clamp(1.4rem,3vw,2.4rem);scroll-margin-top:80px}
+.sec+.sec{border-top:2px solid var(--ink)}
+.sec-h{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.sec-h h2{font-family:var(--disp);font-weight:900;font-size:clamp(1.8rem,5vw,3rem);line-height:1}
 .sec-h .n{font-family:var(--mono);font-size:.8rem;color:var(--red)}
 
-/* programma */
+/* programma (redactionele lijst) */
 .prog{display:grid;gap:0}
-.ev{display:grid;grid-template-columns:auto auto 1fr auto;gap:1.2rem;align-items:baseline;padding:1.1rem 0;border-bottom:1px solid rgba(26,20,16,.2)}
+.ev{display:grid;grid-template-columns:auto auto 1fr auto;gap:1.2rem;align-items:baseline;padding:1rem 0;border-bottom:1px solid rgba(26,20,16,.2)}
 .ev .t{font-family:var(--mono);font-size:.9rem;color:var(--red);white-space:nowrap}
 .ev .room{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;color:var(--deep);white-space:nowrap}
-.ev h3{font-family:var(--disp);font-weight:800;font-size:clamp(1.1rem,3vw,1.6rem);line-height:1.1}
+.ev h3{font-family:var(--disp);font-weight:800;font-size:clamp(1.1rem,3vw,1.5rem);line-height:1.1}
 .ev .who{font-family:var(--disp);font-style:italic;color:var(--deep);white-space:nowrap}
 @media(max-width:680px){.ev{grid-template-columns:auto 1fr}.ev .room,.ev .who{grid-column:2;justify-self:start}}
 
-/* sprekers */
+/* sprekers — multi-koloms portret-strook met echte foto's */
 .speakers{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,1.5rem)}
 @media(max-width:760px){.speakers{grid-template-columns:1fr 1fr}}@media(max-width:420px){.speakers{grid-template-columns:1fr}}
 .sp{border:2px solid var(--ink);background:var(--paper2);overflow:hidden}
-.sp .av{height:150px;display:grid;place-items:center;font-family:var(--disp);font-weight:900;font-size:3rem;border-bottom:2px solid var(--ink);color:var(--paper)}
-.sp:nth-child(4n+1) .av{background:var(--red)}.sp:nth-child(4n+2) .av{background:var(--deep)}.sp:nth-child(4n+3) .av{background:var(--gold);color:var(--ink)}.sp:nth-child(4n) .av{background:var(--ink)}
-.sp .b{padding:.9rem 1rem}
-.sp h3{font-family:var(--disp);font-weight:800;font-size:1.15rem}
+.sp .av{aspect-ratio:1/1;overflow:hidden;border-bottom:2px solid var(--ink)}
+.sp .av img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.sp:hover .av img{filter:none}
+.sp .b{padding:.8rem 1rem}
+.sp h3{font-family:var(--disp);font-weight:800;font-size:1.1rem}
 .sp .role{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:var(--deep)}
 
-/* tickets */
-.tix{background:var(--ink);color:var(--paper);border-block:2px solid var(--ink)}
-.tix .wrap{padding-block:clamp(2.5rem,5vw,4.5rem)}
-.tix .sec-h{border-color:var(--paper)}.tix .sec-h h2{color:var(--paper)}.tix .sec-h .n{color:var(--gold)}
+/* essay-blok in echte multi-kolom */
+.essay{font-family:var(--disp);font-weight:600;font-size:1.05rem;line-height:1.6;columns:2;column-gap:2.4rem;column-rule:1px solid rgba(26,20,16,.25)}
+@media(max-width:680px){.essay{columns:1}}
+.essay p{margin-bottom:1rem;break-inside:avoid}
+.essay p:first-child::first-letter{font-family:var(--disp);font-weight:900;font-size:3.4rem;float:left;line-height:.8;padding:.1rem .5rem .1rem 0;color:var(--red)}
+
+/* tickets (donker, binnen kolom) */
 .tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem)}
 @media(max-width:820px){.tcards{grid-template-columns:1fr}}
-.tc{border:2px solid var(--paper);padding:1.6rem;background:#221a14}
+.tc{border:2px solid var(--ink);padding:1.6rem;background:var(--ink);color:var(--paper)}
 .tc.feat{border-color:var(--gold);background:#2a1a12}
 .tc h3{font-family:var(--disp);font-weight:800;font-size:1.3rem}
 .tc .price{font-family:var(--disp);font-weight:900;font-size:2.8rem;margin:.4rem 0 .1rem;color:var(--gold)}.tc .price small{font-family:var(--body);font-size:.9rem;color:#bdb2a2}
@@ -94,11 +119,11 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .tc.feat .buy,.tc .buy:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 
 /* nieuwsbrief */
-.news .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
-@media(max-width:780px){.news .wrap{grid-template-columns:1fr}}
-.news h2{font-family:var(--disp);font-weight:900;font-size:clamp(1.9rem,5vw,3rem);line-height:1}
-.news h2 em{font-style:italic;color:var(--red)}
-.news p{margin-top:.9rem;max-width:40ch;color:var(--deep)}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media(max-width:680px){.news-grid{grid-template-columns:1fr}}
+.news-grid h3{font-family:var(--disp);font-weight:900;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1}
+.news-grid h3 em{font-style:italic;color:var(--red)}
+.news-grid p{margin-top:.8rem;max-width:40ch;color:var(--deep)}
 .form{border:2px solid var(--ink);background:var(--paper2);padding:clamp(1.2rem,3vw,1.8rem);box-shadow:5px 5px 0 var(--ink)}
 .fld{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
 .fld label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase}
@@ -111,7 +136,7 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 .form .ok{display:none;font-family:var(--disp);font-weight:800;color:var(--deep);padding:.4rem 0}
 .form.sent .fld,.form.sent button{display:none}.form.sent .ok{display:block}
 
-.foot{background:var(--ink);color:var(--paper);padding-block:clamp(1.8rem,3vw,2.6rem)}
+.foot{background:var(--ink);color:var(--paper);padding-block:clamp(1.8rem,3vw,2.6rem);border-top:2px solid var(--ink)}
 .foot .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;align-items:center}
 .foot .logo{color:var(--paper)}.foot .logo span{color:var(--gold)}
 .foot .tag{font-family:var(--mono);font-size:.76rem;color:#a89b8a}
@@ -123,65 +148,96 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
 
 <header class="nav"><div class="wrap">
   <a class="logo" href="#top">WOORD<span>.</span></a>
-  <nav class="menu" id="menu"><a href="#programma">Programma</a><a href="#sprekers">Sprekers</a><a href="#tickets">Tickets</a><a class="cta" href="#tickets">Koop tickets</a></nav>
-  <button class="burger" id="burger" aria-expanded="false">Menu</button>
+  <nav class="menu" id="menu"><a href="#programma">Programma</a><a href="#sprekers">Sprekers</a><a href="#essay">Manifest</a><a href="#tickets">Tickets</a><a class="cta" href="#tickets">Koop tickets</a></nav>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
 </div></header>
 
 <main>
   <section class="hero"><div class="wrap">
-    <div class="date">9 — 11 oktober 2026 · Deventer</div>
-    <h1>WOORD</h1>
-    <div class="where">een literair festival in drie dagen</div>
-    <div class="names" aria-label="Sprekers">
-      <span>Marieke Lucas Rijneveld</span><span class="dot">·</span><span>Abdelkader Benali</span><span class="dot">·</span><span>Hanna Bervoets</span><span class="dot">·</span><span>Tommy Wieringa</span><span class="dot">·</span><span>Roxane van Iperen</span>
+    <div>
+      <div class="date">9 — 11 oktober 2026 · Deventer</div>
+      <h1>WOORD</h1>
+      <div class="where">een literair festival in drie dagen</div>
+      <a class="cta" href="#tickets">Koop je passe-partout →</a>
     </div>
-    <a class="cta" href="#tickets">Koop je passe-partout →</a>
+    <aside class="lede">
+      <div class="names-h">Met onder anderen</div>
+      <div class="names" aria-label="Sprekers">Marieke Lucas Rijneveld <span class="dot">·</span> Abdelkader Benali <span class="dot">·</span> Hanna Bervoets <span class="dot">·</span> Tommy Wieringa <span class="dot">·</span> Roxane van Iperen</div>
+      <p>Drie dagen lang verandert de Deventer binnenstad in één groot leeszaal: lezingen, scherpe gesprekken en poëzie hardop, in vijf historische podia.</p>
+    </aside>
   </div></section>
 
   <div class="rule"><div class="wrap"><span>40+ sprekers</span><span>3 dagen</span><span>5 podia</span><span>1 stad</span></div></div>
 
-  <section class="sec wrap" id="programma">
-    <div class="sec-h"><span class="n">01</span><h2>Zaterdag — uitgelicht</h2></div>
-    <div class="prog" data-r>
-      <div class="ev"><span class="t">11:00</span><span class="room">Grote Zaal</span><h3>De staat van de roman</h3><span class="who">Tommy Wieringa</span></div>
-      <div class="ev"><span class="t">13:00</span><span class="room">Bibliotheek</span><h3>Poëzie hardop</h3><span class="who">M.L. Rijneveld</span></div>
-      <div class="ev"><span class="t">14:30</span><span class="room">Stadszaal</span><h3>Schrijven over thuis</h3><span class="who">Abdelkader Benali</span></div>
-      <div class="ev"><span class="t">16:00</span><span class="room">Grote Zaal</span><h3>Fictie &amp; werkelijkheid</h3><span class="who">Hanna Bervoets</span></div>
-      <div class="ev"><span class="t">20:00</span><span class="room">Schouwburg</span><h3>Avondprogramma: het lange gesprek</h3><span class="who">Roxane van Iperen</span></div>
-    </div>
-  </section>
+  <div class="mag">
+    <nav class="index" aria-label="Inhoudsopgave">
+      <div class="ih">In dit nummer</div>
+      <ol id="index">
+        <li><a href="#programma"><span class="n">01</span> Programma</a></li>
+        <li><a href="#sprekers"><span class="n">02</span> Sprekers</a></li>
+        <li><a href="#essay"><span class="n">03</span> Manifest</a></li>
+        <li><a href="#tickets"><span class="n">04</span> Tickets</a></li>
+        <li><a href="#nieuws"><span class="n">05</span> Nieuwsbrief</a></li>
+      </ol>
+    </nav>
 
-  <section class="sec wrap" id="sprekers">
-    <div class="sec-h"><span class="n">02</span><h2>Sprekers</h2></div>
-    <div class="speakers" data-r>
-      <div class="sp"><div class="av" aria-hidden="true">M</div><div class="b"><h3>M.L. Rijneveld</h3><div class="role">Dichter &amp; romancier</div></div></div>
-      <div class="sp"><div class="av" aria-hidden="true">A</div><div class="b"><h3>A. Benali</h3><div class="role">Schrijver</div></div></div>
-      <div class="sp"><div class="av" aria-hidden="true">H</div><div class="b"><h3>H. Bervoets</h3><div class="role">Romancier</div></div></div>
-      <div class="sp"><div class="av" aria-hidden="true">T</div><div class="b"><h3>T. Wieringa</h3><div class="role">Schrijver</div></div></div>
-    </div>
-  </section>
+    <div class="col">
+      <section class="sec" id="programma">
+        <div class="sec-h"><span class="n">01</span><h2>Zaterdag — uitgelicht</h2></div>
+        <div class="prog" data-r>
+          <div class="ev"><span class="t">11:00</span><span class="room">Grote Zaal</span><h3>De staat van de roman</h3><span class="who">Tommy Wieringa</span></div>
+          <div class="ev"><span class="t">13:00</span><span class="room">Bibliotheek</span><h3>Poëzie hardop</h3><span class="who">M.L. Rijneveld</span></div>
+          <div class="ev"><span class="t">14:30</span><span class="room">Stadszaal</span><h3>Schrijven over thuis</h3><span class="who">Abdelkader Benali</span></div>
+          <div class="ev"><span class="t">16:00</span><span class="room">Grote Zaal</span><h3>Fictie &amp; werkelijkheid</h3><span class="who">Hanna Bervoets</span></div>
+          <div class="ev"><span class="t">20:00</span><span class="room">Schouwburg</span><h3>Avondprogramma: het lange gesprek</h3><span class="who">Roxane van Iperen</span></div>
+        </div>
+      </section>
 
-  <section class="tix" id="tickets"><div class="wrap">
-    <div class="sec-h"><span class="n">03</span><h2>Tickets</h2></div>
-    <div class="tcards" data-r>
-      <div class="tc"><h3>Dagticket</h3><div class="price">€32<small>/dag</small></div><ul><li>Toegang 1 dag</li><li>Alle podia</li><li>Festivalkrant</li></ul><a class="buy" href="#nieuws">Koop dagticket</a></div>
-      <div class="tc feat"><h3>Passe-partout</h3><div class="price">€75<small>/3 dagen</small></div><ul><li>Alle drie de dagen</li><li>Voorrang bij topstukken</li><li>Festivalkrant + tas</li><li>Korting op boeken</li></ul><a class="buy" href="#nieuws">Koop passe-partout</a></div>
-      <div class="tc"><h3>Student</h3><div class="price">€19<small>/dag</small></div><ul><li>Toegang 1 dag</li><li>Op vertoon van studentenpas</li><li>Festivalkrant</li></ul><a class="buy" href="#nieuws">Koop studentticket</a></div>
-    </div>
-  </div></section>
+      <section class="sec" id="sprekers">
+        <div class="sec-h"><span class="n">02</span><h2>Sprekers</h2></div>
+        <div class="speakers" data-r>
+          <div class="sp"><div class="av"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=72" alt="Portret van spreker M.L. Rijneveld" loading="lazy" width="500" height="500"></div><div class="b"><h3>M.L. Rijneveld</h3><div class="role">Dichter &amp; romancier</div></div></div>
+          <div class="sp"><div class="av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=72" alt="Portret van spreker Abdelkader Benali" loading="lazy" width="500" height="500"></div><div class="b"><h3>A. Benali</h3><div class="role">Schrijver</div></div></div>
+          <div class="sp"><div class="av"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=500&q=72" alt="Portret van spreker Hanna Bervoets" loading="lazy" width="500" height="500"></div><div class="b"><h3>H. Bervoets</h3><div class="role">Romancier</div></div></div>
+          <div class="sp"><div class="av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=72" alt="Portret van spreker Tommy Wieringa" loading="lazy" width="500" height="500"></div><div class="b"><h3>T. Wieringa</h3><div class="role">Schrijver</div></div></div>
+        </div>
+      </section>
 
-  <section class="sec news" id="nieuws"><div class="wrap">
-    <div data-r>
-      <h2>Blijf op de <em>hoogte.</em></h2>
-      <p>Programma-onthullingen, extra sprekers en de kaartverkoop — als eerste in je inbox.</p>
+      <section class="sec" id="essay">
+        <div class="sec-h"><span class="n">03</span><h2>Manifest</h2></div>
+        <div class="essay" data-r>
+          <p>Lezen is het traagste medium dat we hebben — en juist daarom het scherpste. Op WOORD vieren we de zin die je twee keer moet lezen, het gesprek dat een uur duurt, het gedicht dat blijft hangen.</p>
+          <p>Drie dagen lang geven we het woord terug aan wie het maakt. Geen panels om het panel, maar schrijvers die hardop nadenken, twijfelen en elkaar tegenspreken in de mooiste zalen van Deventer.</p>
+          <p>We programmeren wat we zelf willen horen: de roman onder druk, de poëzie buiten de marge, het essay dat durft. Kom luisteren, kom tegenspreken — en neem een boek mee naar huis.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="tickets">
+        <div class="sec-h"><span class="n">04</span><h2>Tickets</h2></div>
+        <div class="tcards" data-r>
+          <div class="tc"><h3>Dagticket</h3><div class="price">€32<small>/dag</small></div><ul><li>Toegang 1 dag</li><li>Alle podia</li><li>Festivalkrant</li></ul><a class="buy" href="#nieuws">Koop dagticket</a></div>
+          <div class="tc feat"><h3>Passe-partout</h3><div class="price">€75<small>/3 dagen</small></div><ul><li>Alle drie de dagen</li><li>Voorrang bij topstukken</li><li>Festivalkrant + tas</li><li>Korting op boeken</li></ul><a class="buy" href="#nieuws">Koop passe-partout</a></div>
+          <div class="tc"><h3>Student</h3><div class="price">€19<small>/dag</small></div><ul><li>Toegang 1 dag</li><li>Op vertoon van studentenpas</li><li>Festivalkrant</li></ul><a class="buy" href="#nieuws">Koop studentticket</a></div>
+        </div>
+      </section>
+
+      <section class="sec" id="nieuws">
+        <div class="sec-h"><span class="n">05</span><h2>Nieuwsbrief</h2></div>
+        <div class="news-grid">
+          <div data-r>
+            <h3>Blijf op de <em>hoogte.</em></h3>
+            <p>Programma-onthullingen, extra sprekers en de kaartverkoop — als eerste in je inbox.</p>
+          </div>
+          <form class="form" id="form" novalidate data-r>
+            <div class="fld"><label for="w-naam">Naam</label><input id="w-naam" type="text" required><span class="err">Vul je naam in.</span></div>
+            <div class="fld"><label for="w-mail">E-mail</label><input id="w-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
+            <button type="submit">Houd me op de hoogte →</button>
+            <div class="ok" role="status">Dankjewel — tot in oktober.</div>
+          </form>
+        </div>
+      </section>
     </div>
-    <form class="form" id="form" novalidate data-r>
-      <div class="fld"><label for="w-naam">Naam</label><input id="w-naam" type="text" required><span class="err">Vul je naam in.</span></div>
-      <div class="fld"><label for="w-mail">E-mail</label><input id="w-mail" type="email" required><span class="err">Vul een geldig e-mailadres in.</span></div>
-      <button type="submit">Houd me op de hoogte →</button>
-      <div class="ok" role="status">Dankjewel — tot in oktober.</div>
-    </form>
-  </div></section>
+  </div>
 </main>
 
 <footer class="foot"><div class="wrap">
@@ -195,6 +251,13 @@ a{color:inherit;text-decoration:none}ul{list-style:none}button,input,select,text
   var jaar=doc.getElementById('jaar');if(jaar)jaar.textContent=new Date().getFullYear();
   var menu=doc.getElementById('menu'),bg=doc.getElementById('burger');
   if(bg){bg.addEventListener('click',function(){var o=!menu.classList.contains('open');menu.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);});menu.addEventListener('click',function(e){if(e.target.closest('a'))menu.classList.remove('open');});}
+  // sticky index scroll-spy
+  var index=doc.getElementById('index');
+  if(index&&'IntersectionObserver'in window){
+    var links=[].slice.call(index.querySelectorAll('a'));
+    var spy=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var id=en.target.id;links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+id);});}});},{rootMargin:'-30% 0px -60% 0px'});
+    ['programma','sprekers','essay','tickets','nieuws'].forEach(function(id){var el=doc.getElementById(id);if(el)spy.observe(el);});
+  }
   if(!reduced&&'IntersectionObserver'in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});doc.querySelectorAll('[data-r]').forEach(function(el){io.observe(el);});}
   var form=doc.getElementById('form');if(form){function bad(i,o){var f=i.closest('.fld');if(f)f.classList.toggle('bad',o);}function val(i){var v=(i.value||'').trim(),ok=true;if(i.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);else ok=v.length>0;bad(i,!ok);return ok;}var ins=[].slice.call(form.querySelectorAll('input[required],textarea[required]'));ins.forEach(function(i){i.addEventListener('blur',function(){val(i);});});form.addEventListener('submit',function(e){e.preventDefault();var ok=true,f=null;ins.forEach(function(i){if(!val(i)){ok=false;if(!f)f=i;}});if(!ok){if(f)f.focus();return;}form.classList.add('sent');});}
 })();
