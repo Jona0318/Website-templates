@@ -166,6 +166,10 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .thumb{position:relative;aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,var(--g1,#444),var(--g2,#222))}
 .thumb .emoji{font-size:2.8rem;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4));transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
 .card:hover .thumb .emoji{transform:scale(1.16) rotate(-6deg)}
+.thumb .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity .5s var(--ease),transform .6s var(--ease)}
+.thumb .shot.loaded{opacity:1}
+.thumb.has-shot .emoji{display:none}
+.card:hover .thumb .shot.loaded{transform:scale(1.05)}
 .thumb .num{position:absolute;top:.7rem;left:.8rem;font-family:var(--f-mono);font-size:.74rem;font-weight:700;color:rgba(255,255,255,.92);background:rgba(0,0,0,.32);padding:.2rem .55rem;border-radius:99px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .thumb .badge{position:absolute;top:.7rem;right:.8rem;font-family:var(--f-mono);font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0a0a12;padding:.24rem .6rem;border-radius:99px;background:var(--bc,#fff)}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none}
@@ -445,6 +449,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' : '';
     a.innerHTML =
       '<div class="thumb" style="--g1:' + g1 + ';--g2:' + g2 + '">' +
+        '<img class="shot" loading="lazy" alt="" src="previews/' + slug + '.jpg">' +
         '<span class="num">' + num + '</span>' +
         '<span class="badge" style="--bc:' + TIERS[tier].color + '">' + TIERS[tier].label + '</span>' +
         '<span class="emoji">' + emoji + '</span>' +
@@ -455,6 +460,11 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
         tagHtml +
         '<span class="go">Bekijk template ' + arrow + '</span>' +
       '</div>';
+    var shot = a.querySelector('.shot');
+    if (shot) {
+      shot.addEventListener('load', function () { shot.classList.add('loaded'); var t = a.querySelector('.thumb'); if (t) { t.classList.add('has-shot'); } });
+      shot.addEventListener('error', function () { if (shot.parentNode) { shot.parentNode.removeChild(shot); } });
+    }
     grid.appendChild(a);
   });
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
