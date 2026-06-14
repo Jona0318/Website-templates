@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENSO — izakaya · sushi &amp; ramen, Amsterdam</title>
+<meta name="description" content="ENSO is een kleine izakaya in Amsterdam-Oost. Sushi naar de seizoenen, dampende ramen, kleine gerechten om te delen en zorgvuldig geschonken sake. Rust, vakmanschap en omotenashi aan een toog van blank hout. Reserveer online.">
+<meta name="theme-color" content="#f4f1ea">
+<meta property="og:title" content="ENSO — izakaya, sushi & ramen · Amsterdam">
+<meta property="og:description" content="Een kleine izakaya in Amsterdam-Oost. Sushi naar de seizoenen, dampende ramen en zorgvuldig geschonken sake.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;h.classList.remove('no-js');h.classList.add('js');})();</script>
+<style>
+/* ============================================================
+   ENSO — izakaya · sushi & ramen, Amsterdam
+   Minimalistisch zen / wabi-sabi one-pager. Handgemaakt, inline,
+   geen libraries. Washi-papier, sumi-inkt, één vermiljoen accent.
+   ============================================================ */
+:root{
+  --washi:#f4f1ea;          /* washi off-white */
+  --washi-2:#ece6da;        /* iets dieper papier */
+  --washi-3:#e3dccc;
+  --sumi:#1c1a17;           /* sumi inkt zwart */
+  --sumi-2:#3a3631;
+  --ink-soft:rgba(28,26,23,.66);
+  --ink-faint:rgba(28,26,23,.44);
+  --ink-ghost:rgba(28,26,23,.16);
+  --line:rgba(28,26,23,.15);
+  --line-soft:rgba(28,26,23,.08);
+  --shu:#b1402e;            /* vermiljoen / shu */
+  --shu-deep:#8c2f20;
+  --shu-soft:rgba(177,64,46,.12);
+  --serif:"Shippori Mincho",Georgia,"Times New Roman",serif;
+  --sans:"Zen Kaku Gothic New",system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+  --gutter:clamp(1.25rem,5vw,5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--washi);color:var(--sumi);
+  font-family:var(--sans);font-weight:300;font-size:1.04rem;line-height:1.72;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+/* subtiele papiertextuur via tweelaags gradient */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 100% 0%,rgba(177,64,46,.04),transparent 55%),
+    radial-gradient(90% 70% at 0% 100%,rgba(28,26,23,.04),transparent 60%);
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--shu);color:var(--washi)}
+:focus-visible{outline:2px solid var(--shu);outline-offset:3px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.serif{font-family:var(--serif)}
+.jp{font-family:var(--serif);font-weight:400}
+.label{font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--sumi);color:var(--washi);padding:.65rem 1.05rem;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* ---------- briefhoofd ---------- */
+.lh{border-bottom:1px solid var(--line);background:var(--washi)}
+.lh .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:38px;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+.lh .status{display:inline-flex;align-items:center;gap:.55rem;font-weight:500}
+.lh .lamp{width:7px;height:7px;border-radius:50%;background:var(--shu);box-shadow:0 0 0 0 rgba(177,64,46,.5);animation:pulse 3s infinite}
+.lh .status[data-open="false"] .lamp{background:var(--ink-faint);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(177,64,46,.4)}70%{box-shadow:0 0 0 7px rgba(177,64,46,0)}100%{box-shadow:0 0 0 0 rgba(177,64,46,0)}}
+@media (max-width:640px){.lh .place{display:none}}
+
+/* ---------- enso-cirkel mark ---------- */
+.enso{display:inline-block;border-radius:50%;border:2.4px solid var(--shu);
+  -webkit-mask:conic-gradient(from 32deg,#000 0 312deg,transparent 312deg 360deg);
+  mask:conic-gradient(from 32deg,#000 0 312deg,transparent 312deg 360deg);
+  transform:rotate(-8deg)}
+
+/* ---------- navigatie ---------- */
+.nav{position:sticky;top:0;z-index:80;background:rgba(244,241,234,.86);backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid transparent;transition:border-color .35s,box-shadow .35s,background-color .35s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 12px 32px -28px rgba(28,26,23,.65)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--serif);font-weight:600;font-size:1.55rem;letter-spacing:.04em;line-height:1}
+.brand .enso{width:26px;height:26px;flex:none}
+.brand .kanji{font-weight:400;color:var(--shu);font-size:1.2rem;margin-left:.15rem}
+.nav-links{display:flex;align-items:center;gap:2.1rem}
+.nav-links a{font-family:var(--sans);font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sumi-2);position:relative;padding-block:.4rem}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:.05rem;height:1px;background:var(--shu);transition:right .4s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-resv{display:inline-flex;align-items:center;border:1px solid var(--sumi);padding:.55rem 1.15rem;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;transition:background-color .35s,color .35s}
+.nav-resv::after{display:none}
+.nav-resv:hover{background:var(--sumi);color:var(--washi)}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);background:transparent;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:1.5px;background:var(--sumi);transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:860px){
+  .nav-links{position:fixed;inset:0;background:var(--washi);flex-direction:column;justify-content:center;gap:1.7rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:70}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.05rem;letter-spacing:.16em}
+  .nav-links .nav-resv{font-size:.85rem;padding:.8rem 1.6rem}
+  .burger{display:flex;z-index:90}
+  .burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(2.5rem,6vw,5.5rem);padding-bottom:clamp(3rem,7vw,5.5rem)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+@media (max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.hero-kicker{color:var(--shu);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:.7rem}
+.hero-kicker::before{content:"";width:30px;height:1px;background:var(--shu)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,8.5vw,6rem);line-height:1.02;letter-spacing:.01em}
+.hero h1 .sub{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1rem,2.2vw,1.5rem);letter-spacing:.34em;text-transform:uppercase;color:var(--ink-soft);margin-top:1.1rem}
+.hero h1 em{font-style:normal;color:var(--shu)}
+.hero-intro{margin-top:1.7rem;font-size:clamp(1.06rem,1.5vw,1.22rem);color:var(--sumi-2);max-width:44ch;line-height:1.78;font-weight:300}
+.hero-actions{margin-top:2.2rem;display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap}
+.lnk{font-family:var(--sans);font-weight:500;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.6rem;padding-bottom:.3rem;border-bottom:1.5px solid var(--shu);color:var(--sumi);transition:gap .3s,color .3s}
+.lnk svg{width:14px;height:14px;transition:transform .3s var(--ease)}
+.lnk:hover{gap:1rem;color:var(--shu)}
+.lnk:hover svg{transform:translateX(3px)}
+.lnk.ghost{border-bottom-color:var(--line);color:var(--sumi-2)}
+.lnk.ghost:hover{border-bottom-color:var(--sumi);color:var(--sumi)}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;overflow:hidden;background:var(--washi-3)}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.7;object-fit:cover;filter:saturate(.95) contrast(1.02)}
+.hero-figure .vmark{position:absolute;top:0;right:-1.9rem;writing-mode:vertical-rl;font-family:var(--serif);font-size:.84rem;letter-spacing:.42em;color:var(--ink-faint);height:100%;display:flex;align-items:flex-start}
+.hero-figure figcaption{margin-top:.75rem;font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--ink-soft)}
+.hero-figure .seal{position:absolute;left:-1.3rem;bottom:2.4rem;width:64px;height:64px;border-radius:50%;background:var(--shu);color:var(--washi);display:grid;place-items:center;font-family:var(--serif);font-size:1.7rem;box-shadow:0 18px 40px -22px rgba(177,64,46,.8);transform:rotate(-6deg)}
+@media (max-width:880px){.hero-figure .vmark{display:none}.hero-figure .seal{left:.6rem;bottom:1.2rem;width:54px;height:54px;font-size:1.4rem}}
+
+/* ---------- losse principe-strook ---------- */
+.tenets{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--washi-2)}
+.tenets .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);padding:0}
+@media (max-width:720px){.tenets .wrap{grid-template-columns:1fr}}
+.tenet{background:var(--washi-2);padding:clamp(1.6rem,3vw,2.2rem) clamp(1.25rem,5vw,2rem);display:flex;gap:1.1rem;align-items:flex-start}
+.tenet .k{font-family:var(--serif);font-size:2rem;line-height:1;color:var(--shu);flex:none}
+.tenet h3{font-family:var(--serif);font-weight:600;font-size:1.08rem;letter-spacing:.02em}
+.tenet p{margin-top:.3rem;font-size:.9rem;color:var(--ink-soft);line-height:1.6}
+
+/* ---------- sectiekop ---------- */
+.sec{padding-block:clamp(3.6rem,7.5vw,6.5rem);border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:0}
+.sec-head{display:flex;align-items:baseline;gap:1.1rem;margin-bottom:clamp(2.2rem,4vw,3.4rem)}
+.sec-head .no{font-family:var(--serif);font-weight:500;font-size:.8rem;letter-spacing:.14em;color:var(--shu)}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.8vw,3.2rem);line-height:1.04;letter-spacing:.01em}
+.sec-head h2 .k{color:var(--ink-faint);font-weight:400;margin-left:.5rem;font-size:.6em}
+.sec-head .aside{margin-left:auto;font-family:var(--serif);font-style:italic;color:var(--ink-soft);max-width:30ch;text-align:right;font-size:.98rem}
+@media (max-width:640px){.sec-head{flex-wrap:wrap}.sec-head .aside{margin-left:0;text-align:left;width:100%}}
+
+/* ---------- kaart / menu ---------- */
+.menu-tabs{display:flex;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid var(--line);margin-bottom:clamp(2rem,4vw,2.8rem)}
+.menu-tab{font-family:var(--sans);font-weight:500;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);background:none;border:0;border-bottom:1.5px solid transparent;padding:.7rem .95rem .85rem;cursor:pointer;transition:color .3s,border-color .3s;position:relative;top:1px}
+.menu-tab .k{font-family:var(--serif);color:var(--ink-faint);margin-left:.4rem;font-size:.92em;transition:color .3s}
+.menu-tab:hover{color:var(--sumi)}
+.menu-tab[aria-selected="true"]{color:var(--sumi);border-bottom-color:var(--shu)}
+.menu-tab[aria-selected="true"] .k{color:var(--shu)}
+.menu-panel{display:none}
+.menu-panel.active{display:block;animation:fade .5s var(--ease)}
+@media (prefers-reduced-motion:reduce){.menu-panel.active{animation:none}}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.dish-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,3vw,2.6rem) clamp(2.5rem,6vw,5rem)}
+@media (max-width:760px){.dish-grid{grid-template-columns:1fr;gap:1.5rem}}
+.dish{padding-bottom:1.15rem;border-bottom:1px solid var(--line-soft)}
+.dish-top{display:flex;align-items:baseline;gap:.4rem}
+.dish-name{font-family:var(--serif);font-weight:500;font-size:1.16rem;line-height:1.25}
+.dish-name .k{font-weight:400;color:var(--ink-faint);font-size:.8rem;letter-spacing:.14em;margin-left:.5rem}
+.dish-lead{flex:1;position:relative;top:-.34rem;border-bottom:1.5px dotted var(--ink-ghost)}
+.dish-price{font-family:var(--serif);font-variant-numeric:tabular-nums;font-size:1.04rem;color:var(--sumi-2)}
+.dish-desc{font-size:.92rem;color:var(--ink-soft);margin-top:.28rem;max-width:44ch;line-height:1.6}
+.dish .tag{display:inline-block;font-family:var(--sans);font-weight:500;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--shu);border:1px solid var(--shu-soft);background:var(--shu-soft);padding:.05rem .45rem;margin-left:.4rem;vertical-align:middle;border-radius:2px}
+.dish .tag.veg{color:#5d6b3f;background:rgba(93,107,63,.1);border-color:rgba(93,107,63,.12)}
+.menu-note{margin-top:clamp(2.2rem,5vw,3rem);font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.98rem;max-width:62ch;line-height:1.7}
+
+/* ---------- het huis / filosofie ---------- */
+.huis{background:var(--washi-2)}
+.huis .wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:880px){.huis .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.huis-fig{position:relative}
+.huis-fig img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--washi-3);filter:saturate(.95)}
+.huis-fig figcaption{margin-top:.7rem;font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--ink-soft)}
+.huis-text .lead::first-letter{font-family:var(--serif);font-size:3.6rem;line-height:.72;float:left;margin:.34rem .6rem 0 0;color:var(--shu)}
+.huis-text p{font-size:1.08rem;line-height:1.82;color:var(--sumi-2);font-weight:300}
+.huis-text p+p{margin-top:1.1rem}
+.pull{font-family:var(--serif);font-weight:500;font-size:clamp(1.45rem,3vw,2rem);line-height:1.32;color:var(--sumi);margin:1.9rem 0;padding-left:1.3rem;border-left:2px solid var(--shu)}
+.pull .k{display:block;font-size:.8rem;letter-spacing:.3em;color:var(--ink-faint);margin-top:.6rem;font-weight:400}
+.signoff{margin-top:1.6rem;font-family:var(--serif);font-style:italic;color:var(--ink-soft)}
+.signoff b{font-style:normal;font-weight:600}
+
+/* ---------- sfeer galerij ---------- */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.5vw,1rem)}
+@media (max-width:760px){.gal-grid{grid-template-columns:1fr 1fr}}
+.gal-grid figure{position:relative;overflow:hidden;background:var(--washi-3)}
+.gal-grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1.2;transition:transform .9s var(--ease);filter:saturate(.95)}
+.gal-grid figure:hover img{transform:scale(1.05)}
+.gal-grid figure.tall img{aspect-ratio:1/1.55}
+@media (prefers-reduced-motion:reduce){.gal-grid figure:hover img{transform:none}}
+
+/* ---------- sake ---------- */
+.sake{background:var(--sumi);color:var(--washi)}
+.sake .sec-head h2,.sake .sec-head .no{color:var(--washi)}
+.sake .sec-head .no{color:#e0a596}
+.sake .sec-head h2 .k{color:rgba(244,241,234,.4)}
+.sake .sec-head .aside{color:rgba(244,241,234,.72)}
+.sake-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2.5rem,6vw,5rem)}
+@media (max-width:680px){.sake-grid{grid-template-columns:1fr}}
+.pour{display:flex;align-items:baseline;gap:.4rem;padding-block:1rem;border-bottom:1px solid rgba(244,241,234,.16)}
+.pour-name{font-family:var(--serif);font-weight:500;font-size:1.14rem}
+.pour-name small{font-family:var(--sans);font-weight:300;font-style:normal;font-size:.84rem;opacity:.7;margin-left:.5rem}
+.pour-lead{flex:1;position:relative;top:-.3rem;border-bottom:1.5px dotted rgba(244,241,234,.25)}
+.pour-price{font-family:var(--serif);font-variant-numeric:tabular-nums}
+.sake-note{margin-top:clamp(2rem,4vw,2.8rem);font-family:var(--serif);font-style:italic;opacity:.84;max-width:62ch;line-height:1.7}
+
+/* ---------- praktisch / openingstijden ---------- */
+.prak .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.2rem,5vw,4.5rem);align-items:start}
+@media (max-width:880px){.prak .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.hours{width:100%;border-collapse:collapse}
+.hours th{text-align:left;font-family:var(--sans);font-weight:500;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--shu);padding-bottom:.85rem;border-bottom:1px solid var(--line)}
+.hours td{padding-block:.78rem;border-bottom:1px solid var(--line-soft);font-size:1.02rem}
+.hours td.day{font-family:var(--serif);font-size:1.1rem}
+.hours td.day .k{font-family:var(--sans);font-weight:300;font-size:.72rem;color:var(--ink-faint);margin-left:.5rem;letter-spacing:.12em}
+.hours td.time{text-align:right;font-variant-numeric:tabular-nums;color:var(--sumi-2)}
+.hours tr.today td{background:var(--washi-2)}
+.hours tr.today td.day{position:relative}
+.hours tr.today td.day::before{content:"";position:absolute;left:-.9rem;top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:var(--shu)}
+.hours td.closed{color:var(--ink-faint);font-style:italic}
+.prak-side .now{font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem;line-height:1.3}
+.prak-side .now[data-open="false"]{color:var(--shu)}
+.prak-side p.body{color:var(--sumi-2);font-weight:300}
+.contact-lines{margin-top:1.7rem;display:grid;gap:.55rem;font-size:1.02rem}
+.contact-lines a{display:inline-block;border-bottom:1px solid var(--line);transition:border-color .3s,color .3s}
+.contact-lines a:hover{border-bottom-color:var(--shu);color:var(--shu)}
+.prak-fig{margin-top:1.9rem;overflow:hidden}
+.prak-fig img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--washi-3)}
+.prak-fig figcaption{margin-top:.6rem;font-family:var(--serif);font-style:italic;font-size:.86rem;color:var(--ink-soft)}
+
+/* ---------- reserveren ---------- */
+.resv{background:var(--washi-2)}
+.resv .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem)}
+@media (max-width:880px){.resv .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.resv-intro .big{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.1;margin-bottom:1rem}
+.resv-intro p{color:var(--sumi-2);font-size:1.06rem;line-height:1.74;max-width:40ch;font-weight:300}
+.resv-intro .phone{margin-top:1.7rem;font-family:var(--serif);font-size:1.45rem}
+.resv-intro .phone a{border-bottom:1px solid var(--line);transition:border-color .3s}
+.resv-intro .phone a:hover{border-bottom-color:var(--shu)}
+.resv-intro .vquote{margin-top:2rem;writing-mode:vertical-rl;font-family:var(--serif);font-size:1rem;letter-spacing:.34em;color:var(--ink-faint);height:8rem}
+@media (max-width:880px){.resv-intro .vquote{display:none}}
+.form{background:var(--washi);border:1px solid var(--line);padding:clamp(1.6rem,3.5vw,2.4rem);position:relative}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 1.5rem}
+@media (max-width:520px){.frow{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--sans);font-weight:500;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.5rem}
+.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1.5px solid var(--line);color:var(--sumi);padding:.5rem .1rem;font-size:1.04rem;font-weight:300;transition:border-color .3s}
+.field textarea{resize:vertical;min-height:64px}
+.field select{cursor:pointer}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--shu)}
+.field.bad input,.field.bad select,.field.bad textarea{border-bottom-color:var(--shu)}
+.field .err{font-size:.76rem;color:var(--shu-deep);margin-top:.35rem;display:none}
+.field.bad .err{display:block}
+.fsubmit{margin-top:1.9rem;display:inline-flex;align-items:center;gap:.7rem;background:var(--sumi);color:var(--washi);border:0;padding:.95rem 1.9rem;font-family:var(--sans);font-weight:500;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background-color .35s,transform .3s var(--ease)}
+.fsubmit svg{width:14px;height:14px;transition:transform .3s var(--ease)}
+.fsubmit:hover{background:var(--shu);transform:translateY(-2px)}
+.fsubmit:hover svg{transform:translateX(3px)}
+.fnote{margin-top:1rem;font-size:.8rem;color:var(--ink-faint)}
+.form-ok{display:none;text-align:center;padding:1.6rem 0}
+.form.sent .form-ok{display:block}
+.form.sent .frow,.form.sent .fsubmit,.form.sent .fnote{display:none}
+.form-ok .seal{width:62px;height:62px;border-radius:50%;background:var(--shu);color:var(--washi);display:grid;place-items:center;margin:0 auto 1.2rem;font-family:var(--serif);font-size:1.7rem}
+.form-ok h3{font-family:var(--serif);font-weight:600;font-size:1.5rem}
+.form-ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.foot{padding-block:clamp(3rem,6vw,4.8rem) 2rem;border-top:1px solid var(--line)}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:2.2rem}
+.foot-mark{display:flex;align-items:center;gap:1rem}
+.foot-mark .enso{width:46px;height:46px}
+.foot-mark .name{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,7vw,4rem);line-height:.85;letter-spacing:.03em}
+.foot-mark .name .k{color:var(--shu);font-weight:400;font-size:.45em;margin-left:.3rem}
+.foot-cols{display:flex;gap:clamp(2rem,5vw,4rem);flex-wrap:wrap;font-size:.94rem}
+.foot-cols h4{font-family:var(--sans);font-weight:500;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.8rem}
+.foot-cols p,.foot-cols a{color:var(--sumi-2);line-height:1.7;font-weight:300}
+.foot-cols a:hover{color:var(--shu)}
+.socials{display:flex;gap:.6rem;margin-top:.3rem}
+.socials a{width:38px;height:38px;border:1px solid var(--line);display:grid;place-items:center;transition:background-color .3s,border-color .3s,color .3s}
+.socials a:hover{background:var(--sumi);border-color:var(--sumi);color:var(--washi)}
+.socials svg{width:17px;height:17px}
+.foot-bottom{margin-top:1.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;color:var(--ink-faint)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .lh .lamp{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- briefhoofd -->
+<div class="lh">
+  <div class="wrap">
+    <span class="place">Tweede Oosterparkstraat 8 · Amsterdam</span>
+    <span class="status" id="lh-status" data-open="true"><span class="lamp" aria-hidden="true"></span><span id="lh-status-text">Open</span></span>
+    <span>Izakaya · sushi &amp; ramen</span>
+  </div>
+</div>
+
+<!-- navigatie -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="ENSO home">
+      <span class="enso" aria-hidden="true"></span>ENSO<span class="kanji" aria-hidden="true">円相</span>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#kaart">De kaart</a>
+      <a href="#huis">Het huis</a>
+      <a href="#sfeer">Sfeer</a>
+      <a href="#sake">Sake</a>
+      <a href="#praktisch">Praktisch</a>
+      <a class="nav-resv" href="#reserveren">Reserveren</a>
+    </nav>
+    <button class="burger" id="burger" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="navlinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="hero-kicker label" data-r>Izakaya · sinds 2014</p>
+      <h1 data-r style="--d:.05s">ENSO<span class="sub">Sushi &middot; Ramen &middot; <em>Sake</em></span></h1>
+      <p class="hero-intro" data-r style="--d:.12s">Een kleine izakaya in Amsterdam-Oost. Sushi naar de seizoenen, dampende ramen en kleine gerechten om te delen — geserveerd in rust, aan een toog van blank hout.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="lnk" href="#reserveren">Reserveer een plek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="lnk ghost" href="#kaart">Bekijk de kaart</a>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <span class="vmark" aria-hidden="true">円 相 の 心</span>
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1100&q=72" alt="Vers bereide nigiri sushi op een houten plank" loading="eager" width="900" height="1057">
+      </div>
+      <span class="seal" aria-hidden="true">円</span>
+      <figcaption>Nigiri van de dag, gesneden aan de toog.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- PRINCIPES -->
+<section class="tenets" aria-label="Onze uitgangspunten">
+  <div class="wrap">
+    <div class="tenet" data-r>
+      <span class="k" aria-hidden="true">旬</span>
+      <div><h3>Seizoen</h3><p>De kaart beweegt mee met wat de markt en de afslag te bieden hebben. Wat niet op zijn best is, staat er niet op.</p></div>
+    </div>
+    <div class="tenet" data-r style="--d:.1s">
+      <span class="k" aria-hidden="true">技</span>
+      <div><h3>Vakmanschap</h3><p>Eén mes, geslepen handen en de tijd om het goed te doen. Rijst, dashi en snede vragen geduld.</p></div>
+    </div>
+    <div class="tenet" data-r style="--d:.2s">
+      <span class="k" aria-hidden="true">心</span>
+      <div><h3>Omotenashi</h3><p>Gastvrijheid zonder ophef. We anticiperen, we storen niet, en we laten u in alle rust genieten.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DE KAART -->
+<section class="sec" id="kaart">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="no">01</span>
+      <h2>De kaart <span class="k" aria-hidden="true">献立</span></h2>
+      <p class="aside">Kleine porties, om te delen en in eigen tempo te bestellen.</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Menucategorieën" data-r>
+      <button class="menu-tab" role="tab" id="tab-sushi" aria-controls="panel-sushi" aria-selected="true">Sushi <span class="k" aria-hidden="true">寿司</span></button>
+      <button class="menu-tab" role="tab" id="tab-ramen" aria-controls="panel-ramen" aria-selected="false" tabindex="-1">Ramen <span class="k" aria-hidden="true">拉麺</span></button>
+      <button class="menu-tab" role="tab" id="tab-klein" aria-controls="panel-klein" aria-selected="false" tabindex="-1">Kleine gerechten <span class="k" aria-hidden="true">小皿</span></button>
+      <button class="menu-tab" role="tab" id="tab-zoet" aria-controls="panel-zoet" aria-selected="false" tabindex="-1">Zoet <span class="k" aria-hidden="true">甘味</span></button>
+    </div>
+
+    <!-- SUSHI -->
+    <div class="menu-panel active" role="tabpanel" id="panel-sushi" aria-labelledby="tab-sushi">
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Nigiri otoro <span class="k" aria-hidden="true">大とろ</span></span><span class="dish-lead"></span><span class="dish-price">9</span></div>
+          <p class="dish-desc">Vette tonijnbuik, gerijpt, met een vleugje wasabi onder de snede. Per stuk.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Nigiri zalm &amp; yuzu</span><span class="dish-lead"></span><span class="dish-price">5</span></div>
+          <p class="dish-desc">Schotse zalm, geflambeerd, yuzu-zest en een korrel zeezout. Per stuk.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Sashimi van de dag</span><span class="dish-lead"></span><span class="dish-price">18</span></div>
+          <p class="dish-desc">Selectie van drie vissen, vers van de afslag in IJmuiden, mooi gesneden.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Maki komkommer &amp; shiso</span><span class="dish-lead"></span><span class="dish-price">7</span><span class="tag veg">vega</span></div>
+          <p class="dish-desc">Knapperige komkommer, shisoblad en geroosterd sesam. Zes stuks.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Ura-maki tempura garnaal</span><span class="dish-lead"></span><span class="dish-price">14</span></div>
+          <p class="dish-desc">Krokante garnaal, avocado, masago en een streep spicy mayo. Acht stuks.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Omakase nigiri <span class="k" aria-hidden="true">お任せ</span></span><span class="dish-lead"></span><span class="dish-price">34</span></div>
+          <p class="dish-desc">Acht stukken naar keuze van de chef, op het ritme van het seizoen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RAMEN -->
+    <div class="menu-panel" role="tabpanel" id="panel-ramen" aria-labelledby="tab-ramen" hidden>
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Tonkotsu <span class="k" aria-hidden="true">豚骨</span></span><span class="dish-lead"></span><span class="dish-price">17</span></div>
+          <p class="dish-desc">Romige bouillon van twaalf uur trekken, chashu varken, ei, lente-ui, nori.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Shoyu kip</span><span class="dish-lead"></span><span class="dish-price">16</span></div>
+          <p class="dish-desc">Heldere sojabouillon, gegrilde kip, bamboe, kombu en dunne ramen.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Miso &amp; mais</span><span class="dish-lead"></span><span class="dish-price">16</span></div>
+          <p class="dish-desc">Vollere miso-bouillon uit het noorden, geroosterde mais, boter, taugé.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Shiitake-paddenstoel</span><span class="dish-lead"></span><span class="dish-price">15</span><span class="tag veg">vega</span></div>
+          <p class="dish-desc">Umami-rijke paddenstoelbouillon, shiitake, spinazie, marinade-ei optioneel.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Tsukemen <span class="k" aria-hidden="true">つけ麺</span></span><span class="dish-lead"></span><span class="dish-price">18</span></div>
+          <p class="dish-desc">Koude noedels om te dippen in een geconcentreerde, warme dashi.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Spicy tantan</span><span class="dish-lead"></span><span class="dish-price">17</span><span class="tag">pittig</span></div>
+          <p class="dish-desc">Sesam, chili-olie en gekruid gehakt — diep, warm en net pittig genoeg.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KLEINE GERECHTEN -->
+    <div class="menu-panel" role="tabpanel" id="panel-klein" aria-labelledby="tab-klein" hidden>
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Edamame &amp; zeezout</span><span class="dish-lead"></span><span class="dish-price">6</span><span class="tag veg">vega</span></div>
+          <p class="dish-desc">Gestoomde sojabonen, grof zeezout, een snufje shichimi.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Gyoza varken</span><span class="dish-lead"></span><span class="dish-price">9</span></div>
+          <p class="dish-desc">Vijf dumplings, krokant gebakken, met ponzu en chili-olie.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Karaage</span><span class="dish-lead"></span><span class="dish-price">10</span></div>
+          <p class="dish-desc">Gemarineerde kip, krokant gefrituurd, met yuzu-mayonaise.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Agedashi tofu</span><span class="dish-lead"></span><span class="dish-price">8</span><span class="tag veg">vega</span></div>
+          <p class="dish-desc">Zachte tofu in lichte dashi, daikon, bonitovlokken — of vega op verzoek.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Yakitori negima</span><span class="dish-lead"></span><span class="dish-price">8</span></div>
+          <p class="dish-desc">Spiesjes kip en bosui van de grill, geglazuurd met tare. Twee stuks.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Gegrilde aubergine</span><span class="dish-lead"></span><span class="dish-price">9</span><span class="tag veg">vega</span></div>
+          <p class="dish-desc">Nasu dengaku — aubergine met zoete miso, sesam en lente-ui.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZOET -->
+    <div class="menu-panel" role="tabpanel" id="panel-zoet" aria-labelledby="tab-zoet" hidden>
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Mochi-ijs</span><span class="dish-lead"></span><span class="dish-price">7</span></div>
+          <p class="dish-desc">Drie bollen: yuzu, sesam en matcha, in zachte rijstdeeg.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Matcha-tiramisu</span><span class="dish-lead"></span><span class="dish-price">9</span></div>
+          <p class="dish-desc">Mascarpone, matcha en biscuit van castella — licht en niet te zoet.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Kuromitsu &amp; kinako</span><span class="dish-lead"></span><span class="dish-price">8</span><span class="tag veg">vega</span></div>
+          <p class="dish-desc">Warme zwarte suikersiroop over geroosterd sojameel en zachte tofu-pudding.</p>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Thee-arrangement</span><span class="dish-lead"></span><span class="dish-price">6</span></div>
+          <p class="dish-desc">Sencha, hojicha of geklopte matcha — gezet aan tafel.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note">Een allergie of dieetwens? Zeg het bij het reserveren of aan de toog — de keuken denkt graag mee. Een omakase-belevenis van de chef serveren we op aanvraag vanaf 65 per persoon.</p>
+  </div>
+</section>
+
+<!-- HET HUIS -->
+<section class="sec huis" id="huis">
+  <div class="wrap">
+    <figure class="huis-fig" data-r>
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=72" alt="Rustig houten interieur van een izakaya met een lange toog" width="900" height="1200" loading="lazy">
+      <figcaption>De toog van blank hout, het hart van het huis.</figcaption>
+    </figure>
+    <div class="huis-text" data-r style="--d:.1s">
+      <span class="no" style="font-family:var(--serif);font-weight:500;font-size:.8rem;letter-spacing:.14em;color:var(--shu)">02 — Het huis</span>
+      <h2 style="font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.6vw,3rem);line-height:1.05;margin:.8rem 0 1.4rem;letter-spacing:.01em">Een cirkel, in één streek</h2>
+      <p class="lead">ENSO is genoemd naar de enso — de cirkel die een zenmonnik in één ademhaling met de penseel trekt. Nooit helemaal rond, nooit perfect, en juist daarom compleet. Zo koken wij ook: met aandacht voor het moment, en met ruimte voor wat onaf mag blijven.</p>
+      <blockquote class="pull">Schoonheid zit in het eenvoudige, het vergankelijke, het onvolmaakte.<span class="k" aria-hidden="true">侘 寂 — WABI-SABI</span></blockquote>
+      <p>We werken met kleine leveranciers: een visser uit IJmuiden, een tuinder uit de Beemster, een sake-importeur die zijn makers persoonlijk kent. Onze rijst koken we elke dienst vers; onze dashi trekken we 's ochtends. Wat overblijft van de dag, gebruiken we de volgende — niets gaat verloren.</p>
+      <p class="signoff">— <b>Aiko &amp; Daan</b>, chef en gastvrouw</p>
+    </div>
+  </div>
+</section>
+
+<!-- SFEER -->
+<section class="sec" id="sfeer">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="no">03</span>
+      <h2>Sfeer <span class="k" aria-hidden="true">空気</span></h2>
+      <p class="aside">Weinig tafels, zacht licht, en de geur van dashi.</p>
+    </div>
+    <div class="gal-grid" data-r>
+      <figure class="tall"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=72" alt="Dampende kom ramen met ei en lente-ui" width="700" height="1085" loading="lazy"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=700&q=72" alt="Sushi-chef die nigiri bereidt aan de toog" width="700" height="840" loading="lazy"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1607301406259-dfb186e15de8?auto=format&fit=crop&w=700&q=72" alt="Glas en karaf met sake op een houten tafel" width="700" height="840" loading="lazy"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=700&q=72" alt="Selectie kleine Japanse gerechten om te delen" width="700" height="840" loading="lazy"></figure>
+      <figure class="tall"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=72" alt="Warm verlicht interieur van het restaurant in de avond" width="700" height="1085" loading="lazy"></figure>
+      <figure><img src="https://images.unsplash.com/photo-1535007813616-79dc02ba4021?auto=format&fit=crop&w=700&q=72" alt="Assortiment verse sushi van bovenaf gefotografeerd" width="700" height="840" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- SAKE -->
+<section class="sec sake" id="sake">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="no">04</span>
+      <h2>Sake <span class="k" aria-hidden="true">日本酒</span></h2>
+      <p class="aside">Per glas (12 cl) of per karaf — koud, of net warm geschonken.</p>
+    </div>
+    <div class="sake-grid" data-r>
+      <div class="pour"><span class="pour-name">Junmai Daiginjo <small>fris &middot; bloemig</small></span><span class="pour-lead"></span><span class="pour-price">12</span></div>
+      <div class="pour"><span class="pour-name">Junmai Ginjo <small>helder &middot; droog</small></span><span class="pour-lead"></span><span class="pour-price">9</span></div>
+      <div class="pour"><span class="pour-name">Nigori <small>ongefilterd &middot; romig</small></span><span class="pour-lead"></span><span class="pour-price">8</span></div>
+      <div class="pour"><span class="pour-name">Honjozo, warm <small>nootachtig</small></span><span class="pour-lead"></span><span class="pour-price">7</span></div>
+      <div class="pour"><span class="pour-name">Yuzushu <small>likeur &middot; citrus</small></span><span class="pour-lead"></span><span class="pour-price">7</span></div>
+      <div class="pour"><span class="pour-name">Umeshu <small>pruim &middot; zoet</small></span><span class="pour-lead"></span><span class="pour-price">7</span></div>
+      <div class="pour"><span class="pour-name">Asahi draft <small>bier &middot; 25 cl</small></span><span class="pour-lead"></span><span class="pour-price">5</span></div>
+      <div class="pour"><span class="pour-name">Matcha-thee <small>zonder alcohol</small></span><span class="pour-lead"></span><span class="pour-price">4</span></div>
+    </div>
+    <p class="sake-note">Liever dat wij kiezen? Vraag om een sake-arrangement bij uw gangen — drie schenkingen, afgestemd op wat u eet, voor 28. We schenken ook alcoholvrije thee en huisgemaakte limonade van yuzu.</p>
+  </div>
+</section>
+
+<!-- PRAKTISCH -->
+<section class="sec prak" id="praktisch">
+  <div class="wrap">
+    <div data-r>
+      <div class="sec-head" style="margin-bottom:1.8rem">
+        <span class="no">05</span>
+        <h2>Praktisch <span class="k" aria-hidden="true">案内</span></h2>
+      </div>
+      <table class="hours" id="hours">
+        <thead><tr><th>Dag</th><th style="text-align:right">Keuken open</th></tr></thead>
+        <tbody><!-- door JS gevuld --></tbody>
+      </table>
+    </div>
+    <div class="prak-side" data-r style="--d:.1s">
+      <p class="now" id="now-line" data-open="true">We zijn nu open.</p>
+      <p class="body">We zijn een avondrestaurant met weinig tafels. Voor een plek aan de toog of een tafel reserveren we het liefst even vooruit, zeker in het weekend. Loop gerust binnen voor één gerecht en een glas.</p>
+      <div class="contact-lines">
+        <span>Tweede Oosterparkstraat 8, 1091 JR Amsterdam</span>
+        <a href="tel:+31202210914">020 — 221 09 14</a>
+        <a href="mailto:tafel@enso-amsterdam.nl">tafel@enso-amsterdam.nl</a>
+      </div>
+      <figure class="prak-fig">
+        <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=900&q=72" alt="Tafel van bovenaf met meerdere Japanse gerechten om te delen" width="900" height="563" loading="lazy">
+        <figcaption>Zondag draaien we een korte deelmenu-kaart.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVEREN -->
+<section class="sec resv" id="reserveren">
+  <div class="wrap">
+    <div class="resv-intro" data-r>
+      <div class="sec-head" style="margin-bottom:1.6rem">
+        <span class="no">06</span>
+        <h2>Reserveren <span class="k" aria-hidden="true">予約</span></h2>
+      </div>
+      <p class="big">Schuif aan.</p>
+      <p>Vul hiernaast uw gegevens in, dan bevestigen we uw plek per mail — meestal binnen een paar uur. Voor groepen vanaf zes personen of een omakase-avond belt u ons even.</p>
+      <p class="phone">Liever bellen? <a href="tel:+31202210914">020 — 221 09 14</a></p>
+      <p class="vquote" aria-hidden="true">一 期 一 会 — dit moment, één keer</p>
+    </div>
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="frow">
+        <div class="field">
+          <label for="r-naam">Naam</label>
+          <input id="r-naam" name="naam" type="text" autocomplete="name" required>
+          <span class="err">Vul uw naam in.</span>
+        </div>
+        <div class="field">
+          <label for="r-tel">Telefoon</label>
+          <input id="r-tel" name="tel" type="tel" autocomplete="tel" required>
+          <span class="err">Vul een telefoonnummer in.</span>
+        </div>
+        <div class="field">
+          <label for="r-datum">Datum</label>
+          <input id="r-datum" name="datum" type="date" required>
+          <span class="err">Kies een datum.</span>
+        </div>
+        <div class="field">
+          <label for="r-tijd">Tijd</label>
+          <input id="r-tijd" name="tijd" type="time" value="19:00" required>
+          <span class="err">Kies een tijd.</span>
+        </div>
+        <div class="field">
+          <label for="r-pers">Personen</label>
+          <select id="r-pers" name="personen" required>
+            <option value="2">2 personen</option>
+            <option value="1">1 persoon</option>
+            <option value="3">3 personen</option>
+            <option value="4">4 personen</option>
+            <option value="5">5 personen</option>
+            <option value="6">6 personen</option>
+            <option value="7">6+ — bel ons</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="r-mail">E-mail</label>
+          <input id="r-mail" name="email" type="email" autocomplete="email" required>
+          <span class="err">Vul een geldig e-mailadres in.</span>
+        </div>
+        <div class="field full">
+          <label for="r-zit">Voorkeur plek</label>
+          <select id="r-zit" name="zitplaats">
+            <option value="geen">Geen voorkeur</option>
+            <option value="toog">Aan de toog (bij de chef)</option>
+            <option value="tafel">Aan een tafel</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="r-opm">Opmerking (allergie, gelegenheid…)</label>
+          <textarea id="r-opm" name="opmerking"></textarea>
+        </div>
+      </div>
+      <button class="fsubmit" type="submit">Plek reserveren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="fnote">We gebruiken uw gegevens alleen voor deze reservering.</p>
+      <div class="form-ok" role="status">
+        <div class="seal" aria-hidden="true">心</div>
+        <h3>Tot ziens bij ENSO.</h3>
+        <p id="ok-text">Bedankt — we hebben uw aanvraag ontvangen en bevestigen uw plek zo snel mogelijk per mail.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-mark">
+        <span class="enso" aria-hidden="true"></span>
+        <span class="name">ENSO<span class="k" aria-hidden="true">円相</span></span>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h4>Adres</h4>
+          <p>Tweede Oosterparkstraat 8<br>1091 JR Amsterdam</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><a href="tel:+31202210914">020 — 221 09 14</a><br><a href="mailto:tafel@enso-amsterdam.nl">tafel@enso-amsterdam.nl</a></p>
+        </div>
+        <div>
+          <h4>Volgen</h4>
+          <div class="socials">
+            <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .3-1.5 1.6-1.5H17V2.3C16.5 2.2 15.4 2 14.4 2 11.9 2 10.3 3.5 10.3 6.3V9H8v3.4h2.3V22H14v-9.6h2.6L17 9h-3z"/></svg></a>
+            <a href="#top" aria-label="Nieuwsbrief"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 6 9-6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="jaar">2026</span> ENSO — izakaya, sushi &amp; ramen</span>
+      <span>Bediening op fooienbasis voor het team · KvK 71204418</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var doc = document;
+  var reduced = false;
+  try { reduced = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){}
+
+  /* ---- openingstijden (avondrestaurant; minuten, sluit kan > 1440 na middernacht) ---- */
+  var DAYS  = ["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"];
+  var SHORT = ["zo","ma","di","wo","do","vr","za"];
+  var KANJI = ["日","月","火","水","木","金","土"];
+  /* index = getDay() (0=zo) */
+  var HOURS = {
+    0: [17*60, 22*60],      // zo 17:00–22:00
+    1: null,                // ma gesloten
+    2: [17*60, 23*60],      // di
+    3: [17*60, 23*60],      // wo
+    4: [17*60, 23*60],      // do
+    5: [17*60, 24*60],      // vr 17:00–00:00
+    6: [16*60, 24*60]       // za 16:00–00:00
+  };
+  function fmt(m){ m = m % (24*60); var h = Math.floor(m/60), mm = m%60; return ("0"+h).slice(-2)+":"+("0"+mm).slice(-2); }
+  function nlNow(){
+    try{
+      var p = new Intl.DateTimeFormat("nl-NL",{weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Europe/Amsterdam"}).formatToParts(new Date());
+      var o = {}; p.forEach(function(x){ o[x.type] = x.value; });
+      var map = {zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6};
+      var key = (o.weekday||"").toLowerCase().slice(0,2);
+      var day = map[key];
+      if (day === undefined){ day = new Date().getDay(); }
+      return { day: day, min: parseInt(o.hour,10)*60 + parseInt(o.minute,10) };
+    }catch(e){
+      var d = new Date(); return { day: d.getDay(), min: d.getHours()*60 + d.getMinutes() };
+    }
+  }
+  function status(){
+    var n = nlNow(), today = HOURS[n.day];
+    var yest = HOURS[(n.day+6)%7];
+    if (yest && yest[1] > 24*60 && n.min < yest[1]-24*60){ return { open:true, label:"Open tot "+fmt(yest[1]) }; }
+    if (today && n.min >= today[0] && n.min < today[1]){ return { open:true, label:"Open tot "+fmt(today[1]) }; }
+    if (today && n.min < today[0]){ return { open:false, label:"Vandaag open vanaf "+fmt(today[0]) }; }
+    for (var i=1;i<=7;i++){ var d=(n.day+i)%7; if (HOURS[d]){ return { open:false, label:"Open "+SHORT[d]+" vanaf "+fmt(HOURS[d][0]) }; } }
+    return { open:false, label:"Tijdelijk gesloten" };
+  }
+
+  var st = status();
+  var lhStatus = doc.getElementById("lh-status");
+  var lhText   = doc.getElementById("lh-status-text");
+  if (lhStatus){ lhStatus.setAttribute("data-open", st.open ? "true":"false"); }
+  if (lhText){ lhText.textContent = st.open ? "Open" : "Gesloten"; }
+  var nowLine = doc.getElementById("now-line");
+  if (nowLine){
+    nowLine.setAttribute("data-open", st.open ? "true":"false");
+    nowLine.textContent = st.open ? ("We zijn nu open — " + st.label.toLowerCase() + ".") : (st.label + ".");
+  }
+
+  /* ---- urentabel ---- */
+  var tb = doc.querySelector("#hours tbody");
+  if (tb){
+    var n = nlNow();
+    var order = [1,2,3,4,5,6,0]; // ma..zo
+    order.forEach(function(d){
+      var tr = doc.createElement("tr");
+      if (d === n.day){ tr.className = "today"; }
+      var h = HOURS[d];
+      var dag = DAYS[d].charAt(0).toUpperCase() + DAYS[d].slice(1);
+      tr.innerHTML =
+        '<td class="day">' + dag + '<span class="k">' + KANJI[d] + '</span></td>' +
+        (h ? '<td class="time">' + fmt(h[0]) + " – " + fmt(h[1]) + "</td>"
+           : '<td class="time closed">gesloten</td>');
+      tb.appendChild(tr);
+    });
+  }
+
+  /* ---- jaar ---- */
+  var jaar = doc.getElementById("jaar");
+  if (jaar){ jaar.textContent = String(new Date().getFullYear()); }
+
+  /* ---- datum-input minimaal vandaag ---- */
+  var dEl = doc.getElementById("r-datum");
+  if (dEl){
+    try{
+      var t = new Date();
+      var iso = t.getFullYear() + "-" + ("0"+(t.getMonth()+1)).slice(-2) + "-" + ("0"+t.getDate()).slice(-2);
+      dEl.min = iso; dEl.value = iso;
+    }catch(e){}
+  }
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav = doc.getElementById("nav");
+  var burger = doc.getElementById("burger");
+  var links = doc.getElementById("navlinks");
+  function setMenu(open){
+    if (links){ links.classList.toggle("open", open); }
+    if (burger){
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true":"false");
+      burger.setAttribute("aria-label", open ? "Menu sluiten":"Menu openen");
+    }
+    doc.body.style.overflow = open ? "hidden" : "";
+  }
+  if (burger){ burger.addEventListener("click", function(){ setMenu(!links.classList.contains("open")); }); }
+  if (links){ links.addEventListener("click", function(e){ if (e.target.closest("a")){ setMenu(false); } }); }
+  doc.addEventListener("keydown", function(e){ if (e.key === "Escape"){ setMenu(false); } });
+
+  /* ---- nav stuck on scroll (rAF-throttled) ---- */
+  var ticking = false;
+  function onScroll(){ ticking = false; if (nav){ nav.classList.toggle("stuck", (window.pageYOffset||0) > 8); } }
+  function tick(){ if (!ticking){ ticking = true; requestAnimationFrame(onScroll); } }
+  window.addEventListener("scroll", tick, { passive:true });
+  onScroll();
+
+  /* ---- menu-tabs ---- */
+  var tabs = Array.prototype.slice.call(doc.querySelectorAll('.menu-tab'));
+  function selectTab(tab){
+    tabs.forEach(function(t){
+      var sel = (t === tab);
+      t.setAttribute("aria-selected", sel ? "true":"false");
+      t.tabIndex = sel ? 0 : -1;
+      var panel = doc.getElementById(t.getAttribute("aria-controls"));
+      if (panel){ panel.classList.toggle("active", sel); if (sel){ panel.removeAttribute("hidden"); } else { panel.setAttribute("hidden",""); } }
+    });
+  }
+  tabs.forEach(function(tab, idx){
+    tab.addEventListener("click", function(){ selectTab(tab); });
+    tab.addEventListener("keydown", function(e){
+      var dir = 0;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown"){ dir = 1; }
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp"){ dir = -1; }
+      else if (e.key === "Home"){ dir = "first"; }
+      else if (e.key === "End"){ dir = "last"; }
+      else { return; }
+      e.preventDefault();
+      var next = dir === "first" ? 0 : dir === "last" ? tabs.length-1 : (idx + dir + tabs.length) % tabs.length;
+      selectTab(tabs[next]); tabs[next].focus();
+    });
+  });
+
+  /* ---- reveal-on-scroll ---- */
+  if (!reduced && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold:0.12, rootMargin:"0px 0px -6% 0px" });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function(el){ io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function(el){ el.classList.add("in"); });
+  }
+
+  /* ---- reserveringsformulier met live validatie ---- */
+  var form = doc.getElementById("form");
+  if (form){
+    function bad(input, on){ var f = input.closest(".field"); if (f){ f.classList.toggle("bad", on); } }
+    function valid(input){
+      var v = (input.value||"").trim(), ok = true;
+      if (input.type === "email"){ ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      else if (input.hasAttribute("required")){ ok = v.length > 0; }
+      bad(input, !ok);
+      return ok;
+    }
+    var inputs = Array.prototype.slice.call(form.querySelectorAll("input[required], select[required]"));
+    inputs.forEach(function(i){
+      i.addEventListener("blur", function(){ valid(i); });
+      i.addEventListener("input", function(){ if (i.closest(".field").classList.contains("bad")){ valid(i); } });
+      i.addEventListener("change", function(){ if (i.closest(".field").classList.contains("bad")){ valid(i); } });
+    });
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function(i){ if (!valid(i)){ allOk = false; if (!first){ first = i; } } });
+      if (!allOk){ if (first){ first.focus(); } return; }
+      var naam = (doc.getElementById("r-naam").value||"").trim().split(" ")[0];
+      var pers = doc.getElementById("r-pers");
+      var okt = doc.getElementById("ok-text");
+      if (okt){
+        okt.textContent =
+          (naam ? naam + ", bedankt" : "Bedankt") +
+          " — we hebben uw aanvraag voor " +
+          (pers ? pers.options[pers.selectedIndex].text.toLowerCase() : "") +
+          " ontvangen en bevestigen uw plek zo snel mogelijk per mail.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({ behavior: reduced ? "auto":"smooth", block:"center" });
+    });
+  }
+})();
+</script>
+</body>
+</html>

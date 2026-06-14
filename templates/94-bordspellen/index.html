@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEEPLE — bordspellencafé &amp; spellokaal · Utrecht</title>
+<meta name="description" content="MEEPLE is een gezellig bordspellencafé in Utrecht. Kies uit ruim 400 spellen, schuif aan voor een paar euro per persoon en speel zo lang je wilt — met lekkere drankjes, hapjes en een uitleguitleg-team dat alles kent. Reserveer een tafel.">
+<meta name="theme-color" content="#f3e9d2">
+<meta property="og:title" content="MEEPLE — bordspellencafé &amp; spellokaal, Utrecht">
+<meta property="og:description" content="Ruim 400 spellen, drankjes &amp; hapjes en een uitleg-team dat alles kent. Schuif aan vanaf 5 euro p.p.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var h = document.documentElement; h.classList.remove('no-js'); h.classList.add('js');
+  })();
+</script>
+<style>
+/* ============================================================
+   MEEPLE — bordspellencafé & spellokaal, Utrecht
+   Retro jaren-70, speels & tactiel. Handgemaakt, inline, geen libraries.
+   ============================================================ */
+:root{
+  --cream:#f3e9d2;
+  --cream-2:#ece0c4;
+  --paper:#fbf5e8;
+  --ink:#2a2018;
+  --ink-2:#5a4a38;
+  --ink-soft:rgba(42,32,24,.66);
+  --ink-faint:rgba(42,32,24,.45);
+  --mustard:#e8a92b;
+  --mustard-deep:#c8860f;
+  --teal:#1f8a7a;
+  --teal-deep:#15655a;
+  --tomato:#df5338;
+  --tomato-deep:#bd3c24;
+  --plum:#7a3b52;
+  --line:rgba(42,32,24,.16);
+  --line-soft:rgba(42,32,24,.09);
+  --display:"Baloo 2","Trebuchet MS",sans-serif;
+  --body:"Fredoka",system-ui,-apple-system,sans-serif;
+  --maxw:1200px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.34,1.56,.64,1);
+  --ease-soft:cubic-bezier(.22,1,.36,1);
+  --radius:22px;
+  --shadow:6px 6px 0 var(--ink);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--cream);color:var(--ink);
+  font-family:var(--body);font-weight:400;font-size:1.05rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--tomato);color:var(--paper)}
+:focus-visible{outline:3px solid var(--teal-deep);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:var(--display);font-weight:800;letter-spacing:-.01em;line-height:1.02}
+.kicker{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);display:inline-flex;align-items:center;gap:.55rem;background:var(--paper);border:2.5px solid var(--ink);border-radius:999px;padding:.4rem .9rem;box-shadow:3px 3px 0 var(--ink)}
+.kicker .pip{width:9px;height:9px;border-radius:3px;background:var(--tomato);display:inline-block;transform:rotate(45deg)}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ink);color:var(--paper);padding:.7rem 1.1rem;border-radius:10px;transition:top .25s;font-family:var(--display);font-weight:700}
+.skip:focus{top:1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:700;font-size:.98rem;padding:.85rem 1.5rem;border-radius:999px;border:2.5px solid var(--ink);cursor:pointer;white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s var(--ease-soft),background-color .2s}
+.btn svg{width:17px;height:17px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--tomato);color:var(--paper);box-shadow:5px 5px 0 var(--ink)}
+.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);background:var(--tomato-deep)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-mustard{background:var(--mustard);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn-mustard:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-mustard:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-ghost{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.btn-ghost:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn-ghost:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+
+/* ---------- letterhead ---------- */
+.bar{background:var(--ink);color:var(--cream);font-size:.82rem;font-weight:500}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:42px}
+.bar .left{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:600;letter-spacing:.02em}
+.bar .dot{width:8px;height:8px;border-radius:50%;background:var(--mustard);box-shadow:0 0 0 0 rgba(232,169,43,.6);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,169,43,.55)}70%{box-shadow:0 0 0 8px rgba(232,169,43,0)}100%{box-shadow:0 0 0 0 rgba(232,169,43,0)}}
+.bar .right{display:inline-flex;align-items:center;gap:1.5rem}
+.bar a{transition:color .2s}
+.bar a:hover{color:var(--mustard)}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .sep{display:none}.bar .left span.tag{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(243,233,210,.9);backdrop-filter:saturate(1.4) blur(10px);border-bottom:3px solid transparent;transition:border-color .3s,box-shadow .3s}
+.nav.stuck{border-bottom-color:var(--ink);box-shadow:0 8px 0 -3px rgba(42,32,24,.12)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:.02em}
+.brand .mark{width:40px;height:40px;border-radius:11px;background:var(--mustard);border:2.5px solid var(--ink);display:grid;place-items:center;flex:none;box-shadow:3px 3px 0 var(--ink);transform:rotate(-4deg);transition:transform .3s var(--ease)}
+.brand:hover .mark{transform:rotate(6deg) scale(1.05)}
+.brand .mark svg{width:22px;height:22px;color:var(--ink)}
+.brand b{font-weight:800}.brand b span{color:var(--tomato)}
+.nav-links{display:flex;align-items:center;gap:1.9rem}
+.nav-links a{font-family:var(--display);font-weight:600;font-size:.96rem;color:var(--ink-2);position:relative;padding-block:.3rem;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:3px;background:var(--tomato);border-radius:3px;transition:right .35s var(--ease-soft)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.6rem 1.2rem;font-size:.92rem}
+.burger{display:none;width:46px;height:46px;border:2.5px solid var(--ink);border-radius:12px;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.burger span{width:20px;height:2.5px;background:var(--ink);border-radius:3px;transition:transform .3s var(--ease-soft),opacity .2s}
+@media (max-width:980px){
+  .nav-links{position:fixed;inset:0;background:var(--cream);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.5rem}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+}
+
+/* ---------- decorative shapes ---------- */
+.blob{position:absolute;border-radius:50%;z-index:-1;pointer-events:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(2.5rem,6vw,4.5rem);padding-bottom:clamp(2.5rem,6vw,4rem);overflow:hidden}
+.hero::before{content:"";position:absolute;top:-14%;right:-6%;width:42vw;height:42vw;max-width:560px;max-height:560px;background:radial-gradient(circle at 40% 40%,rgba(232,169,43,.4),transparent 64%);z-index:-1;pointer-events:none}
+.hero::after{content:"";position:absolute;bottom:-10%;left:-8%;width:34vw;height:34vw;max-width:440px;max-height:440px;background:radial-gradient(circle at 50% 50%,rgba(31,138,122,.22),transparent 66%);z-index:-1;pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.8rem,7vw,5rem);line-height:1;letter-spacing:-.02em;margin-top:1.3rem}
+.hero h1 em{font-style:normal;color:var(--tomato);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:-.04em;right:-.04em;bottom:.04em;height:.18em;background:var(--mustard);z-index:-1;border-radius:6px;transform:rotate(-1deg)}
+.hero-intro{margin-top:1.4rem;font-size:clamp(1.08rem,1.5vw,1.24rem);color:var(--ink-2);max-width:44ch;line-height:1.6}
+.hero-actions{margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-trust{margin-top:2.2rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;font-size:.9rem;color:var(--ink-soft);font-weight:500}
+.hero-trust .ck{display:inline-flex;align-items:center;gap:.5rem}
+.hero-trust .ck svg{width:18px;height:18px;color:var(--teal-deep);flex:none}
+.hero-figure{position:relative}
+.hero-figure .photo{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--mustard);border:3px solid var(--ink);box-shadow:9px 9px 0 var(--ink);transform:rotate(2deg)}
+.hero-figure .photo img{width:100%;aspect-ratio:4/4.3;object-fit:cover}
+.hero-figure .chip{position:absolute;background:var(--paper);border:2.5px solid var(--ink);border-radius:16px;padding:.7rem 1rem;box-shadow:4px 4px 0 var(--ink);font-family:var(--display);font-weight:700;display:flex;align-items:center;gap:.6rem}
+.hero-figure .chip svg{width:20px;height:20px;flex:none}
+.hero-figure .chip.one{left:-1.1rem;top:1.6rem;transform:rotate(-6deg);color:var(--teal-deep)}
+.hero-figure .chip.two{right:-.9rem;bottom:2.2rem;transform:rotate(5deg);color:var(--tomato-deep)}
+.hero-figure .chip b{display:block;font-size:1.05rem;line-height:1.1}
+.hero-figure .chip small{font-weight:600;color:var(--ink-soft);font-size:.76rem}
+@media (max-width:520px){.hero-figure .chip.one{left:.2rem}.hero-figure .chip.two{right:.2rem}}
+
+/* ---------- dice strip ---------- */
+.strip{background:var(--ink);color:var(--cream);border-block:3px solid var(--ink)}
+.strip .wrap{display:flex;align-items:center;justify-content:space-around;gap:1.4rem;padding-block:clamp(1.4rem,3vw,2rem);flex-wrap:wrap}
+.strip .item{display:flex;align-items:center;gap:.8rem;font-family:var(--display);font-weight:600;font-size:1rem}
+.strip .item .die{width:42px;height:42px;border-radius:11px;background:var(--paper);color:var(--ink);display:grid;place-items:center;flex:none;border:2.5px solid var(--mustard)}
+.strip .item .die svg{width:22px;height:22px}
+.strip .item b{display:block;font-weight:800;font-size:1.3rem;line-height:1;color:var(--mustard)}
+.strip .item small{font-weight:500;color:rgba(243,233,210,.72);font-size:.82rem}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(3.6rem,8vw,6.5rem);position:relative}
+.sec-head{max-width:680px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.04;letter-spacing:-.02em;margin-top:1rem}
+.sec-head p{margin-top:1rem;color:var(--ink-2);font-size:1.08rem}
+
+/* ---------- zo werkt het ---------- */
+.how{background:var(--teal);color:var(--paper)}
+.how .kicker{color:var(--teal-deep)}
+.how .sec-head h2{color:var(--paper)}
+.how .sec-head p{color:rgba(251,245,232,.86)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:860px){.how-grid{grid-template-columns:1fr}}
+.step{background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:var(--radius);padding:1.9rem 1.7rem;box-shadow:6px 6px 0 var(--ink);position:relative;transition:transform .3s var(--ease-soft)}
+.step:hover{transform:translateY(-5px)}
+.step .no{width:48px;height:48px;border-radius:13px;background:var(--mustard);border:2.5px solid var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.4rem;margin-bottom:1.1rem;transform:rotate(-5deg)}
+.step h3{font-family:var(--display);font-weight:700;font-size:1.32rem}
+.step p{margin-top:.55rem;color:var(--ink-soft);font-size:.98rem}
+.how-price{margin-top:clamp(2.2rem,4vw,3rem);background:var(--mustard);color:var(--ink);border:3px solid var(--ink);border-radius:var(--radius);box-shadow:7px 7px 0 var(--ink);padding:clamp(1.6rem,4vw,2.6rem);display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:center}
+@media (max-width:680px){.how-price{grid-template-columns:1fr;text-align:center}}
+.how-price .big{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,7vw,4rem);line-height:1}
+.how-price .big small{display:block;font-size:.9rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+.how-price .txt{font-weight:500;color:var(--ink-2);max-width:42ch}
+.how-price .txt b{color:var(--ink);font-weight:700}
+@media (max-width:680px){.how-price .txt{margin-inline:auto}}
+
+/* ---------- spellen / collectie ---------- */
+.games{background:var(--cream-2)}
+.filters{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:clamp(1.8rem,3vw,2.4rem)}
+.filter{font-family:var(--display);font-weight:700;font-size:.92rem;padding:.6rem 1.2rem;border-radius:999px;border:2.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:transform .18s var(--ease),box-shadow .18s,background-color .2s,color .2s}
+.filter:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.filter[aria-pressed="true"]{background:var(--tomato);color:var(--paper)}
+.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(1.8rem,3vw,2.4rem)}
+@media (max-width:860px){.game-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.game-grid{grid-template-columns:1fr}}
+.game{background:var(--paper);border:3px solid var(--ink);border-radius:var(--radius);overflow:hidden;box-shadow:6px 6px 0 var(--ink);transition:transform .3s var(--ease-soft),box-shadow .3s,opacity .35s,filter .35s}
+.game:hover{transform:translateY(-6px);box-shadow:9px 9px 0 var(--ink)}
+.game.hide{display:none}
+.game .pic{aspect-ratio:16/10;overflow:hidden;background:var(--cream-2);border-bottom:3px solid var(--ink)}
+.game .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-soft)}
+.game:hover .pic img{transform:scale(1.06)}
+.game .body{padding:1.2rem 1.3rem 1.4rem}
+.game h3{font-family:var(--display);font-weight:700;font-size:1.24rem;line-height:1.1}
+.game p{margin-top:.4rem;color:var(--ink-soft);font-size:.92rem}
+.game .badges{margin-top:.9rem;display:flex;flex-wrap:wrap;gap:.45rem}
+.game .badge{font-family:var(--display);font-weight:600;font-size:.74rem;padding:.28rem .65rem;border-radius:999px;border:2px solid var(--ink);background:var(--cream);display:inline-flex;align-items:center;gap:.32rem}
+.game .badge.genre{background:var(--mustard)}
+.game .badge svg{width:13px;height:13px}
+.games-note{margin-top:clamp(1.8rem,3vw,2.4rem);font-weight:500;color:var(--ink-soft);font-size:.98rem}
+.games-empty{display:none;margin-top:1.6rem;background:var(--paper);border:3px dashed var(--ink);border-radius:var(--radius);padding:1.6rem;text-align:center;font-family:var(--display);font-weight:600}
+.games-empty.show{display:block}
+
+/* ---------- drankjes & hapjes ---------- */
+.menu .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:760px){.menu .wrap{grid-template-columns:1fr;gap:2.4rem}}
+.card{background:var(--paper);border:3px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);padding:clamp(1.6rem,3vw,2.2rem)}
+.card h3{font-family:var(--display);font-weight:700;font-size:1.5rem;display:flex;align-items:center;gap:.6rem}
+.card h3 .ic{width:38px;height:38px;border-radius:11px;border:2.5px solid var(--ink);display:grid;place-items:center;flex:none}
+.card h3 .ic svg{width:20px;height:20px}
+.card.drinks h3 .ic{background:var(--tomato);color:var(--paper)}
+.card.bites h3 .ic{background:var(--teal);color:var(--paper)}
+.card ul{margin-top:1.2rem}
+.line{display:flex;align-items:baseline;gap:.4rem;padding-block:.7rem;border-bottom:1.5px dotted var(--line)}
+.line:last-child{border-bottom:0}
+.line .nm{font-family:var(--display);font-weight:600;font-size:1.06rem}
+.line .nm small{font-weight:500;color:var(--ink-soft);font-size:.84rem;margin-left:.4rem;font-family:var(--body)}
+.line .lead{flex:1;border-bottom:1.5px dotted var(--line);position:relative;top:-.3rem}
+.line .pr{font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+
+/* ---------- game nights / agenda ---------- */
+.events{background:var(--plum);color:var(--paper)}
+.events .kicker{color:var(--plum)}
+.events .sec-head h2{color:var(--paper)}
+.events .sec-head p{color:rgba(251,245,232,.84)}
+.agenda{margin-top:clamp(2rem,4vw,3rem);display:grid;gap:1rem}
+.event{background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);padding:1.4rem 1.6rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.3rem;align-items:center;transition:transform .25s var(--ease-soft)}
+.event:hover{transform:translateX(5px)}
+@media (max-width:680px){.event{grid-template-columns:auto 1fr;gap:1rem}}
+.event .date{width:64px;height:64px;border-radius:14px;background:var(--mustard);border:2.5px solid var(--ink);display:grid;place-items:center;text-align:center;flex:none;transform:rotate(-4deg)}
+.event .date .d{font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1}
+.event .date .m{font-family:var(--display);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+.event .info h3{font-family:var(--display);font-weight:700;font-size:1.2rem}
+.event .info p{color:var(--ink-soft);font-size:.92rem;margin-top:.2rem}
+.event .when{font-family:var(--display);font-weight:600;font-size:.9rem;color:var(--teal-deep);white-space:nowrap}
+@media (max-width:680px){.event .when{grid-column:1 / -1;color:var(--tomato-deep)}}
+
+/* ---------- reserveren ---------- */
+.resv .wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4rem)}
+@media (max-width:920px){.resv .wrap{grid-template-columns:1fr}}
+.resv-info h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3rem);letter-spacing:-.02em;line-height:1.04;margin-top:1rem}
+.resv-info p{margin-top:1rem;color:var(--ink-2);max-width:40ch}
+.resv-list{margin-top:2rem;display:grid;gap:1.1rem}
+.resv-list li{display:flex;gap:1rem;align-items:flex-start}
+.resv-list .ic{width:46px;height:46px;border-radius:13px;background:var(--mustard);border:2.5px solid var(--ink);display:grid;place-items:center;flex:none;box-shadow:3px 3px 0 var(--ink)}
+.resv-list .ic svg{width:21px;height:21px;color:var(--ink)}
+.resv-list b{font-family:var(--display);font-weight:700;display:block;font-size:1rem}
+.resv-list a,.resv-list span{color:var(--ink-soft);font-size:.96rem}
+.resv-list a:hover{color:var(--tomato-deep)}
+.form{background:var(--paper);border:3px solid var(--ink);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:7px 7px 0 var(--ink)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--display);font-weight:600;font-size:.9rem;margin-bottom:.4rem}
+.field input,.field select,.field textarea{width:100%;background:var(--cream);border:2.5px solid var(--ink);border-radius:12px;padding:.78rem .9rem;font-size:.98rem;transition:border-color .2s,background-color .2s,box-shadow .2s}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;background:var(--paper);box-shadow:3px 3px 0 var(--mustard)}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:var(--tomato-deep);background:#fbeae5}
+.field .err{display:none;color:var(--tomato-deep);font-size:.82rem;margin-top:.35rem;font-weight:600}
+.field.bad .err{display:block}
+.form .btn-primary{width:100%;justify-content:center;margin-top:.4rem;font-size:1.04rem}
+.form .note{margin-top:.9rem;font-size:.82rem;color:var(--ink-faint);text-align:center;font-weight:500}
+.form .ok{display:none;text-align:center;padding:1.2rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:72px;height:72px;border-radius:50%;background:var(--mustard);border:3px solid var(--ink);display:grid;place-items:center;margin:0 auto 1.2rem;transform:rotate(-5deg)}
+.form .ok .ring svg{width:36px;height:36px;color:var(--ink)}
+.form .ok h3{font-family:var(--display);font-weight:800;font-size:1.6rem}
+.form .ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--ink);color:rgba(243,233,210,.72);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:var(--cream);margin-bottom:1rem}
+.footer .brand .mark{background:var(--mustard)}
+.footer .brand b span{color:var(--mustard)}
+.footer .blurb{font-size:.94rem;max-width:32ch;color:rgba(243,233,210,.6)}
+.footer h4{font-family:var(--display);font-weight:700;color:var(--cream);font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.94rem;transition:color .2s}
+.footer ul a:hover{color:var(--mustard)}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.3rem}
+.footer .socials a{width:42px;height:42px;border-radius:12px;border:2.5px solid rgba(243,233,210,.3);display:grid;place-items:center;transition:background-color .25s,border-color .25s,transform .25s}
+.footer .socials a:hover{background:var(--mustard);border-color:var(--mustard);color:var(--ink);transform:translateY(-3px)}
+.footer .socials svg{width:19px;height:19px}
+.footer .bottom{margin-top:2.6rem;padding-top:1.6rem;border-top:2px solid rgba(243,233,210,.16);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.84rem;color:rgba(243,233,210,.5)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-soft),transform .7s var(--ease-soft)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .dot{animation:none}
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- letterhead -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="dot" aria-hidden="true"></span> <span>Open di–zo · ruim 400 spellen op de plank</span> <span class="sep" aria-hidden="true">·</span> <span class="tag">Utrecht-Centrum</span></div>
+    <div class="right">
+      <a class="email" href="mailto:hallo@meeplecafe.nl">hallo@meeplecafe.nl</a>
+      <a href="tel:0302231287">030 223 12 87</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="MEEPLE home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.6c1.7 0 3 1.5 3 3.3 0 .9-.3 1.6-.8 2.2 1.6.5 2.8 1.7 2.8 3.4V20a1.4 1.4 0 0 1-1.4 1.4h-2.2c-.5 0-.9-.4-.9-.9v-2.1a.5.5 0 0 0-1 0v2.1c0 .5-.4.9-.9.9H8.2A1.4 1.4 0 0 1 6.8 20v-5.5c0-1.7 1.2-2.9 2.8-3.4-.5-.6-.8-1.3-.8-2.2 0-1.8 1.3-3.3 3-3.3z"/></svg></span>
+      <b>MEE<span>PLE</span></b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#hoe">Zo werkt het</a>
+      <a href="#spellen">Spellen</a>
+      <a href="#kaart">Eten &amp; drinken</a>
+      <a href="#agenda">Game nights</a>
+      <a href="#reserveren">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary desk" href="#reserveren">Reserveer een tafel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- hero -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r><span class="pip" aria-hidden="true"></span> Bordspellencafé &amp; spellokaal</span>
+      <h1 data-r style="--d:.05s">Schuif aan, gooi <em>de dobbelsteen</em> en blijf gezellig hangen.</h1>
+      <p class="hero-intro" data-r style="--d:.12s">Ruim 400 spellen op de plank, koffie tot craft-bier binnen handbereik en een uitleg-team dat élke spelregel uit z'n hoofd kent. Kom met z'n tweeën of met de hele club — wij dekken de tafel.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-primary" href="#reserveren">Reserveer een tafel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#spellen">Bekijk de collectie</a>
+      </div>
+      <div class="hero-trust" data-r style="--d:.24s">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Vanaf &euro;5 p.p.</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Uitleg inbegrepen</span>
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Vega keuken</span>
+      </div>
+    </div>
+    <figure class="hero-figure" data-r style="--d:.1s">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1100&q=72" alt="Vrienden lachen samen rond een tafel vol bordspellen" loading="eager" width="900" height="968">
+      </div>
+      <div class="chip one" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.4" fill="currentColor"/><circle cx="16" cy="16" r="1.4" fill="currentColor"/><circle cx="16" cy="8" r="1.4" fill="currentColor"/><circle cx="8" cy="16" r="1.4" fill="currentColor"/></svg>
+        <span><b>400+</b><small>spellen</small></span>
+      </div>
+      <div class="chip two" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span><b>Open di–zo</b><small>tot middernacht</small></span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- dobbelstrip -->
+<section class="strip" aria-label="MEEPLE in cijfers">
+  <div class="wrap">
+    <div class="item" data-r><span class="die" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></span><span><b>400+</b><small>bordspellen</small></span></div>
+    <div class="item" data-r style="--d:.08s"><span class="die" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/></svg></span><span><b>7 dagen</b><small>nieuwe aanwinsten</small></span></div>
+    <div class="item" data-r style="--d:.16s"><span class="die" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="8" cy="8" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="16" cy="16" r="1.4" fill="currentColor"/></svg></span><span><b>1 op 1</b><small>uitleg bij elk spel</small></span></div>
+    <div class="item" data-r style="--d:.24s"><span class="die" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="8" cy="8" r="1.3" fill="currentColor"/><circle cx="16" cy="8" r="1.3" fill="currentColor"/><circle cx="8" cy="16" r="1.3" fill="currentColor"/><circle cx="16" cy="16" r="1.3" fill="currentColor"/></svg></span><span><b>&euro;5 p.p.</b><small>de hele avond spelen</small></span></div>
+  </div>
+</section>
+
+<!-- zo werkt het -->
+<section class="sec how" id="hoe">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker"><span class="pip" aria-hidden="true"></span> Zo werkt het</span>
+      <h2>Eén tarief, oneindig veel spellen</h2>
+      <p>Geen ingewikkeld systeem, geen gedoe. Je betaalt een vast bedrag per persoon en speelt zo lang je wilt — de plank is van jou.</p>
+    </div>
+    <div class="how-grid">
+      <article class="step" data-r>
+        <div class="no" aria-hidden="true">1</div>
+        <h3>Loop binnen of reserveer</h3>
+        <p>Spontaan langskomen kan altijd, maar in het weekend reserveren we je tafel graag even vooruit. Zo staat je plek klaar.</p>
+      </article>
+      <article class="step" data-r style="--d:.1s">
+        <div class="no" aria-hidden="true">2</div>
+        <h3>Kies je spel</h3>
+        <p>Geen idee wat je wilt spelen? Vertel onze game-gastheer met hoeveel jullie zijn en hoeveel zin jullie hebben — hij pakt het perfecte spel én legt het uit.</p>
+      </article>
+      <article class="step" data-r style="--d:.2s">
+        <div class="no" aria-hidden="true">3</div>
+        <h3>Speel zo lang je wilt</h3>
+        <p>Eén keer betalen, de hele avond spelen. Honger of dorst? We brengen de drankjes en hapjes gewoon naar je tafel.</p>
+      </article>
+    </div>
+    <div class="how-price" data-r>
+      <div class="big">&euro;5<small>per persoon</small></div>
+      <p class="txt">Voor dat bedrag speel je <b>de hele dag of avond</b> uit onze complete collectie, mét uitleg. Kinderen tot 12 jaar spelen voor &euro;3. Groepen vanaf 8 personen? <b>Bel ons even</b> — dan reserveren we de grote tafel achterin.</p>
+      <a class="btn btn-ghost" href="#reserveren">Tafel reserveren</a>
+    </div>
+  </div>
+</section>
+
+<!-- spellen / collectie -->
+<section class="sec games" id="spellen">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker"><span class="pip" aria-hidden="true"></span> De collectie</span>
+      <h2>Van vluchtig partyspel tot epische strategie</h2>
+      <p>Een greep uit onze planken. Filter op wat bij jullie avond past — of vraag het team gewoon om een aanrader.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter spellen op categorie">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">Alles</button>
+      <button class="filter" type="button" data-filter="2" aria-pressed="false">2 spelers</button>
+      <button class="filter" type="button" data-filter="familie" aria-pressed="false">Familie</button>
+      <button class="filter" type="button" data-filter="strategie" aria-pressed="false">Strategie</button>
+      <button class="filter" type="button" data-filter="party" aria-pressed="false">Party</button>
+    </div>
+
+    <div class="game-grid" id="gameGrid">
+      <article class="game" data-r data-cat="strategie 2">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1606503153255-59d8b8b82176?auto=format&fit=crop&w=1100&q=72" alt="Houten bordspelstukken op een speelbord" loading="lazy" width="600" height="375"></div>
+        <div class="body">
+          <h3>Kolonisten van het Noorden</h3>
+          <p>Bouw nederzettingen, ruil grondstoffen en verover het bord. Een klassieker die nooit hetzelfde verloopt.</p>
+          <div class="badges">
+            <span class="badge genre">Strategie</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> 2–4</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 75 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="game" data-r style="--d:.06s" data-cat="party familie">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?auto=format&fit=crop&w=1100&q=72" alt="Vrienden spelen lachend een gezelschapsspel" loading="lazy" width="600" height="375"></div>
+        <div class="body">
+          <h3>Tekening &amp; Tumult</h3>
+          <p>Snel tekenen, harder lachen. Het ideale opwarmertje voor een grote groep die elkaar net kent.</p>
+          <div class="badges">
+            <span class="badge genre">Party</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> 4–10</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 30 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="game" data-r style="--d:.12s" data-cat="2 strategie">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1637214091942-9c6e8ec5e02d?auto=format&fit=crop&w=1100&q=72" alt="Schaakstukken op een schaakbord van bovenaf" loading="lazy" width="600" height="375"></div>
+        <div class="body">
+          <h3>Loopgraaf &amp; Lauwer</h3>
+          <p>Een puntig duel voor twee. Diep, scherp en in dertig minuten beslist — perfect voor een date.</p>
+          <div class="badges">
+            <span class="badge genre">2 spelers</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> 2</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 30 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="game" data-r data-cat="familie">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1632501641765-e568d28b0015?auto=format&fit=crop&w=1100&q=72" alt="Kleurrijke speelstukken en dobbelstenen op tafel" loading="lazy" width="600" height="375"></div>
+        <div class="body">
+          <h3>Boerderij van Bram</h3>
+          <p>Lieve, lichte familiefun. Verzamel dieren, vul je schuur en geniet — leuk vanaf een jaar of zes.</p>
+          <div class="badges">
+            <span class="badge genre">Familie</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> 2–5</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 40 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="game" data-r style="--d:.06s" data-cat="party">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1529480780361-c8b1d09c83f2?auto=format&fit=crop&w=1100&q=72" alt="Speelkaarten waaiervormig in een hand gehouden" loading="lazy" width="600" height="375"></div>
+        <div class="body">
+          <h3>Codewoorden</h3>
+          <p>Twee teams, een raster met woorden en één hint die alles kan betekenen. Verbaal vuurwerk gegarandeerd.</p>
+          <div class="badges">
+            <span class="badge genre">Party</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> 4–8</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 25 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="game" data-r style="--d:.12s" data-cat="strategie familie">
+        <div class="pic"><img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=1100&q=72" alt="Tafel vol bordspellen tijdens een spelavond" loading="lazy" width="600" height="375"></div>
+        <div class="body">
+          <h3>Tuinders van Tivoli</h3>
+          <p>Leg tegels, plan je dorp en verzamel punten. Toegankelijke strategie die ook voor families top werkt.</p>
+          <div class="badges">
+            <span class="badge genre">Strategie</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> 2–5</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 50 min</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="games-empty" id="gamesEmpty" role="status">Geen spellen in deze categorie — vraag gerust het team om een aanrader!</div>
+    <p class="games-note" data-r>Dit is maar een tipje van de plank. In het café vind je ruim 400 titels, van vijf minuten tot een hele avond.</p>
+  </div>
+</section>
+
+<!-- eten & drinken -->
+<section class="sec menu" id="kaart">
+  <div class="wrap">
+    <div class="card drinks" data-r>
+      <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l-1 7a5 5 0 0 1-10 0L6 2z"/><path d="M12 14v6M8 22h8"/></svg></span> Drankjes</h3>
+      <ul>
+        <li class="line"><span class="nm">Vers gemalen koffie <small>flat white, cappuccino…</small></span><span class="lead"></span><span class="pr">3,2</span></li>
+        <li class="line"><span class="nm">Verse muntthee <small>met honing</small></span><span class="lead"></span><span class="pr">3,5</span></li>
+        <li class="line"><span class="nm">Lokaal craft-bier <small>tap, wisselend</small></span><span class="lead"></span><span class="pr">5,5</span></li>
+        <li class="line"><span class="nm">Huiswijn <small>wit · rood · rosé</small></span><span class="lead"></span><span class="pr">5</span></li>
+        <li class="line"><span class="nm">Huisgemaakte limonade <small>vlierbloesem</small></span><span class="lead"></span><span class="pr">3,8</span></li>
+        <li class="line"><span class="nm">Warme chocomel <small>met slagroom</small></span><span class="lead"></span><span class="pr">4</span></li>
+      </ul>
+    </div>
+    <div class="card bites" data-r style="--d:.1s">
+      <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a1 1 0 0 1 1 1 5 5 0 0 1-5 5H8a5 5 0 0 1-5-5 1 1 0 0 1 1-1z"/><path d="M7 11a2 2 0 0 1 2-2c0-1 1-2 2-2M11 11a2 2 0 0 1 2-2c0-1 1-2 2-2M5 21h14"/></svg></span> Hapjes</h3>
+      <ul>
+        <li class="line"><span class="nm">Bittergarnituur <small>8 of 16 stuks · vega-optie</small></span><span class="lead"></span><span class="pr">7</span></li>
+        <li class="line"><span class="nm">Nacho's uit de oven <small>kaas, jalapeño, salsa</small></span><span class="lead"></span><span class="pr">8,5</span></li>
+        <li class="line"><span class="nm">Plank kaas &amp; worst <small>voor de tafel</small></span><span class="lead"></span><span class="pr">12</span></li>
+        <li class="line"><span class="nm">Verse popcorn <small>zoet of zout</small></span><span class="lead"></span><span class="pr">3</span></li>
+        <li class="line"><span class="nm">Tosti van de week <small>vraag het team</small></span><span class="lead"></span><span class="pr">6</span></li>
+        <li class="line"><span class="nm">Brownie met ijs <small>warm uit de oven</small></span><span class="lead"></span><span class="pr">5,5</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- game nights / agenda -->
+<section class="sec events" id="agenda">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker"><span class="pip" aria-hidden="true"></span> Game nights &amp; events</span>
+      <h2>Elke week iets nieuws op de agenda</h2>
+      <p>Van toernooien tot kennismakingsavonden. Aanmelden mag, maar binnenwaaien kan bijna altijd ook.</p>
+    </div>
+    <div class="agenda">
+      <article class="event" data-r>
+        <div class="date" aria-hidden="true"><span class="d">18</span><span class="m">jun</span></div>
+        <div class="info"><h3>Strategie-toernooi: Tuinders van Tivoli</h3><p>Vier rondes, één winnaar en eeuwige roem op ons krijtbord. Inschrijven aan de bar.</p></div>
+        <div class="when">Woensdag · 19:30</div>
+      </article>
+      <article class="event" data-r style="--d:.08s">
+        <div class="date" aria-hidden="true"><span class="d">21</span><span class="m">jun</span></div>
+        <div class="info"><h3>Beginnersavond: nooit gespeeld?</h3><p>Speciaal voor wie net begint. We leggen drie toegankelijke spellen uit — geen ervaring nodig.</p></div>
+        <div class="when">Zaterdag · 20:00</div>
+      </article>
+      <article class="event" data-r style="--d:.16s">
+        <div class="date" aria-hidden="true"><span class="d">25</span><span class="m">jun</span></div>
+        <div class="info"><h3>Dungeon-night: rollenspel voor iedereen</h3><p>Een avondvullend avontuur met onze spelleider. Acht plekken, dus wees er snel bij.</p></div>
+        <div class="when">Woensdag · 19:00</div>
+      </article>
+      <article class="event" data-r style="--d:.24s">
+        <div class="date" aria-hidden="true"><span class="d">28</span><span class="m">jun</span></div>
+        <div class="info"><h3>Familie-zondag: spelen met de kids</h3><p>Kindvriendelijke spellen, een speelhoek en pannenkoeken. De hele middag, voor het hele gezin.</p></div>
+        <div class="when">Zondag · vanaf 13:00</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- reserveren -->
+<section class="sec resv" id="reserveren">
+  <div class="wrap">
+    <div class="resv-info" data-r>
+      <span class="kicker"><span class="pip" aria-hidden="true"></span> Reserveer &amp; contact</span>
+      <h2>Schuif aan bij MEEPLE</h2>
+      <p>Vul je gegevens in, dan bevestigen we je tafel per mail — meestal binnen een paar uur. Groepen vanaf acht personen bellen we het liefst even.</p>
+      <ul class="resv-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Adres</b><span>Voorstraat 73, 3512 AK Utrecht</span></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:0302231287">030 223 12 87</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:hallo@meeplecafe.nl">hallo@meeplecafe.nl</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><b>Open</b><span>di–do 15:00–24:00 · vr–za 13:00–01:00 · zo 13:00–22:00</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s" aria-label="Reserveringsformulier">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel" required>
+            <span class="err">Vul een telefoonnummer in.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mailadres</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <span class="err">Vul een geldig e-mailadres in.</span>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-datum">Datum</label>
+            <input id="f-datum" name="datum" type="date" required>
+            <span class="err">Kies een datum.</span>
+          </div>
+          <div class="field">
+            <label for="f-tijd">Tijd</label>
+            <input id="f-tijd" name="tijd" type="time" value="19:30" required>
+            <span class="err">Kies een tijd.</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-pers">Aantal personen</label>
+          <select id="f-pers" name="personen" required>
+            <option value="2">2 personen</option>
+            <option value="1">1 persoon</option>
+            <option value="3">3 personen</option>
+            <option value="4">4 personen</option>
+            <option value="5">5 personen</option>
+            <option value="6">6 personen</option>
+            <option value="7">7 personen</option>
+            <option value="8">8+ — bel ons even</option>
+          </select>
+          <span class="err">Maak een keuze.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Opmerking (allergie, gelegenheid, spelwens…)</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Bijv. verjaardag, of we komen graag een keer Catan leren…"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Reserveer een tafel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">We gebruiken je gegevens alleen voor deze reservering · reactie binnen een paar uur.</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Tot snel bij MEEPLE!</h3>
+        <p id="ok-text">We hebben je aanvraag ontvangen en bevestigen je tafel zo snel mogelijk per mail.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="MEEPLE home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.6c1.7 0 3 1.5 3 3.3 0 .9-.3 1.6-.8 2.2 1.6.5 2.8 1.7 2.8 3.4V20a1.4 1.4 0 0 1-1.4 1.4h-2.2c-.5 0-.9-.4-.9-.9v-2.1a.5.5 0 0 0-1 0v2.1c0 .5-.4.9-.9.9H8.2A1.4 1.4 0 0 1 6.8 20v-5.5c0-1.7 1.2-2.9 2.8-3.4-.5-.6-.8-1.3-.8-2.2 0-1.8 1.3-3.3 3-3.3z"/></svg></span>
+          <b>MEE<span>PLE</span></b>
+        </a>
+        <p class="blurb">Het gezelligste bordspellencafé van Utrecht. Schuif aan, gooi de dobbelsteen en blijf hangen.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.5c0-.9.3-1.5 1.6-1.5H17V.3C16.6.2 15.6 0 14.5 0 12 0 10.5 1.5 10.5 4.2V6H8v3h2.5v9H14V9z"/></svg></a>
+          <a href="#top" aria-label="BoardGameGeek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Bezoek</h4>
+        <ul>
+          <li><a href="#hoe">Zo werkt het</a></li>
+          <li><a href="#spellen">Spellen</a></li>
+          <li><a href="#kaart">Eten &amp; drinken</a></li>
+          <li><a href="#agenda">Game nights</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Openingstijden</h4>
+        <ul>
+          <li><span>di–do · 15:00–24:00</span></li>
+          <li><span>vr–za · 13:00–01:00</span></li>
+          <li><span>zondag · 13:00–22:00</span></li>
+          <li><span>maandag · gesloten</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><span>Voorstraat 73</span></li>
+          <li><span>3512 AK Utrecht</span></li>
+          <li><a href="tel:0302231287">030 223 12 87</a></li>
+          <li><a href="mailto:hallo@meeplecafe.nl">hallo@meeplecafe.nl</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; <span id="jaar">2026</span> MEEPLE — bordspellencafé · KvK 71204881</span>
+      <span>Met plezier gemaakt · altijd een spel klaar voor je</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var doc = document;
+  var reduced = false;
+  try { reduced = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+
+  /* ---- jaar ---- */
+  var jaar = doc.getElementById("jaar");
+  if (jaar) { jaar.textContent = String(new Date().getFullYear()); }
+
+  /* ---- datum-input minimaal vandaag ---- */
+  var dEl = doc.getElementById("f-datum");
+  if (dEl) {
+    try {
+      var t = new Date();
+      var iso = t.getFullYear() + "-" +
+        ("0" + (t.getMonth() + 1)).slice(-2) + "-" +
+        ("0" + t.getDate()).slice(-2);
+      dEl.min = iso;
+      dEl.value = iso;
+    } catch (e) {}
+  }
+
+  /* ---- nav: stuck on scroll ---- */
+  var nav = doc.getElementById("nav");
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (nav) { nav.classList.toggle("stuck", y > 8); }
+  }
+  function tick() {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }
+  window.addEventListener("scroll", tick, { passive: true });
+  onScroll();
+
+  /* ---- burger / mobiel menu ---- */
+  var burger = doc.getElementById("burger");
+  var links = doc.getElementById("navlinks");
+  function setMenu(open) {
+    if (links) { links.classList.toggle("open", open); }
+    if (burger) {
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    doc.body.style.overflow = open ? "hidden" : "";
+  }
+  if (burger) {
+    burger.addEventListener("click", function () {
+      setMenu(!links.classList.contains("open"));
+    });
+  }
+  if (links) {
+    links.addEventListener("click", function (e) {
+      if (e.target.closest("a")) { setMenu(false); }
+    });
+  }
+  doc.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { setMenu(false); }
+  });
+
+  /* ---- reveal on scroll ---- */
+  if (!reduced && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function (el) {
+      io.observe(el);
+    });
+  } else {
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"), function (el) {
+      el.classList.add("in");
+    });
+  }
+
+  /* ---- spellen filter ---- */
+  var filterBtns = Array.prototype.slice.call(doc.querySelectorAll(".filter"));
+  var games = Array.prototype.slice.call(doc.querySelectorAll(".game"));
+  var empty = doc.getElementById("gamesEmpty");
+  function applyFilter(cat) {
+    var visible = 0;
+    games.forEach(function (g) {
+      var cats = (g.getAttribute("data-cat") || "").split(/\s+/);
+      var show = cat === "all" || cats.indexOf(cat) !== -1;
+      g.classList.toggle("hide", !show);
+      if (show) { visible++; }
+    });
+    if (empty) { empty.classList.toggle("show", visible === 0); }
+  }
+  filterBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      filterBtns.forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      applyFilter(b.getAttribute("data-filter"));
+    });
+  });
+
+  /* ---- reserveringsformulier ---- */
+  var form = doc.getElementById("form");
+  if (form) {
+    function bad(input, on) {
+      var f = input.closest(".field");
+      if (f) { f.classList.toggle("bad", on); }
+    }
+    function valid(input) {
+      var v = (input.value || "").trim(), ok = true;
+      if (input.type === "email") {
+        ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      } else if (input.hasAttribute("required")) {
+        ok = v.length > 0;
+      }
+      bad(input, !ok);
+      return ok;
+    }
+    var inputs = Array.prototype.slice.call(
+      form.querySelectorAll("input[required], select[required]")
+    );
+    inputs.forEach(function (i) {
+      i.addEventListener("blur", function () { valid(i); });
+      i.addEventListener("input", function () {
+        var f = i.closest(".field");
+        if (f && f.classList.contains("bad")) { valid(i); }
+      });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var allOk = true, first = null;
+      inputs.forEach(function (i) {
+        if (!valid(i)) { allOk = false; if (!first) { first = i; } }
+      });
+      if (!allOk) { if (first) { first.focus(); } return; }
+      var naam = (doc.getElementById("f-naam").value || "").trim().split(" ")[0];
+      var pers = doc.getElementById("f-pers");
+      var okt = doc.getElementById("ok-text");
+      if (okt) {
+        okt.textContent =
+          (naam ? naam + ", bedankt" : "Bedankt") +
+          " — we hebben je aanvraag voor " +
+          (pers ? pers.options[pers.selectedIndex].text.toLowerCase() : "") +
+          " ontvangen en bevestigen je tafel zo snel mogelijk per mail.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+    });
+  }
+})();
+</script>
+</body>
+</html>

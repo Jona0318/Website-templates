@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noordwand — outdoor- &amp; bergsportuitrusting</title>
+<meta name="description" content="Noordwand is je basiskamp voor wandel-, klim- en trekkinguitrusting. Robuust geteste gear, vakkundig advies en georganiseerde tochten — van de Veluwe tot de hoge bergen. Garantie, reparatie en duurzaamheid voorop.">
+<meta name="theme-color" content="#1b1f1d">
+<meta property="og:title" content="Noordwand — outdoor- & bergsportuitrusting">
+<meta property="og:description" content="Basiskamp voor wandelen, klimmen en trekking. Geteste gear, vakkundig advies en georganiseerde tochten.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){var h=document.documentElement;h.classList.remove('no-js');h.classList.add('js');})();</script>
+<style>
+/* ============================================================
+   NOORDWAND — outdoor- & bergsportuitrusting
+   Rauw-technische, avontuurlijke one-pager. Handgemaakt, inline,
+   geen libraries. Motief: topografische hoogtelijnen.
+   ============================================================ */
+:root{
+  --slate:#1b1f1d;        /* leisteen/antraciet basis */
+  --slate-2:#232825;
+  --slate-3:#2c322e;
+  --stone:#f3f1ec;        /* steenwit */
+  --stone-2:#e6e2d8;
+  --forest:#2f4a3a;       /* diep bosgroen */
+  --forest-deep:#1f3328;
+  --forest-soft:#3c5d49;
+  --ember:#e2611f;        /* signaaloranje */
+  --ember-2:#f0823f;
+  --ochre:#c98a2b;        /* okeren accent */
+  --ink:#13181a;
+  --ink-soft:rgba(243,241,236,.66);
+  --ink-faint:rgba(243,241,236,.42);
+  --line:rgba(243,241,236,.14);
+  --line-soft:rgba(243,241,236,.08);
+  --line-dark:rgba(19,24,26,.12);
+  --display:"Oswald","Arial Narrow",sans-serif;
+  --body:"Barlow",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",monospace;
+  --maxw:1240px;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  background:var(--slate);color:var(--stone);
+  font-family:var(--body);font-weight:400;font-size:1.04rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--ember);color:#fff}
+:focus-visible{outline:2.5px solid var(--ember);outline-offset:3px;border-radius:2px}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:var(--display);font-weight:600;letter-spacing:.01em;line-height:1.02;text-transform:uppercase}
+.mono{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em}
+.kicker{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember-2);display:inline-flex;align-items:center;gap:.7rem}
+.kicker::before{content:"";width:30px;height:1.5px;background:var(--ember);display:inline-block}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--ember);color:#fff;padding:.7rem 1.1rem;font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;transition:top .25s}
+.skip:focus{top:1rem}
+
+/* topografische hoogtelijnen achtergrond-decoratie */
+.topo{position:absolute;inset:0;z-index:0;pointer-events:none;color:currentColor;opacity:.5}
+.topo svg{width:100%;height:100%}
+.topo path{fill:none;stroke:currentColor;stroke-width:1}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:500;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;padding:.85rem 1.6rem;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s,box-shadow .25s}
+.btn svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.btn-primary{background:var(--ember);color:#fff}
+.btn-primary:hover{background:var(--ember-2);transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(226,97,31,.8)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{border-color:var(--line);color:var(--stone)}
+.btn-ghost:hover{border-color:var(--stone);transform:translateY(-2px)}
+.btn-dark{background:var(--slate);color:var(--stone)}
+.btn-dark:hover{background:var(--ink);transform:translateY(-2px)}
+
+/* ---------- letterhead ---------- */
+.bar{background:var(--ink);color:var(--ink-soft);font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;border-bottom:1px solid var(--line-soft)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:38px}
+.bar .left{display:inline-flex;align-items:center;gap:.6rem}
+.bar .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 0 0 rgba(226,97,31,.6);animation:pulse 2.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(226,97,31,.5)}70%{box-shadow:0 0 0 7px rgba(226,97,31,0)}100%{box-shadow:0 0 0 0 rgba(226,97,31,0)}}
+.bar .right{display:inline-flex;align-items:center;gap:1.6rem}
+.bar a:hover{color:var(--stone)}
+@media (max-width:720px){.bar .right a.email{display:none}}
+@media (max-width:520px){.bar .left .coords{display:none}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:90;background:rgba(27,31,29,.86);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 12px 34px -28px rgba(0,0,0,.9)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:inline-flex;align-items:center;gap:.65rem;font-family:var(--display);font-weight:700;font-size:1.45rem;letter-spacing:.04em;text-transform:uppercase}
+.brand .mark{width:36px;height:36px;background:var(--ember);display:grid;place-items:center;flex:none;transform:rotate(45deg)}
+.brand .mark svg{width:20px;height:20px;color:#fff;transform:rotate(-45deg)}
+.brand b{font-weight:700}.brand b span{color:var(--ember-2)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--display);font-weight:500;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);position:relative;padding-block:.3rem;transition:color .2s}
+.nav-links a:hover{color:var(--stone)}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--ember);transition:right .35s var(--ease)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:inline-flex;align-items:center;gap:1.1rem}
+.nav-cta .btn{padding:.6rem 1.2rem;font-size:.82rem}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);background:var(--slate-2);flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.burger span{width:18px;height:2px;background:var(--stone);transition:transform .3s var(--ease),opacity .2s}
+@media (max-width:980px){
+  .nav-links{position:fixed;inset:0;background:var(--slate);flex-direction:column;justify-content:center;gap:1.8rem;transform:translateY(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:80}
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.4rem}
+  .nav-cta .desk{display:none}
+  .burger{display:flex;z-index:95}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--forest-deep)}
+.hero .topo{color:rgba(243,241,236,.07);opacity:1}
+.hero .photo-wrap{position:absolute;inset:0;z-index:0}
+.hero .photo-wrap img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.04)}
+.hero .photo-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(15,22,18,.92) 0%,rgba(20,28,23,.78) 42%,rgba(20,28,23,.32) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-top:clamp(3rem,8vw,6rem);padding-bottom:clamp(3.5rem,9vw,7rem);min-height:clamp(520px,82vh,760px);display:flex;flex-direction:column;justify-content:center}
+.hero-copy{max-width:640px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.9rem,8.4vw,6rem);line-height:.96;letter-spacing:.005em;text-transform:uppercase;margin-top:1.4rem}
+.hero h1 em{font-style:normal;color:var(--ember-2)}
+.hero-intro{margin-top:1.5rem;font-size:clamp(1.08rem,1.6vw,1.28rem);color:rgba(243,241,236,.86);max-width:48ch;line-height:1.62}
+.hero-actions{margin-top:2.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero-meta{margin-top:2.6rem;display:flex;align-items:center;gap:1.6rem 2.2rem;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:rgba(243,241,236,.62)}
+.hero-meta .m{display:inline-flex;align-items:center;gap:.55rem}
+.hero-meta .m svg{width:16px;height:16px;color:var(--ember-2);flex:none}
+.hero-meta b{color:var(--stone);font-weight:500}
+
+/* ---------- stats / ticker ---------- */
+.stats{background:var(--ink);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:clamp(2rem,4vw,2.6rem)}
+@media (max-width:760px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:1.8rem 1rem}}
+.stat{position:relative;padding-left:1.2rem}
+.stat::before{content:"";position:absolute;left:0;top:.2rem;bottom:.2rem;width:3px;background:var(--ember)}
+.stat .num{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.4vw,2.9rem);line-height:1;letter-spacing:.01em}
+.stat .num span{color:var(--ember-2)}
+.stat .lab{margin-top:.5rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft);text-transform:uppercase}
+
+/* ---------- section frame ---------- */
+.sec{position:relative;padding-block:clamp(3.8rem,8vw,7rem)}
+.sec-head{max-width:680px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.8vw,3.3rem);line-height:1.02;letter-spacing:.005em;text-transform:uppercase;margin-top:1rem}
+.sec-head h2 em{font-style:normal;color:var(--ember-2)}
+.sec-head p{margin-top:1.1rem;color:var(--ink-soft);font-size:1.08rem;max-width:56ch}
+
+/* ---------- categorieën ---------- */
+.cats{background:var(--stone);color:var(--ink)}
+.cats .kicker{color:var(--ember)}
+.cats .sec-head p{color:rgba(19,24,26,.66)}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:clamp(2rem,4vw,3rem);background:var(--line-dark);border:1px solid var(--line-dark)}
+@media (max-width:880px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.cat-grid{grid-template-columns:1fr}}
+.cat{background:var(--stone);padding:2rem 1.7rem;position:relative;transition:background-color .35s,color .35s;overflow:hidden}
+.cat::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--ember);transition:width .4s var(--ease)}
+.cat:hover{background:var(--slate);color:var(--stone)}
+.cat:hover::after{width:100%}
+.cat:hover .cat-ic{background:var(--forest-soft);color:var(--ember-2)}
+.cat:hover .cat-no{color:var(--ink-faint)}
+.cat-no{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:rgba(19,24,26,.4);transition:color .35s}
+.cat-ic{width:54px;height:54px;background:var(--forest);color:var(--stone);display:grid;place-items:center;margin:1rem 0 1.3rem;transform:rotate(45deg);transition:background-color .35s,color .35s}
+.cat-ic svg{width:26px;height:26px;transform:rotate(-45deg)}
+.cat h3{font-family:var(--display);font-weight:600;font-size:1.35rem;letter-spacing:.02em;text-transform:uppercase}
+.cat p{margin-top:.55rem;font-size:.95rem;line-height:1.55;color:rgba(19,24,26,.6);transition:color .35s}
+.cat:hover p{color:var(--ink-soft)}
+.cat .cat-tags{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.4rem}
+.cat .cat-tags span{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;padding:.22rem .55rem;border:1px solid var(--line-dark);transition:border-color .35s}
+.cat:hover .cat-tags span{border-color:var(--line)}
+
+/* ---------- uitgelichte producten ---------- */
+.gear{position:relative;overflow:hidden}
+.gear .topo{color:rgba(243,241,236,.05);opacity:1}
+.gear .wrap{position:relative;z-index:2}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:clamp(2rem,4vw,3rem)}
+@media (max-width:900px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.prod-grid{grid-template-columns:1fr}}
+.prod{background:var(--slate-2);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.prod:hover{transform:translateY(-6px);border-color:var(--forest-soft);box-shadow:0 30px 60px -42px rgba(0,0,0,.9)}
+.prod-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--slate-3)}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.prod:hover .prod-img img{transform:scale(1.05)}
+.prod-badge{position:absolute;top:.8rem;left:.8rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;background:var(--ember);color:#fff;padding:.3rem .6rem}
+.prod-badge.new{background:var(--forest-soft)}
+.prod-badge.deal{background:var(--ochre);color:var(--ink)}
+.prod-body{padding:1.5rem;display:flex;flex-direction:column;flex:1}
+.prod .cat-line{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ember-2)}
+.prod h3{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:.01em;text-transform:uppercase;margin-top:.5rem;line-height:1.08}
+.prod .specs{margin-top:.9rem;display:flex;flex-wrap:wrap;gap:.4rem}
+.prod .specs span{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:var(--ink-soft);border:1px solid var(--line);padding:.24rem .5rem}
+.prod-foot{margin-top:auto;padding-top:1.3rem;display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.prod .price{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:.01em}
+.prod .price s{font-family:var(--mono);font-weight:400;font-size:.82rem;color:var(--ink-faint);margin-left:.5rem}
+.prod .add{width:46px;height:46px;border:1.5px solid var(--line);background:none;color:var(--stone);display:grid;place-items:center;cursor:pointer;transition:background-color .25s,border-color .25s,color .25s,transform .25s}
+.prod .add svg{width:20px;height:20px}
+.prod .add:hover{background:var(--ember);border-color:var(--ember);color:#fff;transform:translateY(-2px)}
+
+/* ---------- tochten / expedities ---------- */
+.tochten{background:var(--forest-deep);position:relative;overflow:hidden}
+.tochten .topo{color:rgba(243,241,236,.08);opacity:1}
+.tochten .wrap{position:relative;z-index:2}
+.tochten .kicker{color:var(--ember-2)}
+.toch-list{margin-top:clamp(2rem,4vw,3rem);border-top:1px solid var(--line)}
+.toch{display:grid;grid-template-columns:auto 1.6fr repeat(4,1fr) auto;align-items:center;gap:1.4rem;padding:1.6rem .4rem;border-bottom:1px solid var(--line);transition:background-color .3s,padding-left .3s}
+.toch:hover{background:rgba(243,241,236,.04);padding-left:1rem}
+.toch-no{font-family:var(--mono);font-size:.8rem;color:var(--ember-2);letter-spacing:.04em}
+.toch-name h3{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:.01em;text-transform:uppercase;line-height:1.06}
+.toch-name p{margin-top:.25rem;font-size:.88rem;color:var(--ink-soft)}
+.toch-stat{text-align:left}
+.toch-stat .v{font-family:var(--display);font-weight:600;font-size:1.16rem;letter-spacing:.01em}
+.toch-stat .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:.15rem}
+.lvl{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase}
+.lvl .bars{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
+.lvl .bars i{width:4px;background:var(--line);display:block}
+.lvl .bars i:nth-child(1){height:6px}.lvl .bars i:nth-child(2){height:10px}.lvl .bars i:nth-child(3){height:14px}
+.lvl[data-lvl="1"] .bars i:nth-child(1),
+.lvl[data-lvl="2"] .bars i:nth-child(-n+2),
+.lvl[data-lvl="3"] .bars i{background:var(--ember)}
+.toch-go{width:44px;height:44px;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--stone);transition:background-color .25s,border-color .25s,transform .25s}
+.toch-go svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+.toch:hover .toch-go{background:var(--ember);border-color:var(--ember);color:#fff}
+.toch:hover .toch-go svg{transform:translateX(2px)}
+@media (max-width:1080px){
+  .toch{grid-template-columns:auto 1.4fr repeat(3,1fr) auto;}
+  .toch .hide-md{display:none}
+}
+@media (max-width:820px){
+  .toch{grid-template-columns:auto 1fr auto;gap:.9rem 1.2rem;padding-block:1.4rem}
+  .toch-stats-mob{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:1.2rem;padding-left:2.4rem}
+  .toch-stat{display:none}
+  .toch-stat.mob{display:block}
+  .toch-no{align-self:start;padding-top:.3rem}
+}
+@media (min-width:821px){.toch-stats-mob{display:contents}.toch-stat.mob{display:block}}
+.toch-cta{margin-top:clamp(2.2rem,4vw,3rem);display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.toch-cta p{font-style:italic;color:var(--ink-soft);font-size:.96rem}
+
+/* ---------- merkverhaal / over ons ---------- */
+.over{background:var(--stone);color:var(--ink)}
+.over .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:920px){.over .wrap{grid-template-columns:1fr;gap:2.6rem}}
+.over .kicker{color:var(--ember)}
+.over h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.8vw,3.2rem);line-height:1.02;letter-spacing:.005em;text-transform:uppercase;margin-top:1rem}
+.over h2 em{font-style:normal;color:var(--ember)}
+.over .lead{margin-top:1.2rem;font-size:1.12rem;line-height:1.72;color:var(--ink-soft)}
+.over .lead b{font-weight:600;color:var(--ink)}
+.pillars{margin-top:1.8rem;display:grid;gap:1rem}
+.pillar{display:flex;gap:1rem;align-items:flex-start;padding-bottom:1rem;border-bottom:1px solid var(--line-dark)}
+.pillar:last-child{border-bottom:0;padding-bottom:0}
+.pillar .pic{width:46px;height:46px;flex:none;background:var(--forest);color:var(--stone);display:grid;place-items:center;transform:rotate(45deg)}
+.pillar .pic svg{width:22px;height:22px;transform:rotate(-45deg)}
+.pillar b{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;display:block}
+.pillar span{font-size:.95rem;color:rgba(19,24,26,.62)}
+.over-fig{position:relative}
+.over-fig img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(1.02) contrast(1.03)}
+.over-fig .stamp{position:absolute;right:-1rem;bottom:1.6rem;background:var(--ember);color:#fff;padding:1.1rem 1.3rem;max-width:230px}
+.over-fig .stamp b{font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:.01em;display:block;line-height:1}
+.over-fig .stamp span{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase}
+@media (max-width:520px){.over-fig .stamp{right:.4rem;bottom:.6rem}}
+
+/* ---------- contact / inschrijven ---------- */
+.contact{position:relative;overflow:hidden}
+.contact .topo{color:rgba(243,241,236,.05);opacity:1}
+.contact .wrap{position:relative;z-index:2;display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4.5rem)}
+@media (max-width:920px){.contact .wrap{grid-template-columns:1fr}}
+.contact-info h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,3rem);letter-spacing:.005em;text-transform:uppercase;line-height:1.04;margin-top:1rem}
+.contact-info h2 em{font-style:normal;color:var(--ember-2)}
+.contact-info p{margin-top:1.1rem;color:var(--ink-soft);max-width:42ch}
+.contact-list{margin-top:2rem;display:grid;gap:1.2rem}
+.contact-list li{display:flex;gap:1rem;align-items:flex-start}
+.contact-list .ic{width:46px;height:46px;flex:none;background:var(--slate-3);border:1px solid var(--line);display:grid;place-items:center}
+.contact-list .ic svg{width:21px;height:21px;color:var(--ember-2)}
+.contact-list b{font-family:var(--display);font-weight:600;font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;display:block}
+.contact-list a,.contact-list span{color:var(--ink-soft);font-size:.95rem}
+.contact-list a:hover{color:var(--stone)}
+.contact-list .gps{font-family:var(--mono);font-size:.78rem}
+.form{background:var(--slate-2);border:1px solid var(--line);padding:clamp(1.6rem,3vw,2.4rem)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:560px){.form .row{grid-template-columns:1fr}}
+.field{margin-bottom:1.05rem}
+.field label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.45rem}
+.field input,.field select,.field textarea{width:100%;background:var(--slate);border:1.5px solid var(--line);color:var(--stone);padding:.78rem .9rem;font-size:.96rem;transition:border-color .2s,background-color .2s}
+.field textarea{resize:vertical;min-height:104px}
+.field select option{color:var(--ink);background:var(--stone)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ember)}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#e2521f;background:rgba(226,82,31,.08)}
+.field .err{display:none;color:var(--ember-2);font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;margin-top:.35rem}
+.field.bad .err{display:block}
+.form .btn-primary{width:100%;justify-content:center;margin-top:.4rem;font-size:.98rem}
+.form .note{margin-top:.9rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.02em;color:var(--ink-faint);text-align:center}
+.form .ok{display:none;text-align:center;padding:1.4rem 0}
+.form.sent .form-body{display:none}
+.form.sent .ok{display:block}
+.form .ok .ring{width:66px;height:66px;background:var(--forest);display:grid;place-items:center;margin:0 auto 1.2rem;transform:rotate(45deg)}
+.form .ok .ring svg{width:32px;height:32px;color:var(--ember-2);transform:rotate(-45deg)}
+.form .ok h3{font-family:var(--display);font-weight:600;font-size:1.5rem;letter-spacing:.02em;text-transform:uppercase}
+.form .ok p{margin-top:.6rem;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+.footer{background:var(--ink);color:var(--ink-soft);padding-block:clamp(3rem,6vw,4.5rem) 2rem;position:relative;overflow:hidden}
+.footer .topo{color:rgba(243,241,236,.04);opacity:1}
+.footer .wrap{position:relative;z-index:2}
+.footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
+@media (max-width:860px){.footer .top{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.footer .top{grid-template-columns:1fr}}
+.footer .brand{color:var(--stone);margin-bottom:1rem}
+.footer .blurb{font-size:.92rem;max-width:34ch;color:var(--ink-soft)}
+.footer .coords{margin-top:1rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--ink-faint)}
+.footer h4{font-family:var(--display);font-weight:600;color:var(--stone);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a,.footer ul span{font-size:.92rem;transition:color .2s}
+.footer ul a:hover{color:var(--ember-2)}
+.footer .socials{display:flex;gap:.7rem;margin-top:1.2rem}
+.footer .socials a{width:40px;height:40px;border:1px solid var(--line);display:grid;place-items:center;transition:background-color .25s,border-color .25s,color .25s}
+.footer .socials a:hover{background:var(--ember);border-color:var(--ember);color:#fff}
+.footer .socials svg{width:18px;height:18px}
+.footer .bottom{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--ink-faint)}
+
+/* ---------- reveal ---------- */
+.js [data-r]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+[data-r][style*="--d"]{transition-delay:var(--d)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-r]{opacity:1!important;transform:none!important}
+  .bar .dot{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- letterhead -->
+<div class="bar">
+  <div class="wrap">
+    <div class="left"><span class="dot" aria-hidden="true"></span> <span>Basiskamp open · ma–za 09:00–18:00</span> <span class="coords">· 52°22′N 6°41′E · 14 m NAP</span></div>
+    <div class="right">
+      <a class="email" href="mailto:basiskamp@noordwand.nl">basiskamp@noordwand.nl</a>
+      <a href="tel:0570123456">0570 12 34 56</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Noordwand home">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 19 6-11 4 6 2-3 6 8z"/></svg></span>
+      <b>NOORD<span>WAND</span></b>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Hoofdmenu">
+      <a href="#categorieen">Uitrusting</a>
+      <a href="#gear">Uitgelicht</a>
+      <a href="#tochten">Tochten</a>
+      <a href="#over">Over ons</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary desk" href="#contact">Plan een tocht <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- hero -->
+<section class="hero" id="main">
+  <div class="photo-wrap" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1600&q=72" alt="" width="1600" height="900" loading="eager">
+  </div>
+  <div class="topo" aria-hidden="true">
+    <svg viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice">
+      <path d="M-50 120 C 200 60, 420 200, 640 130 S 1050 40, 1260 150"/>
+      <path d="M-50 220 C 220 160, 440 300, 660 230 S 1060 150, 1260 250"/>
+      <path d="M-50 330 C 240 270, 460 410, 680 340 S 1070 270, 1260 360"/>
+      <path d="M-50 450 C 260 390, 480 520, 700 460 S 1080 390, 1260 480"/>
+      <path d="M-50 580 C 280 520, 500 640, 720 580 S 1090 520, 1260 600"/>
+      <path d="M-50 700 C 300 650, 520 760, 740 700 S 1100 650, 1260 720"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-r>Basiskamp sinds 1998 · Deventer</span>
+      <h1 data-r style="--d:.05s">Het begint waar de <em>verharde weg</em> ophoudt.</h1>
+      <p class="hero-intro" data-r style="--d:.12s">Noordwand is je uitvalsbasis voor wandelen, klimmen en trekking. Geteste, robuuste uitrusting, eerlijk advies van mensen die er zelf op trekken — en georganiseerde tochten van de Veluwe tot boven de boomgrens.</p>
+      <div class="hero-actions" data-r style="--d:.18s">
+        <a class="btn btn-primary" href="#gear">Bekijk de uitrusting <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#tochten">Georganiseerde tochten</a>
+      </div>
+      <div class="hero-meta" data-r style="--d:.24s">
+        <span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 19 6-11 4 6 2-3 6 8z"/></svg> <b>Veldgetest</b> in 5 landen</span>
+        <span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <b>2 jaar</b> garantie</span>
+        <span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2H7"/><path d="m3 15 3 3 3-3M6 18v-6"/></svg> <b>Reparatie</b>werkplaats</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- stats -->
+<section class="stats" aria-label="Noordwand in cijfers">
+  <div class="wrap">
+    <div class="stat" data-r><div class="num" data-count="26"><span>26</span></div><div class="lab">jaar op de been</div></div>
+    <div class="stat" data-r style="--d:.08s"><div class="num"><span>1.200+</span></div><div class="lab">stuks gear getest</div></div>
+    <div class="stat" data-r style="--d:.16s"><div class="num"><span>48</span></div><div class="lab">tochten per jaar</div></div>
+    <div class="stat" data-r style="--d:.24s"><div class="num"><span>4.061</span><span style="font-size:.5em"> m</span></div><div class="lab">hoogste top begeleid</div></div>
+  </div>
+</section>
+
+<!-- categorieën -->
+<section class="sec cats" id="categorieen">
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Uitrusting</span>
+      <h2>Eén basiskamp, <em>vier disciplines</em></h2>
+      <p>Of je nu een dagje de Veluwe in gaat of een week boven de sneeuwgrens bivakkeert — we hebben de gear, en de kennis om je de juiste keuze te laten maken.</p>
+    </div>
+    <div class="cat-grid">
+      <article class="cat" data-r>
+        <span class="cat-no">01 / WDL</span>
+        <span class="cat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 20l3-9 2 3 2-5 3 11"/><circle cx="10" cy="5" r="1.6"/></svg></span>
+        <h3>Wandelen</h3>
+        <p>Schoenen, daypacks en wandelstokken voor heuvel en hei. Op maat afgesteld, ingelopen advies.</p>
+        <div class="cat-tags"><span>Schoenen</span><span>Daypacks</span><span>Stokken</span></div>
+      </article>
+      <article class="cat" data-r style="--d:.08s">
+        <span class="cat-no">02 / KLM</span>
+        <span class="cat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="3"/><path d="M7 9v6m0 0 5 4M7 15l-3 4M12 13l5-2 3 4"/></svg></span>
+        <h3>Klimmen</h3>
+        <p>Touwen, harnassen, helmen en zekermateriaal. Gecertificeerd, gekeurd en altijd terug te traceren.</p>
+        <div class="cat-tags"><span>Touwen</span><span>Harnas</span><span>Zekeren</span></div>
+      </article>
+      <article class="cat" data-r style="--d:.16s">
+        <span class="cat-no">03 / TRK</span>
+        <span class="cat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M6 7h12a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V9a2 2 0 0 1 2-2zM9 7v4M15 7v4"/></svg></span>
+        <h3>Trekking</h3>
+        <p>Backpacks van 50–80 liter, regenkleding en lagen die ademen. Voor meerdaagse tochten met alles op je rug.</p>
+        <div class="cat-tags"><span>Backpacks</span><span>Hardshell</span><span>Lagen</span></div>
+      </article>
+      <article class="cat" data-r style="--d:.24s">
+        <span class="cat-no">04 / KMP</span>
+        <span class="cat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 3 20h18zM12 4v16"/><path d="m9 20 3-5 3 5"/></svg></span>
+        <h3>Kamperen</h3>
+        <p>Tenten, slaapsystemen en kooktoestellen. Licht, sterk en getest in wind, regen en vrieskou.</p>
+        <div class="cat-tags"><span>Tenten</span><span>Slaapzakken</span><span>Branders</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- uitgelichte producten -->
+<section class="sec gear" id="gear">
+  <div class="topo" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <path d="M-50 150 C 240 90, 460 230, 680 160 S 1070 80, 1260 180"/>
+      <path d="M-50 280 C 260 220, 480 360, 700 290 S 1080 210, 1260 310"/>
+      <path d="M-50 420 C 280 360, 500 500, 720 430 S 1090 350, 1260 450"/>
+      <path d="M-50 560 C 300 500, 520 640, 740 570 S 1100 490, 1260 590"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Uitgelicht</span>
+      <h2>Gear die het <em>verdient</em></h2>
+      <p>Een selectie waar we onze naam aan verbinden. Elk stuk is door ons team gedragen, gevallen, nat geworden en weer drooggeworden — en pas dan op de plank gelegd.</p>
+    </div>
+    <div class="prod-grid">
+      <article class="prod" data-r>
+        <div class="prod-img">
+          <span class="prod-badge">Bestseller</span>
+          <img src="https://images.unsplash.com/photo-1622260614153-03223fb72052?auto=format&fit=crop&w=700&q=72" alt="Trekking-backpack van bovenaf gefotografeerd" width="700" height="525" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="cat-line">Trekking · backpack</span>
+          <h3>Granietveld 65L</h3>
+          <div class="specs"><span>1.480 g</span><span>65 L</span><span>Ripstop 420D</span><span>Regenhoes</span></div>
+          <div class="prod-foot">
+            <span class="price">€ 219</span>
+            <button class="add" type="button" aria-label="Granietveld 65L toevoegen aan winkelmand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+        </div>
+      </article>
+      <article class="prod" data-r style="--d:.08s">
+        <div class="prod-img">
+          <span class="prod-badge new">Nieuw</span>
+          <img src="https://images.unsplash.com/photo-1520639888713-7851133b1eb0?auto=format&fit=crop&w=700&q=72" alt="Wandelschoenen op een rotsachtige ondergrond" width="700" height="525" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="cat-line">Wandelen · schoen</span>
+          <h3>Steenmarter GTX</h3>
+          <div class="specs"><span>Waterdicht</span><span>Vibram®</span><span>Mid-cut</span><span>Leer/textiel</span></div>
+          <div class="prod-foot">
+            <span class="price">€ 189</span>
+            <button class="add" type="button" aria-label="Steenmarter GTX toevoegen aan winkelmand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+        </div>
+      </article>
+      <article class="prod" data-r style="--d:.16s">
+        <div class="prod-img">
+          <span class="prod-badge deal">−20%</span>
+          <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=700&q=72" alt="Koepeltent opgezet in de natuur bij avondlicht" width="700" height="525" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="cat-line">Kamperen · tent</span>
+          <h3>Bivakzicht 2P</h3>
+          <div class="specs"><span>2 persoons</span><span>2.1 kg</span><span>3-seizoenen</span><span>3000 mm</span></div>
+          <div class="prod-foot">
+            <span class="price">€ 239 <s>€ 299</s></span>
+            <button class="add" type="button" aria-label="Bivakzicht 2P toevoegen aan winkelmand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+        </div>
+      </article>
+      <article class="prod" data-r>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=700&q=72" alt="Hardshell-jas hangend voor een bergachtergrond" width="700" height="525" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="cat-line">Trekking · hardshell</span>
+          <h3>Noordhelling Shell</h3>
+          <div class="specs"><span>3-laags</span><span>20.000 mm</span><span>PFC-vrij</span><span>Pit-zips</span></div>
+          <div class="prod-foot">
+            <span class="price">€ 279</span>
+            <button class="add" type="button" aria-label="Noordhelling Shell toevoegen aan winkelmand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+        </div>
+      </article>
+      <article class="prod" data-r style="--d:.08s">
+        <div class="prod-img">
+          <span class="prod-badge new">Nieuw</span>
+          <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=700&q=72" alt="Klimuitrusting met karabijnhaken en touw" width="700" height="525" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="cat-line">Klimmen · set</span>
+          <h3>Eerstegraads Klimset</h3>
+          <div class="specs"><span>Harnas</span><span>Helm</span><span>5× karabijn</span><span>CE/UIAA</span></div>
+          <div class="prod-foot">
+            <span class="price">€ 149</span>
+            <button class="add" type="button" aria-label="Eerstegraads Klimset toevoegen aan winkelmand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+        </div>
+      </article>
+      <article class="prod" data-r style="--d:.16s">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=700&q=72" alt="Brandende kampvuur-kooktoestel tijdens schemering in de bergen" width="700" height="525" loading="lazy">
+        </div>
+        <div class="prod-body">
+          <span class="cat-line">Kamperen · brander</span>
+          <h3>Vlampunt Mini</h3>
+          <div class="specs"><span>73 g</span><span>Piëzo</span><span>3000 W</span><span>Titanium</span></div>
+          <div class="prod-foot">
+            <span class="price">€ 64</span>
+            <button class="add" type="button" aria-label="Vlampunt Mini toevoegen aan winkelmand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- tochten / expedities -->
+<section class="sec tochten" id="tochten">
+  <div class="topo" aria-hidden="true">
+    <svg viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice">
+      <path d="M-50 100 C 240 40, 460 180, 680 110 S 1070 30, 1260 130"/>
+      <path d="M-50 210 C 260 150, 480 290, 700 220 S 1080 140, 1260 240"/>
+      <path d="M-50 330 C 280 270, 500 410, 720 340 S 1090 260, 1260 360"/>
+      <path d="M-50 460 C 300 400, 520 540, 740 470 S 1100 390, 1260 490"/>
+      <path d="M-50 600 C 320 540, 540 680, 760 610 S 1110 530, 1260 630"/>
+      <path d="M-50 720 C 340 670, 560 780, 780 720 S 1120 650, 1260 740"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="sec-head" data-r>
+      <span class="kicker">Georganiseerde tochten</span>
+      <h2>Niet alleen verkopen — <em>meelopen</em></h2>
+      <p>Onze gidsen lopen het hele jaar voorop. Van een rustige introductie op de Veluwe tot een gletsjertraining boven de 3.000 meter. Hoogtemeters, afstand en zwaarte vooraf op tafel.</p>
+    </div>
+    <div class="toch-list">
+
+      <article class="toch" data-r>
+        <span class="toch-no">T-01</span>
+        <div class="toch-name">
+          <h3>Veluwe Heideroute</h3>
+          <p>Dagtocht · zandverstuiving &amp; bos · Otterlo</p>
+        </div>
+        <div class="toch-stat mob"><div class="v">18 km</div><div class="k">Afstand</div></div>
+        <div class="toch-stat"><div class="v">+210 m</div><div class="k">Hoogtemeters</div></div>
+        <div class="toch-stat hide-md"><div class="v">1 dag</div><div class="k">Duur</div></div>
+        <div class="toch-stat">
+          <span class="lvl" data-lvl="1"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span> Licht</span>
+          <div class="k">Zwaarte</div>
+        </div>
+        <a class="toch-go" href="#contact" aria-label="Veluwe Heideroute · meer info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="toch" data-r style="--d:.06s">
+        <span class="toch-no">T-02</span>
+        <div class="toch-name">
+          <h3>Eifel Vulkaanpad</h3>
+          <p>Weekendtocht · kraters &amp; maaren · Duitsland</p>
+        </div>
+        <div class="toch-stat mob"><div class="v">42 km</div><div class="k">Afstand</div></div>
+        <div class="toch-stat"><div class="v">+1.150 m</div><div class="k">Hoogtemeters</div></div>
+        <div class="toch-stat hide-md"><div class="v">2 dagen</div><div class="k">Duur</div></div>
+        <div class="toch-stat">
+          <span class="lvl" data-lvl="2"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span> Stevig</span>
+          <div class="k">Zwaarte</div>
+        </div>
+        <a class="toch-go" href="#contact" aria-label="Eifel Vulkaanpad · meer info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="toch" data-r style="--d:.12s">
+        <span class="toch-no">T-03</span>
+        <div class="toch-name">
+          <h3>Dolomieten Via Ferrata</h3>
+          <p>Klimtocht · staaldraadroutes · Italië</p>
+        </div>
+        <div class="toch-stat mob"><div class="v">31 km</div><div class="k">Afstand</div></div>
+        <div class="toch-stat"><div class="v">+2.400 m</div><div class="k">Hoogtemeters</div></div>
+        <div class="toch-stat hide-md"><div class="v">4 dagen</div><div class="k">Duur</div></div>
+        <div class="toch-stat">
+          <span class="lvl" data-lvl="3"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span> Pittig</span>
+          <div class="k">Zwaarte</div>
+        </div>
+        <a class="toch-go" href="#contact" aria-label="Dolomieten Via Ferrata · meer info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="toch" data-r style="--d:.18s">
+        <span class="toch-no">T-04</span>
+        <div class="toch-name">
+          <h3>Mont Blanc Gletsjertraining</h3>
+          <p>Expeditie · stijgijzers &amp; touwteam · Frankrijk</p>
+        </div>
+        <div class="toch-stat mob"><div class="v">26 km</div><div class="k">Afstand</div></div>
+        <div class="toch-stat"><div class="v">+3.200 m</div><div class="k">Hoogtemeters</div></div>
+        <div class="toch-stat hide-md"><div class="v">6 dagen</div><div class="k">Duur</div></div>
+        <div class="toch-stat">
+          <span class="lvl" data-lvl="3"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span> Zwaar</span>
+          <div class="k">Zwaarte</div>
+        </div>
+        <a class="toch-go" href="#contact" aria-label="Mont Blanc Gletsjertraining · meer info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+    </div>
+    <div class="toch-cta" data-r>
+      <a class="btn btn-primary" href="#contact">Schrijf je in voor een tocht <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p>Twijfel je over je niveau? Onze gidsen kijken graag even met je mee.</p>
+    </div>
+  </div>
+</section>
+
+<!-- over ons / merkverhaal -->
+<section class="sec over" id="over">
+  <div class="wrap">
+    <div class="over-copy" data-r>
+      <span class="kicker">Het verhaal</span>
+      <h2>Gebouwd om <em>lang mee te gaan</em></h2>
+      <p class="lead">Noordwand begon in 1998 als een hoekje achterin een fietsenzaak in Deventer, met twee rekken tweedehands klimtouw en één rugzak die de eigenaar zelf niet wilde verkopen. <b>We zijn gegroeid, maar het uitgangspunt is hetzelfde gebleven: koop één keer goed, en gebruik het tot het versleten is.</b></p>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2 4 6v6c0 5 3 8 7 10 4-2 7-5 7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div><b>2 jaar garantie</b><span>Op alle gear, zonder kleine lettertjes. Gaat iets stuk dat niet hoort te breken? Dan lossen we het op.</span></div>
+        </div>
+        <div class="pillar">
+          <span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2H7"/><path d="m3 15 3 3 3-3M6 18v-6"/></svg></span>
+          <div><b>Eigen reparatiewerkplaats</b><span>Lekke tent, kapotte rits of een rugzak met een scheur? We naaien, plakken en lassen liever dan dat je iets weggooit.</span></div>
+        </div>
+        <div class="pillar">
+          <span class="pic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 .5 4.5-1.5 6.5A7 7 0 0 1 11 20z"/><path d="M2 22c2-3 5-4 9-5"/></svg></span>
+          <div><b>Duurzaam waar het kan</b><span>PFC-vrije impregnering, gerecycled nylon en een tweedehands-hoek voor gear met nog jaren leven in zich.</span></div>
+        </div>
+      </div>
+    </div>
+    <figure class="over-fig" data-r style="--d:.1s">
+      <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=900&q=72" alt="Wandelaar met grote rugzak kijkt uit over een mistig berglandschap" width="900" height="1125" loading="lazy">
+      <div class="stamp"><b>EST. 1998</b><span>Deventer · NL</span></div>
+    </figure>
+  </div>
+</section>
+
+<!-- contact / inschrijven -->
+<section class="sec contact" id="contact">
+  <div class="topo" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <path d="M-50 160 C 240 100, 460 240, 680 170 S 1070 90, 1260 190"/>
+      <path d="M-50 300 C 260 240, 480 380, 700 310 S 1080 230, 1260 330"/>
+      <path d="M-50 450 C 280 390, 500 530, 720 460 S 1090 380, 1260 480"/>
+      <path d="M-50 600 C 300 540, 520 680, 740 610 S 1100 530, 1260 630"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="contact-info" data-r>
+      <span class="kicker">Contact &amp; inschrijven</span>
+      <h2>Klaar voor de <em>volgende tocht?</em></h2>
+      <p>Schrijf je in voor een georganiseerde tocht, vraag advies over je uitrusting of loop gewoon eens binnen in het basiskamp. We reageren binnen één werkdag.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div><b>Telefoon</b><a href="tel:0570123456">0570 12 34 56</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><b>E-mail</b><a href="mailto:basiskamp@noordwand.nl">basiskamp@noordwand.nl</a></div>
+        </li>
+        <li>
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Basiskamp</b><span>Zutphenseweg 14, 7418 AJ Deventer</span><span class="gps">52°15′05″N · 6°09′40″E</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" novalidate data-r style="--d:.1s">
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+            <span class="err">Vul je naam in.</span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mailadres</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <span class="err">Vul een geldig e-mailadres in.</span>
+        </div>
+        <div class="field">
+          <label for="f-interesse">Tocht of interesse</label>
+          <select id="f-interesse" name="interesse" required>
+            <option value="" selected disabled>Kies waar je naar op zoek bent…</option>
+            <option>T-01 · Veluwe Heideroute</option>
+            <option>T-02 · Eifel Vulkaanpad</option>
+            <option>T-03 · Dolomieten Via Ferrata</option>
+            <option>T-04 · Mont Blanc Gletsjertraining</option>
+            <option>Uitrustingsadvies</option>
+            <option>Reparatie / garantie</option>
+            <option>Anders / nog niet zeker</option>
+          </select>
+          <span class="err">Maak een keuze.</span>
+        </div>
+        <div class="field">
+          <label for="f-bericht">Bericht</label>
+          <textarea id="f-bericht" name="bericht" placeholder="Vertel kort over je ervaring, conditie of wat je zoekt…"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Verstuur aanvraag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="note">Vrijblijvend · reactie binnen één werkdag · je gegevens blijven bij ons</p>
+      </div>
+      <div class="ok" role="status">
+        <div class="ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3 id="ok-title">Tot in het veld!</h3>
+        <p id="ok-text">We hebben je aanvraag ontvangen en nemen binnen één werkdag contact met je op.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="topo" aria-hidden="true">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+      <path d="M-50 90 C 240 40, 460 150, 680 90 S 1070 30, 1260 110"/>
+      <path d="M-50 200 C 260 150, 480 260, 700 200 S 1080 140, 1260 220"/>
+      <path d="M-50 320 C 280 270, 500 380, 720 320 S 1090 250, 1260 340"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top" aria-label="Noordwand home">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 19 6-11 4 6 2-3 6 8z"/></svg></span>
+          <b>NOORD<span>WAND</span></b>
+        </a>
+        <p class="blurb">Basiskamp voor wandelen, klimmen en trekking. Geteste gear, eerlijk advies en tochten die verder gaan dan het wandelpad.</p>
+        <p class="coords">52°15′05″N · 6°09′40″E · 8 m NAP</p>
+        <div class="socials">
+          <a href="#top" aria-label="Noordwand op Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#top" aria-label="Noordwand op YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 8a3 3 0 0 0-2.1-2.1C18 5.4 12 5.4 12 5.4s-6 0-7.9.5A3 3 0 0 0 2 8a31 31 0 0 0 0 8 3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5A3 3 0 0 0 22 16a31 31 0 0 0 0-8z"/><path d="m10 15 5-3-5-3z"/></svg></a>
+          <a href="#top" aria-label="Noordwand op Strava"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 16h4l2-4 2 4h4z"/><path d="m13 16 2 4 2-4h-2z"/></svg></a>
+          <a href="#top" aria-label="Noordwand op Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Uitrusting</h4>
+        <ul>
+          <li><a href="#categorieen">Wandelen</a></li>
+          <li><a href="#categorieen">Klimmen</a></li>
+          <li><a href="#categorieen">Trekking</a></li>
+          <li><a href="#categorieen">Kamperen</a></li>
+          <li><a href="#gear">Uitgelicht</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Tochten</h4>
+        <ul>
+          <li><a href="#tochten">Dagtochten</a></li>
+          <li><a href="#tochten">Weekenden</a></li>
+          <li><a href="#tochten">Expedities</a></li>
+          <li><a href="#tochten">Klimtochten</a></li>
+          <li><a href="#contact">Inschrijven</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Basiskamp</h4>
+        <ul>
+          <li><a href="#over">Over ons</a></li>
+          <li><a href="#over">Garantie</a></li>
+          <li><a href="#over">Reparatie</a></li>
+          <li><a href="#over">Duurzaamheid</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; <span id="jaar">2026</span> Noordwand — outdoor- &amp; bergsportuitrusting</span>
+      <span>KvK 38211204 · BTW NL8211.20.412.B01</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var doc=document;
+  var reduced=false;
+  try{reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+
+  /* ---- jaar ---- */
+  var jaar=doc.getElementById("jaar");
+  if(jaar){jaar.textContent=String(new Date().getFullYear());}
+
+  /* ---- nav: stuck + mobiel menu ---- */
+  var nav=doc.getElementById("nav");
+  var burger=doc.getElementById("burger");
+  var links=doc.getElementById("navlinks");
+  function setMenu(open){
+    if(links){links.classList.toggle("open",open);}
+    if(burger){
+      burger.classList.toggle("open",open);
+      burger.setAttribute("aria-expanded",open?"true":"false");
+    }
+    doc.body.style.overflow=open?"hidden":"";
+  }
+  if(burger){
+    burger.addEventListener("click",function(){
+      setMenu(!links.classList.contains("open"));
+    });
+  }
+  if(links){
+    links.addEventListener("click",function(e){
+      if(e.target.closest("a")){setMenu(false);}
+    });
+  }
+  doc.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){setMenu(false);}
+  });
+
+  /* ---- nav stuck on scroll (rAF-throttled) ---- */
+  var ticking=false;
+  function onScroll(){
+    ticking=false;
+    var y=window.pageYOffset||0;
+    if(nav){nav.classList.toggle("stuck",y>8);}
+  }
+  function tick(){
+    if(!ticking){ticking=true;requestAnimationFrame(onScroll);}
+  }
+  window.addEventListener("scroll",tick,{passive:true});
+  onScroll();
+
+  /* ---- reveal on scroll ---- */
+  if(!reduced && "IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:0.12,rootMargin:"0px 0px -6% 0px"});
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"),function(el){io.observe(el);});
+  }else{
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-r]"),function(el){el.classList.add("in");});
+  }
+
+  /* ---- "toevoegen" knopjes: kleine bevestiging ---- */
+  Array.prototype.forEach.call(doc.querySelectorAll(".prod .add"),function(btn){
+    btn.addEventListener("click",function(){
+      if(btn.dataset.done){return;}
+      btn.dataset.done="1";
+      var svg=btn.querySelector("svg");
+      if(svg){svg.innerHTML='<path d="M20 6 9 17l-5-5"/>';}
+      btn.style.background="var(--forest-soft)";
+      btn.style.borderColor="var(--forest-soft)";
+      btn.style.color="#fff";
+      setTimeout(function(){
+        if(svg){svg.innerHTML='<path d="M12 5v14M5 12h14"/>';}
+        btn.style.background="";btn.style.borderColor="";btn.style.color="";
+        delete btn.dataset.done;
+      },1400);
+    });
+  });
+
+  /* ---- contact/inschrijf-formulier: live validatie ---- */
+  var form=doc.getElementById("form");
+  if(form){
+    function bad(input,on){
+      var f=input.closest(".field");
+      if(f){f.classList.toggle("bad",on);}
+    }
+    function valid(input){
+      var v=(input.value||"").trim(),ok=true;
+      if(input.type==="email"){
+        ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      }else if(input.hasAttribute("required")){
+        ok=v.length>0;
+      }
+      bad(input,!ok);
+      return ok;
+    }
+    var inputs=Array.prototype.slice.call(
+      form.querySelectorAll("input[required], select[required]")
+    );
+    inputs.forEach(function(i){
+      i.addEventListener("blur",function(){valid(i);});
+      i.addEventListener("input",function(){
+        if(i.closest(".field").classList.contains("bad")){valid(i);}
+      });
+      i.addEventListener("change",function(){
+        if(i.closest(".field").classList.contains("bad")){valid(i);}
+      });
+    });
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      var allOk=true,first=null;
+      inputs.forEach(function(i){
+        if(!valid(i)){allOk=false;if(!first){first=i;}}
+      });
+      if(!allOk){
+        if(first){first.focus();}
+        return;
+      }
+      var naam=(doc.getElementById("f-naam").value||"").trim().split(" ")[0];
+      var sel=doc.getElementById("f-interesse");
+      var keuze=sel?sel.options[sel.selectedIndex].text:"";
+      var okt=doc.getElementById("ok-text");
+      if(okt){
+        okt.textContent=(naam?naam+", bedankt":"Bedankt")+
+          " — we hebben je aanvraag" +
+          (keuze?" voor “"+keuze+"”":"")+
+          " ontvangen en nemen binnen één werkdag contact met je op.";
+      }
+      form.classList.add("sent");
+      form.scrollIntoView({behavior:reduced?"auto":"smooth",block:"center"});
+    });
+  }
+})();
+</script>
+</body>
+</html>
