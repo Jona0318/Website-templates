@@ -1,4 +1,4 @@
-﻿# BOLT — energiedrank
+# BOLT — energiedrank
 
 Energiedrank-merk met full-bleed product-hero en overlappende stat-kaarten; CSS-blik dat live van kleur/smaak wisselt — electric blue × lime.
 

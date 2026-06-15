@@ -1,4 +1,4 @@
-﻿# ONTSNAP — escape rooms
+# ONTSNAP — escape rooms
 
 Gespannen escape rooms in poster/diagonaal met side-rail; aftelklok in de schuine hero-wig en gestaffelde room-strips — bijna-zwart × oranje.
 

@@ -1,4 +1,4 @@
-﻿# Boxing Gym
+# Boxing Gym
 
 Rauw zwart/acid-geel met dubbele marquee, duotone-foto’s en lesrooster-tabs.
 

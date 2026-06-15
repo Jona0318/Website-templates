@@ -1,4 +1,4 @@
-﻿# Architectuur Studio
+# Architectuur Studio
 
 Editorial design met preloader, parallax, scroll-tekst en magnetische knop.
 

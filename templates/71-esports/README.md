@@ -1,4 +1,4 @@
-﻿# RESPAWN — esports team
+# RESPAWN — esports team
 
 Hoekig esports-team in poster/diagonaal met clip-path en gekantelde blokken; roster met echte speler-portretten, wedstrijden en tryout — navy × neon-groen.
 

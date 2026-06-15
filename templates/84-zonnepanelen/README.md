@@ -1,4 +1,4 @@
-﻿# STROOM — zonnepanelen
+# STROOM — zonnepanelen
 
 Bold-eco zonnepanelen met split-hero en asymmetrisch bento; interactieve besparings-slider die kWh en euro’s live berekent — zon-geel × diep groen.
 

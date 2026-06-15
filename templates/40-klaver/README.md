@@ -1,4 +1,4 @@
-﻿# Klaver — tandartspraktijk
+# Klaver — tandartspraktijk
 
 Rustige, met de hand gebouwde healthcare-site: licht en luchtig, met echte foto’s, een open-status uit de openingstijden en een vriendelijk afspraakformulier.
 

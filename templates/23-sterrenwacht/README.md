@@ -1,4 +1,4 @@
-﻿# Sterrenwacht
+# Sterrenwacht
 
 Canvas-sterrenhemel, bouw-je-eigen-sterrenbeeld en een maanfase berekend uit de datum.
 

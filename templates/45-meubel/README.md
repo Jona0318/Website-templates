@@ -1,4 +1,4 @@
-﻿# Eik & Es — meubels
+# Eik & Es — meubels
 
 Minimalistische meubelwinkel als bento-raster van ongelijke tegels met echte productfoto’s; collecties, werkplaats en showroom — neutraal × hout.
 

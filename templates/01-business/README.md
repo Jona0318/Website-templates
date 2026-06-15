@@ -1,4 +1,4 @@
-﻿# MERIDIAAN — consultancy
+# MERIDIAAN — consultancy
 
 Zelfverzekerd corporate-premium one-pager in ink/navy × koper (Fraunces): propositie-hero met stat-badge, tellende cijfers, diensten met SVG-iconen, 4-staps werkwijze, cases met metrics, FAQ-accordeon en offerteformulier met validatie.
 

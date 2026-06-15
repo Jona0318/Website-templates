@@ -1,4 +1,4 @@
-﻿# ENSO — izakaya
+# ENSO — izakaya
 
 Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen: Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier.
 

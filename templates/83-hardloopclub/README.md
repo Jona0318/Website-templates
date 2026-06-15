@@ -1,4 +1,4 @@
-﻿# SPRINT — running crew
+# SPRINT — running crew
 
 Energieke running crew met side-rail, outline-type-hero en horizontaal scrollende runs-strip met pace-tags — oranje × beton.
 

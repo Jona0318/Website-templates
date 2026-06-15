@@ -1,4 +1,4 @@
-﻿# NOORDWAND — bergsport
+# NOORDWAND — bergsport
 
 Rauw-technisch outdoor- & bergsportmerk in leisteen × bosgroen × signaaloranje: topografische hoogtelijnen, Oswald-koppen, uitrusting-grid, tochten met hoogtemeters/zwaarte en inschrijfformulier.
 

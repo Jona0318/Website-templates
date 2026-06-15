@@ -228,6 +228,12 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .thumb .edit:hover{background:var(--violet)}
 .thumb .edit svg{width:15px;height:15px}
 @media (hover:none){.thumb .edit{opacity:1;transform:none}}
+.thumb .fav-btn{position:absolute;bottom:.7rem;left:.8rem;z-index:3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:none;cursor:pointer;color:#fff;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background-color .2s}
+.card:hover .thumb .fav-btn,.thumb .fav-btn:focus-visible,.thumb .fav-btn.is-fav{opacity:1;transform:none}
+.thumb .fav-btn:hover,.thumb .fav-btn.is-fav{background:var(--pink)}
+.thumb .fav-btn svg{width:14px;height:14px}
+.thumb .fav-btn.is-fav svg{fill:currentColor}
+@media (hover:none){.thumb .fav-btn{opacity:1;transform:none}}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none}
 .card:hover .thumb::after{transform:translateX(120%)}
 .body{display:flex;flex-direction:column;flex:1;padding:1.2rem 1.3rem 1.35rem;gap:.5rem}
@@ -371,6 +377,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
           <option value="num">Nummer</option>
           <option value="az">A–Z</option>
           <option value="new">Nieuwste eerst</option>
+          <option value="adv">Meest uitgebreid</option>
         </select>
       </label>
     </div>
@@ -505,8 +512,10 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     ["63","63-festival","VOLTAGE — festival","Poster-festival met gekantelde diagonale composities; line-up, dag-tabs met pijltjesnavigatie en ticket-tiers — acid-geel × zwart.","grafisch","⚡","#0b0b0b","#e6ff00",["Poster","Dag-tabs"],"dark","evenement"],
     ["64","64-saas","KERNEL — dev tool","Developer-tool als bento-mozaïek met een live-getypte console-tegel, features en prijzen — donker × cyan.","grafisch","🖥️","#070a0f","#00e5ff",["Bento","Live console"],"dark","software"],
     ["65","65-podcast","FREQ — podcast","Redactionele podcast met vaste side-rail incl. waveform-mini-speler; afleveringenlijst en makers — oranje × teal × cream.","grafisch","🎙️","#ff5a1f","#0e8c7d",["Side-rail","Waveform"],"light","media"],
+    ["66","66-slink","Slink — cocktailbar","Atmosferische cocktailbar in de Jordaan — donker amber-goud palet, Cormorant Garamond serif en een kaart die wisselt met de seizoenen.","premium","🍸","#080806","#c9903a",["Dark theme","Horeca","Sfeer"],"dark","horeca"],
     ["67","67-burgerbar","SMASH — burgerbar","Speels-brutalistische burgerbar met utility-bar, split-hero en zigzag-menukaart met echte foodfoto’s; afhaalformulier — ketchup × mosterd.","grafisch","🍔","#ff3b30","#ffc21c",["Zigzag","Foto’s"],"light","horeca"],
     ["68","68-club","NOCTURN — nachtclub","Nachtclub met full-bleed donkere beeld-hero en agenda-kaarten die over de hero-rand schuiven; tafelreservering — UV-paars × acid-cyaan.","grafisch","🌙","#08060f","#00ffd5",["Full-bleed","Agenda"],"dark","uitgaan"],
+    ["69","69-grip","Grip — boulderhal","Modern indoor klimcentrum in krijtwit met vivid oranje-rood accent — Oswald condensed display, stats-band, prijstabel en FAQ.","premium","🧗","#f4f2ee","#e8421c",["Sport","Pricing","Stats"],"light","sport"],
     ["70","70-platenzaak","WALS — platenzaak","Retro-platenzaak met side-rail nav, draaiende-vinyl-hero en horizontaal scrollende platenbak met genre-filter — burnt orange × cream.","grafisch","🎵","#ff5e1a","#0b6e5f",["Crate-strip","Genre-filter"],"light","retail"],
     ["71","71-esports","RESPAWN — esports team","Hoekig esports-team in poster/diagonaal met clip-path en gekantelde blokken; roster met echte speler-portretten, wedstrijden en tryout — navy × neon-groen.","grafisch","🎮","#080c16","#39ff14",["Poster","Roster"],"dark","sport"],
     ["72","72-dansstudio","TEMPO — dansstudio","Kinetische dansstudio als content-hub met het weekrooster (dag-tabs, pijltjesnavigatie) als kloppend hart; stijlen — zwart × magenta × lime.","grafisch","💃","#0d0d0d","#ff1f8f",["Tab-hub","Weekrooster"],"dark","sport"],
@@ -516,6 +525,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     ["76","76-ijssalon","ROOM — ambachtelijk ijs","Speelse ijssalon met gecentreerde hero en gekleurde volle-breedte banden; smakengrid met echte ijsfoto’s en prijzenband — pastel-bold.","grafisch","🍦","#ff8fbf","#74e0c3",["Banden","Foto’s"],"light","horeca"],
     ["77","77-drankmerk","BOLT — energiedrank","Energiedrank-merk met full-bleed product-hero en overlappende stat-kaarten; CSS-blik dat live van kleur/smaak wisselt — electric blue × lime.","grafisch","🥤","#0a0e2a","#c6ff2e",["Full-bleed","Kleur-switch"],"dark","product"],
     ["78","78-literairfestival","WOORD — literair festival","Literair festival als magazine met sticky sectie-index (scroll-spy); asymmetrische redactionele hero, sprekers en programma — cream × diep rood, Fraunces.","grafisch","📖","#f3ead7","#c2241f",["Magazine","Scroll-spy"],"light","evenement"],
+    ["79","79-noot","Noot — muziekschool","Warme muziekschool voor alle leeftijden in crème met indigo — Lora serif, zigzag-aanpaksectie, tarieven en gratis proefles-formulier.","premium","🎹","#f8f5ef","#3c3196",["Muziek","Prijstabel","Warm"],"light","muziek"],
     ["80","80-escaperoom","ONTSNAP — escape rooms","Gespannen escape rooms in poster/diagonaal met side-rail; aftelklok in de schuine hero-wig en gestaffelde room-strips — bijna-zwart × oranje.","grafisch","🔓","#0c0a0a","#ff6a00",["Poster","Aftelklok"],"dark","uitgaan"],
     ["81","81-nagelstudio","KROON — nagelstudio","Nagelstudio, minimaal en gecentreerd met hairline-details; echte nail-art galerij en prijslijst met dotted leaders — hot pink × goud.","grafisch","💅","#ff2d87","#e8b14a",["Minimal","Foto’s"],"light","beauty"],
     ["82","82-gamestudio","PIXELWERK — game studio","Game- &amp; app-studio als bento-portfolio met echte game-art op ongelijke tegels; diensten en projectaanvraag — diep paars × lime.","grafisch","🕹️","#150a2b","#b6ff3d",["Bento","Foto’s"],"dark","software"],
@@ -559,6 +569,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
 
   /* ---- kaarten renderen ---- */
   var grid = doc.getElementById('grid');
+  var favSlugs = new Set();
+  try { (JSON.parse(localStorage.getItem('bron-favs') || '[]') || []).forEach(function(s){ if(s){ favSlugs.add(s); } }); } catch(e){}
   /* recept-gebaseerde templates kunnen live in de Studio gepersonaliseerd worden */
   var RECIPE_SLUGS = ['25-makelaar','26-helder','27-nocturne','28-atlas','29-noorderlicht','30-vinyl','31-arcade','32-kwekerij','33-keramiek','34-parfum','35-data','36-tattoo','37-getij','38-lab'];
   var arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>';
@@ -578,6 +590,9 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     card.setAttribute('data-href', href);
     card.setAttribute('data-text', (title + ' ' + desc + ' ' + TIERS[tier].label + ' ' + sector + ' ' + tags.join(' ')).toLowerCase());
     card.setAttribute('data-tags', tags.map(function (t) { return t.toLowerCase(); }).join('|'));
+    card.setAttribute('data-slug', slug);
+    card.setAttribute('data-ntags', String(tags.length));
+    card.setAttribute('data-fav', favSlugs.has(slug) ? '1' : '0');
     var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<button type="button" class="tag" data-tag="' + esc(t.toLowerCase()) + '" aria-pressed="false" aria-label="Filter op ' + esc(t) + '">' + t + '</button>'; }).join('') + '</div>' : '';
     var studioHtml = RECIPE_SLUGS.indexOf(slug) !== -1 ? '<a class="studio-link" href="studio.html?t=' + slug + '"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M11 2.5 13.5 5 6 12.5 3 13l.5-3z"/></svg>Personaliseer in Studio</a>' : '';
     card.innerHTML =
@@ -586,6 +601,9 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
         '<span class="num">' + num + '</span>' +
         '<span class="badge" style="--bc:' + TIERS[tier].color + '">' + TIERS[tier].label + '</span>' +
         '<span class="emoji">' + emoji + '</span>' +
+        '<button type="button" class="fav-btn' + (favSlugs.has(slug) ? ' is-fav' : '') + '" aria-pressed="' + (favSlugs.has(slug) ? 'true' : 'false') + '" aria-label="' + (favSlugs.has(slug) ? 'Verwijder uit' : 'Voeg toe aan') + ' favorieten">' +
+          '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 13.5S1.5 9.5 1.5 5.5a3 3 0 0 1 6-1.2 3 3 0 0 1 6 1.2c0 4-6.5 8-6.5 8z"/></svg>' +
+        '</button>' +
         '<a class="dl" href="downloads/' + slug + '.zip" download aria-label="Download ' + esc(title) + ' als zip" title="Download als zip">' +
           '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13h10"/></svg>' +
         '</a>' +
@@ -615,13 +633,18 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   var chipsEl = doc.getElementById('chips');
   var chipDefs = [{ key: 'alle', label: 'Alle', color: 'var(--violet)', n: T.length }];
   Object.keys(TIERS).forEach(function (k) { if (counts[k]) { chipDefs.push({ key: k, label: TIERS[k].label, color: TIERS[k].color, fg: TIERS[k].fg, n: counts[k] }); } });
+  chipDefs.push({ key: 'fav', label: 'Favorieten', color: 'var(--pink)', n: favSlugs.size, isFav: true });
   chipDefs.forEach(function (c, i) {
     var b = doc.createElement('button');
     b.className = 'chip'; b.type = 'button'; b.setAttribute('data-tier', c.key);
     b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
     b.style.setProperty('--c', c.color);
     if (c.fg) { b.style.setProperty('--fg', c.fg); }
-    b.innerHTML = '<span class="swatch" aria-hidden="true"></span>' + c.label + ' <span class="n">' + c.n + '</span>';
+    if (c.isFav) {
+      b.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" style="width:11px;height:11px;margin-right:.25rem;vertical-align:-.1em" aria-hidden="true"><path d="M8 13.5S1.5 9.5 1.5 5.5a3 3 0 0 1 6-1.2 3 3 0 0 1 6 1.2c0 4-6.5 8-6.5 8z"/></svg>' + c.label + ' <span class="n">' + c.n + '</span>';
+    } else {
+      b.innerHTML = '<span class="swatch" aria-hidden="true"></span>' + c.label + ' <span class="n">' + c.n + '</span>';
+    }
     chipsEl.appendChild(b);
   });
   var chips = Array.prototype.slice.call(chipsEl.querySelectorAll('.chip'));
@@ -688,7 +711,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   if (resultTotal) { resultTotal.textContent = String(T.length); }
   function cardHasTag(card, tag) { return ('|' + card.getAttribute('data-tags') + '|').indexOf('|' + tag + '|') !== -1; }
   function matches(card, st) {
-    if (st.tier !== 'alle' && card.getAttribute('data-tier') !== st.tier) { return false; }
+    if (st.tier === 'fav') { if (card.getAttribute('data-fav') !== '1') { return false; } }
+    else if (st.tier !== 'alle' && card.getAttribute('data-tier') !== st.tier) { return false; }
     if (st.scheme !== 'alle' && card.getAttribute('data-scheme').indexOf(st.scheme) === -1) { return false; }
     if (st.sector !== 'alle' && card.getAttribute('data-sector') !== st.sector) { return false; }
     if (st.q && card.getAttribute('data-text').indexOf(st.q) === -1) { return false; }
@@ -724,6 +748,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     var mode = state.sort, arr = cards.slice();
     arr.sort(function (a, b) {
       if (mode === 'az') { var ta = a.getAttribute('data-title'), tb = b.getAttribute('data-title'); return ta < tb ? -1 : (ta > tb ? 1 : 0); }
+      if (mode === 'adv') { var na = +(a.getAttribute('data-ntags')||'0'), nb = +(b.getAttribute('data-ntags')||'0'); return nb - na; }
       var ai = +a.getAttribute('data-id'), bi = +b.getAttribute('data-id');
       return mode === 'new' ? bi - ai : ai - bi;
     });
@@ -776,6 +801,22 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   });
   featureChips.forEach(function (chip) { chip.addEventListener('click', function () { toggleTag(chip.getAttribute('data-tag')); }); });
   grid.addEventListener('click', function (e) {
+    var fb = e.target && e.target.closest ? e.target.closest('.fav-btn') : null;
+    if (fb && grid.contains(fb)) {
+      e.preventDefault(); e.stopPropagation();
+      var card = fb.closest('.card');
+      var sl = card ? card.getAttribute('data-slug') : null;
+      if (!sl) { return; }
+      var isFav = !favSlugs.has(sl);
+      if (isFav) { favSlugs.add(sl); } else { favSlugs.delete(sl); }
+      try { localStorage.setItem('bron-favs', JSON.stringify(Array.from(favSlugs))); } catch(e2){}
+      if (card) { card.setAttribute('data-fav', isFav ? '1' : '0'); }
+      fb.classList.toggle('is-fav', isFav);
+      fb.setAttribute('aria-pressed', isFav ? 'true' : 'false');
+      fb.setAttribute('aria-label', (isFav ? 'Verwijder uit' : 'Voeg toe aan') + ' favorieten');
+      apply();
+      return;
+    }
     var btn = e.target && e.target.closest ? e.target.closest('.tag') : null;
     if (btn && grid.contains(btn)) {
       e.preventDefault();
@@ -814,11 +855,11 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       var key = kv.slice(0, i), val;
       try { val = decodeURIComponent(kv.slice(i + 1)); } catch (e) { return; }
       if (key === 'q') { state.q = val.toLowerCase(); }
-      else if (key === 'tier' && (val === 'alle' || TIERS[val])) { state.tier = val; }
+      else if (key === 'tier' && (val === 'alle' || val === 'fav' || TIERS[val])) { state.tier = val; }
       else if (key === 'scheme' && (val === 'light' || val === 'dark')) { state.scheme = val; }
       else if (key === 'sector' && sectorCounts[val]) { state.sector = val; }
       else if (key === 'tags') { state.tags = val.split(',').map(function (t) { return t.toLowerCase(); }).filter(Boolean); }
-      else if (key === 'sort' && (val === 'az' || val === 'new' || val === 'num')) { state.sort = val; }
+      else if (key === 'sort' && (val === 'az' || val === 'new' || val === 'num' || val === 'adv')) { state.sort = val; }
     });
   })();
   reflect();

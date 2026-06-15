@@ -1,4 +1,4 @@
-﻿# KOM — poké bar
+# KOM — poké bar
 
 Poké bar met split-hero (echte bowl-foto) en asymmetrisch raster; interactieve bowl-bouwer met live prijs — fris groen × koraal.
 

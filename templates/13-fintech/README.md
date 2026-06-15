@@ -1,4 +1,4 @@
-﻿# Fintech / Bank
+# Fintech / Bank
 
 3D-tilt bankpas, live transactiefeed, bento-grid en glasmorfisme.
 

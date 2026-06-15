@@ -1,4 +1,4 @@
-﻿# Spaak — fietsenwinkel
+# Spaak — fietsenwinkel
 
 Energieke fietsenwinkel met split-hero en asymmetrisch mozaïek-grid; reparatie-prijslijst en plan-je-reparatie — oranje, vet grotesk.
 

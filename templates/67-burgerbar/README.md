@@ -1,4 +1,4 @@
-﻿# SMASH — burgerbar
+# SMASH — burgerbar
 
 Speels-brutalistische burgerbar met utility-bar, split-hero en zigzag-menukaart met echte foodfoto’s; afhaalformulier — ketchup × mosterd.
 

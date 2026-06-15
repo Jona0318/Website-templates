@@ -1,4 +1,4 @@
-﻿# Wrongel — kaaswinkel
+# Wrongel — kaaswinkel
 
 Ambachtelijke kaaswinkel & affineur als katern-magazine met sticky genummerde sectie-index; assortiment per kilo, proefplank en open-status.
 

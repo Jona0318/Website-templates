@@ -1,4 +1,4 @@
-﻿# BETON — aannemer
+# BETON — aannemer
 
 Industriële aannemer met hazard-utilitybalk, split-hero en zigzag-projecten met echte bouwfoto’s; offerteformulier — safety-geel × zwart.
 

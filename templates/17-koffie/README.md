@@ -1,4 +1,4 @@
-﻿# Koffiebranderij
+# Koffiebranderij
 
 Crème/karamel met stoom-animaties, brandgraad-meters en procestijdlijn.
 

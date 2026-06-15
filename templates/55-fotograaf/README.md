@@ -1,4 +1,4 @@
-﻿# Licht — fotografie
+# Licht — fotografie
 
 Monochroom fotografieportfolio met reuze type-hero en een horizontaal scrollende, toetsenbord-toegankelijke galerij-strip.
 

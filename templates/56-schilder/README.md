@@ -1,4 +1,4 @@
-﻿# Laag — schildersbedrijf
+# Laag — schildersbedrijf
 
 Schildersbedrijf met split-hero, side-rail nav en asymmetrisch raster; interactieve kleurkiezer die de kamer mee laat veranderen.
 

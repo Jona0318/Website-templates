@@ -1,4 +1,4 @@
-﻿# CANTORCLIN — schoonmaakbedrijf
+# CANTORCLIN — schoonmaakbedrijf
 
 Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy: hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie.
 

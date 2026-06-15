@@ -1,4 +1,4 @@
-﻿# Agency / Studio
+# Agency / Studio
 
 Bold, high-contrast bureausite met grote typografie, cases en statistieken.
 

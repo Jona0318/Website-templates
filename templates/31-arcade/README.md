@@ -1,4 +1,4 @@
-﻿# Neonburcht — game studio
+# Neonburcht — game studio
 
 Synthwave game studio met een neon perspectief-grid en ondergaande zon, live op canvas.
 

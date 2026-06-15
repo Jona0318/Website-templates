@@ -1,4 +1,4 @@
-﻿# KERNEL — dev tool
+# KERNEL — dev tool
 
 Developer-tool als bento-mozaïek met een live-getypte console-tegel, features en prijzen — donker × cyan.
 

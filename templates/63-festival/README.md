@@ -1,4 +1,4 @@
-﻿# VOLTAGE — festival
+# VOLTAGE — festival
 
 Poster-festival met gekantelde diagonale composities; line-up, dag-tabs met pijltjesnavigatie en ticket-tiers — acid-geel × zwart.
 

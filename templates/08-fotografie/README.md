@@ -1,4 +1,4 @@
-﻿# Fotografie
+# Fotografie
 
 Minimalistisch fotografieportfolio met galerij en categorie-filter.
 

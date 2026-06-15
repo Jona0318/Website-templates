@@ -1,4 +1,4 @@
-﻿# Adem — yogastudio
+# Adem — yogastudio
 
 Rustige yogastudio, minimaal en gecentreerd met veel witruimte; ademcirkel, weekrooster met vandaag-markering en proefles — zand × terracotta.
 

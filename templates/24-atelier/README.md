@@ -1,4 +1,4 @@
-﻿# Generatieve Studio
+# Generatieve Studio
 
 Live stroomveld-canvas: stuur dichtheid en turbulentie met sliders en download als PNG.
 

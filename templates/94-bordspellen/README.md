@@ -1,4 +1,4 @@
-﻿# MEEPLE — bordspellencafé
+# MEEPLE — bordspellencafé
 
 Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream: chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier.
 

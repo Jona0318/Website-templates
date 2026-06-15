@@ -1,4 +1,4 @@
-﻿# Blog / Magazine
+# Blog / Magazine
 
 Redactionele homepage met uitgelicht artikel, artikelgrid en nieuwsbrief.
 

@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-15",
-  "count": 101,
+  "count": 104,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -3317,6 +3317,30 @@
       }
     },
     {
+      "id": 66,
+      "slug": "66-slink",
+      "path": "templates/66-slink/",
+      "title": "Slink — cocktailbar Amsterdam",
+      "name": "Slink",
+      "sector": "horeca",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "recipe": "recipes/66-slink.json",
+      "palette": ["#080806", "#c9903a", "#f0ebe0"],
+      "fonts": ["Cormorant Garamond", "Outfit"],
+      "mechanics": ["Dark theme", "Marquee", "Reserveringsformulier"],
+      "sections": ["hero(center)", "marquee", "features(cards)", "split", "testimonials", "contact"],
+      "note": "Intieme cocktailbar in donker amber-goud palet. Cormorant Garamond serif, sfeervolle hero.",
+      "card": {
+        "title": "Slink — cocktailbar",
+        "blurb": "Atmosferische cocktailbar in de Jordaan — donker amber-goud palet, Cormorant Garamond serif en een kaart die wisselt met de seizoenen.",
+        "emoji": "🍸",
+        "grad": ["#080806", "#c9903a"],
+        "tags": ["Dark theme", "Horeca", "Sfeer"]
+      }
+    },
+    {
       "id": 67,
       "slug": "67-burgerbar",
       "path": "templates/67-burgerbar/",
@@ -3414,6 +3438,30 @@
           "Full-bleed",
           "Agenda"
         ]
+      }
+    },
+    {
+      "id": 69,
+      "slug": "69-grip",
+      "path": "templates/69-grip/",
+      "title": "Grip — indoor klimcentrum",
+      "name": "Grip",
+      "sector": "sport",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/69-grip.json",
+      "palette": ["#f4f2ee", "#e8421c", "#1a3f6e"],
+      "fonts": ["Oswald", "Inter"],
+      "mechanics": ["Stats-band", "Prijstabel", "FAQ", "Contactformulier"],
+      "sections": ["hero(media)", "features(cards)", "stats", "split", "pricing", "faq", "contact"],
+      "note": "Energiek bouldercentrum in krijtwit met vivid oranje-rood. Oswald condensed voor headings, Inter voor body.",
+      "card": {
+        "title": "Grip — boulderhal",
+        "blurb": "Modern indoor klimcentrum in krijtwit met vivid oranje-rood accent — Oswald condensed display, stats-band, prijstabel en FAQ.",
+        "emoji": "🧗",
+        "grad": ["#f4f2ee", "#e8421c"],
+        "tags": ["Sport", "Pricing", "Stats"]
       }
     },
     {
@@ -3878,6 +3926,30 @@
           "Magazine",
           "Scroll-spy"
         ]
+      }
+    },
+    {
+      "id": 79,
+      "slug": "79-noot",
+      "path": "templates/79-noot/",
+      "title": "Noot — muziekschool Utrecht",
+      "name": "Noot",
+      "sector": "muziek",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "recipe": "recipes/79-noot.json",
+      "palette": ["#f8f5ef", "#3c3196", "#c97c3a"],
+      "fonts": ["Lora", "Nunito"],
+      "mechanics": ["Zigzag", "Metrics", "Tarieven", "Proefles-formulier"],
+      "sections": ["hero(split)", "logos", "features(rows)", "zigzag", "metrics", "testimonials", "pricing", "contact"],
+      "note": "Warme muziekschool in crème-indigo palet. Lora serif, Nunito grotesk, proefles-formulier.",
+      "card": {
+        "title": "Noot — muziekschool",
+        "blurb": "Warme muziekschool voor alle leeftijden in crème met indigo — Lora serif, zigzag-aanpaksectie, tarieven en gratis proefles-formulier.",
+        "emoji": "🎹",
+        "grad": ["#f8f5ef", "#3c3196"],
+        "tags": ["Muziek", "Prijstabel", "Warm"]
       }
     },
     {

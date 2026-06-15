@@ -1,4 +1,4 @@
-﻿# Helder — digitale studio
+# Helder — digitale studio
 
 Algemene studio met split-hero, zigzag-rijen, showcase en proces — violet × lime.
 

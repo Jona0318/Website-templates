@@ -1,4 +1,4 @@
-﻿# KROON — nagelstudio
+# KROON — nagelstudio
 
 Nagelstudio, minimaal en gecentreerd met hairline-details; echte nail-art galerij en prijslijst met dotted leaders — hot pink × goud.
 

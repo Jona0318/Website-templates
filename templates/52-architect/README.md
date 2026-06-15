@@ -1,4 +1,4 @@
-﻿# Grond — architecten
+# Grond — architecten
 
 Beton-minimalistisch architectenbureau met vaste side-rail nav (scroll-spy) naast een rustig projectraster met grote beelden.
 

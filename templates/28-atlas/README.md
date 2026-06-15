@@ -1,4 +1,4 @@
-﻿# Atlas — aanpasbare starter
+# Atlas — aanpasbare starter
 
 Live thema-editor: kleur, modus, hoeken en lettertype live aanpassen en kopiëren als CSS.
 

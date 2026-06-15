@@ -1,4 +1,4 @@
-﻿# Draaischijf — keramiekstudio
+# Draaischijf — keramiekstudio
 
 Pottenbakker met een draaischijf: sleep over de klei en vorm je eigen vaas.
 

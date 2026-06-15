@@ -1,4 +1,4 @@
-﻿# FORNO VESUVIO — pizzeria
+# FORNO VESUVIO — pizzeria
 
 Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum: Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier.
 

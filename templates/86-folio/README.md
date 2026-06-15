@@ -1,4 +1,4 @@
-﻿# FOLIO — redactioneel systeem
+# FOLIO — redactioneel systeem
 
 Verfijnd Swiss-grid ontwerpsysteem (Instrument Serif): zichtbaar kolommenraster (toets G), scroll-spy index, werk-index en live klok + coördinaat. Inhoud-agnostisch — bruikbaar voor elke site.
 

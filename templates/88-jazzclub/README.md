@@ -1,4 +1,4 @@
-﻿# AMBER — jazzclub
+# AMBER — jazzclub
 
 Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood: moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier.
 

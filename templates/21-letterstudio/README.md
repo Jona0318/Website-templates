@@ -1,4 +1,4 @@
-﻿# Letterstudio
+# Letterstudio
 
 Interactief specimen-lab met bewerkbaar reuze-proefwoord en scroll-morfend variabel font.
 

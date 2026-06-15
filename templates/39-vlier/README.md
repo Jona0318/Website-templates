@@ -1,4 +1,4 @@
-﻿# Vlier — bistro & natuurwijn
+# Vlier — bistro & natuurwijn
 
 Handgemaakte, redactionele restaurantsite met echte foto’s, een getypte menukaart en een live open/dicht-status — bewust géén template-look.
 

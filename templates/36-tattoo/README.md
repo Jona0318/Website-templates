@@ -1,4 +1,4 @@
-﻿# Inktzwart — tattoo studio
+# Inktzwart — tattoo studio
 
 Tattoo studio: teken met je cursor in zwarte en rode inkt op crèmepapier.
 

@@ -1,4 +1,4 @@
-﻿# Maas — fine dining
+# Maas — fine dining
 
 Luxe restaurant, minimaal en gecentreerd op één smalle as met didone-typografie; getypt zevengangen-proefmenu en open-status — donker × goud.
 

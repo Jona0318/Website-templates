@@ -1,4 +1,4 @@
-﻿# WESTKUST — surfschool
+# WESTKUST — surfschool
 
 Vibrant kust-sport surfschool in turquoise × zand × koraal: golvende wave-dividers, fake-live condities-widget (golf/wind/getij), lespakketten per niveau, reviews en boekformulier met datumkeuze.
 

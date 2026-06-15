@@ -1,4 +1,4 @@
-﻿# Desem — bakkerij
+# Desem — bakkerij
 
 Ambachtelijke bakkerij met utility-bar (open-status), klassieke nav en zigzag-secties; getypte kaart, ambacht-verhaal en brood bestellen — slab-serif.
 

@@ -1,4 +1,4 @@
-﻿# SaaS / Software
+# SaaS / Software
 
 Productlanding met features, prijzen (maand/jaar) en een FAQ-accordion.
 

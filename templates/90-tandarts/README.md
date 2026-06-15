@@ -1,4 +1,4 @@
-﻿# GLIMLACH — tandartspraktijk
+# GLIMLACH — tandartspraktijk
 
 Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit: grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie.
 

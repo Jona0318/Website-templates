@@ -1,4 +1,4 @@
-﻿# PIXELWERK — game studio
+# PIXELWERK — game studio
 
 Game- &amp; app-studio als bento-portfolio met echte game-art op ongelijke tegels; diensten en projectaanvraag — diep paars × lime.
 

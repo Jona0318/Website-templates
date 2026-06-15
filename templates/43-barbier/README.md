@@ -1,4 +1,4 @@
-﻿# Stoppel — barbier
+# Stoppel — barbier
 
 Stoere barbershop met schermvullende beeld-hero en info-/status-kaarten die over de hero-rand schuiven; prijslijst en boek-een-stoel — donker × amber.
 

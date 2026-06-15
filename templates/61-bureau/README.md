@@ -1,4 +1,4 @@
-﻿# VOLT — creatief bureau
+# VOLT — creatief bureau
 
 Neo-brutalistisch bureau met diagonale poster-composities, gekantelde blokken en marquee-ticker — lime × paars × zwart.
 

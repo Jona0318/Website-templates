@@ -1,4 +1,4 @@
-﻿# ROOM — ambachtelijk ijs
+# ROOM — ambachtelijk ijs
 
 Speelse ijssalon met gecentreerde hero en gekleurde volle-breedte banden; smakengrid met echte ijsfoto’s en prijzenband — pastel-bold.
 

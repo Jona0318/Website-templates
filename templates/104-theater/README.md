@@ -1,4 +1,4 @@
-﻿# DE REGENTES — theater & podium
+# DE REGENTES — theater & podium
 
 Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud: Fraunces-display, filmkorrel, seizoensprogramma met genre-filter (toneel/dans/muziek/comedy) + uitverkocht-badges, kassa-status en kaartreservering.
 

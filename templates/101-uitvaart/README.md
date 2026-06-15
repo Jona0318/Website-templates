@@ -1,4 +1,4 @@
-﻿# LINDE — uitvaartbegeleiding
+# LINDE — uitvaartbegeleiding
 
 Serene, met de hand geschreven uitvaartonderneming in warm greige × salie: Cormorant-serif, veel rust en wit, ingehouden fade-ins, een permanente "dag en nacht bereikbaar"-band en een kalme kostenindicatie i.p.v. prijslijst.
 

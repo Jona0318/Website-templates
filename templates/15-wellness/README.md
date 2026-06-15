@@ -1,4 +1,4 @@
-﻿# Wellness / Spa
+# Wellness / Spa
 
 Serene luxe met adem-widget, boogvormige maskers en tekenende tijdlijn.
 

@@ -1,4 +1,4 @@
-﻿# PLUK — kinderopvang
+# PLUK — kinderopvang
 
 Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream: blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier.
 

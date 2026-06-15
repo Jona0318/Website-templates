@@ -1,4 +1,4 @@
-﻿# Portfolio
+# Portfolio
 
 Donker, creatief portfolio voor een designer of developer, met projectgrid.
 

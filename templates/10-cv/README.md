@@ -1,4 +1,4 @@
-﻿# CV / Resumé
+# CV / Resumé
 
 Persoonlijke one-page CV met animerende vaardigheidsbalken en tijdlijn.
 

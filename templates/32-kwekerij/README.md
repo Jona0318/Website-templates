@@ -1,4 +1,4 @@
-﻿# Wildgroei — stadskwekerij
+# Wildgroei — stadskwekerij
 
 Plantenwinkel waar recursieve planten voor je ogen de hero in groeien.
 

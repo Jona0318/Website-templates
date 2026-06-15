@@ -1,0 +1,139 @@
+{
+  "id": 66,
+  "slug": "66-slink",
+  "title": "Slink — cocktailbar Amsterdam",
+  "sector": "horeca",
+  "scheme": "dark",
+  "meta": {
+    "title": "Slink — cocktailbar Amsterdam",
+    "description": "Slink is een intieme cocktailbar in de Jordaan — handgemaakte dranken, huisgemaakte siropen en een kaart die wisselt met de seizoenen. Di t/m zo vanaf 17:00.",
+    "themeColor": "#080806"
+  },
+  "theme": {
+    "--bg": "#080806",
+    "--bg-2": "#0f0e0a",
+    "--surface": "#161410",
+    "--ink": "#f0ebe0",
+    "--muted": "rgba(240,235,224,.60)",
+    "--faint": "rgba(240,235,224,.38)",
+    "--line": "rgba(240,235,224,.09)",
+    "--line-strong": "rgba(240,235,224,.18)",
+    "--accent": "#c9903a",
+    "--accent-2": "#8c5928",
+    "--accent-soft": "rgba(201,144,58,.12)",
+    "--on-accent": "#080806",
+    "--dark-bg": "#080806",
+    "--dark-surface": "#161410",
+    "--dark-ink": "#f0ebe0",
+    "--dark-muted": "rgba(240,235,224,.60)",
+    "--dark-line": "rgba(240,235,224,.09)",
+    "--radius": "10px"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap",
+    "serif": "Cormorant Garamond",
+    "grotesk": "Outfit"
+  },
+  "brand": {
+    "name": "Slink",
+    "tagline": "Cocktailbar · Jordaan",
+    "email": "hallo@slinkbar.nl",
+    "tel": "+31 20 612 45 87",
+    "address": "Elandsgracht 38, Amsterdam"
+  },
+  "nav": [
+    { "href": "#dranken", "label": "De kaart" },
+    { "href": "#verhaal", "label": "Verhaal" },
+    { "href": "#praktisch", "label": "Praktisch" }
+  ],
+  "headerCta": { "href": "#praktisch", "label": "Reserveer een tafel" },
+  "sections": [
+    { "use": "hero", "data": {
+      "layout": "center",
+      "eyebrow": "Cocktailbar · Jordaan · sinds 2018",
+      "title": "Elk glas een <em>klein verhaal</em>.",
+      "lead": "Slink is een intieme bar in de Jordaan waar we elk drankje met de hand maken — met verse siropen, lokale botanicals en een kaart die verandert met het seizoen.",
+      "ctas": [
+        { "href": "#dranken", "label": "Bekijk de kaart", "primary": true },
+        { "href": "#praktisch", "label": "Reserveren" }
+      ]
+    }},
+    { "use": "marquee", "data": {
+      "items": ["Handgemaakte cocktails", "Huisgemaakte siropen", "Seizoenskaart", "Natuurwijn & craft beer", "Jordaan", "Open di – zo"]
+    }},
+    { "use": "features", "id": "dranken", "data": {
+      "layout": "cards",
+      "columns": 3,
+      "eyebrow": "De kaart",
+      "title": "Drinken met <em>karakter</em>",
+      "intro": "Van klassiek tot eigenzinnig — elke kaart wisselt met wat er te krijgen is.",
+      "items": [
+        { "icon": "🍸", "title": "Signature Slink", "text": "Onze eigen cocktails, gebouwd rondom huisgemaakte infusies en verrassingsingrediënten van het seizoen." },
+        { "icon": "🥃", "title": "Klassieken", "text": "Negroni, Old Fashioned, Daiquiri — gemaakt zoals ze bedoeld zijn, met de juiste producten en zonder omwegen." },
+        { "icon": "🌿", "title": "Alcohol-vrij", "text": "Vier vaste zero-proof creaties en een wisselend seizoensdrankje, even serieus als de rest van de kaart." },
+        { "icon": "🍷", "title": "Wijn & bier", "text": "Een kleine, eigenzinnige wijnkaart van biodynamische producenten en een handvol craft bieren uit de regio." },
+        { "icon": "🫙", "title": "Snacks", "text": "Brood met rillettes, kaas van de markt, olijven en een kleine plank — voor als het een lange avond wordt." },
+        { "icon": "🎂", "title": "Private events", "text": "Exclusief gebruik van de bar voor een borrel, proeverij of verjaardagsfeest. Vraag naar de mogelijkheden." }
+      ]
+    }},
+    { "use": "split", "id": "verhaal", "data": {
+      "eyebrow": "Het verhaal",
+      "title": "Klein van formaat, <em>groot</em> van ambitie",
+      "paragraphs": [
+        "Slink begon als idee van twee vrienden die moe waren van het eindeloze aanbod zonder eigenheid. Een bar die als een echt atelier werkt — wherein elk recept met de hand wordt gebouwd.",
+        "We koken onze eigen siropen, maken onze eigen bitters en werken zoveel mogelijk met seizoensproducten. Dat kost meer tijd, maar proef je terug in elk glas."
+      ],
+      "points": [
+        "Handgemaakte siropen en infusies",
+        "Kaart wisselt vier keer per jaar",
+        "Samenwerking met lokale leveranciers",
+        "Maximaal 28 zitplaatsen — altijd intiem"
+      ],
+      "cta": { "href": "#praktisch", "label": "Plan je bezoek" },
+      "glyph": "🍸"
+    }},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Gasten",
+      "title": "Wat mensen <em>zeggen</em>",
+      "items": [
+        { "quote": "De beste Negroni die ik ooit heb gedronken, en ik heb er in 40 landen gegeten. Sfeer ook perfect.", "name": "Marieke B.", "role": "Jordaan" },
+        { "quote": "Eindelijk een bar die echt nadenkt over de alcohol-vrije opties. De mocktails zijn net zo goed als de rest.", "name": "Thomas V.", "role": "Amsterdam-Noord" },
+        { "quote": "Klein, donker, vriendelijk personeel. We kwamen voor één drankje en bleven drie uur.", "name": "Sophie & Bram", "role": "Vaste gasten" }
+      ]
+    }},
+    { "use": "contact", "id": "praktisch", "dark": true, "data": {
+      "eyebrow": "Kom langs",
+      "title": "Reserveer een <em>tafel</em>",
+      "intro": "Bel, mail of stuur een berichtje. We raden reserveren aan in het weekend — we hebben maar 28 plaatsen.",
+      "dark": true,
+      "submit": "Verstuur reservering",
+      "successTitle": "Reservering ontvangen",
+      "successText": "We bevestigen je reservering binnen 24 uur. Tot dan!",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "datum", "label": "Datum", "type": "date", "required": true, "half": true },
+        { "name": "personen", "label": "Aantal personen", "type": "select", "required": true, "placeholder": "Kies...", "options": ["1–2", "3–4", "5–6", "7+ (navraag)"], "half": true },
+        { "name": "bericht", "label": "Bijzonderheden", "type": "textarea", "placeholder": "Allergieën, verjaardagen, speciale wensen..." }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": true,
+    "blurb": "Slink is een intieme cocktailbar in de Jordaan, Amsterdam. Handgemaakte dranken, eigen siropen en een kaart die wisselt met de seizoenen.",
+    "bottom": "KvK 79234512",
+    "columns": [
+      { "title": "Openingstijden", "links": [
+        { "href": "#praktisch", "label": "Di – do  17:00 – 01:00" },
+        { "href": "#praktisch", "label": "Vr – za  17:00 – 02:00" },
+        { "href": "#praktisch", "label": "Zo  15:00 – 00:00" },
+        { "href": "#praktisch", "label": "Ma  gesloten" }
+      ]},
+      { "title": "Contact", "links": [
+        { "href": "mailto:hallo@slinkbar.nl", "label": "hallo@slinkbar.nl" },
+        { "href": "tel:+31206124587", "label": "+31 20 612 45 87" },
+        { "href": "#praktisch", "label": "Elandsgracht 38, Amsterdam" }
+      ]}
+    ]
+  }
+}

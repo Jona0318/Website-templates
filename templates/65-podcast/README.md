@@ -1,4 +1,4 @@
-﻿# FREQ — podcast
+# FREQ — podcast
 
 Redactionele podcast met vaste side-rail incl. waveform-mini-speler; afleveringenlijst en makers — oranje × teal × cream.
 

@@ -1,0 +1,160 @@
+{
+  "id": 69,
+  "slug": "69-grip",
+  "title": "Grip — indoor klimcentrum",
+  "sector": "sport",
+  "scheme": "light",
+  "meta": {
+    "title": "Grip — indoor klimcentrum",
+    "description": "Grip is een modern bouldercentrum voor beginners en gevorderden. 1.200 m² klimoppervlak, dagelijks verse routes en een gemeenschap die je uitdaagt om te groeien.",
+    "themeColor": "#f4f2ee"
+  },
+  "theme": {
+    "--bg": "#f4f2ee",
+    "--bg-2": "#ece9e3",
+    "--surface": "#ffffff",
+    "--ink": "#1a1815",
+    "--muted": "rgba(26,24,21,.60)",
+    "--faint": "rgba(26,24,21,.38)",
+    "--line": "rgba(26,24,21,.12)",
+    "--line-strong": "rgba(26,24,21,.22)",
+    "--accent": "#e8421c",
+    "--accent-2": "#1a3f6e",
+    "--accent-soft": "rgba(232,66,28,.10)",
+    "--on-accent": "#ffffff",
+    "--dark-bg": "#111210",
+    "--dark-surface": "#1c1a17",
+    "--dark-ink": "#f4f2ee",
+    "--dark-muted": "rgba(244,242,238,.62)",
+    "--dark-line": "rgba(244,242,238,.12)",
+    "--radius": "14px"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
+    "serif": "Oswald",
+    "grotesk": "Inter"
+  },
+  "brand": {
+    "name": "Grip",
+    "tagline": "Indoor klimcentrum",
+    "email": "hallo@gripklimmen.nl",
+    "tel": "+31 10 844 22 60",
+    "address": "Maashaven Zuidzijde 4, Rotterdam"
+  },
+  "nav": [
+    { "href": "#routes", "label": "Routes" },
+    { "href": "#lidmaatschap", "label": "Lidmaatschap" },
+    { "href": "#voor-wie", "label": "Voor wie?" },
+    { "href": "#contact", "label": "Contact" }
+  ],
+  "headerCta": { "href": "#lidmaatschap", "label": "Kom klimmen" },
+  "sections": [
+    { "use": "hero", "data": {
+      "layout": "media",
+      "eyebrow": "Indoor klimmen · Rotterdam · 1.200 m²",
+      "title": "Klim hoger. <em>Elke dag</em>.",
+      "lead": "Grip is het moderne bouldercentrum van Rotterdam — met dagelijks verse routes, een sterk gemeenschap en ruimte voor iedereen van beginner tot kampioenschapsklipper.",
+      "ctas": [
+        { "href": "#lidmaatschap", "label": "Lid worden", "primary": true },
+        { "href": "#routes", "label": "Ontdek de routes" }
+      ],
+      "stats": [
+        { "value": "1.200", "label": "m² klimoppervlak" },
+        { "value": "180+", "label": "actieve routes" },
+        { "value": "3×", "label": "per week verse routes" }
+      ]
+    }},
+    { "use": "features", "id": "routes", "data": {
+      "layout": "cards",
+      "columns": 3,
+      "eyebrow": "Routes & niveaus",
+      "title": "Voor <em>elke</em> klimmer",
+      "intro": "Van je eerste schreden aan de muur tot nationale competitietraining — we bouwen voor iedereen.",
+      "items": [
+        { "icon": "🟡", "title": "Beginner (4a–5c)", "text": "Gele en oranje routes met grote grepen en duidelijke flow — perfect voor je allereerste sessie aan de muur." },
+        { "icon": "🔵", "title": "Gevorderd (6a–6c)", "text": "Blauwe routes met technische bewegingen, slopers en kleine grepen. Hier werk je echt aan je techniek." },
+        { "icon": "🔴", "title": "Expert (7a+)", "text": "Rode en zwarte lines voor serieuze klimmers — campusgrepen, dynos en precieze voetenplaatsing zijn hier de norm." },
+        { "icon": "👶", "title": "Kids & teens", "text": "Een aparte klim-speeltuin voor kinderen (4+) en groepslessen voor tieners op dinsdag- en donderdagmiddag." },
+        { "icon": "🏆", "title": "Trainingszone", "text": "Fingerboard-ruimte, systemboard en een campusboard voor gerichte krachttraining en projectsessies." },
+        { "icon": "🎓", "title": "Lessen & clinics", "text": "Instaplessen voor beginners op zaterdag, techniek-clinics voor gevorderden en maandelijkse route-reading workshops." }
+      ]
+    }},
+    { "use": "stats", "data": { "items": [
+      { "target": 1200, "suffix": "m²", "label": "klimoppervlak" },
+      { "target": 180, "suffix": "+", "label": "actieve routes" },
+      { "target": 4200, "suffix": "+", "label": "leden" },
+      { "target": 8, "suffix": "", "label": "jaar Rotterdam" }
+    ]}},
+    { "use": "split", "id": "voor-wie", "data": {
+      "eyebrow": "Voor iedereen",
+      "title": "Jij hoeft nog nooit <em>geklommen</em> te hebben",
+      "paragraphs": [
+        "Boulderen heeft geen touw, geen koordjes en geen tientallen minuten instructie nodig. Je stapt de muur op, je valt terug op een dikke mat en je probeert het opnieuw. Dat is alles.",
+        "We hebben een vast team van coaches dat elke avond rondloopt — voor vragen, tips of een aanmoediging als je diezelfde move voor de derde keer niet lukt."
+      ],
+      "points": [
+        "Gratis beginnersinleiding op zaterdag 10:00",
+        "Huurschoenen en magnesium beschikbaar",
+        "Familietarief voor gezinnen",
+        "Dag-, week- en maandpassen"
+      ],
+      "cta": { "href": "#contact", "label": "Stel je vraag" },
+      "glyph": "🧗"
+    }},
+    { "use": "pricing", "id": "lidmaatschap", "data": {
+      "eyebrow": "Lidmaatschap",
+      "title": "Kies jouw <em>manier</em> van klimmen",
+      "intro": "Eenmalig langskomen of vaste klimmerdagen — we hebben een pas voor elk ritme.",
+      "plans": [
+        { "name": "Dagpas", "voor": "Incidenteel langskomen, geen verplichtingen.", "prijs": "€ 14", "per": "per bezoek", "features": ["Onbeperkt klimmen", "Toegang alle zones", "Huurschoen: € 4 extra"] , "cta": { "href": "#contact", "label": "Plan je bezoek" } },
+        { "name": "Maandlid", "voor": "Regelmatig klimmen voor de beste prijs per sessie.", "prijs": "€ 39", "per": "per maand", "featured": true, "badge": "Populairste keuze", "features": ["Onbeperkt klimmen", "10% korting op clinics", "Gratis gast meenemen (1×/mnd)", "Opzegbaar per maand"], "cta": { "href": "#contact", "label": "Word lid" } },
+        { "name": "Jaarkaart", "voor": "Maximaal voordeel voor de toegewijde klimmer.", "prijs": "€ 349", "per": "per jaar", "features": ["Alles van Maandlid", "Gratis beginnersclinic", "Gratis gast (2×/mnd)", "Prioriteit bij inschrijving evenementen"], "cta": { "href": "#contact", "label": "Koop jaarkaart" } }
+      ],
+      "note": "Studentenkorting: 15% op maandlidmaatschap met geldige studentenkaart. Gezinspas (2 volwassenen + 2 kinderen): € 79/mnd."
+    }},
+    { "use": "faq", "data": {
+      "eyebrow": "Veelgesteld",
+      "title": "Vragen over <em>Grip</em>",
+      "intro": "Staat je vraag er niet bij? App ons via de contactpagina of kom gewoon langs.",
+      "items": [
+        { "q": "Moet ik iets kunnen klimmen om te komen?", "an": "Nee — boulderen kun je gewoon inlopen. We hebben altijd coaches in de ruimte die je op weg helpen. Op zaterdagochtend is er een gratis beginnersinleiding." },
+        { "q": "Heb ik eigen schoenen nodig?", "an": "Nee. We verhuren klimschoenen voor € 4 per bezoek. Wil je vaker komen, dan loont het om je eigen te kopen — onze coaches adviseren je graag." },
+        { "q": "Mogen kinderen mee?", "an": "Ja! Kinderen vanaf 4 jaar zijn welkom in onze kidderzone. Voor de reguliere muren geldt een minimale leeftijd van 6 jaar. Op dinsdag- en donderdagmiddag zijn er teensessies (12–16 jaar)." },
+        { "q": "Wat zijn de openingstijden?", "an": "Ma – vr 07:00 – 23:00 · Za – zo 09:00 – 21:00 · Feestdagen 10:00 – 18:00." }
+      ]
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Contact",
+      "title": "Stuur ons een <em>bericht</em>",
+      "intro": "Vragen over lidmaatschap, groepslessen of een bedrijfsuitje? We reageren binnen één werkdag.",
+      "dark": true,
+      "submit": "Verstuur bericht",
+      "successTitle": "Bericht ontvangen!",
+      "successText": "We reageren binnen één werkdag. Tot in de hal!",
+      "fields": [
+        { "name": "naam", "label": "Naam", "type": "text", "required": true, "half": true },
+        { "name": "email", "label": "E-mail", "type": "email", "required": true, "half": true },
+        { "name": "onderwerp", "label": "Onderwerp", "type": "select", "required": true, "placeholder": "Kies...", "options": ["Lidmaatschap", "Groepsles / clinic", "Bedrijfsuitje", "Overig"], "half": true },
+        { "name": "niveau", "label": "Niveau", "type": "select", "placeholder": "Kies...", "options": ["Nog nooit geklommen", "Beginner", "Gevorderd", "Expert"], "half": true },
+        { "name": "bericht", "label": "Bericht", "type": "textarea", "placeholder": "Stel je vraag of vertel meer..." }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": false,
+    "blurb": "Grip is het moderne bouldercentrum van Rotterdam — 1.200 m² klimoppervlak, 180+ routes en een gemeenschap van meer dan 4.200 klimmers.",
+    "bottom": "BTW NL863421892B01 · KvK 68341256",
+    "columns": [
+      { "title": "Openingstijden", "links": [
+        { "href": "#", "label": "Ma – vr  07:00 – 23:00" },
+        { "href": "#", "label": "Za – zo  09:00 – 21:00" },
+        { "href": "#", "label": "Feestdagen  10:00 – 18:00" }
+      ]},
+      { "title": "Contact", "links": [
+        { "href": "mailto:hallo@gripklimmen.nl", "label": "hallo@gripklimmen.nl" },
+        { "href": "tel:+31108442260", "label": "+31 10 844 22 60" },
+        { "href": "#", "label": "Maashaven Zuidzijde 4, Rotterdam" }
+      ]}
+    ]
+  }
+}

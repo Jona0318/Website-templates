@@ -1,4 +1,4 @@
-﻿# VIZIER — optiek
+# VIZIER — optiek
 
 Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt: bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier.
 

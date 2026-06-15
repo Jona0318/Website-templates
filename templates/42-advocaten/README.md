@@ -1,4 +1,4 @@
-﻿# Hagedoorn & Vis — advocaten
+# Hagedoorn & Vis — advocaten
 
 Gezaghebbend advocatenkantoor met vaste side-rail navigatie naast scrollende content; rechtsgebieden, aanpak en intakeformulier — navy × goud.
 

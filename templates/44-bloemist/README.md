@@ -1,4 +1,4 @@
-﻿# Veld — bloemist
+# Veld — bloemist
 
 Botanische bloemist met gecentreerde redactionele hero en volle-breedte banden; seizoensboeketten (echte foto’s), abonnement en nieuwsbrief — salie × oudroze.
 

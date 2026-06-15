@@ -1,0 +1,150 @@
+{
+  "id": 79,
+  "slug": "79-noot",
+  "title": "Noot — muziekschool Utrecht",
+  "sector": "muziek",
+  "scheme": "light",
+  "meta": {
+    "title": "Noot — muziekschool Utrecht",
+    "description": "Noot is een warme muziekschool in Utrecht waar kinderen en volwassenen leren spelen op piano, gitaar, viool, zang en meer. Geen stress — gewoon plezier in muziek.",
+    "themeColor": "#f8f5ef"
+  },
+  "theme": {
+    "--bg": "#f8f5ef",
+    "--bg-2": "#ede9e0",
+    "--surface": "#ffffff",
+    "--ink": "#1e1b14",
+    "--muted": "rgba(30,27,20,.60)",
+    "--faint": "rgba(30,27,20,.38)",
+    "--line": "rgba(30,27,20,.12)",
+    "--line-strong": "rgba(30,27,20,.22)",
+    "--accent": "#3c3196",
+    "--accent-2": "#c97c3a",
+    "--accent-soft": "rgba(60,49,150,.10)",
+    "--on-accent": "#ffffff",
+    "--dark-bg": "#13111e",
+    "--dark-surface": "#1c1929",
+    "--dark-ink": "#f0edf6",
+    "--dark-muted": "rgba(240,237,246,.62)",
+    "--dark-line": "rgba(240,237,246,.12)",
+    "--radius": "16px"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700;800&display=swap",
+    "serif": "Lora",
+    "grotesk": "Nunito"
+  },
+  "brand": {
+    "name": "Noot",
+    "tagline": "Muziekschool · Utrecht",
+    "email": "hallo@nootmuziek.nl",
+    "tel": "+31 30 272 18 44",
+    "address": "Oudegracht 211, Utrecht"
+  },
+  "nav": [
+    { "href": "#lessen", "label": "Lessen" },
+    { "href": "#aanpak", "label": "Aanpak" },
+    { "href": "#tarieven", "label": "Tarieven" },
+    { "href": "#contact", "label": "Intake" }
+  ],
+  "headerCta": { "href": "#contact", "label": "Gratis proefles" },
+  "sections": [
+    { "use": "hero", "data": {
+      "layout": "split",
+      "eyebrow": "Muziekschool · Utrecht · voor alle leeftijden",
+      "title": "Leer muziek maken op jouw <em>eigen tempo</em>.",
+      "lead": "Noot is een warme muziekschool voor kinderen en volwassenen — van je allereerste noot tot het spelen in een band. Geen concertstress, gewoon plezier in muziek.",
+      "ctas": [
+        { "href": "#contact", "label": "Gratis proefles aanvragen", "primary": true },
+        { "href": "#lessen", "label": "Bekijk de lessen" }
+      ],
+      "glyph": "🎹"
+    }},
+    { "use": "logos", "data": { "label": "Docenten opgeleid aan:", "items": ["Conservatorium Utrecht", "Koninklijk Conservatorium", "ArtEZ", "Amsterdams Conservatorium", "CODARTS Rotterdam"] } },
+    { "use": "features", "id": "lessen", "data": {
+      "layout": "rows",
+      "eyebrow": "Instrumenten & vakken",
+      "title": "Wat wil jij <em>leren</em>?",
+      "intro": "We geven les in de meestgevraagde instrumenten — in jouw tempo, met een docent die écht bij jou past.",
+      "items": [
+        { "icon": "🎹", "title": "Piano & keyboard", "text": "Van basiscoördinatie en noten lezen tot het spelen van je favoriete nummers of klassieke etudes. Voor alle leeftijden (4+) en niveaus." },
+        { "icon": "🎸", "title": "Gitaar & basgitaar", "text": "Akoestisch, elektrisch of bas — we leren je akkoordengrepen, fingerpicking, solos en het begeleiden van zangers." },
+        { "icon": "🎻", "title": "Viool & cello", "text": "Klassieke strijkles op basis van de Suzuki-methode voor kinderen, met uitbreiding naar pop en folk voor oudere leerlingen." },
+        { "icon": "🎤", "title": "Zang", "text": "Ademtechniek, stemvorming, uitdrukking en repertoire — of je nu wilt zingen in een koor, band of gewoon thuis." },
+        { "icon": "🥁", "title": "Drums & percussie", "text": "Ritme, coördinatie en groove staan centraal. We werken op een akoestisch drumstel in onze geluidsdichte ruimte." },
+        { "icon": "🎵", "title": "Muziektheorie & solfège", "text": "Noten lezen, akkoorden begrijpen, maatsoorten en gehoortraining — als aanvulling op je instrument of als zelfstandig vak." }
+      ]
+    }},
+    { "use": "zigzag", "id": "aanpak", "data": {
+      "eyebrow": "Onze aanpak",
+      "items": [
+        { "title": "Één docent, een echte band", "text": "We koppelen je doordacht aan een docent die past bij jouw leerstijl, leeftijd en muzikale smaak. Je werkt altijd met dezelfde persoon — dat geeft rust en vertrouwen.", "points": ["Persoonlijk intakegesprek", "Match op stijl en leeftijd", "Wil je wisselen? Geen probleem"], "glyph": "🤝" },
+        { "title": "Jouw muziek, jouw tempo", "text": "Wil je Beethoven spelen, of liever Billie Eilish? Klassiek of pop, jazz of folk — de les draait om wat jou motiveert. Onze methode past zich aan jou aan.", "points": ["Eigen repertoirekeuze", "Geen verplicht examen", "Ruimte voor spontane verkenning"], "glyph": "🎶" },
+        { "title": "Spelen met anderen", "text": "Elk half jaar organiseren we een informele speelmiddag voor iedereen die wil. Geen druk podium, gewoon de sfeer van samen muziek maken met andere leerlingen.", "points": ["Halfjaarspeelmiddag", "Optioneel ensemble voor gevorderden", "Jaarlijks zomerconcert"], "glyph": "🎪" }
+      ]
+    }},
+    { "use": "metrics", "data": { "eyebrow": "Noot in cijfers", "items": [
+      { "target": 320, "label": "actieve leerlingen" },
+      { "target": 14, "label": "docenten" },
+      { "target": 12, "label": "jaar in Utrecht" },
+      { "target": 6, "label": "instrumenten" }
+    ]}},
+    { "use": "testimonials", "data": {
+      "eyebrow": "Leerlingen & ouders",
+      "title": "Wat ze <em>zeggen</em>",
+      "items": [
+        { "quote": "Mijn dochter loopt al 3 jaar naar Noot en wil soms liever niet weg van de piano. Dat zegt genoeg.", "name": "Miriam D.", "role": "Ouder van leerling (8 jaar)" },
+        { "quote": "Als volwassene beginnen met gitaar voelde spannend, maar mijn docent maakt het zo toegankelijk. Ik speel nu al liedjes die ik altijd wilde leren.", "name": "Joris K.", "role": "Leerling (38 jaar)" },
+        { "quote": "De sfeer hier is anders dan op andere muziekscholen. Geen druk, geen vergelijking — gewoon fijn bezig zijn met muziek.", "name": "Lena V.", "role": "Leerling zang (14 jaar)" }
+      ]
+    }},
+    { "use": "pricing", "id": "tarieven", "data": {
+      "eyebrow": "Tarieven",
+      "title": "Lessen voor elk <em>ritme</em>",
+      "intro": "We werken in vaste jaarblokken zodat je docent een echt plan kan maken. Een proefles is altijd gratis.",
+      "plans": [
+        { "name": "30 minuten", "voor": "Ideaal voor kinderen tot 10 jaar of een eerste verkenning.", "prijs": "€ 28", "per": "per les", "features": ["Wekelijks vaste afspraak", "Lesmateriaal inbegrepen", "Online inhaalles bij ziekte"] , "cta": { "href": "#contact", "label": "Aanmelden" } },
+        { "name": "45 minuten", "voor": "De populairste keuze — ruimte voor techniek én plezier.", "prijs": "€ 38", "per": "per les", "featured": true, "badge": "Meest gekozen", "features": ["Wekelijks vaste afspraak", "Lesmateriaal inbegrepen", "Online inhaalles bij ziekte", "Toegang tot speelmiddagen"], "cta": { "href": "#contact", "label": "Aanmelden" } },
+        { "name": "60 minuten", "voor": "Voor gevorderde leerlingen of wie snel wil groeien.", "prijs": "€ 49", "per": "per les", "features": ["Alles van 45 minuten", "Theorie geïntegreerd in de les", "Voorkeur op rooster"], "cta": { "href": "#contact", "label": "Aanmelden" } }
+      ],
+      "note": "Tarieven zijn per les in een jaarrooster (38–40 weken). Bij twee of meer leerlingen uit één gezin: 10% gezinskorting op de tweede les. Proefles is altijd gratis en vrijblijvend."
+    }},
+    { "use": "contact", "id": "contact", "dark": true, "data": {
+      "eyebrow": "Gratis proefles",
+      "title": "Jouw eerste les is <em>gratis</em>",
+      "intro": "Vul het formulier in en we plannen een vrijblijvende proefles van 30 minuten in. We nemen binnen één werkdag contact op.",
+      "dark": true,
+      "submit": "Aanmelden voor proefles",
+      "successTitle": "Aanmelding ontvangen!",
+      "successText": "We bellen of mailen je binnen één werkdag om een proefles in te plannen. Tot snel!",
+      "fields": [
+        { "name": "naam", "label": "Naam leerling", "type": "text", "required": true, "half": true },
+        { "name": "leeftijd", "label": "Leeftijd", "type": "text", "required": true, "half": true, "placeholder": "bijv. 9 of 34" },
+        { "name": "email", "label": "E-mail (ouder/leerling)", "type": "email", "required": true, "half": true },
+        { "name": "tel", "label": "Telefoon", "type": "tel", "half": true },
+        { "name": "instrument", "label": "Instrument", "type": "select", "required": true, "placeholder": "Kies...", "options": ["Piano / keyboard", "Gitaar / basgitaar", "Viool / cello", "Zang", "Drums / percussie", "Muziektheorie", "Weet ik nog niet"] },
+        { "name": "niveau", "label": "Ervaring", "type": "select", "placeholder": "Kies...", "options": ["Helemaal nieuw", "Beetje basis", "Al een tijdje bezig", "Gevorderd"], "half": true },
+        { "name": "bericht", "label": "Bericht (optioneel)", "type": "textarea", "placeholder": "Vertel iets over je muzikale wensen, beschikbaarheid of andere bijzonderheden..." }
+      ]
+    }}
+  ],
+  "footer": {
+    "dark": false,
+    "blurb": "Noot is een warme muziekschool in het centrum van Utrecht voor kinderen en volwassenen — piano, gitaar, viool, zang, drums en muziektheorie.",
+    "bottom": "KvK 34887712",
+    "columns": [
+      { "title": "Lessen", "links": [
+        { "href": "#lessen", "label": "Piano & keyboard" },
+        { "href": "#lessen", "label": "Gitaar & bas" },
+        { "href": "#lessen", "label": "Viool & cello" },
+        { "href": "#lessen", "label": "Zang" },
+        { "href": "#lessen", "label": "Drums" }
+      ]},
+      { "title": "Contact", "links": [
+        { "href": "mailto:hallo@nootmuziek.nl", "label": "hallo@nootmuziek.nl" },
+        { "href": "tel:+31302721844", "label": "+31 30 272 18 44" },
+        { "href": "#", "label": "Oudegracht 211, Utrecht" }
+      ]}
+    ]
+  }
+}

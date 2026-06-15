@@ -1,4 +1,4 @@
-﻿# Makelaar / Vastgoed
+# Makelaar / Vastgoed
 
 Generator-template: diensten, uitgelicht aanbod, courtage-tarieven, FAQ en waardebepaling.
 

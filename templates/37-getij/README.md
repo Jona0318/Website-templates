@@ -1,4 +1,4 @@
-﻿# Tij — surfschool
+# Tij — surfschool
 
 Surfschool met een gelaagde, golvende zee op canvas en een zonnige strandclub-vibe.
 

@@ -1,4 +1,4 @@
-﻿# Restaurant
+# Restaurant
 
 Warme, elegante site met menu, galerij en reserveringsformulier.
 

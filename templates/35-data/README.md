@@ -1,4 +1,4 @@
-﻿# Meetlat — data & dashboards
+# Meetlat — data & dashboards
 
 Data-consultancy met een live animerende dashboard-grafiek en KPI’s op canvas.
 

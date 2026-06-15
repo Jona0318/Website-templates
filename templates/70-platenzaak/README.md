@@ -1,4 +1,4 @@
-﻿# WALS — platenzaak
+# WALS — platenzaak
 
 Retro-platenzaak met side-rail nav, draaiende-vinyl-hero en horizontaal scrollende platenbak met genre-filter — burnt orange × cream.
 

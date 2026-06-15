@@ -1,4 +1,4 @@
-﻿# Studio Kaap
+# Studio Kaap
 
 Het pronkstuk: de sterkste features uit de hele galerij gebundeld in één donkere flagship.
 

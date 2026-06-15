@@ -1,4 +1,4 @@
-﻿# TEMPO — dansstudio
+# TEMPO — dansstudio
 
 Kinetische dansstudio als content-hub met het weekrooster (dag-tabs, pijltjesnavigatie) als kloppend hart; stijlen — zwart × magenta × lime.
 

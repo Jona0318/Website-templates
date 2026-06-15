@@ -1,4 +1,4 @@
-﻿# Buitenplaats
+# Buitenplaats
 
 De lichte tegenpool: serif-tuinarchitectuur met curtain-reveal en seizoenstijdlijn.
 

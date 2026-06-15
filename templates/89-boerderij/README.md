@@ -1,4 +1,4 @@
-﻿# HET LANGE LAND — boerderijwinkel
+# HET LANGE LAND — boerderijwinkel
 
 Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta: Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier.
 

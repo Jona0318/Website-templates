@@ -1,4 +1,4 @@
-﻿# Event / Congres
+# Event / Congres
 
 Energieke landing met countdown-timer, sprekers, programma en tickets.
 

@@ -1,4 +1,4 @@
-﻿# KLEUR — kunstgalerie
+# KLEUR — kunstgalerie
 
 Kunstgalerie als magazine met sticky scroll-spy index; uitgelichte expo-opening en exposities met echte kunstwerk-foto’s — bold poster-typografie.
 

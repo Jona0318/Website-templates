@@ -1,4 +1,4 @@
-﻿# MERIDIAAN — notarissen
+# MERIDIAAN — notarissen
 
 Klassiek-gezaghebbend notariskantoor in ivoor × oxblood (bewust géén navy/goud): fijne Cormorant-serif, hairline-regels, een "kies uw situatie"-keuzehulp naar het juiste rechtsgebied, transparante tarieven en intakeformulier.
 

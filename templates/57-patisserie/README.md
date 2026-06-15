@@ -1,4 +1,4 @@
-﻿# Suiker — patisserie
+# Suiker — patisserie
 
 Verfijnde patisserie als bento-raster met echte gebak-foto’s; assortiment, ambacht en taart-bestelformulier — rozig cream, Italiana.
 

@@ -1,4 +1,4 @@
-﻿# ZZP Metselaar
+# ZZP Metselaar
 
 Blueprint-stijl met zelftekenende troffel, voor/na-slider en projectfilter.
 

@@ -1,4 +1,4 @@
-﻿# Boutique Hotel
+# Boutique Hotel
 
 Vijfsterren-uitstraling met boekingsbalk, gouden details en quote-carrousel.
 

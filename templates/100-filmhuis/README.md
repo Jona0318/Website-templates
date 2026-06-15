@@ -1,4 +1,4 @@
-﻿# DE LICHTBAK — filmhuis
+# DE LICHTBAK — filmhuis
 
 Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold: Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier.
 

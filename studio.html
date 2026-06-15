@@ -144,6 +144,16 @@
         <label for="tel">Telefoon</label>
         <input id="tel" type="text" autocomplete="off" placeholder="+31 ...">
       </div>
+      <div class="field">
+        <label for="address">Adres</label>
+        <input id="address" type="text" autocomplete="off" placeholder="Straat 1, Amsterdam">
+      </div>
+
+      <div class="group">Lettertype</div>
+      <div class="field">
+        <label for="fontSel">Letterpaar</label>
+        <select id="fontSel"></select>
+      </div>
 
       <div class="group">Kleuren</div>
       <div class="field">
@@ -216,7 +226,14 @@
       { slug:'38-lab', label:'Synaps — lab' }
     ];
     var PRESETS = ['#a06bff','#ff5d8f','#5b8cff','#38e0c8','#f5b13d','#ff6a4d','#1f6f5c','#d11a26','#0fa3a3','#6e8cff'];
-    var FIELDS = ['name','mark','tagline','heroTitle','heroLead','email','tel','accent','accent2'];
+    var FONT_PAIRS = [
+      { label: 'Origineel', serif: null, grotesk: null, href: null },
+      { label: 'Inter + Playfair', grotesk: 'Inter', serif: 'Playfair Display', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap' },
+      { label: 'DM Sans + DM Serif', grotesk: 'DM Sans', serif: 'DM Serif Display', href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap' },
+      { label: 'Outfit + Lora', grotesk: 'Outfit', serif: 'Lora', href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap' },
+      { label: 'Jakarta + Fraunces', grotesk: 'Plus Jakarta Sans', serif: 'Fraunces', href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap' },
+    ];
+    var FIELDS = ['name','mark','tagline','heroTitle','heroLead','email','tel','address','accent','accent2'];
 
     var $ = function(id){ return document.getElementById(id); };
     var assemble = null;
@@ -241,6 +258,14 @@
       r.brand.tagline = state.tagline;
       r.brand.email = state.email;
       r.brand.tel = state.tel;
+      r.brand.address = state.address || '';
+      var pair = FONT_PAIRS[state.font || 0];
+      if (pair && pair.href) {
+        r.fonts = r.fonts || {};
+        r.fonts.serif = pair.serif;
+        r.fonts.grotesk = pair.grotesk;
+        r.fonts.googleHref = pair.href;
+      }
       r.theme = r.theme || {};
       r.theme['--accent'] = state.accent;
       r.theme['--accent-2'] = state.accent2;
@@ -264,6 +289,7 @@
       $('accentHex').textContent = state.accent;
       $('accent2Hex').textContent = state.accent2;
       $('mark').placeholder = (state.name || '?').trim().charAt(0).toUpperCase() || 'auto';
+      var fs = $('fontSel'); if (fs) { fs.value = String(state.font || 0); }
     }
 
     function defaultsFromRecipe(r){
@@ -271,7 +297,8 @@
       return {
         name: b.name || '', mark: b.mark || '', tagline: b.tagline || '',
         heroTitle: hd.title || '', heroLead: hd.lead || '',
-        email: b.email || '', tel: b.tel || '',
+        email: b.email || '', tel: b.tel || '', address: b.address || '',
+        font: 0,
         accent: t['--accent'] || '#a06bff', accent2: t['--accent-2'] || t['--accent'] || '#a06bff'
       };
     }
@@ -398,9 +425,15 @@
       PRESETS.forEach(function(hex){ var b = document.createElement('button'); b.className = 'preset'; b.type = 'button'; b.style.background = hex; b.title = hex; b.addEventListener('click', function(){ state.accent = hex; reflect(); changed(); }); pc.appendChild(b); });
 
       // tekst/kleur-velden
-      ['name','mark','tagline','heroTitle','heroLead','email','tel'].forEach(function(f){
+      ['name','mark','tagline','heroTitle','heroLead','email','tel','address'].forEach(function(f){
         $(f).addEventListener('input', function(){ state[f] = this.value; if (f === 'name') { $('mark').placeholder = (this.value || '?').trim().charAt(0).toUpperCase() || 'auto'; } changed(); });
       });
+      // lettertype-selector
+      var fontSel = $('fontSel');
+      if (fontSel) {
+        FONT_PAIRS.forEach(function(p, i){ var o = document.createElement('option'); o.value = String(i); o.textContent = p.label; fontSel.appendChild(o); });
+        fontSel.addEventListener('change', function(){ state.font = parseInt(this.value, 10) || 0; changed(); });
+      }
       $('accent').addEventListener('input', function(){ state.accent = this.value; $('accentHex').textContent = this.value; changed(); });
       $('accent2').addEventListener('input', function(){ state.accent2 = this.value; $('accent2Hex').textContent = this.value; changed(); });
 

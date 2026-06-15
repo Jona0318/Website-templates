@@ -1,4 +1,4 @@
-﻿# Webshop
+# Webshop
 
 E-commerce met productgrid, categorieën en een werkende winkelmand-teller.
 

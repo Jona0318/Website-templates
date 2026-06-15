@@ -1,4 +1,4 @@
-﻿# Sillage — geurhuis
+# Sillage — geurhuis
 
 Parfumhuis met opstijgende inkt/rook-diffusie en een interactieve geurpiramide.
 

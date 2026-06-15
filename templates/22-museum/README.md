@@ -1,4 +1,4 @@
-﻿# Museum / Kunsthal
+# Museum / Kunsthal
 
 Live “nu geopend”-status, sleepbare collectiestrook en volwaardige lightbox.
 

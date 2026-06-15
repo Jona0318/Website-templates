@@ -1,4 +1,4 @@
-﻿# MAISON CACAEU — chocolatier
+# MAISON CACAEU — chocolatier
 
 Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream: Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, "stel je eigen doos samen"-builder met live prijs en bestelformulier.
 

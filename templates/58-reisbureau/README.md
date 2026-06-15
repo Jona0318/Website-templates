@@ -1,4 +1,4 @@
-﻿# Verte — reizen op maat
+# Verte — reizen op maat
 
 Boutique-reisbureau met full-bleed bestemmings-hero en bestemmingskaarten (echte foto’s) die over de hero-rand schuiven — groen × terracotta.
 

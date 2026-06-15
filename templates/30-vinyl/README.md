@@ -1,4 +1,4 @@
-﻿# Groef — platenlabel
+# Groef — platenlabel
 
 Onafhankelijk label met een draaiende plaat en audiovisualizer — speel een groove en kijk mee.
 

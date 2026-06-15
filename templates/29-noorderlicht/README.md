@@ -1,4 +1,4 @@
-﻿# Noorderlicht — arctische reizen
+# Noorderlicht — arctische reizen
 
 Reisbureau met een canvas-aurora die over de sterren golft — plus bestemmingen en aurora-garantie.
 

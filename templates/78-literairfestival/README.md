@@ -1,4 +1,4 @@
-﻿# WOORD — literair festival
+# WOORD — literair festival
 
 Literair festival als magazine met sticky sectie-index (scroll-spy); asymmetrische redactionele hero, sprekers en programma — cream × diep rood, Fraunces.
 

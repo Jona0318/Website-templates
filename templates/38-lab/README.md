@@ -1,4 +1,4 @@
-﻿# Synaps — AI-lab
+# Synaps — AI-lab
 
 Toegepast AI-lab met een neuraal deeltjesnetwerk dat op je muis reageert.
 

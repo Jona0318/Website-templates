@@ -1,4 +1,4 @@
-﻿# Kam — kapsalon
+# Kam — kapsalon
 
 Chique kapsalon, minimaal en gecentreerd met hairline-details; eerlijke prijslijst en boek-een-stoel — off-white × mauve, Jost.
 

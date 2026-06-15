@@ -1,4 +1,4 @@
-﻿# BALANS — fysiotherapie
+# BALANS — fysiotherapie
 
 Frisse, met de hand gebouwde fysiotherapiepraktijk in mint-wit × teal × koraal: Outfit-koppen, interactieve klacht-kiezer die de juiste behandeling toont, live open-status uit de openingstijden en online afspraakformulier.
 

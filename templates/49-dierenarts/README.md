@@ -1,4 +1,4 @@
-﻿# Poot & Pels — dierenarts
+# Poot & Pels — dierenarts
 
 Vriendelijke dierenarts met spoed-utilitybalk, klassieke nav en zigzag-blokken; diensten, 24/7 spoed, open-status en afspraakformulier — geel × blauw.
 

@@ -1,4 +1,4 @@
-﻿# Schuim — stadsbrouwerij
+# Schuim — stadsbrouwerij
 
 Stadsbrouwerij met de taplijst als toegankelijke tab-hub (op vat / wisselend / binnenkort, pijltjesnavigatie); proeflokaal en rondleiding — donker × amber.
 

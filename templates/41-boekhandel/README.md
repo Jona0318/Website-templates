@@ -1,4 +1,4 @@
-﻿# Marginalia — boekhandel
+# Marginalia — boekhandel
 
 Literaire boekhandel als krant-masthead met meerkoloms voorpagina en sticky scroll-spy inhoudsindex; tips, agenda en open-status.
 

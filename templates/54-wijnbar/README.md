@@ -1,4 +1,4 @@
-﻿# Decant — natuurwijnbar
+# Decant — natuurwijnbar
 
 Intieme natuurwijnbar met gecentreerde type-hero en volle-breedte banden (licht/donker); wijnkaart per glas en open-status — aubergine, EB Garamond.
 
