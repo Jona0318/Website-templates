@@ -11,6 +11,7 @@
     "build": "node _kit/build.mjs all",
     "readmes": "node _kit/readmes.mjs",
     "pack": "node _kit/pack.mjs",
-    "dist": "node _kit/gallery.mjs && node _kit/readmes.mjs && node _kit/pack.mjs"
+    "seo": "node _kit/seo.mjs",
+    "dist": "node _kit/gallery.mjs && node _kit/readmes.mjs && node _kit/pack.mjs && node _kit/seo.mjs"
   }
 }
