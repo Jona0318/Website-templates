@@ -57,7 +57,7 @@
   --radius:18px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
 html.no-anim{scroll-behavior:auto}
 body{
   background:var(--bg);color:var(--text);
@@ -177,7 +177,20 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .filters-badge[hidden]{display:none}
 .more-filters{display:contents}
 @media (min-width:681px){.filters-toggle{display:none}.more-filters{display:contents}}
-@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}#chips{flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;-ms-overflow-style:none}#chips::-webkit-scrollbar{display:none}#chips .chip{flex:0 0 auto;scroll-snap-align:start}.features-label{padding-top:0}.controls-row{flex-direction:column;align-items:stretch}.control{justify-content:space-between}.seg,.select{flex:1}.filters-toggle{display:flex}.more-filters{display:none}.more-filters.is-open{display:block}}
+@media (max-width:680px){
+  .toolbar .wrap{flex-direction:column;align-items:stretch;overflow:hidden}
+  .chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem;min-width:0;width:100%}
+  #chips{flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;-ms-overflow-style:none;min-width:0}
+  #chips::-webkit-scrollbar{display:none}
+  #chips .chip{flex:0 0 auto;scroll-snap-align:start}
+  .features-label{padding-top:0}
+  .controls-row{flex-direction:column;align-items:stretch}
+  .control{justify-content:space-between}
+  .seg,.select{flex:1}
+  .filters-toggle{display:flex}
+  .more-filters{display:none}
+  .more-filters.is-open{display:block}
+}
 
 /* result-meta */
 .meta-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:clamp(1.5rem,3vw,2.2rem);padding-bottom:1rem}
