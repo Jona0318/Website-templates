@@ -7,6 +7,7 @@ const attr = (s) => a(s).replace(/"/g, '&quot;');
 // aria-label: strip eventuele HTML uit titels (bv. <em>) zodat screenreaders geen tags voorlezen.
 const alabel = (s) => a(s).replace(/<[^>]+>/g, '').replace(/"/g, '&quot;').replace(/\s+/g, ' ').trim();
 const list = (x) => Array.isArray(x) ? x : [];
+const imgEl = (src) => `<img src="${attr(src)}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;">`;
 
 function ctas(items = []) {
   if (!items.length) return '';
@@ -33,7 +34,7 @@ export const sections = {
       return `<section class="hero hero--split" id="${attr(d.id || 'top')}" aria-label="Introductie">
   <div class="container">
     <div class="hero-copy">${copy}</div>
-    <div class="hero-visual" data-tilt aria-hidden="true"><span class="glyph">${a(d.glyph || '◆')}</span></div>
+    <div class="hero-visual" data-tilt aria-hidden="true">${d.image ? imgEl(d.image) : `<span class="glyph">${a(d.glyph || '◆')}</span>`}</div>
   </div>
 </section>`;
     }
@@ -84,7 +85,7 @@ export const sections = {
     </div>
     <div class="showcase-grid">
       ${list(d.items).map((it, i) => `<article class="showcase-item" data-rv ${i ? `data-d=".${i * 6}s"` : ''}>
-        <div class="showcase-thumb" data-tilt aria-hidden="true">${it.tag ? `<span class="tag">${a(it.tag)}</span>` : ''}<span class="glyph">${a(it.glyph || '◆')}</span></div>
+        <div class="showcase-thumb" data-tilt aria-hidden="true">${it.tag ? `<span class="tag">${a(it.tag)}</span>` : ''}${it.image ? imgEl(it.image) : `<span class="glyph">${a(it.glyph || '◆')}</span>`}</div>
         <div class="showcase-cap"><h3>${a(it.title)}</h3><span>${a(it.meta || '')}</span></div>
       </article>`).join('')}
     </div>
@@ -157,7 +158,7 @@ export const sections = {
       ${list(d.points).length ? `<ul>${list(d.points).map((p) => `<li>${a(p)}</li>`).join('')}</ul>` : ''}
       ${d.cta ? ctas([{ ...d.cta, primary: true }]) : ''}
     </div>
-    <div class="split-panel" data-rv data-d=".1s" data-tilt aria-hidden="true"><span class="glyph">${a(d.glyph || '◆')}</span></div>
+    <div class="split-panel" data-rv data-d=".1s" data-tilt aria-hidden="true">${d.image ? imgEl(d.image) : `<span class="glyph">${a(d.glyph || '◆')}</span>`}</div>
   </div>
 </section>`;
   },
@@ -295,7 +296,7 @@ export const sections = {
     ${head}
     <div class="zigzag">
       ${list(d.items).map((it) => `<div class="zz-row" data-rv>
-        <div class="zz-media" data-tilt aria-hidden="true"><span class="glyph">${a(it.glyph || '◆')}</span></div>
+        <div class="zz-media" data-tilt aria-hidden="true">${it.image ? imgEl(it.image) : `<span class="glyph">${a(it.glyph || '◆')}</span>`}</div>
         <div class="zz-copy">${it.eyebrow ? `<p class="eyebrow">${a(it.eyebrow)}</p>` : ''}<h3>${a(it.title)}</h3>${it.text ? `<p>${a(it.text)}</p>` : ''}${list(it.points).length ? `<ul>${list(it.points).map((p) => `<li>${a(p)}</li>`).join('')}</ul>` : ''}</div>
       </div>`).join('')}
     </div>
@@ -319,7 +320,7 @@ export const sections = {
   <div class="container">
     <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
     <div class="gallery" data-rv>
-      ${list(d.items).map((it) => `<div class="tile"><span class="glyph" aria-hidden="true">${a(it.glyph || '◇')}</span>${it.tag ? `<span class="tag">${a(it.tag)}</span>` : ''}</div>`).join('')}
+      ${list(d.items).map((it) => `<div class="tile">${it.image ? imgEl(it.image) : `<span class="glyph" aria-hidden="true">${a(it.glyph || '◇')}</span>`}${it.tag ? `<span class="tag">${a(it.tag)}</span>` : ''}</div>`).join('')}
     </div>
   </div>
 </section>`;
@@ -330,7 +331,7 @@ export const sections = {
   <div class="container">
     <div class="section-head" data-rv>${d.eyebrow ? `<p class="eyebrow">${a(d.eyebrow)}</p>` : ''}<h2>${a(d.title)}</h2>${d.intro ? `<p>${a(d.intro)}</p>` : ''}</div>
     <div class="team-grid">
-      ${list(d.items).map((it, i) => `<article class="member" data-rv ${i ? `data-d=".${i * 6}s"` : ''}><div class="ph" aria-hidden="true">${a((it.name || '?').trim().charAt(0))}</div><h3>${a(it.name)}</h3><span class="role">${a(it.role || '')}</span></article>`).join('')}
+      ${list(d.items).map((it, i) => `<article class="member" data-rv ${i ? `data-d=".${i * 6}s"` : ''}><div class="ph" aria-hidden="true">${it.image ? `<img src="${attr(it.image)}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">` : a((it.name || '?').trim().charAt(0))}</div><h3>${a(it.name)}</h3><span class="role">${a(it.role || '')}</span></article>`).join('')}
     </div>
   </div>
 </section>`;

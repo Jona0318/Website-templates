@@ -44,7 +44,7 @@
   .group:first-of-type{border-top:none;padding-top:0;margin-top:.4rem}
   .field{margin-bottom:1.05rem}
   .field > label{display:block;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:.45rem}
-  .field input[type=text],.field textarea{width:100%;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;color:var(--text);font-size:.92rem;padding:.6rem .8rem;font-family:inherit}
+  .field input[type=text],.field input[type=url],.field textarea{width:100%;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;color:var(--text);font-size:.92rem;padding:.6rem .8rem;font-family:inherit}
   .field textarea{resize:vertical;min-height:64px;line-height:1.4}
   .field input[type=text]:focus,.field textarea:focus,select:focus{outline:none;border-color:var(--violet)}
   .row2{display:flex;gap:.7rem}
@@ -97,6 +97,17 @@
   .sub-item{border:1px solid var(--line);border-radius:10px;padding:.6rem .7rem;margin-bottom:.55rem;background:var(--surface)}
   .sub-item>.sub-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:.5rem;display:block}
   .field .sub-hint{font-size:.66rem;color:var(--faint);margin-top:.3rem}
+
+  /* ---- image field ---- */
+  .img-field{display:flex;flex-direction:column;gap:.35rem}
+  .img-prev{width:100%;aspect-ratio:16/9;background:var(--surface);border:2px dashed var(--line-strong);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;transition:border-color .15s;font-family:var(--f-mono);font-size:.65rem;color:var(--faint);letter-spacing:.05em}
+  .img-prev img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;pointer-events:none}
+  .img-prev.drag-over{border-color:var(--violet);background:rgba(160,107,255,.06)}
+  .img-prev:hover:not(:has(img)){border-color:var(--line-strong)}
+  .img-btns{display:flex;gap:.4rem}
+  .img-btns button{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;padding:.35rem .65rem;border-radius:8px;background:var(--surface);border:1px solid var(--line-strong);color:var(--muted);cursor:pointer}
+  .img-btns button:hover{border-color:var(--violet);color:var(--text)}
+  .img-btns .img-clear:hover{border-color:var(--pink);color:var(--pink)}
 
   @media (max-width:860px){
     .layout{grid-template-columns:1fr}
@@ -263,7 +274,7 @@
     /* ============== generieke content-builder ============== */
     var SKIP = { use:1, id:1, layout:1, variant:1, dark:1, primary:1, featured:1, half:1, required:1, type:1, mode:1, key:1, modes:1, outline:1, name:1, stars:1 };
     var LABELS = {
-      name:'Bedrijfsnaam', mark:'Logo-letter', tagline:'Tagline', email:'E-mail', tel:'Telefoon', address:'Adres',
+      name:'Bedrijfsnaam', mark:'Logo-letter', tagline:'Tagline', email:'E-mail', tel:'Telefoon', address:'Adres', image:'Foto', photo:'Foto',
       title:'Titel', eyebrow:'Bovenkop', lead:'Introtekst', intro:'Intro', text:'Tekst', label:'Label', href:'Link',
       value:'Waarde', icon:'Icoon', glyph:'Symbool', blurb:'Omschrijving', bottom:'Onderregel', note:'Notitie',
       quote:'Citaat', who:'Wie', sign:'Ondertekening', role:'Functie', q:'Vraag', an:'Antwoord', description:'Omschrijving',
@@ -274,6 +285,7 @@
       tabs:'Tabs', rows:'Rijen', cells:'Cellen', ctas:'Knoppen', paragraphs:'Alinea’s'
     };
     var LONG = { lead:1, text:1, intro:1, blurb:1, description:1, quote:1, an:1, note:1 };
+    var IMAGE_KEYS = { image:1, photo:1 };
     var SEC_NAMES = { hero:'Hero', features:'Kenmerken', showcase:'Uitgelicht werk', steps:'Stappen', quote:'Citaat',
       testimonials:'Reviews', logos:'Logo-strip', split:'Tekst + paneel', stats:'Cijfers-band', pricing:'Prijzen',
       faq:'Veelgesteld', contact:'Contact', cta:'Oproep', manifest:'Manifest', zigzag:'Zigzag', bento:'Bento',
@@ -313,8 +325,64 @@
       var h = document.createElement('div'); h.className = 'sub-hint'; h.textContent = 'Één per regel.'; f.appendChild(h);
       return f;
     }
+    function imageField(key, val, path){
+      var f = elField();
+      var id = 'b_' + path.join('_');
+      var lab = document.createElement('label'); lab.setAttribute('for', id); lab.textContent = human(key); f.appendChild(lab);
+      var wrap = document.createElement('div'); wrap.className = 'img-field';
+
+      var prev = document.createElement('div'); prev.className = 'img-prev'; prev.id = id;
+      function updatePrev(src){
+        prev.innerHTML = '';
+        if (src) { var im = document.createElement('img'); im.src = src; im.alt = ''; prev.appendChild(im); }
+        else { var ph = document.createElement('span'); ph.textContent = '+ Voeg foto toe'; prev.appendChild(ph); }
+      }
+      updatePrev(val);
+
+      var fi = document.createElement('input'); fi.type = 'file'; fi.accept = 'image/*'; fi.style.display = 'none';
+      fi.addEventListener('change', function(){
+        var file = fi.files[0]; if (!file) { return; }
+        var reader = new FileReader();
+        reader.onload = function(e){ setAt(work, path, e.target.result); updatePrev(e.target.result); urlInp.value = ''; changed(); };
+        reader.readAsDataURL(file);
+      });
+
+      var urlInp = document.createElement('input'); urlInp.type = 'url';
+      urlInp.placeholder = 'Plak een foto-URL…';
+      urlInp.value = (val && val.startsWith('data:')) ? '' : (val || '');
+      urlInp.addEventListener('input', function(){ var v = this.value.trim(); setAt(work, path, v); updatePrev(v); changed(); });
+
+      var btns = document.createElement('div'); btns.className = 'img-btns';
+      var uploadBtn = document.createElement('button'); uploadBtn.type = 'button'; uploadBtn.textContent = '↑ Upload foto';
+      uploadBtn.addEventListener('click', function(){ fi.click(); });
+      btns.appendChild(uploadBtn);
+      var clearBtn = document.createElement('button'); clearBtn.type = 'button'; clearBtn.className = 'img-clear'; clearBtn.textContent = '✕ Verwijder';
+      clearBtn.style.display = val ? '' : 'none';
+      clearBtn.addEventListener('click', function(){ setAt(work, path, ''); updatePrev(''); urlInp.value = ''; clearBtn.style.display = 'none'; changed(); });
+      btns.appendChild(clearBtn);
+
+      prev.addEventListener('dragover', function(e){ e.preventDefault(); prev.classList.add('drag-over'); });
+      prev.addEventListener('dragleave', function(){ prev.classList.remove('drag-over'); });
+      prev.addEventListener('drop', function(e){
+        e.preventDefault(); prev.classList.remove('drag-over');
+        var file = e.dataTransfer.files[0]; if (!file || !file.type.startsWith('image/')) { return; }
+        var reader = new FileReader();
+        reader.onload = function(ev){ setAt(work, path, ev.target.result); updatePrev(ev.target.result); urlInp.value = ''; clearBtn.style.display = ''; changed(); };
+        reader.readAsDataURL(file);
+      });
+      prev.addEventListener('click', function(){ fi.click(); });
+      fi.addEventListener('change', function(){ if (fi.files[0]) { clearBtn.style.display = ''; } });
+
+      wrap.appendChild(prev);
+      wrap.appendChild(urlInp);
+      wrap.appendChild(btns);
+      wrap.appendChild(fi);
+      f.appendChild(wrap);
+      return f;
+    }
     function renderValue(container, key, val, path){
       if (val === null || val === undefined) { return; }
+      if (IMAGE_KEYS[key]) { container.appendChild(imageField(key, val || '', path)); return; }
       var t = typeof val;
       if (t === 'string' || t === 'number') { container.appendChild(textField(key, val, path, t === 'number')); return; }
       if (Array.isArray(val)) {
@@ -369,6 +437,13 @@
         var body = document.createElement('div'); body.className = 'sec-body';
         var data = s.data || s;
         var dpath = s.data ? ['sections', i, 'data'] : ['sections', i];
+        // inject image slots for sections that support photos
+        if (s.use === 'split' || (s.use === 'hero' && data.layout === 'split')) {
+          if (data.image === undefined) { data.image = ''; }
+        }
+        if (s.use === 'showcase' || s.use === 'gallery' || s.use === 'team' || s.use === 'zigzag') {
+          if (Array.isArray(data.items)) { data.items.forEach(function(it){ if (it && it.image === undefined) { it.image = ''; } }); }
+        }
         Object.keys(data).forEach(function(k){ if (SKIP[k]) { return; } renderValue(body, k, data[k], dpath.concat([k])); });
         det.appendChild(body);
         root.appendChild(det);
