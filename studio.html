@@ -85,6 +85,19 @@
   .toast{position:fixed;left:50%;bottom:1.6rem;transform:translateX(-50%) translateY(20px);background:var(--ok);color:#06201c;font-weight:600;font-size:.82rem;padding:.7rem 1.2rem;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+  /* ---- builder ---- */
+  #builder{margin-top:.4rem}
+  .sec-block{border:1px solid var(--line);border-radius:12px;margin-bottom:.6rem;background:var(--surface-2);overflow:hidden}
+  .sec-block>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.7rem .85rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text);user-select:none}
+  .sec-block>summary::-webkit-details-marker{display:none}
+  .sec-block>summary .chev{margin-left:auto;width:13px;height:13px;color:var(--faint);transition:transform .2s}
+  .sec-block[open]>summary .chev{transform:rotate(180deg)}
+  .sec-block>summary .tag{font-size:.58rem;color:var(--faint);letter-spacing:.06em}
+  .sec-body{padding:.2rem .85rem .9rem}
+  .sub-item{border:1px solid var(--line);border-radius:10px;padding:.6rem .7rem;margin-bottom:.55rem;background:var(--surface)}
+  .sub-item>.sub-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:.5rem;display:block}
+  .field .sub-hint{font-size:.66rem;color:var(--faint);margin-top:.3rem}
+
   @media (max-width:860px){
     .layout{grid-template-columns:1fr}
     .panel{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--line)}
@@ -101,52 +114,12 @@
 
   <div class="layout">
     <aside class="panel">
-      <h1>Maak 'm van jou</h1>
-      <p class="sub">Kies een template, pas tekst en kleur aan, en download een kant-en-klare website. Je wijzigingen worden onthouden.</p>
+      <h1>Builder</h1>
+      <p class="sub">Kies een template en pas alles aan: tekst, kleuren, lettertype. Wat je verandert zie je meteen, en wordt onthouden.</p>
 
       <div class="field">
         <label for="tpl">Template</label>
         <select id="tpl"></select>
-      </div>
-
-      <div class="group">Merk</div>
-      <div class="row2">
-        <div class="field" style="flex:2.4">
-          <label for="name">Bedrijfsnaam</label>
-          <input id="name" type="text" autocomplete="off" placeholder="Jouw bedrijf">
-        </div>
-        <div class="field" style="flex:1">
-          <label for="mark">Logo-letter</label>
-          <input id="mark" type="text" autocomplete="off" maxlength="2" placeholder="auto">
-        </div>
-      </div>
-      <div class="field">
-        <label for="tagline">Tagline</label>
-        <input id="tagline" type="text" autocomplete="off" placeholder="Korte ondertitel">
-      </div>
-
-      <div class="group">Hero</div>
-      <div class="field">
-        <label for="heroTitle">Titel</label>
-        <input id="heroTitle" type="text" autocomplete="off" placeholder="Kop bovenaan de pagina">
-      </div>
-      <div class="field">
-        <label for="heroLead">Introtekst</label>
-        <textarea id="heroLead" placeholder="Een of twee zinnen onder de titel"></textarea>
-      </div>
-
-      <div class="group">Contact</div>
-      <div class="field">
-        <label for="email">E-mail</label>
-        <input id="email" type="text" autocomplete="off" placeholder="hallo@bedrijf.nl">
-      </div>
-      <div class="field">
-        <label for="tel">Telefoon</label>
-        <input id="tel" type="text" autocomplete="off" placeholder="+31 ...">
-      </div>
-      <div class="field">
-        <label for="address">Adres</label>
-        <input id="address" type="text" autocomplete="off" placeholder="Straat 1, Amsterdam">
       </div>
 
       <div class="group">Lettertype</div>
@@ -164,6 +137,8 @@
         </div>
         <div class="presets" id="presets"></div>
       </div>
+
+      <div id="builder"></div>
 
       <div class="actions">
         <button class="btn btn-primary" id="download">⬇ Download website (.zip)</button>
@@ -233,14 +208,12 @@
       { label: 'Outfit + Lora', grotesk: 'Outfit', serif: 'Lora', href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap' },
       { label: 'Jakarta + Fraunces', grotesk: 'Plus Jakarta Sans', serif: 'Fraunces', href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap' },
     ];
-    var FIELDS = ['name','mark','tagline','heroTitle','heroLead','email','tel','address','accent','accent2'];
-
     var $ = function(id){ return document.getElementById(id); };
     var assemble = null;
     var coreCss = '', coreJs = '';
-    var base = null;            // pristine recept
-    var heroIdx = -1;           // index van de hero-sectie in base.sections
-    var state = {};
+    var base = null;            // pristine recept (referentie)
+    var work = null;            // volledige, bewerkbare kopie van het recept
+    var ui = { accent:'#a06bff', accent2:'#a06bff', font:0 };  // losse stijl-knoppen
     var renderTimer = 0, saveTimer = 0;
 
     function hexToRgb(hex){ var h = (hex||'').replace('#',''); if(h.length===3){ h = h.split('').map(function(c){return c+c;}).join(''); } var n = parseInt(h,16); return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 }; }
@@ -248,18 +221,12 @@
     function luminance(hex){ var c = hexToRgb(hex); var f = function(v){ v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055,2.4); }; return 0.2126*f(c.r)+0.7152*f(c.g)+0.0722*f(c.b); }
     function onAccent(hex){ return luminance(hex) > 0.42 ? '#15140f' : '#ffffff'; }
     function slugify(s){ return (s||'template').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'template'; }
-    function heroData(r){ return heroIdx < 0 ? null : (r.sections[heroIdx].data || r.sections[heroIdx]); }
+    function clone(o){ return JSON.parse(JSON.stringify(o)); }
 
+    /* het volledige recept dat naar de preview/download gaat: werk-kopie + losse stijl-knoppen */
     function recipeFromState(){
-      var r = JSON.parse(JSON.stringify(base));
-      r.brand = r.brand || {};
-      r.brand.name = state.name || r.brand.name;
-      r.brand.mark = state.mark || '';
-      r.brand.tagline = state.tagline;
-      r.brand.email = state.email;
-      r.brand.tel = state.tel;
-      r.brand.address = state.address || '';
-      var pair = FONT_PAIRS[state.font || 0];
+      var r = clone(work);
+      var pair = FONT_PAIRS[ui.font || 0];
       if (pair && pair.href) {
         r.fonts = r.fonts || {};
         r.fonts.serif = pair.serif;
@@ -267,12 +234,10 @@
         r.fonts.googleHref = pair.href;
       }
       r.theme = r.theme || {};
-      r.theme['--accent'] = state.accent;
-      r.theme['--accent-2'] = state.accent2;
-      r.theme['--accent-soft'] = hexToRgba(state.accent, 0.10);
-      r.theme['--on-accent'] = onAccent(state.accent);
-      var hd = heroData(r);
-      if (hd) { if (state.heroTitle) { hd.title = state.heroTitle; } if (state.heroLead) { hd.lead = state.heroLead; } }
+      r.theme['--accent'] = ui.accent;
+      r.theme['--accent-2'] = ui.accent2;
+      r.theme['--accent-soft'] = hexToRgba(ui.accent, 0.10);
+      r.theme['--on-accent'] = onAccent(ui.accent);
       return r;
     }
 
@@ -285,27 +250,155 @@
     function changed(){ scheduleRender(); scheduleSave(); }
 
     function reflect(){
-      FIELDS.forEach(function(f){ if ($(f)) { $(f).value = state[f]; } });
-      $('accentHex').textContent = state.accent;
-      $('accent2Hex').textContent = state.accent2;
-      $('mark').placeholder = (state.name || '?').trim().charAt(0).toUpperCase() || 'auto';
-      var fs = $('fontSel'); if (fs) { fs.value = String(state.font || 0); }
+      $('accent').value = ui.accent; $('accentHex').textContent = ui.accent;
+      $('accent2').value = ui.accent2; $('accent2Hex').textContent = ui.accent2;
+      var fs = $('fontSel'); if (fs) { fs.value = String(ui.font || 0); }
     }
 
-    function defaultsFromRecipe(r){
-      var b = r.brand || {}, t = r.theme || {}, hd = heroData(r) || {};
-      return {
-        name: b.name || '', mark: b.mark || '', tagline: b.tagline || '',
-        heroTitle: hd.title || '', heroLead: hd.lead || '',
-        email: b.email || '', tel: b.tel || '', address: b.address || '',
-        font: 0,
-        accent: t['--accent'] || '#a06bff', accent2: t['--accent-2'] || t['--accent'] || '#a06bff'
-      };
+    function uiFromRecipe(r){
+      var t = r.theme || {};
+      return { accent: t['--accent'] || '#a06bff', accent2: t['--accent-2'] || t['--accent'] || '#a06bff', font: 0 };
     }
 
-    // --- opslag + deel-link ---
-    function lsKey(slug){ return 'studio:' + slug; }
-    function save(){ try { localStorage.setItem(lsKey(base.slug), JSON.stringify(state)); } catch (e) {} }
+    /* ============== generieke content-builder ============== */
+    var SKIP = { use:1, id:1, layout:1, variant:1, dark:1, primary:1, featured:1, half:1, required:1, type:1, mode:1, key:1, modes:1, outline:1, name:1, stars:1 };
+    var LABELS = {
+      name:'Bedrijfsnaam', mark:'Logo-letter', tagline:'Tagline', email:'E-mail', tel:'Telefoon', address:'Adres',
+      title:'Titel', eyebrow:'Bovenkop', lead:'Introtekst', intro:'Intro', text:'Tekst', label:'Label', href:'Link',
+      value:'Waarde', icon:'Icoon', glyph:'Symbool', blurb:'Omschrijving', bottom:'Onderregel', note:'Notitie',
+      quote:'Citaat', who:'Wie', sign:'Ondertekening', role:'Functie', q:'Vraag', an:'Antwoord', description:'Omschrijving',
+      submit:'Verzendknop', successTitle:'Succes-titel', successText:'Succes-tekst', placeholder:'Placeholder',
+      per:'Periode', prijs:'Prijs', voor:'Voor wie', badge:'Badge', meta:'Detail', tag:'Label', clock:'Klok-label',
+      target:'Eindwaarde', suffix:'Achtervoegsel', title2:'Titel', options:'Keuzes', items:'Items', points:'Punten',
+      features:'Kenmerken', plans:'Plannen', stats:'Cijfers', columns:'Kolommen', links:'Links', fields:'Velden',
+      tabs:'Tabs', rows:'Rijen', cells:'Cellen', ctas:'Knoppen', paragraphs:'Alinea’s'
+    };
+    var LONG = { lead:1, text:1, intro:1, blurb:1, description:1, quote:1, an:1, note:1 };
+    var SEC_NAMES = { hero:'Hero', features:'Kenmerken', showcase:'Uitgelicht werk', steps:'Stappen', quote:'Citaat',
+      testimonials:'Reviews', logos:'Logo-strip', split:'Tekst + paneel', stats:'Cijfers-band', pricing:'Prijzen',
+      faq:'Veelgesteld', contact:'Contact', cta:'Oproep', manifest:'Manifest', zigzag:'Zigzag', bento:'Bento',
+      gallery:'Galerij', team:'Team', timeline:'Tijdlijn', marquee:'Lichtkrant', banner:'Banner', tabs:'Tabs',
+      metrics:'Cijfers', comparison:'Vergelijking', custom:'Maatwerk' };
+    function human(k){ return LABELS[k] || (k.charAt(0).toUpperCase() + k.slice(1)); }
+    function secName(u){ return SEC_NAMES[u] || u; }
+    function getAt(o, p){ var x = o; for (var i=0;i<p.length;i++){ if (x==null) { return undefined; } x = x[p[i]]; } return x; }
+    function setAt(o, p, v){ var x = o; for (var i=0;i<p.length-1;i++){ x = x[p[i]]; } x[p[p.length-1]] = v; }
+    function chevSvg(){ return '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>'; }
+
+    function elField(){ var f = document.createElement('div'); f.className = 'field'; return f; }
+    function textField(key, val, path, isNum){
+      var f = elField();
+      var id = 'b_' + path.join('_');
+      var lab = document.createElement('label'); lab.setAttribute('for', id); lab.textContent = human(key); f.appendChild(lab);
+      var long = LONG[key] || (typeof val === 'string' && val.length > 70);
+      var inp = document.createElement(long ? 'textarea' : 'input');
+      if (!long) { inp.type = isNum ? 'number' : 'text'; }
+      inp.id = id; inp.value = (val == null ? '' : val);
+      inp.addEventListener('input', function(){
+        var v = isNum ? (this.value === '' ? '' : Number(this.value)) : this.value;
+        setAt(work, path, v); changed();
+      });
+      f.appendChild(inp);
+      if (typeof val === 'string' && /<em>/.test(val)) { var h = document.createElement('div'); h.className = 'sub-hint'; h.textContent = 'Tip: tekst tussen <em>…</em> krijgt de accentkleur.'; f.appendChild(h); }
+      return f;
+    }
+    function stringListField(key, val, path){
+      var f = elField();
+      var lab = document.createElement('label'); lab.textContent = human(key); f.appendChild(lab);
+      var ta = document.createElement('textarea'); ta.value = val.join('\n');
+      ta.addEventListener('input', function(){
+        setAt(work, path, this.value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean)); changed();
+      });
+      f.appendChild(ta);
+      var h = document.createElement('div'); h.className = 'sub-hint'; h.textContent = 'Één per regel.'; f.appendChild(h);
+      return f;
+    }
+    function renderValue(container, key, val, path){
+      if (val === null || val === undefined) { return; }
+      var t = typeof val;
+      if (t === 'string' || t === 'number') { container.appendChild(textField(key, val, path, t === 'number')); return; }
+      if (Array.isArray(val)) {
+        if (!val.length) { return; }
+        if (typeof val[0] === 'string') { container.appendChild(stringListField(key, val, path)); return; }
+        var lab = elField(); var l = document.createElement('label'); l.textContent = human(key); lab.appendChild(l); container.appendChild(lab);
+        val.forEach(function(item, i){
+          if (item == null || typeof item !== 'object') { return; }
+          var box = document.createElement('div'); box.className = 'sub-item';
+          var sl = document.createElement('span'); sl.className = 'sub-label'; sl.textContent = human(key).replace(/s$/, '') + ' ' + (i + 1); box.appendChild(sl);
+          Object.keys(item).forEach(function(k){ if (SKIP[k]) { return; } renderValue(box, k, item[k], path.concat([i, k])); });
+          container.appendChild(box);
+        });
+        return;
+      }
+      if (t === 'object') {
+        Object.keys(val).forEach(function(k){ if (SKIP[k]) { return; } renderValue(container, k, val[k], path.concat([k])); });
+      }
+    }
+    function groupHead(root, title){ var g = document.createElement('div'); g.className = 'group'; g.textContent = title; root.appendChild(g); }
+
+    function buildUI(){
+      var root = $('builder'); root.innerHTML = '';
+      // Merk
+      work.brand = work.brand || {};
+      groupHead(root, 'Merk');
+      ['name','tagline','mark','email','tel','address'].forEach(function(k){
+        if (work.brand[k] === undefined && k !== 'name' && k !== 'tagline') { return; }
+        if (work.brand[k] === undefined) { work.brand[k] = ''; }
+        root.appendChild(textField(k, work.brand[k], ['brand', k]));
+      });
+      // Pagina
+      if (work.meta) { groupHead(root, 'Pagina'); ['title','description'].forEach(function(k){ if (work.meta[k] !== undefined) { root.appendChild(textField(k, work.meta[k], ['meta', k])); } }); }
+      // Menu
+      if (Array.isArray(work.nav) && work.nav.length) {
+        groupHead(root, 'Menu');
+        work.nav.forEach(function(item, i){
+          var box = document.createElement('div'); box.className = 'sub-item';
+          var sl = document.createElement('span'); sl.className = 'sub-label'; sl.textContent = 'Menu-item ' + (i + 1); box.appendChild(sl);
+          ['label','href'].forEach(function(k){ if (item[k] !== undefined) { box.appendChild(textField(k, item[k], ['nav', i, k])); } });
+          root.appendChild(box);
+        });
+      }
+      if (work.headerCta) { groupHead(root, 'Knop in menubalk'); ['label','href'].forEach(function(k){ if (work.headerCta[k] !== undefined) { root.appendChild(textField(k, work.headerCta[k], ['headerCta', k])); } }); }
+      // Secties
+      groupHead(root, 'Secties');
+      (work.sections || []).forEach(function(s, i){
+        var det = document.createElement('details'); det.className = 'sec-block';
+        var sum = document.createElement('summary');
+        sum.innerHTML = '<span>' + secName(s.use) + '</span><span class="tag">' + s.use + '</span>' + chevSvg();
+        det.appendChild(sum);
+        var body = document.createElement('div'); body.className = 'sec-body';
+        var data = s.data || s;
+        var dpath = s.data ? ['sections', i, 'data'] : ['sections', i];
+        Object.keys(data).forEach(function(k){ if (SKIP[k]) { return; } renderValue(body, k, data[k], dpath.concat([k])); });
+        det.appendChild(body);
+        root.appendChild(det);
+      });
+      // Footer
+      if (work.footer) {
+        groupHead(root, 'Footer');
+        ['blurb','bottom'].forEach(function(k){ if (work.footer[k] !== undefined) { root.appendChild(textField(k, work.footer[k], ['footer', k])); } });
+        if (Array.isArray(work.footer.columns)) {
+          work.footer.columns.forEach(function(col, ci){
+            var box = document.createElement('div'); box.className = 'sub-item';
+            var sl = document.createElement('span'); sl.className = 'sub-label'; sl.textContent = 'Kolom ' + (ci + 1); box.appendChild(sl);
+            if (col.title !== undefined) { box.appendChild(textField('title', col.title, ['footer','columns',ci,'title'])); }
+            if (Array.isArray(col.links)) {
+              col.links.forEach(function(ln, li){
+                var lb = document.createElement('div'); lb.className = 'sub-item';
+                var s2 = document.createElement('span'); s2.className = 'sub-label'; s2.textContent = 'Link ' + (li + 1); lb.appendChild(s2);
+                ['label','href'].forEach(function(k){ if (ln[k] !== undefined) { lb.appendChild(textField(k, ln[k], ['footer','columns',ci,'links',li,k])); } });
+                box.appendChild(lb);
+              });
+            }
+            root.appendChild(box);
+          });
+        }
+      }
+    }
+
+    // --- opslag + deel-link --- (volledige werk-kopie + losse stijl-knoppen)
+    function lsKey(slug){ return 'studio2:' + slug; }
+    function save(){ try { localStorage.setItem(lsKey(work.slug), JSON.stringify({ recipe: work, ui: ui })); } catch (e) {} }
     function loadSaved(slug){ try { var s = localStorage.getItem(lsKey(slug)); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
     function encodeState(s){ try { return btoa(unescape(encodeURIComponent(JSON.stringify(s)))); } catch (e) { return ''; } }
     function decodeState(str){ try { return JSON.parse(decodeURIComponent(escape(atob(str)))); } catch (e) { return null; } }
@@ -319,10 +412,10 @@
       if (r.customCssFile) { r.customCss = (r.customCss || '') + '\n' + await fetchText(r.customCssFile); }
       if (r.customJsFile) { r.customJs = (r.customJs || '') + '\n' + await fetchText(r.customJsFile); }
       base = r;
-      heroIdx = (r.sections || []).findIndex(function(s){ return s.use === 'hero'; });
-      var def = defaultsFromRecipe(r);
       var saved = override || loadSaved(slug);
-      state = Object.assign({}, def, saved || {});
+      if (saved && saved.recipe) { work = saved.recipe; ui = Object.assign(uiFromRecipe(r), saved.ui || {}); }
+      else { work = clone(r); ui = uiFromRecipe(r); }
+      buildUI();
       reflect();
       render();
       $('loading').classList.add('hide');
@@ -376,8 +469,8 @@
       try {
         var html = assemble(recipeFromState(), coreCss, coreJs);
         if (faviconCache == null) { try { faviconCache = await fetchText('favicon.svg'); } catch (e) { faviconCache = ''; } }
-        var name = state.name || base.brand.name;
-        var readme = '# ' + name + '\n\nGepersonaliseerde website, gemaakt met de Template Studio.\n' +
+        var name = (work.brand && work.brand.name) || base.brand.name;
+        var readme = '# ' + name + '\n\nGepersonaliseerde website, gemaakt met de Bron Studio.\n' +
           'Gebaseerd op template "' + base.slug + '".\n\n' +
           'Open index.html in je browser, of zet de map online (bv. Cloudflare Pages, Netlify, GitHub Pages).\n' +
           'Geen build of dependencies nodig.\n';
@@ -398,7 +491,7 @@
     function shareLink(){
       var url = new URL(location.href);
       url.searchParams.set('t', base.slug);
-      url.searchParams.set('s', encodeState(state));
+      url.searchParams.set('s', encodeState({ recipe: work, ui: ui }));
       var link = url.toString();
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(link).then(function(){ toast('Deel-link gekopieerd ✓'); }, function(){ prompt('Kopieer je deel-link:', link); });
@@ -422,20 +515,16 @@
       var sel = $('tpl');
       TEMPLATES.forEach(function(t){ var o = document.createElement('option'); o.value = t.slug; o.textContent = t.label; sel.appendChild(o); });
       var pc = $('presets');
-      PRESETS.forEach(function(hex){ var b = document.createElement('button'); b.className = 'preset'; b.type = 'button'; b.style.background = hex; b.title = hex; b.addEventListener('click', function(){ state.accent = hex; reflect(); changed(); }); pc.appendChild(b); });
+      PRESETS.forEach(function(hex){ var b = document.createElement('button'); b.className = 'preset'; b.type = 'button'; b.style.background = hex; b.title = hex; b.addEventListener('click', function(){ ui.accent = hex; reflect(); changed(); }); pc.appendChild(b); });
 
-      // tekst/kleur-velden
-      ['name','mark','tagline','heroTitle','heroLead','email','tel','address'].forEach(function(f){
-        $(f).addEventListener('input', function(){ state[f] = this.value; if (f === 'name') { $('mark').placeholder = (this.value || '?').trim().charAt(0).toUpperCase() || 'auto'; } changed(); });
-      });
       // lettertype-selector
       var fontSel = $('fontSel');
       if (fontSel) {
         FONT_PAIRS.forEach(function(p, i){ var o = document.createElement('option'); o.value = String(i); o.textContent = p.label; fontSel.appendChild(o); });
-        fontSel.addEventListener('change', function(){ state.font = parseInt(this.value, 10) || 0; changed(); });
+        fontSel.addEventListener('change', function(){ ui.font = parseInt(this.value, 10) || 0; changed(); });
       }
-      $('accent').addEventListener('input', function(){ state.accent = this.value; $('accentHex').textContent = this.value; changed(); });
-      $('accent2').addEventListener('input', function(){ state.accent2 = this.value; $('accent2Hex').textContent = this.value; changed(); });
+      $('accent').addEventListener('input', function(){ ui.accent = this.value; $('accentHex').textContent = this.value; changed(); });
+      $('accent2').addEventListener('input', function(){ ui.accent2 = this.value; $('accent2Hex').textContent = this.value; changed(); });
 
       sel.addEventListener('change', function(){ var url = new URL(location.href); url.searchParams.set('t', sel.value); url.searchParams.delete('s'); history.replaceState(null, '', url); loadRecipe(sel.value); });
       $('download').addEventListener('click', download);

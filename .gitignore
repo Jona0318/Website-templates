@@ -1,2 +1,5 @@
 node_modules/
 *.log
+
+# test-screenshots (verificatie-artefacten, geen onderdeel van de site)
+screenshot-*.png
