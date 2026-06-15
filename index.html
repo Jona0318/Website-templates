@@ -167,7 +167,14 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .seg-btn[aria-pressed="true"]{color:#fff;background:var(--violet)}
 .select{font-family:var(--f-mono);font-size:.68rem;background:var(--surface);border:1px solid var(--line-strong);border-radius:99px;color:var(--text);padding:.4rem 1.8rem .4rem .8rem;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23999' stroke-width='1.6'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;background-size:13px}
 .select:focus{outline:none;border-color:var(--violet)}
-@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}.features-label{padding-top:0}.controls-row{flex-direction:column;align-items:stretch}.control{justify-content:space-between}.seg,.select{flex:1}}
+.filters-toggle{display:none;align-items:center;gap:.55rem;width:100%;margin-top:.7rem;padding:.65rem 1rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text);background:var(--surface);border:1px solid var(--line-strong);border-radius:99px;cursor:pointer;transition:border-color .2s}
+.filters-toggle:hover{border-color:var(--violet)}
+.filters-toggle .chev{width:14px;height:14px;margin-left:auto;transition:transform .25s var(--ease)}
+.filters-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.filters-badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.15rem;height:1.15rem;padding:0 .35rem;border-radius:99px;background:var(--violet);color:#fff;font-size:.62rem;letter-spacing:0}
+.filters-badge[hidden]{display:none}
+.more-filters{display:contents}
+@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}.features-label{padding-top:0}.controls-row{flex-direction:column;align-items:stretch}.control{justify-content:space-between}.seg,.select{flex:1}.filters-toggle{display:flex}.more-filters{display:none}.more-filters.is-open{display:block}}
 
 /* result-meta */
 .meta-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:clamp(2rem,4vw,3rem);padding-bottom:1.2rem}
@@ -289,6 +296,12 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       </label>
       <div class="chips" id="chips" role="group" aria-label="Filter op type"></div>
     </div>
+    <button type="button" class="filters-toggle" id="filtersToggle" aria-expanded="false" aria-controls="moreFilters">
+      <span>Meer filters</span>
+      <span class="filters-badge" id="filtersBadge" hidden aria-hidden="true">0</span>
+      <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+    </button>
+    <div class="more-filters" id="moreFilters">
     <div class="wrap features-row" id="featuresRow" hidden>
       <span class="features-label">Features</span>
       <div class="chips chips--features" id="featureChips" role="group" aria-label="Filter op feature"></div>
@@ -314,6 +327,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
           <option value="new">Nieuwste eerst</option>
         </select>
       </label>
+    </div>
     </div>
   </div>
 
@@ -601,6 +615,21 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   var resultTitle = doc.getElementById('resultTitle');
   var resultTotal = doc.getElementById('resultTotal');
   var emptyEl = doc.getElementById('empty');
+  var filtersToggle = doc.getElementById('filtersToggle');
+  var moreFilters = doc.getElementById('moreFilters');
+  var filtersBadge = doc.getElementById('filtersBadge');
+  if (filtersToggle && moreFilters) {
+    filtersToggle.addEventListener('click', function () {
+      var open = moreFilters.classList.toggle('is-open');
+      filtersToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  function updateFilterBadge() {
+    if (!filtersBadge) { return; }
+    var n = state.tags.length + (state.scheme !== 'alle' ? 1 : 0) + (state.sector !== 'alle' ? 1 : 0);
+    filtersBadge.textContent = String(n);
+    filtersBadge.hidden = n === 0;
+  }
   if (resultTotal) { resultTotal.textContent = String(T.length); }
   function cardHasTag(card, tag) { return ('|' + card.getAttribute('data-tags') + '|').indexOf('|' + tag + '|') !== -1; }
   function matches(card, st) {
@@ -664,6 +693,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     }
     if (emptyEl) { emptyEl.classList.toggle('show', shown === 0); }
     updateCounts();
+    updateFilterBadge();
     syncHash();
   }
 
