@@ -206,6 +206,11 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .thumb .dl:hover{background:var(--violet)}
 .thumb .dl svg{width:15px;height:15px}
 @media (hover:none){.thumb .dl{opacity:1;transform:none}}
+.thumb .edit{position:absolute;bottom:.7rem;right:3.2rem;z-index:3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background-color .2s}
+.card:hover .thumb .edit,.thumb .edit:focus-visible{opacity:1;transform:none}
+.thumb .edit:hover{background:var(--violet)}
+.thumb .edit svg{width:15px;height:15px}
+@media (hover:none){.thumb .edit{opacity:1;transform:none}}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none}
 .card:hover .thumb::after{transform:translateX(120%)}
 .body{display:flex;flex-direction:column;flex:1;padding:1.2rem 1.3rem 1.35rem;gap:.5rem}
@@ -513,6 +518,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
 
   /* ---- kaarten renderen ---- */
   var grid = doc.getElementById('grid');
+  /* recept-gebaseerde templates kunnen live in de Studio gepersonaliseerd worden */
+  var RECIPE_SLUGS = ['25-makelaar','26-helder','27-nocturne','28-atlas','29-noorderlicht','30-vinyl','31-arcade','32-kwekerij','33-keramiek','34-parfum','35-data','36-tattoo','37-getij','38-lab'];
   var arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>';
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
   T.forEach(function (r) {
@@ -539,6 +546,10 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
         '<a class="dl" href="downloads/' + slug + '.zip" download aria-label="Download ' + esc(title) + ' als zip" title="Download als zip">' +
           '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13h10"/></svg>' +
         '</a>' +
+        (RECIPE_SLUGS.indexOf(slug) !== -1 ?
+          '<a class="edit" href="studio.html?t=' + slug + '" aria-label="Personaliseer ' + esc(title) + ' in de Studio" title="Personaliseer in Studio">' +
+          '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5 13.5 5 6 12.5 3 13l.5-3z"/></svg>' +
+          '</a>' : '') +
       '</div>' +
       '<div class="body">' +
         '<h3>' + title + '</h3>' +

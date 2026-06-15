@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio — personaliseer je template · Template Galerij</title>
+<meta name="description" content="Pas een template live aan met je eigen bedrijfsnaam en kleuren, en download een kant-en-klare, zelfstandige website.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --bg:#0a0a12; --surface:#14141f; --surface-2:#191926;
+    --text:#f3f3f8; --muted:rgba(243,243,248,.62); --faint:rgba(243,243,248,.62);
+    --line:rgba(243,243,248,.10); --line-strong:rgba(243,243,248,.20);
+    --violet:#a06bff; --pink:#ff5d8f;
+    --f-sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --f-mono:ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--f-sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .topbar{display:flex;align-items:center;gap:1rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,10,18,.85);backdrop-filter:blur(10px);z-index:10}
+  .topbar .logo{display:flex;align-items:center;gap:.55rem;font-weight:700;letter-spacing:-.01em}
+  .topbar .logo .dot{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--pink),var(--violet))}
+  .topbar .back{margin-left:auto;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.5rem .9rem;border:1px solid var(--line-strong);border-radius:99px}
+  .topbar .back:hover{color:var(--text);border-color:var(--violet)}
+
+  .layout{display:grid;grid-template-columns:340px 1fr;min-height:calc(100vh - 56px)}
+  .panel{padding:1.4rem 1.3rem;border-right:1px solid var(--line);overflow-y:auto;max-height:calc(100vh - 56px);position:sticky;top:56px}
+  .panel h1{font-size:1.05rem;letter-spacing:-.01em;margin-bottom:.25rem}
+  .panel .sub{font-size:.82rem;color:var(--muted);margin-bottom:1.3rem}
+  .field{margin-bottom:1.15rem}
+  .field > label{display:block;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:.45rem}
+  .field input[type=text]{width:100%;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;color:var(--text);font-size:.92rem;padding:.6rem .8rem;font-family:inherit}
+  .field input[type=text]:focus,.field select:focus{outline:none;border-color:var(--violet)}
+  select{width:100%;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;color:var(--text);font-size:.92rem;padding:.6rem .8rem;font-family:inherit;-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23999' stroke-width='1.6'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .8rem center;background-size:14px}
+  .colors{display:flex;gap:.7rem}
+  .color{flex:1}
+  .swatch{display:flex;align-items:center;gap:.6rem;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;padding:.45rem .6rem;cursor:pointer}
+  .swatch input[type=color]{width:30px;height:30px;border:none;background:none;padding:0;cursor:pointer;border-radius:8px;overflow:hidden}
+  .swatch input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+  .swatch input[type=color]::-webkit-color-swatch{border:none;border-radius:7px}
+  .swatch .hex{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase}
+  .presets{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.55rem}
+  .preset{width:24px;height:24px;border-radius:7px;border:1px solid var(--line-strong);cursor:pointer;padding:0}
+  .preset:hover{transform:scale(1.12)}
+  .actions{display:flex;flex-direction:column;gap:.6rem;margin-top:1.6rem}
+  .btn{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:.8rem 1rem;border-radius:99px;cursor:pointer;border:1px solid transparent;text-align:center}
+  .btn-primary{background:var(--violet);color:#0a0a12;font-weight:600}
+  .btn-primary:hover{filter:brightness(1.08)}
+  .btn-ghost{background:transparent;border-color:var(--line-strong);color:var(--muted)}
+  .btn-ghost:hover{color:var(--text);border-color:var(--violet)}
+  .hint{font-size:.74rem;color:var(--faint);margin-top:1rem;line-height:1.45}
+
+  .stage{position:relative;display:flex;flex-direction:column;background:#070710}
+  .stage-bar{display:flex;align-items:center;gap:.6rem;padding:.55rem .9rem;border-bottom:1px solid var(--line)}
+  .stage-bar .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:99px;overflow:hidden}
+  .stage-bar .seg button{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;padding:.35rem .8rem;color:var(--muted);background:none;cursor:pointer;border:none}
+  .stage-bar .seg button[aria-pressed=true]{background:var(--violet);color:#0a0a12}
+  .stage-bar .url{margin-left:auto;font-family:var(--f-mono);font-size:.7rem;color:var(--faint)}
+  .frame-wrap{flex:1;display:flex;justify-content:center;align-items:flex-start;padding:1.2rem;overflow:auto}
+  iframe{width:100%;height:100%;min-height:600px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 30px 80px -40px rgba(0,0,0,.8);transition:width .25s ease}
+  .frame-wrap.mobile iframe{width:390px;flex:0 0 auto;min-height:740px;height:740px}
+  .loading{position:absolute;inset:56px 0 0 0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:var(--f-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;background:var(--bg);z-index:5}
+  .loading.hide{display:none}
+
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr}
+    .panel{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--line)}
+    .stage{min-height:70vh}
+    iframe{min-height:520px}
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <span class="logo"><span class="dot"></span>Studio</span>
+    <a class="back" href="index.html">← Galerij</a>
+  </div>
+
+  <div class="layout">
+    <aside class="panel">
+      <h1>Maak 'm van jou</h1>
+      <p class="sub">Kies een template, vul je naam en kleur in, en download een kant-en-klare website.</p>
+
+      <div class="field">
+        <label for="tpl">Template</label>
+        <select id="tpl"></select>
+      </div>
+      <div class="field">
+        <label for="name">Bedrijfsnaam</label>
+        <input id="name" type="text" autocomplete="off" placeholder="Jouw bedrijf">
+      </div>
+      <div class="field">
+        <label for="tagline">Tagline</label>
+        <input id="tagline" type="text" autocomplete="off" placeholder="Korte ondertitel">
+      </div>
+      <div class="field">
+        <label>Kleuren</label>
+        <div class="colors">
+          <div class="color">
+            <label class="swatch" for="accent"><input id="accent" type="color"><span class="hex" id="accentHex">#000000</span></label>
+          </div>
+          <div class="color">
+            <label class="swatch" for="accent2"><input id="accent2" type="color"><span class="hex" id="accent2Hex">#000000</span></label>
+          </div>
+        </div>
+        <div class="presets" id="presets"></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="download">⬇ Download website (.html)</button>
+        <button class="btn btn-ghost" id="reset">Terug naar origineel</button>
+      </div>
+      <p class="hint">Je krijgt één zelfstandig HTML-bestand — geen build, geen dependencies. Open het lokaal of zet het online. Lettertypen laden via Google Fonts.</p>
+    </aside>
+
+    <section class="stage">
+      <div class="stage-bar">
+        <div class="seg" role="group" aria-label="Voorbeeldformaat">
+          <button type="button" id="vDesk" aria-pressed="true">Desktop</button>
+          <button type="button" id="vMob" aria-pressed="false">Mobiel</button>
+        </div>
+        <span class="url" id="stageName">—</span>
+      </div>
+      <div class="frame-wrap" id="frameWrap">
+        <iframe id="preview" title="Voorbeeld van je gepersonaliseerde template"></iframe>
+      </div>
+      <div class="loading" id="loading">Laden…</div>
+    </section>
+  </div>
+
+  <script type="module">
+    import { assemble } from './_kit/assemble.mjs';
+
+    var TEMPLATES = [
+      { slug:'25-makelaar', label:'Hofstede — makelaar' },
+      { slug:'26-helder', label:'Helder — coaching' },
+      { slug:'27-nocturne', label:'Nocturne — nachtclub' },
+      { slug:'28-atlas', label:'Atlas — SaaS' },
+      { slug:'29-noorderlicht', label:'Noorderlicht — energie' },
+      { slug:'30-vinyl', label:'Groef — platenzaak' },
+      { slug:'31-arcade', label:'Neonburcht — arcade' },
+      { slug:'32-kwekerij', label:'Wildgroei — kwekerij' },
+      { slug:'33-keramiek', label:'Draaischijf — keramiek' },
+      { slug:'34-parfum', label:'Sillage — parfum' },
+      { slug:'35-data', label:'Meetlat — analytics' },
+      { slug:'36-tattoo', label:'Inktzwart — tattoo' },
+      { slug:'37-getij', label:'Tij — surfschool' },
+      { slug:'38-lab', label:'Synaps — lab' }
+    ];
+    var PRESETS = ['#a06bff','#ff5d8f','#5b8cff','#38e0c8','#f5b13d','#ff6a4d','#1f6f5c','#d11a26','#0fa3a3','#6e8cff'];
+
+    var $ = function(id){ return document.getElementById(id); };
+    var coreCss = '', coreJs = '';
+    var base = null;                 // pristine recept
+    var state = { name:'', tagline:'', accent:'#000000', accent2:'#000000' };
+    var renderTimer = 0;
+
+    function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+    function hexToRgb(hex){ var h = (hex||'').replace('#',''); if(h.length===3){ h = h.split('').map(function(c){return c+c;}).join(''); } var n = parseInt(h,16); return { r:(n>>16)&255, g:(n>>8)&255, b:n&255 }; }
+    function hexToRgba(hex, a){ var c = hexToRgb(hex); return 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + a + ')'; }
+    function luminance(hex){ var c = hexToRgb(hex); var f = function(v){ v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055,2.4); }; return 0.2126*f(c.r)+0.7152*f(c.g)+0.0722*f(c.b); }
+    function onAccent(hex){ return luminance(hex) > 0.42 ? '#15140f' : '#ffffff'; }
+    function slugify(s){ return (s||'template').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || 'template'; }
+
+    function recipeFromState(){
+      var r = JSON.parse(JSON.stringify(base));
+      r.brand = r.brand || {};
+      r.brand.name = state.name || r.brand.name;
+      r.brand.tagline = state.tagline;
+      r.theme = r.theme || {};
+      r.theme['--accent'] = state.accent;
+      r.theme['--accent-2'] = state.accent2;
+      r.theme['--accent-soft'] = hexToRgba(state.accent, 0.10);
+      r.theme['--on-accent'] = onAccent(state.accent);
+      return r;
+    }
+
+    function render(){
+      try {
+        $('preview').srcdoc = assemble(recipeFromState(), coreCss, coreJs);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    function scheduleRender(){ clearTimeout(renderTimer); renderTimer = setTimeout(render, 180); }
+
+    function reflect(){
+      $('name').value = state.name;
+      $('tagline').value = state.tagline;
+      $('accent').value = state.accent;
+      $('accent2').value = state.accent2;
+      $('accentHex').textContent = state.accent;
+      $('accent2Hex').textContent = state.accent2;
+    }
+
+    async function fetchText(url){ var res = await fetch(url); if(!res.ok){ throw new Error('Kon ' + url + ' niet laden (' + res.status + ')'); } return res.text(); }
+
+    async function loadRecipe(slug){
+      $('loading').classList.remove('hide');
+      $('stageName').textContent = slug;
+      var r = JSON.parse(await fetchText('recipes/' + slug + '.json'));
+      if (r.customCssFile) { r.customCss = (r.customCss || '') + '\n' + await fetchText(r.customCssFile); }
+      if (r.customJsFile) { r.customJs = (r.customJs || '') + '\n' + await fetchText(r.customJsFile); }
+      base = r;
+      state.name = (r.brand && r.brand.name) || '';
+      state.tagline = (r.brand && r.brand.tagline) || '';
+      state.accent = (r.theme && r.theme['--accent']) || '#a06bff';
+      state.accent2 = (r.theme && r.theme['--accent-2']) || state.accent;
+      reflect();
+      render();
+      $('loading').classList.add('hide');
+    }
+
+    function download(){
+      var html = assemble(recipeFromState(), coreCss, coreJs);
+      var blob = new Blob([html], { type: 'text/html' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = (base.slug || 'template') + '-' + slugify(state.name) + '.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    }
+
+    function init(){
+      // template-opties
+      var sel = $('tpl');
+      TEMPLATES.forEach(function(t){ var o = document.createElement('option'); o.value = t.slug; o.textContent = t.label; sel.appendChild(o); });
+      // presets
+      var pc = $('presets');
+      PRESETS.forEach(function(hex){ var b = document.createElement('button'); b.className = 'preset'; b.type = 'button'; b.style.background = hex; b.title = hex; b.addEventListener('click', function(){ state.accent = hex; reflect(); scheduleRender(); }); pc.appendChild(b); });
+
+      sel.addEventListener('change', function(){ var url = new URL(location.href); url.searchParams.set('t', sel.value); history.replaceState(null, '', url); loadRecipe(sel.value); });
+      $('name').addEventListener('input', function(){ state.name = this.value; scheduleRender(); });
+      $('tagline').addEventListener('input', function(){ state.tagline = this.value; scheduleRender(); });
+      $('accent').addEventListener('input', function(){ state.accent = this.value; $('accentHex').textContent = this.value; scheduleRender(); });
+      $('accent2').addEventListener('input', function(){ state.accent2 = this.value; $('accent2Hex').textContent = this.value; scheduleRender(); });
+      $('download').addEventListener('click', download);
+      $('reset').addEventListener('click', function(){ loadRecipe(sel.value); });
+      $('vDesk').addEventListener('click', function(){ setView(false); });
+      $('vMob').addEventListener('click', function(){ setView(true); });
+
+      // start-template uit ?t= of eerste
+      var want = new URL(location.href).searchParams.get('t');
+      var start = TEMPLATES.some(function(t){ return t.slug === want; }) ? want : TEMPLATES[0].slug;
+      sel.value = start;
+      loadRecipe(start).catch(function(e){ $('loading').textContent = 'Fout: ' + e.message; });
+    }
+
+    function setView(mobile){
+      $('frameWrap').classList.toggle('mobile', mobile);
+      $('vMob').setAttribute('aria-pressed', mobile ? 'true' : 'false');
+      $('vDesk').setAttribute('aria-pressed', mobile ? 'false' : 'true');
+    }
+
+    Promise.all([fetchText('_kit/core.css'), fetchText('_kit/core.js')]).then(function(res){
+      coreCss = res[0]; coreJs = res[1]; init();
+    }).catch(function(e){ $('loading').textContent = 'Kon kernbestanden niet laden: ' + e.message; });
+  </script>
+</body>
+</html>
