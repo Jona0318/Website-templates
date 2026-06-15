@@ -6,10 +6,17 @@
 <title>Template Galerij — 101 kant-en-klare websites</title>
 <meta name="description" content="Een verzameling van 101 complete, responsive website-templates: van basis tot premium en flagship, plus een rij signature-designs met live canvas-interactie en een aanpasbare starter. Filter, zoek en bekijk ze allemaal.">
 <meta name="theme-color" content="#0a0a12">
+<meta property="og:site_name" content="Template Galerij">
 <meta property="og:title" content="Template Galerij — 101 kant-en-klare websites">
 <meta property="og:description" content="101 complete, responsive templates — pure HTML/CSS/JS, geen build-tools. Filter, zoek en open ze direct.">
 <meta property="og:type" content="website">
-<link rel="icon" href="templates/01-business/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="previews/19-studio.jpg">
+<meta property="og:image:alt" content="Voorbeeld uit de Template Galerij: flagship Studio Kaap.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Template Galerij — 101 kant-en-klare websites">
+<meta name="twitter:description" content="101 complete, responsive templates — pure HTML/CSS/JS, geen build-tools.">
+<meta name="twitter:image" content="previews/19-studio.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -150,7 +157,17 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .chip--feature{text-transform:none;letter-spacing:.01em;font-size:.66rem;padding:.45rem .7rem}
 .chip--feature[aria-pressed="true"]{color:#0a0a12;border-color:transparent;background:var(--teal)}
 .chip--feature[aria-pressed="true"] .n{color:rgba(10,10,18,.65)}
-@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}.features-label{padding-top:0}}
+.toolbar .controls-row{margin-top:.6rem;gap:1.1rem}
+.control{display:inline-flex;align-items:center;gap:.5rem}
+.control-label{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:99px;overflow:hidden}
+.seg-btn{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;padding:.4rem .8rem;color:var(--muted);transition:color .2s,background-color .2s}
+.seg-btn+.seg-btn{border-left:1px solid var(--line-strong)}
+.seg-btn:hover{color:var(--text)}
+.seg-btn[aria-pressed="true"]{color:#fff;background:var(--violet)}
+.select{font-family:var(--f-mono);font-size:.68rem;background:var(--surface);border:1px solid var(--line-strong);border-radius:99px;color:var(--text);padding:.4rem 1.8rem .4rem .8rem;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23999' stroke-width='1.6'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center;background-size:13px}
+.select:focus{outline:none;border-color:var(--violet)}
+@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}.features-label{padding-top:0}.controls-row{flex-direction:column;align-items:stretch}.control{justify-content:space-between}.seg,.select{flex:1}}
 
 /* result-meta */
 .meta-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:clamp(2rem,4vw,3rem);padding-bottom:1.2rem}
@@ -162,7 +179,7 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem);padding-bottom:clamp(3rem,6vw,5rem)}
 @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:620px){.grid{grid-template-columns:1fr}}
-.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.card{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
 .card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:0 30px 60px -34px rgba(0,0,0,.85)}
 .card.is-hidden{display:none}
 .card--wide{grid-column:span 2}
@@ -177,13 +194,22 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .card:hover .thumb .shot.loaded{transform:scale(1.05)}
 .thumb .num{position:absolute;top:.7rem;left:.8rem;font-family:var(--f-mono);font-size:.74rem;font-weight:700;color:rgba(255,255,255,.92);background:rgba(0,0,0,.32);padding:.2rem .55rem;border-radius:99px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .thumb .badge{position:absolute;top:.7rem;right:.8rem;font-family:var(--f-mono);font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0a0a12;padding:.24rem .6rem;border-radius:99px;background:var(--bc,#fff)}
+.thumb .dl{position:absolute;bottom:.7rem;right:.8rem;z-index:3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background-color .2s}
+.card:hover .thumb .dl,.thumb .dl:focus-visible{opacity:1;transform:none}
+.thumb .dl:hover{background:var(--violet)}
+.thumb .dl svg{width:15px;height:15px}
+@media (hover:none){.thumb .dl{opacity:1;transform:none}}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none}
 .card:hover .thumb::after{transform:translateX(120%)}
 .body{display:flex;flex-direction:column;flex:1;padding:1.2rem 1.3rem 1.35rem;gap:.5rem}
 .body h3{font-family:var(--f-display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
 .body p{color:var(--muted);font-size:.9rem;flex:1}
 .body .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.3rem}
-.body .tags span{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:.2rem .5rem}
+.body .tags .tag{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:.2rem .5rem;position:relative;z-index:2;cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
+.body .tags .tag:hover{color:var(--text);border-color:var(--line-strong)}
+.body .tags .tag[aria-pressed="true"]{color:#0a0a12;background:var(--teal);border-color:transparent}
+.card-link{position:absolute;inset:0;z-index:1;font-size:0;color:transparent}
+.card-link:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 .body .go{display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .3s,gap .3s}
 .body .go svg{width:13px;height:13px}
 .card:hover .body .go{color:var(--teal);gap:.7rem}
@@ -267,6 +293,28 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       <span class="features-label">Features</span>
       <div class="chips chips--features" id="featureChips" role="group" aria-label="Filter op feature"></div>
     </div>
+    <div class="wrap controls-row">
+      <div class="control">
+        <span class="control-label">Sfeer</span>
+        <div class="seg" id="schemeSeg" role="group" aria-label="Filter op sfeer">
+          <button type="button" class="seg-btn" data-scheme="alle" aria-pressed="true">Alle</button>
+          <button type="button" class="seg-btn" data-scheme="light" aria-pressed="false">Licht</button>
+          <button type="button" class="seg-btn" data-scheme="dark" aria-pressed="false">Donker</button>
+        </div>
+      </div>
+      <label class="control">
+        <span class="control-label">Sector</span>
+        <select id="sectorSel" class="select" aria-label="Filter op sector"></select>
+      </label>
+      <label class="control">
+        <span class="control-label">Sorteer</span>
+        <select id="sortSel" class="select" aria-label="Sorteer templates">
+          <option value="num">Nummer</option>
+          <option value="az">A–Z</option>
+          <option value="new">Nieuwste eerst</option>
+        </select>
+      </label>
+    </div>
   </div>
 
   <div class="wrap">
@@ -330,109 +378,111 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     grafisch: { label: 'Grafisch', color: '#c2f53a' },
     editorial: { label: 'Editorieel', color: '#6a8cff' }
   };
+  /* @gallery:start — GEGENEREERD uit templates.json door _kit/gallery.mjs. NIET handmatig bewerken. */
   var T = [
-    ['01','01-business','MERIDIAAN — consultancy','Zelfverzekerd corporate-premium one-pager in ink/navy × koper (Fraunces): propositie-hero met stat-badge, tellende cijfers, diensten met SVG-iconen, 4-staps werkwijze, cases met metrics, FAQ-accordeon en offerteformulier met validatie.','premium','🧭','#b87333','#13233a',['Zakelijk','Consultancy','Premium']],
-    ['02','02-portfolio','Portfolio','Donker, creatief portfolio voor een designer of developer, met projectgrid.','basis','🎨','#0d0d0f','#2a2a18',[]],
-    ['03','03-saas','SaaS / Software','Productlanding met features, prijzen (maand/jaar) en een FAQ-accordion.','basis','🚀','#7c3aed','#2563eb',[]],
-    ['04','04-restaurant','Restaurant','Warme, elegante site met menu, galerij en reserveringsformulier.','basis','🍽️','#1f3d2b','#c1572c',[]],
-    ['05','05-agency','Agency / Studio','Bold, high-contrast bureausite met grote typografie, cases en statistieken.','basis','⚡','#0a0a0a','#2b50ff',[]],
-    ['06','06-blog','Blog / Magazine','Redactionele homepage met uitgelicht artikel, artikelgrid en nieuwsbrief.','basis','📰','#d6334c','#7c1d2b',[]],
-    ['07','07-webshop','Webshop','E-commerce met productgrid, categorieën en een werkende winkelmand-teller.','basis','🛍️','#111827','#ff4d4d',[]],
-    ['08','08-fotografie','Fotografie','Minimalistisch fotografieportfolio met galerij en categorie-filter.','basis','📷','#1a1a1a','#555555',[]],
-    ['09','09-event','Event / Congres','Energieke landing met countdown-timer, sprekers, programma en tickets.','basis','🎟️','#6d28d9','#ec4899',[]],
-    ['10','10-cv','CV / Resumé','Persoonlijke one-page CV met animerende vaardigheidsbalken en tijdlijn.','basis','👤','#0d9488','#0f766e',[]],
-    ['11','11-architectuur','Architectuur Studio','Editorial design met preloader, parallax, scroll-tekst en magnetische knop.','premium','🏛️','#1a1816','#a67c52',[]],
-    ['12','12-hotel','Boutique Hotel','Vijfsterren-uitstraling met boekingsbalk, gouden details en quote-carrousel.','premium','🛎️','#101713','#b89b5e',[]],
-    ['13','13-fintech','Fintech / Bank','3D-tilt bankpas, live transactiefeed, bento-grid en glasmorfisme.','premium','💳','#0a0c10','#00e389',[]],
-    ['14','14-fashion','Fashion / Maison','Haute-couture-minimalisme met curtain-reveal, lookbook en asymmetrisch grid.','premium','🕊️','#f4f2ee','#1a1a1a',[]],
-    ['15','15-wellness','Wellness / Spa','Serene luxe met adem-widget, boogvormige maskers en tekenende tijdlijn.','premium','🌿','#9aa88f','#3a4438',[]],
-    ['16','16-bouw','ZZP Metselaar','Blueprint-stijl met zelftekenende troffel, voor/na-slider en projectfilter.','premium','🧱','#0d0f12','#3b82f6',[]],
-    ['17','17-koffie','Koffiebranderij','Crème/karamel met stoom-animaties, brandgraad-meters en procestijdlijn.','premium','☕','#f6f1e7','#c47a3d',[]],
-    ['18','18-gym','Boxing Gym','Rauw zwart/acid-geel met dubbele marquee, duotone-foto’s en lesrooster-tabs.','premium','🥊','#0b0b0c','#d8f24b',[]],
-    ['19','19-studio','Studio Kaap','Het pronkstuk: de sterkste features uit de hele galerij gebundeld in één donkere flagship.','flagship','✦','#0b0b0d','#ff5a36',['Flagship']],
-    ['20','20-buitenplaats','Buitenplaats','De lichte tegenpool: serif-tuinarchitectuur met curtain-reveal en seizoenstijdlijn.','flagship','🌿','#f3f1ea','#2e5b3f',['Flagship']],
-    ['21','21-letterstudio','Letterstudio','Interactief specimen-lab met bewerkbaar reuze-proefwoord en scroll-morfend variabel font.','signature','🔠','#e4e4ff','#6260ff',[]],
-    ['22','22-museum','Museum / Kunsthal','Live “nu geopend”-status, sleepbare collectiestrook en volwaardige lightbox.','signature','🖼️','#fbeaeb','#3447aa',[]],
-    ['23','23-sterrenwacht','Sterrenwacht','Canvas-sterrenhemel, bouw-je-eigen-sterrenbeeld en een maanfase berekend uit de datum.','signature','🔭','#070b18','#f0b94c',['Canvas']],
-    ['24','24-atelier','Generatieve Studio','Live stroomveld-canvas: stuur dichtheid en turbulentie met sliders en download als PNG.','signature','🌀','#16140f','#1b29ff',['Canvas']],
-    ['25','25-makelaar','Makelaar / Vastgoed','Generator-template: diensten, uitgelicht aanbod, courtage-tarieven, FAQ en waardebepaling.','basis','🏡','#19201c','#1f6f5c',['Recept']],
-    ['26','26-helder','Helder — digitale studio','Algemene studio met split-hero, zigzag-rijen, showcase en proces — violet × lime.','basis','💡','#6a2be6','#88c425',['Recept']],
-    ['27','27-nocturne','Nocturne — creatieve studio','Donkere agency met center-hero, kinetische marquee, interactieve tabs en team — mint × lila.','basis','🌙','#0d0f13','#5fe9ad',['Recept']],
-    ['28','28-atlas','Atlas — aanpasbare starter','Live thema-editor: kleur, modus, hoeken en lettertype live aanpassen en kopiëren als CSS.','aanpasbaar','🎨','#4f46e5','#ec4899',['Recept','Thema-editor']],
-    ['29','29-noorderlicht','Noorderlicht — arctische reizen','Reisbureau met een canvas-aurora die over de sterren golft — plus bestemmingen en aurora-garantie.','signature','🌌','#060c18','#5ef0b0',['Canvas']],
-    ['30','30-vinyl','Groef — platenlabel','Onafhankelijk label met een draaiende plaat en audiovisualizer — speel een groove en kijk mee.','signature','💿','#161009','#e2562b',['WebAudio','Canvas']],
-    ['31','31-arcade','Neonburcht — game studio','Synthwave game studio met een neon perspectief-grid en ondergaande zon, live op canvas.','signature','🕹️','#140426','#ff5da2',['Canvas']],
-    ['32','32-kwekerij','Wildgroei — stadskwekerij','Plantenwinkel waar recursieve planten voor je ogen de hero in groeien.','signature','🪴','#f3f1e6','#3f7d3a',['Canvas']],
-    ['33','33-keramiek','Draaischijf — keramiekstudio','Pottenbakker met een draaischijf: sleep over de klei en vorm je eigen vaas.','signature','🏺','#efe7dd','#b5532e',['Interactief','Canvas']],
-    ['34','34-parfum','Sillage — geurhuis','Parfumhuis met opstijgende inkt/rook-diffusie en een interactieve geurpiramide.','signature','🌫️','#16100c','#c9a24b',['Canvas']],
-    ['35','35-data','Meetlat — data & dashboards','Data-consultancy met een live animerende dashboard-grafiek en KPI’s op canvas.','signature','📊','#0c1018','#b6f23d',['Canvas','Live']],
-    ['36','36-tattoo','Inktzwart — tattoo studio','Tattoo studio: teken met je cursor in zwarte en rode inkt op crèmepapier.','signature','✒️','#f2ece0','#d11a26',['Interactief','Canvas']],
-    ['37','37-getij','Tij — surfschool','Surfschool met een gelaagde, golvende zee op canvas en een zonnige strandclub-vibe.','signature','🏄','#eaf1ee','#0fa3a3',['Canvas']],
-    ['38','38-lab','Synaps — AI-lab','Toegepast AI-lab met een neuraal deeltjesnetwerk dat op je muis reageert.','signature','🧠','#07090f','#6e8cff',['Interactief','Canvas']],
-    ['39','39-vlier','Vlier — bistro & natuurwijn','Handgemaakte, redactionele restaurantsite met echte foto’s, een getypte menukaart en een live open/dicht-status — bewust géén template-look.','maatwerk','🍷','#f3eee4','#7a2230',['Foto’s','Menukaart','Hand-made']],
-    ['40','40-klaver','Klaver — tandartspraktijk','Rustige, met de hand gebouwde healthcare-site: licht en luchtig, met echte foto’s, een open-status uit de openingstijden en een vriendelijk afspraakformulier.','maatwerk','🦷','#eef5f3','#1f9e92',['Foto’s','Hand-made']],
-    ['41','41-boekhandel','Marginalia — boekhandel','Literaire boekhandel als krant-masthead met meerkoloms voorpagina en sticky scroll-spy inhoudsindex; tips, agenda en open-status.','maatwerk','📚','#f4efe3','#1f4035',['Magazine','Scroll-spy']],
-    ['42','42-advocaten','Hagedoorn & Vis — advocaten','Gezaghebbend advocatenkantoor met vaste side-rail navigatie naast scrollende content; rechtsgebieden, aanpak en intakeformulier — navy × goud.','maatwerk','⚖️','#13213a','#b08d4f',['Side-rail','Intake']],
-    ['43','43-barbier','Stoppel — barbier','Stoere barbershop met schermvullende beeld-hero en info-/status-kaarten die over de hero-rand schuiven; prijslijst en boek-een-stoel — donker × amber.','maatwerk','💈','#15110d','#d98a3a',['Full-bleed','Overlap']],
-    ['44','44-bloemist','Veld — bloemist','Botanische bloemist met gecentreerde redactionele hero en volle-breedte banden; seizoensboeketten (echte foto’s), abonnement en nieuwsbrief — salie × oudroze.','maatwerk','🌷','#f6f3ec','#8a9a7b',['Banden','Foto’s']],
-    ['45','45-meubel','Eik & Es — meubels','Minimalistische meubelwinkel als bento-raster van ongelijke tegels met echte productfoto’s; collecties, werkplaats en showroom — neutraal × hout.','maatwerk','🪑','#f3f0e9','#9a7b56',['Bento','Foto’s']],
-    ['46','46-bakkerij','Desem — bakkerij','Ambachtelijke bakkerij met utility-bar (open-status), klassieke nav en zigzag-secties; getypte kaart, ambacht-verhaal en brood bestellen — slab-serif.','maatwerk','🥖','#f5ede0','#c0612e',['Zigzag','Open-status']],
-    ['47','47-yoga','Adem — yogastudio','Rustige yogastudio, minimaal en gecentreerd met veel witruimte; ademcirkel, weekrooster met vandaag-markering en proefles — zand × terracotta.','maatwerk','🧘','#efe9df','#c1714e',['Minimal','Weekrooster']],
-    ['48','48-fiets','Spaak — fietsenwinkel','Energieke fietsenwinkel met split-hero en asymmetrisch mozaïek-grid; reparatie-prijslijst en plan-je-reparatie — oranje, vet grotesk.','maatwerk','🚲','#f4f1ea','#f2641e',['Split-hero','Mozaïek']],
-    ['49','49-dierenarts','Poot & Pels — dierenarts','Vriendelijke dierenarts met spoed-utilitybalk, klassieke nav en zigzag-blokken; diensten, 24/7 spoed, open-status en afspraakformulier — geel × blauw.','maatwerk','🐾','#fffaf0','#f4b324',['Zigzag','Spoedbalk']],
-    ['50','50-kaas','Wrongel — kaaswinkel','Ambachtelijke kaaswinkel & affineur als katern-magazine met sticky genummerde sectie-index; assortiment per kilo, proefplank en open-status.','maatwerk','🧀','#f4ecdb','#8c3b2e',['Magazine','Scroll-spy']],
-    ['51','51-finedining','Maas — fine dining','Luxe restaurant, minimaal en gecentreerd op één smalle as met didone-typografie; getypt zevengangen-proefmenu en open-status — donker × goud.','maatwerk','🍽️','#0e0d0b','#c9a86a',['Minimal','Proefmenu']],
-    ['52','52-architect','Grond — architecten','Beton-minimalistisch architectenbureau met vaste side-rail nav (scroll-spy) naast een rustig projectraster met grote beelden.','maatwerk','📐','#ece9e3','#b4552c',['Side-rail','Scroll-spy']],
-    ['53','53-koffiebar','Tussen — koffiebar','Moderne koffiebar met schermvullende beeld-hero en overlappende kaarten (vandaag-special, open-status) over de hero-rand — cream × kobalt.','maatwerk','☕','#f7f3ea','#2440e8',['Full-bleed','Dag-special']],
-    ['54','54-wijnbar','Decant — natuurwijnbar','Intieme natuurwijnbar met gecentreerde type-hero en volle-breedte banden (licht/donker); wijnkaart per glas en open-status — aubergine, EB Garamond.','maatwerk','🍇','#1f1216','#c2526a',['Banden','Wijnkaart']],
-    ['55','55-fotograaf','Licht — fotografie','Monochroom fotografieportfolio met reuze type-hero en een horizontaal scrollende, toetsenbord-toegankelijke galerij-strip.','maatwerk','📸','#141413','#b5654a',['Horizontale strip','Foto’s']],
-    ['56','56-schilder','Laag — schildersbedrijf','Schildersbedrijf met split-hero, side-rail nav en asymmetrisch raster; interactieve kleurkiezer die de kamer mee laat veranderen.','maatwerk','🖌️','#f2efe9','#2f6f6a',['Split-hero','Kleurkiezer']],
-    ['57','57-patisserie','Suiker — patisserie','Verfijnde patisserie als bento-raster met echte gebak-foto’s; assortiment, ambacht en taart-bestelformulier — rozig cream, Italiana.','maatwerk','🍰','#fbf3ef','#cf8493',['Bento','Foto’s']],
-    ['58','58-reisbureau','Verte — reizen op maat','Boutique-reisbureau met full-bleed bestemmings-hero en bestemmingskaarten (echte foto’s) die over de hero-rand schuiven — groen × terracotta.','maatwerk','🧭','#2f5d50','#c2724a',['Full-bleed','Bestemmingen']],
-    ['59','59-kapsalon','Kam — kapsalon','Chique kapsalon, minimaal en gecentreerd met hairline-details; eerlijke prijslijst en boek-een-stoel — off-white × mauve, Jost.','maatwerk','✂️','#f4f1ee','#a4737f',['Minimal','Prijslijst']],
-    ['60','60-brouwerij','Schuim — stadsbrouwerij','Stadsbrouwerij met de taplijst als toegankelijke tab-hub (op vat / wisselend / binnenkort, pijltjesnavigatie); proeflokaal en rondleiding — donker × amber.','maatwerk','🍺','#15140f','#c9a227',['Tab-hub','Tap-lijst']],
-    ['61','61-bureau','VOLT — creatief bureau','Neo-brutalistisch bureau met diagonale poster-composities, gekantelde blokken en marquee-ticker — lime × paars × zwart.','grafisch','⚡','#c2f53a','#6b4bff',['Poster','Diagonaal']],
-    ['62','62-streetwear','DRIFT — streetwear drop','Streetwear-drop met side-rail nav en horizontaal scrollende lookbook-strip (echte foto’s); limited-edition productgrid — kobalt × hot pink.','grafisch','🧢','#1a32ff','#ff2e88',['Lookbook','Horizontale strip']],
-    ['63','63-festival','VOLTAGE — festival','Poster-festival met gekantelde diagonale composities; line-up, dag-tabs met pijltjesnavigatie en ticket-tiers — acid-geel × zwart.','grafisch','⚡','#0b0b0b','#e6ff00',['Poster','Dag-tabs']],
-    ['64','64-saas','KERNEL — dev tool','Developer-tool als bento-mozaïek met een live-getypte console-tegel, features en prijzen — donker × cyan.','grafisch','🖥️','#070a0f','#00e5ff',['Bento','Live console']],
-    ['65','65-podcast','FREQ — podcast','Redactionele podcast met vaste side-rail incl. waveform-mini-speler; afleveringenlijst en makers — oranje × teal × cream.','grafisch','🎙️','#ff5a1f','#0e8c7d',['Side-rail','Waveform']],
-    ['67','67-burgerbar','SMASH — burgerbar','Speels-brutalistische burgerbar met utility-bar, split-hero en zigzag-menukaart met echte foodfoto’s; afhaalformulier — ketchup × mosterd.','grafisch','🍔','#ff3b30','#ffc21c',['Zigzag','Foto’s']],
-    ['68','68-club','NOCTURN — nachtclub','Nachtclub met full-bleed donkere beeld-hero en agenda-kaarten die over de hero-rand schuiven; tafelreservering — UV-paars × acid-cyaan.','grafisch','🌙','#08060f','#00ffd5',['Full-bleed','Agenda']],
-    ['70','70-platenzaak','WALS — platenzaak','Retro-platenzaak met side-rail nav, draaiende-vinyl-hero en horizontaal scrollende platenbak met genre-filter — burnt orange × cream.','grafisch','🎵','#ff5e1a','#0b6e5f',['Crate-strip','Genre-filter']],
-    ['71','71-esports','RESPAWN — esports team','Hoekig esports-team in poster/diagonaal met clip-path en gekantelde blokken; roster met echte speler-portretten, wedstrijden en tryout — navy × neon-groen.','grafisch','🎮','#080c16','#39ff14',['Poster','Roster']],
-    ['72','72-dansstudio','TEMPO — dansstudio','Kinetische dansstudio als content-hub met het weekrooster (dag-tabs, pijltjesnavigatie) als kloppend hart; stijlen — zwart × magenta × lime.','grafisch','💃','#0d0d0d','#ff1f8f',['Tab-hub','Weekrooster']],
-    ['73','73-coworking','HUB — co-working','Co-working als neo-brutalist bento-raster van ongelijke tegels met echte ruimtefoto’s; voorzieningen, prijzen en rondleiding — cream × chartreuse × kobalt.','grafisch','🧩','#cdff3a','#1f49ff',['Bento','Foto’s']],
-    ['74','74-aannemer','BETON — aannemer','Industriële aannemer met hazard-utilitybalk, split-hero en zigzag-projecten met echte bouwfoto’s; offerteformulier — safety-geel × zwart.','grafisch','🏗️','#ffd400','#16150f',['Zigzag','Foto’s']],
-    ['75','75-pokebar','KOM — poké bar','Poké bar met split-hero (echte bowl-foto) en asymmetrisch raster; interactieve bowl-bouwer met live prijs — fris groen × koraal.','grafisch','🥢','#1fb869','#ff5e4d',['Split-hero','Bowl-bouwer']],
-    ['76','76-ijssalon','ROOM — ambachtelijk ijs','Speelse ijssalon met gecentreerde hero en gekleurde volle-breedte banden; smakengrid met echte ijsfoto’s en prijzenband — pastel-bold.','grafisch','🍦','#ff8fbf','#74e0c3',['Banden','Foto’s']],
-    ['77','77-drankmerk','BOLT — energiedrank','Energiedrank-merk met full-bleed product-hero en overlappende stat-kaarten; CSS-blik dat live van kleur/smaak wisselt — electric blue × lime.','grafisch','🥤','#0a0e2a','#c6ff2e',['Full-bleed','Kleur-switch']],
-    ['78','78-literairfestival','WOORD — literair festival','Literair festival als magazine met sticky sectie-index (scroll-spy); asymmetrische redactionele hero, sprekers en programma — cream × diep rood, Fraunces.','grafisch','📖','#f3ead7','#c2241f',['Magazine','Scroll-spy']],
-    ['80','80-escaperoom','ONTSNAP — escape rooms','Gespannen escape rooms in poster/diagonaal met side-rail; aftelklok in de schuine hero-wig en gestaffelde room-strips — bijna-zwart × oranje.','grafisch','🔓','#0c0a0a','#ff6a00',['Poster','Aftelklok']],
-    ['81','81-nagelstudio','KROON — nagelstudio','Nagelstudio, minimaal en gecentreerd met hairline-details; echte nail-art galerij en prijslijst met dotted leaders — hot pink × goud.','grafisch','💅','#ff2d87','#e8b14a',['Minimal','Foto’s']],
-    ['82','82-gamestudio','PIXELWERK — game studio','Game- &amp; app-studio als bento-portfolio met echte game-art op ongelijke tegels; diensten en projectaanvraag — diep paars × lime.','grafisch','🕹️','#150a2b','#b6ff3d',['Bento','Foto’s']],
-    ['83','83-hardloopclub','SPRINT — running crew','Energieke running crew met side-rail, outline-type-hero en horizontaal scrollende runs-strip met pace-tags — oranje × beton.','grafisch','🏃','#ff4d00','#d4f23d',['Horizontale strip','Pace-tags']],
-    ['84','84-zonnepanelen','STROOM — zonnepanelen','Bold-eco zonnepanelen met split-hero en asymmetrisch bento; interactieve besparings-slider die kWh en euro’s live berekent — zon-geel × diep groen.','grafisch','☀️','#0a2e22','#ffd60a',['Split-hero','Bespaar-slider']],
-    ['85','85-kunstgalerie','KLEUR — kunstgalerie','Kunstgalerie als magazine met sticky scroll-spy index; uitgelichte expo-opening en exposities met echte kunstwerk-foto’s — bold poster-typografie.','grafisch','🎨','#2347ff','#ff3b30',['Magazine','Foto’s']],
-    ['86','86-folio','FOLIO — redactioneel systeem','Verfijnd Swiss-grid ontwerpsysteem (Instrument Serif): zichtbaar kolommenraster (toets G), scroll-spy index, werk-index en live klok + coördinaat. Inhoud-agnostisch — bruikbaar voor elke site.','editorial','§','#6a8cff','#16161a',['Swiss-grid','Raster-toggle','Scroll-spy']],
-    ['87','87-cantorclin','CANTORCLIN — schoonmaakbedrijf','Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy: hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie.','premium','💧','#0bb89e','#0e2230',['Zakelijk','Schoonmaak','Offerteformulier']],
-    ['88','88-jazzclub','AMBER — jazzclub','Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood: moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier.','grafisch','🎷','#d9a441','#0e1430',['Art-deco','Nachtleven','Programma']],
-    ['89','89-boerderij','HET LANGE LAND — boerderijwinkel','Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta: Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier.','premium','🥕','#5a7d3c','#c2683f',['Organisch','Streekproducten','Oogstbox']],
-    ['90','90-tandarts','GLIMLACH — tandartspraktijk','Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit: grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie.','premium','🦷','#4fb8c4','#7fd1a8',['Zorg','Pastel','Afspraakformulier']],
-    ['91','91-surfschool','WESTKUST — surfschool','Vibrant kust-sport surfschool in turquoise × zand × koraal: golvende wave-dividers, fake-live condities-widget (golf/wind/getij), lespakketten per niveau, reviews en boekformulier met datumkeuze.','grafisch','🌊','#0fb6c8','#ff6b4d',['Kust','Wave-dividers','Condities']],
-    ['92','92-chocolatier','MAISON CACAEU — chocolatier','Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream: Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, "stel je eigen doos samen"-builder met live prijs en bestelformulier.','premium','🍫','#c9a35c','#2a1a12',['Luxe','Ambacht','Doos-builder']],
-    ['93','93-izakaya','ENSO — izakaya','Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen: Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier.','premium','🍣','#c8362a','#1a1714',['Zen','Wabi-sabi','Menu-tabs']],
-    ['94','94-bordspellen','MEEPLE — bordspellencafé','Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream: chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier.','grafisch','🎲','#e8a13a','#2b8a86',['Retro','Speels','Spel-filter']],
-    ['95','95-juwelier','ATELIER LUME — juwelier','Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud: fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen en afspraakformulier.','premium','💍','#c8a96a','#f6f1ea',['Minimaal','Luxe','Op-maat']],
-    ['96','96-bergsport','NOORDWAND — bergsport','Rauw-technisch outdoor- & bergsportmerk in leisteen × bosgroen × signaaloranje: topografische hoogtelijnen, Oswald-koppen, uitrusting-grid, tochten met hoogtemeters/zwaarte en inschrijfformulier.','grafisch','⛰️','#e8671c','#2f3a35',['Outdoor','Topografisch','Tochten']],
-    ['97','97-kinderopvang','PLUK — kinderopvang','Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream: blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier.','grafisch','🧸','#ff7a59','#ffd23f',['Candy','Speels','Tijdlijn']],
-    ['98','98-optiek','VIZIER — optiek','Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt: bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier.','grafisch','👓','#1f4fff','#101012',['Fashion','Grafisch','Collectie-filter']],
-    ['99','99-pizzeria','FORNO VESUVIO — pizzeria','Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum: Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier.','premium','🍕','#c8331f','#3f6b32',['Italiaans','Menu-tabs','Trattoria']],
-    ['100','100-filmhuis','DE LICHTBAK — filmhuis','Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold: Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier.','premium','🎬','#e8b53a','#141210',['Cinema','Programma','Poster']],
-    ['101','101-uitvaart','LINDE — uitvaartbegeleiding','Serene, met de hand geschreven uitvaartonderneming in warm greige × salie: Cormorant-serif, veel rust en wit, ingehouden fade-ins, een permanente "dag en nacht bereikbaar"-band en een kalme kostenindicatie i.p.v. prijslijst.','maatwerk','🕊️','#f3f1ea','#6f7d68',['Sereen','Dag-en-nacht','Hand-made']],
-    ['102','102-fysio','BALANS — fysiotherapie','Frisse, met de hand gebouwde fysiotherapiepraktijk in mint-wit × teal × koraal: Outfit-koppen, interactieve klacht-kiezer die de juiste behandeling toont, live open-status uit de openingstijden en online afspraakformulier.','maatwerk','💪','#f3f8f9','#1f8fa3',['Klacht-kiezer','Open-status','Hand-made']],
-    ['103','103-notaris','MERIDIAAN — notarissen','Klassiek-gezaghebbend notariskantoor in ivoor × oxblood (bewust géén navy/goud): fijne Cormorant-serif, hairline-regels, een "kies uw situatie"-keuzehulp naar het juiste rechtsgebied, transparante tarieven en intakeformulier.','maatwerk','📜','#f3f0ea','#7b2f33',['Kies-situatie','Akten','Hand-made']],
-    ['104','104-theater','DE REGENTES — theater & podium','Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud: Fraunces-display, filmkorrel, seizoensprogramma met genre-filter (toneel/dans/muziek/comedy) + uitverkocht-badges, kassa-status en kaartreservering.','maatwerk','🎭','#e8543f','#17121c',['Genre-filter','Agenda','Hand-made']]
+    ["01","01-business","MERIDIAAN — consultancy","Zelfverzekerd corporate-premium one-pager in ink/navy × koper (Fraunces): propositie-hero met stat-badge, tellende cijfers, diensten met SVG-iconen, 4-staps werkwijze, cases met metrics, FAQ-accordeon en offerteformulier met validatie.","premium","🧭","#b87333","#13233a",["Zakelijk","Consultancy","Premium"],"light+dark","corporate"],
+    ["02","02-portfolio","Portfolio","Donker, creatief portfolio voor een designer of developer, met projectgrid.","basis","🎨","#0d0d0f","#2a2a18",[],"dark","creatief"],
+    ["03","03-saas","SaaS / Software","Productlanding met features, prijzen (maand/jaar) en een FAQ-accordion.","basis","🚀","#7c3aed","#2563eb",[],"light","tech"],
+    ["04","04-restaurant","Restaurant","Warme, elegante site met menu, galerij en reserveringsformulier.","basis","🍽️","#1f3d2b","#c1572c",[],"light","horeca"],
+    ["05","05-agency","Agency / Studio","Bold, high-contrast bureausite met grote typografie, cases en statistieken.","basis","⚡","#0a0a0a","#2b50ff",[],"dark","creatief"],
+    ["06","06-blog","Blog / Magazine","Redactionele homepage met uitgelicht artikel, artikelgrid en nieuwsbrief.","basis","📰","#d6334c","#7c1d2b",[],"light","media"],
+    ["07","07-webshop","Webshop","E-commerce met productgrid, categorieën en een werkende winkelmand-teller.","basis","🛍️","#111827","#ff4d4d",[],"light","retail"],
+    ["08","08-fotografie","Fotografie","Minimalistisch fotografieportfolio met galerij en categorie-filter.","basis","📷","#1a1a1a","#555555",[],"light","creatief"],
+    ["09","09-event","Event / Congres","Energieke landing met countdown-timer, sprekers, programma en tickets.","basis","🎟️","#6d28d9","#ec4899",[],"dark","event"],
+    ["10","10-cv","CV / Resumé","Persoonlijke one-page CV met animerende vaardigheidsbalken en tijdlijn.","basis","👤","#0d9488","#0f766e",[],"light","persoonlijk"],
+    ["11","11-architectuur","Architectuur Studio","Editorial design met preloader, parallax, scroll-tekst en magnetische knop.","premium","🏛️","#1a1816","#a67c52",[],"light","creatief"],
+    ["12","12-hotel","Boutique Hotel","Vijfsterren-uitstraling met boekingsbalk, gouden details en quote-carrousel.","premium","🛎️","#101713","#b89b5e",[],"dark","horeca"],
+    ["13","13-fintech","Fintech / Bank","3D-tilt bankpas, live transactiefeed, bento-grid en glasmorfisme.","premium","💳","#0a0c10","#00e389",[],"dark","finance"],
+    ["14","14-fashion","Fashion / Maison","Haute-couture-minimalisme met curtain-reveal, lookbook en asymmetrisch grid.","premium","🕊️","#f4f2ee","#1a1a1a",[],"light","retail"],
+    ["15","15-wellness","Wellness / Spa","Serene luxe met adem-widget, boogvormige maskers en tekenende tijdlijn.","premium","🌿","#9aa88f","#3a4438",[],"light","gezondheid"],
+    ["16","16-bouw","ZZP Metselaar","Blueprint-stijl met zelftekenende troffel, voor/na-slider en projectfilter.","premium","🧱","#0d0f12","#3b82f6",[],"dark","diensten"],
+    ["17","17-koffie","Koffiebranderij","Crème/karamel met stoom-animaties, brandgraad-meters en procestijdlijn.","premium","☕","#f6f1e7","#c47a3d",[],"light","horeca"],
+    ["18","18-gym","Boxing Gym","Rauw zwart/acid-geel met dubbele marquee, duotone-foto’s en lesrooster-tabs.","premium","🥊","#0b0b0c","#d8f24b",[],"dark","gezondheid"],
+    ["19","19-studio","Studio Kaap","Het pronkstuk: de sterkste features uit de hele galerij gebundeld in één donkere flagship.","flagship","✦","#0b0b0d","#ff5a36",["Flagship"],"dark","creatief"],
+    ["20","20-buitenplaats","Buitenplaats","De lichte tegenpool: serif-tuinarchitectuur met curtain-reveal en seizoenstijdlijn.","flagship","🌿","#f3f1ea","#2e5b3f",["Flagship"],"light","diensten"],
+    ["21","21-letterstudio","Letterstudio","Interactief specimen-lab met bewerkbaar reuze-proefwoord en scroll-morfend variabel font.","signature","🔠","#e4e4ff","#6260ff",[],"light","creatief"],
+    ["22","22-museum","Museum / Kunsthal","Live “nu geopend”-status, sleepbare collectiestrook en volwaardige lightbox.","signature","🖼️","#fbeaeb","#3447aa",[],"light","cultuur"],
+    ["23","23-sterrenwacht","Sterrenwacht","Canvas-sterrenhemel, bouw-je-eigen-sterrenbeeld en een maanfase berekend uit de datum.","signature","🔭","#070b18","#f0b94c",["Canvas"],"dark","cultuur"],
+    ["24","24-atelier","Generatieve Studio","Live stroomveld-canvas: stuur dichtheid en turbulentie met sliders en download als PNG.","signature","🌀","#16140f","#1b29ff",["Canvas"],"light","creatief"],
+    ["25","25-makelaar","Makelaar / Vastgoed","Generator-template: diensten, uitgelicht aanbod, courtage-tarieven, FAQ en waardebepaling.","basis","🏡","#19201c","#1f6f5c",["Recept"],"light","diensten"],
+    ["26","26-helder","Helder — digitale studio","Algemene studio met split-hero, zigzag-rijen, showcase en proces — violet × lime.","basis","💡","#6a2be6","#88c425",["Recept"],"light","algemeen"],
+    ["27","27-nocturne","Nocturne — creatieve studio","Donkere agency met center-hero, kinetische marquee, interactieve tabs en team — mint × lila.","basis","🌙","#0d0f13","#5fe9ad",["Recept"],"dark","algemeen"],
+    ["28","28-atlas","Atlas — aanpasbare starter","Live thema-editor: kleur, modus, hoeken en lettertype live aanpassen en kopiëren als CSS.","aanpasbaar","🎨","#4f46e5","#ec4899",["Recept","Thema-editor"],"light+dark","algemeen"],
+    ["29","29-noorderlicht","Noorderlicht — arctische reizen","Reisbureau met een canvas-aurora die over de sterren golft — plus bestemmingen en aurora-garantie.","signature","🌌","#060c18","#5ef0b0",["Canvas"],"dark","reizen"],
+    ["30","30-vinyl","Groef — platenlabel","Onafhankelijk label met een draaiende plaat en audiovisualizer — speel een groove en kijk mee.","signature","💿","#161009","#e2562b",["WebAudio","Canvas"],"dark","muziek"],
+    ["31","31-arcade","Neonburcht — game studio","Synthwave game studio met een neon perspectief-grid en ondergaande zon, live op canvas.","signature","🕹️","#140426","#ff5da2",["Canvas"],"dark","games"],
+    ["32","32-kwekerij","Wildgroei — stadskwekerij","Plantenwinkel waar recursieve planten voor je ogen de hero in groeien.","signature","🪴","#f3f1e6","#3f7d3a",["Canvas"],"light","retail"],
+    ["33","33-keramiek","Draaischijf — keramiekstudio","Pottenbakker met een draaischijf: sleep over de klei en vorm je eigen vaas.","signature","🏺","#efe7dd","#b5532e",["Interactief","Canvas"],"light","creatief"],
+    ["34","34-parfum","Sillage — geurhuis","Parfumhuis met opstijgende inkt/rook-diffusie en een interactieve geurpiramide.","signature","🌫️","#16100c","#c9a24b",["Canvas"],"dark","retail"],
+    ["35","35-data","Meetlat — data & dashboards","Data-consultancy met een live animerende dashboard-grafiek en KPI’s op canvas.","signature","📊","#0c1018","#b6f23d",["Canvas","Live"],"dark","tech"],
+    ["36","36-tattoo","Inktzwart — tattoo studio","Tattoo studio: teken met je cursor in zwarte en rode inkt op crèmepapier.","signature","✒️","#f2ece0","#d11a26",["Interactief","Canvas"],"light","creatief"],
+    ["37","37-getij","Tij — surfschool","Surfschool met een gelaagde, golvende zee op canvas en een zonnige strandclub-vibe.","signature","🏄","#eaf1ee","#0fa3a3",["Canvas"],"light","sport"],
+    ["38","38-lab","Synaps — AI-lab","Toegepast AI-lab met een neuraal deeltjesnetwerk dat op je muis reageert.","signature","🧠","#07090f","#6e8cff",["Interactief","Canvas"],"dark","tech"],
+    ["39","39-vlier","Vlier — bistro & natuurwijn","Handgemaakte, redactionele restaurantsite met echte foto’s, een getypte menukaart en een live open/dicht-status — bewust géén template-look.","maatwerk","🍷","#f3eee4","#7a2230",["Foto’s","Menukaart","Hand-made"],"light","horeca"],
+    ["40","40-klaver","Klaver — tandartspraktijk","Rustige, met de hand gebouwde healthcare-site: licht en luchtig, met echte foto’s, een open-status uit de openingstijden en een vriendelijk afspraakformulier.","maatwerk","🦷","#eef5f3","#1f9e92",["Foto’s","Hand-made"],"light","gezondheid"],
+    ["41","41-boekhandel","Marginalia — boekhandel","Literaire boekhandel als krant-masthead met meerkoloms voorpagina en sticky scroll-spy inhoudsindex; tips, agenda en open-status.","maatwerk","📚","#f4efe3","#1f4035",["Magazine","Scroll-spy"],"light","retail"],
+    ["42","42-advocaten","Hagedoorn & Vis — advocaten","Gezaghebbend advocatenkantoor met vaste side-rail navigatie naast scrollende content; rechtsgebieden, aanpak en intakeformulier — navy × goud.","maatwerk","⚖️","#13213a","#b08d4f",["Side-rail","Intake"],"dark","juridisch"],
+    ["43","43-barbier","Stoppel — barbier","Stoere barbershop met schermvullende beeld-hero en info-/status-kaarten die over de hero-rand schuiven; prijslijst en boek-een-stoel — donker × amber.","maatwerk","💈","#15110d","#d98a3a",["Full-bleed","Overlap"],"dark","creatief"],
+    ["44","44-bloemist","Veld — bloemist","Botanische bloemist met gecentreerde redactionele hero en volle-breedte banden; seizoensboeketten (echte foto’s), abonnement en nieuwsbrief — salie × oudroze.","maatwerk","🌷","#f6f3ec","#8a9a7b",["Banden","Foto’s"],"light","retail"],
+    ["45","45-meubel","Eik & Es — meubels","Minimalistische meubelwinkel als bento-raster van ongelijke tegels met echte productfoto’s; collecties, werkplaats en showroom — neutraal × hout.","maatwerk","🪑","#f3f0e9","#9a7b56",["Bento","Foto’s"],"light","retail"],
+    ["46","46-bakkerij","Desem — bakkerij","Ambachtelijke bakkerij met utility-bar (open-status), klassieke nav en zigzag-secties; getypte kaart, ambacht-verhaal en brood bestellen — slab-serif.","maatwerk","🥖","#f5ede0","#c0612e",["Zigzag","Open-status"],"light","horeca"],
+    ["47","47-yoga","Adem — yogastudio","Rustige yogastudio, minimaal en gecentreerd met veel witruimte; ademcirkel, weekrooster met vandaag-markering en proefles — zand × terracotta.","maatwerk","🧘","#efe9df","#c1714e",["Minimal","Weekrooster"],"light","gezondheid"],
+    ["48","48-fiets","Spaak — fietsenwinkel","Energieke fietsenwinkel met split-hero en asymmetrisch mozaïek-grid; reparatie-prijslijst en plan-je-reparatie — oranje, vet grotesk.","maatwerk","🚲","#f4f1ea","#f2641e",["Split-hero","Mozaïek"],"light","retail"],
+    ["49","49-dierenarts","Poot & Pels — dierenarts","Vriendelijke dierenarts met spoed-utilitybalk, klassieke nav en zigzag-blokken; diensten, 24/7 spoed, open-status en afspraakformulier — geel × blauw.","maatwerk","🐾","#fffaf0","#f4b324",["Zigzag","Spoedbalk"],"light","gezondheid"],
+    ["50","50-kaas","Wrongel — kaaswinkel","Ambachtelijke kaaswinkel & affineur als katern-magazine met sticky genummerde sectie-index; assortiment per kilo, proefplank en open-status.","maatwerk","🧀","#f4ecdb","#8c3b2e",["Magazine","Scroll-spy"],"light","retail"],
+    ["51","51-finedining","Maas — fine dining","Luxe restaurant, minimaal en gecentreerd op één smalle as met didone-typografie; getypt zevengangen-proefmenu en open-status — donker × goud.","maatwerk","🍽️","#0e0d0b","#c9a86a",["Minimal","Proefmenu"],"dark","horeca"],
+    ["52","52-architect","Grond — architecten","Beton-minimalistisch architectenbureau met vaste side-rail nav (scroll-spy) naast een rustig projectraster met grote beelden.","maatwerk","📐","#ece9e3","#b4552c",["Side-rail","Scroll-spy"],"light","creatief"],
+    ["53","53-koffiebar","Tussen — koffiebar","Moderne koffiebar met schermvullende beeld-hero en overlappende kaarten (vandaag-special, open-status) over de hero-rand — cream × kobalt.","maatwerk","☕","#f7f3ea","#2440e8",["Full-bleed","Dag-special"],"light","horeca"],
+    ["54","54-wijnbar","Decant — natuurwijnbar","Intieme natuurwijnbar met gecentreerde type-hero en volle-breedte banden (licht/donker); wijnkaart per glas en open-status — aubergine, EB Garamond.","maatwerk","🍇","#1f1216","#c2526a",["Banden","Wijnkaart"],"dark","horeca"],
+    ["55","55-fotograaf","Licht — fotografie","Monochroom fotografieportfolio met reuze type-hero en een horizontaal scrollende, toetsenbord-toegankelijke galerij-strip.","maatwerk","📸","#141413","#b5654a",["Horizontale strip","Foto’s"],"light","creatief"],
+    ["56","56-schilder","Laag — schildersbedrijf","Schildersbedrijf met split-hero, side-rail nav en asymmetrisch raster; interactieve kleurkiezer die de kamer mee laat veranderen.","maatwerk","🖌️","#f2efe9","#2f6f6a",["Split-hero","Kleurkiezer"],"light","diensten"],
+    ["57","57-patisserie","Suiker — patisserie","Verfijnde patisserie als bento-raster met echte gebak-foto’s; assortiment, ambacht en taart-bestelformulier — rozig cream, Italiana.","maatwerk","🍰","#fbf3ef","#cf8493",["Bento","Foto’s"],"light","horeca"],
+    ["58","58-reisbureau","Verte — reizen op maat","Boutique-reisbureau met full-bleed bestemmings-hero en bestemmingskaarten (echte foto’s) die over de hero-rand schuiven — groen × terracotta.","maatwerk","🧭","#2f5d50","#c2724a",["Full-bleed","Bestemmingen"],"light","reizen"],
+    ["59","59-kapsalon","Kam — kapsalon","Chique kapsalon, minimaal en gecentreerd met hairline-details; eerlijke prijslijst en boek-een-stoel — off-white × mauve, Jost.","maatwerk","✂️","#f4f1ee","#a4737f",["Minimal","Prijslijst"],"light","diensten"],
+    ["60","60-brouwerij","Schuim — stadsbrouwerij","Stadsbrouwerij met de taplijst als toegankelijke tab-hub (op vat / wisselend / binnenkort, pijltjesnavigatie); proeflokaal en rondleiding — donker × amber.","maatwerk","🍺","#15140f","#c9a227",["Tab-hub","Tap-lijst"],"dark","horeca"],
+    ["61","61-bureau","VOLT — creatief bureau","Neo-brutalistisch bureau met diagonale poster-composities, gekantelde blokken en marquee-ticker — lime × paars × zwart.","grafisch","⚡","#c2f53a","#6b4bff",["Poster","Diagonaal"],"light","creatief"],
+    ["62","62-streetwear","DRIFT — streetwear drop","Streetwear-drop met side-rail nav en horizontaal scrollende lookbook-strip (echte foto’s); limited-edition productgrid — kobalt × hot pink.","grafisch","🧢","#1a32ff","#ff2e88",["Lookbook","Horizontale strip"],"light","mode"],
+    ["63","63-festival","VOLTAGE — festival","Poster-festival met gekantelde diagonale composities; line-up, dag-tabs met pijltjesnavigatie en ticket-tiers — acid-geel × zwart.","grafisch","⚡","#0b0b0b","#e6ff00",["Poster","Dag-tabs"],"dark","evenement"],
+    ["64","64-saas","KERNEL — dev tool","Developer-tool als bento-mozaïek met een live-getypte console-tegel, features en prijzen — donker × cyan.","grafisch","🖥️","#070a0f","#00e5ff",["Bento","Live console"],"dark","software"],
+    ["65","65-podcast","FREQ — podcast","Redactionele podcast met vaste side-rail incl. waveform-mini-speler; afleveringenlijst en makers — oranje × teal × cream.","grafisch","🎙️","#ff5a1f","#0e8c7d",["Side-rail","Waveform"],"light","media"],
+    ["67","67-burgerbar","SMASH — burgerbar","Speels-brutalistische burgerbar met utility-bar, split-hero en zigzag-menukaart met echte foodfoto’s; afhaalformulier — ketchup × mosterd.","grafisch","🍔","#ff3b30","#ffc21c",["Zigzag","Foto’s"],"light","horeca"],
+    ["68","68-club","NOCTURN — nachtclub","Nachtclub met full-bleed donkere beeld-hero en agenda-kaarten die over de hero-rand schuiven; tafelreservering — UV-paars × acid-cyaan.","grafisch","🌙","#08060f","#00ffd5",["Full-bleed","Agenda"],"dark","uitgaan"],
+    ["70","70-platenzaak","WALS — platenzaak","Retro-platenzaak met side-rail nav, draaiende-vinyl-hero en horizontaal scrollende platenbak met genre-filter — burnt orange × cream.","grafisch","🎵","#ff5e1a","#0b6e5f",["Crate-strip","Genre-filter"],"light","retail"],
+    ["71","71-esports","RESPAWN — esports team","Hoekig esports-team in poster/diagonaal met clip-path en gekantelde blokken; roster met echte speler-portretten, wedstrijden en tryout — navy × neon-groen.","grafisch","🎮","#080c16","#39ff14",["Poster","Roster"],"dark","sport"],
+    ["72","72-dansstudio","TEMPO — dansstudio","Kinetische dansstudio als content-hub met het weekrooster (dag-tabs, pijltjesnavigatie) als kloppend hart; stijlen — zwart × magenta × lime.","grafisch","💃","#0d0d0d","#ff1f8f",["Tab-hub","Weekrooster"],"dark","sport"],
+    ["73","73-coworking","HUB — co-working","Co-working als neo-brutalist bento-raster van ongelijke tegels met echte ruimtefoto’s; voorzieningen, prijzen en rondleiding — cream × chartreuse × kobalt.","grafisch","🧩","#cdff3a","#1f49ff",["Bento","Foto’s"],"light","zakelijk"],
+    ["74","74-aannemer","BETON — aannemer","Industriële aannemer met hazard-utilitybalk, split-hero en zigzag-projecten met echte bouwfoto’s; offerteformulier — safety-geel × zwart.","grafisch","🏗️","#ffd400","#16150f",["Zigzag","Foto’s"],"light","bouw"],
+    ["75","75-pokebar","KOM — poké bar","Poké bar met split-hero (echte bowl-foto) en asymmetrisch raster; interactieve bowl-bouwer met live prijs — fris groen × koraal.","grafisch","🥢","#1fb869","#ff5e4d",["Split-hero","Bowl-bouwer"],"light","horeca"],
+    ["76","76-ijssalon","ROOM — ambachtelijk ijs","Speelse ijssalon met gecentreerde hero en gekleurde volle-breedte banden; smakengrid met echte ijsfoto’s en prijzenband — pastel-bold.","grafisch","🍦","#ff8fbf","#74e0c3",["Banden","Foto’s"],"light","horeca"],
+    ["77","77-drankmerk","BOLT — energiedrank","Energiedrank-merk met full-bleed product-hero en overlappende stat-kaarten; CSS-blik dat live van kleur/smaak wisselt — electric blue × lime.","grafisch","🥤","#0a0e2a","#c6ff2e",["Full-bleed","Kleur-switch"],"dark","product"],
+    ["78","78-literairfestival","WOORD — literair festival","Literair festival als magazine met sticky sectie-index (scroll-spy); asymmetrische redactionele hero, sprekers en programma — cream × diep rood, Fraunces.","grafisch","📖","#f3ead7","#c2241f",["Magazine","Scroll-spy"],"light","evenement"],
+    ["80","80-escaperoom","ONTSNAP — escape rooms","Gespannen escape rooms in poster/diagonaal met side-rail; aftelklok in de schuine hero-wig en gestaffelde room-strips — bijna-zwart × oranje.","grafisch","🔓","#0c0a0a","#ff6a00",["Poster","Aftelklok"],"dark","uitgaan"],
+    ["81","81-nagelstudio","KROON — nagelstudio","Nagelstudio, minimaal en gecentreerd met hairline-details; echte nail-art galerij en prijslijst met dotted leaders — hot pink × goud.","grafisch","💅","#ff2d87","#e8b14a",["Minimal","Foto’s"],"light","beauty"],
+    ["82","82-gamestudio","PIXELWERK — game studio","Game- &amp; app-studio als bento-portfolio met echte game-art op ongelijke tegels; diensten en projectaanvraag — diep paars × lime.","grafisch","🕹️","#150a2b","#b6ff3d",["Bento","Foto’s"],"dark","software"],
+    ["83","83-hardloopclub","SPRINT — running crew","Energieke running crew met side-rail, outline-type-hero en horizontaal scrollende runs-strip met pace-tags — oranje × beton.","grafisch","🏃","#ff4d00","#d4f23d",["Horizontale strip","Pace-tags"],"light","sport"],
+    ["84","84-zonnepanelen","STROOM — zonnepanelen","Bold-eco zonnepanelen met split-hero en asymmetrisch bento; interactieve besparings-slider die kWh en euro’s live berekent — zon-geel × diep groen.","grafisch","☀️","#0a2e22","#ffd60a",["Split-hero","Bespaar-slider"],"dark","energie"],
+    ["85","85-kunstgalerie","KLEUR — kunstgalerie","Kunstgalerie als magazine met sticky scroll-spy index; uitgelichte expo-opening en exposities met echte kunstwerk-foto’s — bold poster-typografie.","grafisch","🎨","#2347ff","#ff3b30",["Magazine","Foto’s"],"light","cultuur"],
+    ["86","86-folio","FOLIO — redactioneel systeem","Verfijnd Swiss-grid ontwerpsysteem (Instrument Serif): zichtbaar kolommenraster (toets G), scroll-spy index, werk-index en live klok + coördinaat. Inhoud-agnostisch — bruikbaar voor elke site.","editorial","§","#6a8cff","#16161a",["Swiss-grid","Raster-toggle","Scroll-spy"],"light","algemeen"],
+    ["87","87-cantorclin","CANTORCLIN — schoonmaakbedrijf","Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy: hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie.","premium","💧","#0bb89e","#0e2230",["Zakelijk","Schoonmaak","Offerteformulier"],"light","diensten"],
+    ["88","88-jazzclub","AMBER — jazzclub","Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood: moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier.","grafisch","🎷","#d9a441","#0e1430",["Art-deco","Nachtleven","Programma"],"dark","uitgaan"],
+    ["89","89-boerderij","HET LANGE LAND — boerderijwinkel","Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta: Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier.","premium","🥕","#5a7d3c","#c2683f",["Organisch","Streekproducten","Oogstbox"],"light","retail"],
+    ["90","90-tandarts","GLIMLACH — tandartspraktijk","Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit: grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie.","premium","🦷","#4fb8c4","#7fd1a8",["Zorg","Pastel","Afspraakformulier"],"light","gezondheid"],
+    ["91","91-surfschool","WESTKUST — surfschool","Vibrant kust-sport surfschool in turquoise × zand × koraal: golvende wave-dividers, fake-live condities-widget (golf/wind/getij), lespakketten per niveau, reviews en boekformulier met datumkeuze.","grafisch","🌊","#0fb6c8","#ff6b4d",["Kust","Wave-dividers","Condities"],"light","sport"],
+    ["92","92-chocolatier","MAISON CACAEU — chocolatier","Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream: Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, \"stel je eigen doos samen\"-builder met live prijs en bestelformulier.","premium","🍫","#c9a35c","#2a1a12",["Luxe","Ambacht","Doos-builder"],"dark","retail"],
+    ["93","93-izakaya","ENSO — izakaya","Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen: Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier.","premium","🍣","#c8362a","#1a1714",["Zen","Wabi-sabi","Menu-tabs"],"light","horeca"],
+    ["94","94-bordspellen","MEEPLE — bordspellencafé","Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream: chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier.","grafisch","🎲","#e8a13a","#2b8a86",["Retro","Speels","Spel-filter"],"light","horeca"],
+    ["95","95-juwelier","ATELIER LUME — juwelier","Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud: fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen en afspraakformulier.","premium","💍","#c8a96a","#f6f1ea",["Minimaal","Luxe","Op-maat"],"light","retail"],
+    ["96","96-bergsport","NOORDWAND — bergsport","Rauw-technisch outdoor- & bergsportmerk in leisteen × bosgroen × signaaloranje: topografische hoogtelijnen, Oswald-koppen, uitrusting-grid, tochten met hoogtemeters/zwaarte en inschrijfformulier.","grafisch","⛰️","#e8671c","#2f3a35",["Outdoor","Topografisch","Tochten"],"dark","retail"],
+    ["97","97-kinderopvang","PLUK — kinderopvang","Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream: blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier.","grafisch","🧸","#ff7a59","#ffd23f",["Candy","Speels","Tijdlijn"],"light","kinderopvang"],
+    ["98","98-optiek","VIZIER — optiek","Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt: bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier.","grafisch","👓","#1f4fff","#101012",["Fashion","Grafisch","Collectie-filter"],"light","retail"],
+    ["99","99-pizzeria","FORNO VESUVIO — pizzeria","Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum: Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier.","premium","🍕","#c8331f","#3f6b32",["Italiaans","Menu-tabs","Trattoria"],"light","horeca"],
+    ["100","100-filmhuis","DE LICHTBAK — filmhuis","Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold: Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier.","premium","🎬","#e8b53a","#141210",["Cinema","Programma","Poster"],"dark","cultuur"],
+    ["101","101-uitvaart","LINDE — uitvaartbegeleiding","Serene, met de hand geschreven uitvaartonderneming in warm greige × salie: Cormorant-serif, veel rust en wit, ingehouden fade-ins, een permanente \"dag en nacht bereikbaar\"-band en een kalme kostenindicatie i.p.v. prijslijst.","maatwerk","🕊️","#f3f1ea","#6f7d68",["Sereen","Dag-en-nacht","Hand-made"],"light","uitvaart"],
+    ["102","102-fysio","BALANS — fysiotherapie","Frisse, met de hand gebouwde fysiotherapiepraktijk in mint-wit × teal × koraal: Outfit-koppen, interactieve klacht-kiezer die de juiste behandeling toont, live open-status uit de openingstijden en online afspraakformulier.","maatwerk","💪","#f3f8f9","#1f8fa3",["Klacht-kiezer","Open-status","Hand-made"],"light","gezondheid"],
+    ["103","103-notaris","MERIDIAAN — notarissen","Klassiek-gezaghebbend notariskantoor in ivoor × oxblood (bewust géén navy/goud): fijne Cormorant-serif, hairline-regels, een \"kies uw situatie\"-keuzehulp naar het juiste rechtsgebied, transparante tarieven en intakeformulier.","maatwerk","📜","#f3f0ea","#7b2f33",["Kies-situatie","Akten","Hand-made"],"light","juridisch"],
+    ["104","104-theater","DE REGENTES — theater & podium","Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud: Fraunces-display, filmkorrel, seizoensprogramma met genre-filter (toneel/dans/muziek/comedy) + uitverkocht-badges, kassa-status en kaartreservering.","maatwerk","🎭","#e8543f","#17121c",["Genre-filter","Agenda","Hand-made"],"dark","cultuur"]
   ];
+  /* @gallery:end */
 
   /* ---- stat-pills in hero ---- */
   var counts = {};
@@ -450,36 +500,45 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   /* ---- kaarten renderen ---- */
   var grid = doc.getElementById('grid');
   var arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>';
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
   T.forEach(function (r) {
-    var num = r[0], slug = r[1], title = r[2], desc = r[3], tier = r[4], emoji = r[5], g1 = r[6], g2 = r[7], tags = r[8] || [];
+    var num = r[0], slug = r[1], title = r[2], desc = r[3], tier = r[4], emoji = r[5], g1 = r[6], g2 = r[7], tags = r[8] || [], scheme = r[9] || 'dark', sector = r[10] || 'algemeen';
     var wide = tier === 'flagship';
-    var a = doc.createElement('a');
-    a.className = 'card reveal' + (wide ? ' card--wide' : '');
-    a.href = 'templates/' + slug + '/index.html';
-    a.target = '_blank'; a.rel = 'noopener';
-    a.setAttribute('data-tier', tier);
-    a.setAttribute('data-text', (title + ' ' + desc + ' ' + TIERS[tier].label + ' ' + tags.join(' ')).toLowerCase());
-    a.setAttribute('data-tags', tags.map(function (t) { return t.toLowerCase(); }).join('|'));
-    var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' : '';
-    a.innerHTML =
+    var href = 'templates/' + slug + '/index.html';
+    var card = doc.createElement('article');
+    card.className = 'card reveal' + (wide ? ' card--wide' : '');
+    card.setAttribute('data-tier', tier);
+    card.setAttribute('data-scheme', scheme);
+    card.setAttribute('data-sector', sector);
+    card.setAttribute('data-id', String(parseInt(num, 10)));
+    card.setAttribute('data-title', title.toLowerCase());
+    card.setAttribute('data-href', href);
+    card.setAttribute('data-text', (title + ' ' + desc + ' ' + TIERS[tier].label + ' ' + sector + ' ' + tags.join(' ')).toLowerCase());
+    card.setAttribute('data-tags', tags.map(function (t) { return t.toLowerCase(); }).join('|'));
+    var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<button type="button" class="tag" data-tag="' + esc(t.toLowerCase()) + '" aria-pressed="false">' + t + '</button>'; }).join('') + '</div>' : '';
+    card.innerHTML =
       '<div class="thumb" style="--g1:' + g1 + ';--g2:' + g2 + '">' +
         '<img class="shot" loading="lazy" alt="" src="previews/' + slug + '.jpg">' +
         '<span class="num">' + num + '</span>' +
         '<span class="badge" style="--bc:' + TIERS[tier].color + '">' + TIERS[tier].label + '</span>' +
         '<span class="emoji">' + emoji + '</span>' +
+        '<a class="dl" href="downloads/' + slug + '.zip" download aria-label="Download ' + esc(title) + ' als zip" title="Download als zip">' +
+          '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13h10"/></svg>' +
+        '</a>' +
       '</div>' +
       '<div class="body">' +
         '<h3>' + title + '</h3>' +
         '<p>' + desc + '</p>' +
         tagHtml +
         '<span class="go">Bekijk template ' + arrow + '</span>' +
+        '<a class="card-link" href="' + href + '" target="_blank" rel="noopener" aria-label="Bekijk template: ' + esc(title) + '">Bekijk ' + title + '</a>' +
       '</div>';
-    var shot = a.querySelector('.shot');
+    var shot = card.querySelector('.shot');
     if (shot) {
-      shot.addEventListener('load', function () { shot.classList.add('loaded'); var t = a.querySelector('.thumb'); if (t) { t.classList.add('has-shot'); } });
+      shot.addEventListener('load', function () { shot.classList.add('loaded'); var t = card.querySelector('.thumb'); if (t) { t.classList.add('has-shot'); } });
       shot.addEventListener('error', function () { if (shot.parentNode) { shot.parentNode.removeChild(shot); } });
     }
-    grid.appendChild(a);
+    grid.appendChild(card);
   });
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
 
@@ -520,8 +579,22 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     });
   }
 
+  /* ---- sector-dropdown + sorteer + sfeer-segment ---- */
+  var sectorSel = doc.getElementById('sectorSel');
+  var sortSel = doc.getElementById('sortSel');
+  var schemeBtns = Array.prototype.slice.call(doc.querySelectorAll('#schemeSeg .seg-btn'));
+  var sectorCounts = {};
+  T.forEach(function (r) { var s = r[10] || 'algemeen'; sectorCounts[s] = (sectorCounts[s] || 0) + 1; });
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  if (sectorSel) {
+    var optAll = doc.createElement('option'); optAll.value = 'alle'; optAll.textContent = 'Alle sectoren (' + T.length + ')'; sectorSel.appendChild(optAll);
+    Object.keys(sectorCounts).sort().forEach(function (s) {
+      var o = doc.createElement('option'); o.value = s; o.textContent = cap(s) + ' (' + sectorCounts[s] + ')'; sectorSel.appendChild(o);
+    });
+  }
+
   /* ---- filteren ---- */
-  var state = { tier: 'alle', tags: [], q: '' };
+  var state = { tier: 'alle', tags: [], q: '', scheme: 'alle', sector: 'alle', sort: 'num' };
   var search = doc.getElementById('search');
   var resultCount = doc.getElementById('resultCount');
   var resultTitle = doc.getElementById('resultTitle');
@@ -529,22 +602,52 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   var emptyEl = doc.getElementById('empty');
   if (resultTotal) { resultTotal.textContent = String(T.length); }
   function cardHasTag(card, tag) { return ('|' + card.getAttribute('data-tags') + '|').indexOf('|' + tag + '|') !== -1; }
+  function matches(card, st) {
+    if (st.tier !== 'alle' && card.getAttribute('data-tier') !== st.tier) { return false; }
+    if (st.scheme !== 'alle' && card.getAttribute('data-scheme').indexOf(st.scheme) === -1) { return false; }
+    if (st.sector !== 'alle' && card.getAttribute('data-sector') !== st.sector) { return false; }
+    if (st.q && card.getAttribute('data-text').indexOf(st.q) === -1) { return false; }
+    for (var i = 0; i < st.tags.length; i++) { if (!cardHasTag(card, st.tags[i])) { return false; } }
+    return true;
+  }
+  function withState(over) {
+    var c = { tier: state.tier, tags: state.tags.slice(), q: state.q, scheme: state.scheme, sector: state.sector };
+    for (var k in over) { if (over.hasOwnProperty(k)) { c[k] = over[k]; } }
+    return c;
+  }
+  function countWith(st) { var n = 0; for (var i = 0; i < cards.length; i++) { if (matches(cards[i], st)) { n++; } } return n; }
+  function updateCounts() {
+    chips.forEach(function (chip) { var el = chip.querySelector('.n'); if (el) { el.textContent = countWith(withState({ tier: chip.getAttribute('data-tier') })); } });
+    featureChips.forEach(function (chip) {
+      var tag = chip.getAttribute('data-tag');
+      var tags = state.tags.indexOf(tag) === -1 ? state.tags.concat(tag) : state.tags;
+      var el = chip.querySelector('.n'); if (el) { el.textContent = countWith(withState({ tags: tags })); }
+    });
+  }
   function syncHash() {
     var parts = [];
     if (state.q) { parts.push('q=' + encodeURIComponent(state.q)); }
     if (state.tier !== 'alle') { parts.push('tier=' + encodeURIComponent(state.tier)); }
+    if (state.scheme !== 'alle') { parts.push('scheme=' + encodeURIComponent(state.scheme)); }
+    if (state.sector !== 'alle') { parts.push('sector=' + encodeURIComponent(state.sector)); }
     if (state.tags.length) { parts.push('tags=' + state.tags.map(encodeURIComponent).join(',')); }
+    if (state.sort !== 'num') { parts.push('sort=' + encodeURIComponent(state.sort)); }
     var hash = parts.join('&');
     try { history.replaceState(null, '', hash ? '#' + hash : location.pathname + location.search); } catch (e) {}
+  }
+  function applySort() {
+    var mode = state.sort, arr = cards.slice();
+    arr.sort(function (a, b) {
+      if (mode === 'az') { var ta = a.getAttribute('data-title'), tb = b.getAttribute('data-title'); return ta < tb ? -1 : (ta > tb ? 1 : 0); }
+      var ai = +a.getAttribute('data-id'), bi = +b.getAttribute('data-id');
+      return mode === 'new' ? bi - ai : ai - bi;
+    });
+    arr.forEach(function (c) { grid.appendChild(c); });
   }
   function apply() {
     var shown = 0;
     cards.forEach(function (card) {
-      var okTier = state.tier === 'alle' || card.getAttribute('data-tier') === state.tier;
-      var okText = !state.q || card.getAttribute('data-text').indexOf(state.q) !== -1;
-      var okTags = true;
-      for (var i = 0; i < state.tags.length; i++) { if (!cardHasTag(card, state.tags[i])) { okTags = false; break; } }
-      var show = okTier && okText && okTags;
+      var show = matches(card, state);
       card.classList.toggle('is-hidden', !show);
       if (show) { shown++; }
     });
@@ -553,12 +656,30 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       var label;
       if (state.q) { label = 'Zoekresultaten'; }
       else if (state.tier !== 'alle') { label = (TIERS[state.tier] ? TIERS[state.tier].label : '') + '-templates'; }
-      else if (state.tags.length) { label = 'Gefilterd op feature'; }
+      else if (state.sector !== 'alle') { label = cap(state.sector); }
+      else if (state.tags.length || state.scheme !== 'alle') { label = 'Gefilterd'; }
       else { label = 'Alle templates'; }
       resultTitle.textContent = label;
     }
     if (emptyEl) { emptyEl.classList.toggle('show', shown === 0); }
+    updateCounts();
     syncHash();
+  }
+
+  /* ---- interacties ---- */
+  function syncCardTags() {
+    var set = {}; state.tags.forEach(function (t) { set[t] = 1; });
+    cards.forEach(function (card) {
+      var btns = card.querySelectorAll('.tag');
+      for (var i = 0; i < btns.length; i++) { btns[i].setAttribute('aria-pressed', set[btns[i].getAttribute('data-tag')] ? 'true' : 'false'); }
+    });
+  }
+  function toggleTag(tag) {
+    var idx = state.tags.indexOf(tag);
+    if (idx === -1) { state.tags.push(tag); } else { state.tags.splice(idx, 1); }
+    featureChips.forEach(function (c) { c.setAttribute('aria-pressed', state.tags.indexOf(c.getAttribute('data-tag')) !== -1 ? 'true' : 'false'); });
+    syncCardTags();
+    apply();
   }
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
@@ -567,21 +688,35 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       apply();
     });
   });
-  featureChips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var tag = chip.getAttribute('data-tag');
-      var idx = state.tags.indexOf(tag);
-      if (idx === -1) { state.tags.push(tag); chip.setAttribute('aria-pressed', 'true'); }
-      else { state.tags.splice(idx, 1); chip.setAttribute('aria-pressed', 'false'); }
+  featureChips.forEach(function (chip) { chip.addEventListener('click', function () { toggleTag(chip.getAttribute('data-tag')); }); });
+  grid.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest ? e.target.closest('.tag') : null;
+    if (btn && grid.contains(btn)) {
+      e.preventDefault();
+      toggleTag(btn.getAttribute('data-tag'));
+      var tb = doc.getElementById('collectie');
+      if (tb && tb.scrollIntoView) { tb.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
+  });
+  if (search) { search.addEventListener('input', function () { state.q = search.value.trim().toLowerCase(); apply(); }); }
+  schemeBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      state.scheme = btn.getAttribute('data-scheme');
+      schemeBtns.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
       apply();
     });
   });
-  if (search) { search.addEventListener('input', function () { state.q = search.value.trim().toLowerCase(); apply(); }); }
+  if (sectorSel) { sectorSel.addEventListener('change', function () { state.sector = sectorSel.value; apply(); }); }
+  if (sortSel) { sortSel.addEventListener('change', function () { state.sort = sortSel.value; applySort(); apply(); }); }
 
   function reflect() {
     if (search) { search.value = state.q; }
     chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-tier') === state.tier ? 'true' : 'false'); });
     featureChips.forEach(function (c) { c.setAttribute('aria-pressed', state.tags.indexOf(c.getAttribute('data-tag')) !== -1 ? 'true' : 'false'); });
+    schemeBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-scheme') === state.scheme ? 'true' : 'false'); });
+    if (sectorSel) { sectorSel.value = state.sector; }
+    if (sortSel) { sortSel.value = state.sort; }
+    syncCardTags();
   }
 
   /* ---- deelbare filters via de URL-hash ---- */
@@ -594,16 +729,20 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       try { val = decodeURIComponent(kv.slice(i + 1)); } catch (e) { return; }
       if (key === 'q') { state.q = val.toLowerCase(); }
       else if (key === 'tier' && (val === 'alle' || TIERS[val])) { state.tier = val; }
+      else if (key === 'scheme' && (val === 'light' || val === 'dark')) { state.scheme = val; }
+      else if (key === 'sector' && sectorCounts[val]) { state.sector = val; }
       else if (key === 'tags') { state.tags = val.split(',').map(function (t) { return t.toLowerCase(); }).filter(Boolean); }
+      else if (key === 'sort' && (val === 'az' || val === 'new' || val === 'num')) { state.sort = val; }
     });
   })();
   reflect();
+  applySort();
   apply();
 
   var resetBtn = doc.getElementById('reset');
   if (resetBtn) {
     resetBtn.addEventListener('click', function () {
-      state.tier = 'alle'; state.tags = []; state.q = '';
+      state.tier = 'alle'; state.tags = []; state.q = ''; state.scheme = 'alle'; state.sector = 'alle';
       reflect();
       apply();
     });
@@ -628,7 +767,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       var pool = cards.filter(function (c) { return !c.classList.contains('is-hidden'); });
       if (!pool.length) { pool = cards; }
       var pick = pool[Math.floor(Math.random() * pool.length)];
-      window.open(pick.href, '_blank', 'noopener');
+      window.open(pick.getAttribute('data-href'), '_blank', 'noopener');
     });
   }
 

@@ -1,0 +1,16 @@
+{
+  "name": "template-galerij",
+  "version": "1.0.0",
+  "description": "101 kant-en-klare, dependency-vrije website-templates met een doorzoekbare galerij.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "Jonathan Teunissen",
+  "scripts": {
+    "gallery": "node _kit/gallery.mjs",
+    "build": "node _kit/build.mjs all",
+    "readmes": "node _kit/readmes.mjs",
+    "pack": "node _kit/pack.mjs",
+    "dist": "node _kit/gallery.mjs && node _kit/readmes.mjs && node _kit/pack.mjs"
+  }
+}

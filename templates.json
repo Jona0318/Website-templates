@@ -86,7 +86,7 @@
       "path": "templates/01-business/",
       "title": "Bedrijf / Corporate",
       "sector": "corporate",
-      "tier": "basis",
+      "tier": "premium",
       "scheme": "light+dark",
       "multipage": true,
       "palette": [
@@ -109,7 +109,21 @@
         "contact",
         "404"
       ],
-      "note": "Enige multi-page template; losse css/style.css en js/main.js. Goede start voor klassieke bedrijfssites."
+      "note": "Enige multi-page template; losse css/style.css en js/main.js. Goede start voor klassieke bedrijfssites.",
+      "card": {
+        "title": "MERIDIAAN — consultancy",
+        "blurb": "Zelfverzekerd corporate-premium one-pager in ink/navy × koper (Fraunces): propositie-hero met stat-badge, tellende cijfers, diensten met SVG-iconen, 4-staps werkwijze, cases met metrics, FAQ-accordeon en offerteformulier met validatie.",
+        "emoji": "🧭",
+        "grad": [
+          "#b87333",
+          "#13233a"
+        ],
+        "tags": [
+          "Zakelijk",
+          "Consultancy",
+          "Premium"
+        ]
+      }
     },
     {
       "id": 2,
@@ -137,7 +151,17 @@
         "over",
         "contact"
       ],
-      "note": "Donker, creatief portfolio voor designer/developer."
+      "note": "Donker, creatief portfolio voor designer/developer.",
+      "card": {
+        "title": "Portfolio",
+        "blurb": "Donker, creatief portfolio voor een designer of developer, met projectgrid.",
+        "emoji": "🎨",
+        "grad": [
+          "#0d0d0f",
+          "#2a2a18"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 3,
@@ -166,7 +190,17 @@
         "faq",
         "cta"
       ],
-      "note": "Productlanding met maand/jaar-prijsschakelaar."
+      "note": "Productlanding met maand/jaar-prijsschakelaar.",
+      "card": {
+        "title": "SaaS / Software",
+        "blurb": "Productlanding met features, prijzen (maand/jaar) en een FAQ-accordion.",
+        "emoji": "🚀",
+        "grad": [
+          "#7c3aed",
+          "#2563eb"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 4,
@@ -195,7 +229,17 @@
         "galerij",
         "reserveren"
       ],
-      "note": "Warme elegante site met menu en reserveringsformulier."
+      "note": "Warme elegante site met menu en reserveringsformulier.",
+      "card": {
+        "title": "Restaurant",
+        "blurb": "Warme, elegante site met menu, galerij en reserveringsformulier.",
+        "emoji": "🍽️",
+        "grad": [
+          "#1f3d2b",
+          "#c1572c"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 5,
@@ -224,7 +268,17 @@
         "stats",
         "contact"
       ],
-      "note": "Bold high-contrast bureausite met grote typografie."
+      "note": "Bold high-contrast bureausite met grote typografie.",
+      "card": {
+        "title": "Agency / Studio",
+        "blurb": "Bold, high-contrast bureausite met grote typografie, cases en statistieken.",
+        "emoji": "⚡",
+        "grad": [
+          "#0a0a0a",
+          "#2b50ff"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 6,
@@ -251,7 +305,17 @@
         "artikelgrid",
         "nieuwsbrief"
       ],
-      "note": "Redactionele homepage; artikelgrid + nieuwsbrief."
+      "note": "Redactionele homepage; artikelgrid + nieuwsbrief.",
+      "card": {
+        "title": "Blog / Magazine",
+        "blurb": "Redactionele homepage met uitgelicht artikel, artikelgrid en nieuwsbrief.",
+        "emoji": "📰",
+        "grad": [
+          "#d6334c",
+          "#7c1d2b"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 7,
@@ -280,7 +344,17 @@
         "productgrid",
         "cta"
       ],
-      "note": "E-commerce homepage met werkende winkelmand-teller."
+      "note": "E-commerce homepage met werkende winkelmand-teller.",
+      "card": {
+        "title": "Webshop",
+        "blurb": "E-commerce met productgrid, categorieën en een werkende winkelmand-teller.",
+        "emoji": "🛍️",
+        "grad": [
+          "#111827",
+          "#ff4d4d"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 8,
@@ -309,7 +383,17 @@
         "over",
         "contact"
       ],
-      "note": "Minimalistisch fotografieportfolio met filter."
+      "note": "Minimalistisch fotografieportfolio met filter.",
+      "card": {
+        "title": "Fotografie",
+        "blurb": "Minimalistisch fotografieportfolio met galerij en categorie-filter.",
+        "emoji": "📷",
+        "grad": [
+          "#1a1a1a",
+          "#555555"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 9,
@@ -337,7 +421,17 @@
         "programma",
         "tickets"
       ],
-      "note": "Energieke eventlanding met countdown en programma."
+      "note": "Energieke eventlanding met countdown en programma.",
+      "card": {
+        "title": "Event / Congres",
+        "blurb": "Energieke landing met countdown-timer, sprekers, programma en tickets.",
+        "emoji": "🎟️",
+        "grad": [
+          "#6d28d9",
+          "#ec4899"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 10,
@@ -365,7 +459,17 @@
         "vaardigheden",
         "contact"
       ],
-      "note": "One-page CV met animerende vaardigheidsbalken."
+      "note": "One-page CV met animerende vaardigheidsbalken.",
+      "card": {
+        "title": "CV / Resumé",
+        "blurb": "Persoonlijke one-page CV met animerende vaardigheidsbalken en tijdlijn.",
+        "emoji": "👤",
+        "grad": [
+          "#0d9488",
+          "#0f766e"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 11,
@@ -399,7 +503,17 @@
         "over",
         "contact"
       ],
-      "note": "Editorial design; eerste premium-template."
+      "note": "Editorial design; eerste premium-template.",
+      "card": {
+        "title": "Architectuur Studio",
+        "blurb": "Editorial design met preloader, parallax, scroll-tekst en magnetische knop.",
+        "emoji": "🏛️",
+        "grad": [
+          "#1a1816",
+          "#a67c52"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 12,
@@ -431,7 +545,17 @@
         "reviews",
         "boeken"
       ],
-      "note": "Vijfsterren-uitstraling met boekingsbalk en quote-carrousel."
+      "note": "Vijfsterren-uitstraling met boekingsbalk en quote-carrousel.",
+      "card": {
+        "title": "Boutique Hotel",
+        "blurb": "Vijfsterren-uitstraling met boekingsbalk, gouden details en quote-carrousel.",
+        "emoji": "🛎️",
+        "grad": [
+          "#101713",
+          "#b89b5e"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 13,
@@ -465,7 +589,17 @@
         "prijzen",
         "cta"
       ],
-      "note": "3D-tilt bankpas, live transactiefeed, glasmorfisme."
+      "note": "3D-tilt bankpas, live transactiefeed, glasmorfisme.",
+      "card": {
+        "title": "Fintech / Bank",
+        "blurb": "3D-tilt bankpas, live transactiefeed, bento-grid en glasmorfisme.",
+        "emoji": "💳",
+        "grad": [
+          "#0a0c10",
+          "#00e389"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 14,
@@ -496,7 +630,17 @@
         "lookbook",
         "over"
       ],
-      "note": "Haute-couture-minimalisme; lookbook met scroll-snap."
+      "note": "Haute-couture-minimalisme; lookbook met scroll-snap.",
+      "card": {
+        "title": "Fashion / Maison",
+        "blurb": "Haute-couture-minimalisme met curtain-reveal, lookbook en asymmetrisch grid.",
+        "emoji": "🕊️",
+        "grad": [
+          "#f4f2ee",
+          "#1a1a1a"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 15,
@@ -528,7 +672,17 @@
         "ritueel",
         "boeken"
       ],
-      "note": "Serene luxe met adem-widget en boogmaskers."
+      "note": "Serene luxe met adem-widget en boogmaskers.",
+      "card": {
+        "title": "Wellness / Spa",
+        "blurb": "Serene luxe met adem-widget, boogvormige maskers en tekenende tijdlijn.",
+        "emoji": "🌿",
+        "grad": [
+          "#9aa88f",
+          "#3a4438"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 16,
@@ -562,7 +716,17 @@
         "voor-na",
         "offerte"
       ],
-      "note": "Blueprint-stijl, zelftekenende troffel, voor/na-slider."
+      "note": "Blueprint-stijl, zelftekenende troffel, voor/na-slider.",
+      "card": {
+        "title": "ZZP Metselaar",
+        "blurb": "Blueprint-stijl met zelftekenende troffel, voor/na-slider en projectfilter.",
+        "emoji": "🧱",
+        "grad": [
+          "#0d0f12",
+          "#3b82f6"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 17,
@@ -596,7 +760,17 @@
         "proces",
         "abonnement"
       ],
-      "note": "Crème/karamel met stoom-animaties en brandgraad-meters."
+      "note": "Crème/karamel met stoom-animaties en brandgraad-meters.",
+      "card": {
+        "title": "Koffiebranderij",
+        "blurb": "Crème/karamel met stoom-animaties, brandgraad-meters en procestijdlijn.",
+        "emoji": "☕",
+        "grad": [
+          "#f6f1e7",
+          "#c47a3d"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 18,
@@ -629,7 +803,17 @@
         "rooster",
         "lidmaatschap"
       ],
-      "note": "Rauw zwart/acid-geel met dubbele marquee en lesrooster-tabs."
+      "note": "Rauw zwart/acid-geel met dubbele marquee en lesrooster-tabs.",
+      "card": {
+        "title": "Boxing Gym",
+        "blurb": "Rauw zwart/acid-geel met dubbele marquee, duotone-foto’s en lesrooster-tabs.",
+        "emoji": "🥊",
+        "grad": [
+          "#0b0b0c",
+          "#d8f24b"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 19,
@@ -678,7 +862,19 @@
         "faq",
         "contact"
       ],
-      "note": "Donkere flagship; bundelt de sterkste features."
+      "note": "Donkere flagship; bundelt de sterkste features.",
+      "card": {
+        "title": "Studio Kaap",
+        "blurb": "Het pronkstuk: de sterkste features uit de hele galerij gebundeld in één donkere flagship.",
+        "emoji": "✦",
+        "grad": [
+          "#0b0b0d",
+          "#ff5a36"
+        ],
+        "tags": [
+          "Flagship"
+        ]
+      }
     },
     {
       "id": 20,
@@ -720,7 +916,19 @@
         "faq",
         "contact"
       ],
-      "note": "Lichte, serif-gedreven tegenpool van Studio Kaap (tuinarchitectuur)."
+      "note": "Lichte, serif-gedreven tegenpool van Studio Kaap (tuinarchitectuur).",
+      "card": {
+        "title": "Buitenplaats",
+        "blurb": "De lichte tegenpool: serif-tuinarchitectuur met curtain-reveal en seizoenstijdlijn.",
+        "emoji": "🌿",
+        "grad": [
+          "#f3f1ea",
+          "#2e5b3f"
+        ],
+        "tags": [
+          "Flagship"
+        ]
+      }
     },
     {
       "id": 21,
@@ -764,7 +972,17 @@
         "faq",
         "contact"
       ],
-      "note": "Interactief type-specimen-lab; pronkstuk = bewerkbaar variabel font."
+      "note": "Interactief type-specimen-lab; pronkstuk = bewerkbaar variabel font.",
+      "card": {
+        "title": "Letterstudio",
+        "blurb": "Interactief specimen-lab met bewerkbaar reuze-proefwoord en scroll-morfend variabel font.",
+        "emoji": "🔠",
+        "grad": [
+          "#e4e4ff",
+          "#6260ff"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 22,
@@ -804,7 +1022,17 @@
         "vrienden",
         "tickets"
       ],
-      "note": "Pronkstuk = live open-status + sleepbare collectie + volwaardige lightbox."
+      "note": "Pronkstuk = live open-status + sleepbare collectie + volwaardige lightbox.",
+      "card": {
+        "title": "Museum / Kunsthal",
+        "blurb": "Live “nu geopend”-status, sleepbare collectiestrook en volwaardige lightbox.",
+        "emoji": "🖼️",
+        "grad": [
+          "#fbeaeb",
+          "#3447aa"
+        ],
+        "tags": []
+      }
     },
     {
       "id": 23,
@@ -849,7 +1077,19 @@
         "faq",
         "reserveren"
       ],
-      "note": "Eerste canvas-template. Pronkstukken: animerende sterrenhemel, zelf-bouw-sterrenbeeld, maanfase uit de datum."
+      "note": "Eerste canvas-template. Pronkstukken: animerende sterrenhemel, zelf-bouw-sterrenbeeld, maanfase uit de datum.",
+      "card": {
+        "title": "Sterrenwacht",
+        "blurb": "Canvas-sterrenhemel, bouw-je-eigen-sterrenbeeld en een maanfase berekend uit de datum.",
+        "emoji": "🔭",
+        "grad": [
+          "#070b18",
+          "#f0b94c"
+        ],
+        "tags": [
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 24,
@@ -899,7 +1139,19 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = live stroomveld-canvas dat de bezoeker stuurt + PNG-export; thumbnails zijn eigen generatieve programma's."
+      "note": "Pronkstuk = live stroomveld-canvas dat de bezoeker stuurt + PNG-export; thumbnails zijn eigen generatieve programma's.",
+      "card": {
+        "title": "Generatieve Studio",
+        "blurb": "Live stroomveld-canvas: stuur dichtheid en turbulentie met sliders en download als PNG.",
+        "emoji": "🌀",
+        "grad": [
+          "#16140f",
+          "#1b29ff"
+        ],
+        "tags": [
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 25,
@@ -947,7 +1199,19 @@
         "faq",
         "contact"
       ],
-      "note": "Generator-template (recipes/25-makelaar.json). Diverse opzet: logos, rij-diensten, showcase-aanbod, metrics, testimonials."
+      "note": "Generator-template (recipes/25-makelaar.json). Diverse opzet: logos, rij-diensten, showcase-aanbod, metrics, testimonials.",
+      "card": {
+        "title": "Makelaar / Vastgoed",
+        "blurb": "Generator-template: diensten, uitgelicht aanbod, courtage-tarieven, FAQ en waardebepaling.",
+        "emoji": "🏡",
+        "grad": [
+          "#19201c",
+          "#1f6f5c"
+        ],
+        "tags": [
+          "Recept"
+        ]
+      }
     },
     {
       "id": 26,
@@ -1002,7 +1266,19 @@
         "cta",
         "contact"
       ],
-      "note": "Algemene studio-template. Uniek palet violet × lime; split-hero, zigzag-rijen, showcase, steps."
+      "note": "Algemene studio-template. Uniek palet violet × lime; split-hero, zigzag-rijen, showcase, steps.",
+      "card": {
+        "title": "Helder — digitale studio",
+        "blurb": "Algemene studio met split-hero, zigzag-rijen, showcase en proces — violet × lime.",
+        "emoji": "💡",
+        "grad": [
+          "#6a2be6",
+          "#88c425"
+        ],
+        "tags": [
+          "Recept"
+        ]
+      }
     },
     {
       "id": 27,
@@ -1057,7 +1333,19 @@
         "faq",
         "contact"
       ],
-      "note": "Algemene donkere agency-template. Uniek palet mint × lila; center-hero, kinetische marquee, interactieve tabs, team."
+      "note": "Algemene donkere agency-template. Uniek palet mint × lila; center-hero, kinetische marquee, interactieve tabs, team.",
+      "card": {
+        "title": "Nocturne — creatieve studio",
+        "blurb": "Donkere agency met center-hero, kinetische marquee, interactieve tabs en team — mint × lila.",
+        "emoji": "🌙",
+        "grad": [
+          "#0d0f13",
+          "#5fe9ad"
+        ],
+        "tags": [
+          "Recept"
+        ]
+      }
     },
     {
       "id": 28,
@@ -1114,7 +1402,20 @@
         "banner",
         "contact"
       ],
-      "note": "Live thema-editor (recipes/28-atlas.js + .css): accentkleur, licht/donker, hoeken en lettertype live aanpassen, thema kopiëren als CSS. Diverse opzet met media-hero, vergelijkingstabel en banner."
+      "note": "Live thema-editor (recipes/28-atlas.js + .css): accentkleur, licht/donker, hoeken en lettertype live aanpassen, thema kopiëren als CSS. Diverse opzet met media-hero, vergelijkingstabel en banner.",
+      "card": {
+        "title": "Atlas — aanpasbare starter",
+        "blurb": "Live thema-editor: kleur, modus, hoeken en lettertype live aanpassen en kopiëren als CSS.",
+        "emoji": "🎨",
+        "grad": [
+          "#4f46e5",
+          "#ec4899"
+        ],
+        "tags": [
+          "Recept",
+          "Thema-editor"
+        ]
+      }
     },
     {
       "id": 29,
@@ -1157,7 +1458,19 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = canvas-aurora (golvende lichtgordijnen + sterren). recipes/29-noorderlicht.{json,css,js}."
+      "note": "Pronkstuk = canvas-aurora (golvende lichtgordijnen + sterren). recipes/29-noorderlicht.{json,css,js}.",
+      "card": {
+        "title": "Noorderlicht — arctische reizen",
+        "blurb": "Reisbureau met een canvas-aurora die over de sterren golft — plus bestemmingen en aurora-garantie.",
+        "emoji": "🌌",
+        "grad": [
+          "#060c18",
+          "#5ef0b0"
+        ],
+        "tags": [
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 30,
@@ -1201,7 +1514,20 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = draaiende plaat + audiovisualizer (synthetisch, echte WebAudio op de speel-knop)."
+      "note": "Pronkstuk = draaiende plaat + audiovisualizer (synthetisch, echte WebAudio op de speel-knop).",
+      "card": {
+        "title": "Groef — platenlabel",
+        "blurb": "Onafhankelijk label met een draaiende plaat en audiovisualizer — speel een groove en kijk mee.",
+        "emoji": "💿",
+        "grad": [
+          "#161009",
+          "#e2562b"
+        ],
+        "tags": [
+          "WebAudio",
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 31,
@@ -1244,7 +1570,19 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = synthwave perspectief-grid + neon-zon op canvas."
+      "note": "Pronkstuk = synthwave perspectief-grid + neon-zon op canvas.",
+      "card": {
+        "title": "Neonburcht — game studio",
+        "blurb": "Synthwave game studio met een neon perspectief-grid en ondergaande zon, live op canvas.",
+        "emoji": "🕹️",
+        "grad": [
+          "#140426",
+          "#ff5da2"
+        ],
+        "tags": [
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 32,
@@ -1287,7 +1625,19 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = recursief groeiende planten op canvas (groeien in beeld)."
+      "note": "Pronkstuk = recursief groeiende planten op canvas (groeien in beeld).",
+      "card": {
+        "title": "Wildgroei — stadskwekerij",
+        "blurb": "Plantenwinkel waar recursieve planten voor je ogen de hero in groeien.",
+        "emoji": "🪴",
+        "grad": [
+          "#f3f1e6",
+          "#3f7d3a"
+        ],
+        "tags": [
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 33,
@@ -1331,7 +1681,20 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = interactieve draaischijf: sleep over de klei en vorm je eigen vaas (cilindrische arcering + draaiglans)."
+      "note": "Pronkstuk = interactieve draaischijf: sleep over de klei en vorm je eigen vaas (cilindrische arcering + draaiglans).",
+      "card": {
+        "title": "Draaischijf — keramiekstudio",
+        "blurb": "Pottenbakker met een draaischijf: sleep over de klei en vorm je eigen vaas.",
+        "emoji": "🏺",
+        "grad": [
+          "#efe7dd",
+          "#b5532e"
+        ],
+        "tags": [
+          "Interactief",
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 34,
@@ -1374,7 +1737,19 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = opstijgende inkt/rook-diffusie op canvas + CSS-geurpiramide (kop/hart/basis)."
+      "note": "Pronkstuk = opstijgende inkt/rook-diffusie op canvas + CSS-geurpiramide (kop/hart/basis).",
+      "card": {
+        "title": "Sillage — geurhuis",
+        "blurb": "Parfumhuis met opstijgende inkt/rook-diffusie en een interactieve geurpiramide.",
+        "emoji": "🌫️",
+        "grad": [
+          "#16100c",
+          "#c9a24b"
+        ],
+        "tags": [
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 35,
@@ -1417,7 +1792,20 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = live animerende lijn/vlak-grafiek met KPI's (data ververst zichzelf)."
+      "note": "Pronkstuk = live animerende lijn/vlak-grafiek met KPI's (data ververst zichzelf).",
+      "card": {
+        "title": "Meetlat — data & dashboards",
+        "blurb": "Data-consultancy met een live animerende dashboard-grafiek en KPI’s op canvas.",
+        "emoji": "📊",
+        "grad": [
+          "#0c1018",
+          "#b6f23d"
+        ],
+        "tags": [
+          "Canvas",
+          "Live"
+        ]
+      }
     },
     {
       "id": 36,
@@ -1461,7 +1849,20 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = teken met je cursor in zwarte/rode inkt-splatters op crèmepapier (flash-esthetiek)."
+      "note": "Pronkstuk = teken met je cursor in zwarte/rode inkt-splatters op crèmepapier (flash-esthetiek).",
+      "card": {
+        "title": "Inktzwart — tattoo studio",
+        "blurb": "Tattoo studio: teken met je cursor in zwarte en rode inkt op crèmepapier.",
+        "emoji": "✒️",
+        "grad": [
+          "#f2ece0",
+          "#d11a26"
+        ],
+        "tags": [
+          "Interactief",
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 37,
@@ -1504,7 +1905,19 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = gelaagde golvende zee op canvas met schuim."
+      "note": "Pronkstuk = gelaagde golvende zee op canvas met schuim.",
+      "card": {
+        "title": "Tij — surfschool",
+        "blurb": "Surfschool met een gelaagde, golvende zee op canvas en een zonnige strandclub-vibe.",
+        "emoji": "🏄",
+        "grad": [
+          "#eaf1ee",
+          "#0fa3a3"
+        ],
+        "tags": [
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 38,
@@ -1548,7 +1961,20 @@
         "faq",
         "contact"
       ],
-      "note": "Pronkstuk = neuraal deeltjesnetwerk dat op de cursor reageert (knopen worden aangetrokken en verbonden)."
+      "note": "Pronkstuk = neuraal deeltjesnetwerk dat op de cursor reageert (knopen worden aangetrokken en verbonden).",
+      "card": {
+        "title": "Synaps — AI-lab",
+        "blurb": "Toegepast AI-lab met een neuraal deeltjesnetwerk dat op je muis reageert.",
+        "emoji": "🧠",
+        "grad": [
+          "#07090f",
+          "#6e8cff"
+        ],
+        "tags": [
+          "Interactief",
+          "Canvas"
+        ]
+      }
     },
     {
       "id": 39,
@@ -1590,7 +2016,21 @@
         "praktisch(urentabel)",
         "reserveren"
       ],
-      "note": "Volledig met de hand geschreven — NIET via _kit. Redactionele restaurantsite met echte Unsplash-foto's, getypte menukaart met dotted leaders, drop cap, pull quote, en een open/dicht-status + 'vandaag'-markering berekend uit de openingstijden. Bewust anti-template als tegenwicht voor de generator-look."
+      "note": "Volledig met de hand geschreven — NIET via _kit. Redactionele restaurantsite met echte Unsplash-foto's, getypte menukaart met dotted leaders, drop cap, pull quote, en een open/dicht-status + 'vandaag'-markering berekend uit de openingstijden. Bewust anti-template als tegenwicht voor de generator-look.",
+      "card": {
+        "title": "Vlier — bistro & natuurwijn",
+        "blurb": "Handgemaakte, redactionele restaurantsite met echte foto’s, een getypte menukaart en een live open/dicht-status — bewust géén template-look.",
+        "emoji": "🍷",
+        "grad": [
+          "#f3eee4",
+          "#7a2230"
+        ],
+        "tags": [
+          "Foto’s",
+          "Menukaart",
+          "Hand-made"
+        ]
+      }
     },
     {
       "id": 40,
@@ -1632,7 +2072,20 @@
         "faq(Q&A)",
         "afspraak(formulier)"
       ],
-      "note": "Volledig met de hand geschreven — NIET via _kit. Rustige healthcare-site (Figtree, mint/teal, zachte ronde vormen) met echte foto's, open-status + 'vandaag' uit de openingstijden, en een vriendelijk afspraakformulier. Bewust een totaal andere sfeer dan Vlier — om aan te tonen dat maatwerk-sites onderling verschillen."
+      "note": "Volledig met de hand geschreven — NIET via _kit. Rustige healthcare-site (Figtree, mint/teal, zachte ronde vormen) met echte foto's, open-status + 'vandaag' uit de openingstijden, en een vriendelijk afspraakformulier. Bewust een totaal andere sfeer dan Vlier — om aan te tonen dat maatwerk-sites onderling verschillen.",
+      "card": {
+        "title": "Klaver — tandartspraktijk",
+        "blurb": "Rustige, met de hand gebouwde healthcare-site: licht en luchtig, met echte foto’s, een open-status uit de openingstijden en een vriendelijk afspraakformulier.",
+        "emoji": "🦷",
+        "grad": [
+          "#eef5f3",
+          "#1f9e92"
+        ],
+        "tags": [
+          "Foto’s",
+          "Hand-made"
+        ]
+      }
     },
     {
       "id": 41,
@@ -1670,7 +2123,20 @@
         "over",
         "bezoek"
       ],
-      "note": "Hand-made (geen _kit). Literaire boekhandel: groen/cream, Newsreader-serif, genummerde boektips, evenementen-agenda en open-status uit de openingstijden."
+      "note": "Hand-made (geen _kit). Literaire boekhandel: groen/cream, Newsreader-serif, genummerde boektips, evenementen-agenda en open-status uit de openingstijden.",
+      "card": {
+        "title": "Marginalia — boekhandel",
+        "blurb": "Literaire boekhandel als krant-masthead met meerkoloms voorpagina en sticky scroll-spy inhoudsindex; tips, agenda en open-status.",
+        "emoji": "📚",
+        "grad": [
+          "#f4efe3",
+          "#1f4035"
+        ],
+        "tags": [
+          "Magazine",
+          "Scroll-spy"
+        ]
+      }
     },
     {
       "id": 42,
@@ -1706,7 +2172,20 @@
         "team",
         "contact"
       ],
-      "note": "Hand-made (geen _kit). Klassiek advocatenkantoor: navy + ivoor + goud, Playfair-serif, gezaghebbend en structureel. Bibliotheek-hero."
+      "note": "Hand-made (geen _kit). Klassiek advocatenkantoor: navy + ivoor + goud, Playfair-serif, gezaghebbend en structureel. Bibliotheek-hero.",
+      "card": {
+        "title": "Hagedoorn & Vis — advocaten",
+        "blurb": "Gezaghebbend advocatenkantoor met vaste side-rail navigatie naast scrollende content; rechtsgebieden, aanpak en intakeformulier — navy × goud.",
+        "emoji": "⚖️",
+        "grad": [
+          "#13213a",
+          "#b08d4f"
+        ],
+        "tags": [
+          "Side-rail",
+          "Intake"
+        ]
+      }
     },
     {
       "id": 43,
@@ -1743,7 +2222,20 @@
         "vakwerk",
         "boeken"
       ],
-      "note": "Hand-made (geen _kit). Stoere barbershop: donker met brick & amber, Oswald-condensed, full-bleed foto, getypte prijslijst en boek-een-stoel."
+      "note": "Hand-made (geen _kit). Stoere barbershop: donker met brick & amber, Oswald-condensed, full-bleed foto, getypte prijslijst en boek-een-stoel.",
+      "card": {
+        "title": "Stoppel — barbier",
+        "blurb": "Stoere barbershop met schermvullende beeld-hero en info-/status-kaarten die over de hero-rand schuiven; prijslijst en boek-een-stoel — donker × amber.",
+        "emoji": "💈",
+        "grad": [
+          "#15110d",
+          "#d98a3a"
+        ],
+        "tags": [
+          "Full-bleed",
+          "Overlap"
+        ]
+      }
     },
     {
       "id": 44,
@@ -1779,7 +2271,20 @@
         "abonnement",
         "bezoek"
       ],
-      "note": "Hand-made (geen _kit). Zachte botanische bloemist: salie/oudroze, Marcellus-serif, seizoensboeketten en bloemenabonnement."
+      "note": "Hand-made (geen _kit). Zachte botanische bloemist: salie/oudroze, Marcellus-serif, seizoensboeketten en bloemenabonnement.",
+      "card": {
+        "title": "Veld — bloemist",
+        "blurb": "Botanische bloemist met gecentreerde redactionele hero en volle-breedte banden; seizoensboeketten (echte foto’s), abonnement en nieuwsbrief — salie × oudroze.",
+        "emoji": "🌷",
+        "grad": [
+          "#f6f3ec",
+          "#8a9a7b"
+        ],
+        "tags": [
+          "Banden",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 45,
@@ -1815,7 +2320,20 @@
         "werkplaats",
         "showroom"
       ],
-      "note": "Hand-made (geen _kit). Minimalistische meubel-/interieurwinkel: neutraal, veel wit, lichte Fraunces. Product-georiënteerd, Scandinavisch."
+      "note": "Hand-made (geen _kit). Minimalistische meubel-/interieurwinkel: neutraal, veel wit, lichte Fraunces. Product-georiënteerd, Scandinavisch.",
+      "card": {
+        "title": "Eik & Es — meubels",
+        "blurb": "Minimalistische meubelwinkel als bento-raster van ongelijke tegels met echte productfoto’s; collecties, werkplaats en showroom — neutraal × hout.",
+        "emoji": "🪑",
+        "grad": [
+          "#f3f0e9",
+          "#9a7b56"
+        ],
+        "tags": [
+          "Bento",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 46,
@@ -1851,7 +2369,20 @@
         "ambacht",
         "bezoek"
       ],
-      "note": "Hand-made (geen _kit). Warme ambachtelijke bakkerij: crust/cream, Bitter slab-serif, getypte kaart met leaders en brood bestellen."
+      "note": "Hand-made (geen _kit). Warme ambachtelijke bakkerij: crust/cream, Bitter slab-serif, getypte kaart met leaders en brood bestellen.",
+      "card": {
+        "title": "Desem — bakkerij",
+        "blurb": "Ambachtelijke bakkerij met utility-bar (open-status), klassieke nav en zigzag-secties; getypte kaart, ambacht-verhaal en brood bestellen — slab-serif.",
+        "emoji": "🥖",
+        "grad": [
+          "#f5ede0",
+          "#c0612e"
+        ],
+        "tags": [
+          "Zigzag",
+          "Open-status"
+        ]
+      }
     },
     {
       "id": 47,
@@ -1888,7 +2419,20 @@
         "over",
         "bezoek"
       ],
-      "note": "Hand-made (geen _kit). Rustige yogastudio: zand/terracotta, lichte Fraunces, volledig weekrooster met vandaag-markering en proefles-CTA."
+      "note": "Hand-made (geen _kit). Rustige yogastudio: zand/terracotta, lichte Fraunces, volledig weekrooster met vandaag-markering en proefles-CTA.",
+      "card": {
+        "title": "Adem — yogastudio",
+        "blurb": "Rustige yogastudio, minimaal en gecentreerd met veel witruimte; ademcirkel, weekrooster met vandaag-markering en proefles — zand × terracotta.",
+        "emoji": "🧘",
+        "grad": [
+          "#efe9df",
+          "#c1714e"
+        ],
+        "tags": [
+          "Minimal",
+          "Weekrooster"
+        ]
+      }
     },
     {
       "id": 48,
@@ -1925,7 +2469,20 @@
         "tweedehands",
         "bezoek"
       ],
-      "note": "Hand-made (geen _kit). Energieke buurtfietsenwinkel: oranje + blauw, vet Archivo-grotesk, reparatie-prijslijst en plan-je-reparatie."
+      "note": "Hand-made (geen _kit). Energieke buurtfietsenwinkel: oranje + blauw, vet Archivo-grotesk, reparatie-prijslijst en plan-je-reparatie.",
+      "card": {
+        "title": "Spaak — fietsenwinkel",
+        "blurb": "Energieke fietsenwinkel met split-hero en asymmetrisch mozaïek-grid; reparatie-prijslijst en plan-je-reparatie — oranje, vet grotesk.",
+        "emoji": "🚲",
+        "grad": [
+          "#f4f1ea",
+          "#f2641e"
+        ],
+        "tags": [
+          "Split-hero",
+          "Mozaïek"
+        ]
+      }
     },
     {
       "id": 49,
@@ -1963,7 +2520,20 @@
         "spoed",
         "afspraak"
       ],
-      "note": "Hand-made (geen _kit). Vriendelijke dierenarts: geel/blauw, ronde Fredoka, speelse kaarten, 24/7-spoedband en afspraakformulier."
+      "note": "Hand-made (geen _kit). Vriendelijke dierenarts: geel/blauw, ronde Fredoka, speelse kaarten, 24/7-spoedband en afspraakformulier.",
+      "card": {
+        "title": "Poot & Pels — dierenarts",
+        "blurb": "Vriendelijke dierenarts met spoed-utilitybalk, klassieke nav en zigzag-blokken; diensten, 24/7 spoed, open-status en afspraakformulier — geel × blauw.",
+        "emoji": "🐾",
+        "grad": [
+          "#fffaf0",
+          "#f4b324"
+        ],
+        "tags": [
+          "Zigzag",
+          "Spoedbalk"
+        ]
+      }
     },
     {
       "id": 50,
@@ -1999,7 +2569,20 @@
         "proeverij",
         "bezoek"
       ],
-      "note": "Hand-made (geen _kit). Warme ambachtelijke kaaswinkel/affineur: bordeaux + goud, Lora-serif, assortiment met prijzen per kilo en proefplank."
+      "note": "Hand-made (geen _kit). Warme ambachtelijke kaaswinkel/affineur: bordeaux + goud, Lora-serif, assortiment met prijzen per kilo en proefplank.",
+      "card": {
+        "title": "Wrongel — kaaswinkel",
+        "blurb": "Ambachtelijke kaaswinkel & affineur als katern-magazine met sticky genummerde sectie-index; assortiment per kilo, proefplank en open-status.",
+        "emoji": "🧀",
+        "grad": [
+          "#f4ecdb",
+          "#8c3b2e"
+        ],
+        "tags": [
+          "Magazine",
+          "Scroll-spy"
+        ]
+      }
     },
     {
       "id": 51,
@@ -2034,7 +2617,20 @@
         "avond",
         "reserveren"
       ],
-      "note": "Hand-made. Donker, luxe fine-dining: Bodoni-didone, getypt zevengangen-proefmenu, twee zittingen. Hoge typografische verfijning."
+      "note": "Hand-made. Donker, luxe fine-dining: Bodoni-didone, getypt zevengangen-proefmenu, twee zittingen. Hoge typografische verfijning.",
+      "card": {
+        "title": "Maas — fine dining",
+        "blurb": "Luxe restaurant, minimaal en gecentreerd op één smalle as met didone-typografie; getypt zevengangen-proefmenu en open-status — donker × goud.",
+        "emoji": "🍽️",
+        "grad": [
+          "#0e0d0b",
+          "#c9a86a"
+        ],
+        "tags": [
+          "Minimal",
+          "Proefmenu"
+        ]
+      }
     },
     {
       "id": 52,
@@ -2068,7 +2664,20 @@
         "bureau",
         "contact"
       ],
-      "note": "Hand-made. Beton-minimalistisch architectenbureau. SIGNATUUR: sticky scroll-spy projectindex die de actieve sectie markeert tijdens scrollen."
+      "note": "Hand-made. Beton-minimalistisch architectenbureau. SIGNATUUR: sticky scroll-spy projectindex die de actieve sectie markeert tijdens scrollen.",
+      "card": {
+        "title": "Grond — architecten",
+        "blurb": "Beton-minimalistisch architectenbureau met vaste side-rail nav (scroll-spy) naast een rustig projectraster met grote beelden.",
+        "emoji": "📐",
+        "grad": [
+          "#ece9e3",
+          "#b4552c"
+        ],
+        "tags": [
+          "Side-rail",
+          "Scroll-spy"
+        ]
+      }
     },
     {
       "id": 53,
@@ -2103,7 +2712,20 @@
         "over",
         "bezoek"
       ],
-      "note": "Hand-made. Heldere koffiebar cream × kobalt. SIGNATUUR: dag-afhankelijke 'vandaag'-special (verandert per weekdag)."
+      "note": "Hand-made. Heldere koffiebar cream × kobalt. SIGNATUUR: dag-afhankelijke 'vandaag'-special (verandert per weekdag).",
+      "card": {
+        "title": "Tussen — koffiebar",
+        "blurb": "Moderne koffiebar met schermvullende beeld-hero en overlappende kaarten (vandaag-special, open-status) over de hero-rand — cream × kobalt.",
+        "emoji": "☕",
+        "grad": [
+          "#f7f3ea",
+          "#2440e8"
+        ],
+        "tags": [
+          "Full-bleed",
+          "Dag-special"
+        ]
+      }
     },
     {
       "id": 54,
@@ -2137,7 +2759,20 @@
         "over",
         "bezoek"
       ],
-      "note": "Hand-made. Donkere intieme natuurwijnbar: aubergine, EB Garamond, wijnkaart per glas, open-status met na-middernacht-logica."
+      "note": "Hand-made. Donkere intieme natuurwijnbar: aubergine, EB Garamond, wijnkaart per glas, open-status met na-middernacht-logica.",
+      "card": {
+        "title": "Decant — natuurwijnbar",
+        "blurb": "Intieme natuurwijnbar met gecentreerde type-hero en volle-breedte banden (licht/donker); wijnkaart per glas en open-status — aubergine, EB Garamond.",
+        "emoji": "🍇",
+        "grad": [
+          "#1f1216",
+          "#c2526a"
+        ],
+        "tags": [
+          "Banden",
+          "Wijnkaart"
+        ]
+      }
     },
     {
       "id": 55,
@@ -2169,7 +2804,20 @@
         "over",
         "contact"
       ],
-      "note": "Hand-made. Minimalistisch monochroom fotografieportfolio. SIGNATUUR: filterbare galerij (portret/reportage/landschap) met hover-captions."
+      "note": "Hand-made. Minimalistisch monochroom fotografieportfolio. SIGNATUUR: filterbare galerij (portret/reportage/landschap) met hover-captions.",
+      "card": {
+        "title": "Licht — fotografie",
+        "blurb": "Monochroom fotografieportfolio met reuze type-hero en een horizontaal scrollende, toetsenbord-toegankelijke galerij-strip.",
+        "emoji": "📸",
+        "grad": [
+          "#141413",
+          "#b5654a"
+        ],
+        "tags": [
+          "Horizontale strip",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 56,
@@ -2205,7 +2853,20 @@
         "garantie",
         "offerte"
       ],
-      "note": "Hand-made. Schildersbedrijf. SIGNATUUR: interactieve kleurkiezer die een kamerfoto live hertint (multiply-overlay) met kleurnaam + code."
+      "note": "Hand-made. Schildersbedrijf. SIGNATUUR: interactieve kleurkiezer die een kamerfoto live hertint (multiply-overlay) met kleurnaam + code.",
+      "card": {
+        "title": "Laag — schildersbedrijf",
+        "blurb": "Schildersbedrijf met split-hero, side-rail nav en asymmetrisch raster; interactieve kleurkiezer die de kamer mee laat veranderen.",
+        "emoji": "🖌️",
+        "grad": [
+          "#f2efe9",
+          "#2f6f6a"
+        ],
+        "tags": [
+          "Split-hero",
+          "Kleurkiezer"
+        ]
+      }
     },
     {
       "id": 57,
@@ -2239,7 +2900,20 @@
         "ambacht",
         "bestellen+bezoek"
       ],
-      "note": "Hand-made. Verfijnde patisserie: rozig cream, Italiana-serif, ronde categorie-swatches, taart-bestelformulier."
+      "note": "Hand-made. Verfijnde patisserie: rozig cream, Italiana-serif, ronde categorie-swatches, taart-bestelformulier.",
+      "card": {
+        "title": "Suiker — patisserie",
+        "blurb": "Verfijnde patisserie als bento-raster met echte gebak-foto’s; assortiment, ambacht en taart-bestelformulier — rozig cream, Italiana.",
+        "emoji": "🍰",
+        "grad": [
+          "#fbf3ef",
+          "#cf8493"
+        ],
+        "tags": [
+          "Bento",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 58,
@@ -2275,7 +2949,20 @@
         "op-maat",
         "contact"
       ],
-      "note": "Hand-made. Boutique-reisbureau: warm groen × terracotta, Fraunces, full-bleed alpenhero en bestemmingskaarten."
+      "note": "Hand-made. Boutique-reisbureau: warm groen × terracotta, Fraunces, full-bleed alpenhero en bestemmingskaarten.",
+      "card": {
+        "title": "Verte — reizen op maat",
+        "blurb": "Boutique-reisbureau met full-bleed bestemmings-hero en bestemmingskaarten (echte foto’s) die over de hero-rand schuiven — groen × terracotta.",
+        "emoji": "🧭",
+        "grad": [
+          "#2f5d50",
+          "#c2724a"
+        ],
+        "tags": [
+          "Full-bleed",
+          "Bestemmingen"
+        ]
+      }
     },
     {
       "id": 59,
@@ -2309,7 +2996,20 @@
         "over",
         "boeken"
       ],
-      "note": "Hand-made. Chique moderne kapsalon: off-white × mauve, Jost, eerlijke prijslijst (genderneutraal) en boek-een-stoel."
+      "note": "Hand-made. Chique moderne kapsalon: off-white × mauve, Jost, eerlijke prijslijst (genderneutraal) en boek-een-stoel.",
+      "card": {
+        "title": "Kam — kapsalon",
+        "blurb": "Chique kapsalon, minimaal en gecentreerd met hairline-details; eerlijke prijslijst en boek-een-stoel — off-white × mauve, Jost.",
+        "emoji": "✂️",
+        "grad": [
+          "#f4f1ee",
+          "#a4737f"
+        ],
+        "tags": [
+          "Minimal",
+          "Prijslijst"
+        ]
+      }
     },
     {
       "id": 60,
@@ -2344,7 +3044,20 @@
         "brouwerij",
         "proeflokaal"
       ],
-      "note": "Hand-made. Stoere stadsbrouwerij donker × amber. SIGNATUUR: 'op het vat nu'-taplijst met ABV en status (op vat/laatste/binnenkort)."
+      "note": "Hand-made. Stoere stadsbrouwerij donker × amber. SIGNATUUR: 'op het vat nu'-taplijst met ABV en status (op vat/laatste/binnenkort).",
+      "card": {
+        "title": "Schuim — stadsbrouwerij",
+        "blurb": "Stadsbrouwerij met de taplijst als toegankelijke tab-hub (op vat / wisselend / binnenkort, pijltjesnavigatie); proeflokaal en rondleiding — donker × amber.",
+        "emoji": "🍺",
+        "grad": [
+          "#15140f",
+          "#c9a227"
+        ],
+        "tags": [
+          "Tab-hub",
+          "Tap-lijst"
+        ]
+      }
     },
     {
       "id": 61,
@@ -2383,7 +3096,20 @@
         "cijfers",
         "contact"
       ],
-      "note": "Neo-brutalist. SIGNATUUR: marquee-ticker + roterende sticker + mega-typografie met lime highlight."
+      "note": "Neo-brutalist. SIGNATUUR: marquee-ticker + roterende sticker + mega-typografie met lime highlight.",
+      "card": {
+        "title": "VOLT — creatief bureau",
+        "blurb": "Neo-brutalistisch bureau met diagonale poster-composities, gekantelde blokken en marquee-ticker — lime × paars × zwart.",
+        "emoji": "⚡",
+        "grad": [
+          "#c2f53a",
+          "#6b4bff"
+        ],
+        "tags": [
+          "Poster",
+          "Diagonaal"
+        ]
+      }
     },
     {
       "id": 62,
@@ -2422,7 +3148,20 @@
         "manifest",
         "signup"
       ],
-      "note": "Drop-cultuur kobalt × hot pink × acid. SIGNATUUR: horizontale lookbook-strip + outline display-type."
+      "note": "Drop-cultuur kobalt × hot pink × acid. SIGNATUUR: horizontale lookbook-strip + outline display-type.",
+      "card": {
+        "title": "DRIFT — streetwear drop",
+        "blurb": "Streetwear-drop met side-rail nav en horizontaal scrollende lookbook-strip (echte foto’s); limited-edition productgrid — kobalt × hot pink.",
+        "emoji": "🧢",
+        "grad": [
+          "#1a32ff",
+          "#ff2e88"
+        ],
+        "tags": [
+          "Lookbook",
+          "Horizontale strip"
+        ]
+      }
     },
     {
       "id": 63,
@@ -2461,7 +3200,20 @@
         "info",
         "contact"
       ],
-      "note": "Poster-stijl festival acid-geel × zwart × paars. SIGNATUUR: line-up poster-hero + dag-tabs voor het programma."
+      "note": "Poster-stijl festival acid-geel × zwart × paars. SIGNATUUR: line-up poster-hero + dag-tabs voor het programma.",
+      "card": {
+        "title": "VOLTAGE — festival",
+        "blurb": "Poster-festival met gekantelde diagonale composities; line-up, dag-tabs met pijltjesnavigatie en ticket-tiers — acid-geel × zwart.",
+        "emoji": "⚡",
+        "grad": [
+          "#0b0b0b",
+          "#e6ff00"
+        ],
+        "tags": [
+          "Poster",
+          "Dag-tabs"
+        ]
+      }
     },
     {
       "id": 64,
@@ -2499,7 +3251,20 @@
         "prijzen",
         "contact"
       ],
-      "note": "Donkere developer-tool cyan × magenta. SIGNATUUR: grid-hero met live-getypte console-tail."
+      "note": "Donkere developer-tool cyan × magenta. SIGNATUUR: grid-hero met live-getypte console-tail.",
+      "card": {
+        "title": "KERNEL — dev tool",
+        "blurb": "Developer-tool als bento-mozaïek met een live-getypte console-tegel, features en prijzen — donker × cyan.",
+        "emoji": "🖥️",
+        "grad": [
+          "#070a0f",
+          "#00e5ff"
+        ],
+        "tags": [
+          "Bento",
+          "Live console"
+        ]
+      }
     },
     {
       "id": 65,
@@ -2536,7 +3301,20 @@
         "makers",
         "abonneer"
       ],
-      "note": "Warme redactionele podcast oranje × teal × cream. SIGNATUUR: speler-hero met klikbare/animerende waveform."
+      "note": "Warme redactionele podcast oranje × teal × cream. SIGNATUUR: speler-hero met klikbare/animerende waveform.",
+      "card": {
+        "title": "FREQ — podcast",
+        "blurb": "Redactionele podcast met vaste side-rail incl. waveform-mini-speler; afleveringenlijst en makers — oranje × teal × cream.",
+        "emoji": "🎙️",
+        "grad": [
+          "#ff5a1f",
+          "#0e8c7d"
+        ],
+        "tags": [
+          "Side-rail",
+          "Waveform"
+        ]
+      }
     },
     {
       "id": 67,
@@ -2573,7 +3351,20 @@
         "extras",
         "afhalen"
       ],
-      "note": "Speels-brutalist ketchup × mosterd × cream. SIGNATUUR: Bungee mega-display + roterende sticker + afhaalformulier."
+      "note": "Speels-brutalist ketchup × mosterd × cream. SIGNATUUR: Bungee mega-display + roterende sticker + afhaalformulier.",
+      "card": {
+        "title": "SMASH — burgerbar",
+        "blurb": "Speels-brutalistische burgerbar met utility-bar, split-hero en zigzag-menukaart met echte foodfoto’s; afhaalformulier — ketchup × mosterd.",
+        "emoji": "🍔",
+        "grad": [
+          "#ff3b30",
+          "#ffc21c"
+        ],
+        "tags": [
+          "Zigzag",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 68,
@@ -2610,7 +3401,20 @@
         "info",
         "reserveren"
       ],
-      "note": "Glow-poster zwart × UV-paars × acid-cyaan. SIGNATUUR: neon-hero met glow + avond-agenda."
+      "note": "Glow-poster zwart × UV-paars × acid-cyaan. SIGNATUUR: neon-hero met glow + avond-agenda.",
+      "card": {
+        "title": "NOCTURN — nachtclub",
+        "blurb": "Nachtclub met full-bleed donkere beeld-hero en agenda-kaarten die over de hero-rand schuiven; tafelreservering — UV-paars × acid-cyaan.",
+        "emoji": "🌙",
+        "grad": [
+          "#08060f",
+          "#00ffd5"
+        ],
+        "tags": [
+          "Full-bleed",
+          "Agenda"
+        ]
+      }
     },
     {
       "id": 70,
@@ -2648,7 +3452,20 @@
         "info",
         "mailing"
       ],
-      "note": "Retro-print burnt orange × zwart × cream. SIGNATUUR: CSS-draaiende vinyl + filterbare platenbak op genre."
+      "note": "Retro-print burnt orange × zwart × cream. SIGNATUUR: CSS-draaiende vinyl + filterbare platenbak op genre.",
+      "card": {
+        "title": "WALS — platenzaak",
+        "blurb": "Retro-platenzaak met side-rail nav, draaiende-vinyl-hero en horizontaal scrollende platenbak met genre-filter — burnt orange × cream.",
+        "emoji": "🎵",
+        "grad": [
+          "#ff5e1a",
+          "#0b6e5f"
+        ],
+        "tags": [
+          "Crate-strip",
+          "Genre-filter"
+        ]
+      }
     },
     {
       "id": 71,
@@ -2687,7 +3504,20 @@
         "wedstrijden",
         "tryouts"
       ],
-      "note": "Hoekig navy × neon-groen × magenta. SIGNATUUR: clip-path kaarten + grid-hero + win/loss match-lijst."
+      "note": "Hoekig navy × neon-groen × magenta. SIGNATUUR: clip-path kaarten + grid-hero + win/loss match-lijst.",
+      "card": {
+        "title": "RESPAWN — esports team",
+        "blurb": "Hoekig esports-team in poster/diagonaal met clip-path en gekantelde blokken; roster met echte speler-portretten, wedstrijden en tryout — navy × neon-groen.",
+        "emoji": "🎮",
+        "grad": [
+          "#080c16",
+          "#39ff14"
+        ],
+        "tags": [
+          "Poster",
+          "Roster"
+        ]
+      }
     },
     {
       "id": 72,
@@ -2724,7 +3554,20 @@
         "rooster",
         "proefles"
       ],
-      "note": "Kinetisch zwart × magenta × lime. SIGNATUUR: schuine kinetische type-hero + dag-tabs weekrooster."
+      "note": "Kinetisch zwart × magenta × lime. SIGNATUUR: schuine kinetische type-hero + dag-tabs weekrooster.",
+      "card": {
+        "title": "TEMPO — dansstudio",
+        "blurb": "Kinetische dansstudio als content-hub met het weekrooster (dag-tabs, pijltjesnavigatie) als kloppend hart; stijlen — zwart × magenta × lime.",
+        "emoji": "💃",
+        "grad": [
+          "#0d0d0d",
+          "#ff1f8f"
+        ],
+        "tags": [
+          "Tab-hub",
+          "Weekrooster"
+        ]
+      }
     },
     {
       "id": 73,
@@ -2761,7 +3604,20 @@
         "voorzieningen",
         "rondleiding"
       ],
-      "note": "Geometrisch cream × chartreuse × kobalt. SIGNATUUR: vorm-collage hero (cirkel/blob/vierkant)."
+      "note": "Geometrisch cream × chartreuse × kobalt. SIGNATUUR: vorm-collage hero (cirkel/blob/vierkant).",
+      "card": {
+        "title": "HUB — co-working",
+        "blurb": "Co-working als neo-brutalist bento-raster van ongelijke tegels met echte ruimtefoto’s; voorzieningen, prijzen en rondleiding — cream × chartreuse × kobalt.",
+        "emoji": "🧩",
+        "grad": [
+          "#cdff3a",
+          "#1f49ff"
+        ],
+        "tags": [
+          "Bento",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 74,
@@ -2800,7 +3656,20 @@
         "aanpak",
         "offerte"
       ],
-      "note": "Industrieel safety-geel × zwart. SIGNATUUR: hazard-strepen scheidingsbalken + Anton outline-display."
+      "note": "Industrieel safety-geel × zwart. SIGNATUUR: hazard-strepen scheidingsbalken + Anton outline-display.",
+      "card": {
+        "title": "BETON — aannemer",
+        "blurb": "Industriële aannemer met hazard-utilitybalk, split-hero en zigzag-projecten met echte bouwfoto’s; offerteformulier — safety-geel × zwart.",
+        "emoji": "🏗️",
+        "grad": [
+          "#ffd400",
+          "#16150f"
+        ],
+        "tags": [
+          "Zigzag",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 75,
@@ -2839,7 +3708,20 @@
         "klassiekers",
         "bestellen"
       ],
-      "note": "Speels fris groen × koraal × cream. SIGNATUUR: interactieve bowl-bouwer die samenstelling + prijs live bijwerkt."
+      "note": "Speels fris groen × koraal × cream. SIGNATUUR: interactieve bowl-bouwer die samenstelling + prijs live bijwerkt.",
+      "card": {
+        "title": "KOM — poké bar",
+        "blurb": "Poké bar met split-hero (echte bowl-foto) en asymmetrisch raster; interactieve bowl-bouwer met live prijs — fris groen × koraal.",
+        "emoji": "🥢",
+        "grad": [
+          "#1fb869",
+          "#ff5e4d"
+        ],
+        "tags": [
+          "Split-hero",
+          "Bowl-bouwer"
+        ]
+      }
     },
     {
       "id": 76,
@@ -2878,7 +3760,20 @@
         "prijzen",
         "bezoek"
       ],
-      "note": "Speels-pastel-bold bubblegum × mint × cream. SIGNATUUR: zwevende hoorntjes + kleurrijke smakengrid."
+      "note": "Speels-pastel-bold bubblegum × mint × cream. SIGNATUUR: zwevende hoorntjes + kleurrijke smakengrid.",
+      "card": {
+        "title": "ROOM — ambachtelijk ijs",
+        "blurb": "Speelse ijssalon met gecentreerde hero en gekleurde volle-breedte banden; smakengrid met echte ijsfoto’s en prijzenband — pastel-bold.",
+        "emoji": "🍦",
+        "grad": [
+          "#ff8fbf",
+          "#74e0c3"
+        ],
+        "tags": [
+          "Banden",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 77,
@@ -2917,7 +3812,20 @@
         "waarom",
         "waar-te-koop"
       ],
-      "note": "Product electric blue × lime × zwart. SIGNATUUR: CSS-blik dat live van kleur+smaak wisselt via swatches (CSS-vars)."
+      "note": "Product electric blue × lime × zwart. SIGNATUUR: CSS-blik dat live van kleur+smaak wisselt via swatches (CSS-vars).",
+      "card": {
+        "title": "BOLT — energiedrank",
+        "blurb": "Energiedrank-merk met full-bleed product-hero en overlappende stat-kaarten; CSS-blik dat live van kleur/smaak wisselt — electric blue × lime.",
+        "emoji": "🥤",
+        "grad": [
+          "#0a0e2a",
+          "#c6ff2e"
+        ],
+        "tags": [
+          "Full-bleed",
+          "Kleur-switch"
+        ]
+      }
     },
     {
       "id": 78,
@@ -2957,7 +3865,20 @@
         "tickets",
         "nieuwsbrief"
       ],
-      "note": "Editoriale poster cream-papier × diep rood. SIGNATUUR: zware Fraunces-display + redactionele programma-lijst."
+      "note": "Editoriale poster cream-papier × diep rood. SIGNATUUR: zware Fraunces-display + redactionele programma-lijst.",
+      "card": {
+        "title": "WOORD — literair festival",
+        "blurb": "Literair festival als magazine met sticky sectie-index (scroll-spy); asymmetrische redactionele hero, sprekers en programma — cream × diep rood, Fraunces.",
+        "emoji": "📖",
+        "grad": [
+          "#f3ead7",
+          "#c2241f"
+        ],
+        "tags": [
+          "Magazine",
+          "Scroll-spy"
+        ]
+      }
     },
     {
       "id": 80,
@@ -2995,7 +3916,20 @@
         "hoe-werkt-het",
         "boeken"
       ],
-      "note": "Gespannen bijna-zwart × oranje × rood. SIGNATUUR: aftellende 60:00 klok-hero + room-kaarten met moeilijkheidsmeters."
+      "note": "Gespannen bijna-zwart × oranje × rood. SIGNATUUR: aftellende 60:00 klok-hero + room-kaarten met moeilijkheidsmeters.",
+      "card": {
+        "title": "ONTSNAP — escape rooms",
+        "blurb": "Gespannen escape rooms in poster/diagonaal met side-rail; aftelklok in de schuine hero-wig en gestaffelde room-strips — bijna-zwart × oranje.",
+        "emoji": "🔓",
+        "grad": [
+          "#0c0a0a",
+          "#ff6a00"
+        ],
+        "tags": [
+          "Poster",
+          "Aftelklok"
+        ]
+      }
     },
     {
       "id": 81,
@@ -3034,7 +3968,20 @@
         "prijzen",
         "afspraak"
       ],
-      "note": "Bold-glam hot pink × zwart × goud. SIGNATUUR: nail-art kleurblok-galerie + hard-shadow prijslijst."
+      "note": "Bold-glam hot pink × zwart × goud. SIGNATUUR: nail-art kleurblok-galerie + hard-shadow prijslijst.",
+      "card": {
+        "title": "KROON — nagelstudio",
+        "blurb": "Nagelstudio, minimaal en gecentreerd met hairline-details; echte nail-art galerij en prijslijst met dotted leaders — hot pink × goud.",
+        "emoji": "💅",
+        "grad": [
+          "#ff2d87",
+          "#e8b14a"
+        ],
+        "tags": [
+          "Minimal",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 82,
@@ -3072,7 +4019,20 @@
         "diensten",
         "contact"
       ],
-      "note": "Speels diep paars × lime × magenta. SIGNATUUR: blok-portfolio van games/apps met badges."
+      "note": "Speels diep paars × lime × magenta. SIGNATUUR: blok-portfolio van games/apps met badges.",
+      "card": {
+        "title": "PIXELWERK — game studio",
+        "blurb": "Game- &amp; app-studio als bento-portfolio met echte game-art op ongelijke tegels; diensten en projectaanvraag — diep paars × lime.",
+        "emoji": "🕹️",
+        "grad": [
+          "#150a2b",
+          "#b6ff3d"
+        ],
+        "tags": [
+          "Bento",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 83,
@@ -3112,7 +4072,20 @@
         "niveaus",
         "meelopen"
       ],
-      "note": "Energiek oranje × zwart × beton. SIGNATUUR: outline-display hero + vaste runs met pace-tags."
+      "note": "Energiek oranje × zwart × beton. SIGNATUUR: outline-display hero + vaste runs met pace-tags.",
+      "card": {
+        "title": "SPRINT — running crew",
+        "blurb": "Energieke running crew met side-rail, outline-type-hero en horizontaal scrollende runs-strip met pace-tags — oranje × beton.",
+        "emoji": "🏃",
+        "grad": [
+          "#ff4d00",
+          "#d4f23d"
+        ],
+        "tags": [
+          "Horizontale strip",
+          "Pace-tags"
+        ]
+      }
     },
     {
       "id": 84,
@@ -3152,7 +4125,20 @@
         "aanpak",
         "offerte"
       ],
-      "note": "Bold-eco zon-geel × diep groen. SIGNATUUR: interactieve besparings-slider die kWh + euro live berekent."
+      "note": "Bold-eco zon-geel × diep groen. SIGNATUUR: interactieve besparings-slider die kWh + euro live berekent.",
+      "card": {
+        "title": "STROOM — zonnepanelen",
+        "blurb": "Bold-eco zonnepanelen met split-hero en asymmetrisch bento; interactieve besparings-slider die kWh en euro’s live berekent — zon-geel × diep groen.",
+        "emoji": "☀️",
+        "grad": [
+          "#0a2e22",
+          "#ffd60a"
+        ],
+        "tags": [
+          "Split-hero",
+          "Bespaar-slider"
+        ]
+      }
     },
     {
       "id": 85,
@@ -3192,7 +4178,20 @@
         "bezoek",
         "nieuwsbrief"
       ],
-      "note": "Kleurblok-galerie cream × rood/blauw/geel/groen. SIGNATUUR: multicolor poster-hero + exposities in kleurvlakken."
+      "note": "Kleurblok-galerie cream × rood/blauw/geel/groen. SIGNATUUR: multicolor poster-hero + exposities in kleurvlakken.",
+      "card": {
+        "title": "KLEUR — kunstgalerie",
+        "blurb": "Kunstgalerie als magazine met sticky scroll-spy index; uitgelichte expo-opening en exposities met echte kunstwerk-foto’s — bold poster-typografie.",
+        "emoji": "🎨",
+        "grad": [
+          "#2347ff",
+          "#ff3b30"
+        ],
+        "tags": [
+          "Magazine",
+          "Foto’s"
+        ]
+      }
     },
     {
       "id": 86,
@@ -3235,7 +4234,21 @@
         "diensten",
         "contact"
       ],
-      "note": "Redactioneel Swiss-grid systeem (Instrument Serif + Hanken Grotesk + Space Mono). Bewust GEEN gradient-koppen/icon-kaarten/stat-tellers/emoji. SIGNATUUR: toggle-baar kolommenraster (toets G), scroll-spy sectie-index, en live klok + cursor-coordinaat colofon. Inhoud-agnostisch — herthema via één accent-variabele."
+      "note": "Redactioneel Swiss-grid systeem (Instrument Serif + Hanken Grotesk + Space Mono). Bewust GEEN gradient-koppen/icon-kaarten/stat-tellers/emoji. SIGNATUUR: toggle-baar kolommenraster (toets G), scroll-spy sectie-index, en live klok + cursor-coordinaat colofon. Inhoud-agnostisch — herthema via één accent-variabele.",
+      "card": {
+        "title": "FOLIO — redactioneel systeem",
+        "blurb": "Verfijnd Swiss-grid ontwerpsysteem (Instrument Serif): zichtbaar kolommenraster (toets G), scroll-spy index, werk-index en live klok + coördinaat. Inhoud-agnostisch — bruikbaar voor elke site.",
+        "emoji": "§",
+        "grad": [
+          "#6a8cff",
+          "#16161a"
+        ],
+        "tags": [
+          "Swiss-grid",
+          "Raster-toggle",
+          "Scroll-spy"
+        ]
+      }
     },
     {
       "slug": "87-cantorclin",
@@ -3246,11 +4259,50 @@
       "tier": "premium",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f4f7f6", "#0e2230", "#0bb89e"],
-      "fonts": ["Schibsted Grotesk", "Inter"],
-      "mechanics": ["reveal-system", "count-up", "services-grid", "sector-grid", "sustainability-block", "faq-accordion", "quote-form", "form-validate", "anim-opt-in"],
-      "sections": ["hero", "diensten", "sectoren", "innovatie", "duurzaam", "werken", "contact"],
-      "note": "Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy. Hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie."
+      "palette": [
+        "#f4f7f6",
+        "#0e2230",
+        "#0bb89e"
+      ],
+      "fonts": [
+        "Schibsted Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "reveal-system",
+        "count-up",
+        "services-grid",
+        "sector-grid",
+        "sustainability-block",
+        "faq-accordion",
+        "quote-form",
+        "form-validate",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "sectoren",
+        "innovatie",
+        "duurzaam",
+        "werken",
+        "contact"
+      ],
+      "note": "Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy. Hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie.",
+      "card": {
+        "title": "CANTORCLIN — schoonmaakbedrijf",
+        "blurb": "Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy: hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie.",
+        "emoji": "💧",
+        "grad": [
+          "#0bb89e",
+          "#0e2230"
+        ],
+        "tags": [
+          "Zakelijk",
+          "Schoonmaak",
+          "Offerteformulier"
+        ]
+      }
     },
     {
       "slug": "88-jazzclub",
@@ -3261,11 +4313,47 @@
       "tier": "grafisch",
       "scheme": "dark",
       "multipage": false,
-      "palette": ["#0a0e1a", "#f4ede0", "#d9a441"],
-      "fonts": ["Playfair Display", "Jost"],
-      "mechanics": ["live-open-status", "program-list", "soldout-badges", "ticket-tiers", "reservation-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "programma", "over", "tickets", "openingstijden", "reserveren"],
-      "note": "Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood. Moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier."
+      "palette": [
+        "#0a0e1a",
+        "#f4ede0",
+        "#d9a441"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Jost"
+      ],
+      "mechanics": [
+        "live-open-status",
+        "program-list",
+        "soldout-badges",
+        "ticket-tiers",
+        "reservation-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "programma",
+        "over",
+        "tickets",
+        "openingstijden",
+        "reserveren"
+      ],
+      "note": "Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood. Moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier.",
+      "card": {
+        "title": "AMBER — jazzclub",
+        "blurb": "Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood: moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier.",
+        "emoji": "🎷",
+        "grad": [
+          "#d9a441",
+          "#0e1430"
+        ],
+        "tags": [
+          "Art-deco",
+          "Nachtleven",
+          "Programma"
+        ]
+      }
     },
     {
       "slug": "89-boerderij",
@@ -3276,11 +4364,47 @@
       "tier": "premium",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f6efe2", "#5a7d3c", "#c2683f"],
-      "fonts": ["Fraunces", "Karla"],
-      "mechanics": ["live-open-status", "products-grid", "harvest-box-packages", "today-highlight", "order-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "producten", "verhaal", "oogstbox", "winkel", "contact"],
-      "note": "Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta. Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier."
+      "palette": [
+        "#f6efe2",
+        "#5a7d3c",
+        "#c2683f"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Karla"
+      ],
+      "mechanics": [
+        "live-open-status",
+        "products-grid",
+        "harvest-box-packages",
+        "today-highlight",
+        "order-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "producten",
+        "verhaal",
+        "oogstbox",
+        "winkel",
+        "contact"
+      ],
+      "note": "Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta. Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier.",
+      "card": {
+        "title": "HET LANGE LAND — boerderijwinkel",
+        "blurb": "Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta: Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier.",
+        "emoji": "🥕",
+        "grad": [
+          "#5a7d3c",
+          "#c2683f"
+        ],
+        "tags": [
+          "Organisch",
+          "Streekproducten",
+          "Oogstbox"
+        ]
+      }
     },
     {
       "slug": "90-tandarts",
@@ -3291,11 +4415,48 @@
       "tier": "premium",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f3f9f8", "#4fb8c4", "#7fd1a8"],
-      "fonts": ["Poppins", "Nunito"],
-      "mechanics": ["treatments-grid", "steps-process", "team-grid", "faq-accordion", "booking-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "behandelingen", "bezoek", "team", "vertrouwen", "faq", "contact"],
-      "note": "Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit. Grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie."
+      "palette": [
+        "#f3f9f8",
+        "#4fb8c4",
+        "#7fd1a8"
+      ],
+      "fonts": [
+        "Poppins",
+        "Nunito"
+      ],
+      "mechanics": [
+        "treatments-grid",
+        "steps-process",
+        "team-grid",
+        "faq-accordion",
+        "booking-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "behandelingen",
+        "bezoek",
+        "team",
+        "vertrouwen",
+        "faq",
+        "contact"
+      ],
+      "note": "Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit. Grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie.",
+      "card": {
+        "title": "GLIMLACH — tandartspraktijk",
+        "blurb": "Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit: grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie.",
+        "emoji": "🦷",
+        "grad": [
+          "#4fb8c4",
+          "#7fd1a8"
+        ],
+        "tags": [
+          "Zorg",
+          "Pastel",
+          "Afspraakformulier"
+        ]
+      }
     },
     {
       "slug": "91-surfschool",
@@ -3306,11 +4467,48 @@
       "tier": "grafisch",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#fdf4e3", "#0fb6c8", "#ff6b4d"],
-      "fonts": ["Archivo", "Outfit"],
-      "mechanics": ["wave-dividers", "live-conditions-widget", "lesson-packages", "reviews", "booking-form", "date-picker", "form-validate", "reveal-system"],
-      "sections": ["hero", "condities", "lessen", "over", "reviews", "boek"],
-      "note": "Vibrant kust-sport surfschool in turquoise × zand × koraal. Golvende wave-dividers, fake-live condities-widget (golf/wind/getij), lespakketten per niveau, reviews en boekformulier met datumkeuze."
+      "palette": [
+        "#fdf4e3",
+        "#0fb6c8",
+        "#ff6b4d"
+      ],
+      "fonts": [
+        "Archivo",
+        "Outfit"
+      ],
+      "mechanics": [
+        "wave-dividers",
+        "live-conditions-widget",
+        "lesson-packages",
+        "reviews",
+        "booking-form",
+        "date-picker",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "condities",
+        "lessen",
+        "over",
+        "reviews",
+        "boek"
+      ],
+      "note": "Vibrant kust-sport surfschool in turquoise × zand × koraal. Golvende wave-dividers, fake-live condities-widget (golf/wind/getij), lespakketten per niveau, reviews en boekformulier met datumkeuze.",
+      "card": {
+        "title": "WESTKUST — surfschool",
+        "blurb": "Vibrant kust-sport surfschool in turquoise × zand × koraal: golvende wave-dividers, fake-live condities-widget (golf/wind/getij), lespakketten per niveau, reviews en boekformulier met datumkeuze.",
+        "emoji": "🌊",
+        "grad": [
+          "#0fb6c8",
+          "#ff6b4d"
+        ],
+        "tags": [
+          "Kust",
+          "Wave-dividers",
+          "Condities"
+        ]
+      }
     },
     {
       "slug": "92-chocolatier",
@@ -3321,11 +4519,47 @@
       "tier": "premium",
       "scheme": "dark",
       "multipage": false,
-      "palette": ["#1f140c", "#f4ece0", "#c9a35c"],
-      "fonts": ["Cormorant Garamond", "Jost"],
-      "mechanics": ["collection-grid", "story-band", "box-builder", "live-price", "order-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "collectie", "ambacht", "doos", "cadeau", "bestel"],
-      "note": "Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream. Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, 'stel je eigen doos samen'-builder met live prijs en bestelformulier."
+      "palette": [
+        "#1f140c",
+        "#f4ece0",
+        "#c9a35c"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "mechanics": [
+        "collection-grid",
+        "story-band",
+        "box-builder",
+        "live-price",
+        "order-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "collectie",
+        "ambacht",
+        "doos",
+        "cadeau",
+        "bestel"
+      ],
+      "note": "Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream. Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, 'stel je eigen doos samen'-builder met live prijs en bestelformulier.",
+      "card": {
+        "title": "MAISON CACAEU — chocolatier",
+        "blurb": "Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream: Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, \"stel je eigen doos samen\"-builder met live prijs en bestelformulier.",
+        "emoji": "🍫",
+        "grad": [
+          "#c9a35c",
+          "#2a1a12"
+        ],
+        "tags": [
+          "Luxe",
+          "Ambacht",
+          "Doos-builder"
+        ]
+      }
     },
     {
       "slug": "93-izakaya",
@@ -3336,11 +4570,47 @@
       "tier": "premium",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f4f1ea", "#1c1a17", "#c8362a"],
-      "fonts": ["Shippori Mincho", "Zen Kaku Gothic New"],
-      "mechanics": ["vertical-text-accents", "menu-tabs", "live-open-status", "reservation-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "kaart", "huis", "sfeer", "sake", "praktisch", "reserveren"],
-      "note": "Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen. Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier."
+      "palette": [
+        "#f4f1ea",
+        "#1c1a17",
+        "#c8362a"
+      ],
+      "fonts": [
+        "Shippori Mincho",
+        "Zen Kaku Gothic New"
+      ],
+      "mechanics": [
+        "vertical-text-accents",
+        "menu-tabs",
+        "live-open-status",
+        "reservation-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "kaart",
+        "huis",
+        "sfeer",
+        "sake",
+        "praktisch",
+        "reserveren"
+      ],
+      "note": "Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen. Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier.",
+      "card": {
+        "title": "ENSO — izakaya",
+        "blurb": "Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen: Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier.",
+        "emoji": "🍣",
+        "grad": [
+          "#c8362a",
+          "#1a1714"
+        ],
+        "tags": [
+          "Zen",
+          "Wabi-sabi",
+          "Menu-tabs"
+        ]
+      }
     },
     {
       "slug": "94-bordspellen",
@@ -3351,11 +4621,46 @@
       "tier": "grafisch",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f3e9d2", "#e8a13a", "#2b8a86"],
-      "fonts": ["Fredoka", "Baloo 2"],
-      "mechanics": ["hard-shadow-cards", "category-filter", "agenda", "reservation-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "hoe", "spellen", "kaart", "agenda", "reserveren"],
-      "note": "Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream. Chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier."
+      "palette": [
+        "#f3e9d2",
+        "#e8a13a",
+        "#2b8a86"
+      ],
+      "fonts": [
+        "Fredoka",
+        "Baloo 2"
+      ],
+      "mechanics": [
+        "hard-shadow-cards",
+        "category-filter",
+        "agenda",
+        "reservation-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "hoe",
+        "spellen",
+        "kaart",
+        "agenda",
+        "reserveren"
+      ],
+      "note": "Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream. Chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier.",
+      "card": {
+        "title": "MEEPLE — bordspellencafé",
+        "blurb": "Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream: chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier.",
+        "emoji": "🎲",
+        "grad": [
+          "#e8a13a",
+          "#2b8a86"
+        ],
+        "tags": [
+          "Retro",
+          "Speels",
+          "Spel-filter"
+        ]
+      }
     },
     {
       "slug": "95-juwelier",
@@ -3366,11 +4671,46 @@
       "tier": "premium",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#fbf8f4", "#c8a96a", "#23201c"],
-      "fonts": ["Cormorant", "Jost"],
-      "mechanics": ["collection-grid", "bespoke-story", "engagement-rings", "booking-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "collectie", "ambacht", "bruidsringen", "materialen", "afspraak"],
-      "note": "Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud. Fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen en afspraakformulier."
+      "palette": [
+        "#fbf8f4",
+        "#c8a96a",
+        "#23201c"
+      ],
+      "fonts": [
+        "Cormorant",
+        "Jost"
+      ],
+      "mechanics": [
+        "collection-grid",
+        "bespoke-story",
+        "engagement-rings",
+        "booking-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "collectie",
+        "ambacht",
+        "bruidsringen",
+        "materialen",
+        "afspraak"
+      ],
+      "note": "Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud. Fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen en afspraakformulier.",
+      "card": {
+        "title": "ATELIER LUME — juwelier",
+        "blurb": "Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud: fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen en afspraakformulier.",
+        "emoji": "💍",
+        "grad": [
+          "#c8a96a",
+          "#f6f1ea"
+        ],
+        "tags": [
+          "Minimaal",
+          "Luxe",
+          "Op-maat"
+        ]
+      }
     },
     {
       "slug": "96-bergsport",
@@ -3381,11 +4721,48 @@
       "tier": "grafisch",
       "scheme": "dark",
       "multipage": false,
-      "palette": ["#1b1f1d", "#e8671c", "#2f4a3a"],
-      "fonts": ["Oswald", "Barlow", "JetBrains Mono"],
-      "mechanics": ["topographic-lines", "gear-grid", "tours-with-stats", "difficulty-meters", "signup-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "categorieen", "gear", "tochten", "over", "contact"],
-      "note": "Rauw-technisch outdoor- & bergsportmerk in leisteen × bosgroen × signaaloranje. Topografische hoogtelijnen, Oswald-koppen, uitrusting-grid, tochten met hoogtemeters/zwaarte en inschrijfformulier."
+      "palette": [
+        "#1b1f1d",
+        "#e8671c",
+        "#2f4a3a"
+      ],
+      "fonts": [
+        "Oswald",
+        "Barlow",
+        "JetBrains Mono"
+      ],
+      "mechanics": [
+        "topographic-lines",
+        "gear-grid",
+        "tours-with-stats",
+        "difficulty-meters",
+        "signup-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "categorieen",
+        "gear",
+        "tochten",
+        "over",
+        "contact"
+      ],
+      "note": "Rauw-technisch outdoor- & bergsportmerk in leisteen × bosgroen × signaaloranje. Topografische hoogtelijnen, Oswald-koppen, uitrusting-grid, tochten met hoogtemeters/zwaarte en inschrijfformulier.",
+      "card": {
+        "title": "NOORDWAND — bergsport",
+        "blurb": "Rauw-technisch outdoor- & bergsportmerk in leisteen × bosgroen × signaaloranje: topografische hoogtelijnen, Oswald-koppen, uitrusting-grid, tochten met hoogtemeters/zwaarte en inschrijfformulier.",
+        "emoji": "⛰️",
+        "grad": [
+          "#e8671c",
+          "#2f3a35"
+        ],
+        "tags": [
+          "Outdoor",
+          "Topografisch",
+          "Tochten"
+        ]
+      }
     },
     {
       "slug": "97-kinderopvang",
@@ -3396,11 +4773,49 @@
       "tier": "grafisch",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#fff7ec", "#ff7a59", "#ffd23f"],
-      "fonts": ["Baloo 2", "Nunito"],
-      "mechanics": ["blob-shapes", "wave-dividers", "color-coded-groups", "daily-timeline", "pricing-info", "tour-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "groepen", "dag", "waarden", "praktisch", "ouders", "contact"],
-      "note": "Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream. Blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier."
+      "palette": [
+        "#fff7ec",
+        "#ff7a59",
+        "#ffd23f"
+      ],
+      "fonts": [
+        "Baloo 2",
+        "Nunito"
+      ],
+      "mechanics": [
+        "blob-shapes",
+        "wave-dividers",
+        "color-coded-groups",
+        "daily-timeline",
+        "pricing-info",
+        "tour-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "groepen",
+        "dag",
+        "waarden",
+        "praktisch",
+        "ouders",
+        "contact"
+      ],
+      "note": "Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream. Blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier.",
+      "card": {
+        "title": "PLUK — kinderopvang",
+        "blurb": "Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream: blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier.",
+        "emoji": "🧸",
+        "grad": [
+          "#ff7a59",
+          "#ffd23f"
+        ],
+        "tags": [
+          "Candy",
+          "Speels",
+          "Tijdlijn"
+        ]
+      }
     },
     {
       "slug": "98-optiek",
@@ -3411,11 +4826,47 @@
       "tier": "grafisch",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f5f4f1", "#0a0a0a", "#1d3fff"],
-      "fonts": ["Archivo", "Space Grotesk"],
-      "mechanics": ["collection-filter", "live-count", "category-filter", "eye-test-service", "booking-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "collectie", "oogmeting", "stappen", "merken", "afspraak"],
-      "note": "Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt. Bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier."
+      "palette": [
+        "#f5f4f1",
+        "#0a0a0a",
+        "#1d3fff"
+      ],
+      "fonts": [
+        "Archivo",
+        "Space Grotesk"
+      ],
+      "mechanics": [
+        "collection-filter",
+        "live-count",
+        "category-filter",
+        "eye-test-service",
+        "booking-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "collectie",
+        "oogmeting",
+        "stappen",
+        "merken",
+        "afspraak"
+      ],
+      "note": "Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt. Bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier.",
+      "card": {
+        "title": "VIZIER — optiek",
+        "blurb": "Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt: bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier.",
+        "emoji": "👓",
+        "grad": [
+          "#1f4fff",
+          "#101012"
+        ],
+        "tags": [
+          "Fashion",
+          "Grafisch",
+          "Collectie-filter"
+        ]
+      }
     },
     {
       "slug": "99-pizzeria",
@@ -3426,11 +4877,47 @@
       "tier": "premium",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f6efe3", "#c8331f", "#3f6b32"],
-      "fonts": ["Fraunces", "Inter"],
-      "mechanics": ["menu-tabs", "live-open-status", "today-highlight", "story-band", "reservation-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "kaart", "verhaal", "oven", "bezoek", "reserveren"],
-      "note": "Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum. Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier."
+      "palette": [
+        "#f6efe3",
+        "#c8331f",
+        "#3f6b32"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Inter"
+      ],
+      "mechanics": [
+        "menu-tabs",
+        "live-open-status",
+        "today-highlight",
+        "story-band",
+        "reservation-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "kaart",
+        "verhaal",
+        "oven",
+        "bezoek",
+        "reserveren"
+      ],
+      "note": "Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum. Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier.",
+      "card": {
+        "title": "FORNO VESUVIO — pizzeria",
+        "blurb": "Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum: Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier.",
+        "emoji": "🍕",
+        "grad": [
+          "#c8331f",
+          "#3f6b32"
+        ],
+        "tags": [
+          "Italiaans",
+          "Menu-tabs",
+          "Trattoria"
+        ]
+      }
     },
     {
       "slug": "100-filmhuis",
@@ -3441,11 +4928,50 @@
       "tier": "premium",
       "scheme": "dark",
       "multipage": false,
-      "palette": ["#0e0d0c", "#f3ece0", "#e8b53a"],
-      "fonts": ["Archivo Black", "Bebas Neue", "DM Sans", "Space Mono"],
-      "mechanics": ["film-grain", "program-schedule", "genre-filter", "category-filter", "membership", "reservation-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "programma", "foyer", "programmas", "praktisch", "contact"],
-      "note": "Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold. Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier."
+      "palette": [
+        "#0e0d0c",
+        "#f3ece0",
+        "#e8b53a"
+      ],
+      "fonts": [
+        "Archivo Black",
+        "Bebas Neue",
+        "DM Sans",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "film-grain",
+        "program-schedule",
+        "genre-filter",
+        "category-filter",
+        "membership",
+        "reservation-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "programma",
+        "foyer",
+        "programmas",
+        "praktisch",
+        "contact"
+      ],
+      "note": "Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold. Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier.",
+      "card": {
+        "title": "DE LICHTBAK — filmhuis",
+        "blurb": "Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold: Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier.",
+        "emoji": "🎬",
+        "grad": [
+          "#e8b53a",
+          "#141210"
+        ],
+        "tags": [
+          "Cinema",
+          "Programma",
+          "Poster"
+        ]
+      }
     },
     {
       "slug": "101-uitvaart",
@@ -3456,11 +4982,47 @@
       "tier": "maatwerk",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f3f1ea", "#2b2a26", "#6f7d68"],
-      "fonts": ["Cormorant Garamond", "Karla"],
-      "mechanics": ["soft-reveal", "reveal-system", "always-available-band", "cost-indication", "contact-form", "form-validate", "anim-opt-in"],
-      "sections": ["hero", "werkwijze", "vormen", "kosten", "over", "contact"],
-      "note": "Maatwerk (handgeschreven). Serene, ingetogen uitvaartonderneming in warm greige × salie, Cormorant-serif. Veel rust en wit, langzame fade-ins, een permanente 'dag en nacht bereikbaar'-band en een kalme kostenindicatie in plaats van een prijslijst. Bewust empathisch en niet-salesy."
+      "palette": [
+        "#f3f1ea",
+        "#2b2a26",
+        "#6f7d68"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Karla"
+      ],
+      "mechanics": [
+        "soft-reveal",
+        "reveal-system",
+        "always-available-band",
+        "cost-indication",
+        "contact-form",
+        "form-validate",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "werkwijze",
+        "vormen",
+        "kosten",
+        "over",
+        "contact"
+      ],
+      "note": "Maatwerk (handgeschreven). Serene, ingetogen uitvaartonderneming in warm greige × salie, Cormorant-serif. Veel rust en wit, langzame fade-ins, een permanente 'dag en nacht bereikbaar'-band en een kalme kostenindicatie in plaats van een prijslijst. Bewust empathisch en niet-salesy.",
+      "card": {
+        "title": "LINDE — uitvaartbegeleiding",
+        "blurb": "Serene, met de hand geschreven uitvaartonderneming in warm greige × salie: Cormorant-serif, veel rust en wit, ingehouden fade-ins, een permanente \"dag en nacht bereikbaar\"-band en een kalme kostenindicatie i.p.v. prijslijst.",
+        "emoji": "🕊️",
+        "grad": [
+          "#f3f1ea",
+          "#6f7d68"
+        ],
+        "tags": [
+          "Sereen",
+          "Dag-en-nacht",
+          "Hand-made"
+        ]
+      }
     },
     {
       "slug": "102-fysio",
@@ -3471,11 +5033,49 @@
       "tier": "maatwerk",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f3f8f9", "#1f8fa3", "#ef7d5a"],
-      "fonts": ["Outfit", "Inter"],
-      "mechanics": ["complaint-picker", "live-open-status", "treatments-grid", "team-grid", "booking-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "klacht-kiezer", "klachten", "behandelingen", "team", "tarieven", "praktisch", "afspraak"],
-      "note": "Maatwerk (handgeschreven). Frisse, klinisch-warme fysiotherapiepraktijk in mint-wit × teal × koraal, Outfit-koppen. SIGNATUUR: interactieve klacht-kiezer (chips per lichaamsdeel/klacht) die de bijbehorende behandeling toont. Live open-status uit de openingstijden en online afspraakformulier met validatie."
+      "palette": [
+        "#f3f8f9",
+        "#1f8fa3",
+        "#ef7d5a"
+      ],
+      "fonts": [
+        "Outfit",
+        "Inter"
+      ],
+      "mechanics": [
+        "complaint-picker",
+        "live-open-status",
+        "treatments-grid",
+        "team-grid",
+        "booking-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "klacht-kiezer",
+        "klachten",
+        "behandelingen",
+        "team",
+        "tarieven",
+        "praktisch",
+        "afspraak"
+      ],
+      "note": "Maatwerk (handgeschreven). Frisse, klinisch-warme fysiotherapiepraktijk in mint-wit × teal × koraal, Outfit-koppen. SIGNATUUR: interactieve klacht-kiezer (chips per lichaamsdeel/klacht) die de bijbehorende behandeling toont. Live open-status uit de openingstijden en online afspraakformulier met validatie.",
+      "card": {
+        "title": "BALANS — fysiotherapie",
+        "blurb": "Frisse, met de hand gebouwde fysiotherapiepraktijk in mint-wit × teal × koraal: Outfit-koppen, interactieve klacht-kiezer die de juiste behandeling toont, live open-status uit de openingstijden en online afspraakformulier.",
+        "emoji": "💪",
+        "grad": [
+          "#f3f8f9",
+          "#1f8fa3"
+        ],
+        "tags": [
+          "Klacht-kiezer",
+          "Open-status",
+          "Hand-made"
+        ]
+      }
     },
     {
       "slug": "103-notaris",
@@ -3486,11 +5086,49 @@
       "tier": "maatwerk",
       "scheme": "light",
       "multipage": false,
-      "palette": ["#f3f0ea", "#1c1a1a", "#7b2f33"],
-      "fonts": ["Cormorant Garamond", "Inter"],
-      "mechanics": ["situation-picker", "live-open-status", "practice-areas", "steps-process", "hairline-rules", "intake-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "situatie", "rechtsgebieden", "werkwijze", "tarieven", "over", "contact"],
-      "note": "Maatwerk (handgeschreven). Klassiek-gezaghebbend notariskantoor in ivoor × oxblood — bewust GEEN navy/goud, om los te staan van 42-advocaten. Fijne Cormorant-serif, hairline-regels, symmetrische compositie. SIGNATUUR: 'kies uw situatie'-keuzehulp die naar het juiste rechtsgebied + de eerstvolgende stap leidt. Transparante tarieven en intakeformulier."
+      "palette": [
+        "#f3f0ea",
+        "#1c1a1a",
+        "#7b2f33"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "mechanics": [
+        "situation-picker",
+        "live-open-status",
+        "practice-areas",
+        "steps-process",
+        "hairline-rules",
+        "intake-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "situatie",
+        "rechtsgebieden",
+        "werkwijze",
+        "tarieven",
+        "over",
+        "contact"
+      ],
+      "note": "Maatwerk (handgeschreven). Klassiek-gezaghebbend notariskantoor in ivoor × oxblood — bewust GEEN navy/goud, om los te staan van 42-advocaten. Fijne Cormorant-serif, hairline-regels, symmetrische compositie. SIGNATUUR: 'kies uw situatie'-keuzehulp die naar het juiste rechtsgebied + de eerstvolgende stap leidt. Transparante tarieven en intakeformulier.",
+      "card": {
+        "title": "MERIDIAAN — notarissen",
+        "blurb": "Klassiek-gezaghebbend notariskantoor in ivoor × oxblood (bewust géén navy/goud): fijne Cormorant-serif, hairline-regels, een \"kies uw situatie\"-keuzehulp naar het juiste rechtsgebied, transparante tarieven en intakeformulier.",
+        "emoji": "📜",
+        "grad": [
+          "#f3f0ea",
+          "#7b2f33"
+        ],
+        "tags": [
+          "Kies-situatie",
+          "Akten",
+          "Hand-made"
+        ]
+      }
     },
     {
       "slug": "104-theater",
@@ -3501,11 +5139,49 @@
       "tier": "maatwerk",
       "scheme": "dark",
       "multipage": false,
-      "palette": ["#17121c", "#e8543f", "#d9a441"],
-      "fonts": ["Fraunces", "Archivo"],
-      "mechanics": ["program-agenda", "genre-filter", "soldout-badges", "tonight-highlight", "live-open-status", "film-grain", "reservation-form", "form-validate", "reveal-system"],
-      "sections": ["hero", "programma", "uitgelicht", "praktisch", "vrienden", "tickets"],
-      "note": "Maatwerk (handgeschreven). Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud, Fraunces-display met filmkorrel/vignet. SIGNATUUR: seizoensprogramma met genre-filter (alles/toneel/dans/muziek/comedy), uitverkocht-badges en automatische 'vanavond'-markering. Live kassa-status uit de openingstijden en kaartreservering met validatie."
+      "palette": [
+        "#17121c",
+        "#e8543f",
+        "#d9a441"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Archivo"
+      ],
+      "mechanics": [
+        "program-agenda",
+        "genre-filter",
+        "soldout-badges",
+        "tonight-highlight",
+        "live-open-status",
+        "film-grain",
+        "reservation-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "programma",
+        "uitgelicht",
+        "praktisch",
+        "vrienden",
+        "tickets"
+      ],
+      "note": "Maatwerk (handgeschreven). Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud, Fraunces-display met filmkorrel/vignet. SIGNATUUR: seizoensprogramma met genre-filter (alles/toneel/dans/muziek/comedy), uitverkocht-badges en automatische 'vanavond'-markering. Live kassa-status uit de openingstijden en kaartreservering met validatie.",
+      "card": {
+        "title": "DE REGENTES — theater & podium",
+        "blurb": "Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud: Fraunces-display, filmkorrel, seizoensprogramma met genre-filter (toneel/dans/muziek/comedy) + uitverkocht-badges, kassa-status en kaartreservering.",
+        "emoji": "🎭",
+        "grad": [
+          "#e8543f",
+          "#17121c"
+        ],
+        "tags": [
+          "Genre-filter",
+          "Agenda",
+          "Hand-made"
+        ]
+      }
     }
   ]
 }

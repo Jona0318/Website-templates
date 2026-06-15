@@ -164,6 +164,23 @@ node _kit/build.mjs all                    # bouw alle recepten opnieuw
 
 Effect: een nieuwe sectorsite = een recept van ~100 regels in plaats van ~1.800 regels HTML. De opgeleverde bestanden blijven volledig standalone. Zie **[`recipes/_schema.md`](recipes/_schema.md)** voor het receptformaat. Signature-pronkstukken (canvas e.d.) blijven gewoon hand-geschreven — de generator is voor het herhaalbare deel.
 
+### 🖼️ De galerij & de distributie-scripts
+
+De overzichtspagina (`index.html`) leest **niet** langer een aparte, met de hand bijgehouden lijst: de kaart-data wordt **uit `templates.json` gegenereerd** (de bron van waarheid). Daardoor blijft de galerij automatisch in sync en levert elk `templates.json`-veld direct een filter op.
+
+- **`_kit/gallery.mjs`** — schrijft de galerij-data uit `templates.json` als inline blok in `index.html` (tussen `@gallery:start`/`@gallery:end`). Inline zodat de galerij ook via **dubbelklik (`file://`)** werkt, zonder fetch/CORS.
+- **`_kit/pack.mjs`** — bouwt per template een downloadbare `downloads/<slug>.zip` (dependency-vrij, via Node's ingebouwde `zlib`). De **download-knop** op elke kaart linkt hiernaartoe.
+- **`_kit/readmes.mjs`** — genereert een `README.md` in elke template-map uit `templates.json`; de licentie staat centraal in **[`LICENSE`](LICENSE)** (MIT).
+
+```bash
+npm run gallery     # index.html opnieuw genereren uit templates.json
+npm run pack        # downloads/<slug>.zip voor alle templates
+npm run readmes     # README.md per template
+npm run dist        # alle drie achter elkaar
+```
+
+De galerij zelf biedt: **zoeken** (sneltoets `/`), filteren op **tier**, **feature-tags** (klikbaar, ook direct op de kaart), **sfeer** (licht/donker) en **sector**, plus **sorteren** (nummer/A–Z/nieuwste). Alle filters zijn **deelbaar via de URL** (`#tier=signature&tags=canvas&sector=horeca`), en de chip-tellingen bewegen mee met de actieve selectie.
+
 ## 🚀 Lokaal bekijken
 
 Dubbelklik `index.html`, of start een lokale server voor de beste ervaring:
