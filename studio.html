@@ -145,7 +145,7 @@
       </div>
 
       <div class="actions">
-        <button class="btn btn-primary" id="download">⬇ Download website (.html)</button>
+        <button class="btn btn-primary" id="download">⬇ Download website (.zip)</button>
         <div class="btn-row">
           <button class="btn btn-ghost" id="share">🔗 Deel-link</button>
           <button class="btn btn-ghost" id="reset">↺ Origineel</button>
@@ -290,15 +290,71 @@
       $('loading').classList.add('hide');
     }
 
-    function download(){
-      var html = assemble(recipeFromState(), coreCss, coreJs);
-      var blob = new Blob([html], { type: 'text/html' });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = (base.slug || 'template') + '-' + slugify(state.name) + '.html';
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    // --- pure, dependency-vrije ZIP (deflate via CompressionStream, anders STORE) ---
+    var CRC = (function(){ var t = new Uint32Array(256); for (var n=0;n<256;n++){ var c=n; for (var k=0;k<8;k++){ c = (c&1) ? (0xEDB88320 ^ (c>>>1)) : (c>>>1); } t[n]=c>>>0; } return t; })();
+    function crc32(buf){ var c = 0xFFFFFFFF; for (var i=0;i<buf.length;i++){ c = CRC[(c ^ buf[i]) & 0xFF] ^ (c>>>8); } return (c ^ 0xFFFFFFFF) >>> 0; }
+    async function deflateRaw(bytes){
+      if (typeof CompressionStream === 'undefined') { return null; }
+      try { var cs = new CompressionStream('deflate-raw'); var ab = await new Response(new Blob([bytes]).stream().pipeThrough(cs)).arrayBuffer(); return new Uint8Array(ab); }
+      catch (e) { return null; }
+    }
+    function u8(str){ return new TextEncoder().encode(str); }
+    async function makeZip(files, prefix){
+      var locals = [], central = [], offset = 0;
+      for (var i=0;i<files.length;i++){
+        var f = files[i];
+        var name = u8(prefix + '/' + f.name);
+        var crc = crc32(f.data);
+        var comp = await deflateRaw(f.data); var method = 8;
+        if (!comp) { comp = f.data; method = 0; }
+        var lh = new Uint8Array(30); var lv = new DataView(lh.buffer);
+        lv.setUint32(0, 0x04034b50, true); lv.setUint16(4, 20, true); lv.setUint16(6, 0, true);
+        lv.setUint16(8, method, true); lv.setUint16(10, 0, true); lv.setUint16(12, 0x21, true);
+        lv.setUint32(14, crc, true); lv.setUint32(18, comp.length, true); lv.setUint32(22, f.data.length, true);
+        lv.setUint16(26, name.length, true); lv.setUint16(28, 0, true);
+        locals.push(lh, name, comp);
+        var ch = new Uint8Array(46); var cv = new DataView(ch.buffer);
+        cv.setUint32(0, 0x02014b50, true); cv.setUint16(4, 20, true); cv.setUint16(6, 20, true); cv.setUint16(8, 0, true);
+        cv.setUint16(10, method, true); cv.setUint16(12, 0, true); cv.setUint16(14, 0x21, true);
+        cv.setUint32(16, crc, true); cv.setUint32(20, comp.length, true); cv.setUint32(24, f.data.length, true);
+        cv.setUint16(28, name.length, true); cv.setUint32(42, offset, true);
+        central.push(ch, name);
+        offset += lh.length + name.length + comp.length;
+      }
+      var centralSize = central.reduce(function(s,p){ return s + p.length; }, 0);
+      var eocd = new Uint8Array(22); var ev = new DataView(eocd.buffer);
+      ev.setUint32(0, 0x06054b50, true); ev.setUint16(8, files.length, true); ev.setUint16(10, files.length, true);
+      ev.setUint32(12, centralSize, true); ev.setUint32(16, offset, true);
+      var parts = locals.concat(central, [eocd]);
+      var total = parts.reduce(function(s,p){ return s + p.length; }, 0);
+      var out = new Uint8Array(total), pos = 0;
+      parts.forEach(function(p){ out.set(p, pos); pos += p.length; });
+      return out;
+    }
+
+    var faviconCache = null;
+    async function download(){
+      var btn = $('download'); var label = btn.textContent; btn.disabled = true; btn.textContent = 'Inpakken…';
+      try {
+        var html = assemble(recipeFromState(), coreCss, coreJs);
+        if (faviconCache == null) { try { faviconCache = await fetchText('favicon.svg'); } catch (e) { faviconCache = ''; } }
+        var name = state.name || base.brand.name;
+        var readme = '# ' + name + '\n\nGepersonaliseerde website, gemaakt met de Template Studio.\n' +
+          'Gebaseerd op template "' + base.slug + '".\n\n' +
+          'Open index.html in je browser, of zet de map online (bv. Cloudflare Pages, Netlify, GitHub Pages).\n' +
+          'Geen build of dependencies nodig.\n';
+        var files = [{ name:'index.html', data:u8(html) }];
+        if (faviconCache) { files.push({ name:'favicon.svg', data:u8(faviconCache) }); }
+        files.push({ name:'README.md', data:u8(readme) });
+        var folder = (base.slug || 'template') + '-' + slugify(name);
+        var zip = await makeZip(files, folder);
+        var url = URL.createObjectURL(new Blob([zip], { type:'application/zip' }));
+        var a = document.createElement('a'); a.href = url; a.download = folder + '.zip';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+        toast('Zip gedownload ✓');
+      } catch (e) { console.error(e); toast('Download mislukt'); }
+      finally { btn.disabled = false; btn.textContent = label; }
     }
 
     function shareLink(){
