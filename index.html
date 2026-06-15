@@ -145,7 +145,12 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .chip[aria-pressed="true"]{color:#fff;border-color:transparent;background:var(--c,var(--violet))}
 .chip[aria-pressed="true"] .swatch{background:rgba(255,255,255,.9)}
 .chip[aria-pressed="true"] .n{color:rgba(255,255,255,.8)}
-@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}}
+.toolbar .features-row{margin-top:.6rem;align-items:flex-start;gap:.6rem}
+.features-label{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-top:.55rem;flex:0 0 auto}
+.chip--feature{text-transform:none;letter-spacing:.01em;font-size:.66rem;padding:.45rem .7rem}
+.chip--feature[aria-pressed="true"]{color:#0a0a12;border-color:transparent;background:var(--teal)}
+.chip--feature[aria-pressed="true"] .n{color:rgba(10,10,18,.65)}
+@media (max-width:680px){.toolbar .wrap{flex-direction:column;align-items:stretch}.chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem}.features-label{padding-top:0}}
 
 /* result-meta */
 .meta-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:clamp(2rem,4vw,3rem);padding-bottom:1.2rem}
@@ -258,6 +263,10 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       </label>
       <div class="chips" id="chips" role="group" aria-label="Filter op type"></div>
     </div>
+    <div class="wrap features-row" id="featuresRow" hidden>
+      <span class="features-label">Features</span>
+      <div class="chips chips--features" id="featureChips" role="group" aria-label="Filter op feature"></div>
+    </div>
   </div>
 
   <div class="wrap">
@@ -282,7 +291,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       <div>
         <h4>In de collectie</h4>
         <ul>
-          <li><a href="#collectie">Alle 86 templates</a></li>
+          <li><a href="#collectie">Alle <span id="footerCount">templates</span></a></li>
           <li><a href="templates/19-studio/index.html" target="_blank" rel="noopener">Flagship: Studio Kaap</a></li>
           <li><a href="templates/23-sterrenwacht/index.html" target="_blank" rel="noopener">Canvas: Sterrenwacht</a></li>
           <li><a href="templates/28-atlas/index.html" target="_blank" rel="noopener">Aanpasbaar: Atlas</a></li>
@@ -450,6 +459,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     a.target = '_blank'; a.rel = 'noopener';
     a.setAttribute('data-tier', tier);
     a.setAttribute('data-text', (title + ' ' + desc + ' ' + TIERS[tier].label + ' ' + tags.join(' ')).toLowerCase());
+    a.setAttribute('data-tags', tags.map(function (t) { return t.toLowerCase(); }).join('|'));
     var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>' : '';
     a.innerHTML =
       '<div class="thumb" style="--g1:' + g1 + ';--g2:' + g2 + '">' +
@@ -487,28 +497,68 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   });
   var chips = Array.prototype.slice.call(chipsEl.querySelectorAll('.chip'));
 
+  /* ---- feature-chips (data-gedreven uit de tags) ---- */
+  var tagCounts = {};
+  T.forEach(function (r) { (r[8] || []).forEach(function (t) { var k = t.toLowerCase(); if (!tagCounts[k]) { tagCounts[k] = { label: t, n: 0 }; } tagCounts[k].n++; }); });
+  var FEATURE_MIN = 4; /* alleen tags die op ≥4 templates voorkomen worden een facet */
+  var featureDefs = Object.keys(tagCounts)
+    .filter(function (k) { return tagCounts[k].n >= FEATURE_MIN; })
+    .sort(function (a, b) { return tagCounts[b].n - tagCounts[a].n || (tagCounts[a].label < tagCounts[b].label ? -1 : 1); });
+  var featureChipsEl = doc.getElementById('featureChips');
+  var featuresRow = doc.getElementById('featuresRow');
+  var featureChips = [];
+  if (featureChipsEl && featureDefs.length) {
+    if (featuresRow) { featuresRow.hidden = false; }
+    featureDefs.forEach(function (k) {
+      var b = doc.createElement('button');
+      b.className = 'chip chip--feature'; b.type = 'button';
+      b.setAttribute('data-tag', k);
+      b.setAttribute('aria-pressed', 'false');
+      b.innerHTML = tagCounts[k].label + ' <span class="n">' + tagCounts[k].n + '</span>';
+      featureChipsEl.appendChild(b);
+      featureChips.push(b);
+    });
+  }
+
   /* ---- filteren ---- */
-  var state = { tier: 'alle', q: '' };
+  var state = { tier: 'alle', tags: [], q: '' };
+  var search = doc.getElementById('search');
   var resultCount = doc.getElementById('resultCount');
   var resultTitle = doc.getElementById('resultTitle');
   var resultTotal = doc.getElementById('resultTotal');
   var emptyEl = doc.getElementById('empty');
   if (resultTotal) { resultTotal.textContent = String(T.length); }
+  function cardHasTag(card, tag) { return ('|' + card.getAttribute('data-tags') + '|').indexOf('|' + tag + '|') !== -1; }
+  function syncHash() {
+    var parts = [];
+    if (state.q) { parts.push('q=' + encodeURIComponent(state.q)); }
+    if (state.tier !== 'alle') { parts.push('tier=' + encodeURIComponent(state.tier)); }
+    if (state.tags.length) { parts.push('tags=' + state.tags.map(encodeURIComponent).join(',')); }
+    var hash = parts.join('&');
+    try { history.replaceState(null, '', hash ? '#' + hash : location.pathname + location.search); } catch (e) {}
+  }
   function apply() {
     var shown = 0;
     cards.forEach(function (card) {
       var okTier = state.tier === 'alle' || card.getAttribute('data-tier') === state.tier;
       var okText = !state.q || card.getAttribute('data-text').indexOf(state.q) !== -1;
-      var show = okTier && okText;
+      var okTags = true;
+      for (var i = 0; i < state.tags.length; i++) { if (!cardHasTag(card, state.tags[i])) { okTags = false; break; } }
+      var show = okTier && okText && okTags;
       card.classList.toggle('is-hidden', !show);
       if (show) { shown++; }
     });
     if (resultCount) { resultCount.textContent = shown; }
     if (resultTitle) {
-      var t = state.tier === 'alle' ? 'Alle templates' : (TIERS[state.tier] ? TIERS[state.tier].label : '') + '-templates';
-      resultTitle.textContent = state.q ? 'Zoekresultaten' : t;
+      var label;
+      if (state.q) { label = 'Zoekresultaten'; }
+      else if (state.tier !== 'alle') { label = (TIERS[state.tier] ? TIERS[state.tier].label : '') + '-templates'; }
+      else if (state.tags.length) { label = 'Gefilterd op feature'; }
+      else { label = 'Alle templates'; }
+      resultTitle.textContent = label;
     }
     if (emptyEl) { emptyEl.classList.toggle('show', shown === 0); }
+    syncHash();
   }
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
@@ -517,18 +567,59 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       apply();
     });
   });
-  var search = doc.getElementById('search');
+  featureChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var tag = chip.getAttribute('data-tag');
+      var idx = state.tags.indexOf(tag);
+      if (idx === -1) { state.tags.push(tag); chip.setAttribute('aria-pressed', 'true'); }
+      else { state.tags.splice(idx, 1); chip.setAttribute('aria-pressed', 'false'); }
+      apply();
+    });
+  });
   if (search) { search.addEventListener('input', function () { state.q = search.value.trim().toLowerCase(); apply(); }); }
+
+  function reflect() {
+    if (search) { search.value = state.q; }
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-tier') === state.tier ? 'true' : 'false'); });
+    featureChips.forEach(function (c) { c.setAttribute('aria-pressed', state.tags.indexOf(c.getAttribute('data-tag')) !== -1 ? 'true' : 'false'); });
+  }
+
+  /* ---- deelbare filters via de URL-hash ---- */
+  (function readHash() {
+    var h = (location.hash || '').replace(/^#/, '');
+    if (!h) { return; }
+    h.split('&').forEach(function (kv) {
+      var i = kv.indexOf('='); if (i === -1) { return; }
+      var key = kv.slice(0, i), val;
+      try { val = decodeURIComponent(kv.slice(i + 1)); } catch (e) { return; }
+      if (key === 'q') { state.q = val.toLowerCase(); }
+      else if (key === 'tier' && (val === 'alle' || TIERS[val])) { state.tier = val; }
+      else if (key === 'tags') { state.tags = val.split(',').map(function (t) { return t.toLowerCase(); }).filter(Boolean); }
+    });
+  })();
+  reflect();
   apply();
+
   var resetBtn = doc.getElementById('reset');
   if (resetBtn) {
     resetBtn.addEventListener('click', function () {
-      state.tier = 'alle'; state.q = '';
-      if (search) { search.value = ''; }
-      chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-tier') === 'alle' ? 'true' : 'false'); });
+      state.tier = 'alle'; state.tags = []; state.q = '';
+      reflect();
       apply();
     });
   }
+
+  /* ---- toetsenbord: "/" focust de zoekbalk, Esc wist ---- */
+  doc.addEventListener('keydown', function (e) {
+    var el = e.target;
+    var typing = el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
+    if (e.key === '/' && !typing && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      e.preventDefault();
+      if (search) { search.focus(); }
+    } else if (e.key === 'Escape' && el === search && search) {
+      search.value = ''; state.q = ''; apply();
+    }
+  });
 
   /* ---- verras me ---- */
   var surprise = doc.getElementById('surprise');
@@ -572,6 +663,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   /* ---- jaar + count ---- */
   var y = doc.getElementById('year'); if (y) { y.textContent = String(new Date().getFullYear()); }
   var hc = doc.getElementById('hcount'); if (hc) { hc.textContent = T.length; }
+  var fc = doc.getElementById('footerCount'); if (fc) { fc.textContent = T.length + ' templates'; }
 
   /* ============================================================
      ACHTERGROND-CANVAS — zwevende kleurblobs
