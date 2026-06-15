@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -567,7 +575,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
 <div class="marquee marquee--outline" aria-label="Slogan">
   <div class="marquee-track2" aria-hidden="true"><span>Branding</span><span>Art direction</span><span>Digitaal</span><span>Motion</span><span>Campagne</span><span>Strategie</span><span>Branding</span><span>Art direction</span><span>Digitaal</span><span>Motion</span><span>Campagne</span><span>Strategie</span></div>
 </div>
-<section class="section "  aria-label="Werk dat <em>blijft hangen</em>">
+<section class="section "  aria-label="Werk dat blijft hangen">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Geselecteerd werk</p>
@@ -605,7 +613,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Scherp van strategie tot <em>uitvoering</em>">
+<section class="section "  aria-label="Scherp van strategie tot uitvoering">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Wat we kunnen</p><h2>Scherp van strategie tot <em>uitvoering</em></h2></div>
     <div data-tabs data-rv>
@@ -631,7 +639,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     <div class="stat"><div class="num"><span data-target="2015">0</span></div><div class="lab">opgericht</div></div><div class="stat"><div class="num"><span data-target="90">0</span><sup>+</sup></div><div class="lab">merken gelanceerd</div></div><div class="stat"><div class="num"><span data-target="12">0</span></div><div class="lab">design awards</div></div><div class="stat"><div class="num"><span data-target="40">0</span><sup>+</sup></div><div class="lab">landen bereikt</div></div>
   </div>
 </section>
-<section class="section "  aria-label="Klein team, grote <em>ambities</em>">
+<section class="section "  aria-label="Klein team, grote ambities">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Het team</p><h2>Klein team, grote <em>ambities</em></h2><p>Senioren aan tafel, geen tussenlagen — je werkt direct met de makers.</p></div>
     <div class="team-grid">
@@ -639,7 +647,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Wat opdrachtgevers <em>zeggen</em>">
+<section class="section "  aria-label="Wat opdrachtgevers zeggen">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Reacties</p>
@@ -663,7 +671,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Investeren in <em>onderscheid</em>">
+<section class="section "  aria-label="Investeren in onderscheid">
   <div class="container">
     <div class="section-head center" data-rv>
       <p class="eyebrow">Tarieven</p>
@@ -827,7 +835,17 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

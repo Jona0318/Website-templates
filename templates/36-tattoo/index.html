@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -523,8 +531,6 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
 /* 36 — Inktzwart: inkt-hero (teken met je cursor) */
 .ink-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--header-h) + 2rem);padding-bottom:clamp(3rem,7vw,5rem);cursor:crosshair}
 .ink-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
-/* leesbaarheidszone: zachte scrim achter de herotekst, vóór de inkt-canvas */
-.ink-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(100deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 92%,transparent) 30%,color-mix(in srgb,var(--bg) 55%,transparent) 48%,transparent 64%)}
 .ink-inner{position:relative;z-index:2;pointer-events:none}
 .ink-inner .btn{pointer-events:auto}
 .ink-hero .eyebrow{margin-bottom:1.3rem;color:var(--accent);border-color:var(--accent)}
@@ -574,7 +580,7 @@ html.anim-ok .ink-inner .ink-cta{animation-delay:.38s}
 </div>
 <main id="main">
 <section class='ink-hero' aria-label='Introductie'><canvas class='ink-canvas' id='inkCanvas' aria-hidden='true'></canvas><div class='container ink-inner'><p class='eyebrow'>Tattoo studio · privé-atelier</p><h1>Gezet voor het <em>leven</em>.</h1><p class='ink-lead'>Fineline, blackwork en maatwerk in een rustig privé-atelier in Den Bosch. Eén klant per keer, alle tijd voor jouw verhaal.</p><div class='ink-cta'><a class='btn btn-primary js-magnetic' href='#contact'>Boek een sessie</a><a class='btn btn-ghost' href='#stijlen'>Bekijk stijlen</a></div></div><span class='ink-hint'>Beweeg je muis — teken in de inkt</span></section>
-<section class="section "  aria-label="Onze <em>handtekening</em>">
+<section class="section "  aria-label="Onze handtekening">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Stijlen</p>
@@ -604,7 +610,7 @@ html.anim-ok .ink-inner .ink-cta{animation-delay:.38s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Van idee tot <em>inkt</em>">
+<section class="section "  aria-label="Van idee tot inkt">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Werkwijze</p>
@@ -626,7 +632,7 @@ html.anim-ok .ink-inner .ink-cta{animation-delay:.38s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Onze <em>artiesten</em>">
+<section class="section "  aria-label="Onze artiesten">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Het atelier</p><h2>Onze <em>artiesten</em></h2></div>
     <div class="team-grid">
@@ -754,7 +760,17 @@ html.anim-ok .ink-inner .ink-cta{animation-delay:.38s}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

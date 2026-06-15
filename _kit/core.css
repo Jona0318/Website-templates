@@ -4,6 +4,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;

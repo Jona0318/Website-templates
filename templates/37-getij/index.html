@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -605,7 +613,7 @@ html.anim-ok .tij-inner .tij-cta{animation-delay:.38s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Alles voor een dag aan <em>zee</em>">
+<section class="section "  aria-label="Alles voor een dag aan zee">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Verhuur & club</p><h2>Alles voor een dag aan <em>zee</em></h2></div>
     <div class="zigzag">
@@ -627,7 +635,7 @@ html.anim-ok .tij-inner .tij-cta{animation-delay:.38s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Stoked <em>reviews</em>">
+<section class="section "  aria-label="Stoked reviews">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Surfers</p>
@@ -771,7 +779,17 @@ html.anim-ok .tij-inner .tij-cta{animation-delay:.38s}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

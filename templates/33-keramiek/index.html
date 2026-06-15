@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -577,7 +585,7 @@ html.anim-ok .kl-cta{animation-delay:.34s}
 </div>
 <main id="main">
 <section class='kl-hero' aria-label='Introductie'><div class='container'><div><p class='eyebrow'>Keramiekstudio · sinds 2013</p><h1>Vorm met je <em>handen</em>.</h1><p class='kl-lead'>Een keramiekstudio in Deventer voor handgemaakt servies, cursussen draaien en open studio-uren. Begin alvast hiernaast — sleep over de klei en vorm je eigen vaas.</p><div class='kl-cta'><a class='btn btn-primary js-magnetic' href='#cursussen'>Bekijk cursussen</a><a class='btn btn-ghost' href='#werk'>Ons werk</a></div></div><div class='kl-stage'><div class='kl-wheel' id='klWheel'><canvas class='kl-canvas' id='klCanvas' role='img' aria-label='Draaischijf: sleep omhoog en omlaag om de vaas te vormen'></canvas><span class='kl-hint'>Sleep over de klei om te vormen</span></div><div class='kl-actions'><button class='kl-btn' id='klNieuw' type='button'>↻ Nieuwe vorm</button><button class='kl-btn' id='klReset' type='button'>Terug naar begin</button></div></div></div></section>
-<section class="section "  aria-label="Handgemaakt <em>servies</em>">
+<section class="section "  aria-label="Handgemaakt servies">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Uit de oven</p>
@@ -607,7 +615,7 @@ html.anim-ok .kl-cta{animation-delay:.34s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Leer <em>draaien</em>">
+<section class="section "  aria-label="Leer draaien">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Cursussen</p><h2>Leer <em>draaien</em></h2></div>
     <div class="zigzag">
@@ -629,7 +637,7 @@ html.anim-ok .kl-cta{animation-delay:.34s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Klei onder de <em>nagels</em>">
+<section class="section "  aria-label="Klei onder de nagels">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Cursisten</p>
@@ -773,7 +781,17 @@ html.anim-ok .kl-cta{animation-delay:.34s}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

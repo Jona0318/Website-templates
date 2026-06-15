@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -568,7 +576,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
 <div class="logos" aria-label="Vertrouwd door">
   <div class="logos-track" aria-hidden="true"><span>Nederlandse Spoorwegen</span><span>Mollie</span><span>Rijksmuseum</span><span>Bol</span><span>WeTransfer</span><span>Picnic</span><span>Nederlandse Spoorwegen</span><span>Mollie</span><span>Rijksmuseum</span><span>Bol</span><span>WeTransfer</span><span>Picnic</span></div>
 </div>
-<section class="section "  aria-label="Eén studio, het <em>hele</em> traject">
+<section class="section "  aria-label="Eén studio, het hele traject">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Wat we doen</p><h2>Eén studio, het <em>hele</em> traject</h2><p>Van eerste schets tot live product — onder één dak, zonder overdrachtsruis.</p></div>
     <div class="zigzag">
@@ -585,7 +593,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Recent <em>opgeleverd</em>">
+<section class="section "  aria-label="Recent opgeleverd">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Geselecteerd werk</p>
@@ -615,7 +623,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Helder van begin tot <em>eind</em>">
+<section class="section "  aria-label="Helder van begin tot eind">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Werkwijze</p>
@@ -637,7 +645,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Wat ze <em>zeggen</em>">
+<section class="section "  aria-label="Wat ze zeggen">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Klanten</p>
@@ -661,7 +669,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Helder geprijsd, <em>geen</em> kleine lettertjes">
+<section class="section "  aria-label="Helder geprijsd, geen kleine lettertjes">
   <div class="container">
     <div class="section-head center" data-rv>
       <p class="eyebrow">Tarieven</p>
@@ -839,7 +847,17 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

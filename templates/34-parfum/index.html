@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -576,7 +584,7 @@ html.anim-ok .sl-inner .sl-cta{animation-delay:.48s}
 </div>
 <main id="main">
 <section class='sl-hero' aria-label='Introductie'><canvas class='sl-canvas' id='slCanvas' aria-hidden='true'></canvas><div class='sl-veil' aria-hidden='true'></div><div class='container sl-inner'><p class='eyebrow'>Onafhankelijk geurhuis · Antwerpen</p><h1>De geur die je <em>achterlaat</em>.</h1><p class='sl-lead'>Nichegeuren, met de hand gecomponeerd in ons atelier. Geen massa, geen ruis — alleen wat blijft hangen.</p><div class='sl-cta'><a class='btn btn-primary js-magnetic' href='#geuren'>Ontdek de geuren</a><a class='btn btn-ghost' href='#contact'>Boek een consult</a></div></div></section>
-<section class="section "  aria-label="Zeven <em>composities</em>">
+<section class="section "  aria-label="Zeven composities">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">De collectie</p>
@@ -607,7 +615,7 @@ html.anim-ok .sl-inner .sl-cta{animation-delay:.48s}
   </div>
 </section>
 <section class='section section--alt' id='piramide' aria-label='Geurpiramide'><div class='container'><div class='section-head center'><p class='eyebrow'>Geurpiramide</p><h2>Hoe een geur zich <em>ontvouwt</em></h2><p>Een goed parfum verandert op je huid — van de eerste indruk tot wat uren later nog blijft.</p></div><div class='pyr'><div class='pyr-tier' style='width:58%'><span class='lab'>Kopnoten</span><h3>De eerste indruk</h3><p>Bergamot, roze peper, mandarijn — fris en vluchtig.</p></div><div class='pyr-tier' style='width:80%'><span class='lab'>Hartnoten</span><h3>Het karakter</h3><p>Iris, jasmijn, saffraan — het hart dat een uur lang draagt.</p></div><div class='pyr-tier' style='width:100%'><span class='lab'>Basisnoten</span><h3>Wat blijft hangen</h3><p>Ceder, amber, vetiver, musk — het spoor, de sillage.</p></div></div></div></section>
-<section class="section "  aria-label="Van grondstof tot <em>spoor</em>">
+<section class="section "  aria-label="Van grondstof tot spoor">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Het atelier</p><h2>Van grondstof tot <em>spoor</em></h2></div>
     <div class="zigzag">
@@ -749,7 +757,17 @@ html.anim-ok .sl-inner .sl-cta{animation-delay:.48s}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

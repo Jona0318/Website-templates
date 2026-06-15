@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -616,7 +624,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     <div class="split-panel" data-rv data-d=".1s" data-tilt aria-hidden="true"><span class="glyph">⌂</span></div>
   </div>
 </section>
-<section class="section "  aria-label="Recent in de <em>verkoop</em>">
+<section class="section "  aria-label="Recent in de verkoop">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Uitgelicht aanbod</p>
@@ -654,7 +662,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Wat verkopers <em>zeggen</em>">
+<section class="section "  aria-label="Wat verkopers zeggen">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Klanten</p>
@@ -678,7 +686,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Heldere <em>courtage</em>, geen verrassingen">
+<section class="section "  aria-label="Heldere courtage, geen verrassingen">
   <div class="container">
     <div class="section-head center" data-rv>
       <p class="eyebrow">Tarieven</p>
@@ -845,7 +853,17 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

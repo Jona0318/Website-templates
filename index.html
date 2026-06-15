@@ -38,7 +38,7 @@
   --surface-2:#191926;
   --text:#f3f3f8;
   --muted:rgba(243,243,248,.62);
-  --faint:rgba(243,243,248,.40);
+  --faint:rgba(243,243,248,.62);
   --line:rgba(243,243,248,.10);
   --line-strong:rgba(243,243,248,.20);
   /* speelse accent-spectrum */
@@ -149,9 +149,9 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .chip .swatch{width:8px;height:8px;border-radius:3px;background:var(--c,var(--muted))}
 .chip .n{color:var(--faint);font-size:.62rem}
 .chip:hover{color:var(--text);transform:translateY(-1px)}
-.chip[aria-pressed="true"]{color:#fff;border-color:transparent;background:var(--c,var(--violet))}
-.chip[aria-pressed="true"] .swatch{background:rgba(255,255,255,.9)}
-.chip[aria-pressed="true"] .n{color:rgba(255,255,255,.8)}
+.chip[aria-pressed="true"]{color:var(--fg,#fff);border-color:transparent;background:var(--c,var(--violet))}
+.chip[aria-pressed="true"] .swatch{background:var(--fg,rgba(255,255,255,.9));opacity:.9}
+.chip[aria-pressed="true"] .n{color:var(--fg,#fff);opacity:.72}
 .toolbar .features-row{margin-top:.6rem;align-items:flex-start;gap:.6rem}
 .features-label{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-top:.55rem;flex:0 0 auto}
 .chip--feature{text-transform:none;letter-spacing:.01em;font-size:.66rem;padding:.45rem .7rem}
@@ -318,12 +318,12 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   </div>
 
   <div class="wrap">
-    <div class="meta-row">
+    <div class="meta-row" aria-live="polite" aria-atomic="true">
       <h2 id="resultTitle">Alle templates</h2>
       <p class="count"><b id="resultCount">60</b> van <span id="resultTotal">60</span> getoond</p>
     </div>
     <div class="grid" id="grid"></div>
-    <div class="empty" id="empty">
+    <div class="empty" id="empty" role="status">
       <div class="big">🔍</div>
       <p>Geen templates gevonden voor deze combinatie.</p>
       <button type="button" id="reset">Filters wissen</button>
@@ -370,12 +370,12 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   /* ---- data ---- */
   var TIERS = {
     basis:      { label: 'Basis',      color: 'var(--blue)' },
-    premium:    { label: 'Premium',    color: 'var(--gold)' },
+    premium:    { label: 'Premium',    color: 'var(--gold)', fg: '#0a0a12' },
     flagship:   { label: 'Flagship',   color: 'var(--coral)' },
     signature:  { label: 'Signature',  color: 'var(--violet)' },
-    aanpasbaar: { label: 'Aanpasbaar', color: 'var(--teal)' },
+    aanpasbaar: { label: 'Aanpasbaar', color: 'var(--teal)', fg: '#0a0a12' },
     maatwerk: { label: 'Maatwerk', color: '#e0728a' },
-    grafisch: { label: 'Grafisch', color: '#c2f53a' },
+    grafisch: { label: 'Grafisch', color: '#c2f53a', fg: '#0a0a12' },
     editorial: { label: 'Editorieel', color: '#6a8cff' }
   };
   /* @gallery:start — GEGENEREERD uit templates.json door _kit/gallery.mjs. NIET handmatig bewerken. */
@@ -515,10 +515,10 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     card.setAttribute('data-href', href);
     card.setAttribute('data-text', (title + ' ' + desc + ' ' + TIERS[tier].label + ' ' + sector + ' ' + tags.join(' ')).toLowerCase());
     card.setAttribute('data-tags', tags.map(function (t) { return t.toLowerCase(); }).join('|'));
-    var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<button type="button" class="tag" data-tag="' + esc(t.toLowerCase()) + '" aria-pressed="false">' + t + '</button>'; }).join('') + '</div>' : '';
+    var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<button type="button" class="tag" data-tag="' + esc(t.toLowerCase()) + '" aria-pressed="false" aria-label="Filter op ' + esc(t) + '">' + t + '</button>'; }).join('') + '</div>' : '';
     card.innerHTML =
       '<div class="thumb" style="--g1:' + g1 + ';--g2:' + g2 + '">' +
-        '<img class="shot" loading="lazy" alt="" src="previews/' + slug + '.jpg">' +
+        '<img class="shot" loading="lazy" alt="Voorbeeldweergave van ' + esc(title) + '" src="previews/' + slug + '.jpg">' +
         '<span class="num">' + num + '</span>' +
         '<span class="badge" style="--bc:' + TIERS[tier].color + '">' + TIERS[tier].label + '</span>' +
         '<span class="emoji">' + emoji + '</span>' +
@@ -545,12 +545,13 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   /* ---- filter-chips ---- */
   var chipsEl = doc.getElementById('chips');
   var chipDefs = [{ key: 'alle', label: 'Alle', color: 'var(--violet)', n: T.length }];
-  Object.keys(TIERS).forEach(function (k) { if (counts[k]) { chipDefs.push({ key: k, label: TIERS[k].label, color: TIERS[k].color, n: counts[k] }); } });
+  Object.keys(TIERS).forEach(function (k) { if (counts[k]) { chipDefs.push({ key: k, label: TIERS[k].label, color: TIERS[k].color, fg: TIERS[k].fg, n: counts[k] }); } });
   chipDefs.forEach(function (c, i) {
     var b = doc.createElement('button');
     b.className = 'chip'; b.type = 'button'; b.setAttribute('data-tier', c.key);
     b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
     b.style.setProperty('--c', c.color);
+    if (c.fg) { b.style.setProperty('--fg', c.fg); }
     b.innerHTML = '<span class="swatch" aria-hidden="true"></span>' + c.label + ' <span class="n">' + c.n + '</span>';
     chipsEl.appendChild(b);
   });

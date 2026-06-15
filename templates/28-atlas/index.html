@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -624,7 +632,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Van download naar <em>jouw</em> merk">
+<section class="section "  aria-label="Van download naar jouw merk">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Zo werkt het</p>
@@ -638,7 +646,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Waarom <em>Atlas</em>">
+<section class="section "  aria-label="Waarom Atlas">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Vergelijk</p><h2>Waarom <em>Atlas</em></h2><p>Een eerlijke vergelijking met de gebruikelijke alternatieven.</p></div>
     <div class="compare-wrap" data-rv><table class="compare"><thead><tr><th></th><th class="">Losse code</th><th class="">Pagebuilder</th><th class="col-hi">Atlas</th></tr></thead><tbody><tr><th>Live thema aanpassen</th><td class="">—</td><td class=""><span class="yes">✓</span></td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Eén bestand, geen build</th><td class=""><span class="yes">✓</span></td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Geen dependencies</th><td class=""><span class="yes">✓</span></td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Toegankelijk (ARIA, focus, reduced-motion)</th><td class="">soms</td><td class="">wisselend</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Thema als CSS exporteren</th><td class="">—</td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Eénmalige prijs</th><td class="">—</td><td class="">abonnement</td><td class="col-hi">vanaf € 0</td></tr></tbody></table></div>
@@ -665,7 +673,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Kies je <em>licentie</em>">
+<section class="section "  aria-label="Kies je licentie">
   <div class="container">
     <div class="section-head center" data-rv>
       <p class="eyebrow">Licenties</p>
@@ -733,7 +741,7 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
     </div>
   </div>
 </section>
-<section class="section" aria-label="Maak het <em>van jou</em>">
+<section class="section" aria-label="Maak het van jou">
   <div class="container">
     <div class="banner" data-rv>
       <div><h2>Maak het <em>van jou</em></h2><p>Open de editor, kies je kleuren en zet je site vandaag nog online.</p></div>
@@ -837,7 +845,17 @@ html.anim-ok .marquee-track2{animation:logos-marquee 30s linear infinite}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

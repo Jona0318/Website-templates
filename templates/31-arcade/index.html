@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -572,7 +580,7 @@ html.anim-ok .syn-inner .syn-cta{animation-delay:.4s}
 </div>
 <main id="main">
 <section class='syn-hero' aria-label='Introductie'><canvas class='syn-canvas' id='synCanvas' aria-hidden='true'></canvas><div class='syn-veil' aria-hidden='true'></div><div class='container syn-inner'><p class='eyebrow'>Onafhankelijke game studio</p><h1>Games met <em>lef</em>.</h1><p class='syn-lead'>Neonburcht maakt eigenzinnige games met een synthwave-hart — strak, snel en vol stijl. Van pixel tot release, alles onder één neonlicht.</p><div class='syn-cta'><a class='btn btn-primary js-magnetic' href='#games'>Bekijk onze games</a><a class='btn btn-ghost' href='#contact'>Werk met ons</a></div></div></section>
-<section class="section "  aria-label="Vers uit de <em>burcht</em>">
+<section class="section "  aria-label="Vers uit de burcht">
   <div class="container">
     <div class="section-head" data-rv>
       <p class="eyebrow">Onze games</p>
@@ -602,7 +610,7 @@ html.anim-ok .syn-inner .syn-cta{animation-delay:.4s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Wat we <em>maken</em>">
+<section class="section "  aria-label="Wat we maken">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">De studio</p><h2>Wat we <em>maken</em></h2></div>
     <div data-tabs data-rv>
@@ -628,7 +636,7 @@ html.anim-ok .syn-inner .syn-cta{animation-delay:.4s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="De <em>burchtbewoners</em>">
+<section class="section "  aria-label="De burchtbewoners">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Het team</p><h2>De <em>burchtbewoners</em></h2></div>
     <div class="team-grid">
@@ -756,7 +764,17 @@ html.anim-ok .syn-inner .syn-cta{animation-delay:.4s}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {

@@ -19,6 +19,14 @@
    Thema komt uit het recept via :root-overrides; alle secties gebruiken
    uitsluitend de semantische tokens hieronder.
    ============================================================ */
+/* Reduced-motion vangnet: ook als JS de anim-ok-klasse zet, blijven
+   animaties/transities uit wanneer de bezoeker dat heeft aangegeven. */
+@media (prefers-reduced-motion:reduce){
+  html.anim-ok *,html.anim-ok *::before,html.anim-ok *::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+}
 :root{
   /* thema-tokens (recept overschrijft deze) */
   --bg:#ffffff; --bg-2:#f5f3ee; --surface:#ffffff;
@@ -618,7 +626,7 @@ html.anim-ok .mt-cta{animation-delay:.34s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Hoe we te <em>werk</em> gaan">
+<section class="section "  aria-label="Hoe we te werk gaan">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Aanpak</p><h2>Hoe we te <em>werk</em> gaan</h2></div>
     <div data-tabs data-rv>
@@ -644,7 +652,7 @@ html.anim-ok .mt-cta{animation-delay:.34s}
     </div>
   </div>
 </section>
-<section class="section "  aria-label="Meetlat vs. <em>de rest</em>">
+<section class="section "  aria-label="Meetlat vs. de rest">
   <div class="container">
     <div class="section-head" data-rv><p class="eyebrow">Vergelijk</p><h2>Meetlat vs. <em>de rest</em></h2></div>
     <div class="compare-wrap" data-rv><table class="compare"><thead><tr><th></th><th class="">Zelf bouwen</th><th class="">Groot bureau</th><th class="col-hi">Meetlat</th></tr></thead><tbody><tr><th>Werkend dashboard binnen weken</th><td class="">—</td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Vaste, transparante prijs</th><td class="">—</td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Strategie én techniek</th><td class="">—</td><td class=""><span class="yes">✓</span></td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Kennisoverdracht naar je team</th><td class=""><span class="yes">✓</span></td><td class="">—</td><td class="col-hi"><span class="yes">✓</span></td></tr><tr><th>Senioren aan de knoppen</th><td class="">wisselend</td><td class="">wisselend</td><td class="col-hi"><span class="yes">✓</span></td></tr></tbody></table></div>
@@ -770,7 +778,17 @@ html.anim-ok .mt-cta{animation-delay:.34s}
   if (menuToggle) { menuToggle.addEventListener('click', function () { setMenu(true); }); }
   if (menuClose) { menuClose.addEventListener('click', function () { setMenu(false); }); }
   if (menuOverlay) { menuOverlay.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } }); }
-  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) { setMenu(false); } });
+  doc.addEventListener('keydown', function (e) {
+    if (!menuOpen || !menuOverlay) { return; }
+    if (e.key === 'Escape') { setMenu(false); return; }
+    if (e.key !== 'Tab') { return; }
+    /* focus-trap: houd Tab binnen de overlay zolang die open is */
+    var f = menuOverlay.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if (!f.length) { return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* reveal */
   if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {
