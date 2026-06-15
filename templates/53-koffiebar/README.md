@@ -1,4 +1,4 @@
-# Tussen — koffiebar
+﻿# Tussen — koffiebar
 
 Moderne koffiebar met schermvullende beeld-hero en overlappende kaarten (vandaag-special, open-status) over de hero-rand — cream × kobalt.
 
@@ -13,7 +13,7 @@ Moderne koffiebar met schermvullende beeld-hero en overlappende kaarten (vandaag
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

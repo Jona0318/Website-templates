@@ -1,4 +1,4 @@
-# MEEPLE — bordspellencafé
+﻿# MEEPLE — bordspellencafé
 
 Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream: chunky hard-shadow kaarten, spellencollectie met JS-filter (2 spelers/familie/strategie/party), agenda en reserveerformulier.
 
@@ -13,7 +13,7 @@ Speels retro-jaren-70 spellokaal in mosterd × teal × tomaat × cream: chunky h
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

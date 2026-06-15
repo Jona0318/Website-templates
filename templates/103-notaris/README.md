@@ -1,4 +1,4 @@
-# MERIDIAAN — notarissen
+﻿# MERIDIAAN — notarissen
 
 Klassiek-gezaghebbend notariskantoor in ivoor × oxblood (bewust géén navy/goud): fijne Cormorant-serif, hairline-regels, een "kies uw situatie"-keuzehulp naar het juiste rechtsgebied, transparante tarieven en intakeformulier.
 
@@ -13,7 +13,7 @@ Klassiek-gezaghebbend notariskantoor in ivoor × oxblood (bewust géén navy/gou
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

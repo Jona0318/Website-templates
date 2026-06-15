@@ -1,4 +1,4 @@
-# Suiker — patisserie
+﻿# Suiker — patisserie
 
 Verfijnde patisserie als bento-raster met echte gebak-foto’s; assortiment, ambacht en taart-bestelformulier — rozig cream, Italiana.
 
@@ -13,7 +13,7 @@ Verfijnde patisserie als bento-raster met echte gebak-foto’s; assortiment, amb
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

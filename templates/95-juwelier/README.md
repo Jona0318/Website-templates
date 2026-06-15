@@ -1,4 +1,4 @@
-# ATELIER LUME — juwelier
+﻿# ATELIER LUME — juwelier
 
 Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud: fijne Cormorant-serif, collectie-grid met prijzen vanaf, op-maat verhaal, verlovingsringen en afspraakformulier.
 
@@ -13,7 +13,7 @@ Luchtig minimaal luxe sieraden-atelier in gebroken wit × blush × dun goud: fij
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

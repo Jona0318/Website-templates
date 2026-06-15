@@ -1,4 +1,4 @@
-# Desem — bakkerij
+﻿# Desem — bakkerij
 
 Ambachtelijke bakkerij met utility-bar (open-status), klassieke nav en zigzag-secties; getypte kaart, ambacht-verhaal en brood bestellen — slab-serif.
 
@@ -13,7 +13,7 @@ Ambachtelijke bakkerij met utility-bar (open-status), klassieke nav en zigzag-se
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

@@ -1,4 +1,4 @@
-# FORNO VESUVIO — pizzeria
+﻿# FORNO VESUVIO — pizzeria
 
 Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum: Fraunces-italic koppen, menukaart met tabs, houtoven-verhaal, openingstijden met vandaag-markering en reserveerformulier.
 
@@ -13,7 +13,7 @@ Warm rustiek Napolitaanse houtoven-pizzeria in cream × tomaatrood × basilicum:
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

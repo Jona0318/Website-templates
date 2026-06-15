@@ -1,4 +1,4 @@
-# Atlas — aanpasbare starter
+﻿# Atlas — aanpasbare starter
 
 Live thema-editor: kleur, modus, hoeken en lettertype live aanpassen en kopiëren als CSS.
 
@@ -13,7 +13,7 @@ Live thema-editor: kleur, modus, hoeken en lettertype live aanpassen en kopiëre
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

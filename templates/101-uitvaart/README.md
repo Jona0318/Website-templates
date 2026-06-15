@@ -1,4 +1,4 @@
-# LINDE — uitvaartbegeleiding
+﻿# LINDE — uitvaartbegeleiding
 
 Serene, met de hand geschreven uitvaartonderneming in warm greige × salie: Cormorant-serif, veel rust en wit, ingehouden fade-ins, een permanente "dag en nacht bereikbaar"-band en een kalme kostenindicatie i.p.v. prijslijst.
 
@@ -13,7 +13,7 @@ Serene, met de hand geschreven uitvaartonderneming in warm greige × salie: Corm
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

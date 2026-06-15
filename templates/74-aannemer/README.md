@@ -1,4 +1,4 @@
-# BETON — aannemer
+﻿# BETON — aannemer
 
 Industriële aannemer met hazard-utilitybalk, split-hero en zigzag-projecten met echte bouwfoto’s; offerteformulier — safety-geel × zwart.
 
@@ -13,7 +13,7 @@ Industriële aannemer met hazard-utilitybalk, split-hero en zigzag-projecten met
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

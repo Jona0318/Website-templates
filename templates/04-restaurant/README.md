@@ -1,4 +1,4 @@
-# Restaurant
+﻿# Restaurant
 
 Warme, elegante site met menu, galerij en reserveringsformulier.
 
@@ -13,7 +13,7 @@ Warme, elegante site met menu, galerij en reserveringsformulier.
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

@@ -1,4 +1,4 @@
-# Veld — bloemist
+﻿# Veld — bloemist
 
 Botanische bloemist met gecentreerde redactionele hero en volle-breedte banden; seizoensboeketten (echte foto’s), abonnement en nieuwsbrief — salie × oudroze.
 
@@ -13,7 +13,7 @@ Botanische bloemist met gecentreerde redactionele hero en volle-breedte banden; 
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

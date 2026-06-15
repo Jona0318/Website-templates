@@ -1,4 +1,4 @@
-# Architectuur Studio
+﻿# Architectuur Studio
 
 Editorial design met preloader, parallax, scroll-tekst en magnetische knop.
 
@@ -13,7 +13,7 @@ Editorial design met preloader, parallax, scroll-tekst en magnetische knop.
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

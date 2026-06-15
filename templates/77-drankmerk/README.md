@@ -1,4 +1,4 @@
-# BOLT — energiedrank
+﻿# BOLT — energiedrank
 
 Energiedrank-merk met full-bleed product-hero en overlappende stat-kaarten; CSS-blik dat live van kleur/smaak wisselt — electric blue × lime.
 
@@ -13,7 +13,7 @@ Energiedrank-merk met full-bleed product-hero en overlappende stat-kaarten; CSS-
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

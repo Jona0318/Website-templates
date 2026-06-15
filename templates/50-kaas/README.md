@@ -1,4 +1,4 @@
-# Wrongel — kaaswinkel
+﻿# Wrongel — kaaswinkel
 
 Ambachtelijke kaaswinkel & affineur als katern-magazine met sticky genummerde sectie-index; assortiment per kilo, proefplank en open-status.
 
@@ -13,7 +13,7 @@ Ambachtelijke kaaswinkel & affineur als katern-magazine met sticky genummerde se
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

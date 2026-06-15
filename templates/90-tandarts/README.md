@@ -1,4 +1,4 @@
-# GLIMLACH — tandartspraktijk
+﻿# GLIMLACH — tandartspraktijk
 
 Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit: grote ronde hoeken, behandelingengrid, eerste-bezoek-stappen, team, FAQ-accordeon en afspraakformulier met validatie.
 
@@ -13,7 +13,7 @@ Zacht klinische tandartspraktijk in pastel mint × sky-blue × wit: grote ronde 
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

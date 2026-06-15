@@ -1,4 +1,4 @@
-# MAISON CACAEU — chocolatier
+﻿# MAISON CACAEU — chocolatier
 
 Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream: Cormorant-serif, collectie-grid, van-boon-tot-bonbon verhaal, "stel je eigen doos samen"-builder met live prijs en bestelformulier.
 
@@ -13,7 +13,7 @@ Luxe verfijnd bonbon-atelier in espresso-bruin × goud × cream: Cormorant-serif
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

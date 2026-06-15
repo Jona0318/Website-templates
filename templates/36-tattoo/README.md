@@ -1,4 +1,4 @@
-# Inktzwart — tattoo studio
+﻿# Inktzwart — tattoo studio
 
 Tattoo studio: teken met je cursor in zwarte en rode inkt op crèmepapier.
 
@@ -13,7 +13,7 @@ Tattoo studio: teken met je cursor in zwarte en rode inkt op crèmepapier.
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

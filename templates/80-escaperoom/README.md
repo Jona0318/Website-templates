@@ -1,4 +1,4 @@
-# ONTSNAP — escape rooms
+﻿# ONTSNAP — escape rooms
 
 Gespannen escape rooms in poster/diagonaal met side-rail; aftelklok in de schuine hero-wig en gestaffelde room-strips — bijna-zwart × oranje.
 
@@ -13,7 +13,7 @@ Gespannen escape rooms in poster/diagonaal met side-rail; aftelklok in de schuin
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

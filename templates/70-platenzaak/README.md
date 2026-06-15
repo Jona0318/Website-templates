@@ -1,4 +1,4 @@
-# WALS — platenzaak
+﻿# WALS — platenzaak
 
 Retro-platenzaak met side-rail nav, draaiende-vinyl-hero en horizontaal scrollende platenbak met genre-filter — burnt orange × cream.
 
@@ -13,7 +13,7 @@ Retro-platenzaak met side-rail nav, draaiende-vinyl-hero en horizontaal scrollen
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

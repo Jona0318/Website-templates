@@ -1,4 +1,4 @@
-# RESPAWN — esports team
+﻿# RESPAWN — esports team
 
 Hoekig esports-team in poster/diagonaal met clip-path en gekantelde blokken; roster met echte speler-portretten, wedstrijden en tryout — navy × neon-groen.
 
@@ -13,7 +13,7 @@ Hoekig esports-team in poster/diagonaal met clip-path en gekantelde blokken; ros
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

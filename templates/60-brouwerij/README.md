@@ -1,4 +1,4 @@
-# Schuim — stadsbrouwerij
+﻿# Schuim — stadsbrouwerij
 
 Stadsbrouwerij met de taplijst als toegankelijke tab-hub (op vat / wisselend / binnenkort, pijltjesnavigatie); proeflokaal en rondleiding — donker × amber.
 
@@ -13,7 +13,7 @@ Stadsbrouwerij met de taplijst als toegankelijke tab-hub (op vat / wisselend / b
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

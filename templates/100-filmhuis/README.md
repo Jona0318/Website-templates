@@ -1,4 +1,4 @@
-# DE LICHTBAK — filmhuis
+﻿# DE LICHTBAK — filmhuis
 
 Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold: Archivo Black/Bebas posterkoppen, filmkorrel, programma met speeltijden + genre-filter, lidmaatschap en reserveerformulier.
 
@@ -13,7 +13,7 @@ Cinematisch poster-editorial arthouse filmhuis in antraciet × ivoor × marigold
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

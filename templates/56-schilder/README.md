@@ -1,4 +1,4 @@
-# Laag — schildersbedrijf
+﻿# Laag — schildersbedrijf
 
 Schildersbedrijf met split-hero, side-rail nav en asymmetrisch raster; interactieve kleurkiezer die de kamer mee laat veranderen.
 
@@ -13,7 +13,7 @@ Schildersbedrijf met split-hero, side-rail nav en asymmetrisch raster; interacti
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

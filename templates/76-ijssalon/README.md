@@ -1,4 +1,4 @@
-# ROOM — ambachtelijk ijs
+﻿# ROOM — ambachtelijk ijs
 
 Speelse ijssalon met gecentreerde hero en gekleurde volle-breedte banden; smakengrid met echte ijsfoto’s en prijzenband — pastel-bold.
 
@@ -13,7 +13,7 @@ Speelse ijssalon met gecentreerde hero en gekleurde volle-breedte banden; smaken
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

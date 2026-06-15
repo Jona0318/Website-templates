@@ -1,4 +1,4 @@
-# PLUK — kinderopvang
+﻿# PLUK — kinderopvang
 
 Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cream: blob-vormen, golf-scheidingen, kleur-gecodeerde groepen, dagritme-tijdlijn, tarieven-info en rondleidingsformulier.
 
@@ -13,7 +13,7 @@ Vrolijk candy kinderdagverblijf in koraal × geel × groen × lucht-blauw op cre
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

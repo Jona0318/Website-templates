@@ -1,4 +1,4 @@
-# DE REGENTES — theater & podium
+﻿# DE REGENTES — theater & podium
 
 Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × goud: Fraunces-display, filmkorrel, seizoensprogramma met genre-filter (toneel/dans/muziek/comedy) + uitverkocht-badges, kassa-status en kaartreservering.
 
@@ -13,7 +13,7 @@ Dramatisch poster-editorial stadstheater in diep plum × spotlight-koraal × gou
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

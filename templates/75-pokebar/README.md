@@ -1,4 +1,4 @@
-# KOM — poké bar
+﻿# KOM — poké bar
 
 Poké bar met split-hero (echte bowl-foto) en asymmetrisch raster; interactieve bowl-bouwer met live prijs — fris groen × koraal.
 
@@ -13,7 +13,7 @@ Poké bar met split-hero (echte bowl-foto) en asymmetrisch raster; interactieve 
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

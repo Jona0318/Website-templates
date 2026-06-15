@@ -1,4 +1,4 @@
-# SPRINT — running crew
+﻿# SPRINT — running crew
 
 Energieke running crew met side-rail, outline-type-hero en horizontaal scrollende runs-strip met pace-tags — oranje × beton.
 
@@ -13,7 +13,7 @@ Energieke running crew met side-rail, outline-type-hero en horizontaal scrollend
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

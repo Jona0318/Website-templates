@@ -1,4 +1,4 @@
-# TEMPO — dansstudio
+﻿# TEMPO — dansstudio
 
 Kinetische dansstudio als content-hub met het weekrooster (dag-tabs, pijltjesnavigatie) als kloppend hart; stijlen — zwart × magenta × lime.
 
@@ -13,7 +13,7 @@ Kinetische dansstudio als content-hub met het weekrooster (dag-tabs, pijltjesnav
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

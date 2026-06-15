@@ -1,4 +1,4 @@
-# Neonburcht — game studio
+﻿# Neonburcht — game studio
 
 Synthwave game studio met een neon perspectief-grid en ondergaande zon, live op canvas.
 
@@ -13,7 +13,7 @@ Synthwave game studio met een neon perspectief-grid en ondergaande zon, live op 
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

@@ -1,4 +1,4 @@
-# Tij — surfschool
+﻿# Tij — surfschool
 
 Surfschool met een gelaagde, golvende zee op canvas en een zonnige strandclub-vibe.
 
@@ -13,7 +13,7 @@ Surfschool met een gelaagde, golvende zee op canvas en een zonnige strandclub-vi
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

@@ -1,4 +1,4 @@
-# VIZIER — optiek
+﻿# VIZIER — optiek
 
 Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt: bold Archivo-display, filterbare monturen-collectie (rond/hoekig/zonnebril) met live count, oogmeting-service en afspraakformulier.
 
@@ -13,7 +13,7 @@ Strak modern fashion-grafisch brillenboutique in wit × zwart × vivid kobalt: b
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

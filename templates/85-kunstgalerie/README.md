@@ -1,4 +1,4 @@
-# KLEUR — kunstgalerie
+﻿# KLEUR — kunstgalerie
 
 Kunstgalerie als magazine met sticky scroll-spy index; uitgelichte expo-opening en exposities met echte kunstwerk-foto’s — bold poster-typografie.
 
@@ -13,7 +13,7 @@ Kunstgalerie als magazine met sticky scroll-spy index; uitgelichte expo-opening 
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

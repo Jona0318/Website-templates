@@ -1,4 +1,4 @@
-# Kam — kapsalon
+﻿# Kam — kapsalon
 
 Chique kapsalon, minimaal en gecentreerd met hairline-details; eerlijke prijslijst en boek-een-stoel — off-white × mauve, Jost.
 
@@ -13,7 +13,7 @@ Chique kapsalon, minimaal en gecentreerd met hairline-details; eerlijke prijslij
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

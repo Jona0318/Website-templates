@@ -1,4 +1,4 @@
-# HET LANGE LAND — boerderijwinkel
+﻿# HET LANGE LAND — boerderijwinkel
 
 Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta: Fraunces-serif, seizoensproducten met prijzen, oogstbox-pakketten, openingstijden met vandaag-markering en bestelformulier.
 
@@ -13,7 +13,7 @@ Warm rustiek biologische boerderijwinkel in cream × bosgroen × terracotta: Fra
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

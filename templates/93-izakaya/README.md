@@ -1,4 +1,4 @@
-# ENSO — izakaya
+﻿# ENSO — izakaya
 
 Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen: Shippori Mincho-serif, verticale-tekst accenten, menu met tabs (sushi/ramen/sake), openingstijden en reserveringsformulier.
 
@@ -13,7 +13,7 @@ Minimalistisch zen izakaya in washi-wit × sumi-inkt × vermiljoen: Shippori Min
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

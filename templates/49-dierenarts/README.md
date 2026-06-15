@@ -1,4 +1,4 @@
-# Poot & Pels — dierenarts
+﻿# Poot & Pels — dierenarts
 
 Vriendelijke dierenarts met spoed-utilitybalk, klassieke nav en zigzag-blokken; diensten, 24/7 spoed, open-status en afspraakformulier — geel × blauw.
 
@@ -13,7 +13,7 @@ Vriendelijke dierenarts met spoed-utilitybalk, klassieke nav en zigzag-blokken; 
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

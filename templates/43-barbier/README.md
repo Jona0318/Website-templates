@@ -1,4 +1,4 @@
-# Stoppel — barbier
+﻿# Stoppel — barbier
 
 Stoere barbershop met schermvullende beeld-hero en info-/status-kaarten die over de hero-rand schuiven; prijslijst en boek-een-stoel — donker × amber.
 
@@ -13,7 +13,7 @@ Stoere barbershop met schermvullende beeld-hero en info-/status-kaarten die over
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

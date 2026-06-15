@@ -1,4 +1,4 @@
-# WOORD — literair festival
+﻿# WOORD — literair festival
 
 Literair festival als magazine met sticky sectie-index (scroll-spy); asymmetrische redactionele hero, sprekers en programma — cream × diep rood, Fraunces.
 
@@ -13,7 +13,7 @@ Literair festival als magazine met sticky sectie-index (scroll-spy); asymmetrisc
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

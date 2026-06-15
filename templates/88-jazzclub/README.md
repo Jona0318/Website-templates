@@ -1,4 +1,4 @@
-# AMBER — jazzclub
+﻿# AMBER — jazzclub
 
 Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood: moody hero met live-status, programma met optredens (uitverkocht-badges), ticket-tiers, JS-openingstijden en reserveringsformulier.
 
@@ -13,7 +13,7 @@ Nachtelijk art-deco jazzclub in middernachtblauw × amber-goud × wijnrood: mood
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

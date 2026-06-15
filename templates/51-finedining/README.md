@@ -1,4 +1,4 @@
-# Maas — fine dining
+﻿# Maas — fine dining
 
 Luxe restaurant, minimaal en gecentreerd op één smalle as met didone-typografie; getypt zevengangen-proefmenu en open-status — donker × goud.
 
@@ -13,7 +13,7 @@ Luxe restaurant, minimaal en gecentreerd op één smalle as met didone-typografi
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 

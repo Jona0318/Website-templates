@@ -1,4 +1,4 @@
-# CANTORCLIN — schoonmaakbedrijf
+﻿# CANTORCLIN — schoonmaakbedrijf
 
 Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy: hero met klanttevredenheid-badge, animerende cijfers, diensten- en sectorgrid, duurzaamheidsblok (NJOY/ISO 14001), FAQ-accordeon en offerteformulier met validatie.
 
@@ -13,7 +13,7 @@ Fris zakelijk schoonmaakbedrijf in off-white × teal × diep navy: hero met klan
 Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
-Dit bestand maakt deel uit van de [Template Galerij](../../index.html).
+Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 
