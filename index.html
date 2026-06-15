@@ -264,6 +264,22 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
 .footer ul a:hover{color:var(--text)}
 .footer .bottom{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--f-mono);font-size:.7rem;color:var(--faint)}
 
+/* ── mobiel: hero compact ──────────────────────────────── */
+@media (max-width:600px){
+  .hero{padding-top:calc(var(--header-h) + .9rem);padding-bottom:.9rem}
+  .hero h1{font-size:clamp(1.75rem,8.5vw,2.4rem);margin:.7rem auto .6rem;max-width:100%}
+  .hero p.lead{display:none}
+  .hero-cta{margin-bottom:1rem;gap:.55rem}
+  .btn{padding:.8rem 1.2rem;font-size:.72rem}
+  .pills{display:none}
+  .eyebrow{font-size:.62rem;padding:.38rem .8rem;letter-spacing:.18em}
+}
+@media (max-width:600px){
+  .meta-row{padding-top:1rem;padding-bottom:.75rem}
+  .body{padding:1rem 1.1rem 1.15rem}
+  .body h3{font-size:1.05rem}
+}
+
 @media (prefers-reduced-motion:reduce){
   html.anim-ok .hero>.wrap>*{opacity:1;transform:none;animation:none}
   .thumb::after{display:none}
