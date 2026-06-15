@@ -85,16 +85,25 @@
   .toast{position:fixed;left:50%;bottom:1.6rem;transform:translateX(-50%) translateY(20px);background:var(--ok);color:#06201c;font-weight:600;font-size:.82rem;padding:.7rem 1.2rem;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+  /* ---- tabs ---- */
+  .ptabs{display:flex;gap:.25rem;margin:.55rem 0 .9rem;background:var(--surface);border-radius:10px;padding:3px}
+  .ptab{flex:1;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;padding:.45rem;border-radius:7px;background:none;border:none;color:var(--faint);cursor:pointer;transition:all .15s;text-align:center}
+  .ptab.is-active{background:var(--surface-2);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.35)}
+  .ptab:hover:not(.is-active){color:var(--muted)}
+  .ppane[hidden]{display:none!important}
+
   /* ---- builder ---- */
-  #builder{margin-top:.4rem}
-  .sec-block{border:1px solid var(--line);border-radius:12px;margin-bottom:.6rem;background:var(--surface-2);overflow:hidden}
-  .sec-block>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.55rem;padding:.7rem .85rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text);user-select:none}
+  #builder{margin-top:.2rem}
+  .sec-block{border:1px solid var(--line);border-radius:12px;margin-bottom:.45rem;background:var(--surface-2);overflow:hidden}
+  .sec-block>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.5rem;padding:.65rem .85rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text);user-select:none}
   .sec-block>summary::-webkit-details-marker{display:none}
-  .sec-block>summary .chev{margin-left:auto;width:13px;height:13px;color:var(--faint);transition:transform .2s}
+  .sec-dot{width:7px;height:7px;border-radius:50%;background:var(--violet);flex-shrink:0;opacity:.7}
+  .sec-name{flex:1}
+  .sec-count{font-size:.56rem;color:var(--faint);letter-spacing:.04em;font-weight:400;text-transform:none}
+  .sec-block>summary .chev{width:13px;height:13px;color:var(--faint);transition:transform .2s;flex-shrink:0}
   .sec-block[open]>summary .chev{transform:rotate(180deg)}
-  .sec-block>summary .tag{font-size:.58rem;color:var(--faint);letter-spacing:.06em}
   .sec-body{padding:.2rem .85rem .9rem}
-  .sub-item{border:1px solid var(--line);border-radius:10px;padding:.6rem .7rem;margin-bottom:.55rem;background:var(--surface)}
+  .sub-item{border:1px solid var(--line);border-radius:10px;padding:.6rem .7rem;margin-bottom:.5rem;background:var(--surface)}
   .sub-item>.sub-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:.5rem;display:block}
   .field .sub-hint{font-size:.66rem;color:var(--faint);margin-top:.3rem}
 
@@ -126,30 +135,36 @@
   <div class="layout">
     <aside class="panel">
       <h1>Builder</h1>
-      <p class="sub">Kies een template en pas alles aan: tekst, kleuren, lettertype. Wat je verandert zie je meteen, en wordt onthouden.</p>
 
-      <div class="field">
-        <label for="tpl">Template</label>
-        <select id="tpl"></select>
+      <div class="ptabs" role="tablist">
+        <button role="tab" class="ptab is-active" data-tab="inhoud" aria-selected="true">Inhoud</button>
+        <button role="tab" class="ptab" data-tab="stijl" aria-selected="false">Stijl</button>
       </div>
 
-      <div class="group">Lettertype</div>
-      <div class="field">
-        <label for="fontSel">Letterpaar</label>
-        <select id="fontSel"></select>
+      <div class="ppane" id="pInhoud">
+        <div id="builder"></div>
       </div>
 
-      <div class="group">Kleuren</div>
-      <div class="field">
-        <label>Accent &amp; secundair</label>
-        <div class="colors">
-          <div class="color"><label class="swatch" for="accent"><input id="accent" type="color"><span class="hex" id="accentHex">#000000</span></label></div>
-          <div class="color"><label class="swatch" for="accent2"><input id="accent2" type="color"><span class="hex" id="accent2Hex">#000000</span></label></div>
+      <div class="ppane" id="pStijl" hidden>
+        <div class="field" style="margin-top:.3rem">
+          <label for="tpl">Template</label>
+          <select id="tpl"></select>
         </div>
-        <div class="presets" id="presets"></div>
+        <div class="group">Lettertype</div>
+        <div class="field">
+          <label for="fontSel">Letterpaar</label>
+          <select id="fontSel"></select>
+        </div>
+        <div class="group">Kleuren</div>
+        <div class="field">
+          <label>Accent &amp; secundair</label>
+          <div class="colors">
+            <div class="color"><label class="swatch" for="accent"><input id="accent" type="color"><span class="hex" id="accentHex">#000000</span></label></div>
+            <div class="color"><label class="swatch" for="accent2"><input id="accent2" type="color"><span class="hex" id="accent2Hex">#000000</span></label></div>
+          </div>
+          <div class="presets" id="presets"></div>
+        </div>
       </div>
-
-      <div id="builder"></div>
 
       <div class="actions">
         <button class="btn btn-primary" id="download">⬇ Download website (.zip)</button>
@@ -158,7 +173,7 @@
           <button class="btn btn-ghost" id="reset">↺ Origineel</button>
         </div>
       </div>
-      <p class="hint">Je krijgt één zelfstandig HTML-bestand — geen build, geen dependencies. Open het lokaal of zet het online. Lettertypen laden via Google Fonts.</p>
+      <p class="hint">Zelfstandig HTML-bestand — geen build, geen server. Open lokaal of zet online.</p>
     </aside>
 
     <section class="stage">
@@ -272,7 +287,7 @@
     }
 
     /* ============== generieke content-builder ============== */
-    var SKIP = { use:1, id:1, layout:1, variant:1, dark:1, primary:1, featured:1, half:1, required:1, type:1, mode:1, key:1, modes:1, outline:1, name:1, stars:1 };
+    var SKIP = { use:1, id:1, layout:1, variant:1, dark:1, primary:1, featured:1, half:1, required:1, type:1, mode:1, key:1, modes:1, outline:1, name:1, stars:1, eyebrow:1, glyph:1, icon:1, clock:1, badge:1, suffix:1, sign:1, submit:1, successTitle:1, successText:1, placeholder:1, error:1 };
     var LABELS = {
       name:'Bedrijfsnaam', mark:'Logo-letter', tagline:'Tagline', email:'E-mail', tel:'Telefoon', address:'Adres', image:'Foto', photo:'Foto',
       title:'Titel', eyebrow:'Bovenkop', lead:'Introtekst', intro:'Intro', text:'Tekst', label:'Label', href:'Link',
@@ -432,7 +447,8 @@
       (work.sections || []).forEach(function(s, i){
         var det = document.createElement('details'); det.className = 'sec-block';
         var sum = document.createElement('summary');
-        sum.innerHTML = '<span>' + secName(s.use) + '</span><span class="tag">' + s.use + '</span>' + chevSvg();
+        var itemCount = Array.isArray(data.items) ? data.items.length : 0;
+        sum.innerHTML = '<span class="sec-dot"></span><span class="sec-name">' + secName(s.use) + '</span>' + (itemCount ? '<span class="sec-count">' + itemCount + ' items</span>' : '') + chevSvg();
         det.appendChild(sum);
         var body = document.createElement('div'); body.className = 'sec-body';
         var data = s.data || s;
@@ -587,6 +603,16 @@
     }
 
     function init(){
+      // Tab switching
+      document.querySelectorAll('.ptab').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var tab = this.dataset.tab;
+          document.querySelectorAll('.ptab').forEach(function(b){ b.classList.toggle('is-active', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab ? 'true' : 'false'); });
+          $('pInhoud').hidden = (tab !== 'inhoud');
+          $('pStijl').hidden = (tab !== 'stijl');
+        });
+      });
+
       var sel = $('tpl');
       TEMPLATES.forEach(function(t){ var o = document.createElement('option'); o.value = t.slug; o.textContent = t.label; sel.appendChild(o); });
       var pc = $('presets');
