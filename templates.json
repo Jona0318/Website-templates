@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 110,
+  "count": 111,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5650,6 +5650,66 @@
         "tags": [
           "Warmtekaart",
           "Relaties",
+          "Signature"
+        ]
+      }
+    },
+    {
+      "id": 111,
+      "slug": "111-tessera",
+      "path": "templates/111-tessera/",
+      "title": "Tessera - tegelatelier",
+      "name": "Tessera",
+      "sector": "interieur",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#faf7ee",
+        "#164f63",
+        "#e8a928",
+        "#b84a32",
+        "#2756d8"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Manrope"
+      ],
+      "mechanics": [
+        "mosaic-composer",
+        "palette-picker",
+        "pattern-switcher",
+        "room-switcher",
+        "faq-accordion",
+        "mobile-menu",
+        "reveal-system",
+        "anim-opt-in",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "mozaiekwand",
+        "intro",
+        "collecties",
+        "proces",
+        "projecten",
+        "proefpakket",
+        "quote",
+        "faq",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). Keramisch wandatelier in chalk, teal, saffron, oxide en cobalt met Fraunces/Manrope. SIGNATUUR: een interactieve mozaiekwand waarmee bezoekers ruimte, patroon en palet kiezen; het tegelvlak, levertijd en proefvlakprijs passen live mee aan. Verder tactiele collectie-spreads, versprongen processtappen, projectrijen, proefpakket-CTA en toegankelijke FAQ.",
+      "card": {
+        "title": "Tessera - tegelatelier",
+        "blurb": "Keramisch wandatelier met een interactieve mozaiekwand: kies ruimte, patroon en palet en zie direct een proefvlak ontstaan.",
+        "emoji": "T",
+        "grad": [
+          "#164f63",
+          "#e8a928"
+        ],
+        "tags": [
+          "Mozaiekwand",
+          "Interieur",
           "Signature"
         ]
       }
