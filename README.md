@@ -1,6 +1,6 @@
-# Bron — 111 kant-en-klare websites
+# Bron — 112 kant-en-klare websites
 
-Een verzameling van **111 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **21 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **112 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **22 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -116,6 +116,7 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 109 | `templates/109-verso/` | ✦ Signature — Verso | Indigo × lila (#6260ff · #e4e4ff): editorial-tech **narrative analytics**. SIGNATUUR: een scroll-gekoppeld **"data wordt tekst"**-moment — ruwe metrics met SVG-sparklines lossen woord-voor-woord op in een geschreven ochtendbriefing (directe-eindstaat-fallback bij reduced-motion). Fraunces/Hanken Grotesk/JetBrains Mono, afwisselende lila/ink/paper-banden, getypesette memo, magnetische CTA, FAQ-accordion |
 | 110 | `templates/110-kindred/` | ✦ Signature — Kindred | Royal blue × powder blush (#3447aa · #fbeaeb): warm-editoriale **relatie-companion**. SIGNATUUR: een levende warmtekaart waarin relaties afkoelen naar blauw en via een zacht zetje weer opwarmen naar blush. Newsreader/Albert Sans, asymmetrische editorial-spreads, privacy-belofte, prijzen en FAQ |
 | 111 | `templates/111-tessera/` | ✦ Signature — Tessera | Chalk × teal × saffron × oxide × cobalt (#faf7ee · #164f63 · #e8a928): keramisch **tegelatelier**. SIGNATUUR: een interactieve mozaiekwand waarin ruimte, patroon en palet live het proefvlak, de levertijd en prijs aanpassen. Fraunces/Manrope, collectie-spreads, proces, projecten en FAQ |
+| 112 | `templates/112-karterij/` | ✦ Signature — Karterij Noord | Warm papier × spruce × lake × clay (#f5f0e4 · #214f3b · #2b6f9e · #c86735): **routeatelier** en kaartenwinkel. SIGNATUUR: een interactief topografisch routepaneel waarin terrein, tempo en kaartstijl live route, contours, markers en statistieken aanpassen. Literata/Bricolage Grotesque, routebundels, winkel en FAQ |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
@@ -138,7 +139,7 @@ template/
     │   ├── css/style.css
     │   └── js/main.js
     ├── 02-portfolio/index.html
-    ├── …                    <- 03 t/m 111, elk één zelfstandig index.html
+    ├── …                    <- 03 t/m 112, elk één zelfstandig index.html
     ├── 23-sterrenwacht/index.html   <- canvas: sterrenhemel + maanfase
     └── 24-atelier/index.html        <- canvas: generatief stroomveld
 ```

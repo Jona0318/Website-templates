@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karterij Noord - kaartenwinkel en routeatelier</title>
+<meta name="description" content="Karterij Noord maakt papieren kaarten, routebundels en maatwerktochten voor mensen die graag langzaam reizen.">
+<meta name="theme-color" content="#214f3b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Karterij Noord - routeatelier">
+<meta property="og:description" content="Ontwerp een route, kies terrein en tempo, en zie de kaart direct mee veranderen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var h = document.documentElement;
+  h.classList.remove('no-js');
+  h.classList.add('js');
+  try {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      h.classList.remove('no-anim');
+      h.classList.add('anim-ok');
+    }
+  } catch (e) {}
+})();
+</script>
+<style>
+/* ============================================================
+   Karterij Noord - routeatelier
+   Zelfstandige Bron-template. Alles inline, geen dependencies.
+   ============================================================ */
+
+:root {
+  --paper: #f5f0e4;
+  --sheet: #fffaf0;
+  --ink: #17231f;
+  --muted: #657069;
+  --line: #ddd2bd;
+  --spruce: #214f3b;
+  --spruce-deep: #133226;
+  --lake: #2b6f9e;
+  --clay: #c86735;
+  --lichen: #b9c66a;
+  --dusk: #513c7a;
+
+  --font-display: "Literata", Georgia, serif;
+  --font-body: "Bricolage Grotesque", system-ui, sans-serif;
+  --maxw: 88rem;
+  --gutter: clamp(1rem, 4.5vw, 5rem);
+  --nav-h: 72px;
+  --section-y: clamp(4.5rem, 8vw, 8rem);
+  --gap: clamp(1rem, 2.2vw, 1.75rem);
+  --radius: 8px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --shadow: 0 30px 76px -48px rgba(19, 50, 38, .5);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html.no-anim { scroll-behavior: auto; }
+
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .42;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(200, 103, 53, .12), transparent 28%),
+    linear-gradient(rgba(23, 35, 31, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 35, 31, .04) 1px, transparent 1px);
+  background-size: auto, 36px 36px, 36px 36px;
+  mask-image: linear-gradient(#000, transparent 78%);
+}
+
+img,
+svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+button,
+input { font: inherit; color: inherit; }
+button { border: 0; background: none; cursor: pointer; }
+ul { list-style: none; padding: 0; }
+
+::selection { background: var(--spruce); color: var(--sheet); }
+
+:focus-visible {
+  outline: 3px solid var(--lake);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+.shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+section[id],
+footer[id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+.skip-link {
+  position: fixed;
+  z-index: 300;
+  top: .75rem;
+  left: .75rem;
+  transform: translateY(-160%);
+  color: var(--sheet);
+  background: var(--spruce-deep);
+  padding: .7rem 1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform .25s var(--ease);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.scroll-progress {
+  position: fixed;
+  z-index: 260;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--spruce), var(--lake), var(--clay), var(--dusk));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+html.no-anim .scroll-progress { display: none; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 220;
+  height: var(--nav-h);
+  border-bottom: 1px solid rgba(23, 35, 31, .1);
+  background: rgba(245, 240, 228, .88);
+  backdrop-filter: blur(16px);
+  transition: background-color .25s, box-shadow .25s;
+}
+
+.site-header.is-solid {
+  background: rgba(245, 240, 228, .96);
+  box-shadow: 0 16px 38px -34px rgba(23, 35, 31, .55);
+}
+
+.nav-inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .72rem;
+  color: var(--spruce-deep);
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  font-weight: 720;
+}
+
+.brand-mark {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--spruce);
+  background: var(--sheet);
+  overflow: hidden;
+}
+
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  inset: 5px 7px;
+  border: 2px solid var(--lake);
+  border-left-color: transparent;
+  border-bottom-color: var(--clay);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 14px;
+  border-top: 2px solid var(--spruce);
+  transform: rotate(28deg);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(.35rem, 1vw, 1rem);
+  color: var(--muted);
+  font-weight: 760;
+  font-size: .94rem;
+}
+
+.nav-links a {
+  padding: .42rem .35rem;
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--spruce-deep); }
+
+.nav-cta {
+  color: var(--sheet) !important;
+  background: var(--spruce);
+  border-radius: 999px;
+  padding: .62rem 1rem !important;
+}
+
+.nav-cta:hover { background: var(--spruce-deep); }
+
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--sheet);
+  color: var(--spruce-deep);
+}
+
+.menu-toggle span,
+.menu-toggle span::before,
+.menu-toggle span::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin-inline: auto;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .24s var(--ease), opacity .2s;
+}
+
+.menu-toggle span::before,
+.menu-toggle span::after { content: ""; }
+.menu-toggle span::before { transform: translateY(-6px); }
+.menu-toggle span::after { transform: translateY(4px); }
+.menu-toggle[aria-expanded="true"] span { transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span::before { opacity: 0; transform: translateY(0); }
+.menu-toggle[aria-expanded="true"] span::after { transform: translateY(-2px) rotate(90deg); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--spruce);
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: .7rem;
+  height: .7rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: .82rem 1.14rem;
+  font-weight: 850;
+  line-height: 1;
+  transition: transform .22s var(--ease), background-color .22s, color .22s, border-color .22s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { color: var(--sheet); background: var(--spruce); border-color: var(--spruce); }
+.btn-primary:hover { background: var(--spruce-deep); border-color: var(--spruce-deep); }
+.btn-secondary { color: var(--spruce-deep); background: rgba(255, 250, 240, .7); border-color: rgba(33, 79, 59, .24); }
+.btn-secondary:hover { background: var(--sheet); border-color: var(--spruce); }
+
+.hero {
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 72% 20%, rgba(43, 111, 158, .12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 250, 240, .72), rgba(245, 240, 228, .96));
+}
+
+.hero .shell {
+  padding-top: clamp(2.75rem, 6vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.hero-grid {
+  min-height: min(780px, calc(100vh - var(--nav-h)));
+  align-items: center;
+}
+
+.hero-copy {
+  grid-column: 1 / span 6;
+}
+
+.hero h1 {
+  max-width: 10.8ch;
+  margin-top: 1rem;
+  font-size: clamp(3.25rem, 7vw, 7.5rem);
+}
+
+.hero h1 span { display: block; }
+.hero .italic { color: var(--clay); font-style: italic; }
+
+.hero-lead {
+  max-width: 38rem;
+  margin-top: clamp(1.2rem, 2.4vw, 2rem);
+  color: var(--muted);
+  font-size: clamp(1.12rem, 1.35vw, 1.3rem);
+  line-height: 1.58;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .85rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.hero-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .75rem;
+  max-width: 36rem;
+  margin-top: clamp(1.8rem, 4vw, 3rem);
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+.hero-note::before {
+  content: "";
+  width: 1px;
+  background: linear-gradient(var(--lake), var(--clay));
+}
+
+.route-lab {
+  grid-column: 8 / span 5;
+}
+
+.lab {
+  border: 1px solid rgba(23, 35, 31, .18);
+  border-radius: var(--radius);
+  background: var(--sheet);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.lab-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: .9rem 1rem;
+}
+
+.lab-title {
+  color: var(--spruce-deep);
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.lab-status {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.map-frame {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(23, 35, 31, .05) 1px, transparent 1px),
+    linear-gradient(rgba(23, 35, 31, .05) 1px, transparent 1px),
+    #eee3cf;
+  background-size: 24px 24px;
+  padding: clamp(.8rem, 2vw, 1.2rem);
+}
+
+.route-map {
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  border: 1px solid rgba(23, 35, 31, .18);
+  background: var(--map-bg, #f7eedc);
+}
+
+.contour {
+  fill: none;
+  stroke: var(--map-line, rgba(33, 79, 59, .34));
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+
+.water {
+  fill: rgba(43, 111, 158, .16);
+  stroke: rgba(43, 111, 158, .52);
+  stroke-width: 1.2;
+}
+
+.route-path {
+  fill: none;
+  stroke: var(--route, #c86735);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--dash, 920);
+  stroke-dashoffset: 0;
+}
+
+html.anim-ok .route-path {
+  animation: draw-route .9s var(--ease) both;
+}
+
+@keyframes draw-route {
+  from { stroke-dashoffset: var(--dash, 920); }
+  to { stroke-dashoffset: 0; }
+}
+
+.marker {
+  fill: var(--sheet);
+  stroke: var(--spruce-deep);
+  stroke-width: 3;
+}
+
+.marker.is-end {
+  fill: var(--clay);
+  stroke: var(--sheet);
+}
+
+.map-label {
+  fill: var(--ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.lab-controls {
+  display: grid;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding: 1rem;
+}
+
+.control-row {
+  display: grid;
+  gap: .55rem;
+}
+
+.control-label {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .42rem;
+}
+
+.segmented button {
+  min-height: 2.3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--sheet);
+  color: var(--ink);
+  padding: .54rem .78rem;
+  font-size: .9rem;
+  font-weight: 800;
+  transition: background-color .2s, border-color .2s, transform .2s;
+}
+
+.segmented button:hover { transform: translateY(-1px); border-color: var(--spruce); }
+.segmented button[aria-pressed="true"] {
+  color: var(--sheet);
+  background: var(--spruce);
+  border-color: var(--spruce);
+}
+
+.lab-output {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  border-top: 1px solid var(--line);
+  background: rgba(245, 240, 228, .82);
+  padding: 1rem;
+}
+
+.lab-output span {
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.lab-output strong {
+  display: block;
+  color: var(--spruce-deep);
+  font-size: 1.08rem;
+}
+
+.manifest {
+  color: var(--sheet);
+  background: var(--spruce-deep);
+}
+
+.manifest-grid { align-items: start; }
+.manifest .eyebrow { color: var(--lichen); }
+.manifest h2 {
+  grid-column: 2 / span 6;
+  font-size: clamp(2.35rem, 5vw, 5.2rem);
+}
+.manifest p {
+  grid-column: 9 / span 3;
+  color: rgba(255, 250, 240, .72);
+  font-size: clamp(1.1rem, 1.4vw, 1.28rem);
+}
+
+.bundles {
+  background: var(--paper);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  margin-bottom: clamp(2.2rem, 5vw, 4rem);
+}
+
+.section-head .eyebrow { grid-column: 1 / span 3; }
+.section-head h2 {
+  grid-column: 4 / span 7;
+  font-size: clamp(2.2rem, 4.6vw, 4.4rem);
+}
+
+.bundle-list {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.bundle {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: clamp(1.4rem, 3vw, 2rem);
+}
+
+.bundle:nth-child(odd) .bundle-copy { grid-column: 1 / span 5; }
+.bundle:nth-child(odd) .mini-map { grid-column: 7 / span 6; }
+.bundle:nth-child(even) .mini-map { grid-column: 1 / span 6; order: 1; }
+.bundle:nth-child(even) .bundle-copy { grid-column: 8 / span 5; order: 2; }
+
+.bundle-copy h3 {
+  color: var(--spruce-deep);
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+}
+
+.bundle-copy p {
+  max-width: 34rem;
+  margin-top: .8rem;
+  color: var(--muted);
+}
+
+.bundle-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin-top: 1rem;
+}
+
+.bundle-meta span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, .72);
+  padding: .38rem .68rem;
+  color: var(--spruce-deep);
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.mini-map {
+  min-height: clamp(12rem, 20vw, 17rem);
+  border: 1px solid rgba(23, 35, 31, .16);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(120deg, transparent 0 42%, rgba(255, 250, 240, .5) 43% 48%, transparent 49%),
+    repeating-linear-gradient(20deg, rgba(33, 79, 59, .16) 0 1px, transparent 1px 18px),
+    var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.mini-map::after {
+  content: "";
+  position: absolute;
+  inset: 18% 12% 22%;
+  border: 4px solid var(--route);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(var(--rot));
+}
+
+.process {
+  background: var(--sheet);
+  border-block: 1px solid var(--line);
+}
+
+.process-track {
+  display: grid;
+  grid-template-columns: 1fr .85fr 1fr .75fr;
+  gap: var(--gap);
+}
+
+.step {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.step:nth-child(2) { margin-top: 4rem; }
+.step:nth-child(3) { margin-top: 1.5rem; }
+.step:nth-child(4) { margin-top: 5.5rem; }
+
+.step-no {
+  color: var(--clay);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.step h3 {
+  margin-top: 1rem;
+  color: var(--spruce-deep);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+.step p {
+  margin-top: .7rem;
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+.shop {
+  background: var(--paper);
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.shop-sticky {
+  position: sticky;
+  top: calc(var(--nav-h) + 1rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--sheet);
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+.shop-sticky h3 {
+  color: var(--spruce-deep);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.shop-sticky p {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+.product-list {
+  display: grid;
+  gap: .75rem;
+}
+
+.product-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+}
+
+.product-row h3 {
+  color: var(--ink);
+  font-size: clamp(1.35rem, 2.4vw, 2.2rem);
+}
+
+.product-row p {
+  color: var(--muted);
+  font-size: .96rem;
+}
+
+.price {
+  color: var(--spruce-deep);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 700;
+}
+
+.custom {
+  color: var(--sheet);
+  background: var(--lake);
+}
+
+.custom-grid { align-items: center; }
+.custom-copy { grid-column: 1 / span 5; }
+.custom .eyebrow { color: var(--lichen); }
+.custom h2 {
+  margin-top: 1rem;
+  font-size: clamp(2.25rem, 5vw, 5rem);
+}
+
+.custom p {
+  max-width: 34rem;
+  margin-top: 1rem;
+  color: rgba(255, 250, 240, .76);
+  font-size: clamp(1.08rem, 1.3vw, 1.22rem);
+}
+
+.custom-card {
+  grid-column: 8 / span 4;
+  border: 1px solid rgba(255, 250, 240, .24);
+  border-radius: var(--radius);
+  background: rgba(19, 50, 38, .22);
+  padding: clamp(1.1rem, 3vw, 1.7rem);
+}
+
+.custom-card h3 {
+  color: var(--sheet);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+.custom-card ul {
+  display: grid;
+  gap: .7rem;
+  margin-top: 1rem;
+  color: rgba(255, 250, 240, .86);
+}
+
+.custom-card li::before {
+  content: "";
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .55rem;
+  border-radius: 50%;
+  background: var(--lichen);
+}
+
+.quote {
+  background: var(--sheet);
+}
+
+.quote blockquote {
+  grid-column: 2 / span 8;
+  color: var(--spruce-deep);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.8vw, 5rem);
+  line-height: 1.02;
+}
+
+.quote cite {
+  grid-column: 10 / span 2;
+  align-self: end;
+  color: var(--muted);
+  font-style: normal;
+  font-weight: 760;
+}
+
+.faq {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.faq h2 {
+  margin-top: 1rem;
+  font-size: clamp(2.2rem, 4.5vw, 4.3rem);
+}
+
+.faq-list {
+  display: grid;
+  gap: .72rem;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 250, 240, .74);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  color: var(--ink);
+  text-align: left;
+  font-weight: 850;
+}
+
+.faq-q::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--clay);
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.faq-item.open .faq-q::after { content: "-"; }
+
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .28s var(--ease);
+}
+
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
+.faq-a > div { overflow: hidden; }
+.faq-a p {
+  padding: 0 1.1rem 1.1rem;
+  color: var(--muted);
+}
+
+.contact {
+  color: var(--sheet);
+  background: var(--spruce-deep);
+}
+
+.contact-grid { align-items: start; }
+.contact h2 {
+  grid-column: 1 / span 6;
+  font-size: clamp(2.6rem, 6vw, 6rem);
+}
+
+.contact-panel {
+  grid-column: 8 / span 4;
+  border: 1px solid rgba(255, 250, 240, .18);
+  border-radius: var(--radius);
+  background: rgba(255, 250, 240, .05);
+  padding: clamp(1.2rem, 3vw, 1.7rem);
+}
+
+.contact-panel p {
+  color: rgba(255, 250, 240, .78);
+}
+
+.contact-panel .btn {
+  margin-top: 1.3rem;
+  color: var(--spruce-deep);
+  border-color: var(--lichen);
+  background: var(--lichen);
+}
+
+.site-footer {
+  border-top: 1px solid rgba(255, 250, 240, .14);
+  background: var(--spruce-deep);
+  color: rgba(255, 250, 240, .72);
+  padding-block: 2rem;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.site-footer .brand { color: var(--sheet); }
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: .94rem;
+}
+
+.footer-links a:hover { color: var(--lichen); }
+
+[data-rv] {
+  opacity: 1;
+  transform: none;
+}
+
+html.anim-ok [data-rv] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+
+html.anim-ok [data-rv].in-view {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1080px) {
+  .hero-copy { grid-column: 1 / span 12; }
+  .route-lab {
+    grid-column: 2 / span 10;
+    margin-top: 2rem;
+  }
+  .manifest h2,
+  .manifest p,
+  .custom-copy,
+  .custom-card,
+  .quote blockquote,
+  .quote cite,
+  .contact h2,
+  .contact-panel {
+    grid-column: 1 / span 12;
+  }
+  .manifest p,
+  .custom-card,
+  .quote cite,
+  .contact-panel { margin-top: 1.25rem; }
+  .process-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .step:nth-child(n) { margin-top: 0; }
+}
+
+@media (max-width: 760px) {
+  :root { --nav-h: 66px; }
+  .menu-toggle { display: inline-grid; place-items: center; }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: .35rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(245, 240, 228, .98);
+    padding: .8rem var(--gutter) 1rem;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .25s var(--ease), opacity .25s;
+  }
+  .nav-links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links a {
+    border-bottom: 1px solid var(--line);
+    padding: .8rem 0;
+  }
+  .nav-cta {
+    text-align: center;
+    padding: .82rem 1rem !important;
+  }
+  .hero .shell { padding-top: 2.3rem; }
+  .hero h1 { max-width: 8.8ch; }
+  .hero-note {
+    grid-template-columns: 1fr;
+  }
+  .hero-note::before {
+    width: 5rem;
+    height: 1px;
+  }
+  .route-lab { grid-column: 1 / span 12; }
+  .lab-top,
+  .lab-output { grid-template-columns: 1fr; }
+  .lab-output { display: grid; }
+  .section-head { display: block; }
+  .section-head h2 { margin-top: 1rem; }
+  .bundle {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .bundle:nth-child(n) .bundle-copy,
+  .bundle:nth-child(n) .mini-map {
+    grid-column: 1;
+    order: initial;
+  }
+  .bundle:nth-child(odd) .mini-map { order: -1; }
+  .process-track,
+  .shop-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .shop-sticky { position: static; }
+  .product-row {
+    grid-template-columns: 1fr;
+  }
+  .custom-grid,
+  .quote .grid12,
+  .contact-grid { display: grid; grid-template-columns: 1fr; }
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 440px) {
+  .hero-actions .btn,
+  .segmented button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Naar inhoud</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell nav-inner">
+    <a class="brand" href="#top" aria-label="Karterij Noord home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Karterij Noord</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">
+      <span aria-hidden="true"></span>
+      <span class="sr-only">Menu openen</span>
+    </button>
+    <nav class="nav-links" id="siteNav" aria-label="Hoofdmenu">
+      <a href="#bundels">Routebundels</a>
+      <a href="#proces">Proces</a>
+      <a href="#winkel">Winkel</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#contact">Plan een route</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="shell grid12 hero-grid">
+      <div class="hero-copy" data-rv>
+        <span class="eyebrow">Kaartenwinkel en routeatelier</span>
+        <h1 id="hero-title"><span>Routes voor</span><span class="italic">mensen</span><span>die graag langzaam verdwalen.</span></h1>
+        <p class="hero-lead">Karterij Noord maakt papieren kaarten, routebundels en maatwerktochten voor wandelaars, fietsers en kleine reisgezelschappen.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#routepaneel">Ontwerp een route</a>
+          <a class="btn btn-secondary" href="#bundels">Bekijk bundels</a>
+        </div>
+        <p class="hero-note"><span>Geen app vol meldingen. Wel stevige kaarten, stille omwegen, plekken voor koffie en genoeg marge om zelf iets te noteren.</span></p>
+      </div>
+
+      <div class="route-lab" id="routepaneel" data-rv data-d="120ms">
+        <section class="lab" aria-labelledby="lab-title">
+          <div class="lab-top">
+            <h2 class="lab-title" id="lab-title">Routepaneel</h2>
+            <span class="lab-status" id="routeName">Duinlus, halve dag</span>
+          </div>
+          <div class="map-frame">
+            <svg class="route-map" id="routeMap" viewBox="0 0 520 560" role="img" aria-labelledby="mapTitle mapDesc">
+              <title id="mapTitle">Interactieve routekaart</title>
+              <desc id="mapDesc">Een topografisch kaartpaneel met contourlijnen, water, routepad en markers. De route verandert op basis van terrein en tempo.</desc>
+              <path class="water" id="waterShape" d="M45 396 C120 330 190 354 252 316 C330 268 388 286 474 224 L474 560 L45 560 Z"></path>
+              <g id="contours"></g>
+              <path class="route-path" id="routePath" d=""></path>
+              <g id="markers"></g>
+              <text class="map-label" id="mapLabel" x="32" y="46">duinrand noord</text>
+            </svg>
+          </div>
+          <div class="lab-controls">
+            <div class="control-row">
+              <span class="control-label">Terrein</span>
+              <div class="segmented" id="terrainControls" aria-label="Kies terrein">
+                <button type="button" data-terrain="duin" aria-pressed="true">Duin</button>
+                <button type="button" data-terrain="bos" aria-pressed="false">Bos</button>
+                <button type="button" data-terrain="stad" aria-pressed="false">Stad</button>
+              </div>
+            </div>
+            <div class="control-row">
+              <span class="control-label">Tempo</span>
+              <div class="segmented" id="paceControls" aria-label="Kies tempo">
+                <button type="button" data-pace="middag" aria-pressed="true">Middag</button>
+                <button type="button" data-pace="dag" aria-pressed="false">Dag</button>
+                <button type="button" data-pace="weekend" aria-pressed="false">Weekend</button>
+              </div>
+            </div>
+            <div class="control-row">
+              <span class="control-label">Kaartstijl</span>
+              <div class="segmented" id="styleControls" aria-label="Kies kaartstijl">
+                <button type="button" data-style="klassiek" aria-pressed="true">Klassiek</button>
+                <button type="button" data-style="water" aria-pressed="false">Water</button>
+                <button type="button" data-style="avond" aria-pressed="false">Avond</button>
+              </div>
+            </div>
+          </div>
+          <div class="lab-output" aria-live="polite">
+            <span><strong id="distance">13 km</strong> afstand</span>
+            <span><strong id="stops">3 stops</strong> onderweg</span>
+            <span><strong id="printRun">48 prints</strong> oplage</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section manifest" aria-labelledby="manifest-title">
+    <div class="shell grid12 manifest-grid">
+      <span class="eyebrow" data-rv>Onze overtuiging</span>
+      <h2 id="manifest-title" data-rv data-d="80ms">Een goede kaart maakt je aandacht groter, niet je schermtijd.</h2>
+      <p data-rv data-d="160ms">We ontwerpen routes die genoeg houvast geven, maar niet alles dichtplamuren. De beste omweg moet nog steeds van jou kunnen zijn.</p>
+    </div>
+  </section>
+
+  <section class="section bundles" id="bundels" aria-labelledby="bundels-title">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow" data-rv>Routebundels</span>
+        <h2 id="bundels-title" data-rv data-d="80ms">Voor wie de omgeving liever leest dan consumeert.</h2>
+      </div>
+      <div class="bundle-list">
+        <article class="bundle" data-rv>
+          <div class="bundle-copy">
+            <h3>Duinrand Noord</h3>
+            <p>Wandellussen langs oude strandwallen, bunkers, stille paden en plekken waar de wind net iets zachter staat.</p>
+            <div class="bundle-meta"><span>6 routes</span><span>8 tot 18 km</span><span>waterproof kaart</span></div>
+          </div>
+          <div class="mini-map" style="--bg:#eadfca;--route:#c86735;--rot:-22deg" aria-hidden="true"></div>
+        </article>
+        <article class="bundle" data-rv>
+          <div class="bundle-copy">
+            <h3>Rivierenkamer</h3>
+            <p>Fietsdagen langs dijken, veerponten, boomgaarden en dorpspleinen die lunch serieus nemen.</p>
+            <div class="bundle-meta"><span>4 dagtochten</span><span>42 tot 68 km</span><span>ponttijden erbij</span></div>
+          </div>
+          <div class="mini-map" style="--bg:#e5ead6;--route:#2b6f9e;--rot:30deg" aria-hidden="true"></div>
+        </article>
+        <article class="bundle" data-rv>
+          <div class="bundle-copy">
+            <h3>Stadsranden</h3>
+            <p>Routes voor wie de stad uit wil lopen zonder meteen te doen alsof er geen stad meer is.</p>
+            <div class="bundle-meta"><span>9 kaarten</span><span>tram terug</span><span>koffiestops</span></div>
+          </div>
+          <div class="mini-map" style="--bg:#e8dfed;--route:#513c7a;--rot:11deg" aria-hidden="true"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process" id="proces" aria-labelledby="proces-title">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow" data-rv>Proces</span>
+        <h2 id="proces-title" data-rv data-d="80ms">Zo wordt een tocht een kaart die je wilt bewaren.</h2>
+      </div>
+      <div class="process-track">
+        <article class="step" data-rv>
+          <span class="step-no">01</span>
+          <h3>Veldwerk</h3>
+          <p>We lopen of fietsen de route zelf, inclusief de saaie stukken. Juist daar valt vaak iets te winnen.</p>
+        </article>
+        <article class="step" data-rv data-d="80ms">
+          <span class="step-no">02</span>
+          <h3>Kaartlaag</h3>
+          <p>We tekenen paden, hoogtes, rustpunten en twijfelplekken op een kaart die zonder telefoon werkt.</p>
+        </article>
+        <article class="step" data-rv data-d="160ms">
+          <span class="step-no">03</span>
+          <h3>Redactie</h3>
+          <p>Elke route krijgt korte notities: waar je vertraagt, waar je afslaat, waar je even blijft.</p>
+        </article>
+        <article class="step" data-rv data-d="240ms">
+          <span class="step-no">04</span>
+          <h3>Druk</h3>
+          <p>Kleine oplages op stevig papier, gevouwen voor jaszakken en fietstassen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shop" id="winkel" aria-labelledby="winkel-title">
+    <div class="shell">
+      <div class="shop-grid">
+        <div class="shop-sticky" data-rv>
+          <span class="eyebrow">Winkel</span>
+          <h2 class="sr-only" id="winkel-title">Winkel</h2>
+          <h3>Kaarten die vies mogen worden.</h3>
+          <p>Gedrukt in kleine oplages, met ruimte voor eigen aantekeningen. Sommige routes verdwijnen, andere komen terug in een nieuwe druk.</p>
+        </div>
+        <div class="product-list">
+          <article class="product-row" data-rv>
+            <div>
+              <h3>Losse kaart</h3>
+              <p>Een gevouwen routekaart met korte veldnotities.</p>
+            </div>
+            <span class="price">&euro;12</span>
+          </article>
+          <article class="product-row" data-rv data-d="80ms">
+            <div>
+              <h3>Bundel</h3>
+              <p>Vier tot negen routes in een papieren omslag.</p>
+            </div>
+            <span class="price">&euro;38</span>
+          </article>
+          <article class="product-row" data-rv data-d="160ms">
+            <div>
+              <h3>Maatwerktocht</h3>
+              <p>Voor teams, families, gasten of kleine reisgroepen.</p>
+            </div>
+            <span class="price">vanaf &euro;740</span>
+          </article>
+          <article class="product-row" data-rv data-d="240ms">
+            <div>
+              <h3>Veldnotitie-set</h3>
+              <p>Drie kleine boekjes met routelegenda en potlood.</p>
+            </div>
+            <span class="price">&euro;18</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section custom" aria-labelledby="custom-title">
+    <div class="shell grid12 custom-grid">
+      <div class="custom-copy" data-rv>
+        <span class="eyebrow">Maatwerk</span>
+        <h2 id="custom-title">Een route voor je gasten, team of familie.</h2>
+        <p>We maken tochten voor kleine hotels, buitenplaatsen, teams en families die samen iets willen doen zonder programma-gevoel.</p>
+      </div>
+      <article class="custom-card" data-rv data-d="120ms">
+        <h3>Route op maat</h3>
+        <ul>
+          <li>Intake en terreinonderzoek</li>
+          <li>1 tot 3 routevarianten</li>
+          <li>Gedrukte kaart en digitale back-up</li>
+          <li>Kleine legenda in eigen toon</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section quote" aria-labelledby="quote-title">
+    <div class="shell grid12">
+      <blockquote id="quote-title" data-rv>"We volgden de kaart maar hadden nooit het gevoel dat de dag vastlag."</blockquote>
+      <cite data-rv data-d="120ms">- Lotte, Buitenplaats Meerwijk</cite>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="shell faq-grid">
+      <div data-rv>
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">Voor je de kaart openvouwt.</h2>
+      </div>
+      <div class="faq-list" id="faqList" data-rv data-d="120ms">
+        <article class="faq-item open">
+          <h3><button class="faq-q" type="button" aria-expanded="true">Zijn de kaarten waterbestendig?</button></h3>
+          <div class="faq-a"><div><p>De meeste routebundels worden gedrukt op stevig, spatwaterbestendig papier. Voor meerdaagse tochten leveren we een beschermhoes mee.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Krijg ik ook een digitale route?</button></h3>
+          <div class="faq-a"><div><p>Ja, als back-up. De papieren kaart blijft leidend, maar je krijgt een GPX-bestand voor noodgevallen of navigatie op afstand.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Maken jullie routes buiten Nederland?</button></h3>
+          <div class="faq-a"><div><p>Voor maatwerk wel, als er genoeg tijd is voor veldwerk. Voor standaardbundels blijven we voorlopig in Nederland en Vlaanderen.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Hoe groot zijn de oplages?</button></h3>
+          <div class="faq-a"><div><p>Meestal tussen 40 en 300 stuks. Kleine oplages houden routes actueel en geven ons ruimte om te hertekenen.</p></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="shell grid12 contact-grid">
+      <h2 id="contact-title" data-rv>Vertel waar je wilt beginnen. Wij zoeken de goede omweg.</h2>
+      <div class="contact-panel" data-rv data-d="120ms">
+        <p>Mail ons met een plek, duur en gezelschap. Een halve alinea is genoeg om de eerste richting te vinden.</p>
+        <a class="btn" href="mailto:routes@karterij.example?subject=Route%20plannen">routes@karterij.example</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="shell footer-inner">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span>Karterij Noord</span></a>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#bundels">Bundels</a>
+      <a href="#proces">Proces</a>
+      <a href="#winkel">Winkel</a>
+      <a href="mailto:routes@karterij.example">routes@karterij.example</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var doc = document;
+  var root = doc.documentElement;
+  var reduced = root.classList.contains('no-anim');
+  var header = doc.getElementById('siteHeader');
+  var progress = doc.getElementById('scrollProgress');
+  var menuToggle = doc.getElementById('menuToggle');
+  var nav = doc.getElementById('siteNav');
+  var routeMap = doc.getElementById('routeMap');
+  var routePath = doc.getElementById('routePath');
+  var markers = doc.getElementById('markers');
+  var contours = doc.getElementById('contours');
+  var waterShape = doc.getElementById('waterShape');
+  var mapLabel = doc.getElementById('mapLabel');
+  var routeName = doc.getElementById('routeName');
+  var distance = doc.getElementById('distance');
+  var stops = doc.getElementById('stops');
+  var printRun = doc.getElementById('printRun');
+  var state = { terrain: 'duin', pace: 'middag', style: 'klassiek' };
+  var routes = {
+    duin: {
+      label: 'duinrand noord',
+      water: 'M45 396 C120 330 190 354 252 316 C330 268 388 286 474 224 L474 560 L45 560 Z',
+      path: 'M82 440 C116 354 152 314 214 304 C300 288 334 218 402 154',
+      points: [[82,440,'start'],[214,304,'kijkduin'],[402,154,'eind']]
+    },
+    bos: {
+      label: 'oude boskamer',
+      water: 'M0 470 C96 430 166 444 236 406 C330 354 402 388 520 330 L520 560 L0 560 Z',
+      path: 'M94 420 C144 364 122 296 196 258 C254 228 304 280 350 232 C386 194 424 170 452 108',
+      points: [[94,420,'start'],[196,258,'ven'],[452,108,'eind']]
+    },
+    stad: {
+      label: 'stadsrand west',
+      water: 'M56 520 C132 438 210 456 286 404 C356 356 430 366 520 316 L520 560 L56 560 Z',
+      path: 'M74 96 L176 96 L176 180 L250 180 L250 292 L348 292 L348 384 L446 384',
+      points: [[74,96,'station'],[250,292,'hof'],[446,384,'eind']]
+    }
+  };
+  var styles = {
+    klassiek: { bg: '#f7eedc', line: 'rgba(33,79,59,.34)', route: '#c86735' },
+    water: { bg: '#e5eff1', line: 'rgba(43,111,158,.34)', route: '#214f3b' },
+    avond: { bg: '#ebe4ef', line: 'rgba(81,60,122,.34)', route: '#513c7a' }
+  };
+  var paceData = {
+    middag: { label: 'halve dag', dist: 13, stops: 3, prints: 48 },
+    dag: { label: 'dagtocht', dist: 27, stops: 5, prints: 84 },
+    weekend: { label: 'weekend', dist: 58, stops: 9, prints: 120 }
+  };
+
+  function setPressed(group, attr, value) {
+    doc.querySelectorAll(group + ' [data-' + attr + ']').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-' + attr) === value ? 'true' : 'false');
+    });
+  }
+
+  function drawContours() {
+    if (!contours) { return; }
+    var html = '';
+    for (var i = 0; i < 12; i++) {
+      var y = 70 + i * 36;
+      var bend = state.terrain === 'stad' ? 18 : 54;
+      html += '<path class="contour" d="M24 ' + y + ' C112 ' + (y - bend) + ' 182 ' + (y + bend) + ' 270 ' + (y - 6) + ' C360 ' + (y - bend / 2) + ' 430 ' + (y + bend / 2) + ' 500 ' + (y - 10) + '"></path>';
+    }
+    contours.innerHTML = html;
+  }
+
+  function drawMarkers(data) {
+    if (!markers) { return; }
+    markers.innerHTML = data.points.map(function (p, i) {
+      return '<g><circle class="marker ' + (i === data.points.length - 1 ? 'is-end' : '') + '" cx="' + p[0] + '" cy="' + p[1] + '" r="10"></circle><text class="map-label" x="' + (p[0] + 14) + '" y="' + (p[1] - 13) + '">' + p[2] + '</text></g>';
+    }).join('');
+  }
+
+  function updateMap() {
+    var data = routes[state.terrain];
+    var style = styles[state.style];
+    var pace = paceData[state.pace];
+    if (!data || !style || !pace) { return; }
+    if (routeMap) {
+      routeMap.style.setProperty('--map-bg', style.bg);
+      routeMap.style.setProperty('--map-line', style.line);
+      routeMap.style.setProperty('--route', style.route);
+    }
+    if (routePath) {
+      routePath.setAttribute('d', data.path);
+      routePath.style.animation = 'none';
+      routePath.getBoundingClientRect();
+      routePath.style.animation = '';
+    }
+    if (waterShape) { waterShape.setAttribute('d', data.water); }
+    if (mapLabel) { mapLabel.textContent = data.label; }
+    if (routeName) { routeName.textContent = data.label + ', ' + pace.label; }
+    if (distance) { distance.textContent = pace.dist + ' km'; }
+    if (stops) { stops.textContent = pace.stops + ' stops'; }
+    if (printRun) { printRun.textContent = pace.prints + ' prints'; }
+    drawContours();
+    drawMarkers(data);
+  }
+
+  function bindRouteControls() {
+    doc.getElementById('terrainControls')?.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-terrain]');
+      if (!btn) { return; }
+      state.terrain = btn.getAttribute('data-terrain');
+      setPressed('#terrainControls', 'terrain', state.terrain);
+      updateMap();
+    });
+    doc.getElementById('paceControls')?.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-pace]');
+      if (!btn) { return; }
+      state.pace = btn.getAttribute('data-pace');
+      setPressed('#paceControls', 'pace', state.pace);
+      updateMap();
+    });
+    doc.getElementById('styleControls')?.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-style]');
+      if (!btn) { return; }
+      state.style = btn.getAttribute('data-style');
+      setPressed('#styleControls', 'style', state.style);
+      updateMap();
+    });
+  }
+
+  function setMenu(open) {
+    if (!menuToggle || !nav) { return; }
+    nav.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', function () {
+      setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { setMenu(false); }
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { setMenu(false); }
+    });
+  }
+
+  var faq = doc.getElementById('faqList');
+  if (faq) {
+    faq.addEventListener('click', function (e) {
+      var btn = e.target.closest('.faq-q');
+      if (!btn) { return; }
+      var item = btn.closest('.faq-item');
+      var open = !item.classList.contains('open');
+      faq.querySelectorAll('.faq-item').forEach(function (el) {
+        el.classList.remove('open');
+        var q = el.querySelector('.faq-q');
+        if (q) { q.setAttribute('aria-expanded', 'false'); }
+      });
+      item.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (header) { header.classList.toggle('is-solid', y > 10); }
+    if (progress) {
+      var max = doc.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.max(0, Math.min(1, y / max)) : 0).toFixed(4) + ')';
+    }
+  }
+  function requestFrame() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(frame);
+    }
+  }
+  window.addEventListener('scroll', requestFrame, { passive: true });
+  window.addEventListener('resize', requestFrame, { passive: true });
+
+  if (!reduced && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var delay = entry.target.getAttribute('data-d');
+          if (delay) { entry.target.style.setProperty('--d', delay); }
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
+    doc.querySelectorAll('[data-rv]').forEach(function (el) { observer.observe(el); });
+  }
+
+  bindRouteControls();
+  updateMap();
+  frame();
+})();
+</script>
+</body>
+</html>
