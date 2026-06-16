@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verso — narrative analytics, de briefing-laag voor je datastack</title>
+<meta name="description" content="Verso zet je product- en bedrijfsmetrics om in heldere geschreven ochtendbriefingen die je hele team leest — in mensentaal, met de bron onder elke zin. De briefing-laag voor je datastack.">
+<meta name="theme-color" content="#6260ff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Verso — de briefing-laag voor je datastack">
+<meta property="og:description" content="Geen dashboards die niemand opent. Verso schrijft elke ochtend het verhaal van wat er veranderde — herleidbaar tot de bron.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Hanken+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.className="js";</script>
+<style>
+/* ============================================================
+   Verso — design tokens
+   Elke kleur, schaal en ritme-waarde wordt hier afgeleid.
+   ============================================================ */
+
+:root {
+  /* ---- Palet (§4) ---- */
+  --indigo: #6260ff; /* primair accent, vlakken, sleuteltype, signature */
+  --indigo-deep: #3b38cc; /* toegankelijke links/tekst op licht, hover */
+  --lavender: #e4e4ff; /* zachte vlakkleur / secundaire achtergrond */
+  --ink: #0e0d1a; /* tekst op licht; achtergrond donkere banden */
+  --paper: #fbfbfe; /* basisachtergrond, koele bijna-wit */
+  --muted: #5a5a6e; /* secundaire tekst op licht */
+  --hairline: #e5e5f0; /* subtiele randen op licht */
+
+  /* Afgeleid: tinten op donker */
+  --lavender-dim: #b9b8e8; /* secundaire tekst op ink, geverifieerd AA */
+  --ink-soft: #1a1830; /* verhoogd vlak binnen ink-banden */
+  --ink-line: #2c2a45; /* randen op donker */
+
+  /* ---- Type-rollen (§5) ---- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ---- Type-schaal (vloeiend) ---- */
+  --t-display-xl: clamp(2.75rem, 6vw + 1rem, 7rem);
+  --t-display-l: clamp(2rem, 4vw + 0.4rem, 4rem);
+  --t-display-m: clamp(1.75rem, 2.6vw + 0.5rem, 2.9rem);
+  --t-subhead: clamp(1.5rem, 2.5vw, 2.25rem);
+  --t-body-l: 1.25rem;
+  --t-body: 1.0625rem;
+  --t-label: 0.8125rem;
+  --t-small: 0.875rem;
+
+  /* ---- Spacing (4px-basis) ---- */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 8rem;
+  --s-11: 11rem;
+
+  /* sectiepadding (verticaal) — vloeiend */
+  --section-y: clamp(4.5rem, 9vw, 9rem);
+
+  /* ---- Layout ---- */
+  --measure: 68ch;
+  --page-max: 80rem;
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --grid-cols: 12;
+  --grid-gap: clamp(1rem, 2.2vw, 2rem);
+
+  /* ---- Radius (terughoudend) ---- */
+  --r-soft: 4px;
+  --r-pill: 999px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur: 320ms;
+  --dur-slow: 620ms;
+
+  /* ---- Elevatie (zeer subtiel) ---- */
+  --shadow-soft: 0 1px 2px rgba(14, 13, 26, 0.04),
+    0 12px 32px -18px rgba(14, 13, 26, 0.18);
+  --shadow-lift: 0 2px 6px rgba(14, 13, 26, 0.06),
+    0 28px 60px -28px rgba(62, 56, 204, 0.28);
+}
+
+/* ============================================================
+   Verso — globals
+   Reset, basistypografie, layout-primitives, a11y.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  font-weight: 420;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: var(--indigo-deep);
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* ---- Koppen ---- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 460;
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+  font-optical-sizing: auto;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ============================================================
+   Layout-primitives
+   ============================================================ */
+
+.shell {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Editorial 12-koloms ruggengraat */
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+/* Anker-doelen klaren de sticky nav */
+:where(section, footer)[id],
+[id="main"] {
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
+/* Banden */
+.band-paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+.band-lavender {
+  background: var(--lavender);
+  color: var(--ink);
+}
+.band-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---- Tekst-rollen ---- */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--indigo-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.band-ink .kicker {
+  color: var(--lavender);
+}
+.kicker::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.lede {
+  font-size: var(--t-body-l);
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 46ch;
+}
+.band-ink .lede {
+  color: var(--lavender-dim);
+}
+
+.eyebrow-num {
+  font-family: var(--font-mono);
+  font-size: var(--t-small);
+  letter-spacing: 0.06em;
+  color: var(--indigo);
+}
+
+/* ============================================================
+   Knoppen
+   ============================================================ */
+.btn {
+  --btn-pad-y: 0.85rem;
+  --btn-pad-x: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 560;
+  font-size: var(--t-body);
+  letter-spacing: -0.005em;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: var(--r-soft);
+  transition: background var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--indigo);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--indigo-deep);
+}
+.band-ink .btn-primary {
+  background: var(--indigo);
+  color: #fff;
+}
+.band-ink .btn-primary:hover {
+  background: var(--lavender);
+  color: var(--ink);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.band-ink .btn-ghost {
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(251, 251, 254, 0.4);
+}
+.band-ink .btn-ghost:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.btn-arrow {
+  transition: transform var(--dur) var(--ease-out);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Tekstlink met onderlijn-groei */
+.tlink {
+  position: relative;
+  font-weight: 540;
+  color: var(--indigo-deep);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: background-size var(--dur) var(--ease-out);
+  padding-bottom: 1px;
+}
+.tlink:hover {
+  background-size: 0 1px;
+}
+.band-ink .tlink {
+  color: var(--lavender);
+}
+
+/* ============================================================
+   A11y
+   ============================================================ */
+:where(a, button, input, textarea, summary, [tabindex]):focus-visible {
+  outline: 2.5px solid var(--indigo);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.band-ink :where(a, button, summary):focus-visible {
+  outline-color: var(--lavender);
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--s-3);
+  left: var(--s-3);
+  z-index: 200;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--r-soft);
+  font-weight: 560;
+  transform: translateY(-160%);
+  transition: transform var(--dur) var(--ease-out);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+::selection {
+  background: var(--indigo);
+  color: #fff;
+}
+
+/* Hairline-helper */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+}
+.band-ink .rule {
+  border-top-color: var(--ink-line);
+}
+
+/* ============================================================
+   Verso — component styling
+   Volgorde = pagina-volgorde. Banden wisselen licht/donker.
+   ============================================================ */
+
+:root {
+  --nav-h: 4.6rem;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+.nav.is-scrolled {
+  background: rgba(251, 251, 254, 0.82);
+  backdrop-filter: saturate(1.4) blur(12px);
+  box-shadow: 0 1px 0 var(--hairline);
+}
+.nav__dateline {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  padding: 0.45rem var(--gutter);
+  border-bottom: 1px solid transparent;
+  opacity: 0.9;
+  transition: opacity var(--dur) var(--ease-out), max-height var(--dur);
+  max-height: 2rem;
+  overflow: hidden;
+}
+.nav.is-scrolled .nav__dateline {
+  opacity: 0;
+  max-height: 0;
+  padding-block: 0;
+}
+.nav__bar {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+}
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.nav__mark {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: var(--r-soft);
+  background: var(--indigo);
+  color: var(--lavender);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.nav__links {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.4rem);
+  margin-inline: auto;
+}
+.nav__link {
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  padding-block: 0.3rem;
+}
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--indigo);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+}
+.nav__link:hover::after {
+  transform: scaleX(1);
+}
+.nav__end {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.nav__cta {
+  --btn-pad-y: 0.6rem;
+  --btn-pad-x: 1.1rem;
+  font-size: 0.92rem;
+}
+.nav__toggle {
+  display: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+}
+.nav__burger,
+.nav__burger::before,
+.nav__burger::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur);
+}
+.nav__burger {
+  position: relative;
+}
+.nav__burger::before {
+  position: absolute;
+  top: -7px;
+}
+.nav__burger::after {
+  position: absolute;
+  top: 7px;
+}
+.nav__burger.is-open {
+  background: transparent;
+}
+.nav__burger.is-open::before {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__burger.is-open::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.nav__mobile {
+  background: var(--paper);
+  border-top: 1px solid var(--hairline);
+  box-shadow: var(--shadow-soft);
+}
+.nav__mobile-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-block: var(--s-5);
+}
+.nav__mobile-link {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  padding-block: 0.4rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.nav__mobile .btn {
+  margin-top: var(--s-3);
+}
+
+/* ============================================================
+   HERO  +  SIGNATURE
+   ============================================================ */
+.hero {
+  position: relative;
+}
+.hero--scroll {
+  height: 250vh;
+}
+.hero--scroll .hero__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-h);
+  overflow: hidden;
+}
+.hero--static .hero__stage {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) var(--section-y);
+}
+.hero__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  row-gap: clamp(2rem, 5vw, 3rem);
+  align-items: center;
+}
+.hero__lead {
+  grid-column: 1 / span 6;
+  align-self: center;
+}
+.hero__signature {
+  grid-column: 7 / span 6;
+}
+.hero__kicker {
+  margin-bottom: var(--s-5);
+}
+.hero__title {
+  font-size: var(--t-display-xl);
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  font-weight: 480;
+}
+.hero__line {
+  display: block;
+}
+.hero__line--accent {
+  color: var(--indigo);
+  font-style: italic;
+  margin-top: 0.1em;
+}
+.hero__lede {
+  font-size: var(--t-body-l);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 40ch;
+  margin-top: var(--s-6);
+  opacity: 0.82;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+.hero__fineprint {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: var(--s-4);
+}
+.hero__scrollhint {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--indigo-deep);
+  opacity: 0.7;
+}
+
+/* ---- Signature ---- */
+.sig {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-soft);
+  padding: clamp(1.3rem, 2.2vw, 2rem);
+  box-shadow: var(--shadow-lift);
+}
+.sig__cap {
+  margin-bottom: var(--s-4);
+}
+.sig__cap .kicker {
+  font-size: 0.7rem;
+}
+.sig__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.6vw, 1.5rem);
+}
+.metric {
+  min-width: 0;
+}
+.metric__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.45rem;
+}
+.metric__label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  text-transform: lowercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.metric__val {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 540;
+  letter-spacing: -0.02em;
+  color: var(--indigo-deep);
+  line-height: 1;
+}
+.metric__val.warn {
+  color: var(--muted);
+}
+.sparkline {
+  width: 100%;
+  height: 2rem;
+}
+
+.sig__arrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--indigo);
+}
+.sig__arrow::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
+}
+.sig__arrow-word {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sig__arrow-svg {
+  transform: rotate(90deg);
+}
+
+.sig__brief {
+  display: flex;
+  flex-direction: column;
+}
+.sig__prose {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.25vw, 1.35rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: var(--ink);
+}
+.sig__prose .w {
+  display: inline-block;
+}
+.w-key {
+  color: var(--indigo-deep);
+  font-weight: 560;
+}
+.w-warn {
+  color: var(--muted);
+  font-style: italic;
+}
+.sig__action {
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.sig__action-tag,
+.memo__action-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--indigo);
+  padding: 0.18rem 0.5rem;
+  border-radius: 2px;
+  margin-right: 0.6rem;
+  vertical-align: 0.08em;
+}
+
+/* ============================================================
+   PROBLEM
+   ============================================================ */
+.problem__grid {
+  row-gap: var(--s-6);
+}
+.problem__aside {
+  grid-column: 1 / span 3;
+}
+.problem__note {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-top: var(--s-4);
+  border-left: 2px solid var(--indigo);
+  padding-left: var(--s-4);
+}
+.problem__main {
+  grid-column: 5 / span 8;
+}
+.problem__statement {
+  font-size: var(--t-display-m);
+  line-height: 1.12;
+  font-weight: 420;
+  letter-spacing: -0.015em;
+}
+.problem__statement em {
+  font-style: italic;
+  color: var(--indigo);
+}
+.problem__after {
+  margin-top: var(--s-6);
+  font-size: var(--t-body-l);
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+/* ============================================================
+   HOW IT WORKS  (ink band)
+   ============================================================ */
+.how__head {
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.how__head-inner {
+  grid-column: 1 / span 8;
+}
+.how__title {
+  font-size: var(--t-display-l);
+  margin-top: var(--s-4);
+  max-width: 18ch;
+}
+.how__steps {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.step {
+  display: grid;
+  grid-template-columns: clamp(3.5rem, 8vw, 7rem) 1fr;
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: start;
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--ink-line);
+  /* versprongen: elke stap iets verder ingesprongen */
+  margin-left: calc(var(--i, 0) * clamp(0rem, 4vw, 4rem));
+}
+.step:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.step__n {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  font-weight: 460;
+  color: var(--indigo);
+  font-feature-settings: "ss01";
+}
+.step__title {
+  font-size: var(--t-subhead);
+  font-weight: 460;
+}
+.step__text {
+  margin-top: var(--s-3);
+  color: var(--lavender-dim);
+  max-width: 46ch;
+}
+.step__meta {
+  display: inline-block;
+  margin-top: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   FEATURES  (paper, alternerende spreads)
+   ============================================================ */
+.features__head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.features__head-inner {
+  grid-column: 1 / span 9;
+}
+.features__title {
+  font-size: var(--t-display-l);
+  margin-top: var(--s-4);
+  max-width: 16ch;
+}
+.features__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 7vw, 6rem);
+}
+.spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: center;
+}
+.spread--flip .spread__text {
+  order: 2;
+}
+.spread__index {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--indigo);
+  text-transform: uppercase;
+}
+.spread__title {
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  margin-top: var(--s-3);
+  max-width: 18ch;
+}
+.spread__body {
+  margin-top: var(--s-4);
+  color: var(--muted);
+  font-size: var(--t-body-l);
+  max-width: 44ch;
+}
+.spread__aside {
+  display: inline-block;
+  margin-top: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--indigo-deep);
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--s-3);
+}
+
+/* Feature-visuals (geen stock, puur CSS/SVG) */
+.fviz {
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-soft);
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+  box-shadow: var(--shadow-soft);
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-4);
+}
+.spread--flip .fviz {
+  background: var(--lavender);
+  border-color: transparent;
+}
+.fviz__row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.fviz__tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+.fviz__from {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.fviz__snippet {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.fviz__snippet b {
+  color: var(--indigo-deep);
+}
+.fviz__channel,
+.fviz__src,
+.fviz__pages {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.fviz--anomaly .sparkline {
+  height: 4.5rem;
+}
+.fviz__callout {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--indigo-deep);
+}
+.fviz__pin {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--indigo);
+  box-shadow: 0 0 0 4px rgba(98, 96, 255, 0.16);
+}
+.fviz__q {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--ink);
+}
+.fviz__a {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--muted);
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--indigo);
+}
+.fviz__a b {
+  color: var(--indigo-deep);
+}
+.fviz__memo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.fviz__memo-h {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.fviz__memo-l {
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--hairline);
+}
+.spread--flip .fviz__memo-l {
+  background: rgba(14, 13, 26, 0.1);
+}
+.fviz__memo-l.short {
+  width: 55%;
+}
+.fviz__trace {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.fviz__link {
+  color: var(--indigo-deep);
+  text-decoration: underline;
+  text-decoration-color: var(--indigo);
+  text-underline-offset: 3px;
+}
+.fviz__chip {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: var(--ink);
+  color: var(--lavender);
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   BRIEFING  (lavender) — getypeset memo
+   ============================================================ */
+.briefing__grid {
+  row-gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+}
+.briefing__intro {
+  grid-column: 1 / span 4;
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+.briefing__title {
+  font-size: var(--t-display-m);
+  margin-block: var(--s-4) var(--s-5);
+}
+.briefing__memo-wrap {
+  grid-column: 6 / span 7;
+}
+.memo {
+  background: var(--paper);
+  border-radius: var(--r-soft);
+  padding: clamp(1.8rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-lift);
+  position: relative;
+}
+.memo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  pointer-events: none;
+}
+.memo__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-bottom: var(--s-4);
+  margin-bottom: var(--s-6);
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.memo__brand {
+  color: var(--indigo-deep);
+  font-weight: 500;
+}
+.memo__date {
+  color: var(--muted);
+}
+.memo__body {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  line-height: 1.5;
+  font-weight: 380;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.memo__drop {
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.74;
+  font-weight: 500;
+  padding-right: 0.08em;
+  margin-top: 0.06em;
+  color: var(--indigo);
+}
+.memo__body strong {
+  font-weight: 560;
+  color: var(--indigo-deep);
+}
+.memo__body em {
+  font-style: italic;
+  color: var(--muted);
+}
+.memo__action {
+  margin-top: var(--s-6);
+  background: var(--lavender);
+  border-radius: var(--r-soft);
+  padding: var(--s-5);
+  font-size: var(--t-body-l);
+  line-height: 1.5;
+  color: var(--ink);
+}
+.memo__foot {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--hairline);
+}
+.memo__foot-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.memo__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-6);
+  margin-top: var(--s-4);
+}
+.memo__source {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.memo__source-key {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 560;
+  color: var(--ink);
+}
+.memo__source-src {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--indigo-deep);
+}
+
+/* ============================================================
+   SOCIAL PROOF  (ink)
+   ============================================================ */
+.proof__quote-wrap {
+  max-width: 24ch;
+}
+.proof__quote-wrap,
+.proof {
+  position: relative;
+}
+.proof .shell {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: end;
+}
+.proof__quote-wrap {
+  max-width: none;
+}
+.proof__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.4vw, 3rem);
+  line-height: 1.22;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-top: var(--s-5);
+  position: relative;
+}
+.proof__mark {
+  font-family: var(--font-display);
+  color: var(--indigo);
+  font-size: 1.1em;
+  margin-right: 0.1em;
+}
+.proof__cite {
+  margin-top: var(--s-6);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.proof__name {
+  font-weight: 560;
+}
+.proof__role {
+  color: var(--lavender-dim);
+  font-size: 0.95rem;
+}
+.proof__logos {
+  border-left: 1px solid var(--ink-line);
+  padding-left: clamp(1.5rem, 3vw, 3rem);
+}
+.proof__logos-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lavender-dim);
+}
+.proof__logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4) var(--s-6);
+  margin-top: var(--s-5);
+}
+.proof__logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 460;
+  letter-spacing: -0.01em;
+  color: var(--lavender);
+  opacity: 0.62;
+  transition: opacity var(--dur);
+}
+.proof__logo:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   IMPACT  (paper)
+   ============================================================ */
+.impact__title {
+  font-size: var(--t-display-l);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.impact__dot {
+  color: var(--indigo);
+}
+.impact__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.impact__item {
+  border-top: 2px solid var(--ink);
+  padding-top: var(--s-4);
+}
+.impact__value {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1;
+  font-weight: 460;
+  letter-spacing: -0.03em;
+  color: var(--indigo-deep);
+}
+.impact__label {
+  margin-top: var(--s-3);
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.impact__note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+/* ============================================================
+   PRICING  (lavender, asymmetrisch)
+   ============================================================ */
+.pricing__head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.pricing__head-inner {
+  grid-column: 1 / span 8;
+}
+.pricing__title {
+  font-size: var(--t-display-l);
+  margin-top: var(--s-4);
+  max-width: 20ch;
+}
+.pricing__tiers {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  grid-auto-rows: auto;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.tier {
+  background: var(--paper);
+  border-radius: var(--r-soft);
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tier--featured {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow-lift);
+}
+.tier__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.tier__name {
+  font-size: var(--t-subhead);
+  font-weight: 460;
+}
+.tier__badge {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--lavender);
+  padding: 0.25rem 0.55rem;
+  border-radius: 2px;
+}
+.tier__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: var(--s-5);
+}
+.tier__amount {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1;
+  font-weight: 480;
+  letter-spacing: -0.03em;
+}
+.tier--featured .tier__amount {
+  color: var(--lavender);
+}
+.tier__cadence {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.tier--featured .tier__cadence {
+  color: var(--lavender-dim);
+}
+.tier__pitch {
+  margin-top: var(--s-4);
+  color: var(--muted);
+  max-width: 38ch;
+}
+.tier--featured .tier__pitch {
+  color: var(--lavender-dim);
+}
+.tier__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--hairline);
+}
+.tier--featured .tier__features {
+  border-top-color: var(--ink-line);
+}
+.tier__feature {
+  display: flex;
+  gap: var(--s-3);
+  align-items: baseline;
+  font-size: 0.98rem;
+}
+.tier__check {
+  color: var(--indigo);
+  font-size: 0.85rem;
+  flex: none;
+}
+.tier--featured .tier__check {
+  color: var(--lavender);
+}
+.tier__cta {
+  margin-top: auto;
+  width: 100%;
+}
+.tier__cta.btn {
+  margin-top: var(--s-6);
+}
+.pricing__note-card {
+  grid-column: 1 / -1;
+}
+.pricing__note {
+  font-size: var(--t-body-l);
+  color: var(--ink);
+  text-align: center;
+  max-width: 50ch;
+  margin-inline: auto;
+}
+
+/* ============================================================
+   FAQ  (paper)
+   ============================================================ */
+.faq__grid {
+  row-gap: var(--s-7);
+  align-items: start;
+}
+.faq__aside {
+  grid-column: 1 / span 4;
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+.faq__title {
+  font-size: var(--t-display-m);
+  margin-block: var(--s-4) var(--s-5);
+}
+.faq__sub {
+  color: var(--muted);
+}
+.faq__list {
+  grid-column: 6 / span 7;
+}
+.qa {
+  border-top: 1px solid var(--hairline);
+}
+.qa:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+.qa__h {
+  margin: 0;
+}
+.qa__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  text-align: left;
+  padding: var(--s-5) 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 440;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.qa__sign {
+  position: relative;
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.qa__sign::before,
+.qa__sign::after {
+  content: "";
+  position: absolute;
+  background: var(--indigo);
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur);
+}
+.qa__sign::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+.qa__sign::after {
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+.qa.is-open .qa__sign::after {
+  transform: translateX(-50%) scaleY(0);
+  opacity: 0;
+}
+.qa__panel {
+  overflow: hidden;
+}
+.qa__a {
+  padding-bottom: var(--s-6);
+  color: var(--muted);
+  font-size: var(--t-body-l);
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+/* ============================================================
+   FINAL CTA  (ink)
+   ============================================================ */
+.finalcta {
+  text-align: center;
+}
+.finalcta__inner {
+  max-width: 56rem;
+}
+.finalcta .kicker {
+  justify-content: center;
+}
+.finalcta__title {
+  font-size: var(--t-display-xl);
+  line-height: 0.98;
+  margin-top: var(--s-5);
+}
+.finalcta__lede {
+  font-size: var(--t-body-l);
+  color: var(--lavender-dim);
+  max-width: 46ch;
+  margin: var(--s-6) auto 0;
+}
+.finalcta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  justify-content: center;
+  margin-top: var(--s-7);
+}
+.finalcta__fine {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--lavender-dim);
+  margin-top: var(--s-5);
+}
+
+/* ============================================================
+   FOOTER  (paper)
+   ============================================================ */
+.footer {
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: var(--s-7);
+  border-top: 1px solid var(--hairline);
+}
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 2fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-bottom: var(--s-8);
+}
+.footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.footer__pitch {
+  margin-top: var(--s-5);
+  color: var(--muted);
+  max-width: 38ch;
+}
+.footer__cta {
+  display: inline-block;
+  margin-top: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+.footer__nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-5);
+}
+.footer__head {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: var(--s-4);
+  font-weight: 500;
+}
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.footer__link {
+  color: var(--muted);
+  font-size: 0.95rem;
+  transition: color var(--dur);
+}
+.footer__link:hover {
+  color: var(--indigo-deep);
+}
+.footer__colophon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--hairline);
+}
+.footer__set,
+.footer__legal {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+.footer__set span {
+  color: var(--indigo-deep);
+}
+
+/* ============================================================
+   RESPONSIVE — mobiel herontwerpt de layout
+   ============================================================ */
+@media (max-width: 1040px) {
+  .hero__lead {
+    grid-column: 1 / span 7;
+  }
+  .hero__signature {
+    grid-column: 8 / span 5;
+  }
+  .problem__main {
+    grid-column: 4 / span 9;
+  }
+}
+
+@media (max-width: 899px) {
+  /* NAV */
+  .nav__links,
+  .nav__cta,
+  .nav__dateline {
+    display: none;
+  }
+  .nav__toggle {
+    display: grid;
+  }
+
+  /* HERO — gestapeld, signature onder de stelling */
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .hero__lead,
+  .hero__signature {
+    grid-column: 1 / -1;
+  }
+  .hero__title {
+    font-size: clamp(2.6rem, 12vw, 4.5rem);
+  }
+
+  /* PROBLEM */
+  .problem__aside,
+  .problem__main {
+    grid-column: 1 / -1;
+  }
+
+  /* HOW */
+  .how__head-inner {
+    grid-column: 1 / -1;
+  }
+  .step {
+    margin-left: 0 !important;
+    grid-template-columns: 1fr;
+    gap: var(--s-2);
+  }
+  .step__n {
+    font-size: 2.6rem;
+  }
+
+  /* FEATURES */
+  .features__head-inner {
+    grid-column: 1 / -1;
+  }
+  .spread {
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+  .spread--flip .spread__text {
+    order: 0;
+  }
+
+  /* BRIEFING */
+  .briefing__intro,
+  .briefing__memo-wrap {
+    grid-column: 1 / -1;
+    position: static;
+  }
+
+  /* PROOF */
+  .proof .shell {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
+    align-items: start;
+  }
+  .proof__logos {
+    border-left: none;
+    border-top: 1px solid var(--ink-line);
+    padding-left: 0;
+    padding-top: var(--s-5);
+  }
+
+  /* IMPACT */
+  .impact__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* PRICING */
+  .pricing__head-inner {
+    grid-column: 1 / -1;
+  }
+  .pricing__tiers {
+    grid-template-columns: 1fr;
+  }
+
+  /* FAQ */
+  .faq__aside,
+  .faq__list {
+    grid-column: 1 / -1;
+    position: static;
+  }
+
+  /* FOOTER */
+  .footer__inner {
+    grid-template-columns: 1fr;
+  }
+  .footer__nav {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-6) var(--s-4);
+  }
+}
+
+@media (max-width: 520px) {
+  .impact__grid {
+    grid-template-columns: 1fr;
+  }
+  .memo__sources {
+    flex-direction: column;
+  }
+  .hero__actions .btn,
+  .finalcta__actions .btn {
+    width: 100%;
+  }
+  .footer__nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ---- Reveal-systeem (progressive enhancement) ---- */
+html.js [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .62s var(--ease-out),transform .62s var(--ease-out);}
+html.js [data-reveal].is-in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){html.js [data-reveal]{opacity:1 !important;transform:none !important;transition:none;}}
+
+/* scroll-hint enkel in de scroll-gestuurde hero (desktop + motion) */
+.hero__scrollhint{display:none;}
+.hero--scroll .hero__scrollhint{display:block;}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Naar de inhoud</a>
+
+<header class="nav is-top" id="nav">
+  <p class="nav__dateline" aria-hidden="true">De briefing-laag voor je datastack — editie 2026</p>
+  <div class="nav__bar shell">
+    <a href="#top" class="nav__brand" aria-label="Verso, naar boven">
+      <span class="nav__mark" aria-hidden="true">V</span>
+      <span class="nav__word">Verso</span>
+    </a>
+    <nav class="nav__links" aria-label="Hoofdmenu">
+      <a href="#werkwijze" class="nav__link">Zo werkt het</a>
+      <a href="#functies" class="nav__link">Functies</a>
+      <a href="#briefing" class="nav__link">Een briefing</a>
+      <a href="#prijzen" class="nav__link">Prijzen</a>
+    </nav>
+    <div class="nav__end">
+      <a href="#cta" class="btn btn-primary nav__cta">Begin gratis</a>
+      <button type="button" class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="nav-mobile">
+        <span class="sr-only">Menu</span>
+        <span class="nav__burger" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+  <div id="nav-mobile" class="nav__mobile" hidden>
+    <nav aria-label="Mobiel menu" class="shell nav__mobile-inner">
+      <a href="#werkwijze" class="nav__mobile-link">Zo werkt het</a>
+      <a href="#functies" class="nav__mobile-link">Functies</a>
+      <a href="#briefing" class="nav__mobile-link">Een briefing</a>
+      <a href="#prijzen" class="nav__mobile-link">Prijzen</a>
+      <a href="#cta" class="btn btn-primary">Begin gratis</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO + SIGNATURE -->
+  <section id="top" class="hero band-lavender hero--static" aria-label="Introductie">
+    <div class="hero__stage">
+      <div class="shell hero__grid">
+        <div class="hero__lead">
+          <p class="kicker hero__kicker" data-reveal>Narrative analytics</p>
+          <h1 class="hero__title">
+            <span class="hero__line" data-reveal>Niemand opent<br>je dashboard.</span>
+            <span class="hero__line hero__line--accent" data-reveal data-reveal-delay="80">Iedereen leest<br>je briefing.</span>
+          </h1>
+          <p class="hero__lede" data-reveal data-reveal-delay="160">
+            Verso zet je product- en bedrijfsmetrics om in een geschreven
+            ochtendbriefing — in mensentaal, met de bron onder elke zin.
+          </p>
+          <div class="hero__actions" data-reveal data-reveal-delay="220">
+            <a class="btn btn-primary js-magnetic" href="#briefing" aria-label="Lees een voorbeeldbriefing">
+              Lees een briefing <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a class="btn btn-ghost" href="#werkwijze">Zo werkt het</a>
+          </div>
+          <p class="hero__fineprint">Geen creditcard · je eerste briefing ligt morgen om 07:00 klaar</p>
+        </div>
+
+        <div class="hero__signature">
+          <div class="sig" id="sig">
+            <figure class="sig__raw" id="sigRaw">
+              <figcaption class="sig__cap"><span class="kicker">ruwe signalen</span></figcaption>
+              <ul class="sig__metrics">
+                <li class="metric">
+                  <div class="metric__head">
+                    <span class="metric__label">activatie</span>
+                    <span class="metric__val">+12%</span>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 132 40" width="132" height="40" role="img" aria-hidden="true" preserveAspectRatio="none">
+  <defs><linearGradient id="fade-act" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--indigo)" stop-opacity="0.16"></stop><stop offset="1" stop-color="var(--indigo)" stop-opacity="0"></stop></linearGradient></defs>
+  <path d="M0.0,36.0 L22.0,32.3 L44.0,34.8 L66.0,28.6 L88.0,31.1 L110.0,20.0 L132.0,4.0 L132,40 L0,40 Z" fill="url(#fade-act)" opacity="0.9"></path>
+  <path d="M0.0,36.0 L22.0,32.3 L44.0,34.8 L66.0,28.6 L88.0,31.1 L110.0,20.0 L132.0,4.0" fill="none" stroke="var(--indigo)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <circle cx="132.0" cy="4.0" r="2.6" fill="var(--indigo)"></circle>
+</svg>
+                </li>
+                <li class="metric">
+                  <div class="metric__head">
+                    <span class="metric__label">support-druk</span>
+                    <span class="metric__val warn">+8%</span>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 132 40" width="132" height="40" role="img" aria-hidden="true" preserveAspectRatio="none">
+  <defs><linearGradient id="fade-sup" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--indigo-deep)" stop-opacity="0.16"></stop><stop offset="1" stop-color="var(--indigo-deep)" stop-opacity="0"></stop></linearGradient></defs>
+  <path d="M0.0,31.4 L22.0,36.0 L44.0,26.9 L66.0,29.1 L88.0,20.0 L110.0,13.1 L132.0,4.0 L132,40 L0,40 Z" fill="url(#fade-sup)" opacity="0.9"></path>
+  <path d="M0.0,31.4 L22.0,36.0 L44.0,26.9 L66.0,29.1 L88.0,20.0 L110.0,13.1 L132.0,4.0" fill="none" stroke="var(--indigo-deep)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <circle cx="132.0" cy="4.0" r="2.6" fill="var(--indigo-deep)"></circle>
+</svg>
+                </li>
+                <li class="metric">
+                  <div class="metric__head">
+                    <span class="metric__label">variant b-aandeel</span>
+                    <span class="metric__val">64%</span>
+                  </div>
+                  <svg class="sparkline" viewBox="0 0 132 40" width="132" height="40" role="img" aria-hidden="true" preserveAspectRatio="none">
+  <defs><linearGradient id="fade-var" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--indigo)" stop-opacity="0.16"></stop><stop offset="1" stop-color="var(--indigo)" stop-opacity="0"></stop></linearGradient></defs>
+  <path d="M0.0,36.0 L22.0,31.1 L44.0,26.2 L66.0,20.6 L88.0,13.2 L110.0,8.3 L132.0,4.0 L132,40 L0,40 Z" fill="url(#fade-var)" opacity="0.9"></path>
+  <path d="M0.0,36.0 L22.0,31.1 L44.0,26.2 L66.0,20.6 L88.0,13.2 L110.0,8.3 L132.0,4.0" fill="none" stroke="var(--indigo)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <circle cx="132.0" cy="4.0" r="2.6" fill="var(--indigo)"></circle>
+</svg>
+                </li>
+              </ul>
+            </figure>
+
+            <div class="sig__arrow" id="sigArrow" aria-hidden="true">
+              <span class="sig__arrow-word">wordt</span>
+              <svg viewBox="0 0 40 12" width="40" height="12" class="sig__arrow-svg">
+                <path d="M0 6h35M30 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+
+            <div class="sig__brief">
+              <figcaption class="sig__cap"><span class="kicker">de briefing · vandaag 07:00</span></figcaption>
+              <p class="sig__prose" id="sigProse"><span class="w">Gisteren</span> <span class="w">steeg</span> <span class="w">de</span> <span class="w">activatie</span> <span class="w">met</span> <span class="w w-key">12%</span> <span class="w">—</span> <span class="w">de</span> <span class="w">hoogste</span> <span class="w">in</span> <span class="w">zes</span> <span class="w">weken.</span> <span class="w">Vrijwel</span> <span class="w">de</span> <span class="w">hele</span> <span class="w">stijging</span> <span class="w">komt</span> <span class="w">van</span> <span class="w">de</span> <span class="w">nieuwe</span> <span class="w">onboarding</span> <span class="w w-key">(variant B),</span> <span class="w">die</span> <span class="w">nu</span> <span class="w">64%</span> <span class="w">van</span> <span class="w">de</span> <span class="w">nieuwe</span> <span class="w">accounts</span> <span class="w">ziet.</span> <span class="w">Let</span> <span class="w">op:</span> <span class="w">de</span> <span class="w">support-druk</span> <span class="w">liep</span> <span class="w">mee</span> <span class="w">op</span> <span class="w w-warn">(+8%),</span> <span class="w">waarschijnlijk</span> <span class="w">dezelfde</span> <span class="w">cohort.</span></p>
+              <p class="sig__action" id="sigAction">
+                <span class="sig__action-tag">Aanbevolen</span>Rol variant B uit naar 100% en werk het help-artikel over stap 3 bij.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="hero__scrollhint" aria-hidden="true">scroll — de data schrijft zichzelf</span>
+  </section>
+
+  <!-- PROBLEEM -->
+  <section class="section band-paper problem" aria-labelledby="problem-title">
+    <div class="shell grid12 problem__grid">
+      <div class="problem__aside" data-reveal>
+        <p class="kicker">Het ongemak</p>
+        <p class="problem__note">De gemiddelde scale-up bouwde zeventien dashboards. Op een dinsdag opent niemand er meer dan twee.</p>
+      </div>
+      <div class="problem__main" data-reveal data-reveal-delay="80">
+        <h2 id="problem-title" class="problem__statement">
+          Een dashboard <em>toont</em> je honderd cijfers en laat je raden welke ertoe doet. Tegen de tijd dat je het verhaal hebt gereconstrueerd, is de ochtend voorbij.
+        </h2>
+        <p class="problem__after">
+          Dashboards zijn geen verhaal. Het zijn losse woorden waar iemand nog een zin van moet maken — elke dag opnieuw, in elk hoofd apart.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZO WERKT HET -->
+  <section id="werkwijze" class="section band-ink how" aria-labelledby="how-title">
+    <div class="shell">
+      <div class="how__head grid12">
+        <div class="how__head-inner" data-reveal>
+          <p class="kicker">Zo werkt het</p>
+          <h2 id="how-title" class="how__title">Van bron tot briefing in drie stappen — daarna nooit meer aanraken.</h2>
+        </div>
+      </div>
+      <ol class="how__steps">
+        <li class="step" style="--i:0" data-reveal>
+          <span class="step__n">01</span>
+          <div class="step__body">
+            <h3 class="step__title">Verbind je bronnen</h3>
+            <p class="step__text">Koppel je warehouse, product-analytics en Stripe. Verso leest je metrics zoals ze zijn — geen modellen om te onderhouden, geen dashboards om te bouwen.</p>
+            <span class="step__meta">≈ 9 minuten</span>
+          </div>
+        </li>
+        <li class="step" style="--i:1" data-reveal data-reveal-delay="60">
+          <span class="step__n">02</span>
+          <div class="step__body">
+            <h3 class="step__title">Verso leest mee, elke nacht</h3>
+            <p class="step__text">Terwijl jij slaapt vergelijkt Verso elke metric met zijn verleden, weegt de context en schrijft op wat ertoe doet. Niet alles — alleen wat veranderde.</p>
+            <span class="step__meta">volautomatisch</span>
+          </div>
+        </li>
+        <li class="step" style="--i:2" data-reveal data-reveal-delay="120">
+          <span class="step__n">03</span>
+          <div class="step__body">
+            <h3 class="step__title">De briefing ligt klaar</h3>
+            <p class="step__text">Om 7:00 staat het verhaal van gisteren in je inbox of Slack. Eén alinea, in mensentaal, met de bron onder elke zin. Lezen kost een minuut.</p>
+            <span class="step__meta">07:00, elke werkdag</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FUNCTIES -->
+  <section id="functies" class="section band-paper features" aria-labelledby="features-title">
+    <div class="shell">
+      <div class="features__head grid12">
+        <div class="features__head-inner" data-reveal>
+          <p class="kicker">Wat Verso doet</p>
+          <h2 id="features-title" class="features__title">Vijf manieren waarop cijfers tekst worden.</h2>
+        </div>
+      </div>
+      <div class="features__list">
+        <article class="spread">
+          <div class="spread__text" data-reveal>
+            <span class="spread__index" aria-hidden="true">i</span>
+            <h3 class="spread__title">Een ochtendbriefing, geen dashboard</h3>
+            <p class="spread__body">Elke ochtend schrijft Verso het verhaal van wat er veranderde — automatisch, in mensentaal, in je inbox of Slack. Geen tabbladen om te openen, geen grafiek om te ontcijferen.</p>
+            <span class="spread__aside">Levering 07:00 · inbox + Slack</span>
+          </div>
+          <div class="spread__viz" data-reveal data-reveal-delay="80">
+            <div class="fviz fviz--inbox" aria-hidden="true">
+              <div class="fviz__row"><span class="fviz__tag">07:00</span><span class="fviz__from">Verso · Ochtendbriefing</span></div>
+              <p class="fviz__snippet">"Gisteren steeg de activatie met <b>12%</b> — de hoogste in zes weken…"</p>
+              <div class="fviz__channel">#groei · ook in Slack geplaatst</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="spread spread--flip">
+          <div class="spread__text" data-reveal>
+            <span class="spread__index" aria-hidden="true">ii</span>
+            <h3 class="spread__title">Een piek krijgt een reden</h3>
+            <p class="spread__body">Een dip of uitschieter wordt niet alleen gesignaleerd, maar geduid. Verso legt naast de verandering de waarschijnlijke oorzaak — met de cohort, de release of de campagne die het verklaart.</p>
+            <span class="spread__aside">Anomalie-duiding mét context</span>
+          </div>
+          <div class="spread__viz" data-reveal data-reveal-delay="80">
+            <div class="fviz fviz--anomaly" aria-hidden="true">
+              <svg class="sparkline" viewBox="0 0 132 40" width="132" height="40" role="img" aria-hidden="true" preserveAspectRatio="none">
+  <defs><linearGradient id="fade-feat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--indigo)" stop-opacity="0.16"></stop><stop offset="1" stop-color="var(--indigo)" stop-opacity="0"></stop></linearGradient></defs>
+  <path d="M0.0,36.0 L22.0,32.4 L44.0,34.2 L66.0,28.9 L88.0,30.7 L110.0,4.0 L132.0,16.4 L132,40 L0,40 Z" fill="url(#fade-feat)" opacity="0.9"></path>
+  <path d="M0.0,36.0 L22.0,32.4 L44.0,34.2 L66.0,28.9 L88.0,30.7 L110.0,4.0 L132.0,16.4" fill="none" stroke="var(--indigo)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <circle cx="132.0" cy="16.4" r="2.6" fill="var(--indigo)"></circle>
+</svg>
+              <div class="fviz__callout"><span class="fviz__pin"></span>piek = release variant B, niet seizoen</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="spread">
+          <div class="spread__text" data-reveal>
+            <span class="spread__index" aria-hidden="true">iii</span>
+            <h3 class="spread__title">Vraag het in gewone taal</h3>
+            <p class="spread__body">"Waarom liep de omzet in maart achter?" Stel de vraag zoals je hem aan een collega zou stellen, en krijg een geschreven antwoord terug — met de cijfers waarop het rust.</p>
+            <span class="spread__aside">Antwoord in proza, met bron</span>
+          </div>
+          <div class="spread__viz" data-reveal data-reveal-delay="80">
+            <div class="fviz fviz--ask" aria-hidden="true">
+              <p class="fviz__q">"Waarom liep de omzet in maart achter?"</p>
+              <p class="fviz__a">Twee enterprise-deals verschoven naar Q2; onderliggend groeide MRR <b>4%</b>.</p>
+              <span class="fviz__src">bron · stripe.mrr_daily ↗</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="spread spread--flip">
+          <div class="spread__text" data-reveal>
+            <span class="spread__index" aria-hidden="true">iv</span>
+            <h3 class="spread__title">Deel een memo, geen schermafdruk</h3>
+            <p class="spread__body">Elke briefing is ook een nette memo: getypeset, deelbaar, klaar voor je board-update of je standup. Plak geen losse grafieken meer aan elkaar.</p>
+            <span class="spread__aside">Deelbaar als memo of PDF</span>
+          </div>
+          <div class="spread__viz" data-reveal data-reveal-delay="80">
+            <div class="fviz fviz--memo" aria-hidden="true">
+              <div class="fviz__memo">
+                <span class="fviz__memo-h">Memo — week 24</span>
+                <span class="fviz__memo-l"></span>
+                <span class="fviz__memo-l"></span>
+                <span class="fviz__memo-l short"></span>
+              </div>
+              <span class="fviz__pages">deel · PDF · board-update</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="spread">
+          <div class="spread__text" data-reveal>
+            <span class="spread__index" aria-hidden="true">v</span>
+            <h3 class="spread__title">Geen black box</h3>
+            <p class="spread__body">Elke zin die Verso schrijft linkt terug naar de onderliggende data. Klik door op een bewering en je staat bij de query. Vertrouwen begint bij herleidbaarheid.</p>
+            <span class="spread__aside">Elke zin → bron, één klik</span>
+          </div>
+          <div class="spread__viz" data-reveal data-reveal-delay="80">
+            <div class="fviz fviz--trace" aria-hidden="true">
+              <p class="fviz__trace">…de stijging komt van <span class="fviz__link">variant B</span>.</p>
+              <span class="fviz__chip">↳ events.onboarding · variant = B</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EEN BRIEFING -->
+  <section id="briefing" class="section band-lavender briefing" aria-labelledby="briefing-title">
+    <div class="shell grid12 briefing__grid">
+      <div class="briefing__intro" data-reveal>
+        <p class="kicker">Een echte briefing</p>
+        <h2 id="briefing-title" class="briefing__title">Dit is het hele product. Eén alinea, elke ochtend.</h2>
+        <p class="lede">Geen samenvatting van een dashboard, maar het verhaal eronder — getypeset om gelezen te worden, niet gescand.</p>
+      </div>
+      <div class="briefing__memo-wrap" data-reveal data-reveal-delay="100">
+        <article class="memo" aria-label="Voorbeeldbriefing van Verso">
+          <header class="memo__head">
+            <span class="memo__brand">Verso · Ochtendbriefing</span>
+            <span class="memo__date">di 16 jun · 07:00</span>
+          </header>
+          <p class="memo__body">
+            <span class="memo__drop" aria-hidden="true">G</span><span class="memo__first">isteren</span> steeg de activatie met <strong>12%</strong> — de hoogste in zes weken. Vrijwel de hele stijging komt van de nieuwe onboarding <strong>(variant B)</strong>, die nu <strong>64%</strong> van de nieuwe accounts ziet. Let op: de support-druk liep mee op <em>(+8%)</em>, waarschijnlijk dezelfde cohort.
+          </p>
+          <p class="memo__action">
+            <span class="memo__action-tag">Aanbevolen</span>Rol variant B uit naar 100% en werk het help-artikel over stap 3 bij.
+          </p>
+          <footer class="memo__foot">
+            <span class="memo__foot-label">Herleidbaar tot</span>
+            <ul class="memo__sources">
+              <li class="memo__source"><span class="memo__source-key">activatie</span><span class="memo__source-src">product.activation_daily</span></li>
+              <li class="memo__source"><span class="memo__source-key">support-druk</span><span class="memo__source-src">zendesk.tickets_per_dag</span></li>
+              <li class="memo__source"><span class="memo__source-key">variant B</span><span class="memo__source-src">events.onboarding · variant</span></li>
+            </ul>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="section band-ink proof" aria-labelledby="proof-title">
+    <div class="shell">
+      <div class="proof__quote-wrap" data-reveal>
+        <p class="kicker" id="proof-title">Wat teams ervan zeggen</p>
+        <blockquote class="proof__quote">
+          <span class="proof__mark" aria-hidden="true">“</span>We hadden zeventien dashboards en niemand die ze opende. Nu leest het hele team één alinea bij de koffie — en we weten eindelijk allemaal hetzelfde.
+        </blockquote>
+        <footer class="proof__cite">
+          <span class="proof__name">Maartje de Wit</span>
+          <span class="proof__role">Hoofd Product, Haleffort</span>
+        </footer>
+      </div>
+      <div class="proof__logos" data-reveal data-reveal-delay="100">
+        <span class="proof__logos-label">Gelezen bij</span>
+        <ul class="proof__logo-row">
+          <li class="proof__logo">Haleffort</li>
+          <li class="proof__logo">Kavel</li>
+          <li class="proof__logo">Noord &amp; Co</li>
+          <li class="proof__logo">Tij</li>
+          <li class="proof__logo">Vlinder</li>
+          <li class="proof__logo">Reeks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="section band-paper impact" aria-labelledby="impact-title">
+    <div class="shell">
+      <h2 id="impact-title" class="impact__title" data-reveal>Wat het oplevert<span class="impact__dot">.</span></h2>
+      <dl class="impact__grid">
+        <div class="impact__item" data-reveal>
+          <dt class="impact__value">1 min</dt>
+          <dd class="impact__label">om de briefing van gisteren te lezen<span class="impact__note">i.p.v. zeven tabbladen</span></dd>
+        </div>
+        <div class="impact__item" data-reveal data-reveal-delay="60">
+          <dt class="impact__value">07:00</dt>
+          <dd class="impact__label">klaar, elke werkdag<span class="impact__note">voor je eerste koffie</span></dd>
+        </div>
+        <div class="impact__item" data-reveal data-reveal-delay="120">
+          <dt class="impact__value">100%</dt>
+          <dd class="impact__label">van de zinnen herleidbaar<span class="impact__note">tot de bron-query</span></dd>
+        </div>
+        <div class="impact__item" data-reveal data-reveal-delay="180">
+          <dt class="impact__value">0</dt>
+          <dd class="impact__label">dashboards om te onderhouden<span class="impact__note">Verso schrijft, jij leest</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- PRIJZEN -->
+  <section id="prijzen" class="section band-lavender pricing" aria-labelledby="pricing-title">
+    <div class="shell">
+      <div class="pricing__head grid12">
+        <div class="pricing__head-inner" data-reveal>
+          <p class="kicker">Prijzen</p>
+          <h2 id="pricing-title" class="pricing__title">Twee abonnementen. Allebei beginnen ze met lezen.</h2>
+        </div>
+      </div>
+      <div class="pricing__tiers">
+        <article class="tier" data-reveal>
+          <div class="tier__top"><h3 class="tier__name">Redactie</h3></div>
+          <p class="tier__price"><span class="tier__amount">€0</span><span class="tier__cadence">voor altijd</span></p>
+          <p class="tier__pitch">Voor de solo-founder die het verhaal wil lezen voor het te laat is.</p>
+          <ul class="tier__features">
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Dagelijkse ochtendbriefing</li>
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Tot 3 verbonden bronnen</li>
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Vraag in gewone taal (50 / maand)</li>
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Levering per e-mail</li>
+          </ul>
+          <a href="#cta" class="btn btn-ghost tier__cta">Begin gratis</a>
+        </article>
+        <article class="tier tier--featured" data-reveal data-reveal-delay="80">
+          <div class="tier__top"><h3 class="tier__name">Hoofdredactie</h3><span class="tier__badge">Aanrader</span></div>
+          <p class="tier__price"><span class="tier__amount">€280</span><span class="tier__cadence">per maand</span></p>
+          <p class="tier__pitch">Voor het team dat elke ochtend op dezelfde alinea wil starten.</p>
+          <ul class="tier__features">
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Alles uit Redactie, zonder limieten</li>
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Onbeperkte bronnen + Slack-levering</li>
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Anomalie-duiding met context</li>
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Deelbare memo’s en board-exports</li>
+            <li class="tier__feature"><span class="tier__check" aria-hidden="true">✓</span>Herleidbaar tot elke bron-query</li>
+          </ul>
+          <a href="#cta" class="btn btn-primary tier__cta">Start 14 dagen proef</a>
+        </article>
+        <div class="pricing__note-card" data-reveal data-reveal-delay="160">
+          <p class="pricing__note">Grotere redactie? <a class="tlink" href="#cta">Praat met ons</a> over een plan met SSO, audit-logs en een eigen schrijfwijze voor je merk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section band-paper faq" aria-labelledby="faq-title">
+    <div class="shell grid12 faq__grid">
+      <div class="faq__aside" data-reveal>
+        <p class="kicker">Veelgevraagd</p>
+        <h2 id="faq-title" class="faq__title">Nog even dit, voor je begint.</h2>
+        <p class="faq__sub">Staat je vraag er niet bij? <a class="tlink" href="#cta">We schrijven je terug</a>.</p>
+      </div>
+      <div class="faq__list" data-reveal data-reveal-delay="60">
+        <ul>
+          <li class="qa is-open">
+            <h3 class="qa__h">
+              <button id="faq-btn-0" type="button" class="qa__trigger" aria-expanded="true" aria-controls="faq-panel-0">
+                <span class="qa__q">Vervangt Verso onze dashboards?</span><span class="qa__sign" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div id="faq-panel-0" role="region" aria-labelledby="faq-btn-0" class="qa__panel">
+              <p class="qa__a">Nee — Verso leest ze. Je houdt je warehouse en je tools; Verso legt er een briefing-laag overheen die het verhaal vertelt dat in de grafieken verstopt zit. De cijfers blijven van jou, de duiding doet Verso.</p>
+            </div>
+          </li>
+          <li class="qa">
+            <h3 class="qa__h">
+              <button id="faq-btn-1" type="button" class="qa__trigger" aria-expanded="false" aria-controls="faq-panel-1">
+                <span class="qa__q">Hoe weet ik dat een bewering klopt?</span><span class="qa__sign" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" class="qa__panel" hidden>
+              <p class="qa__a">Elke zin in een briefing linkt terug naar de query en de cijfers eronder. Klik door en je staat bij de bron. Geen black box: als Verso iets schrijft, kun je het natrekken.</p>
+            </div>
+          </li>
+          <li class="qa">
+            <h3 class="qa__h">
+              <button id="faq-btn-2" type="button" class="qa__trigger" aria-expanded="false" aria-controls="faq-panel-2">
+                <span class="qa__q">Welke bronnen kan ik koppelen?</span><span class="qa__sign" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" class="qa__panel" hidden>
+              <p class="qa__a">Warehouses zoals BigQuery, Snowflake en Postgres, product-analytics, en omzet uit Stripe. Verbinden kost een paar minuten en vraagt geen modelwerk — Verso leest je metrics zoals ze zijn.</p>
+            </div>
+          </li>
+          <li class="qa">
+            <h3 class="qa__h">
+              <button id="faq-btn-3" type="button" class="qa__trigger" aria-expanded="false" aria-controls="faq-panel-3">
+                <span class="qa__q">Schrijft Verso ook in het Engels?</span><span class="qa__sign" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" class="qa__panel" hidden>
+              <p class="qa__a">Ja. Briefings kunnen per team in het Nederlands of Engels — dezelfde rustige, redactionele stem, in de taal die jullie spreken.</p>
+            </div>
+          </li>
+          <li class="qa">
+            <h3 class="qa__h">
+              <button id="faq-btn-4" type="button" class="qa__trigger" aria-expanded="false" aria-controls="faq-panel-4">
+                <span class="qa__q">Wat gebeurt er met onze data?</span><span class="qa__sign" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" class="qa__panel" hidden>
+              <p class="qa__a">Verso leest, schrijft en linkt — en bewaart niet meer dan nodig is om dat te doen. Versleuteld onderweg en in rust, en je trekt een bron met één klik weer los.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLOT-CTA -->
+  <section id="cta" class="section band-ink finalcta" aria-labelledby="cta-title">
+    <div class="shell finalcta__inner" data-reveal>
+      <p class="kicker">Begin morgen</p>
+      <h2 id="cta-title" class="finalcta__title">Morgen om 07:00 ligt je eerste briefing klaar.</h2>
+      <p class="finalcta__lede">Verbind één bron vanavond. Lees morgenochtend wat er veranderde — in woorden, niet in grafieken.</p>
+      <div class="finalcta__actions">
+        <a class="btn btn-primary js-magnetic" href="#cta" aria-label="Begin gratis met Verso">
+          Begin gratis <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="btn btn-ghost" href="#briefing">Lees eerst een briefing</a>
+      </div>
+      <p class="finalcta__fine">Geen creditcard · klaar in 9 minuten · elke zin herleidbaar</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer band-paper" aria-labelledby="footer-title">
+  <div class="shell footer__inner">
+    <div class="footer__brandcol">
+      <a href="#top" class="footer__brand"><span class="nav__mark" aria-hidden="true">V</span><span>Verso</span></a>
+      <p class="footer__pitch" id="footer-title">De briefing-laag voor je datastack. Elke ochtend het verhaal van gisteren — herleidbaar tot de bron.</p>
+      <a href="#cta" class="tlink footer__cta">Begin gratis →</a>
+    </div>
+    <nav class="footer__nav" aria-label="Voettekst">
+      <div class="footer__col">
+        <h2 class="footer__head">Product</h2>
+        <ul>
+          <li><a href="#functies" class="footer__link">Ochtendbriefing</a></li>
+          <li><a href="#functies" class="footer__link">Anomalie-duiding</a></li>
+          <li><a href="#functies" class="footer__link">Vraag &amp; antwoord</a></li>
+          <li><a href="#functies" class="footer__link">Memo’s</a></li>
+          <li><a href="#functies" class="footer__link">Herleidbaarheid</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h2 class="footer__head">Bronnen</h2>
+        <ul>
+          <li><a href="#top" class="footer__link">Documentatie</a></li>
+          <li><a href="#top" class="footer__link">Changelog</a></li>
+          <li><a href="#top" class="footer__link">Status</a></li>
+          <li><a href="#top" class="footer__link">Veiligheid</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h2 class="footer__head">Studio</h2>
+        <ul>
+          <li><a href="#top" class="footer__link">Over Verso</a></li>
+          <li><a href="#top" class="footer__link">Schrijfwijze</a></li>
+          <li><a href="#cta" class="footer__link">Contact</a></li>
+          <li><a href="#top" class="footer__link">Werken bij</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="shell footer__colophon">
+    <p class="footer__set">Gezet in <span>Fraunces</span>, <span>Hanken Grotesk</span> en <span>JetBrains Mono</span>. Geschreven, niet gegenereerd.</p>
+    <p class="footer__legal">© 2026 Verso. Een fictief product, met zorg getypeset.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reduce = reduceMQ.matches;
+  var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var smooth = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };
+
+  /* ---------- Nav: condenseer bij scroll ---------- */
+  var nav = document.getElementById("nav");
+  var onNavScroll = function () {
+    if (window.scrollY > 24) { nav.classList.add("is-scrolled"); nav.classList.remove("is-top"); }
+    else { nav.classList.remove("is-scrolled"); nav.classList.add("is-top"); }
+  };
+
+  /* ---------- Mobiel menu ---------- */
+  var toggle = document.getElementById("navToggle");
+  var panel = document.getElementById("nav-mobile");
+  var burger = toggle.querySelector(".nav__burger");
+  var setMenu = function (open) {
+    toggle.setAttribute("aria-expanded", String(open));
+    burger.classList.toggle("is-open", open);
+    panel.classList.toggle("is-open", open);
+    if (open) { panel.hidden = false; } else { panel.hidden = true; }
+  };
+  toggle.addEventListener("click", function () {
+    setMenu(toggle.getAttribute("aria-expanded") !== "true");
+  });
+  panel.addEventListener("click", function (e) {
+    if (e.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+      setMenu(false); toggle.focus();
+    }
+  });
+
+  /* ---------- FAQ-accordion ---------- */
+  var triggers = document.querySelectorAll(".qa__trigger");
+  triggers.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var li = btn.closest(".qa");
+      var isOpen = btn.getAttribute("aria-expanded") === "true";
+      document.querySelectorAll(".qa").forEach(function (other) {
+        var t = other.querySelector(".qa__trigger");
+        var p = other.querySelector(".qa__panel");
+        other.classList.remove("is-open");
+        t.setAttribute("aria-expanded", "false");
+        p.hidden = true;
+      });
+      if (!isOpen) {
+        li.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+        document.getElementById(btn.getAttribute("aria-controls")).hidden = false;
+      }
+    });
+  });
+
+  /* ---------- Reveal-systeem ---------- */
+  var reveals = document.querySelectorAll("[data-reveal]");
+  reveals.forEach(function (el) {
+    var d = el.getAttribute("data-reveal-delay");
+    if (d) el.style.transitionDelay = d + "ms";
+  });
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (el) { el.classList.add("is-in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -12% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Magnetische CTA's ---------- */
+  var fine = window.matchMedia("(pointer: fine)").matches;
+  if (!reduce && fine) {
+    document.querySelectorAll(".js-magnetic").forEach(function (el) {
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - (r.left + r.width / 2)) * 0.28;
+        var y = (e.clientY - (r.top + r.height / 2)) * 0.32;
+        el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px)";
+      });
+      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
+    });
+  }
+
+  /* ---------- Signature: data wordt tekst ---------- */
+  var wideMQ = window.matchMedia("(min-width: 900px)");
+  var hero = document.getElementById("top");
+  var prose = document.getElementById("sigProse");
+  var words = prose ? [].slice.call(prose.querySelectorAll(".w")) : [];
+  var raw = document.getElementById("sigRaw");
+  var action = document.getElementById("sigAction");
+  var arrow = document.getElementById("sigArrow");
+  var scrollDriven = wideMQ.matches && !reduce && words.length > 0;
+
+  function enableSignature() {
+    hero.classList.remove("hero--static");
+    hero.classList.add("hero--scroll");
+    var N = words.length, RS = 0.14, RE = 0.8, span = RE - RS;
+    var ranges = words.map(function (w, i) {
+      var start = RS + (i / N) * span;
+      return { start: start, end: Math.min(RE, start + (span / N) * 2.6) };
+    });
+    var ticking = false;
+    function render() {
+      ticking = false;
+      var total = hero.offsetHeight - window.innerHeight;
+      if (total <= 0) return;
+      var p = clamp(-hero.getBoundingClientRect().top / total, 0, 1);
+      var rd = smooth(p, 0.06, 0.46);
+      raw.style.opacity = (1 - 0.66 * rd).toFixed(3);
+      raw.style.transform = "translateY(" + (-6 * rd).toFixed(2) + "px)";
+      arrow.style.opacity = (0.25 + 0.75 * smooth(p, 0.1, 0.3)).toFixed(3);
+      for (var i = 0; i < N; i++) {
+        var t = smooth(p, ranges[i].start, ranges[i].end);
+        var w = words[i];
+        w.style.opacity = (0.1 + 0.9 * t).toFixed(3);
+        w.style.transform = "translateY(" + (7 * (1 - t)).toFixed(2) + "px)";
+      }
+      var at = smooth(p, 0.79, 0.95);
+      action.style.opacity = at.toFixed(3);
+      action.style.transform = "translateY(" + (10 * (1 - at)).toFixed(2) + "px)";
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(render); }
+    }
+    // beginstaat: faint
+    words.forEach(function (w) { w.style.opacity = "0.1"; w.style.transform = "translateY(7px)"; });
+    action.style.opacity = "0";
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    render();
+  }
+
+  if (scrollDriven) enableSignature();
+
+  /* ---------- init ---------- */
+  window.addEventListener("scroll", onNavScroll, { passive: true });
+  onNavScroll();
+})();
+
+</script>
+</body>
+</html>
