@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 111,
+  "count": 112,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5710,6 +5710,66 @@
         "tags": [
           "Mozaiekwand",
           "Interieur",
+          "Signature"
+        ]
+      }
+    },
+    {
+      "id": 112,
+      "slug": "112-karterij",
+      "path": "templates/112-karterij/",
+      "title": "Karterij Noord - routeatelier",
+      "name": "Karterij Noord",
+      "sector": "reizen",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f5f0e4",
+        "#214f3b",
+        "#2b6f9e",
+        "#c86735",
+        "#513c7a"
+      ],
+      "fonts": [
+        "Literata",
+        "Bricolage Grotesque"
+      ],
+      "mechanics": [
+        "route-map-svg",
+        "terrain-switcher",
+        "pace-switcher",
+        "style-switcher",
+        "faq-accordion",
+        "mobile-menu",
+        "reveal-system",
+        "anim-opt-in",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "routepaneel",
+        "manifest",
+        "routebundels",
+        "proces",
+        "winkel",
+        "maatwerk",
+        "quote",
+        "faq",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). Kaartenwinkel en routeatelier in warm papier, spruce, lake, clay en dusk met Literata/Bricolage Grotesque. SIGNATUUR: een interactief topografisch routepaneel waarin terrein, tempo en kaartstijl de contourlijnen, waterpartij, route, markers en statistieken live aanpassen. Verder routebundel-spreads, processtappen, winkelrijen, maatwerk-CTA en toegankelijke FAQ.",
+      "card": {
+        "title": "Karterij Noord - routeatelier",
+        "blurb": "Kaartenwinkel met interactief topografisch routepaneel: kies terrein, tempo en kaartstijl en zie de route direct mee veranderen.",
+        "emoji": "K",
+        "grad": [
+          "#214f3b",
+          "#c86735"
+        ],
+        "tags": [
+          "Routekaart",
+          "Reizen",
           "Signature"
         ]
       }
