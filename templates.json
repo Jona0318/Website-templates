@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 107,
+  "count": 108,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5406,6 +5406,60 @@
           "Project-fit",
           "Zakelijk",
           "Signature"
+        ]
+      }
+    },
+    {
+      "id": 108,
+      "slug": "108-aurelia",
+      "path": "templates/108-aurelia/",
+      "title": "AURELIA Systems | AI product studio",
+      "name": "AURELIA Systems",
+      "sector": "tech",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#080a09",
+        "#d7f76d",
+        "#f3f0e8"
+      ],
+      "fonts": [
+        "Geist",
+        "Geist Mono"
+      ],
+      "mechanics": [
+        "signal-atlas-canvas",
+        "interactive-modes",
+        "complexity-slider",
+        "reveal-system",
+        "contact-form",
+        "form-validate",
+        "fullscreen-menu",
+        "responsive-images"
+      ],
+      "sections": [
+        "hero",
+        "bewijs",
+        "studio",
+        "signal-atlas",
+        "cases",
+        "proces",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). High-end dark AI-productstudio in off-black x warm ivory x signal-lime met Geist en een premium hardware/glass layout. SIGNATUUR: een interactieve Signal Atlas met canvas-engine, traject-modi en complexiteit-slider die het netwerk, de copy en metrics live aanstuurt. Verder een full-bleed canvas-hero, asymmetrische studio-grid, case-stack, proceslaag, fullscreen menu en briefingformulier met validatie.",
+      "card": {
+        "title": "AURELIA Systems | AI product studio",
+        "blurb": "High-end dark AI-productstudio in off-black x signal-lime: canvas-hero, interactieve Signal Atlas, hardware/glass layout, case-stack en premium briefingflow.",
+        "emoji": "A",
+        "grad": [
+          "#080a09",
+          "#d7f76d"
+        ],
+        "tags": [
+          "Signal Atlas",
+          "Canvas",
+          "Masterpiece"
         ]
       }
     }

@@ -1,0 +1,1828 @@
+<!doctype html>
+<html lang="nl" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA Systems | AI product studio</title>
+  <meta
+    name="description"
+    content="AURELIA Systems ontwerpt en bouwt AI-producten, automatisering en digitale operating systems voor ambitieuze teams."
+  />
+  <meta name="theme-color" content="#080a09" />
+  <meta property="og:title" content="AURELIA Systems | AI product studio" />
+  <meta
+    property="og:description"
+    content="Een high-end dark signature-template met een interactieve canvas Signal Atlas, premium layout en briefingflow."
+  />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:image"
+    content="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=85"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.remove("no-js");
+      root.classList.add("js");
+    })();
+  </script>
+  <style>
+    :root {
+      --bg: #080a09;
+      --bg-2: #101412;
+      --panel: rgba(246, 242, 231, 0.055);
+      --panel-strong: rgba(246, 242, 231, 0.105);
+      --ink: #f3f0e8;
+      --ink-soft: rgba(243, 240, 232, 0.72);
+      --ink-muted: rgba(243, 240, 232, 0.48);
+      --line: rgba(243, 240, 232, 0.12);
+      --line-strong: rgba(243, 240, 232, 0.22);
+      --accent: #d7f76d;
+      --accent-2: #90d8c0;
+      --accent-dark: #22330e;
+      --danger: #ffb4a8;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+      --radius: 32px;
+      --radius-core: 24px;
+      --radius-sm: 18px;
+      --maxw: 1260px;
+      --gutter: clamp(1rem, 4vw, 4.5rem);
+      --display: "Geist", system-ui, sans-serif;
+      --body: "Geist", system-ui, sans-serif;
+      --mono: "Geist Mono", ui-monospace, monospace;
+      --ease: cubic-bezier(0.2, 0.84, 0.18, 1);
+      --ease-heavy: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(120deg, rgba(215, 247, 109, 0.045), transparent 30%),
+        linear-gradient(180deg, var(--bg), #0d100f 48%, #070908);
+      color: var(--ink);
+      font-family: var(--body);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.28;
+      background:
+        repeating-linear-gradient(90deg, rgba(243, 240, 232, 0.035) 0 1px, transparent 1px 120px),
+        repeating-linear-gradient(0deg, rgba(243, 240, 232, 0.026) 0 1px, transparent 1px 120px);
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 86%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      pointer-events: none;
+      opacity: 0.055;
+      background-image:
+        repeating-radial-gradient(circle at 20% 30%, rgba(243, 240, 232, 0.9) 0 1px, transparent 1px 3px);
+      mix-blend-mode: overlay;
+    }
+
+    img,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+      color: inherit;
+    }
+
+    button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #0b0e0c;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .skip {
+      position: fixed;
+      top: -120px;
+      left: 1rem;
+      z-index: 130;
+      padding: 0.82rem 1rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #0b0e0c;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      transition: top 0.28s var(--ease);
+    }
+
+    .skip:focus {
+      top: 1rem;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav {
+      position: fixed;
+      top: 1rem;
+      left: 0;
+      right: 0;
+      z-index: 80;
+      pointer-events: none;
+    }
+
+    .nav-shell {
+      width: min(calc(100% - 2rem), 1120px);
+      margin-inline: auto;
+      min-height: 64px;
+      padding: 0.38rem;
+      border: 1px solid rgba(243, 240, 232, 0.16);
+      border-radius: 999px;
+      background: rgba(8, 10, 9, 0.68);
+      backdrop-filter: blur(22px) saturate(150%);
+      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(243, 240, 232, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      pointer-events: auto;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.72rem;
+      padding-left: 0.45rem;
+      min-width: max-content;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 2.28rem;
+      height: 2.28rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: #0b0e0c;
+      font-size: 0.82rem;
+      font-weight: 900;
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1rem, 2.4vw, 2rem);
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+      font-weight: 650;
+    }
+
+    .nav-links a {
+      transition: color 0.34s var(--ease), transform 0.34s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 3.08rem;
+      height: 3.08rem;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 240, 232, 0.16);
+      background: rgba(243, 240, 232, 0.06);
+      position: relative;
+    }
+
+    .menu-btn span {
+      position: absolute;
+      left: 50%;
+      width: 1.05rem;
+      height: 1px;
+      background: var(--ink);
+      transform: translateX(-50%);
+      transition: transform 0.46s var(--ease-heavy), top 0.46s var(--ease-heavy);
+    }
+
+    .menu-btn span:first-child {
+      top: 1.25rem;
+    }
+
+    .menu-btn span:last-child {
+      top: 1.78rem;
+    }
+
+    .menu-btn[aria-expanded="true"] span:first-child {
+      top: 1.52rem;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .menu-btn[aria-expanded="true"] span:last-child {
+      top: 1.52rem;
+      transform: translateX(-50%) rotate(-45deg);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      padding: 7rem var(--gutter) 3rem;
+      background: rgba(8, 10, 9, 0.82);
+      backdrop-filter: blur(28px) saturate(140%);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-1rem) scale(0.98);
+      transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+    }
+
+    .menu-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .menu-overlay a {
+      display: block;
+      max-width: 780px;
+      padding-block: 0.42rem;
+      font-size: clamp(3rem, 12vw, 8.5rem);
+      line-height: 0.92;
+      font-weight: 900;
+      letter-spacing: 0;
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+      transition-delay: var(--d, 0ms);
+    }
+
+    .menu-overlay.is-open a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.72rem;
+      min-height: 3rem;
+      padding: 0.34rem 0.36rem 0.34rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 760;
+      line-height: 1;
+      white-space: nowrap;
+      transition:
+        transform 0.42s var(--ease),
+        background 0.42s var(--ease),
+        border-color 0.42s var(--ease),
+        color 0.42s var(--ease);
+    }
+
+    .btn:active {
+      transform: scale(0.975);
+    }
+
+    .btn-mark {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      transition: transform 0.42s var(--ease), background 0.42s var(--ease);
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      line-height: 1;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0d0b;
+      box-shadow: 0 18px 46px rgba(215, 247, 109, 0.18);
+    }
+
+    .btn-primary .btn-mark {
+      background: rgba(8, 10, 9, 0.12);
+    }
+
+    .btn-primary:hover .btn-mark {
+      transform: translate(3px, -1px) scale(1.04);
+      background: rgba(8, 10, 9, 0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(243, 240, 232, 0.075);
+      color: var(--ink);
+      border-color: rgba(243, 240, 232, 0.16);
+    }
+
+    .btn-secondary .btn-mark {
+      background: rgba(243, 240, 232, 0.11);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(215, 247, 109, 0.44);
+      color: var(--accent);
+    }
+
+    .hero {
+      position: relative;
+      min-height: min(86dvh, 840px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .signal-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      background: #080a09;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(8, 10, 9, 0.96), rgba(8, 10, 9, 0.62) 46%, rgba(8, 10, 9, 0.18)),
+        linear-gradient(0deg, rgba(8, 10, 9, 0.96), transparent 40%);
+    }
+
+    .hero-inner {
+      padding-block: 7rem clamp(2.6rem, 7vh, 5rem);
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(280px, 0.46fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: end;
+    }
+
+    .hero-copyblock {
+      max-width: 850px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.05rem;
+      padding: 0.42rem 0.72rem;
+      border: 1px solid rgba(243, 240, 232, 0.16);
+      border-radius: 999px;
+      background: rgba(243, 240, 232, 0.06);
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      font-size: clamp(4.2rem, 9.4vw, 9.8rem);
+      line-height: 0.86;
+      font-weight: 900;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin-top: 1.35rem;
+      color: var(--ink-soft);
+      font-size: clamp(1.05rem, 1.8vw, 1.32rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    .hero-panel {
+      align-self: stretch;
+      display: grid;
+      align-content: end;
+      gap: 0.9rem;
+    }
+
+    .metal-shell {
+      padding: 0.46rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(243, 240, 232, 0.12);
+      background:
+        linear-gradient(145deg, rgba(243, 240, 232, 0.12), rgba(243, 240, 232, 0.035)),
+        rgba(243, 240, 232, 0.03);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(243, 240, 232, 0.1);
+    }
+
+    .metal-core {
+      border-radius: var(--radius-core);
+      border: 1px solid rgba(243, 240, 232, 0.1);
+      background: rgba(10, 14, 12, 0.82);
+      box-shadow: inset 0 1px 0 rgba(243, 240, 232, 0.08);
+      overflow: hidden;
+    }
+
+    .hero-stat {
+      padding: 1.15rem;
+      min-height: 10.2rem;
+      display: grid;
+      align-content: space-between;
+      gap: 1.4rem;
+    }
+
+    .hero-stat small {
+      color: var(--ink-muted);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: clamp(1.75rem, 3.5vw, 3rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    section {
+      padding-block: clamp(5rem, 10vw, 9rem);
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: clamp(2.2rem, 5vw, 4rem);
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.7rem, 6vw, 6.6rem);
+      line-height: 0.92;
+      font-weight: 900;
+    }
+
+    .section-head p {
+      max-width: 610px;
+      margin-top: 1rem;
+      color: var(--ink-soft);
+      font-size: 1.04rem;
+    }
+
+    .proof {
+      padding-block: 1.25rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 10, 9, 0.5);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .proof-item {
+      min-height: 8rem;
+      padding: 1rem;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(243, 240, 232, 0.045);
+      display: grid;
+      align-content: space-between;
+      gap: 1rem;
+    }
+
+    .proof-item strong {
+      font-size: clamp(1.1rem, 2vw, 1.75rem);
+      line-height: 1;
+    }
+
+    .proof-item span {
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+
+    .studio {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.78fr 0.78fr;
+      grid-auto-rows: minmax(230px, auto);
+      gap: 1rem;
+    }
+
+    .tile {
+      min-height: 100%;
+      padding: 0.48rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(243, 240, 232, 0.11);
+      background: rgba(243, 240, 232, 0.035);
+      box-shadow: inset 0 1px 0 rgba(243, 240, 232, 0.08);
+    }
+
+    .tile-core {
+      height: 100%;
+      min-height: inherit;
+      padding: clamp(1.2rem, 2.4vw, 1.7rem);
+      border-radius: var(--radius-core);
+      border: 1px solid rgba(243, 240, 232, 0.09);
+      background:
+        linear-gradient(145deg, rgba(243, 240, 232, 0.075), rgba(243, 240, 232, 0.024)),
+        rgba(9, 12, 10, 0.8);
+      display: grid;
+      align-content: space-between;
+      gap: 2rem;
+      transition: transform 0.55s var(--ease), border-color 0.55s var(--ease), background 0.55s var(--ease);
+    }
+
+    .tile:hover .tile-core {
+      transform: translateY(-4px);
+      border-color: rgba(215, 247, 109, 0.26);
+      background:
+        linear-gradient(145deg, rgba(215, 247, 109, 0.09), rgba(243, 240, 232, 0.026)),
+        rgba(9, 12, 10, 0.84);
+    }
+
+    .tile h3 {
+      font-size: clamp(1.35rem, 2.2vw, 2.15rem);
+      line-height: 1;
+      font-weight: 820;
+    }
+
+    .tile p {
+      margin-top: 0.72rem;
+      color: var(--ink-soft);
+      max-width: 28rem;
+    }
+
+    .tile small {
+      font-family: var(--mono);
+      color: var(--ink-muted);
+      font-size: 0.72rem;
+    }
+
+    .tile.tall {
+      grid-row: span 2;
+    }
+
+    .tile.wide {
+      grid-column: span 2;
+    }
+
+    .image-tile .tile-core {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .image-tile img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      filter: saturate(0.75) contrast(0.96);
+      transition: transform 0.7s var(--ease);
+    }
+
+    .image-tile:hover img {
+      transform: scale(1.035);
+    }
+
+    .atlas {
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(215, 247, 109, 0.035), transparent 44%),
+        rgba(243, 240, 232, 0.018);
+    }
+
+    .atlas-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .atlas-controls,
+    .atlas-display {
+      min-height: 520px;
+    }
+
+    .atlas-controls .metal-core,
+    .atlas-display .metal-core {
+      height: 100%;
+    }
+
+    .atlas-controls-inner {
+      padding: clamp(1.2rem, 2.8vw, 2rem);
+      display: grid;
+      align-content: space-between;
+      gap: 2rem;
+      height: 100%;
+    }
+
+    .mode-tabs {
+      display: grid;
+      gap: 0.72rem;
+    }
+
+    .mode-tab {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(243, 240, 232, 0.11);
+      background: rgba(243, 240, 232, 0.04);
+      text-align: left;
+      transition: transform 0.45s var(--ease), border-color 0.45s var(--ease), background 0.45s var(--ease);
+    }
+
+    .mode-tab strong {
+      display: block;
+      font-size: 1.04rem;
+      line-height: 1.1;
+    }
+
+    .mode-tab span {
+      display: block;
+      margin-top: 0.36rem;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+
+    .mode-tab:hover {
+      transform: translateY(-2px);
+      border-color: rgba(215, 247, 109, 0.24);
+    }
+
+    .mode-tab[aria-selected="true"] {
+      border-color: rgba(215, 247, 109, 0.45);
+      background: rgba(215, 247, 109, 0.095);
+    }
+
+    .complexity {
+      display: grid;
+      gap: 0.72rem;
+    }
+
+    .complexity label {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .atlas-stage {
+      position: relative;
+      height: 100%;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .atlas-stage canvas {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      background: #090c0b;
+    }
+
+    .atlas-readout {
+      position: absolute;
+      left: clamp(1rem, 3vw, 2rem);
+      right: clamp(1rem, 3vw, 2rem);
+      bottom: clamp(1rem, 3vw, 2rem);
+      display: grid;
+      gap: 1rem;
+      pointer-events: none;
+    }
+
+    .atlas-readout h3 {
+      max-width: 680px;
+      font-size: clamp(2rem, 4.8vw, 5rem);
+      line-height: 0.92;
+      font-weight: 900;
+    }
+
+    .atlas-readout p {
+      max-width: 520px;
+      color: var(--ink-soft);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+    }
+
+    .metric {
+      padding: 0.86rem;
+      border-radius: 18px;
+      border: 1px solid rgba(243, 240, 232, 0.1);
+      background: rgba(8, 10, 9, 0.58);
+    }
+
+    .metric small {
+      display: block;
+      color: var(--ink-muted);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 0.28rem;
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+
+    .cases {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .case-card:first-child {
+      grid-row: span 2;
+    }
+
+    .case-card .metal-core {
+      height: 100%;
+      display: grid;
+      overflow: hidden;
+    }
+
+    .case-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      filter: saturate(0.72) contrast(0.95);
+    }
+
+    .case-card:first-child img {
+      height: 520px;
+    }
+
+    .case-body {
+      padding: clamp(1.15rem, 2.4vw, 1.7rem);
+    }
+
+    .case-body h3 {
+      font-size: clamp(1.35rem, 2.7vw, 2.7rem);
+      line-height: 1;
+      font-weight: 850;
+    }
+
+    .case-body p {
+      margin-top: 0.72rem;
+      color: var(--ink-soft);
+    }
+
+    .process {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .process-lane {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .process-step .metal-core {
+      min-height: 270px;
+      padding: 1.35rem;
+      display: grid;
+      align-content: space-between;
+      gap: 2rem;
+    }
+
+    .process-step h3 {
+      font-size: clamp(1.2rem, 2vw, 1.75rem);
+      line-height: 1.05;
+    }
+
+    .process-step p {
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+
+    .contact {
+      padding-bottom: 0;
+    }
+
+    .contact-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+      gap: clamp(1.5rem, 5vw, 4rem);
+      align-items: start;
+    }
+
+    .contact h2 {
+      font-size: clamp(3rem, 7vw, 8rem);
+      line-height: 0.86;
+      font-weight: 900;
+    }
+
+    .contact p {
+      max-width: 560px;
+      margin-top: 1rem;
+      color: var(--ink-soft);
+    }
+
+    form {
+      padding: 0.46rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(243, 240, 232, 0.12);
+      background: rgba(243, 240, 232, 0.035);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(243, 240, 232, 0.08);
+    }
+
+    .form-core {
+      padding: clamp(1.15rem, 2.8vw, 1.7rem);
+      border-radius: var(--radius-core);
+      border: 1px solid rgba(243, 240, 232, 0.09);
+      background: rgba(10, 14, 12, 0.86);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.46rem;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--ink-soft);
+      font-size: 0.86rem;
+      font-weight: 760;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 3.2rem;
+      border-radius: 18px;
+      border: 1px solid rgba(243, 240, 232, 0.18);
+      background: rgba(243, 240, 232, 0.065);
+      color: var(--ink);
+      padding: 0.92rem 1rem;
+      transition: border-color 0.36s var(--ease), box-shadow 0.36s var(--ease), background 0.36s var(--ease);
+    }
+
+    textarea {
+      min-height: 9.5rem;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--ink-muted);
+      opacity: 1;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 0;
+      border-color: rgba(215, 247, 109, 0.62);
+      box-shadow: 0 0 0 4px rgba(215, 247, 109, 0.11);
+      background: rgba(243, 240, 232, 0.085);
+    }
+
+    .error {
+      min-height: 1.08rem;
+      color: var(--danger);
+      font-size: 0.78rem;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .form-state {
+      color: var(--accent);
+      font-weight: 760;
+      min-height: 1.2rem;
+    }
+
+    footer {
+      margin-top: clamp(5rem, 10vw, 8rem);
+      padding-block: 1.4rem;
+      border-top: 1px solid var(--line);
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    [data-rv] {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .js [data-rv] {
+      opacity: 0;
+      transform: translateY(3.2rem);
+      filter: blur(10px);
+      transition:
+        opacity 0.86s var(--ease-heavy),
+        transform 0.86s var(--ease-heavy),
+        filter 0.86s var(--ease-heavy);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .js [data-rv].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .js [data-rv] {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links,
+      .nav-actions > .btn {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .hero-inner,
+      .atlas-shell,
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .studio-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tile.wide,
+      .tile.tall {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .process-lane,
+      .proof-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-shell {
+        min-height: 58px;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .hero {
+        min-height: 84dvh;
+      }
+
+      .hero-inner {
+        padding-block: 6rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.6rem, 18vw, 5.3rem);
+      }
+
+      .hero-panel,
+      .studio-grid,
+      .case-grid,
+      .process-lane,
+      .proof-grid,
+      .metrics,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-card:first-child {
+        grid-row: auto;
+      }
+
+      .case-card img,
+      .case-card:first-child img {
+        height: 280px;
+      }
+
+      .atlas-controls,
+      .atlas-display,
+      .atlas-stage,
+      .atlas-stage canvas {
+        min-height: 500px;
+      }
+
+      .atlas-readout h3 {
+        font-size: clamp(2rem, 12vw, 3.5rem);
+      }
+
+      section {
+        padding-block: 4.5rem;
+      }
+
+      .hero-actions,
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body data-mode="compose">
+  <a class="skip" href="#main">Naar inhoud</a>
+
+  <nav class="nav" aria-label="Hoofdnavigatie">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="AURELIA home">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>AURELIA</span>
+      </a>
+      <div class="nav-links">
+        <a href="#studio">Studio</a>
+        <a href="#atlas">Atlas</a>
+        <a href="#cases">Cases</a>
+        <a href="#proces">Proces</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#contact">Start briefing <span class="btn-mark" aria-hidden="true">&gt;</span></a>
+        <button class="menu-btn" type="button" aria-label="Menu openen" aria-controls="menuOverlay" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <a href="#studio" style="--d: 70ms">Studio</a>
+    <a href="#atlas" style="--d: 130ms">Atlas</a>
+    <a href="#cases" style="--d: 190ms">Cases</a>
+    <a href="#contact" style="--d: 250ms">Briefing</a>
+  </div>
+
+  <main id="main">
+    <header class="hero" id="top">
+      <canvas class="signal-canvas" id="signalCanvas" aria-hidden="true"></canvas>
+      <div class="wrap hero-inner">
+        <div class="hero-copyblock">
+          <p class="kicker">AI product studio</p>
+          <h1>AURELIA Systems</h1>
+          <p class="hero-copy">
+            Wij ontwerpen AI-producten die complexe teams sneller laten beslissen, bouwen en leveren.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Start briefing <span class="btn-mark" aria-hidden="true">&gt;</span></a>
+            <a class="btn btn-secondary" href="#atlas">Bekijk atlas <span class="btn-mark" aria-hidden="true">&gt;</span></a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="Kernkwaliteiten">
+          <div class="metal-shell" data-rv>
+            <div class="metal-core hero-stat">
+              <small>Productie</small>
+              <strong>Van idee naar werkend systeem.</strong>
+            </div>
+          </div>
+          <div class="metal-shell" data-rv style="--delay: 100ms">
+            <div class="metal-core hero-stat">
+              <small>Focus</small>
+              <strong>Strategie, interface en integratie in een team.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="proof" aria-label="Bewijslaag">
+      <div class="wrap proof-grid">
+        <div class="proof-item" data-rv>
+          <strong>Werkende prototypes</strong>
+          <span>Geen losse beloftes. Elk traject heeft tastbare output.</span>
+        </div>
+        <div class="proof-item" data-rv style="--delay: 80ms">
+          <strong>AI met context</strong>
+          <span>Modellen worden gekoppeld aan echte processen en data.</span>
+        </div>
+        <div class="proof-item" data-rv style="--delay: 160ms">
+          <strong>Interface-first</strong>
+          <span>Beslissingen worden zichtbaar in duidelijke productflows.</span>
+        </div>
+        <div class="proof-item" data-rv style="--delay: 240ms">
+          <strong>Overdracht klaar</strong>
+          <span>Teams krijgen systeem, ritme en documentatie mee.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio" id="studio">
+      <div class="wrap">
+        <div class="section-head" data-rv>
+          <h2>Een studio voor systemen met gewicht.</h2>
+          <p>We combineren productstrategie, AI-workflows en interface-ontwerp tot software die echt in de operatie landt.</p>
+        </div>
+        <div class="studio-grid">
+          <article class="tile tall" data-rv>
+            <div class="tile-core">
+              <div>
+                <h3>Productstrategie</h3>
+                <p>We scherpen use-cases, risico's en meetpunten aan voordat er een interface of model wordt gebouwd.</p>
+              </div>
+              <small>Besluitvorming, scope en roadmap</small>
+            </div>
+          </article>
+          <article class="tile image-tile wide" data-rv style="--delay: 90ms">
+            <div class="tile-core">
+              <img
+                src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=84"
+                alt="Abstracte architectuur met scherpe lichtlijnen"
+                loading="lazy"
+              />
+            </div>
+          </article>
+          <article class="tile" data-rv style="--delay: 160ms">
+            <div class="tile-core">
+              <div>
+                <h3>AI-workflows</h3>
+                <p>Automatisering wordt ontworpen als werkstroom, niet als losse prompt of chatbot.</p>
+              </div>
+              <small>Agents, review, handover</small>
+            </div>
+          </article>
+          <article class="tile" data-rv style="--delay: 230ms">
+            <div class="tile-core">
+              <div>
+                <h3>Interface craft</h3>
+                <p>Complexe mogelijkheden worden vertaald naar schermen waar teams durven op te sturen.</p>
+              </div>
+              <small>Design systems en product UI</small>
+            </div>
+          </article>
+          <article class="tile wide" data-rv style="--delay: 300ms">
+            <div class="tile-core">
+              <div>
+                <h3>Launch systems</h3>
+                <p>We bouwen de eerste release, de beheerafspraken en het ritme waarmee het product beter blijft worden.</p>
+              </div>
+              <small>Prototype, release, adoptie</small>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="atlas" id="atlas">
+      <div class="wrap">
+        <div class="section-head" data-rv>
+          <h2>Signal Atlas.</h2>
+          <p>Kies het type traject. De atlas herschrijft de focus, output en intensiteit van de samenwerking.</p>
+        </div>
+        <div class="atlas-shell" data-rv>
+          <div class="metal-shell atlas-controls">
+            <div class="metal-core atlas-controls-inner">
+              <div class="mode-tabs" role="tablist" aria-label="Traject kiezen">
+                <button class="mode-tab" type="button" role="tab" aria-selected="true" data-mode="compose">
+                  <strong>Compose</strong>
+                  <span>Een nieuw AI-product scherp krijgen en bouwen.</span>
+                </button>
+                <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="automate">
+                  <strong>Automate</strong>
+                  <span>Terugkerend werk omzetten naar gecontroleerde workflows.</span>
+                </button>
+                <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="scale">
+                  <strong>Scale</strong>
+                  <span>Een bestaand systeem klaarzetten voor meer teams.</span>
+                </button>
+              </div>
+              <div class="complexity">
+                <label for="complexity">
+                  <span>Complexiteit</span>
+                  <strong id="complexityValue">64</strong>
+                </label>
+                <input id="complexity" type="range" min="24" max="96" value="64" />
+              </div>
+            </div>
+          </div>
+          <div class="metal-shell atlas-display">
+            <div class="metal-core atlas-stage">
+              <canvas id="atlasCanvas" aria-hidden="true"></canvas>
+              <div class="atlas-readout">
+                <h3 id="atlasTitle">Een productkern die snel bewijs levert.</h3>
+                <p id="atlasText">We bouwen een eerste systeem rond een scherpe use-case, echte feedback en een duidelijke releasegrens.</p>
+                <div class="metrics">
+                  <div class="metric">
+                    <small>Focus</small>
+                    <strong id="atlasFocus">Prototype</strong>
+                  </div>
+                  <div class="metric">
+                    <small>Output</small>
+                    <strong id="atlasOutput">Pilot build</strong>
+                  </div>
+                  <div class="metric">
+                    <small>Tempo</small>
+                    <strong id="atlasTempo">6-8 weken</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases" id="cases">
+      <div class="wrap">
+        <div class="section-head" data-rv>
+          <h2>Werk dat geen decor blijft.</h2>
+          <p>Deze template is geschreven voor bureaus die complexe digitale producten willen verkopen zonder vaag te worden.</p>
+        </div>
+        <div class="case-grid">
+          <article class="metal-shell case-card" data-rv>
+            <div class="metal-core">
+              <img
+                src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1200&q=84"
+                alt="Laptop en werkplek in donker licht"
+                loading="lazy"
+              />
+              <div class="case-body">
+                <h3>AI intake voor service-teams.</h3>
+                <p>Een triageflow die meldingen samenvat, prioriteert en overdraagt met menselijke controle.</p>
+              </div>
+            </div>
+          </article>
+          <article class="metal-shell case-card" data-rv style="--delay: 100ms">
+            <div class="metal-core">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=84"
+                alt="Team bekijkt digitaal werk op een scherm"
+                loading="lazy"
+              />
+              <div class="case-body">
+                <h3>Planning cockpit.</h3>
+                <p>Een productlaag boven bestaande tools, ontworpen voor dagelijkse keuzes en capaciteitsdruk.</p>
+              </div>
+            </div>
+          </article>
+          <article class="metal-shell case-card" data-rv style="--delay: 180ms">
+            <div class="metal-core">
+              <img
+                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=84"
+                alt="Moderne studio met bureaus en glas"
+                loading="lazy"
+              />
+              <div class="case-body">
+                <h3>Knowledge engine.</h3>
+                <p>Een interne zoek- en advieslaag die beleid, cases en teamkennis bruikbaar maakt.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="proces">
+      <div class="wrap">
+        <div class="section-head" data-rv>
+          <h2>Gebouwd als een productteam.</h2>
+          <p>Een compacte samenwerking met duidelijke output per ronde, zodat momentum niet verdwijnt in overleg.</p>
+        </div>
+        <div class="process-lane">
+          <article class="metal-shell process-step" data-rv>
+            <div class="metal-core">
+              <h3>Frame</h3>
+              <p>Gebruikssituatie, waarde, risico's en data worden teruggebracht tot een scherpe opdracht.</p>
+            </div>
+          </article>
+          <article class="metal-shell process-step" data-rv style="--delay: 80ms">
+            <div class="metal-core">
+              <h3>Prototype</h3>
+              <p>We bouwen snel genoeg voor bewijs, maar netjes genoeg om echte feedback te krijgen.</p>
+            </div>
+          </article>
+          <article class="metal-shell process-step" data-rv style="--delay: 160ms">
+            <div class="metal-core">
+              <h3>Integrate</h3>
+              <p>Het systeem sluit aan op de tools, data en beslismomenten die al bestaan.</p>
+            </div>
+          </article>
+          <article class="metal-shell process-step" data-rv style="--delay: 240ms">
+            <div class="metal-core">
+              <h3>Launch</h3>
+              <p>Release, overdracht en doorontwikkeling krijgen een ritme waar teams mee kunnen werken.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-shell">
+        <div data-rv>
+          <h2>Start briefing.</h2>
+          <p>Beschrijf het systeem dat je wilt bouwen. Je krijgt een scherpe eerste richting terug.</p>
+        </div>
+        <form class="brief-form" novalidate data-rv style="--delay: 120ms">
+          <div class="form-core">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Naam</label>
+                <input id="name" name="name" autocomplete="name" required />
+                <p class="error" id="nameError"></p>
+              </div>
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+                <p class="error" id="emailError"></p>
+              </div>
+              <div class="field full">
+                <label for="track">Traject</label>
+                <select id="track" name="track" required>
+                  <option value="">Kies een traject</option>
+                  <option>Compose</option>
+                  <option>Automate</option>
+                  <option>Scale</option>
+                </select>
+                <p class="error" id="trackError"></p>
+              </div>
+              <div class="field full">
+                <label for="message">Wat moet het systeem oplossen?</label>
+                <textarea id="message" name="message" required></textarea>
+                <p class="error" id="messageError"></p>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Start briefing <span class="btn-mark" aria-hidden="true">&gt;</span></button>
+              <p class="form-state" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </form>
+      </div>
+      <footer>
+        <div class="wrap footer-row">
+          <span>AURELIA Systems</span>
+          <span>Template 108, <span id="year"></span></span>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var menuButton = document.querySelector(".menu-btn");
+      var overlay = document.getElementById("menuOverlay");
+      var year = document.getElementById("year");
+      var modes = {
+        compose: {
+          title: "Een productkern die snel bewijs levert.",
+          text: "We bouwen een eerste systeem rond een scherpe use-case, echte feedback en een duidelijke releasegrens.",
+          focus: "Prototype",
+          output: "Pilot build",
+          tempo: "6-8 weken",
+          hue: 78
+        },
+        automate: {
+          title: "Een workflow die herhaling aankan.",
+          text: "We ontwerpen agentic flows met reviewmomenten, escalatie en heldere overdracht naar mensen.",
+          focus: "Workflow",
+          output: "Automation layer",
+          tempo: "5-7 weken",
+          hue: 154
+        },
+        scale: {
+          title: "Een systeem dat kan meegroeien.",
+          text: "We verstevigen architectuur, interfacepatronen en adoptie zodat meer teams ermee kunnen werken.",
+          focus: "Platform",
+          output: "Scale plan",
+          tempo: "8-10 weken",
+          hue: 190
+        }
+      };
+      var state = {
+        mode: "compose",
+        complexity: 64,
+        pointer: { x: 0.5, y: 0.48 },
+        active: true
+      };
+
+      if (year) year.textContent = new Date().getFullYear();
+
+      if (menuButton && overlay) {
+        menuButton.addEventListener("click", function () {
+          var open = !overlay.classList.contains("is-open");
+          overlay.classList.toggle("is-open", open);
+          overlay.setAttribute("aria-hidden", String(!open));
+          menuButton.setAttribute("aria-expanded", String(open));
+          menuButton.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+        });
+
+        overlay.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            overlay.classList.remove("is-open");
+            overlay.setAttribute("aria-hidden", "true");
+            menuButton.setAttribute("aria-expanded", "false");
+            menuButton.setAttribute("aria-label", "Menu openen");
+          });
+        });
+      }
+
+      var revealItems = Array.prototype.slice.call(document.querySelectorAll("[data-rv]"));
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        revealItems.forEach(function (item) { revealObserver.observe(item); });
+      } else {
+        revealItems.forEach(function (item) { item.classList.add("is-visible"); });
+      }
+
+      function setupSignalCanvas(canvas, options) {
+        if (!canvas) return;
+        var ctx = canvas.getContext("2d");
+        var points = [];
+        var raf = 0;
+        var visible = !options.lazy;
+        var tick = 0;
+        var lastFrame = 0;
+
+        function resize() {
+          var rect = canvas.getBoundingClientRect();
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+          canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          seed(rect.width, rect.height);
+          draw();
+        }
+
+        function seed(width, height) {
+          var count = options.count || 90;
+          points = [];
+          for (var i = 0; i < count; i++) {
+            points.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              z: Math.random() * 0.8 + 0.2,
+              vx: (Math.random() - 0.5) * 0.32,
+              vy: (Math.random() - 0.5) * 0.22,
+              phase: Math.random() * Math.PI * 2
+            });
+          }
+        }
+
+        function color(alpha) {
+          var h = modes[state.mode].hue;
+          return "hsla(" + h + ", 78%, 72%, " + alpha + ")";
+        }
+
+        function draw(now) {
+          if (!reduceMotion && visible && state.active && now && now - lastFrame < 34) {
+            raf = requestAnimationFrame(draw);
+            return;
+          }
+          if (now) lastFrame = now;
+          var w = canvas.clientWidth;
+          var h = canvas.clientHeight;
+          ctx.clearRect(0, 0, w, h);
+          ctx.fillStyle = "#080a09";
+          ctx.fillRect(0, 0, w, h);
+
+          var gridGap = Math.max(58, Math.min(130, 170 - state.complexity));
+          ctx.lineWidth = 1;
+          for (var gx = -gridGap; gx < w + gridGap; gx += gridGap) {
+            ctx.strokeStyle = "rgba(243,240,232,0.045)";
+            ctx.beginPath();
+            ctx.moveTo(gx + Math.sin(tick * 0.002 + gx) * 8, 0);
+            ctx.lineTo(gx + Math.sin(tick * 0.002 + gx) * 28, h);
+            ctx.stroke();
+          }
+          for (var gy = 0; gy < h + gridGap; gy += gridGap) {
+            ctx.strokeStyle = "rgba(243,240,232,0.035)";
+            ctx.beginPath();
+            ctx.moveTo(0, gy);
+            ctx.lineTo(w, gy + Math.sin(tick * 0.002 + gy) * 16);
+            ctx.stroke();
+          }
+
+          points.forEach(function (p) {
+            if (!reduceMotion && visible) {
+              var pullX = (state.pointer.x * w - p.x) * 0.0009 * p.z;
+              var pullY = (state.pointer.y * h - p.y) * 0.0007 * p.z;
+              p.x += p.vx + pullX;
+              p.y += p.vy + pullY;
+              if (p.x < -40) p.x = w + 40;
+              if (p.x > w + 40) p.x = -40;
+              if (p.y < -40) p.y = h + 40;
+              if (p.y > h + 40) p.y = -40;
+            }
+          });
+
+          var maxDist = 120 + state.complexity * 1.4;
+          for (var a = 0; a < points.length; a++) {
+          for (var b = a + 1; b < points.length; b += 2) {
+              var pa = points[a];
+              var pb = points[b];
+              var dx = pa.x - pb.x;
+              var dy = pa.y - pb.y;
+              var dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < maxDist) {
+                var alpha = (1 - dist / maxDist) * 0.16;
+                ctx.strokeStyle = color(alpha);
+                ctx.lineWidth = 0.7;
+                ctx.beginPath();
+                ctx.moveTo(pa.x, pa.y);
+                ctx.lineTo(pb.x, pb.y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          points.forEach(function (p) {
+            var size = 1.15 + p.z * 1.6;
+            ctx.fillStyle = color(0.28 + p.z * 0.34);
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          if (!reduceMotion && visible && state.active) {
+            tick += 1;
+            raf = requestAnimationFrame(draw);
+          }
+        }
+
+        canvas.addEventListener("pointermove", function (event) {
+          var rect = canvas.getBoundingClientRect();
+          state.pointer.x = (event.clientX - rect.left) / rect.width;
+          state.pointer.y = (event.clientY - rect.top) / rect.height;
+        });
+
+        window.addEventListener("resize", resize);
+        document.addEventListener("visibilitychange", function () {
+          visible = !document.hidden;
+          if (visible && !raf && !reduceMotion) draw();
+          if (!visible && raf) {
+            cancelAnimationFrame(raf);
+            raf = 0;
+          }
+        });
+
+        if ("IntersectionObserver" in window) {
+          var canvasObserver = new IntersectionObserver(function (entries) {
+            visible = entries[0].isIntersecting;
+            if (visible && !raf && !reduceMotion) draw();
+            if (!visible && raf) {
+              cancelAnimationFrame(raf);
+              raf = 0;
+            }
+          }, { threshold: 0.02 });
+          canvasObserver.observe(canvas);
+        }
+
+        resize();
+      }
+
+      setupSignalCanvas(document.getElementById("signalCanvas"), { count: 64 });
+      setupSignalCanvas(document.getElementById("atlasCanvas"), { count: 44, lazy: true });
+
+      var modeTabs = Array.prototype.slice.call(document.querySelectorAll(".mode-tab"));
+      var complexity = document.getElementById("complexity");
+      var complexityValue = document.getElementById("complexityValue");
+      var atlasTitle = document.getElementById("atlasTitle");
+      var atlasText = document.getElementById("atlasText");
+      var atlasFocus = document.getElementById("atlasFocus");
+      var atlasOutput = document.getElementById("atlasOutput");
+      var atlasTempo = document.getElementById("atlasTempo");
+
+      function setMode(key) {
+        var mode = modes[key] || modes.compose;
+        state.mode = key;
+        document.body.setAttribute("data-mode", key);
+        modeTabs.forEach(function (tab) {
+          tab.setAttribute("aria-selected", String(tab.dataset.mode === key));
+        });
+        atlasTitle.textContent = mode.title;
+        atlasText.textContent = mode.text;
+        atlasFocus.textContent = mode.focus;
+        atlasOutput.textContent = mode.output;
+        atlasTempo.textContent = mode.tempo;
+      }
+
+      modeTabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          setMode(tab.dataset.mode);
+        });
+      });
+
+      if (complexity && complexityValue) {
+        complexity.addEventListener("input", function () {
+          state.complexity = Number(complexity.value);
+          complexityValue.textContent = complexity.value;
+        });
+      }
+
+      var form = document.querySelector(".brief-form");
+      if (form) {
+        var fields = ["name", "email", "track", "message"];
+        var formState = form.querySelector(".form-state");
+
+        function setError(id, message) {
+          var field = document.getElementById(id);
+          var error = document.getElementById(id + "Error");
+          if (!field || !error) return;
+          error.textContent = message || "";
+          field.setAttribute("aria-invalid", message ? "true" : "false");
+        }
+
+        function validEmail(value) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var data = new FormData(form);
+          var valid = true;
+          fields.forEach(function (id) { setError(id, ""); });
+
+          if (!String(data.get("name") || "").trim()) {
+            setError("name", "Vul je naam in.");
+            valid = false;
+          }
+
+          if (!validEmail(String(data.get("email") || "").trim())) {
+            setError("email", "Vul een geldig e-mailadres in.");
+            valid = false;
+          }
+
+          if (!String(data.get("track") || "").trim()) {
+            setError("track", "Kies een traject.");
+            valid = false;
+          }
+
+          if (String(data.get("message") || "").trim().length < 14) {
+            setError("message", "Geef minimaal een korte context.");
+            valid = false;
+          }
+
+          if (!valid) {
+            formState.textContent = "";
+            return;
+          }
+
+          formState.textContent = "Briefing ontvangen. Dit demo-formulier is succesvol gevalideerd.";
+          form.reset();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
