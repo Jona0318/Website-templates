@@ -1,6 +1,6 @@
-# Bron — 106 kant-en-klare websites
+# Bron — 107 kant-en-klare websites
 
-Een verzameling van **106 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **16 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **107 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **17 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -111,6 +111,7 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 104 | `templates/104-theater/` | ✎ Maatwerk — DE REGENTES | Diep plum × spotlight-koraal × goud (#17121c · #e8543f): dramatisch poster-editorial **stadstheater**, Fraunces-display, filmkorrel, seizoensprogramma met **genre-filter** (toneel/dans/muziek/comedy) + uitverkocht-badges, kassa-status & kaartreservering |
 | 105 | `templates/105-halation/` | ✦ HALATION | Grafiet × koud mint (#0d1015 · #79f0d6): cinematografisch donker **lichtatelier**, Syne-display, scene-console met drie lichtmodi, hover-preview voor diensten, editoriale case-sectie en een strakke briefing-form |
 | 106 | `templates/106-bassin/` | ✦ BASSIN | Koel wit × kobalt (#eff3f8 · #2d57ff): licht architecturaal **stedelijk badhuis**, Sora-display, ritueel-slider met drie tempo's, ruimtemozaiek en een heldere proposal-flow voor nieuwe locaties |
+| 107 | `templates/107-norden/` | ✦ NORDEN Advisory | Off-white × graphite × diep groen (#f5f7f8 · #1f6f4a): strak modern **adviesbureau**, Plus Jakarta Sans, full-bleed fotografie, sticky aanpak, praktische **project-fit module**, case-rows & contactformulier |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
@@ -133,7 +134,7 @@ template/
     │   ├── css/style.css
     │   └── js/main.js
     ├── 02-portfolio/index.html
-    ├── …                    <- 03 t/m 104, elk één zelfstandig index.html
+    ├── …                    <- 03 t/m 107, elk één zelfstandig index.html
     ├── 23-sterrenwacht/index.html   <- canvas: sterrenhemel + maanfase
     └── 24-atelier/index.html        <- canvas: generatief stroomveld
 ```

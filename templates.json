@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 106,
+  "count": 107,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5353,6 +5353,58 @@
         "tags": [
           "Ritueel-slider",
           "Badhuis",
+          "Signature"
+        ]
+      }
+    },
+    {
+      "id": 107,
+      "slug": "107-norden",
+      "path": "templates/107-norden/",
+      "title": "NORDEN Advisory | modern adviesbureau",
+      "name": "NORDEN Advisory",
+      "sector": "zakelijk",
+      "tier": "signature",
+      "scheme": "light+dark",
+      "multipage": false,
+      "palette": [
+        "#f5f7f8",
+        "#1f6f4a",
+        "#111517"
+      ],
+      "fonts": [
+        "Plus Jakarta Sans",
+        "IBM Plex Mono"
+      ],
+      "mechanics": [
+        "project-fit-tabs",
+        "reveal-system",
+        "contact-form",
+        "form-validate",
+        "mobile-menu",
+        "responsive-images"
+      ],
+      "sections": [
+        "hero",
+        "bewijs",
+        "aanpak",
+        "diensten",
+        "project-fit",
+        "cases",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). Strak modern zakelijk adviesbureau in off-white x graphite x diep groen, met Plus Jakarta Sans en echte fotografie. SIGNATUUR: een praktische project-fit module die direct een passende aanpak, duur, team en deliverables toont. Verder een volwassen full-bleed hero, compacte proof-strip, sticky aanpak, case-rows en een helder contactformulier met validatie.",
+      "card": {
+        "title": "NORDEN Advisory | modern adviesbureau",
+        "blurb": "Strak modern adviesbureau in off-white x graphite x diep groen: full-bleed fotografie, sticky aanpak, praktische project-fit module, case-rows en een helder contactformulier.",
+        "emoji": "N",
+        "grad": [
+          "#f5f7f8",
+          "#1f6f4a"
+        ],
+        "tags": [
+          "Project-fit",
+          "Zakelijk",
           "Signature"
         ]
       }

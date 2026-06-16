@@ -1,0 +1,1615 @@
+<!doctype html>
+<html lang="nl" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NORDEN Advisory | modern adviesbureau</title>
+  <meta
+    name="description"
+    content="NORDEN Advisory helpt organisaties met scherpere processen, betere besluitvorming en concrete groeiplannen."
+  />
+  <meta name="theme-color" content="#f5f7f8" />
+  <meta property="og:title" content="NORDEN Advisory | modern adviesbureau" />
+  <meta
+    property="og:description"
+    content="Een strakke, moderne template voor adviesbureaus, operations-studio's en zakelijke dienstverleners."
+  />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:image"
+    content="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.remove("no-js");
+      root.classList.add("js");
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f7f8;
+      --surface: #ffffff;
+      --surface-soft: #edf1f2;
+      --surface-strong: #f9fbfb;
+      --ink: #111517;
+      --ink-soft: rgba(17, 21, 23, 0.72);
+      --ink-muted: rgba(17, 21, 23, 0.52);
+      --line: rgba(17, 21, 23, 0.12);
+      --line-strong: rgba(17, 21, 23, 0.2);
+      --accent: #1f6f4a;
+      --accent-strong: #164f36;
+      --accent-soft: rgba(31, 111, 74, 0.1);
+      --accent-line: rgba(31, 111, 74, 0.28);
+      --shadow: 0 24px 80px rgba(29, 41, 45, 0.1);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --maxw: 1220px;
+      --gutter: clamp(1rem, 4vw, 4rem);
+      --display: "Plus Jakarta Sans", system-ui, sans-serif;
+      --body: "Plus Jakarta Sans", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111517;
+        --surface: #171d1f;
+        --surface-soft: #20282a;
+        --surface-strong: #131819;
+        --ink: #edf3f0;
+        --ink-soft: rgba(237, 243, 240, 0.72);
+        --ink-muted: rgba(237, 243, 240, 0.52);
+        --line: rgba(237, 243, 240, 0.12);
+        --line-strong: rgba(237, 243, 240, 0.2);
+        --accent: #7ed7a2;
+        --accent-strong: #a8e8bf;
+        --accent-soft: rgba(126, 215, 162, 0.11);
+        --accent-line: rgba(126, 215, 162, 0.28);
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, var(--bg), var(--surface-strong)),
+        repeating-linear-gradient(90deg, transparent 0, transparent 23px, rgba(17, 21, 23, 0.025) 24px);
+      color: var(--ink);
+      font-family: var(--body);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background:
+          linear-gradient(180deg, var(--bg), #0f1314),
+          repeating-linear-gradient(90deg, transparent 0, transparent 23px, rgba(237, 243, 240, 0.025) 24px);
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+      color: inherit;
+    }
+
+    button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #f7fbf8;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .skip {
+      position: fixed;
+      top: -110px;
+      left: 1rem;
+      z-index: 300;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      background: var(--ink);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      transition: top 0.24s var(--ease);
+    }
+
+    .skip:focus {
+      top: 1rem;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-row {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: max-content;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 1.8rem);
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .nav-links a {
+      transition: color 0.2s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0.78rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      font-size: 0.92rem;
+      font-weight: 750;
+      line-height: 1;
+      white-space: nowrap;
+      transition:
+        transform 0.2s var(--ease),
+        background 0.2s var(--ease),
+        border-color 0.2s var(--ease),
+        color 0.2s var(--ease);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #f7fbf8;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+    }
+
+    .btn-secondary {
+      background: color-mix(in srgb, var(--surface) 86%, transparent);
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-line);
+      color: var(--accent-strong);
+    }
+
+    .hero {
+      position: relative;
+      min-height: min(84dvh, 760px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: #1b2021;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.82) contrast(0.94);
+      opacity: 0.82;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(10, 13, 14, 0.82) 0%, rgba(10, 13, 14, 0.54) 45%, rgba(10, 13, 14, 0.14) 100%),
+        linear-gradient(0deg, rgba(10, 13, 14, 0.72) 0%, transparent 44%);
+    }
+
+    .hero-inner {
+      padding-block: clamp(5rem, 11vh, 7rem) clamp(3rem, 8vh, 5rem);
+      color: #f7fbf8;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(247, 251, 248, 0.82);
+    }
+
+    .kicker::before {
+      content: "";
+      width: 2.2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin-top: 1.4rem;
+      color: rgba(247, 251, 248, 0.78);
+      font-size: clamp(1.04rem, 1.7vw, 1.28rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    .trust-row {
+      padding-block: 1.25rem;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface) 78%, transparent);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+    }
+
+    .trust-item {
+      min-height: 7rem;
+      padding: 1.15rem;
+      background: var(--surface);
+      display: grid;
+      align-content: space-between;
+      gap: 1rem;
+    }
+
+    .trust-item strong {
+      font-size: clamp(1.05rem, 2vw, 1.55rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .trust-item span {
+      color: var(--ink-muted);
+      font-size: 0.88rem;
+    }
+
+    section {
+      padding-block: clamp(4.5rem, 9vw, 7.5rem);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: clamp(2rem, 5vw, 3.2rem);
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.2rem, 4.8vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .section-head p {
+      max-width: 620px;
+      margin-top: 1rem;
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+    }
+
+    .method {
+      background: var(--surface-strong);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: clamp(2rem, 7vw, 5rem);
+      align-items: start;
+    }
+
+    .method-aside {
+      position: sticky;
+      top: 96px;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .method-aside p {
+      color: var(--ink-soft);
+      max-width: 36rem;
+    }
+
+    .method-note {
+      padding: 1.2rem;
+      border: 1px solid var(--accent-line);
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-weight: 700;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1rem;
+      padding: clamp(1rem, 2vw, 1.4rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 12px 44px rgba(29, 41, 45, 0.045);
+    }
+
+    .step small {
+      font-family: var(--mono);
+      color: var(--ink-muted);
+      font-size: 0.78rem;
+    }
+
+    .step h3 {
+      font-size: 1.15rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .step p {
+      margin-top: 0.45rem;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+
+    .services {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.85fr;
+      grid-auto-rows: minmax(210px, auto);
+      gap: 1rem;
+    }
+
+    .service-card {
+      min-height: 100%;
+      padding: clamp(1.25rem, 2.4vw, 1.7rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      display: grid;
+      align-content: space-between;
+      gap: 1.5rem;
+      transition:
+        transform 0.24s var(--ease),
+        border-color 0.24s var(--ease),
+        box-shadow 0.24s var(--ease);
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-line);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card h3 {
+      font-size: clamp(1.25rem, 2vw, 1.8rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .service-card p {
+      margin-top: 0.65rem;
+      color: var(--ink-soft);
+      max-width: 28rem;
+    }
+
+    .service-card .micro {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+    }
+
+    .service-card.wide {
+      grid-column: span 2;
+      background:
+        linear-gradient(135deg, var(--accent-soft), transparent 70%),
+        var(--surface);
+    }
+
+    .service-card.image {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      padding: 0;
+      background: #20282a;
+    }
+
+    .service-card.image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.85) contrast(0.96);
+    }
+
+    .service-card.image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(17, 21, 23, 0.5), transparent 58%);
+    }
+
+    .fit {
+      background: var(--surface-strong);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fit-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .fit-controls,
+    .fit-output {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 16px 55px rgba(29, 41, 45, 0.055);
+    }
+
+    .fit-controls {
+      padding: clamp(1rem, 2vw, 1.4rem);
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .fit-controls h3,
+    .fit-output h3 {
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    .fit-tabs {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .fit-tab {
+      width: 100%;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      text-align: left;
+      transition:
+        background 0.2s var(--ease),
+        border-color 0.2s var(--ease),
+        color 0.2s var(--ease);
+    }
+
+    .fit-tab strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .fit-tab span {
+      display: block;
+      margin-top: 0.22rem;
+      color: var(--ink-muted);
+      font-size: 0.88rem;
+    }
+
+    .fit-tab[aria-selected="true"] {
+      background: var(--accent-soft);
+      border-color: var(--accent-line);
+      color: var(--accent-strong);
+    }
+
+    .fit-output {
+      padding: clamp(1.3rem, 3vw, 2rem);
+      display: grid;
+      gap: 1.4rem;
+      align-content: start;
+    }
+
+    .fit-output h3 {
+      font-size: clamp(1.7rem, 3.4vw, 3.4rem);
+      line-height: 1;
+      max-width: 680px;
+    }
+
+    .fit-output p {
+      color: var(--ink-soft);
+      max-width: 680px;
+    }
+
+    .fit-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .fit-meta div {
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+    }
+
+    .fit-meta small {
+      display: block;
+      color: var(--ink-muted);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .fit-meta strong {
+      font-size: 0.98rem;
+    }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .deliverables li {
+      min-height: 4.5rem;
+      padding: 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      color: var(--ink-soft);
+    }
+
+    .cases {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .case-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .case-row {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+      gap: clamp(1rem, 3vw, 2rem);
+      align-items: center;
+      padding: clamp(1rem, 2.2vw, 1.4rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .case-row:nth-child(2) {
+      grid-template-columns: minmax(0, 1fr) minmax(180px, 0.42fr);
+    }
+
+    .case-row:nth-child(2) .case-media {
+      order: 2;
+    }
+
+    .case-media {
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      aspect-ratio: 4 / 3;
+      background: var(--surface-soft);
+    }
+
+    .case-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.8) contrast(0.96);
+      transition: transform 0.45s var(--ease);
+    }
+
+    .case-row:hover .case-media img {
+      transform: scale(1.035);
+    }
+
+    .case-copy {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .case-copy small {
+      color: var(--ink-muted);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+    }
+
+    .case-copy h3 {
+      font-size: clamp(1.45rem, 2.8vw, 2.65rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .case-copy p {
+      max-width: 680px;
+      color: var(--ink-soft);
+    }
+
+    .contact {
+      padding-bottom: 0;
+      background: var(--surface-strong);
+    }
+
+    .contact-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(1.5rem, 5vw, 4rem);
+      align-items: start;
+    }
+
+    .contact-intro {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-intro h2 {
+      font-size: clamp(2.2rem, 5vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .contact-intro p {
+      color: var(--ink-soft);
+      max-width: 38rem;
+    }
+
+    .contact-note {
+      margin-top: 1rem;
+      padding: 1.15rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink-soft);
+    }
+
+    form {
+      padding: clamp(1.1rem, 2.6vw, 1.6rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.86rem;
+      font-weight: 750;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      color: var(--ink);
+      padding: 0.85rem 0.9rem;
+      min-height: 3rem;
+      transition:
+        border-color 0.2s var(--ease),
+        box-shadow 0.2s var(--ease),
+        background 0.2s var(--ease);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 9rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--ink-muted);
+      opacity: 1;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 0;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .error {
+      min-height: 1.1rem;
+      color: #b42318;
+      font-size: 0.78rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .error {
+        color: #ffb4aa;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .form-state {
+      color: var(--accent-strong);
+      font-weight: 750;
+      min-height: 1.4rem;
+    }
+
+    footer {
+      margin-top: clamp(4rem, 7vw, 6rem);
+      border-top: 1px solid var(--line);
+      padding-block: 1.25rem;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    [data-rv] {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js [data-rv] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity 0.72s var(--ease),
+        transform 0.72s var(--ease);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .js [data-rv].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .js [data-rv] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        left: var(--gutter);
+        right: var(--gutter);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 0.9rem;
+        border-radius: var(--radius-sm);
+      }
+
+      .nav-links a:hover {
+        background: var(--surface-soft);
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .hero {
+        min-height: min(82dvh, 720px);
+      }
+
+      .trust-grid,
+      .fit-meta {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .method-grid,
+      .fit-shell,
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .method-aside {
+        position: static;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .service-card.wide {
+        grid-column: span 2;
+      }
+
+      .service-card.image {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-row {
+        min-height: 66px;
+      }
+
+      .hero {
+        min-height: 78dvh;
+      }
+
+      .hero-inner {
+        padding-block: 5rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.1rem, 17vw, 5rem);
+      }
+
+      .hero-copy {
+        max-width: 92%;
+      }
+
+      .trust-grid,
+      .service-grid,
+      .fit-meta,
+      .deliverables,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card.wide {
+        grid-column: auto;
+      }
+
+      .step,
+      .case-row,
+      .case-row:nth-child(2) {
+        grid-template-columns: 1fr;
+      }
+
+      .case-row:nth-child(2) .case-media {
+        order: 0;
+      }
+
+      section {
+        padding-block: 4rem;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .brand span {
+        display: none;
+      }
+
+      .hero-actions,
+      .form-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Naar inhoud</a>
+
+  <nav class="nav" aria-label="Hoofdnavigatie">
+    <div class="wrap nav-row">
+      <a class="brand" href="#top" aria-label="NORDEN home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span>NORDEN</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#aanpak">Aanpak</a>
+        <a href="#diensten">Diensten</a>
+        <a href="#fit">Project-fit</a>
+        <a href="#cases">Cases</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#contact">Plan gesprek</a>
+        <button class="menu-btn" type="button" aria-label="Menu openen" aria-controls="navLinks" aria-expanded="false">=</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=85"
+          alt=""
+          fetchpriority="high"
+        />
+      </div>
+      <div class="wrap hero-inner">
+        <p class="kicker">Adviesbureau voor groei</p>
+        <h1>NORDEN Advisory</h1>
+        <p class="hero-copy">
+          We maken processen scherper, besluitvorming korter en groei beter bestuurbaar voor ambitieuze organisaties.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Plan gesprek</a>
+          <a class="btn btn-secondary" href="#aanpak">Bekijk aanpak</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="trust-row" aria-label="Kernpunten">
+      <div class="wrap">
+        <div class="trust-grid">
+          <div class="trust-item" data-rv>
+            <strong>Rust in sturing</strong>
+            <span>Minder losse initiatieven, meer samenhang in keuzes.</span>
+          </div>
+          <div class="trust-item" data-rv style="--delay: 70ms">
+            <strong>Heldere eigenaars</strong>
+            <span>Besluiten, rollen en ritme worden zichtbaar.</span>
+          </div>
+          <div class="trust-item" data-rv style="--delay: 140ms">
+            <strong>Meetbare voortgang</strong>
+            <span>Teams sturen op bewijs in plaats van aannames.</span>
+          </div>
+          <div class="trust-item" data-rv style="--delay: 210ms">
+            <strong>Sneller leveren</strong>
+            <span>Werk stroomt door zonder extra overleglagen.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="method" id="aanpak">
+      <div class="wrap method-grid">
+        <div class="method-aside" data-rv>
+          <div class="section-head">
+            <h2>Van drukte naar richting.</h2>
+            <p>
+              De aanpak is compact genoeg voor snelheid en grondig genoeg om echte keuzes boven tafel te krijgen.
+            </p>
+          </div>
+          <p class="method-note">
+            Elke opdracht eindigt met een werkbaar operating plan, niet met een deck dat in een map verdwijnt.
+          </p>
+        </div>
+        <div class="step-list">
+          <article class="step" data-rv>
+            <small>Diagnose</small>
+            <div>
+              <h3>We maken knelpunten zichtbaar.</h3>
+              <p>Gesprekken, procesdata en besluitlijnen worden teruggebracht tot de plekken waar werk vastloopt.</p>
+            </div>
+          </article>
+          <article class="step" data-rv style="--delay: 80ms">
+            <small>Keuzes</small>
+            <div>
+              <h3>We kiezen wat echt moet veranderen.</h3>
+              <p>Geen lange wensenlijst. Wel een beperkt aantal ingrepen met duidelijke eigenaar en impact.</p>
+            </div>
+          </article>
+          <article class="step" data-rv style="--delay: 160ms">
+            <small>Ritme</small>
+            <div>
+              <h3>We bouwen een beter stuurmoment.</h3>
+              <p>Teams krijgen vaste beslismomenten, heldere signalen en minder afhankelijkheid van ad hoc overleg.</p>
+            </div>
+          </article>
+          <article class="step" data-rv style="--delay: 240ms">
+            <small>Borging</small>
+            <div>
+              <h3>We maken overdracht eenvoudig.</h3>
+              <p>De organisatie kan door zonder ons, met afspraken die in de weekplanning passen.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="diensten">
+      <div class="wrap">
+        <div class="section-head" data-rv>
+          <h2>Diensten die direct werk doen.</h2>
+          <p>
+            Vier duidelijke sporen voor bedrijven die willen professionaliseren zonder hun tempo kwijt te raken.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card wide" data-rv>
+            <div>
+              <h3>Operating model</h3>
+              <p>Leg verantwoordelijkheden, besluitrechten en teamritmes opnieuw vast zodat groei minder frictie krijgt.</p>
+            </div>
+            <span class="micro">Voor directie, MT en groeiteams</span>
+          </article>
+          <figure class="service-card image" data-rv style="--delay: 80ms">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1100&q=82"
+              alt="Team werkt aan een strategisch plan in een lichte vergaderruimte"
+              loading="lazy"
+            />
+          </figure>
+          <article class="service-card" data-rv style="--delay: 160ms">
+            <div>
+              <h3>Procesherstel</h3>
+              <p>Maak overdrachten, wachttijden en terugkerende fouten concreet zichtbaar.</p>
+            </div>
+            <span class="micro">Voor operations en service</span>
+          </article>
+          <article class="service-card" data-rv style="--delay: 220ms">
+            <div>
+              <h3>Groeiagenda</h3>
+              <p>Vertaal ambitie naar prioriteiten, capaciteit en realistische planning.</p>
+            </div>
+            <span class="micro">Voor scale-ups en familiebedrijven</span>
+          </article>
+          <article class="service-card wide" data-rv style="--delay: 280ms">
+            <div>
+              <h3>Besluitvorming</h3>
+              <p>Ontwerp een vergader- en besluitstructuur waarin informatie op tijd op de juiste plek komt.</p>
+            </div>
+            <span class="micro">Voor organisaties met veel overlegdruk</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit" id="fit">
+      <div class="wrap">
+        <div class="section-head" data-rv>
+          <h2>Welke route past?</h2>
+          <p>
+            Kies het type vraagstuk. De module toont meteen een passende aanpak, zodat bezoekers sneller converteren.
+          </p>
+        </div>
+        <div class="fit-shell" data-rv>
+          <div class="fit-controls">
+            <h3>Vraagstuk</h3>
+            <div class="fit-tabs" role="tablist" aria-label="Project type kiezen">
+              <button class="fit-tab" type="button" role="tab" aria-selected="true" data-fit="reset">
+                <strong>Structuur herstellen</strong>
+                <span>Teams werken hard, maar het systeem helpt niet mee.</span>
+              </button>
+              <button class="fit-tab" type="button" role="tab" aria-selected="false" data-fit="scale">
+                <strong>Groei voorbereiden</strong>
+                <span>Meer klanten, mensen of locaties vragen om strakkere sturing.</span>
+              </button>
+              <button class="fit-tab" type="button" role="tab" aria-selected="false" data-fit="decision">
+                <strong>Besluiten versnellen</strong>
+                <span>Te veel onderwerpen blijven hangen tussen teams en directie.</span>
+              </button>
+            </div>
+          </div>
+          <div class="fit-output" aria-live="polite">
+            <h3 id="fitTitle">Een werkbaar herstelplan in zes weken.</h3>
+            <p id="fitText">
+              We brengen de echte knelpunten terug tot een korte lijst ingrepen en leggen eigenaarschap vast.
+            </p>
+            <div class="fit-meta">
+              <div>
+                <small>Duur</small>
+                <strong id="fitDuration">6 weken</strong>
+              </div>
+              <div>
+                <small>Team</small>
+                <strong id="fitTeam">MT plus operationeel lead</strong>
+              </div>
+              <div>
+                <small>Resultaat</small>
+                <strong id="fitResult">Stuurplan</strong>
+              </div>
+            </div>
+            <ul class="deliverables" id="fitList">
+              <li>Proceskaart met knelpunten</li>
+              <li>Besluitritme per team</li>
+              <li>Eigenaarschap per prioriteit</li>
+              <li>Implementatieplanning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases" id="cases">
+      <div class="wrap">
+        <div class="section-head" data-rv>
+          <h2>Voorbeelden van opdrachten.</h2>
+          <p>
+            Nuchtere trajecten voor organisaties waar groei, operatie en besluitvorming elkaar in de weg zaten.
+          </p>
+        </div>
+        <div class="case-stack">
+          <article class="case-row" data-rv>
+            <figure class="case-media">
+              <img
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=82"
+                alt="Moderne kantoorgevel met veel glas"
+                loading="lazy"
+              />
+            </figure>
+            <div class="case-copy">
+              <small>Familiebedrijf in productie</small>
+              <h3>Van losse verbeteringen naar een vaste groeiagenda.</h3>
+              <p>
+                Directie en teamleads kregen een gezamenlijke prioriteitenlijst, inclusief eigenaarschap en beslismomenten.
+              </p>
+            </div>
+          </article>
+          <article class="case-row" data-rv>
+            <figure class="case-media">
+              <img
+                src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=900&q=82"
+                alt="Zakelijk team bespreekt planning aan een tafel"
+                loading="lazy"
+              />
+            </figure>
+            <div class="case-copy">
+              <small>Zorggroep met meerdere locaties</small>
+              <h3>Een eenvoudiger ritme voor overleg en overdracht.</h3>
+              <p>
+                Terugkerende operationele vragen werden gekoppeld aan vaste besluiten, zodat locaties sneller konden handelen.
+              </p>
+            </div>
+          </article>
+          <article class="case-row" data-rv>
+            <figure class="case-media">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=82"
+                alt="Team bekijkt een digitaal projectbord"
+                loading="lazy"
+              />
+            </figure>
+            <div class="case-copy">
+              <small>B2B softwarebedrijf</small>
+              <h3>Meer focus in productkeuzes en klantbeloftes.</h3>
+              <p>
+                Product, sales en operations kregen een gedeeld kader voor prioriteiten en klantimpact.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-shell">
+        <div class="contact-intro" data-rv>
+          <h2>Plan gesprek.</h2>
+          <p>
+            Vertel kort waar het schuurt. Je krijgt een gerichte reactie met de meest logische eerste stap.
+          </p>
+          <div class="contact-note">
+            Geschikt voor organisaties vanaf ongeveer 20 medewerkers, met groei, overdracht of besluitvorming als hoofdvraag.
+          </div>
+        </div>
+        <form class="contact-form" novalidate data-rv style="--delay: 100ms">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Naam</label>
+              <input id="name" name="name" autocomplete="name" required />
+              <p class="error" id="nameError"></p>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+              <p class="error" id="emailError"></p>
+            </div>
+            <div class="field full">
+              <label for="topic">Hoofdvraag</label>
+              <select id="topic" name="topic" required>
+                <option value="">Kies een onderwerp</option>
+                <option>Structuur herstellen</option>
+                <option>Groei voorbereiden</option>
+                <option>Besluiten versnellen</option>
+                <option>Anders</option>
+              </select>
+              <p class="error" id="topicError"></p>
+            </div>
+            <div class="field full">
+              <label for="message">Wat moet scherper?</label>
+              <textarea id="message" name="message" required></textarea>
+              <p class="error" id="messageError"></p>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Plan gesprek</button>
+            <p class="form-state" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+      <footer>
+        <div class="wrap footer-row">
+          <span>NORDEN Advisory</span>
+          <span>Template 107, <span id="year"></span></span>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var menuButton = document.querySelector(".menu-btn");
+      var navLinks = document.getElementById("navLinks");
+
+      if (menuButton && navLinks) {
+        menuButton.addEventListener("click", function () {
+          var open = navLinks.classList.toggle("is-open");
+          menuButton.setAttribute("aria-expanded", String(open));
+          menuButton.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            navLinks.classList.remove("is-open");
+            menuButton.setAttribute("aria-expanded", "false");
+            menuButton.setAttribute("aria-label", "Menu openen");
+          });
+        });
+      }
+
+      var year = document.getElementById("year");
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+
+      var revealItems = Array.prototype.slice.call(document.querySelectorAll("[data-rv]"));
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16 });
+
+        revealItems.forEach(function (item) {
+          observer.observe(item);
+        });
+      } else {
+        revealItems.forEach(function (item) {
+          item.classList.add("is-visible");
+        });
+      }
+
+      var plans = {
+        reset: {
+          title: "Een werkbaar herstelplan in zes weken.",
+          text: "We brengen de echte knelpunten terug tot een korte lijst ingrepen en leggen eigenaarschap vast.",
+          duration: "6 weken",
+          team: "MT plus operationeel lead",
+          result: "Stuurplan",
+          list: [
+            "Proceskaart met knelpunten",
+            "Besluitritme per team",
+            "Eigenaarschap per prioriteit",
+            "Implementatieplanning"
+          ]
+        },
+        scale: {
+          title: "Een groeisysteem dat teams kunnen dragen.",
+          text: "We vertalen ambitie naar capaciteit, overlegstructuur en prioriteiten die per kwartaal bestuurbaar blijven.",
+          duration: "8 weken",
+          team: "Directie plus teamleads",
+          result: "Groeiagenda",
+          list: [
+            "Prioriteiten per kwartaal",
+            "Capaciteitsbeeld per team",
+            "Rollen en beslisrechten",
+            "Stuurmomenten voor directie"
+          ]
+        },
+        decision: {
+          title: "Sneller kiezen met minder overleg.",
+          text: "We ontwerpen een besluitritme waarin informatie op tijd beschikbaar is en elke vergadering een duidelijke rol heeft.",
+          duration: "4 weken",
+          team: "Directie plus kernteam",
+          result: "Besluitmodel",
+          list: [
+            "Besluitkaart per onderwerp",
+            "Vergaderritme per niveau",
+            "Escalatieregels",
+            "Compacte besluitnotities"
+          ]
+        }
+      };
+
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".fit-tab"));
+      var fitTitle = document.getElementById("fitTitle");
+      var fitText = document.getElementById("fitText");
+      var fitDuration = document.getElementById("fitDuration");
+      var fitTeam = document.getElementById("fitTeam");
+      var fitResult = document.getElementById("fitResult");
+      var fitList = document.getElementById("fitList");
+
+      function setPlan(key) {
+        var plan = plans[key] || plans.reset;
+        tabs.forEach(function (tab) {
+          tab.setAttribute("aria-selected", String(tab.dataset.fit === key));
+        });
+        fitTitle.textContent = plan.title;
+        fitText.textContent = plan.text;
+        fitDuration.textContent = plan.duration;
+        fitTeam.textContent = plan.team;
+        fitResult.textContent = plan.result;
+        fitList.innerHTML = "";
+        plan.list.forEach(function (item) {
+          var li = document.createElement("li");
+          li.textContent = item;
+          fitList.appendChild(li);
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          setPlan(tab.dataset.fit);
+        });
+      });
+
+      var form = document.querySelector(".contact-form");
+      if (form) {
+        var state = form.querySelector(".form-state");
+        var fields = ["name", "email", "topic", "message"];
+
+        function setError(id, message) {
+          var field = document.getElementById(id);
+          var error = document.getElementById(id + "Error");
+          if (!field || !error) return;
+          error.textContent = message || "";
+          field.setAttribute("aria-invalid", message ? "true" : "false");
+        }
+
+        function validateEmail(value) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var data = new FormData(form);
+          var valid = true;
+
+          fields.forEach(function (id) {
+            setError(id, "");
+          });
+
+          if (!String(data.get("name") || "").trim()) {
+            setError("name", "Vul je naam in.");
+            valid = false;
+          }
+
+          var email = String(data.get("email") || "").trim();
+          if (!validateEmail(email)) {
+            setError("email", "Vul een geldig e-mailadres in.");
+            valid = false;
+          }
+
+          if (!String(data.get("topic") || "").trim()) {
+            setError("topic", "Kies een onderwerp.");
+            valid = false;
+          }
+
+          if (String(data.get("message") || "").trim().length < 12) {
+            setError("message", "Schrijf minimaal een korte toelichting.");
+            valid = false;
+          }
+
+          if (!valid) {
+            state.textContent = "";
+            return;
+          }
+
+          state.textContent = "Dank je. Dit demo-formulier is succesvol gevalideerd.";
+          form.reset();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
