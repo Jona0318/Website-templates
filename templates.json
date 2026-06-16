@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 109,
+  "count": 110,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5595,6 +5595,63 @@
           "#e4e4ff"
         ],
         "tags": []
+      }
+    },
+    {
+      "id": 110,
+      "slug": "110-kindred",
+      "path": "templates/110-kindred/",
+      "title": "Kindred - relatie-companion",
+      "name": "Kindred",
+      "sector": "tech",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#3447aa",
+        "#fbeaeb",
+        "#16172b"
+      ],
+      "fonts": [
+        "Newsreader",
+        "Albert Sans"
+      ],
+      "mechanics": [
+        "warmth-map-svg",
+        "scroll-heat-transition",
+        "hover-rewarm",
+        "faq-accordion",
+        "mobile-menu",
+        "reveal-system",
+        "anim-opt-in",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "spanning",
+        "werking",
+        "functies",
+        "zacht-zetje",
+        "proof",
+        "privacy",
+        "prijzen",
+        "faq",
+        "cta"
+      ],
+      "note": "Signature-template (handgeschreven). Warm-editoriale SaaS-landingspagina voor Kindred, een persoonlijke relatie-companion in royal blue (#3447aa) x powder blush (#fbeaeb). SIGNATUUR: een levende warmtekaart waarin relaties van blush naar royal blue verschuiven en Anna via scroll, hover of knop opnieuw opwarmt, met directe eindstaat voor reduced motion. Verder asymmetrische editorial-spreads, Nederlandse warme copy, privacy-belofte, prijzen en toegankelijke FAQ.",
+      "card": {
+        "title": "Kindred - relatie-companion",
+        "blurb": "Warm-editoriale SaaS-landing in royal blue x powder blush: levende warmtekaart waar relaties afkoelen en via een zacht zetje weer opwarmen.",
+        "emoji": "K",
+        "grad": [
+          "#3447aa",
+          "#fbeaeb"
+        ],
+        "tags": [
+          "Warmtekaart",
+          "Relaties",
+          "Signature"
+        ]
       }
     }
   ]

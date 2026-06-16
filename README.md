@@ -1,6 +1,6 @@
-# Bron — 109 kant-en-klare websites
+# Bron — 110 kant-en-klare websites
 
-Een verzameling van **109 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **19 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **110 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **20 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
@@ -114,6 +114,7 @@ Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar 
 | 107 | `templates/107-norden/` | ✦ NORDEN Advisory | Off-white × graphite × diep groen (#f5f7f8 · #1f6f4a): strak modern **adviesbureau**, Plus Jakarta Sans, full-bleed fotografie, sticky aanpak, praktische **project-fit module**, case-rows & contactformulier |
 | 108 | `templates/108-aurelia/` | ✦ AURELIA Systems | Off-black × signal-lime × warm ivory (#080a09 · #d7f76d): high-end dark **AI-productstudio**, Geist, full-bleed canvas-hero, interactieve **Signal Atlas**, hardware/glass layout, case-stack & briefingflow |
 | 109 | `templates/109-verso/` | ✦ Signature — Verso | Indigo × lila (#6260ff · #e4e4ff): editorial-tech **narrative analytics**. SIGNATUUR: een scroll-gekoppeld **"data wordt tekst"**-moment — ruwe metrics met SVG-sparklines lossen woord-voor-woord op in een geschreven ochtendbriefing (directe-eindstaat-fallback bij reduced-motion). Fraunces/Hanken Grotesk/JetBrains Mono, afwisselende lila/ink/paper-banden, getypesette memo, magnetische CTA, FAQ-accordion |
+| 110 | `templates/110-kindred/` | ✦ Signature — Kindred | Royal blue × powder blush (#3447aa · #fbeaeb): warm-editoriale **relatie-companion**. SIGNATUUR: een levende warmtekaart waarin relaties afkoelen naar blauw en via een zacht zetje weer opwarmen naar blush. Newsreader/Albert Sans, asymmetrische editorial-spreads, privacy-belofte, prijzen en FAQ |
 
 > ★ = premium template: volledige animatie-choreografie (entrance, scroll-reveals, parallax, micro-interacties), no-JS fallback en `prefers-reduced-motion`-ondersteuning.
 > ✦ = flagship/signature: het hoogste niveau in de galerij. De signatures 23–24 gebruiken bovendien echte canvas-rendering met `requestAnimationFrame`, dpr-scaling en pauze buiten beeld / bij verborgen tab.
@@ -136,7 +137,7 @@ template/
     │   ├── css/style.css
     │   └── js/main.js
     ├── 02-portfolio/index.html
-    ├── …                    <- 03 t/m 109, elk één zelfstandig index.html
+    ├── …                    <- 03 t/m 110, elk één zelfstandig index.html
     ├── 23-sterrenwacht/index.html   <- canvas: sterrenhemel + maanfase
     └── 24-atelier/index.html        <- canvas: generatief stroomveld
 ```
