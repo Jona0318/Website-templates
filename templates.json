@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
-  "generated": "2026-06-15",
-  "count": 104,
+  "generated": "2026-06-16",
+  "count": 105,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5252,6 +5252,57 @@
           "Genre-filter",
           "Agenda",
           "Hand-made"
+        ]
+      }
+    },
+    {
+      "slug": "105-halation",
+      "path": "templates/105-halation/",
+      "title": "HALATION | spatial light atelier",
+      "name": "HALATION",
+      "sector": "interieur",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0d1015",
+        "#79f0d6",
+        "#f3f6fb"
+      ],
+      "fonts": [
+        "Syne",
+        "Manrope",
+        "IBM Plex Mono"
+      ],
+      "mechanics": [
+        "scene-presets",
+        "hover-preview",
+        "ambient-pointer-light",
+        "contact-form",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "kamers",
+        "diensten",
+        "proces",
+        "materiaal",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). Cinematisch donker lichtatelier in grafiet x koud mint, met Syne-display en een uiterst sobere interface. SIGNATUUR: een scene-console met drie lichtmodi die hero-beeld en inhoud live wisselt. Verder een hover-preview voor diensten, editoriale case-sectie en een contactflow met validatie.",
+      "card": {
+        "title": "HALATION | spatial light atelier",
+        "blurb": "Cinematisch donker lichtatelier in grafiet x koud mint: Syne-display, scene-console met drie lichtmodi, hover-preview voor diensten, editoriale case-sectie en een strakke briefing-form.",
+        "emoji": "ðŸ’¡",
+        "grad": [
+          "#79f0d6",
+          "#0d1015"
+        ],
+        "tags": [
+          "Scene console",
+          "Lichtatelier",
+          "Signature"
         ]
       }
     }

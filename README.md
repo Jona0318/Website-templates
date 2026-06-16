@@ -1,6 +1,6 @@
-# Bron — 101 kant-en-klare websites
+# Bron — 105 kant-en-klare websites
 
-Een verzameling van **101 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **14 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
+Een verzameling van **105 complete, responsive website-templates**, elk met een eigen stijl — waaronder **16 premium designs** met volledige animatie-choreografie, **twee flagships** die de beste features uit de hele galerij combineren (donker: Studio Kaap, licht: Buitenplaats), **15 signature-templates** met een diep uitgewerkt, uniek interactief pronkstuk, **26 maatwerk-sites** (volledig met de hand geschreven, met echte foto's), een lichting **grafische, bold-graphic designs** (neo-brutalist / new-wave: hard offset-schaduwen, oversized typografie en gedurfde platte kleuren) en een **editorieel Swiss-grid systeem** (FOLIO). Pure HTML/CSS/JavaScript — **geen build-tools of dependencies nodig**.
 
 Open `index.html` in je browser voor de **overzichtspagina**, en klik door naar elke template.
 
