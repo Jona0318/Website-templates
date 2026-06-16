@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 105,
+  "count": 106,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5302,6 +5302,57 @@
         "tags": [
           "Scene console",
           "Lichtatelier",
+          "Signature"
+        ]
+      }
+    },
+    {
+      "slug": "106-bassin",
+      "path": "templates/106-bassin/",
+      "title": "BASSIN | stedelijk badhuis",
+      "name": "BASSIN",
+      "sector": "wellness",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#eff3f8",
+        "#2d57ff",
+        "#101722"
+      ],
+      "fonts": [
+        "Sora",
+        "Public Sans",
+        "IBM Plex Mono"
+      ],
+      "mechanics": [
+        "ritual-slider",
+        "reveal-system",
+        "rooms-mosaic",
+        "contact-form",
+        "form-validate",
+        "mobile-menu"
+      ],
+      "sections": [
+        "hero",
+        "kamers",
+        "ritueel",
+        "architectuur",
+        "toegang",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). Licht, mineraal stedelijk badhuis in koel wit x kobalt met Sora-display en een uiterst rustige, architecturale opzet. SIGNATUUR: een ritueel-slider die wisselt tussen clear, drift en contrast en het hele circuit live herschrijft. Verder een ruimtemozaiek, heldere conceptcopy en een proposal-form voor nieuwe locaties.",
+      "card": {
+        "title": "BASSIN | stedelijk badhuis",
+        "blurb": "Licht en architecturaal badhuis in koel wit x kobalt: Sora-display, ritueel-slider met drie tempo's, ruimtemozaiek en een heldere proposal-flow voor nieuwe locaties.",
+        "emoji": "B",
+        "grad": [
+          "#eff3f8",
+          "#2d57ff"
+        ],
+        "tags": [
+          "Ritueel-slider",
+          "Badhuis",
           "Signature"
         ]
       }
