@@ -3,1066 +3,678 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arends Metsel- en Timmerwerk — Renovatie, verbouwing &amp; onderhoud | Zevenaar</title>
-<meta name="description" content="M. Arends Metsel- en Timmerwerk uit Zevenaar: uw vakman voor renovatie, verbouwing, tegelwerk, dakkapellen, kozijnrenovatie en aanbouwen. Jarenlange ervaring voor particulier en bedrijf.">
+<title>Arends Metsel- en Timmerwerk — Zevenaar</title>
+<meta name="description" content="Arends Metsel- en Timmerwerk uit Zevenaar. Renovatie, verbouwing, tegelwerk, dakkapellen, kozijnen en aanbouwen voor particulier en bedrijf.">
+<meta name="theme-color" content="#b91c1c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   ARENDS METSEL- EN TIMMERWERK — donker / amber / baksteenrood
+   ARENDS — metsel- & timmerwerk · rood x wit x beton
    ============================================================ */
 :root{
-  --bg:#0e0c09;
-  --surface:#171410;
-  --surface-2:#201c16;
-  --line:rgba(210,170,110,.12);
-  --line-strong:rgba(210,170,110,.22);
-  --text:#f0ece4;
-  --muted:#9e9080;
-  --amber:#d97c2a;
-  --amber-bright:#f0a050;
-  --amber-deep:#a85a12;
-  --amber-glow:rgba(217,124,42,.32);
+  --rood:#b91c1c;
+  --rood-donker:#7f1d1d;
+  --rood-licht:#fef2f2;
+  --wit:#ffffff;
+  --papier:#f8f6f2;
+  --inkt:#1c1917;
+  --beton:#57534e;
+  --beton-licht:#a8a29e;
+  --lichtgrijs:#e7e5e4;
+  --lijn:rgba(28,25,23,.12);
+  --disp:"Barlow Condensed",system-ui,sans-serif;
+  --body:"Barlow",system-ui,sans-serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1180px;
+  --gutter:clamp(1rem,4vw,3rem);
   --ease:cubic-bezier(.22,1,.36,1);
-  --font-head:"Archivo",sans-serif;
-  --font-body:"Inter",sans-serif;
-  --font-mono:"IBM Plex Mono",monospace;
-  --header-h:76px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-img{max-width:100%;display:block}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--wit);color:var(--inkt);font-family:var(--body);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-::selection{background:var(--amber);color:#fff}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--rood);color:#fff}
+:focus-visible{outline:2px solid var(--rood);outline-offset:3px}
+.skip{position:fixed;top:-100px;left:1rem;z-index:200;background:var(--rood);color:#fff;padding:.6rem 1.1rem;font-weight:600;transition:top .25s}
+.skip:focus{top:1rem}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.streep{height:5px;background:var(--rood)}
 
-body::before{
-  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(217,124,42,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(217,124,42,.04) 1px,transparent 1px),
-    linear-gradient(rgba(217,124,42,.015) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(217,124,42,.015) 1px,transparent 1px);
-  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
-}
-body::after{
-  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(1100px 600px at 80% -5%,rgba(217,124,42,.09),transparent 60%),
-             radial-gradient(900px 700px at -10% 110%,rgba(170,80,20,.06),transparent 60%);
-}
+/* ===== UTILITY BAR ===== */
+.util{background:var(--inkt);color:rgba(255,255,255,.75)}
+.util .wrap{display:flex;align-items:center;justify-content:space-between;min-height:36px;font-family:var(--mono);font-size:.68rem;padding-block:.3rem;flex-wrap:wrap;gap:.5rem}
+.util strong{color:#fff}
+.util a:hover{color:#fff}
+.util .tel{color:#fca5a5;font-weight:700}
+.util .tel:hover{color:#fff}
 
-.wrap{width:min(1200px,calc(100% - 48px));margin-inline:auto}
-@media (max-width:560px){.wrap{width:calc(100% - 36px)}}
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:50;background:var(--wit);border-bottom:3px solid var(--rood);box-shadow:0 1px 0 var(--lijn)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo-blok{width:36px;height:36px;background:var(--rood);display:grid;place-items:center;flex:none}
+.logo-blok svg{width:20px;height:20px}
+.logo-naam{font-family:var(--disp);font-weight:900;font-size:1.1rem;text-transform:uppercase;letter-spacing:.04em;line-height:1}
+.logo-naam small{display:block;font-family:var(--mono);font-size:.55rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--beton);margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-links a{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--beton);padding:.45rem .7rem;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover{color:var(--inkt);border-bottom-color:var(--rood)}
+.nav-cta{background:var(--rood);color:#fff;font-family:var(--disp);font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;padding:.55rem 1.2rem;transition:background .2s;border-bottom:none!important}
+.nav-cta:hover{background:var(--rood-donker);color:#fff!important}
+.burger{display:none;width:40px;height:40px;border:2px solid var(--lijn);align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer;background:none}
+.burger span{display:block;width:20px;height:2px;background:var(--inkt);transition:transform .3s var(--ease),opacity .2s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:840px){.nav-links{display:none}.burger{display:flex}}
+.mob-menu{
+  display:none;flex-direction:column;
+  position:fixed;inset:0;top:103px;z-index:40;
+  background:var(--wit);border-top:1px solid var(--lijn);
+  padding:2rem var(--gutter);gap:.5rem;
+  transform:translateY(-110%);opacity:0;
+  transition:transform .45s var(--ease),opacity .35s;
+}
+.mob-menu.open{transform:translateY(0);opacity:1}
+@media(max-width:840px){.mob-menu{display:flex}}
+.mob-menu a{font-family:var(--disp);font-weight:800;font-size:2rem;text-transform:uppercase;padding:.6rem 0;border-bottom:1px solid var(--lijn)}
+.mob-menu a:last-child{margin-top:.5rem;background:var(--rood);color:#fff;text-align:center;border:none;padding:.8rem}
 
-.micro{
-  font-family:var(--font-mono);font-size:.72rem;font-weight:500;
-  letter-spacing:.28em;text-transform:uppercase;color:var(--amber-bright);
-  display:inline-flex;align-items:center;gap:14px;
-}
-.micro::before{content:"";width:34px;height:1px;background:var(--amber);flex:none}
+/* ===== HERO ===== */
+.hero{background:var(--wit);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:clamp(460px,60vh,640px)}
+@media(max-width:840px){.hero .wrap{grid-template-columns:1fr;min-height:auto}}
+.hero-tekst{display:flex;flex-direction:column;justify-content:center;padding-block:clamp(2.5rem,5vw,4rem);padding-right:clamp(1rem,3vw,3rem)}
+.hero-label{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--rood);display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.hero-label::before{content:"";width:28px;height:2px;background:var(--rood);flex:none}
+.hero h1{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(3.2rem,8vw,6rem);line-height:.9;letter-spacing:-.01em;color:var(--inkt)}
+.hero h1 em{font-style:normal;color:var(--rood);display:block}
+.hero-sub{font-size:1.05rem;color:var(--beton);max-width:42ch;margin-top:1.4rem;line-height:1.65}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+.btn-rood{display:inline-flex;align-items:center;gap:.6rem;background:var(--rood);color:#fff;font-family:var(--disp);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;padding:.8rem 1.6rem;transition:background .2s,transform .2s}
+.btn-rood:hover{background:var(--rood-donker);transform:translateY(-2px)}
+.btn-rood svg{flex:none}
+.btn-wit{display:inline-flex;align-items:center;gap:.6rem;background:transparent;color:var(--inkt);font-family:var(--disp);font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;padding:.8rem 1.6rem;border:2px solid var(--lijn);transition:border-color .2s,color .2s}
+.btn-wit:hover{border-color:var(--rood);color:var(--rood)}
+.hero-stats{display:flex;gap:clamp(1.4rem,3vw,2.4rem);margin-top:2.2rem;padding-top:1.6rem;border-top:2px solid var(--lichtgrijs)}
+.stat-num{font-family:var(--disp);font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--rood);line-height:1}
+.stat-lbl{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--beton);margin-top:4px}
+.hero-foto{position:relative;overflow:hidden}
+@media(max-width:840px){.hero-foto{height:280px}}
+.hero-foto img{width:100%;height:100%;object-fit:cover}
+.hero-foto::before{content:"";position:absolute;top:0;left:0;bottom:0;width:6px;background:var(--rood);z-index:1}
+.hero-badge{position:absolute;bottom:20px;left:26px;z-index:2;background:var(--rood);color:#fff;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem .8rem}
 
-h1,h2,h3{font-family:var(--font-head);font-weight:700;letter-spacing:-.015em;line-height:1.08}
-.sec-title{font-size:clamp(1.9rem,4vw,2.9rem);margin:.85rem 0 1rem}
-.sec-intro{color:var(--muted);max-width:56ch}
-.sec-head{margin-bottom:clamp(2.2rem,5vw,3.6rem)}
-section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
-.hairline-top{border-top:1px solid var(--line)}
+/* ===== SECTIES ===== */
+.sec{padding-block:clamp(3rem,7vw,5.5rem)}
+.sec-bg{background:var(--papier)}
+.sec-kop{margin-bottom:clamp(1.8rem,4vw,3rem)}
+.sec-label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.2em;color:var(--rood);display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem}
+.sec-label::before{content:"";width:24px;height:2px;background:var(--rood);flex:none}
+.sec-titel{font-family:var(--disp);font-weight:900;font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;line-height:.95;color:var(--inkt)}
+.sec-intro{color:var(--beton);max-width:54ch;margin-top:.9rem;font-size:1rem}
 
-.skip-link{
-  position:absolute;left:16px;top:-60px;z-index:200;
-  background:var(--amber);color:#fff;font-weight:600;
-  padding:10px 18px;border-radius:6px;transition:top .25s var(--ease);
-}
-.skip-link:focus{top:14px}
-:focus-visible{outline:2px solid var(--amber-bright);outline-offset:3px;border-radius:2px}
+/* ===== DIENSTEN ===== */
+.diensten-rij{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--lijn);border:1px solid var(--lijn)}
+@media(max-width:860px){.diensten-rij{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.diensten-rij{grid-template-columns:1fr}}
+.dienst-item{background:var(--wit);padding:clamp(1.4rem,3vw,2rem);position:relative;transition:background .2s}
+.dienst-item:hover{background:var(--rood-licht)}
+.dienst-item::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rood);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
+.dienst-item:hover::after{transform:scaleY(1)}
+.dienst-nr{font-family:var(--mono);font-size:.68rem;color:var(--rood);letter-spacing:.14em;margin-bottom:.8rem;font-weight:700}
+.dienst-naam{font-family:var(--disp);font-weight:800;font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:.5rem}
+.dienst-tekst{font-size:.9rem;color:var(--beton);line-height:1.55}
+.dienst-pijl{display:inline-flex;align-items:center;gap:.4rem;margin-top:.9rem;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--rood)}
 
-/* KNOPPEN */
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--font-head);font-weight:600;font-size:.92rem;
-  letter-spacing:.04em;padding:14px 26px;border-radius:6px;
-  position:relative;overflow:hidden;white-space:nowrap;
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease),background-color .35s,border-color .35s,color .35s;
-}
-.btn svg{flex:none;transition:transform .45s var(--ease)}
-.btn-primary{
-  background:linear-gradient(135deg,var(--amber),var(--amber-deep));color:#fff;
-  box-shadow:0 8px 26px -10px var(--amber-glow);
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(217,124,42,.5)}
-.btn-primary:hover svg{transform:translateX(4px)}
-.btn-ghost{border:1px solid var(--line-strong);color:var(--text);background:rgba(255,255,255,.02)}
-.btn-ghost:hover{border-color:var(--amber);color:var(--amber-bright);transform:translateY(-2px)}
+/* ===== PROJECTEN ===== */
+.zig{display:flex;flex-direction:column;gap:1px;background:var(--lijn)}
+.zz{display:grid;grid-template-columns:1fr 1fr;background:var(--wit)}
+@media(max-width:760px){.zz{grid-template-columns:1fr}}
+.zz .pic{position:relative;overflow:hidden;min-height:280px}
+.zz .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.zz:hover .pic img{transform:scale(1.04)}
+.zz .pic .num{position:absolute;top:0;left:0;font-family:var(--disp);font-weight:900;font-size:1.1rem;background:var(--rood);color:#fff;padding:.3rem .85rem;letter-spacing:.06em}
+.zz .txt{padding:clamp(1.8rem,4vw,3rem);display:flex;flex-direction:column;justify-content:center}
+.zz .meta{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--rood);margin-bottom:.6rem}
+.zz h3{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1;margin-bottom:.7rem}
+.zz p{font-size:.95rem;color:var(--beton);max-width:42ch}
+.zz:nth-child(even) .pic{order:2}
+.zz:nth-child(even) .txt{order:1}
+@media(max-width:760px){.zz:nth-child(even) .pic,.zz:nth-child(even) .txt{order:0}}
 
-/* HEADER */
-.site-header{
-  position:fixed;inset:0 0 auto 0;z-index:100;height:var(--header-h);
-  display:flex;align-items:center;
-  border-bottom:1px solid transparent;
-  transition:background-color .4s,border-color .4s,backdrop-filter .4s;
-}
-.site-header.scrolled{
-  background:rgba(14,12,9,.88);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border-bottom-color:var(--line);
-}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{display:flex;align-items:center;gap:13px}
-.logo-mark{
-  width:38px;height:38px;flex:none;border-radius:7px;
-  background:linear-gradient(135deg,var(--amber),var(--amber-deep));
-  display:grid;place-items:center;
-  box-shadow:0 6px 18px -6px var(--amber-glow);
-}
-.logo-mark svg{width:20px;height:20px}
-.logo-text{font-family:var(--font-head);font-weight:800;font-size:1.02rem;letter-spacing:.06em;line-height:1.1}
-.logo-text small{display:block;font-family:var(--font-mono);font-weight:400;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.main-nav ul{display:flex;gap:34px}
-.main-nav a{
-  font-size:.88rem;font-weight:500;color:var(--muted);position:relative;padding:6px 0;
-  transition:color .3s;
-}
-.main-nav a::after{
-  content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
-  background:var(--amber);transform:scaleX(0);transform-origin:right;
-  transition:transform .45s var(--ease);
-}
-.main-nav a:hover{color:var(--text)}
-.main-nav a:hover::after{transform:scaleX(1);transform-origin:left}
-.header-cta{display:flex;align-items:center;gap:16px}
-.header-cta .btn{padding:11px 20px;font-size:.84rem}
+/* ===== WERKWIJZE ===== */
+.aanpak-rij{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:clamp(1.8rem,4vw,2.8rem)}
+@media(max-width:840px){.aanpak-rij{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.aanpak-rij{grid-template-columns:1fr}}
+.stap{border-top:3px solid var(--rood);padding:1.3rem 0 0}
+.stap-nr{font-family:var(--disp);font-weight:900;font-size:2.8rem;color:var(--lichtgrijs);line-height:1;margin-bottom:.6rem}
+.stap h3{font-family:var(--disp);font-weight:800;font-size:1.15rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem}
+.stap p{font-size:.88rem;color:var(--beton)}
 
-.menu-toggle{display:none;width:44px;height:44px;position:relative;z-index:130}
-.menu-toggle span{
-  position:absolute;left:11px;width:22px;height:2px;background:var(--text);
-  transition:transform .45s var(--ease),opacity .3s,background-color .3s;
-}
-.menu-toggle span:nth-child(1){top:16px}
-.menu-toggle span:nth-child(2){top:22px}
-.menu-toggle span:nth-child(3){top:28px}
-.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg);background:var(--amber-bright)}
-.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
-.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:var(--amber-bright)}
-.mobile-menu{
-  position:fixed;top:0;right:0;bottom:0;width:min(360px,86vw);z-index:120;
-  background:rgba(16,13,9,.97);
-  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
-  border-left:1px solid var(--line);
-  padding:110px 36px 40px;
-  transform:translateX(102%);visibility:hidden;
-  transition:transform .55s var(--ease),visibility 0s .55s;
-  display:flex;flex-direction:column;
-}
-.mobile-menu.open{transform:translateX(0);visibility:visible;transition:transform .55s var(--ease)}
-.mobile-menu nav ul{display:flex;flex-direction:column;gap:6px}
-.mobile-menu nav a{
-  display:flex;align-items:baseline;gap:14px;
-  font-family:var(--font-head);font-weight:700;font-size:1.5rem;padding:10px 0;
-  border-bottom:1px solid var(--line);transition:color .3s;
-}
-.mobile-menu nav a:hover{color:var(--amber-bright)}
-.mobile-menu nav a .idx{font-family:var(--font-mono);font-size:.65rem;color:var(--amber);letter-spacing:.2em}
-.mobile-menu .btn{margin-top:auto;justify-content:center}
-html.js .mobile-menu nav li{opacity:0;transform:translateX(28px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
-html.js .mobile-menu.open nav li{opacity:1;transform:none;transition-delay:var(--d,0s)}
-.menu-backdrop{
-  position:fixed;inset:0;z-index:110;background:rgba(5,4,2,.65);
-  opacity:0;visibility:hidden;transition:opacity .45s,visibility 0s .45s;
-}
-.menu-backdrop.open{opacity:1;visibility:visible;transition:opacity .45s}
-@media (max-width:880px){
-  .main-nav,.header-cta .btn{display:none}
-  .menu-toggle{display:block}
-}
-body.menu-locked{overflow:hidden}
+/* ===== OVER ===== */
+.over-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+@media(max-width:840px){.over-grid{grid-template-columns:1fr}}
+.over-foto{position:relative}
+.over-foto img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.over-foto::before{content:"";position:absolute;inset:-8px 0 0 -8px;border:3px solid var(--rood);z-index:-1}
+.over-tekst p{color:var(--beton);margin-bottom:1rem}
+.over-tekst p strong{color:var(--inkt)}
+.over-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.over-tag{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:var(--beton);border:1px solid var(--lijn);padding:.45rem .85rem}
 
-/* HERO */
-.hero{
-  min-height:100svh;display:flex;align-items:center;
-  padding:calc(var(--header-h) + 3.5rem) 0 4rem;
-  position:relative;overflow:hidden;
-}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,5vw,4rem);align-items:center}
-.hero h1{font-size:clamp(2.5rem,5.6vw,4.4rem);margin:1.3rem 0 1.4rem;font-weight:800}
-.hero h1 .accent{color:var(--amber-bright)}
-.hero-sub{color:var(--muted);font-size:clamp(1rem,1.4vw,1.13rem);max-width:50ch;margin-bottom:2.2rem}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:16px}
+/* ===== REVIEWS ===== */
+.review-rij{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.review-rij{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.review-rij{grid-template-columns:1fr}}
+.review{background:var(--wit);border:1px solid var(--lijn);border-top:3px solid var(--rood);padding:1.6rem}
+.sterren{display:flex;gap:3px;margin-bottom:.9rem}
+.sterren svg{width:15px;height:15px;fill:var(--rood)}
+.review blockquote{font-size:.93rem;color:var(--inkt);line-height:1.65;font-style:italic}
+.review .klant{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--lijn)}
+.review .klant strong{font-family:var(--disp);font-weight:800;font-size:.95rem;text-transform:uppercase}
+.review .klant span{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--beton-licht);margin-top:2px}
 
-.line-mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.line-mask>span{display:block}
-html.js .line-mask>span{transform:translateY(112%);transition:transform 1s var(--ease);transition-delay:var(--d,0s)}
-html.js .hero.in .line-mask>span{transform:translateY(0)}
-html.js .hero .fade-up{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
-html.js .hero.in .fade-up{opacity:1;transform:none}
+/* ===== CONTACT ===== */
+.contact-blok{background:var(--rood);color:#fff}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+@media(max-width:840px){.contact-grid{grid-template-columns:1fr}}
+.contact-blok .sec-label::before{background:#fff;opacity:.5}
+.contact-blok .sec-label{color:rgba(255,255,255,.75)}
+.contact-blok .sec-titel{color:#fff}
+.contact-blok .sec-intro{color:rgba(255,255,255,.8)}
+.ci{display:flex;align-items:center;gap:1rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.18);transition:padding-left .3s var(--ease)}
+.ci:hover{padding-left:.5rem}
+.ci svg{width:18px;height:18px;flex:none;opacity:.7}
+.ci-lbl{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.14em;opacity:.65;display:block;margin-bottom:2px}
+.ci-val{font-weight:600;font-size:.95rem}
+.ci a:hover{text-decoration:underline}
+.vrije-note{margin-top:1.4rem;background:rgba(0,0,0,.2);padding:1rem 1.1rem;font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.55}
+.vrije-note strong{color:#fff;display:block;font-family:var(--mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.35rem}
+.form-wrap{background:rgba(0,0,0,.18);padding:clamp(1.4rem,3vw,2.2rem)}
+.fld{margin-bottom:1rem}
+.fld-rij{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:520px){.fld-rij{grid-template-columns:1fr}}
+.fld label{display:block;font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.7);margin-bottom:.4rem}
+.fld input,.fld select,.fld textarea{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;padding:.7rem .9rem;font-size:.95rem;transition:border-color .2s,background .2s}
+.fld input::placeholder,.fld textarea::placeholder{color:rgba(255,255,255,.4)}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:#fff;background:rgba(255,255,255,.15)}
+.fld select option{background:var(--rood-donker);color:#fff}
+.fld select{-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.6)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.fld textarea{resize:vertical;min-height:110px}
+.fld.bad input,.fld.bad select,.fld.bad textarea{border-color:#fca5a5}
+.fld .err{display:none;font-size:.76rem;color:#fca5a5;margin-top:.3rem}
+.fld.bad .err{display:block}
+.form-voet{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.2rem}
+.form-voet small{font-size:.78rem;color:rgba(255,255,255,.6)}
+.btn-wit-solide{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--rood);font-family:var(--disp);font-weight:800;font-size:.92rem;text-transform:uppercase;letter-spacing:.06em;padding:.75rem 1.5rem;transition:background .2s,transform .2s;cursor:pointer;border:none}
+.btn-wit-solide:hover{background:var(--papier);transform:translateY(-1px)}
+.form-ok{display:none;align-items:center;gap:.8rem;font-family:var(--disp);font-weight:800;font-size:1.2rem;text-transform:uppercase;color:#fff;margin-top:.8rem}
+.form-ok svg{width:32px;height:32px;flex:none}
+.form-sent .form-ok{display:flex}
+.form-sent .fld,.form-sent .fld-rij,.form-sent .form-voet{display:none}
 
-.hero-stats{
-  display:flex;gap:clamp(1.6rem,4vw,3.2rem);margin-top:3.2rem;
-  padding-top:1.8rem;border-top:1px solid var(--line);position:relative;
-}
-.hero-stats::before{content:"";position:absolute;top:-1px;left:0;width:72px;height:1px;background:var(--amber)}
-.stat .num{
-  font-family:var(--font-head);font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);
-  color:var(--text);line-height:1;font-variant-numeric:tabular-nums;
-}
-.stat .num em{font-style:normal;color:var(--amber-bright)}
-.stat .lbl{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:8px}
-
-/* SVG gereedschapstekening */
-.hero-art{position:relative;display:flex;justify-content:center}
-.tool-stage{position:relative;width:min(420px,100%)}
-.tool-stage::before{
-  content:"";position:absolute;inset:-6%;border:1px dashed rgba(217,124,42,.18);border-radius:4px;
-}
-.tool-stage::after{
-  content:"TEK. NR. AMB-001 / SCHAAL 1:5";
-  position:absolute;left:0;bottom:-7.5%;
-  font-family:var(--font-mono);font-size:.58rem;letter-spacing:.24em;color:rgba(158,144,128,.7);
-}
-.tool-svg{width:100%;height:auto;display:block;overflow:visible}
-.tool-svg .bp{fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tool-svg .bp.thin{stroke-width:1;stroke:rgba(240,160,80,.55)}
-.tool-svg .bp.dim{stroke-width:1;stroke:rgba(158,144,128,.65)}
-.tool-svg .bp.dash{stroke-dasharray:4 5;stroke-width:1;stroke:rgba(217,124,42,.5)}
-.tool-svg text{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;fill:rgba(158,144,128,.85);text-transform:uppercase}
-html.js .tool-svg .bp{stroke-dasharray:1;stroke-dashoffset:1}
-html.js .tool-svg.drawn .bp{stroke-dashoffset:0;transition:stroke-dashoffset 1.3s var(--ease);transition-delay:var(--d,0s)}
-html.js .tool-svg.drawn .bp.dash{stroke-dasharray:.012 .015}
-html.js .tool-svg text{opacity:0;transition:opacity .8s ease 1.6s}
-html.js .tool-svg.drawn text{opacity:1}
-#hamerkop{transform-box:view-box;transform-origin:230px 195px}
-html.js .tool-svg.drawn #hamerkop{animation:hameren 4.8s ease-in-out 2.2s infinite}
-@keyframes hameren{
-  0%,100%{transform:rotate(0deg) translate(0,0)}
-  30%{transform:rotate(-5deg) translate(-4px,4px)}
-  60%{transform:rotate(3.5deg) translate(3px,-3px)}
-}
-.chip{fill:var(--amber-bright);opacity:0}
-html.js .tool-svg.drawn .chip{animation:chip-fly 5.2s ease-in-out infinite;animation-delay:var(--cd,2.8s)}
-@keyframes chip-fly{
-  0%,16%{opacity:0;transform:translate(0,0)}
-  28%{opacity:.9}
-  68%{opacity:0;transform:translate(var(--cx,12px),-48px)}
-  100%{opacity:0;transform:translate(var(--cx,12px),-48px)}
-}
-.hero-art-glow{
-  position:absolute;inset:12% 6%;z-index:-1;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(217,124,42,.13),transparent 72%);
-}
-@media (max-width:880px){
-  .hero{min-height:0}
-  .hero-grid{grid-template-columns:1fr}
-  .hero-art{order:-1;margin-bottom:.5rem}
-  .tool-stage{width:min(260px,72%)}
-  .tool-stage::after{font-size:.5rem;bottom:-9%}
-  .hero-stats{flex-wrap:wrap}
-}
+/* ===== FOOTER ===== */
+.voet{background:var(--inkt);color:rgba(255,255,255,.6);padding:2rem 0}
+.voet .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.voet .naam{font-family:var(--disp);font-weight:900;font-size:1.05rem;text-transform:uppercase;color:#fff}
+.voet-meta{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.1em}
 
 /* REVEAL */
-html.js .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
-html.js .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){
-  html.js .reveal,html.js .hero .fade-up,html.js .line-mask>span,
-  html.js .mobile-menu nav li{opacity:1!important;transform:none!important;transition:none!important}
-  html.js .tool-svg .bp{stroke-dashoffset:0!important;transition:none!important}
-  html.js .tool-svg text{opacity:1!important}
-  html.js .tool-svg.drawn #hamerkop{animation:none!important}
-  html.js .tool-svg .chip{animation:none!important;opacity:0!important}
-  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
-}
-
-/* DIENSTEN */
-.diensten-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.dienst{
-  display:grid;grid-template-columns:90px minmax(0,1fr) minmax(0,1.3fr) 56px;
-  align-items:center;gap:clamp(1rem,3vw,2.5rem);
-  padding:clamp(1.6rem,3vw,2.3rem) clamp(.4rem,2vw,1.4rem);
-  border-bottom:1px solid var(--line);position:relative;
-  transition:transform .55s var(--ease),background-color .45s;
-}
-.dienst::before{
-  content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--amber);
-  transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease);
-}
-.dienst:hover{transform:translateX(14px);background:rgba(217,124,42,.04)}
-.dienst:hover::before{transform:scaleY(1)}
-.dienst .nr{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);letter-spacing:.12em;transition:color .35s}
-.dienst:hover .nr{color:var(--amber-bright)}
-.dienst h3{font-size:clamp(1.2rem,2.2vw,1.55rem);font-weight:700}
-.dienst p{color:var(--muted);font-size:.95rem}
-.dienst .arrow{
-  width:42px;height:42px;border:1px solid var(--line-strong);border-radius:50%;
-  display:grid;place-items:center;color:var(--muted);
-  transition:border-color .35s,color .35s,background-color .35s,box-shadow .45s var(--ease);
-}
-.dienst:hover .arrow{border-color:var(--amber);color:#fff;background:var(--amber);box-shadow:0 0 24px -4px var(--amber-glow)}
-@media (max-width:760px){
-  .dienst{grid-template-columns:54px minmax(0,1fr) 44px;grid-template-areas:"nr title arrow" "nr desc arrow"}
-  .dienst .nr{grid-area:nr;align-self:start;padding-top:4px}
-  .dienst h3{grid-area:title}
-  .dienst p{grid-area:desc;margin-top:6px}
-  .dienst .arrow{grid-area:arrow}
-}
-
-/* PROJECTEN */
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-@media (max-width:980px){.project-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:600px){.project-grid{grid-template-columns:1fr}}
-.project{
-  position:relative;border-radius:10px;overflow:hidden;background:var(--surface);
-  border:1px solid var(--line);
-  transition:border-color .4s,box-shadow .5s var(--ease);
-}
-.project:hover{border-color:rgba(217,124,42,.5);box-shadow:0 18px 44px -18px rgba(0,0,0,.7),0 0 0 1px rgba(217,124,42,.22)}
-.project figure{position:relative;aspect-ratio:4/3;overflow:hidden;margin:0}
-.project img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
-.project:hover img{transform:scale(1.07)}
-.project figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,12,9,.88))}
-.project .view-strip{
-  position:absolute;left:0;right:0;bottom:0;z-index:2;
-  display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(90deg,var(--amber),var(--amber-deep));color:#fff;
-  font-family:var(--font-head);font-weight:600;font-size:.86rem;letter-spacing:.05em;
-  padding:11px 18px;transform:translateY(102%);
-  transition:transform .55s var(--ease);
-}
-.project:hover .view-strip,.project:focus-within .view-strip{transform:translateY(0)}
-.project-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:18px 20px}
-.project-meta h3{font-size:1.05rem;font-weight:700}
-.project-meta .place{font-size:.82rem;color:var(--muted);margin-top:3px}
-.project-meta .year{font-family:var(--font-mono);font-size:.72rem;color:var(--amber-bright);letter-spacing:.12em;flex:none}
-.project .tag{
-  position:absolute;top:14px;left:14px;z-index:2;
-  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
-  background:rgba(14,12,9,.78);border:1px solid var(--line-strong);color:var(--text);
-  padding:5px 11px;border-radius:99px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-}
-
-/* WERKWIJZE */
-.werkwijze{background:var(--surface);border-block:1px solid var(--line)}
-.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,3vw,2.4rem);margin-top:1rem}
-.steps-line{
-  position:absolute;top:27px;left:27px;right:8%;height:1px;
-  background:linear-gradient(90deg,var(--amber),rgba(217,124,42,.25));
-}
-html.js .steps-line{transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--ease) .2s}
-html.js .steps.in .steps-line{transform:scaleX(1)}
-.step{position:relative;padding-top:78px}
-.step .dot{
-  position:absolute;top:0;left:0;width:54px;height:54px;border-radius:50%;
-  border:1px solid var(--amber);display:grid;place-items:center;
-  font-family:var(--font-mono);font-size:.78rem;color:var(--amber-bright);letter-spacing:.08em;
-  background:var(--surface);box-shadow:0 0 0 6px var(--surface),0 0 26px -6px var(--amber-glow);
-}
-.step h3{font-size:1.15rem;margin-bottom:.55rem}
-.step p{color:var(--muted);font-size:.93rem}
-@media (max-width:880px){
-  .steps{grid-template-columns:1fr;gap:2.2rem}
-  .steps-line{top:0;bottom:8%;left:27px;right:auto;width:1px;height:auto;background:linear-gradient(180deg,var(--amber),rgba(217,124,42,.25))}
-  html.js .steps-line{transform:scaleY(0);transform-origin:top}
-  html.js .steps.in .steps-line{transform:scaleY(1)}
-  .step{padding-top:0;padding-left:80px;min-height:56px}
-}
-
-/* OVER */
-.over-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(2.2rem,5vw,4.5rem);align-items:center}
-@media (max-width:880px){.over-grid{grid-template-columns:1fr}}
-.over-photo{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line-strong);aspect-ratio:4/5}
-.over-photo img{width:100%;height:118%;object-fit:cover;will-change:transform}
-.over-photo::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(200deg,rgba(217,124,42,.12),transparent 45%);
-  mix-blend-mode:screen;pointer-events:none;
-}
-.over-photo .corner{position:absolute;width:34px;height:34px;border:0 solid var(--amber);z-index:2}
-.over-photo .corner.tl{top:12px;left:12px;border-top-width:2px;border-left-width:2px}
-.over-photo .corner.br{bottom:12px;right:12px;border-bottom-width:2px;border-right-width:2px}
-.over-copy h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin:.85rem 0 1.2rem}
-.over-copy p{color:var(--muted);margin-bottom:1.1rem}
-.over-copy p strong{color:var(--text);font-weight:600}
-.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.8rem}
-.badge{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
-  border:1px solid var(--line-strong);border-radius:6px;padding:10px 16px;color:var(--muted);
-  transition:border-color .35s,color .35s;
-}
-.badge:hover{border-color:var(--amber);color:var(--text)}
-.badge svg{color:var(--amber-bright);flex:none}
-
-/* REVIEWS */
-.reviews{background:linear-gradient(180deg,transparent,rgba(217,124,42,.03) 50%,transparent)}
-.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-@media (max-width:980px){.review-grid{grid-template-columns:1fr;max-width:640px}}
-.review{
-  background:var(--surface);border:1px solid var(--line);border-radius:12px;
-  padding:30px 28px;position:relative;display:flex;flex-direction:column;gap:18px;
-  transition:transform .55s var(--ease),border-color .4s,box-shadow .55s var(--ease);
-}
-.review:hover{transform:translateY(-6px);border-color:rgba(217,124,42,.4);box-shadow:0 22px 48px -22px rgba(0,0,0,.7)}
-.review::before{content:"";position:absolute;top:0;left:28px;width:44px;height:2px;background:var(--amber)}
-.stars{display:flex;gap:5px}
-.stars svg{width:17px;height:17px;color:var(--amber-bright)}
-.review blockquote{font-size:.97rem;color:var(--text);line-height:1.7}
-.review .who{margin-top:auto;display:flex;flex-direction:column;gap:2px}
-.review .who b{font-family:var(--font-head);font-size:.92rem}
-.review .who span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2.2rem,5vw,4rem);align-items:start}
-@media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
-.contact-form{
-  background:var(--surface);border:1px solid var(--line);border-radius:14px;
-  padding:clamp(1.6rem,3.5vw,2.6rem);position:relative;overflow:hidden;
-}
-.contact-form::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),transparent 70%)}
-.field{margin-bottom:1.25rem}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-@media (max-width:560px){.field-row{grid-template-columns:1fr}}
-.field label{display:block;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem}
-.field input,.field select,.field textarea{
-  width:100%;background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;
-  color:var(--text);font:inherit;font-size:.95rem;padding:13px 16px;
-  transition:border-color .3s,box-shadow .3s;
-}
-.field textarea{resize:vertical;min-height:130px}
-.field select{
-  -webkit-appearance:none;appearance:none;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f0a050' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 16px center;
-}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,124,42,.20)}
-.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#e05540;box-shadow:0 0 0 3px rgba(224,85,64,.16)}
-.field .err{display:none;font-size:.78rem;color:#ff8d7a;margin-top:.45rem}
-.field.invalid .err{display:block}
-.form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:1.6rem}
-.form-foot small{color:var(--muted);font-size:.78rem}
-.form-success{
-  position:absolute;inset:0;background:var(--surface);z-index:5;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-  text-align:center;padding:2rem;opacity:0;visibility:hidden;
-  transition:opacity .6s var(--ease),visibility 0s .6s;
-}
-.contact-form.sent .form-success{opacity:1;visibility:visible;transition:opacity .6s var(--ease)}
-.form-success .check{width:72px;height:72px;border-radius:50%;border:2px solid var(--amber);display:grid;place-items:center;color:var(--amber-bright);box-shadow:0 0 38px -8px var(--amber-glow)}
-.form-success h3{font-size:1.4rem}
-.form-success p{color:var(--muted);max-width:34ch}
-.contact-aside h3{font-size:1.25rem;margin-bottom:1.4rem}
-.contact-lines{display:flex;flex-direction:column}
-.contact-lines a,.contact-lines div{display:flex;align-items:center;gap:16px;padding:17px 4px;border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease),color .3s}
-.contact-lines a:hover{padding-left:12px;color:var(--amber-bright)}
-.contact-lines .ico{width:40px;height:40px;flex:none;border:1px solid var(--line-strong);border-radius:8px;display:grid;place-items:center;color:var(--amber-bright)}
-.contact-lines .lbl{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block}
-.contact-lines .val{font-weight:600;font-size:.95rem}
-.info-note{margin-top:1.6rem;border:1px dashed rgba(217,124,42,.3);border-radius:10px;padding:18px 20px;font-size:.88rem;color:var(--muted)}
-.info-note b{color:var(--amber-bright);font-family:var(--font-mono);font-weight:500;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:6px}
-
-/* FOOTER */
-.site-footer{border-top:1px solid var(--line);padding:3rem 0 2.4rem;position:relative}
-.site-footer::before{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:160px;height:1px;background:var(--amber)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.footer-inner p{font-size:.82rem;color:var(--muted)}
-.footer-inner p b{color:var(--text);font-family:var(--font-head)}
-.footer-meta{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-
-.ticks{position:absolute;right:0;top:10%;bottom:10%;width:18px;pointer-events:none;opacity:.45;background-image:repeating-linear-gradient(180deg,rgba(217,124,42,.4) 0 1px,transparent 1px 28px)}
-.ticks::before{content:"";position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(217,124,42,.22)}
-@media (max-width:880px){.ticks{display:none}}
+[data-r]{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+[data-r].zichtbaar{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){[data-r]{opacity:1!important;transform:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Direct naar inhoud</a>
+<a class="skip" href="#main">Direct naar inhoud</a>
 
-<!-- HEADER -->
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a class="logo" href="#top" aria-label="Arends Metsel- en Timmerwerk — naar boven">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="8" width="20" height="5" rx="1"/>
-          <rect x="2" y="15" width="9" height="4" rx="1"/>
-          <rect x="13" y="15" width="9" height="4" rx="1"/>
+<div class="util">
+  <div class="wrap">
+    <span><strong>Arends</strong> Metsel- &amp; Timmerwerk &middot; Zevenaar</span>
+    <div style="display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap">
+      <span>Ma&ndash;vr 07:00&ndash;17:00</span>
+      <a class="tel" href="tel:+31611228811">06 &mdash; 11 22 88 11</a>
+    </div>
+  </div>
+</div>
+<div class="streep"></div>
+
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="logo-wrap" href="#top" aria-label="Arends Metsel- en Timmerwerk">
+      <div class="logo-blok" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="8" width="20" height="5" rx=".5"/>
+          <rect x="2" y="15" width="9" height="4" rx=".5"/>
+          <rect x="13" y="15" width="9" height="4" rx=".5"/>
           <path d="M7 8V6M12 8V6M17 8V6"/>
         </svg>
-      </span>
-      <span class="logo-text">ARENDS<small>metsel- &amp; timmerwerk</small></span>
+      </div>
+      <div class="logo-naam">ARENDS<small>metsel- &amp; timmerwerk</small></div>
     </a>
-    <nav class="main-nav" aria-label="Hoofdmenu">
-      <ul>
-        <li><a href="#diensten">Diensten</a></li>
-        <li><a href="#projecten">Projecten</a></li>
-        <li><a href="#werkwijze">Werkwijze</a></li>
-        <li><a href="#over">Over</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <nav class="nav-links" aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten</a>
+      <a href="#projecten">Projecten</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#over">Over</a>
+      <a href="#contact" class="nav-cta">Offerte aanvragen</a>
     </nav>
-    <div class="header-cta">
-      <a class="btn btn-primary" href="#contact">Offerte aanvragen
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu openen">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mobMenu" aria-label="Menu openen">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<div class="menu-backdrop" id="menuBackdrop" aria-hidden="true"></div>
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobiel menu">
-  <nav aria-label="Mobiel hoofdmenu">
-    <ul>
-      <li style="--d:.08s"><a href="#diensten"><span class="idx">01</span>Diensten</a></li>
-      <li style="--d:.14s"><a href="#projecten"><span class="idx">02</span>Projecten</a></li>
-      <li style="--d:.20s"><a href="#werkwijze"><span class="idx">03</span>Werkwijze</a></li>
-      <li style="--d:.26s"><a href="#over"><span class="idx">04</span>Over</a></li>
-      <li style="--d:.32s"><a href="#contact"><span class="idx">05</span>Contact</a></li>
-    </ul>
-  </nav>
-  <a class="btn btn-primary" href="#contact">Offerte aanvragen</a>
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Mobiel menu">
+  <a href="#diensten">Diensten</a>
+  <a href="#projecten">Projecten</a>
+  <a href="#werkwijze">Werkwijze</a>
+  <a href="#over">Over</a>
+  <a href="#contact">Offerte aanvragen</a>
 </div>
 
 <main id="main">
 
 <!-- HERO -->
-<section class="hero" id="hero" aria-label="Introductie">
-  <div class="ticks" aria-hidden="true"></div>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="micro fade-up" style="--d:.05s">Zevenaar &amp; omgeving — particulier &amp; bedrijf</p>
+<section class="hero" aria-label="Introductie">
+  <div class="wrap">
+    <div class="hero-tekst">
+      <p class="hero-label">Zevenaar &amp; omgeving &mdash; particulier &amp; bedrijf</p>
       <h1>
-        <span class="line-mask"><span style="--d:.15s">Metsel- en</span></span>
-        <span class="line-mask"><span style="--d:.27s">timmerwerk</span></span>
-        <span class="line-mask"><span style="--d:.39s">dat <span class="accent">blijft.</span></span></span>
+        Metsel- en<br>
+        timmerwerk<br>
+        <em>dat blijft.</em>
       </h1>
-      <p class="hero-sub fade-up" style="--d:.5s">Van kozijnrenovatie en dakkapellen tot aanbouwen en tegelwerken: jarenlange vakmanservaring voor groot en klein, particulier en bedrijf. Kwaliteit staat altijd voorop.</p>
-      <div class="hero-ctas fade-up" style="--d:.62s">
-        <a class="btn btn-primary" href="#contact">Vrijblijvende afspraak
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <p class="hero-sub">Van kozijnrenovatie en dakkapellen tot tegelwerken en aanbouwen &mdash; vakmanschap voor elk project, groot of klein.</p>
+      <div class="hero-ctas">
+        <a class="btn-rood" href="#contact">
+          Offerte aanvragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-ghost" href="#projecten">Bekijk projecten</a>
+        <a class="btn-wit" href="#projecten">Bekijk projecten</a>
       </div>
-      <div class="hero-stats fade-up" style="--d:.74s">
-        <div class="stat">
-          <div class="num"><span class="countup" data-target="20" data-suffix="+">0+</span></div>
-          <div class="lbl">Jaar ervaring</div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">20+</div>
+          <div class="stat-lbl">Jaar ervaring</div>
         </div>
-        <div class="stat">
-          <div class="num"><span class="countup" data-target="6">0</span></div>
-          <div class="lbl">Vakgebieden</div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-lbl">Vakgebieden</div>
         </div>
-        <div class="stat">
-          <div class="num"><em>100%</em></div>
-          <div class="lbl">Kwaliteitsfocus</div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-lbl">Kwaliteitsfocus</div>
         </div>
       </div>
     </div>
-
-    <!-- Technische SVG-tekening: hamer en troffel -->
-    <div class="hero-art fade-up" style="--d:.35s" aria-hidden="true">
-      <div class="hero-art-glow"></div>
-      <div class="tool-stage">
-        <svg class="tool-svg" id="toolSvg" viewBox="0 0 420 520" role="img" aria-label="Technische blauwdruk van metsel- en timmergereedschap">
-          <!-- HAMER -->
-          <g id="hamerkop">
-            <path class="bp" pathLength="1" style="--d:.0s"  d="M155 445 L198 205"/>
-            <path class="bp" pathLength="1" style="--d:.08s" d="M170 445 L213 205"/>
-            <path class="bp thin" pathLength="1" style="--d:.18s" d="M160 395 L200 255"/>
-            <path class="bp thin" pathLength="1" style="--d:.26s" d="M168 345 L206 225"/>
-            <!-- kop van de hamer -->
-            <path class="bp" pathLength="1" style="--d:.34s" d="M192 205 L248 188 L258 220 L202 237 Z"/>
-            <!-- slagzijde (rechthoekig) -->
-            <path class="bp" pathLength="1" style="--d:.46s" d="M248 188 L278 160 L289 190 L258 220"/>
-            <!-- klauwen -->
-            <path class="bp" pathLength="1" style="--d:.58s" d="M202 237 L180 258 L199 264"/>
-            <path class="bp" pathLength="1" style="--d:.64s" d="M204 240 L185 266 L204 272"/>
-          </g>
-          <circle class="chip" cx="282" cy="152" r="2.2" style="--cd:2.6s;--cx:14px"/>
-          <circle class="chip" cx="292" cy="168" r="1.6" style="--cd:3.8s;--cx:-8px"/>
-          <circle class="chip" cx="275" cy="145" r="1.9" style="--cd:5.1s;--cx:10px"/>
-
-          <!-- TROFFEL -->
-          <path class="bp" pathLength="1" style="--d:.72s" d="M88 94 L48 174"/>
-          <path class="bp" pathLength="1" style="--d:.80s" d="M102 100 L62 180"/>
-          <path class="bp" pathLength="1" style="--d:.86s" d="M88 94 Q98 79 102 100"/>
-          <path class="bp thin" pathLength="1" style="--d:.94s" d="M60 176 L92 186 L88 202 L56 192 Z"/>
-          <path class="bp" pathLength="1" style="--d:1.02s" d="M72 194 C62 210 76 226 66 244 Q58 256 54 268"/>
-          <path class="bp" pathLength="1" style="--d:1.14s" d="M18 250 Q64 270 108 316 Q68 398 8 418 Q6 320 18 250 Z"/>
-          <path class="bp thin" pathLength="1" style="--d:1.27s" d="M64 290 L14 408"/>
-
-          <!-- Maatvoering -->
-          <path class="bp dim" pathLength="1" style="--d:1.42s" d="M336 94 L336 445 M328 94 L344 94 M328 445 L344 445"/>
-          <path class="bp dim" pathLength="1" style="--d:1.52s" d="M128 434 L128 474 M118 434 L138 434 M118 474 L138 474"/>
-          <path class="bp dash" pathLength="1" style="--d:1.62s" d="M54 268 m30 0 a30 30 0 1 0 -60 0 a30 30 0 1 0 60 0"/>
-          <path class="bp dim" pathLength="1" style="--d:1.68s" d="M54 268 L176 268"/>
-          <text x="350" y="235" transform="rotate(90 350 235)">TOTAAL 455 MM</text>
-          <text x="138" y="456">L = 310 mm</text>
-          <text x="182" y="272">aanzet greep</text>
-          <text x="18" y="42">ARENDS METSEL- &amp; TIMMERWERK</text>
-          <text x="18" y="58">ZEVENAAR — TEK. NR. AMB-001</text>
-        </svg>
-      </div>
+    <div class="hero-foto">
+      <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" alt="Vakman aan het werk" loading="eager" width="900" height="700">
+      <span class="hero-badge">Zevenaar &middot; Gelderland</span>
     </div>
   </div>
 </section>
+<div class="streep"></div>
 
 <!-- DIENSTEN -->
-<section id="diensten" class="hairline-top" aria-labelledby="diensten-title">
+<section class="sec sec-bg" id="diensten" aria-labelledby="diensten-titel">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="micro">Diensten — 01</p>
-      <h2 class="sec-title" id="diensten-title">Alles in en<br>om het huis.</h2>
-      <p class="sec-intro">Van metselwerk en tegelwerken tot dakkapellen en volledige verbouwingen — vakmanschap voor elk project, groot of klein.</p>
+    <div class="sec-kop" data-r>
+      <p class="sec-label">Diensten</p>
+      <h2 class="sec-titel" id="diensten-titel">Alles in en<br>om het huis.</h2>
+      <p class="sec-intro">Van een klein karweitje tot een volledige verbouwing &mdash; ik pak het aan, van begin tot einde.</p>
     </div>
-    <div class="diensten-list">
-      <a class="dienst reveal" style="--d:0s" href="#contact">
-        <span class="nr">/ 01</span>
-        <h3>Metselwerk</h3>
-        <p>Nieuwbouw, renovatie, gevelreparatie en opmetselwerk — strak in het verband en duurzaam afgewerkt.</p>
-        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <div class="diensten-rij">
+      <a class="dienst-item" href="#contact" data-r style="--d:.05s">
+        <div class="dienst-nr">01</div>
+        <div class="dienst-naam">Metselwerk</div>
+        <p class="dienst-tekst">Nieuwbouw, renovatie, gevelreparatie &mdash; strak in het verband en duurzaam afgewerkt.</p>
+        <span class="dienst-pijl">Meer info &rarr;</span>
       </a>
-      <a class="dienst reveal" style="--d:.08s" href="#contact">
-        <span class="nr">/ 02</span>
-        <h3>Timmerwerk</h3>
-        <p>Kozijnen, deuren, trappen, vloeren en maatwerk — vakkundige timmerman voor binnen en buiten.</p>
-        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <a class="dienst-item" href="#contact" data-r style="--d:.1s">
+        <div class="dienst-nr">02</div>
+        <div class="dienst-naam">Timmerwerk</div>
+        <p class="dienst-tekst">Kozijnen, deuren, trappen, vloeren en maatwerk &mdash; voor binnen en buiten.</p>
+        <span class="dienst-pijl">Meer info &rarr;</span>
       </a>
-      <a class="dienst reveal" style="--d:.16s" href="#contact">
-        <span class="nr">/ 03</span>
-        <h3>Dakkapellen &amp; kozijnrenovatie</h3>
-        <p>Plaatsen en vernieuwen van dakkapellen en kozijnen — energiezuiniger, strakker en toekomstbestendig.</p>
-        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <a class="dienst-item" href="#contact" data-r style="--d:.15s">
+        <div class="dienst-nr">03</div>
+        <div class="dienst-naam">Dakkapellen &amp; kozijnen</div>
+        <p class="dienst-tekst">Plaatsen en vernieuwen van dakkapellen en kozijnen &mdash; energiezuiniger en strakker.</p>
+        <span class="dienst-pijl">Meer info &rarr;</span>
       </a>
-      <a class="dienst reveal" style="--d:.24s" href="#contact">
-        <span class="nr">/ 04</span>
-        <h3>Tegelwerken</h3>
-        <p>Badkamer, keuken, vloer of terras — keurig gevliesd, haaks gelegd en strak gevoegd.</p>
-        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <a class="dienst-item" href="#contact" data-r style="--d:.2s">
+        <div class="dienst-nr">04</div>
+        <div class="dienst-naam">Tegelwerken</div>
+        <p class="dienst-tekst">Badkamer, keuken, vloer of terras &mdash; haaks gelegd en strak gevoegd.</p>
+        <span class="dienst-pijl">Meer info &rarr;</span>
       </a>
-      <a class="dienst reveal" style="--d:.32s" href="#contact">
-        <span class="nr">/ 05</span>
-        <h3>Aanbouwen &amp; verbouwingen</h3>
-        <p>Van uitbouw en opbouw tot complete interne verbouwing — één aanspreekpunt voor het hele project.</p>
-        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <a class="dienst-item" href="#contact" data-r style="--d:.25s">
+        <div class="dienst-nr">05</div>
+        <div class="dienst-naam">Aanbouwen &amp; verbouwingen</div>
+        <p class="dienst-tekst">Van uitbouw en opbouw tot complete interne verbouwing.</p>
+        <span class="dienst-pijl">Meer info &rarr;</span>
       </a>
-      <a class="dienst reveal" style="--d:.40s" href="#contact">
-        <span class="nr">/ 06</span>
-        <h3>Keukens plaatsen</h3>
-        <p>Complete keukenplaatsing inclusief metselwerk, tegelwerk en afbouw — tot in het kleinste detail verzorgd.</p>
-        <span class="arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <a class="dienst-item" href="#contact" data-r style="--d:.3s">
+        <div class="dienst-nr">06</div>
+        <div class="dienst-naam">Keukens plaatsen</div>
+        <p class="dienst-tekst">Complete keukenplaatsing inclusief metselwerk, tegelwerk en afbouw.</p>
+        <span class="dienst-pijl">Meer info &rarr;</span>
       </a>
     </div>
   </div>
 </section>
+<div class="streep"></div>
 
 <!-- PROJECTEN -->
-<section id="projecten" class="hairline-top" aria-labelledby="projecten-title">
+<section class="sec" id="projecten" aria-labelledby="projecten-titel">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="micro">Projecten — 02</p>
-      <h2 class="sec-title" id="projecten-title">Kijk zelf mee.</h2>
-      <p class="sec-intro">Een selectie van recent opgeleverd werk in en rond Zevenaar. Overtuig uzelf van de kwaliteit.</p>
+    <div class="sec-kop" data-r>
+      <p class="sec-label">Projecten</p>
+      <h2 class="sec-titel" id="projecten-titel">Recent werk.</h2>
+      <p class="sec-intro">Een selectie van opgeleverd werk in en rond Zevenaar.</p>
     </div>
-    <ul class="project-grid">
-      <li class="project reveal" style="--d:0s">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Verbouwde badkamer met nieuwe tegelwerken" loading="lazy">
-        </figure>
-        <span class="tag">Tegelwerk</span>
-        <div class="project-meta">
-          <div><h3>Badkamerrenovatie</h3><p class="place">Zevenaar</p></div>
-          <span class="year">2025</span>
+  </div>
+  <div style="margin-top:clamp(1.4rem,3vw,2.4rem)">
+    <div class="zig">
+      <article class="zz" data-r>
+        <div class="pic">
+          <span class="num">01</span>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Verbouwde badkamer" loading="lazy">
         </div>
-        <a class="view-strip" href="#contact">Meer info <span aria-hidden="true">→</span></a>
-      </li>
-      <li class="project reveal" style="--d:.08s">
-        <figure>
+        <div class="txt">
+          <div class="meta">Zevenaar &middot; 2025 &middot; Tegelwerk</div>
+          <h3>Badkamerrenovatie</h3>
+          <p>Complete badkamerrenovatie inclusief tegelwerk en nieuw douche-element. Afgeleverd binnen de afgesproken termijn.</p>
+        </div>
+      </article>
+      <article class="zz" data-r>
+        <div class="pic">
+          <span class="num">02</span>
           <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" alt="Aanbouw in uitvoering" loading="lazy">
-        </figure>
-        <span class="tag">Aanbouw</span>
-        <div class="project-meta">
-          <div><h3>Woonkamer uitbouw</h3><p class="place">Didam</p></div>
-          <span class="year">2025</span>
         </div>
-        <a class="view-strip" href="#contact">Meer info <span aria-hidden="true">→</span></a>
-      </li>
-      <li class="project reveal" style="--d:.16s">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" alt="Dakkapel geplaatst op een woning" loading="lazy">
-        </figure>
-        <span class="tag">Dakkapel</span>
-        <div class="project-meta">
-          <div><h3>Dakkapel plaatsing</h3><p class="place">Zevenaar</p></div>
-          <span class="year">2024</span>
+        <div class="txt">
+          <div class="meta">Didam &middot; 2025 &middot; Aanbouw</div>
+          <h3>Woonkamer uitbouw</h3>
+          <p>Uitbouw van acht meter aan de tuinzijde, inclusief metselwerk, timmerwerk en vloer. Wind- en waterdicht opgeleverd.</p>
         </div>
-        <a class="view-strip" href="#contact">Meer info <span aria-hidden="true">→</span></a>
-      </li>
-      <li class="project reveal" style="--d:.24s">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80" alt="Nieuwe keuken geplaatst en betegeld" loading="lazy">
-        </figure>
-        <span class="tag">Keuken</span>
-        <div class="project-meta">
-          <div><h3>Keukenplaatsing &amp; tegelwerk</h3><p class="place">Angerlo</p></div>
-          <span class="year">2024</span>
+      </article>
+      <article class="zz" data-r>
+        <div class="pic">
+          <span class="num">03</span>
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" alt="Geplaatste dakkapel" loading="lazy">
         </div>
-        <a class="view-strip" href="#contact">Meer info <span aria-hidden="true">→</span></a>
-      </li>
-      <li class="project reveal" style="--d:.32s">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80" alt="Gerenoveerde gevel met nieuwe kozijnen" loading="lazy">
-        </figure>
-        <span class="tag">Kozijnen</span>
-        <div class="project-meta">
-          <div><h3>Kozijnrenovatie jaren '70-woning</h3><p class="place">Zevenaar</p></div>
-          <span class="year">2024</span>
+        <div class="txt">
+          <div class="meta">Zevenaar &middot; 2024 &middot; Dakkapel</div>
+          <h3>Dakkapel plaatsing</h3>
+          <p>Dakkapel volledig geplaatst en afgewerkt inclusief kozijn en buitenbekleding.</p>
         </div>
-        <a class="view-strip" href="#contact">Meer info <span aria-hidden="true">→</span></a>
-      </li>
-      <li class="project reveal" style="--d:.40s">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&w=900&q=80" alt="Metselwerk nieuwbouw aanbouw" loading="lazy">
-        </figure>
-        <span class="tag">Metselwerk</span>
-        <div class="project-meta">
-          <div><h3>Schuurmuur nieuwbouw</h3><p class="place">Babberich</p></div>
-          <span class="year">2023</span>
-        </div>
-        <a class="view-strip" href="#contact">Meer info <span aria-hidden="true">→</span></a>
-      </li>
-    </ul>
+      </article>
+    </div>
   </div>
 </section>
+<div class="streep"></div>
 
 <!-- WERKWIJZE -->
-<section id="werkwijze" class="werkwijze" aria-labelledby="werkwijze-title">
+<section class="sec sec-bg" id="werkwijze" aria-labelledby="werkwijze-titel">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="micro">Werkwijze — 03</p>
-      <h2 class="sec-title" id="werkwijze-title">Duidelijk van<br>begin tot einde.</h2>
+    <div class="sec-kop" data-r>
+      <p class="sec-label">Werkwijze</p>
+      <h2 class="sec-titel" id="werkwijze-titel">Duidelijk van<br>begin tot einde.</h2>
     </div>
-    <div class="steps" id="steps">
-      <div class="steps-line" aria-hidden="true"></div>
-      <div class="step reveal" style="--d:.15s">
-        <span class="dot">01</span>
-        <h3>Contact opnemen</h3>
-        <p>Neem vrijblijvend contact op via het formulier, telefoon of e-mail. Ik reageer altijd snel.</p>
+    <div class="aanpak-rij">
+      <div class="stap" data-r style="--d:.05s">
+        <div class="stap-nr">01</div>
+        <h3>Contact</h3>
+        <p>Neem vrijblijvend contact op via telefoon, e-mail of het formulier. Ik reageer altijd snel.</p>
       </div>
-      <div class="step reveal" style="--d:.3s">
-        <span class="dot">02</span>
-        <h3>Afspraak &amp; advies</h3>
-        <p>We bekijken de klus samen op locatie. U krijgt deskundig advies over de beste aanpak.</p>
+      <div class="stap" data-r style="--d:.12s">
+        <div class="stap-nr">02</div>
+        <h3>Afspraak</h3>
+        <p>We bekijken de klus samen op locatie. U krijgt direct eerlijk advies over de beste aanpak.</p>
       </div>
-      <div class="step reveal" style="--d:.45s">
-        <span class="dot">03</span>
-        <h3>Heldere offerte</h3>
-        <p>U ontvangt een duidelijke, vrijblijvende offerte zonder verborgen kosten of verrassingen.</p>
+      <div class="stap" data-r style="--d:.19s">
+        <div class="stap-nr">03</div>
+        <h3>Offerte</h3>
+        <p>U ontvangt een heldere, vrijblijvende offerte. Vaste prijs, geen verborgen kosten.</p>
       </div>
-      <div class="step reveal" style="--d:.6s">
-        <span class="dot">04</span>
-        <h3>Vakkundig uitgevoerd</h3>
-        <p>Het werk wordt netjes en vakkundig afgerond. Pas als u tevreden bent, is de klus klaar.</p>
+      <div class="stap" data-r style="--d:.26s">
+        <div class="stap-nr">04</div>
+        <h3>Oplevering</h3>
+        <p>Vakkundig uitgevoerd en netjes opgeleverd. Pas als u tevreden bent, is de klus klaar.</p>
       </div>
     </div>
   </div>
 </section>
+<div class="streep"></div>
 
 <!-- OVER -->
-<section id="over" aria-labelledby="over-title">
+<section class="sec" id="over" aria-labelledby="over-titel">
   <div class="wrap over-grid">
-    <div class="over-photo reveal" id="overPhoto">
-      <span class="corner tl" aria-hidden="true"></span>
-      <span class="corner br" aria-hidden="true"></span>
-      <img id="parallaxImg" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80" alt="Vakman aan het werk op een bouwproject" loading="lazy">
+    <div class="over-foto" data-r>
+      <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80" alt="M. Arends, vakman" loading="lazy">
     </div>
-    <div class="over-copy">
-      <p class="micro reveal">Over — 04</p>
-      <h2 class="reveal" style="--d:.1s" id="over-title">Ik ben M. Arends.<br>Vakman in hart en nieren.</h2>
-      <p class="reveal" style="--d:.2s">Vanuit <strong>Zevenaar</strong> werk ik al jarenlang voor particulieren en bedrijven in de regio. Of het nu gaat om een kleine reparatie of een grote verbouwing — ik zet me elke keer volledig in voor het beste resultaat.</p>
-      <p class="reveal" style="--d:.3s">Het leveren van <strong>kwaliteit staat altijd voorop</strong>. Ik heb jarenlange ervaring met zowel grote als kleine projecten en kan alle voorkomende werkzaamheden in en om het huis vakkundig voor u verzorgen. Deskundig advies, eerlijke prijzen en nette oplevering.</p>
-      <div class="badges reveal" style="--d:.4s">
-        <span class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
-          Particulier &amp; bedrijf
-        </span>
-        <span class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
-          Groot &amp; klein
-        </span>
-        <span class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Persoonlijk contact
-        </span>
+    <div class="over-tekst" data-r style="--d:.1s">
+      <p class="sec-label">Over</p>
+      <h2 class="sec-titel" id="over-titel">Vakman in<br>hart en nieren.</h2>
+      <p>Vanuit <strong>Zevenaar</strong> werk ik al jarenlang voor particulieren en bedrijven in de regio. Of het nu gaat om een klein karweitje of een grote verbouwing &mdash; ik zet me elke keer volledig in.</p>
+      <p><strong>Kwaliteit staat altijd voorop.</strong> Jarenlange ervaring met zowel grote als kleine projecten. Deskundig advies, eerlijke prijzen en nette oplevering.</p>
+      <div class="over-tags">
+        <span class="over-tag">Particulier &amp; bedrijf</span>
+        <span class="over-tag">Groot &amp; klein</span>
+        <span class="over-tag">Eerlijk &amp; vakkundig</span>
+        <span class="over-tag">Zevenaar e.o.</span>
+      </div>
+      <div style="margin-top:1.6rem">
+        <a class="btn-rood" href="#contact">
+          Vrijblijvend contact
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
+<div class="streep"></div>
 
 <!-- REVIEWS -->
-<section class="reviews hairline-top" aria-labelledby="reviews-title">
+<section class="sec sec-bg" aria-labelledby="reviews-titel">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="micro">Ervaringen — 05</p>
-      <h2 class="sec-title" id="reviews-title">Wat klanten zeggen</h2>
+    <div class="sec-kop" data-r>
+      <p class="sec-label">Ervaringen</p>
+      <h2 class="sec-titel" id="reviews-titel">Wat klanten zeggen.</h2>
     </div>
-    <div class="review-grid">
-      <article class="review reveal" style="--d:0s">
-        <div class="stars" role="img" aria-label="Beoordeling: 5 van 5 sterren">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+    <div class="review-rij">
+      <article class="review" data-r style="--d:.05s">
+        <div class="sterren" aria-label="5 van 5 sterren">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
         </div>
-        <blockquote>"Arends heeft onze badkamer compleet gerenoveerd — inclusief het tegelwerk en een nieuw douche-element. Netjes, op tijd en het resultaat is prachtig. Echt een vakman."</blockquote>
-        <div class="who"><b>Familie De Groot</b><span>Badkamerrenovatie — Zevenaar</span></div>
+        <blockquote>"Arends heeft onze badkamer compleet gerenoveerd. Netjes, op tijd en het resultaat is prachtig. Echt een vakman."</blockquote>
+        <div class="klant"><strong>Familie De Groot</strong><span>Badkamerrenovatie &mdash; Zevenaar</span></div>
       </article>
-      <article class="review reveal" style="--d:.12s">
-        <div class="stars" role="img" aria-label="Beoordeling: 5 van 5 sterren">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+      <article class="review" data-r style="--d:.12s">
+        <div class="sterren" aria-label="5 van 5 sterren">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
         </div>
-        <blockquote>"We hebben onze kozijnen laten vernieuwen door Arends. Duidelijke offerte, geen gedoe en het werk was in een dag gedaan. De gevel ziet er weer als nieuw uit."</blockquote>
-        <div class="who"><b>R. van Dijk</b><span>Kozijnrenovatie — Didam</span></div>
+        <blockquote>"Duidelijke offerte, geen gedoe en de kozijnen zijn in een dag vervangen. De gevel ziet er weer als nieuw uit."</blockquote>
+        <div class="klant"><strong>R. van Dijk</strong><span>Kozijnrenovatie &mdash; Didam</span></div>
       </article>
-      <article class="review reveal" style="--d:.24s">
-        <div class="stars" role="img" aria-label="Beoordeling: 5 van 5 sterren">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+      <article class="review" data-r style="--d:.19s">
+        <div class="sterren" aria-label="5 van 5 sterren">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
         </div>
-        <blockquote>"De aanbouw is precies geworden zoals besproken. Arends denkt mee, werkt nauwkeurig en levert op wanneer hij zegt. Hier ben ik echt heel blij mee."</blockquote>
-        <div class="who"><b>H. Willems</b><span>Aanbouw woonkamer — Zevenaar</span></div>
+        <blockquote>"De aanbouw is precies geworden zoals besproken. Arends denkt mee, werkt nauwkeurig en levert op wanneer hij zegt."</blockquote>
+        <div class="klant"><strong>H. Willems</strong><span>Aanbouw &mdash; Zevenaar</span></div>
       </article>
     </div>
   </div>
 </section>
+<div class="streep"></div>
 
 <!-- CONTACT -->
-<section id="contact" class="hairline-top" aria-labelledby="contact-title">
+<section class="sec contact-blok" id="contact" aria-labelledby="contact-titel">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="micro">Contact — 06</p>
-      <h2 class="sec-title" id="contact-title">Vertel uw plannen.</h2>
-      <p class="sec-intro">Vrijblijvende afspraak maken of een vraag stellen? Ik hoor het graag. Vul het formulier in of neem direct contact op.</p>
-    </div>
     <div class="contact-grid">
-      <form class="contact-form reveal" id="offerteForm" novalidate>
-        <div class="field-row">
-          <div class="field">
-            <label for="f-naam">Naam</label>
-            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
-            <p class="err" id="err-naam">Vul uw naam in.</p>
-          </div>
-          <div class="field">
-            <label for="f-tel">Telefoon</label>
-            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel" inputmode="tel" required>
-            <p class="err" id="err-tel">Vul een geldig telefoonnummer in.</p>
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="f-email">E-mailadres</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-            <p class="err" id="err-email">Vul een geldig e-mailadres in.</p>
-          </div>
-          <div class="field">
-            <label for="f-type">Type werkzaamheid</label>
-            <select id="f-type" name="type" required>
-              <option value="" selected>Maak een keuze…</option>
-              <option value="metselwerk">Metselwerk</option>
-              <option value="timmerwerk">Timmerwerk</option>
-              <option value="dakkapel">Dakkapel plaatsen</option>
-              <option value="kozijn">Kozijnrenovatie</option>
-              <option value="tegelwerk">Tegelwerken</option>
-              <option value="keuken">Keuken plaatsen</option>
-              <option value="aanbouw">Aanbouw / verbouwing</option>
-              <option value="onderhoud">Regulier onderhoud</option>
-              <option value="anders">Iets anders</option>
-            </select>
-            <p class="err" id="err-type">Kies het type werkzaamheid.</p>
+      <div data-r>
+        <p class="sec-label">Contact</p>
+        <h2 class="sec-titel" id="contact-titel">Vertel uw plannen.</h2>
+        <p class="sec-intro">Vrijblijvend advies of direct een offerte? Ik hoor het graag.</p>
+        <div style="margin-top:1.8rem">
+          <a class="ci" href="tel:+31611228811">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span><span class="ci-lbl">Telefoon</span><span class="ci-val">06 &mdash; 11 22 88 11</span></span>
+          </a>
+          <a class="ci" href="mailto:info@arendszevenaar.nl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7L22 7"/></svg>
+            <span><span class="ci-lbl">E-mail</span><span class="ci-val">info@arendszevenaar.nl</span></span>
+          </a>
+          <div class="ci">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><span class="ci-lbl">Adres</span><span class="ci-val">Woonpad 7, 6905 VE Zevenaar</span></span>
           </div>
         </div>
-        <div class="field">
-          <label for="f-msg">Omschrijving</label>
-          <textarea id="f-msg" name="omschrijving" required placeholder="Omschrijf kort wat u wilt laten uitvoeren…"></textarea>
-          <p class="err" id="err-msg">Omschrijf kort wat u wilt laten doen.</p>
+        <div class="vrije-note">
+          <strong>Vrijblijvend advies</strong>
+          Weet u nog niet precies wat u wilt? Ik kom graag langs voor een kennismaking en geef u eerlijk advies over de beste aanpak.
         </div>
-        <div class="form-foot">
-          <button class="btn btn-primary" type="submit">Verstuur aanvraag
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
-          </button>
-          <small>Vrijblijvend — ik neem snel contact op.</small>
-        </div>
-        <div class="form-success" aria-hidden="true">
-          <span class="check">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
-          </span>
-          <h3>Bericht verzonden!</h3>
-          <p>Bedankt voor uw aanvraag. Ik neem zo spoedig mogelijk contact met u op.</p>
-        </div>
-        <p id="formStatus" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></p>
-      </form>
+      </div>
 
-      <aside class="contact-aside reveal" style="--d:.15s">
-        <h3>Direct contact</h3>
-        <div class="contact-lines">
-          <a href="tel:+31611228811">
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
-            </span>
-            <span><span class="lbl">Telefoon</span><span class="val">06 — 11 22 88 11</span></span>
-          </a>
-          <a href="mailto:info@arendszevenaar.nl">
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7L22 7"/></svg>
-            </span>
-            <span><span class="lbl">E-mail</span><span class="val">info@arendszevenaar.nl</span></span>
-          </a>
-          <div>
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </span>
-            <span><span class="lbl">Adres</span><span class="val">Woonpad 7, 6905 VE Zevenaar</span></span>
+      <form class="form-wrap" id="form" novalidate data-r style="--d:.12s">
+        <div class="fld-rij">
+          <div class="fld">
+            <label for="f-naam">Naam</label>
+            <input id="f-naam" type="text" autocomplete="name" required placeholder="Uw naam">
+            <span class="err">Vul uw naam in.</span>
           </div>
-          <div>
-            <span class="ico" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
-            </span>
-            <span><span class="lbl">Werkgebied</span><span class="val">Zevenaar &amp; regio</span></span>
+          <div class="fld">
+            <label for="f-tel">Telefoon</label>
+            <input id="f-tel" type="tel" autocomplete="tel" required placeholder="06 00 00 00 00">
+            <span class="err">Vul een telefoonnummer in.</span>
           </div>
         </div>
-        <div class="info-note">
-          <b>Vrijblijvend advies</b>
-          Weet u nog niet precies wat u wilt? Geen probleem. Ik kom graag langs voor een vrijblijvende kennismaking en geef u eerlijk advies over de beste aanpak.
+        <div class="fld-rij">
+          <div class="fld">
+            <label for="f-email">E-mailadres</label>
+            <input id="f-email" type="email" autocomplete="email" required placeholder="uw@email.nl">
+            <span class="err">Vul een geldig e-mailadres in.</span>
+          </div>
+          <div class="fld">
+            <label for="f-type">Type werkzaamheid</label>
+            <select id="f-type" required>
+              <option value="">Maak een keuze</option>
+              <option>Metselwerk</option>
+              <option>Timmerwerk</option>
+              <option>Dakkapel plaatsen</option>
+              <option>Kozijnrenovatie</option>
+              <option>Tegelwerken</option>
+              <option>Keuken plaatsen</option>
+              <option>Aanbouw / verbouwing</option>
+              <option>Regulier onderhoud</option>
+              <option>Iets anders</option>
+            </select>
+            <span class="err">Kies het type werkzaamheid.</span>
+          </div>
         </div>
-      </aside>
+        <div class="fld">
+          <label for="f-msg">Omschrijving</label>
+          <textarea id="f-msg" required placeholder="Omschrijf kort wat u wilt laten uitvoeren"></textarea>
+          <span class="err">Vertel kort wat u wilt laten doen.</span>
+        </div>
+        <div class="form-voet">
+          <button class="btn-wit-solide" type="submit">
+            Verstuur aanvraag
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          </button>
+          <small>Vrijblijvend &mdash; ik reageer snel.</small>
+        </div>
+        <div class="form-ok" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+          Aanvraag ontvangen!
+        </div>
+      </form>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="wrap footer-inner">
+<div class="streep"></div>
+<footer class="voet">
+  <div class="wrap">
     <div>
-      <p><b>M. Arends Metsel- en Timmerwerk</b></p>
-      <p>Woonpad 7 · 6905 VE Zevenaar · <a href="tel:+31611228811" style="color:var(--amber-bright)">06 — 11 22 88 11</a></p>
+      <div class="naam">M. Arends Metsel- en Timmerwerk</div>
+      <div style="font-size:.8rem;margin-top:.3rem">Woonpad 7 &middot; 6905 VE Zevenaar &middot; <a href="tel:+31611228811" style="color:#fca5a5">06 &mdash; 11 22 88 11</a></div>
     </div>
-    <span class="footer-meta">&copy; 2026 Arends Zevenaar</span>
+    <span class="voet-meta">&copy; 2026 Arends Zevenaar</span>
   </div>
 </footer>
 
 <script>
 (function(){
   'use strict';
-  var doc=document,body=doc.body;
-  var reduced=false;
-  try{reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
-  doc.documentElement.classList.add('js');
-
-  /* Sticky header */
-  var hdr=doc.querySelector('.site-header');
-  if(hdr){window.addEventListener('scroll',function(){hdr.classList.toggle('scrolled',window.scrollY>20)},{passive:true})}
-
-  /* Mobile menu */
-  var toggle=doc.getElementById('menuToggle'),
-      mob=doc.getElementById('mobileMenu'),
-      bd=doc.getElementById('menuBackdrop');
-  function setMenu(open){
-    toggle.setAttribute('aria-expanded',open);
-    mob.classList.toggle('open',open);
-    bd.classList.toggle('open',open);
-    body.classList.toggle('menu-locked',open);
+  var burger=document.getElementById('burger'),mob=document.getElementById('mobMenu');
+  if(burger){
+    burger.addEventListener('click',function(){
+      var open=mob.classList.toggle('open');
+      burger.classList.toggle('open',open);
+      burger.setAttribute('aria-expanded',open);
+    });
+    mob.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){mob.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false')});
+    });
   }
-  if(toggle){
-    toggle.addEventListener('click',function(){setMenu(toggle.getAttribute('aria-expanded')==='false')});
-    bd.addEventListener('click',function(){setMenu(false)});
-    mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
-    doc.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
-  }
-
-  /* IntersectionObserver */
+  var reduced=false;try{reduced=matchMedia('(prefers-reduced-motion:reduce)').matches}catch(e){}
   if(!reduced&&'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-    doc.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-    setTimeout(function(){var h=doc.getElementById('hero');if(h)h.classList.add('in')},80);
-    var stEl=doc.getElementById('steps');
-    if(stEl){var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');sio.unobserve(e.target)}})},{threshold:.2});sio.observe(stEl)}
-    var tSvg=doc.getElementById('toolSvg');
-    if(tSvg){var tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('drawn');tio.unobserve(e.target)}})},{threshold:.15});tio.observe(tSvg)}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){
+        var d=parseFloat(e.target.style.getPropertyValue('--d')||0)*1000;
+        setTimeout(function(){e.target.classList.add('zichtbaar')},d);
+        io.unobserve(e.target);
+      }
+    })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('[data-r]').forEach(function(el){io.observe(el)});
   } else {
-    doc.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')});
-    var h=doc.getElementById('hero');if(h)h.classList.add('in');
-    var st=doc.getElementById('steps');if(st)st.classList.add('in');
-    var ts=doc.getElementById('toolSvg');if(ts)ts.classList.add('drawn');
+    document.querySelectorAll('[data-r]').forEach(function(el){el.classList.add('zichtbaar')});
   }
-
-  /* Countup animatie */
-  function countUp(el){
-    var tgt=parseFloat(el.dataset.target)||0,sfx=el.dataset.suffix||'',dec=parseInt(el.dataset.decimals)||0;
-    var dur=1400,s=null;
-    function step(ts){
-      if(!s)s=ts;
-      var p=Math.min((ts-s)/dur,1),e=1-Math.pow(1-p,3);
-      el.textContent=(tgt*e).toFixed(dec).replace('.',',')+sfx;
-      if(p<1)requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  if(!reduced&&'IntersectionObserver' in window){
-    var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target)}})},{threshold:.5});
-    doc.querySelectorAll('.countup').forEach(function(el){cio.observe(el)});
-  }
-
-  /* Parallax over-foto */
-  var pImg=doc.getElementById('parallaxImg');
-  if(pImg&&!reduced){
-    window.addEventListener('scroll',function(){
-      var r=pImg.closest('.over-photo').getBoundingClientRect();
-      pImg.style.transform='translateY('+((r.top+r.height/2-window.innerHeight/2)*0.06)+'px)';
-    },{passive:true});
-  }
-
-  /* Contactformulier */
-  var form=doc.getElementById('offerteForm');
+  var form=document.getElementById('form');
   if(form){
-    function fv(inp){
+    function vld(inp){
       var v=(inp.value||'').trim(),ok;
       if(inp.type==='email')ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
       else if(inp.tagName==='SELECT')ok=v!=='';
       else ok=v.length>0;
-      inp.closest('.field').classList.toggle('invalid',!ok);
+      inp.closest('.fld').classList.toggle('bad',!ok);
       return ok;
     }
     form.querySelectorAll('input[required],select[required],textarea[required]').forEach(function(inp){
-      inp.addEventListener('blur',function(){fv(inp)});
-      inp.addEventListener('input',function(){if(inp.closest('.field').classList.contains('invalid'))fv(inp)});
+      inp.addEventListener('blur',function(){vld(inp)});
+      inp.addEventListener('input',function(){if(inp.closest('.fld').classList.contains('bad'))vld(inp)});
     });
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var ins=[].slice.call(form.querySelectorAll('input[required],select[required],textarea[required]'));
       var ok=true,first=null;
-      ins.forEach(function(i){if(!fv(i)){ok=false;if(!first)first=i}});
+      ins.forEach(function(i){if(!vld(i)){ok=false;if(!first)first=i}});
       if(!ok){first.focus();return}
-      form.classList.add('sent');
-      doc.getElementById('formStatus').textContent='Uw aanvraag is verzonden.';
+      form.classList.add('form-sent');
     });
   }
 })();

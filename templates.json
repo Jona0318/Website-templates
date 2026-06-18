@@ -5782,19 +5782,19 @@
       "name": "Arends",
       "sector": "bouw",
       "tier": "maatwerk",
-      "scheme": "dark",
+      "scheme": "light",
       "multipage": false,
       "palette": [
-        "#0e0c09",
-        "#d97c2a",
-        "#f0a050",
-        "#a85a12",
-        "#f0ece4"
+        "#ffffff",
+        "#b91c1c",
+        "#7f1d1d",
+        "#f8f6f2",
+        "#1c1917"
       ],
       "fonts": [
-        "Archivo",
-        "Inter",
-        "IBM Plex Mono"
+        "Barlow Condensed",
+        "Barlow",
+        "Space Mono"
       ],
       "mechanics": [
         "sticky-header",
@@ -5815,19 +5815,19 @@
         "reviews",
         "contact"
       ],
-      "note": "Maatwerk redesign van arendszevenaar.nl. Donker amber/baksteenthema voor een metselaar & timmerman in Zevenaar. Gebaseerd op template 16-bouw. SIGNATUUR: geanimeerde technische SVG-blauwdruk van hamer + troffel met draw-in animatie, 6 diensten (metselwerk, timmerwerk, dakkapellen, kozijnrenovatie, tegelwerken, keuken), projectengrid, 4-stappen werkwijze met animerende lijn, over-sectie met parallax-foto, reviews en contactformulier met validatie.",
+      "note": "Maatwerk redesign van arendszevenaar.nl. Rood-wit thema voor een metselaar & timmerman in Zevenaar. 6 diensten, projectengrid zigzag, 4-stappen werkwijze, over-sectie, reviews en rood contactformulier met validatie.",
       "card": {
         "title": "Arends — metsel- & timmerwerk",
-        "blurb": "Donker amber-thema voor een metselaar & timmerman: geanimeerde technische blauwdruk, 6 diensten, projectengrid en contactformulier.",
+        "blurb": "Rood-wit thema voor een metselaar & timmerman: 6 diensten, projectengrid, werkwijze en contactformulier.",
         "emoji": "🧱",
         "grad": [
-          "#d97c2a",
-          "#a85a12"
+          "#b91c1c",
+          "#7f1d1d"
         ],
         "tags": [
           "Bouw",
           "Maatwerk",
-          "Dark"
+          "Light"
         ]
       }
     }
