@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 112,
+  "count": 113,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5771,6 +5771,63 @@
           "Routekaart",
           "Reizen",
           "Signature"
+        ]
+      }
+    },
+    {
+      "id": 113,
+      "slug": "113-metselaar",
+      "path": "templates/113-metselaar/",
+      "title": "Arends — metsel- & timmerwerk",
+      "name": "Arends",
+      "sector": "bouw",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0e0c09",
+        "#d97c2a",
+        "#f0a050",
+        "#a85a12",
+        "#f0ece4"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter",
+        "IBM Plex Mono"
+      ],
+      "mechanics": [
+        "sticky-header",
+        "mobile-menu",
+        "reveal-system",
+        "svg-draw-in",
+        "countup",
+        "parallax",
+        "contact-form",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "projecten",
+        "werkwijze",
+        "over",
+        "reviews",
+        "contact"
+      ],
+      "note": "Maatwerk redesign van arendszevenaar.nl. Donker amber/baksteenthema voor een metselaar & timmerman in Zevenaar. Gebaseerd op template 16-bouw. SIGNATUUR: geanimeerde technische SVG-blauwdruk van hamer + troffel met draw-in animatie, 6 diensten (metselwerk, timmerwerk, dakkapellen, kozijnrenovatie, tegelwerken, keuken), projectengrid, 4-stappen werkwijze met animerende lijn, over-sectie met parallax-foto, reviews en contactformulier met validatie.",
+      "card": {
+        "title": "Arends — metsel- & timmerwerk",
+        "blurb": "Donker amber-thema voor een metselaar & timmerman: geanimeerde technische blauwdruk, 6 diensten, projectengrid en contactformulier.",
+        "emoji": "🧱",
+        "grad": [
+          "#d97c2a",
+          "#a85a12"
+        ],
+        "tags": [
+          "Bouw",
+          "Maatwerk",
+          "Dark"
         ]
       }
     }
