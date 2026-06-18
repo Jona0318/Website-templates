@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kindred - houd de mensen warm die ertoe doen</title>
+<meta name="description" content="Kindred is een persoonlijke relatie-companion die onthoudt wie, wat en wanneer, en je op het juiste moment een zacht zetje geeft. Geen CRM, maar een metgezel.">
+<meta name="theme-color" content="#3447aa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kindred - persoonlijke relatie-companion">
+<meta property="og:description" content="De mensen die ertoe doen, koelen ongemerkt af. Kindred houdt ze warm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400..800&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var h = document.documentElement;
+  h.classList.remove('no-js');
+  h.classList.add('js');
+  try {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      h.classList.remove('no-anim');
+      h.classList.add('anim-ok');
+    }
+  } catch (e) {}
+})();
+</script>
+<style>
+/* ============================================================
+   Kindred - warm editorial relatie-companion
+   Standalone Bron-template. CSS en JS inline, geen dependencies.
+   ============================================================ */
+
+:root {
+  --royal: #3447aa;
+  --royal-deep: #232e72;
+  --royal-lift: #8e9be0;
+  --blush: #fbeaeb;
+  --blush-deep: #f3d9db;
+  --ink: #16172b;
+  --paper: #fffdfd;
+  --muted: #5c5e78;
+  --hairline: #f0e4e5;
+  --white: #ffffff;
+
+  --font-display: "Newsreader", Georgia, serif;
+  --font-body: "Albert Sans", system-ui, sans-serif;
+
+  --display-xl: clamp(3rem, 7vw + .5rem, 7.2rem);
+  --display-l: clamp(2.15rem, 4.5vw, 4.25rem);
+  --display-m: clamp(1.7rem, 2.7vw, 2.65rem);
+  --subhead: clamp(1.35rem, 2vw, 2rem);
+  --body-l: clamp(1.12rem, 1.15vw, 1.25rem);
+  --body: 1.0625rem;
+  --small: .92rem;
+  --label: .78rem;
+
+  --gutter: clamp(1.15rem, 4.5vw, 5rem);
+  --maxw: 86rem;
+  --section-y: clamp(4.5rem, 9vw, 9rem);
+  --nav-h: 74px;
+  --grid-gap: clamp(1rem, 2vw, 1.65rem);
+  --radius: 8px;
+  --radius-soft: 6px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-hard: cubic-bezier(.7, 0, .2, 1);
+  --shadow: 0 24px 60px -38px rgba(35, 46, 114, .38);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html.no-anim { scroll-behavior: auto; }
+
+body {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .32;
+  background-image:
+    linear-gradient(rgba(52, 71, 170, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(52, 71, 170, .035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, #000, transparent 72%);
+}
+
+img,
+svg { display: block; max-width: 100%; }
+
+button,
+input { font: inherit; color: inherit; }
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; padding: 0; }
+
+::selection { background: var(--royal); color: var(--white); }
+
+:focus-visible {
+  outline: 3px solid var(--royal);
+  outline-offset: 4px;
+  border-radius: var(--radius-soft);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 430;
+  line-height: 1.03;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+.shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+section[id],
+footer[id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--royal-deep);
+  font-size: var(--label);
+  font-weight: 750;
+  letter-spacing: .12em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: .55rem;
+  height: .55rem;
+  border-radius: 999px;
+  background: var(--royal);
+  box-shadow: 0 0 0 5px rgba(52, 71, 170, .08);
+}
+
+.lead {
+  color: var(--muted);
+  font-size: var(--body-l);
+  line-height: 1.6;
+}
+
+.display-italic {
+  font-style: italic;
+  color: var(--royal-deep);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 300;
+  top: .75rem;
+  left: .75rem;
+  transform: translateY(-160%);
+  background: var(--royal-deep);
+  color: var(--paper);
+  padding: .7rem 1rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 750;
+  transition: transform .25s var(--ease);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 220;
+  height: 3px;
+  background: linear-gradient(90deg, var(--royal), var(--blush-deep), var(--royal-lift));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+html.no-anim .scroll-progress { display: none; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 180;
+  height: var(--nav-h);
+  border-bottom: 1px solid transparent;
+  background: rgba(255, 253, 253, .74);
+  backdrop-filter: blur(18px);
+  transition: border-color .25s, background-color .25s, box-shadow .25s;
+}
+
+.site-header.is-solid {
+  border-bottom-color: var(--hairline);
+  background: rgba(255, 253, 253, .92);
+  box-shadow: 0 12px 28px -26px rgba(22, 23, 43, .45);
+}
+
+.nav-inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .72rem;
+  color: var(--royal-deep);
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  font-weight: 520;
+}
+
+.brand-mark {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(52, 71, 170, .28);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, var(--blush) 0 28%, transparent 29%),
+    radial-gradient(circle at 66% 64%, var(--royal) 0 24%, transparent 25%),
+    var(--paper);
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--blush-deep);
+  border-radius: 50%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(.5rem, 1vw, 1.1rem);
+  color: var(--muted);
+  font-size: .95rem;
+  font-weight: 650;
+}
+
+.nav-links a {
+  padding: .45rem .35rem;
+  transition: color .2s var(--ease);
+}
+
+.nav-links a:hover { color: var(--royal-deep); }
+
+.nav-cta {
+  color: var(--paper) !important;
+  background: var(--royal);
+  border-radius: 999px;
+  padding: .62rem 1rem !important;
+  box-shadow: 0 14px 30px -22px var(--royal);
+}
+
+.nav-cta:hover { background: var(--royal-deep); }
+
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--royal-deep);
+  background: var(--paper);
+}
+
+.menu-toggle span,
+.menu-toggle span::before,
+.menu-toggle span::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin-inline: auto;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .25s var(--ease), opacity .2s;
+}
+
+.menu-toggle span::before,
+.menu-toggle span::after { content: ""; }
+.menu-toggle span::before { transform: translateY(-6px); }
+.menu-toggle span::after { transform: translateY(4px); }
+.menu-toggle[aria-expanded="true"] span { transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span::before { transform: translateY(0); opacity: 0; }
+.menu-toggle[aria-expanded="true"] span::after { transform: translateY(-2px) rotate(90deg); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  gap: .55rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: .78rem 1.15rem;
+  font-weight: 760;
+  line-height: 1;
+  transition: transform .22s var(--ease), background-color .22s, color .22s, border-color .22s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { color: var(--paper); border-color: var(--royal); background: var(--royal); }
+.btn-primary:hover { background: var(--royal-deep); border-color: var(--royal-deep); }
+.btn-quiet { color: var(--royal-deep); border-color: rgba(52, 71, 170, .22); background: rgba(255, 253, 253, .72); }
+.btn-quiet:hover { background: var(--white); border-color: var(--royal); }
+
+.hero {
+  background:
+    linear-gradient(180deg, rgba(251, 234, 235, .96), rgba(251, 234, 235, .82) 70%, var(--paper));
+  border-bottom: 1px solid var(--hairline);
+  overflow: hidden;
+}
+
+.hero .shell {
+  position: relative;
+  padding-top: clamp(3rem, 7vw, 7rem);
+  padding-bottom: clamp(3.75rem, 7vw, 6.5rem);
+}
+
+.hero-grid {
+  align-items: end;
+  min-height: min(760px, calc(100vh - var(--nav-h)));
+}
+
+.hero-copy {
+  grid-column: 1 / span 7;
+  align-self: center;
+  padding-block: 2rem;
+}
+
+.hero-copy .eyebrow { margin-bottom: clamp(1.1rem, 2vw, 1.6rem); }
+
+.hero h1 {
+  max-width: 10.4ch;
+  font-size: var(--display-xl);
+  line-height: .96;
+}
+
+.hero h1 .line {
+  display: block;
+}
+
+.hero .lead {
+  max-width: 35rem;
+  margin-top: clamp(1.25rem, 2.4vw, 2rem);
+  color: var(--ink);
+  opacity: .78;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.hero-note {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .75rem;
+  max-width: 30rem;
+  margin-top: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+.hero-note strong {
+  color: var(--royal-deep);
+  font-weight: 800;
+}
+
+.hero-note::before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(var(--royal), var(--blush-deep));
+}
+
+.hero-signature {
+  grid-column: 8 / span 5;
+  align-self: center;
+}
+
+.heat-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 540px;
+  border: 1px solid rgba(52, 71, 170, .18);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 253, .88), rgba(255, 253, 253, .58)),
+    radial-gradient(circle at 28% 22%, rgba(251, 234, 235, .9), transparent 32%),
+    radial-gradient(circle at 78% 78%, rgba(52, 71, 170, .14), transparent 36%);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.heat-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .38;
+  background-image:
+    linear-gradient(rgba(52, 71, 170, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(52, 71, 170, .08) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.heat-top {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+}
+
+.heat-label {
+  color: var(--royal-deep);
+  background: rgba(255, 253, 253, .78);
+  border: 1px solid rgba(52, 71, 170, .14);
+  border-radius: 999px;
+  padding: .35rem .65rem;
+  font-size: .76rem;
+  font-weight: 780;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.heat-legend {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.heat-legend i {
+  width: 58px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--royal), var(--blush));
+}
+
+.heat-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heat-link {
+  stroke: rgba(35, 46, 114, .2);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 8;
+}
+
+.heat-node {
+  filter: drop-shadow(0 16px 20px rgba(35, 46, 114, .14));
+  transition: transform .3s var(--ease), opacity .3s;
+  transform-origin: center;
+}
+
+.heat-node:hover { transform: scale(1.04); }
+
+.heat-node circle:first-child { stroke: rgba(255, 253, 253, .9); stroke-width: 7; }
+.heat-node text {
+  fill: var(--ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.anna-node .halo {
+  fill: var(--anna, #3447aa);
+  opacity: var(--anna-halo, .18);
+}
+
+.anna-node .core { fill: var(--anna, #3447aa); }
+.warm-node .core { fill: var(--blush); }
+.cool-node .core { fill: var(--royal); }
+.mid-node .core { fill: #d8c6ee; }
+
+.anna-card {
+  position: absolute;
+  z-index: 4;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  width: min(22rem, calc(100% - 2rem));
+  border: 1px solid rgba(52, 71, 170, .18);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 253, .9);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 22px 48px -34px rgba(35, 46, 114, .5);
+  padding: 1.1rem;
+}
+
+.person-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.person-meta strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 520;
+}
+
+.temp-pill {
+  flex: 0 0 auto;
+  color: var(--royal-deep);
+  border: 1px solid rgba(52, 71, 170, .16);
+  border-radius: 999px;
+  padding: .34rem .6rem;
+  background: linear-gradient(90deg, rgba(52, 71, 170, .08), rgba(251, 234, 235, .92));
+  font-size: .78rem;
+  font-weight: 760;
+}
+
+.anna-card p {
+  margin-top: .95rem;
+  color: var(--ink);
+}
+
+.anna-card .nudge {
+  margin-top: 1rem;
+  color: var(--royal-deep);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  line-height: 1.22;
+}
+
+.warm-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--paper);
+  background: var(--royal);
+  border-radius: 999px;
+  padding: .65rem .85rem;
+  font-weight: 780;
+}
+
+.warm-button:hover { background: var(--royal-deep); }
+
+.heat-mobile-caption {
+  display: none;
+  margin-top: .85rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.statement {
+  background: var(--paper);
+}
+
+.statement .eyebrow { grid-column: 2 / span 3; }
+.statement h2 {
+  grid-column: 4 / span 8;
+  font-size: var(--display-l);
+  max-width: 15ch;
+}
+
+.statement p {
+  grid-column: 7 / span 4;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: var(--body-l);
+}
+
+.steps {
+  background: var(--royal-deep);
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .18;
+  background:
+    radial-gradient(circle at 14% 16%, var(--royal-lift), transparent 25%),
+    radial-gradient(circle at 82% 74%, var(--blush), transparent 26%);
+  pointer-events: none;
+}
+
+.steps .shell { position: relative; }
+.section-head { margin-bottom: clamp(2rem, 5vw, 4rem); }
+.section-head .eyebrow { color: var(--royal-lift); }
+.section-head .eyebrow::before { background: var(--royal-lift); box-shadow: 0 0 0 5px rgba(142, 155, 224, .16); }
+.section-head h2 {
+  max-width: 12ch;
+  margin-top: .9rem;
+  font-size: var(--display-l);
+}
+
+.step-track {
+  display: grid;
+  grid-template-columns: 1.05fr .75fr 1fr;
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.step {
+  position: relative;
+  border-top: 1px solid rgba(251, 234, 235, .28);
+  padding-top: 1rem;
+}
+
+.step:nth-child(2) { margin-top: 4.5rem; }
+.step:nth-child(3) { margin-top: 1.8rem; }
+
+.step-no {
+  color: var(--royal-lift);
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.step h3 {
+  margin-top: 1.2rem;
+  color: var(--blush);
+  font-size: var(--display-m);
+}
+
+.step p {
+  max-width: 28rem;
+  margin-top: .75rem;
+  color: rgba(255, 253, 253, .76);
+}
+
+.features {
+  background: var(--paper);
+}
+
+.features .section-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+.features .section-head .eyebrow { grid-column: 1 / span 3; color: var(--royal-deep); }
+.features .section-head .eyebrow::before { background: var(--royal); box-shadow: 0 0 0 5px rgba(52, 71, 170, .08); }
+.features .section-head h2 { grid-column: 4 / span 7; color: var(--ink); }
+
+.feature-list {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.feature-spread {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  align-items: center;
+  border-top: 1px solid var(--hairline);
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.feature-spread:nth-child(even) .feature-visual { grid-column: 1 / span 5; order: 1; }
+.feature-spread:nth-child(even) .feature-copy { grid-column: 7 / span 5; order: 2; }
+.feature-spread:nth-child(odd) .feature-copy { grid-column: 2 / span 5; }
+.feature-spread:nth-child(odd) .feature-visual { grid-column: 8 / span 4; }
+
+.feature-copy h3 {
+  color: var(--royal-deep);
+  font-size: var(--display-m);
+}
+
+.feature-copy p {
+  margin-top: .85rem;
+  color: var(--muted);
+  font-size: var(--body-l);
+}
+
+.feature-visual {
+  min-height: 15rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--blush), rgba(251, 234, 235, .42));
+  padding: clamp(1rem, 2.6vw, 1.5rem);
+}
+
+.mini-heat {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .55rem;
+}
+
+.mini-heat span {
+  min-height: clamp(3.2rem, 7vw, 5.4rem);
+  border: 1px solid rgba(52, 71, 170, .12);
+  border-radius: var(--radius-soft);
+  background: var(--c);
+  box-shadow: inset 0 0 0 1px rgba(255, 253, 253, .38);
+}
+
+.mini-list {
+  display: grid;
+  gap: .75rem;
+}
+
+.mini-list li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: .65rem;
+  border-bottom: 1px solid rgba(52, 71, 170, .12);
+  padding-bottom: .7rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.mini-list i {
+  width: .75rem;
+  height: .75rem;
+  border-radius: 999px;
+  background: var(--c);
+}
+
+.mini-list strong { color: var(--ink); }
+
+.memory-note {
+  display: grid;
+  gap: .8rem;
+}
+
+.memory-note span {
+  display: block;
+  border-left: 3px solid var(--royal);
+  background: rgba(255, 253, 253, .74);
+  padding: .85rem 1rem;
+  color: var(--ink);
+}
+
+.nudge-section {
+  background: var(--blush);
+  border-block: 1px solid var(--hairline);
+}
+
+.nudge-grid {
+  align-items: center;
+}
+
+.nudge-copy {
+  grid-column: 2 / span 5;
+}
+
+.nudge-copy h2 {
+  margin-top: .9rem;
+  font-size: var(--display-l);
+}
+
+.nudge-copy p {
+  max-width: 33rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: var(--body-l);
+}
+
+.moment-card {
+  grid-column: 8 / span 4;
+  border: 1px solid rgba(52, 71, 170, .16);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+.moment-card .date {
+  color: var(--royal-deep);
+  font-size: var(--label);
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.moment-card h3 {
+  margin-top: .8rem;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+}
+
+.moment-card p {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+.moment-card blockquote {
+  margin-top: 1.2rem;
+  color: var(--royal-deep);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-style: italic;
+  line-height: 1.18;
+}
+
+.proof {
+  background: var(--paper);
+}
+
+.proof-grid { align-items: start; }
+
+.proof blockquote {
+  grid-column: 2 / span 7;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.4vw, 4.25rem);
+  font-style: italic;
+  line-height: 1.05;
+}
+
+.proof-aside {
+  grid-column: 10 / span 2;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.logo-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.logo-row span {
+  border-top: 1px solid var(--hairline);
+  padding-top: .75rem;
+  color: var(--royal-deep);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.privacy {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.privacy .eyebrow { color: var(--royal-lift); }
+.privacy .eyebrow::before { background: var(--royal-lift); box-shadow: 0 0 0 5px rgba(142, 155, 224, .16); }
+
+.privacy h2 {
+  grid-column: 2 / span 5;
+  font-size: var(--display-l);
+}
+
+.privacy p {
+  grid-column: 8 / span 4;
+  color: rgba(255, 253, 253, .76);
+  font-size: var(--body-l);
+}
+
+.pricing {
+  background: var(--paper);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: var(--grid-gap);
+  align-items: stretch;
+}
+
+.price-hero {
+  border: 1px solid rgba(52, 71, 170, .18);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, var(--blush), var(--paper));
+  padding: clamp(1.4rem, 4vw, 3rem);
+  box-shadow: var(--shadow);
+}
+
+.price-hero h3 {
+  color: var(--royal-deep);
+  font-size: var(--display-m);
+}
+
+.price {
+  margin-top: 1.1rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: .9;
+}
+
+.price small {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.price-hero p {
+  max-width: 42rem;
+  margin-top: 1.2rem;
+  color: var(--muted);
+  font-size: var(--body-l);
+}
+
+.price-hero ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem 1rem;
+  margin-top: 1.4rem;
+}
+
+.price-hero li::before,
+.small-plan li::before {
+  content: "";
+  display: inline-block;
+  width: .46rem;
+  height: .46rem;
+  margin-right: .5rem;
+  border-radius: 999px;
+  background: var(--royal);
+  vertical-align: .08em;
+}
+
+.small-plans {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+.small-plan {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--white);
+  padding: 1.3rem;
+}
+
+.small-plan h3 {
+  color: var(--royal-deep);
+  font-size: 1.6rem;
+}
+
+.small-plan p {
+  margin-top: .65rem;
+  color: var(--muted);
+}
+
+.small-plan ul {
+  display: grid;
+  gap: .45rem;
+  margin-top: .9rem;
+  color: var(--ink);
+  font-size: .98rem;
+}
+
+.faq {
+  background: var(--blush);
+  border-top: 1px solid var(--hairline);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: .78fr 1.22fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.faq h2 {
+  margin-top: .9rem;
+  font-size: var(--display-l);
+}
+
+.faq-list {
+  display: grid;
+  gap: .75rem;
+}
+
+.faq-item {
+  border: 1px solid rgba(52, 71, 170, .14);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 253, .68);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  text-align: left;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.faq-q::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--royal-deep);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.faq-item.open .faq-q::after { content: "-"; }
+
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .28s var(--ease);
+}
+
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
+
+.faq-a > div { overflow: hidden; }
+
+.faq-a p {
+  padding: 0 1.1rem 1.1rem;
+  color: var(--muted);
+}
+
+.final-cta {
+  background: var(--royal-deep);
+  color: var(--paper);
+}
+
+.final-cta .shell {
+  padding-block: clamp(4rem, 8vw, 7.5rem);
+}
+
+.final-cta h2 {
+  max-width: 12ch;
+  color: var(--blush);
+  font-size: var(--display-xl);
+}
+
+.final-cta p {
+  max-width: 34rem;
+  margin-top: 1rem;
+  color: rgba(255, 253, 253, .78);
+  font-size: var(--body-l);
+}
+
+.final-cta .btn {
+  margin-top: 1.8rem;
+  color: var(--royal-deep);
+  border-color: var(--blush);
+  background: var(--blush);
+}
+
+.final-cta .btn:hover {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.site-footer {
+  background: var(--ink);
+  color: rgba(255, 253, 253, .76);
+  border-top: 1px solid rgba(251, 234, 235, .12);
+  padding-block: 2rem;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer .brand {
+  color: var(--blush);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: .95rem;
+}
+
+.footer-links a:hover { color: var(--blush); }
+
+[data-rv] {
+  opacity: 1;
+  transform: none;
+}
+
+html.anim-ok [data-rv] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .72s var(--ease), transform .72s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+
+html.anim-ok [data-rv].in-view {
+  opacity: 1;
+  transform: none;
+}
+
+html.anim-ok .heat-node {
+  animation: node-breathe 4.8s var(--ease) infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes node-breathe {
+  0%, 100% { opacity: .92; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.025); }
+}
+
+@media (max-width: 1020px) {
+  .hero-grid { min-height: auto; align-items: center; }
+  .hero-copy { grid-column: 1 / span 12; }
+  .hero-signature {
+    grid-column: 2 / span 10;
+    margin-top: 1.25rem;
+  }
+  .heat-shell { min-height: 460px; }
+  .statement .eyebrow,
+  .statement h2,
+  .statement p,
+  .privacy h2,
+  .privacy p {
+    grid-column: 1 / span 12;
+  }
+  .statement p,
+  .privacy p { margin-top: 1rem; }
+  .feature-spread:nth-child(n) .feature-copy,
+  .feature-spread:nth-child(n) .feature-visual {
+    grid-column: span 6;
+    order: initial;
+  }
+  .nudge-copy { grid-column: 1 / span 6; }
+  .moment-card { grid-column: 7 / span 6; }
+  .proof blockquote { grid-column: 1 / span 8; }
+  .proof-aside { grid-column: 9 / span 4; }
+}
+
+@media (max-width: 760px) {
+  :root { --nav-h: 66px; }
+  .site-header { background: rgba(255, 253, 253, .94); }
+  .menu-toggle { display: inline-grid; place-items: center; }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: .35rem;
+    padding: .75rem var(--gutter) 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+    background: rgba(255, 253, 253, .98);
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .25s var(--ease), opacity .25s;
+  }
+  .nav-links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links a {
+    border-bottom: 1px solid var(--hairline);
+    padding: .8rem 0;
+  }
+  .nav-cta {
+    justify-content: center;
+    margin-top: .4rem;
+    padding: .82rem 1rem !important;
+    text-align: center;
+  }
+  .hero .shell {
+    padding-top: clamp(2.25rem, 8vw, 3.5rem);
+  }
+  .hero-copy {
+    padding-block: 0;
+  }
+  .hero h1 {
+    max-width: 8.6ch;
+  }
+  .hero-note {
+    grid-template-columns: 1fr;
+  }
+  .hero-note::before {
+    width: 5rem;
+    height: 1px;
+  }
+  .hero-signature {
+    grid-column: 1 / span 12;
+  }
+  .heat-shell {
+    min-height: 420px;
+  }
+  .heat-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .heat-map {
+    height: 58%;
+    top: 3.4rem;
+  }
+  .anna-card {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: auto;
+  }
+  .heat-mobile-caption { display: block; }
+  .step-track,
+  .pricing-grid,
+  .faq-grid,
+  .logo-row {
+    grid-template-columns: 1fr;
+  }
+  .step:nth-child(n) { margin-top: 0; }
+  .step + .step { margin-top: 1.5rem; }
+  .features .section-head { display: block; }
+  .feature-spread {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .feature-spread:nth-child(n) .feature-copy,
+  .feature-spread:nth-child(n) .feature-visual {
+    grid-column: 1;
+  }
+  .feature-spread:nth-child(odd) .feature-visual { order: -1; }
+  .mini-heat { grid-template-columns: repeat(2, 1fr); }
+  .nudge-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+  .nudge-copy,
+  .moment-card,
+  .proof blockquote,
+  .proof-aside {
+    grid-column: 1;
+  }
+  .proof-aside { margin-top: 1rem; }
+  .privacy .grid12 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .price-hero ul {
+    grid-template-columns: 1fr;
+  }
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 440px) {
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .heat-shell { min-height: 440px; }
+  .person-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Naar inhoud</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell nav-inner">
+    <a class="brand" href="#top" aria-label="Kindred home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Kindred</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">
+      <span aria-hidden="true"></span>
+      <span class="sr-only">Menu openen</span>
+    </button>
+    <nav class="nav-links" id="siteNav" aria-label="Hoofdmenu">
+      <a href="#werking">Zo werkt het</a>
+      <a href="#functies">Functies</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#prijzen">Prijzen</a>
+      <a class="nav-cta" href="#start">Begin warm</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="shell grid12 hero-grid">
+      <div class="hero-copy" data-rv>
+        <span class="eyebrow">Persoonlijke relatie-companion</span>
+        <h1 id="hero-title">
+          <span class="line">Houd de mensen</span>
+          <span class="line display-italic">warm</span>
+          <span class="line">die je niet wilt laten vervagen.</span>
+        </h1>
+        <p class="lead">De mensen die ertoe doen, koelen ongemerkt af. Kindred onthoudt wie, wat en wanneer, en geeft je op het juiste moment een zacht zetje.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#start">Voeg iemand toe</a>
+          <a class="btn btn-quiet" href="#warmtekaart">Bekijk de warmtekaart</a>
+        </div>
+        <p class="hero-note"><span><strong>Geen CRM.</strong> Geen pipeline, score of verkooptrechter. Gewoon een rustige plek voor de mensen die persoonlijk genoeg zijn om niet in je hoofd te hoeven blijven zweven.</span></p>
+      </div>
+
+      <div class="hero-signature" id="warmtekaart" data-rv data-d="120ms">
+        <div class="heat-shell" id="heatShell" aria-label="Interactieve warmtekaart van relaties">
+          <div class="heat-top">
+            <span class="heat-label">Warmte-overzicht</span>
+            <span class="heat-legend"><span>koel</span><i aria-hidden="true"></i><span>warm</span></span>
+          </div>
+          <svg class="heat-map" viewBox="0 0 520 540" role="img" aria-labelledby="heat-title heat-desc">
+            <title id="heat-title">Kindred warmtekaart</title>
+            <desc id="heat-desc">Een netwerk van relaties waarbij blush warme contacten toont en royal blue afgekoelde contacten toont. Anna warmt op wanneer Kindred een zacht zetje geeft.</desc>
+            <path class="heat-link" d="M118 138 C210 118 288 154 388 102"></path>
+            <path class="heat-link" d="M118 138 C172 250 244 262 335 332"></path>
+            <path class="heat-link" d="M388 102 C392 198 372 250 335 332"></path>
+            <path class="heat-link" d="M126 378 C182 318 238 294 335 332"></path>
+            <path class="heat-link" d="M238 226 C296 212 338 244 410 258"></path>
+
+            <g class="heat-node warm-node" style="--delay:.1s" transform="translate(118 138)">
+              <circle class="halo" r="42" fill="#fbeaeb" opacity=".58"></circle>
+              <circle class="core" r="27"></circle>
+              <text text-anchor="middle" y="5">Mila</text>
+            </g>
+            <g class="heat-node cool-node" style="--delay:.7s" transform="translate(388 102)">
+              <circle class="halo" r="40" fill="#3447aa" opacity=".18"></circle>
+              <circle class="core" r="25"></circle>
+              <text text-anchor="middle" y="5" fill="#fffdfd">Jonas</text>
+            </g>
+            <g class="heat-node mid-node" style="--delay:.45s" transform="translate(238 226)">
+              <circle class="halo" r="36" fill="#d8c6ee" opacity=".38"></circle>
+              <circle class="core" r="23"></circle>
+              <text text-anchor="middle" y="5">Saar</text>
+            </g>
+            <g class="heat-node anna-node" id="annaNode" style="--delay:.25s" transform="translate(335 332)">
+              <circle class="halo" r="74"></circle>
+              <circle class="core" r="34"></circle>
+              <text text-anchor="middle" y="5">Anna</text>
+            </g>
+            <g class="heat-node warm-node" style="--delay:.95s" transform="translate(126 378)">
+              <circle class="halo" r="35" fill="#fbeaeb" opacity=".5"></circle>
+              <circle class="core" r="22"></circle>
+              <text text-anchor="middle" y="5">Noor</text>
+            </g>
+            <g class="heat-node cool-node" style="--delay:.2s" transform="translate(410 258)">
+              <circle class="halo" r="34" fill="#3447aa" opacity=".16"></circle>
+              <circle class="core" r="22"></circle>
+              <text text-anchor="middle" y="5" fill="#fffdfd">Ravi</text>
+            </g>
+          </svg>
+
+          <article class="anna-card">
+            <div class="person-meta">
+              <span><strong>Anna Vermeer</strong> laatst gesproken: 3 maanden geleden</span>
+              <span class="temp-pill" id="tempPill">koelt af</span>
+            </div>
+            <p>Toen: haar verhuizing naar Gent.</p>
+            <p class="nudge" id="annaNudge">Vraag hoe het settelen gaat.</p>
+            <button class="warm-button" id="warmButton" type="button">Warm Anna op</button>
+            <p class="heat-mobile-caption">Op mobiel toont Kindred de ene relatie die vandaag aandacht verdient.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section statement" aria-labelledby="spanning-title">
+    <div class="shell grid12">
+      <span class="eyebrow" data-rv>De spanning</span>
+      <h2 id="spanning-title" data-rv data-d="80ms">Afstand ontstaat meestal zonder dramatisch moment.</h2>
+      <p data-rv data-d="160ms">Een maand wordt drie maanden. Een belofte blijft ergens in een chat staan. Je bedoelde het goed, maar je hoofd is geen huis voor al je mensen.</p>
+    </div>
+  </section>
+
+  <section class="section steps" id="werking" aria-labelledby="werking-title">
+    <div class="shell">
+      <div class="section-head" data-rv>
+        <span class="eyebrow">Zo werkt het</span>
+        <h2 id="werking-title">Drie rustige gewoontes.</h2>
+      </div>
+      <div class="step-track">
+        <article class="step" data-rv>
+          <span class="step-no">Stap 01</span>
+          <h3>Leg iemand vast</h3>
+          <p>Begin met een persoon die je niet wilt laten vervagen. Een naam, een contextzin, meer hoeft niet.</p>
+        </article>
+        <article class="step" data-rv data-d="100ms">
+          <span class="step-no">Stap 02</span>
+          <h3>Kindred onthoudt mee</h3>
+          <p>Gesprekken, beloftes en kleine details komen terug bij de mens waar ze horen, niet in losse notities.</p>
+        </article>
+        <article class="step" data-rv data-d="200ms">
+          <span class="step-no">Stap 03</span>
+          <h3>Je krijgt een zacht zetje</h3>
+          <p>Niet omdat een taak verlopen is, maar omdat de relatie afkoelt en een kleine vraag genoeg kan zijn.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features" id="functies" aria-labelledby="functies-title">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow" data-rv>Wat Kindred draagt</span>
+        <h2 id="functies-title" data-rv data-d="80ms">Geen dashboard voor mensen. Een plek met geheugen.</h2>
+      </div>
+      <div class="feature-list">
+        <article class="feature-spread" data-rv>
+          <div class="feature-copy">
+            <h3>Warmte-overzicht</h3>
+            <p>Zie in een oogopslag wie nog nabij voelt en wie langzaam naar blauw verschuift. Het palet is geen decoratie, maar betekenis.</p>
+          </div>
+          <div class="feature-visual" aria-hidden="true">
+            <div class="mini-heat">
+              <span style="--c:#fbeaeb"></span>
+              <span style="--c:#f3d9db"></span>
+              <span style="--c:#c7c7ec"></span>
+              <span style="--c:#3447aa"></span>
+              <span style="--c:#fbeaeb"></span>
+              <span style="--c:#e6d6e9"></span>
+              <span style="--c:#8e9be0"></span>
+              <span style="--c:#232e72"></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-spread" data-rv>
+          <div class="feature-copy">
+            <h3>Zachte zetjes</h3>
+            <p>Een herinnering met context, niet alleen een datum. "Je sprak drie maanden geleden over haar verhuizing" is genoeg om echt aan te sluiten.</p>
+          </div>
+          <div class="feature-visual">
+            <ul class="mini-list">
+              <li><i style="--c:#fbeaeb"></i><strong>Anna</strong><span>vraag naar Gent</span></li>
+              <li><i style="--c:#8e9be0"></i><strong>Jonas</strong><span>te lang stil</span></li>
+              <li><i style="--c:#f3d9db"></i><strong>Mila</strong><span>recent gezien</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feature-spread" data-rv>
+          <div class="feature-copy">
+            <h3>Een plek per persoon</h3>
+            <p>Gesprekken, beloftes en details staan bij de mens waar ze bij horen. Niet verstopt in een project, tag of verkooppipeline.</p>
+          </div>
+          <div class="feature-visual">
+            <div class="memory-note">
+              <span>Anna - verhuizing naar Gent.</span>
+              <span>Beloofd: intro naar Eva sturen.</span>
+              <span>Volgende keer: vragen hoe de buurt bevalt.</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-spread" data-rv>
+          <div class="feature-copy">
+            <h3>Onthoudt voor je</h3>
+            <p>Leg in een regel vast wat je niet kwijt wilt. Kindred brengt het terug wanneer het telt, zonder dat je een systeem hoeft te onderhouden.</p>
+          </div>
+          <div class="feature-visual">
+            <div class="memory-note">
+              <span>"Noor zoekt een rustige cofounder."</span>
+              <span>"Ravi wilde na juni opnieuw praten."</span>
+              <span>"Mila's vader herstelt van operatie."</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-spread" data-rv>
+          <div class="feature-copy">
+            <h3>Prive van nature</h3>
+            <p>Jouw relaties zijn van jou. Kindred is gebouwd voor vertrouwen: geen doorverkoop, geen advertentielaag, geen sociale ruis.</p>
+          </div>
+          <div class="feature-visual">
+            <ul class="mini-list">
+              <li><i style="--c:#3447aa"></i><strong>Eigen data</strong><span>exporteerbaar</span></li>
+              <li><i style="--c:#fbeaeb"></i><strong>Geen verkoop</strong><span>geen profielhandel</span></li>
+              <li><i style="--c:#232e72"></i><strong>Rustig product</strong><span>geen feed</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section nudge-section" aria-labelledby="zetje-title">
+    <div class="shell grid12 nudge-grid">
+      <div class="nudge-copy" data-rv>
+        <span class="eyebrow">Een zacht zetje</span>
+        <h2 id="zetje-title">Het verschil tussen denken aan iemand en echt even schrijven.</h2>
+        <p>Kindred doet niet alsof relaties taken zijn. Het geeft je alleen het stukje context terug waarmee je oprecht kunt beginnen.</p>
+      </div>
+      <article class="moment-card" data-rv data-d="120ms">
+        <span class="date">Vandaag om 09:10</span>
+        <h3>Anna Vermeer</h3>
+        <p>Laatst gesproken: 3 maanden geleden. Toen ging het over haar verhuizing naar Gent.</p>
+        <blockquote>"Vraag hoe het settelen gaat."</blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section class="section proof" aria-labelledby="proof-title">
+    <div class="shell">
+      <div class="proof-grid grid12">
+        <blockquote id="proof-title" data-rv>"Het voelt niet als software die mijn netwerk beheert. Het voelt alsof mijn betere zelf even meeleest."</blockquote>
+        <aside class="proof-aside" data-rv data-d="120ms">
+          <p>Gebruikt door founders, investeerders en makers die hun kring serieus nemen, maar geen tweede agenda willen onderhouden.</p>
+        </aside>
+      </div>
+      <div class="logo-row" aria-label="Fictieve organisaties" data-rv data-d="180ms">
+        <span>Oever Studio</span>
+        <span>Northline</span>
+        <span>Gent Foundry</span>
+        <span>Atelier Kade</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section privacy" id="privacy" aria-labelledby="privacy-title">
+    <div class="shell grid12">
+      <h2 id="privacy-title" data-rv>Jouw relaties zijn van jou.</h2>
+      <p data-rv data-d="100ms">Kindred verkoopt niets door, bouwt geen schaduwprofielen en maakt geen sociale feed van je kring. De waarde zit in aandacht, niet in bereik.</p>
+    </div>
+  </section>
+
+  <section class="section pricing" id="prijzen" aria-labelledby="prijzen-title">
+    <div class="shell">
+      <div class="section-head" data-rv>
+        <span class="eyebrow">Prijzen</span>
+        <h2 id="prijzen-title">Begin klein. Houd het persoonlijk.</h2>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-hero" data-rv>
+          <h3>Kring</h3>
+          <div class="price">&euro;12 <small>per maand</small></div>
+          <p>Voor mensen met een warme, persoonlijke kring die te groot is om alleen in je hoofd te dragen.</p>
+          <ul>
+            <li>Tot 250 personen</li>
+            <li>Warmte-overzicht</li>
+            <li>Zachte zetjes</li>
+            <li>Prive notities per persoon</li>
+          </ul>
+          <a class="btn btn-primary" href="#start">Start met Kring</a>
+        </article>
+        <div class="small-plans">
+          <article class="small-plan" data-rv data-d="80ms">
+            <h3>Solo</h3>
+            <p>&euro;0 voor de eerste 20 mensen.</p>
+            <ul>
+              <li>Een rustige start</li>
+              <li>Geen creditcard nodig</li>
+            </ul>
+          </article>
+          <article class="small-plan" data-rv data-d="140ms">
+            <h3>Collectief</h3>
+            <p>Voor kleine fondsen, studio's en communities.</p>
+            <ul>
+              <li>Gedeelde context met grenzen</li>
+              <li>Persoonlijke onboarding</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" aria-labelledby="faq-title">
+    <div class="shell faq-grid">
+      <div data-rv>
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">Kleine vragen voor je begint.</h2>
+      </div>
+      <div class="faq-list" id="faqList" data-rv data-d="120ms">
+        <article class="faq-item open">
+          <h3><button class="faq-q" type="button" aria-expanded="true">Is Kindred een CRM?</button></h3>
+          <div class="faq-a"><div><p>Nee. Een CRM helpt je verkopen. Kindred helpt je aandachtig blijven voor mensen die persoonlijk belangrijk zijn.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Moet ik alles handmatig bijhouden?</button></h3>
+          <div class="faq-a"><div><p>Nee. Je kunt klein beginnen: een persoon, een zin, een moment. Kindred is bedoeld als zachte gewoonte, niet als administratie.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Wat gebeurt er met mijn data?</button></h3>
+          <div class="faq-a"><div><p>Je data blijft van jou. Je kunt exporteren wanneer je wilt, en Kindred gebruikt je relatiegegevens niet voor advertenties of verkoop.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Voor wie is dit vooral bedoeld?</button></h3>
+          <div class="faq-a"><div><p>Voor founders, investeerders, makers en iedereen met een kring die te groot is voor geheugen, maar te persoonlijk voor een pipeline.</p></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta" id="start" aria-labelledby="start-title">
+    <div class="shell" data-rv>
+      <h2 id="start-title">Begin met een persoon.</h2>
+      <p>Nog niemand toegevoegd. Begin met iemand die je niet wilt laten vervagen.</p>
+      <a class="btn" href="mailto:hallo@kindred.example?subject=Ik%20wil%20Kindred%20proberen">Voeg iemand toe</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="shell footer-inner">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span>Kindred</span></a>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#werking">Werking</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#prijzen">Prijzen</a>
+      <a href="mailto:hallo@kindred.example">hallo@kindred.example</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var doc = document;
+  var root = doc.documentElement;
+  var reduced = root.classList.contains('no-anim');
+  var header = doc.getElementById('siteHeader');
+  var progress = doc.getElementById('scrollProgress');
+  var heat = doc.getElementById('heatShell');
+  var tempPill = doc.getElementById('tempPill');
+  var warmButton = doc.getElementById('warmButton');
+  var menuToggle = doc.getElementById('menuToggle');
+  var nav = doc.getElementById('siteNav');
+  var ticking = false;
+  var forcedWarm = false;
+
+  function mix(a, b, t) {
+    return [
+      Math.round(a[0] + (b[0] - a[0]) * t),
+      Math.round(a[1] + (b[1] - a[1]) * t),
+      Math.round(a[2] + (b[2] - a[2]) * t)
+    ];
+  }
+
+  function setWarmth(t) {
+    t = Math.max(0, Math.min(1, t));
+    var c = mix([52, 71, 170], [251, 234, 235], t);
+    var color = 'rgb(' + c[0] + ' ' + c[1] + ' ' + c[2] + ')';
+    if (heat) {
+      heat.style.setProperty('--anna', color);
+      heat.style.setProperty('--anna-halo', String(.18 + t * .42));
+    }
+    if (tempPill) {
+      tempPill.textContent = t > .72 ? 'weer warm' : (t > .34 ? 'aandacht waard' : 'koelt af');
+    }
+  }
+
+  function heatProgress() {
+    if (!heat) { return 1; }
+    if (reduced || forcedWarm) { return 1; }
+    var rect = heat.getBoundingClientRect();
+    var start = window.innerHeight * .72;
+    var end = window.innerHeight * .18;
+    return (start - rect.top) / (start - end);
+  }
+
+  function frame() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (header) { header.classList.toggle('is-solid', y > 10); }
+    if (progress) {
+      var max = doc.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.max(0, Math.min(1, y / max)) : 0).toFixed(4) + ')';
+    }
+    setWarmth(heatProgress());
+  }
+
+  function requestFrame() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(frame);
+    }
+  }
+
+  window.addEventListener('scroll', requestFrame, { passive: true });
+  window.addEventListener('resize', requestFrame, { passive: true });
+
+  if (warmButton) {
+    warmButton.addEventListener('click', function () {
+      forcedWarm = true;
+      setWarmth(1);
+      warmButton.textContent = 'Anna is weer warm';
+    });
+  }
+
+  if (heat) {
+    heat.addEventListener('mouseenter', function () { if (!reduced) { setWarmth(1); } });
+    heat.addEventListener('mouseleave', function () { if (!forcedWarm) { requestFrame(); } });
+    heat.addEventListener('focusin', function () { setWarmth(1); });
+  }
+
+  if (menuToggle && nav) {
+    function setMenu(open) {
+      nav.classList.toggle('is-open', open);
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    menuToggle.addEventListener('click', function () {
+      setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { setMenu(false); }
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { setMenu(false); }
+    });
+  }
+
+  var faq = doc.getElementById('faqList');
+  if (faq) {
+    faq.addEventListener('click', function (e) {
+      var btn = e.target.closest('.faq-q');
+      if (!btn) { return; }
+      var item = btn.closest('.faq-item');
+      var open = !item.classList.contains('open');
+      faq.querySelectorAll('.faq-item').forEach(function (el) {
+        el.classList.remove('open');
+        var b = el.querySelector('.faq-q');
+        if (b) { b.setAttribute('aria-expanded', 'false'); }
+      });
+      item.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  if (root.classList.contains('anim-ok') && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var delay = entry.target.getAttribute('data-d');
+          if (delay) { entry.target.style.setProperty('--d', delay); }
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
+    doc.querySelectorAll('[data-rv]').forEach(function (el) { observer.observe(el); });
+  }
+
+  setWarmth(reduced ? 1 : 0);
+  frame();
+})();
+</script>
+</body>
+</html>

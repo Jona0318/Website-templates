@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-16",
-  "count": 108,
+  "count": 112,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -3327,17 +3327,42 @@
       "scheme": "dark",
       "multipage": false,
       "recipe": "recipes/66-slink.json",
-      "palette": ["#080806", "#c9903a", "#f0ebe0"],
-      "fonts": ["Cormorant Garamond", "Outfit"],
-      "mechanics": ["Dark theme", "Marquee", "Reserveringsformulier"],
-      "sections": ["hero(center)", "marquee", "features(cards)", "split", "testimonials", "contact"],
+      "palette": [
+        "#080806",
+        "#c9903a",
+        "#f0ebe0"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Outfit"
+      ],
+      "mechanics": [
+        "Dark theme",
+        "Marquee",
+        "Reserveringsformulier"
+      ],
+      "sections": [
+        "hero(center)",
+        "marquee",
+        "features(cards)",
+        "split",
+        "testimonials",
+        "contact"
+      ],
       "note": "Intieme cocktailbar in donker amber-goud palet. Cormorant Garamond serif, sfeervolle hero.",
       "card": {
         "title": "Slink — cocktailbar",
         "blurb": "Atmosferische cocktailbar in de Jordaan — donker amber-goud palet, Cormorant Garamond serif en een kaart die wisselt met de seizoenen.",
         "emoji": "🍸",
-        "grad": ["#080806", "#c9903a"],
-        "tags": ["Dark theme", "Horeca", "Sfeer"]
+        "grad": [
+          "#080806",
+          "#c9903a"
+        ],
+        "tags": [
+          "Dark theme",
+          "Horeca",
+          "Sfeer"
+        ]
       }
     },
     {
@@ -3451,17 +3476,44 @@
       "scheme": "light",
       "multipage": false,
       "recipe": "recipes/69-grip.json",
-      "palette": ["#f4f2ee", "#e8421c", "#1a3f6e"],
-      "fonts": ["Oswald", "Inter"],
-      "mechanics": ["Stats-band", "Prijstabel", "FAQ", "Contactformulier"],
-      "sections": ["hero(media)", "features(cards)", "stats", "split", "pricing", "faq", "contact"],
+      "palette": [
+        "#f4f2ee",
+        "#e8421c",
+        "#1a3f6e"
+      ],
+      "fonts": [
+        "Oswald",
+        "Inter"
+      ],
+      "mechanics": [
+        "Stats-band",
+        "Prijstabel",
+        "FAQ",
+        "Contactformulier"
+      ],
+      "sections": [
+        "hero(media)",
+        "features(cards)",
+        "stats",
+        "split",
+        "pricing",
+        "faq",
+        "contact"
+      ],
       "note": "Energiek bouldercentrum in krijtwit met vivid oranje-rood. Oswald condensed voor headings, Inter voor body.",
       "card": {
         "title": "Grip — boulderhal",
         "blurb": "Modern indoor klimcentrum in krijtwit met vivid oranje-rood accent — Oswald condensed display, stats-band, prijstabel en FAQ.",
         "emoji": "🧗",
-        "grad": ["#f4f2ee", "#e8421c"],
-        "tags": ["Sport", "Pricing", "Stats"]
+        "grad": [
+          "#f4f2ee",
+          "#e8421c"
+        ],
+        "tags": [
+          "Sport",
+          "Pricing",
+          "Stats"
+        ]
       }
     },
     {
@@ -3939,17 +3991,45 @@
       "scheme": "light",
       "multipage": false,
       "recipe": "recipes/79-noot.json",
-      "palette": ["#f8f5ef", "#3c3196", "#c97c3a"],
-      "fonts": ["Lora", "Nunito"],
-      "mechanics": ["Zigzag", "Metrics", "Tarieven", "Proefles-formulier"],
-      "sections": ["hero(split)", "logos", "features(rows)", "zigzag", "metrics", "testimonials", "pricing", "contact"],
+      "palette": [
+        "#f8f5ef",
+        "#3c3196",
+        "#c97c3a"
+      ],
+      "fonts": [
+        "Lora",
+        "Nunito"
+      ],
+      "mechanics": [
+        "Zigzag",
+        "Metrics",
+        "Tarieven",
+        "Proefles-formulier"
+      ],
+      "sections": [
+        "hero(split)",
+        "logos",
+        "features(rows)",
+        "zigzag",
+        "metrics",
+        "testimonials",
+        "pricing",
+        "contact"
+      ],
       "note": "Warme muziekschool in crème-indigo palet. Lora serif, Nunito grotesk, proefles-formulier.",
       "card": {
         "title": "Noot — muziekschool",
         "blurb": "Warme muziekschool voor alle leeftijden in crème met indigo — Lora serif, zigzag-aanpaksectie, tarieven en gratis proefles-formulier.",
         "emoji": "🎹",
-        "grad": ["#f8f5ef", "#3c3196"],
-        "tags": ["Muziek", "Prijstabel", "Warm"]
+        "grad": [
+          "#f8f5ef",
+          "#3c3196"
+        ],
+        "tags": [
+          "Muziek",
+          "Prijstabel",
+          "Warm"
+        ]
       }
     },
     {
@@ -5460,6 +5540,237 @@
           "Signal Atlas",
           "Canvas",
           "Masterpiece"
+        ]
+      }
+    },
+    {
+      "id": 109,
+      "slug": "109-verso",
+      "path": "templates/109-verso/",
+      "title": "Verso — Signature",
+      "name": "Verso",
+      "sector": "tech",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#6260ff",
+        "#e4e4ff",
+        "#0e0d1a"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Hanken Grotesk",
+        "JetBrains Mono"
+      ],
+      "mechanics": [
+        "scroll-narrative",
+        "data-to-text",
+        "sparkline-svg",
+        "magnetic-cta",
+        "faq-accordion",
+        "fullscreen-menu",
+        "reveal-system",
+        "anim-opt-in"
+      ],
+      "sections": [
+        "hero",
+        "probleem",
+        "werkwijze",
+        "functies",
+        "briefing",
+        "social-proof",
+        "impact",
+        "prijzen",
+        "faq",
+        "cta"
+      ],
+      "note": "Signature-template (handgeschreven). Editorial-tech narrative-analytics landingspagina in indigo (#6260ff) x lila (#e4e4ff) met Fraunces/Hanken Grotesk/JetBrains Mono. SIGNATUUR: een scroll-gekoppeld \"data wordt tekst\"-moment in de hero — ruwe metrics met SVG-sparklines lossen woord-voor-woord op in een geschreven ochtendbriefing, met directe-eindstaat-fallback bij prefers-reduced-motion en een gestapelde mobiele variant. Verder afwisselende lila/ink/paper-banden, asymmetrische editorial-spreads, getypesette memo, magnetische CTA en toegankelijke FAQ-accordion.",
+      "card": {
+        "title": "Verso",
+        "blurb": "Narrative-analytics landing met een scroll-gekoppeld \"data wordt tekst\"-moment: metrics lossen woord-voor-woord op in een geschreven briefing.",
+        "emoji": "📝",
+        "grad": [
+          "#6260ff",
+          "#e4e4ff"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "id": 110,
+      "slug": "110-kindred",
+      "path": "templates/110-kindred/",
+      "title": "Kindred - relatie-companion",
+      "name": "Kindred",
+      "sector": "tech",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#3447aa",
+        "#fbeaeb",
+        "#16172b"
+      ],
+      "fonts": [
+        "Newsreader",
+        "Albert Sans"
+      ],
+      "mechanics": [
+        "warmth-map-svg",
+        "scroll-heat-transition",
+        "hover-rewarm",
+        "faq-accordion",
+        "mobile-menu",
+        "reveal-system",
+        "anim-opt-in",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "spanning",
+        "werking",
+        "functies",
+        "zacht-zetje",
+        "proof",
+        "privacy",
+        "prijzen",
+        "faq",
+        "cta"
+      ],
+      "note": "Signature-template (handgeschreven). Warm-editoriale SaaS-landingspagina voor Kindred, een persoonlijke relatie-companion in royal blue (#3447aa) x powder blush (#fbeaeb). SIGNATUUR: een levende warmtekaart waarin relaties van blush naar royal blue verschuiven en Anna via scroll, hover of knop opnieuw opwarmt, met directe eindstaat voor reduced motion. Verder asymmetrische editorial-spreads, Nederlandse warme copy, privacy-belofte, prijzen en toegankelijke FAQ.",
+      "card": {
+        "title": "Kindred - relatie-companion",
+        "blurb": "Warm-editoriale SaaS-landing in royal blue x powder blush: levende warmtekaart waar relaties afkoelen en via een zacht zetje weer opwarmen.",
+        "emoji": "K",
+        "grad": [
+          "#3447aa",
+          "#fbeaeb"
+        ],
+        "tags": [
+          "Warmtekaart",
+          "Relaties",
+          "Signature"
+        ]
+      }
+    },
+    {
+      "id": 111,
+      "slug": "111-tessera",
+      "path": "templates/111-tessera/",
+      "title": "Tessera - tegelatelier",
+      "name": "Tessera",
+      "sector": "interieur",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#faf7ee",
+        "#164f63",
+        "#e8a928",
+        "#b84a32",
+        "#2756d8"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Manrope"
+      ],
+      "mechanics": [
+        "mosaic-composer",
+        "palette-picker",
+        "pattern-switcher",
+        "room-switcher",
+        "faq-accordion",
+        "mobile-menu",
+        "reveal-system",
+        "anim-opt-in",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "mozaiekwand",
+        "intro",
+        "collecties",
+        "proces",
+        "projecten",
+        "proefpakket",
+        "quote",
+        "faq",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). Keramisch wandatelier in chalk, teal, saffron, oxide en cobalt met Fraunces/Manrope. SIGNATUUR: een interactieve mozaiekwand waarmee bezoekers ruimte, patroon en palet kiezen; het tegelvlak, levertijd en proefvlakprijs passen live mee aan. Verder tactiele collectie-spreads, versprongen processtappen, projectrijen, proefpakket-CTA en toegankelijke FAQ.",
+      "card": {
+        "title": "Tessera - tegelatelier",
+        "blurb": "Keramisch wandatelier met een interactieve mozaiekwand: kies ruimte, patroon en palet en zie direct een proefvlak ontstaan.",
+        "emoji": "T",
+        "grad": [
+          "#164f63",
+          "#e8a928"
+        ],
+        "tags": [
+          "Mozaiekwand",
+          "Interieur",
+          "Signature"
+        ]
+      }
+    },
+    {
+      "id": 112,
+      "slug": "112-karterij",
+      "path": "templates/112-karterij/",
+      "title": "Karterij Noord - routeatelier",
+      "name": "Karterij Noord",
+      "sector": "reizen",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f5f0e4",
+        "#214f3b",
+        "#2b6f9e",
+        "#c86735",
+        "#513c7a"
+      ],
+      "fonts": [
+        "Literata",
+        "Bricolage Grotesque"
+      ],
+      "mechanics": [
+        "route-map-svg",
+        "terrain-switcher",
+        "pace-switcher",
+        "style-switcher",
+        "faq-accordion",
+        "mobile-menu",
+        "reveal-system",
+        "anim-opt-in",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "routepaneel",
+        "manifest",
+        "routebundels",
+        "proces",
+        "winkel",
+        "maatwerk",
+        "quote",
+        "faq",
+        "contact"
+      ],
+      "note": "Signature-template (handgeschreven). Kaartenwinkel en routeatelier in warm papier, spruce, lake, clay en dusk met Literata/Bricolage Grotesque. SIGNATUUR: een interactief topografisch routepaneel waarin terrein, tempo en kaartstijl de contourlijnen, waterpartij, route, markers en statistieken live aanpassen. Verder routebundel-spreads, processtappen, winkelrijen, maatwerk-CTA en toegankelijke FAQ.",
+      "card": {
+        "title": "Karterij Noord - routeatelier",
+        "blurb": "Kaartenwinkel met interactief topografisch routepaneel: kies terrein, tempo en kaartstijl en zie de route direct mee veranderen.",
+        "emoji": "K",
+        "grad": [
+          "#214f3b",
+          "#c86735"
+        ],
+        "tags": [
+          "Routekaart",
+          "Reizen",
+          "Signature"
         ]
       }
     }

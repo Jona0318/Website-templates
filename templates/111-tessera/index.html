@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="nl" class="no-js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tessera - tegelatelier voor wanden met karakter</title>
+<meta name="description" content="Tessera ontwerpt keramische wandtegels, proefvlakken en maatwerkpatronen voor woningen, horeca en kleine hotels.">
+<meta name="theme-color" content="#164f63">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tessera - tegelatelier">
+<meta property="og:description" content="Keramische wanden met kleur, ritme en handwerk. Ontwerp live een proefvlak in de mozaiekwand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var h = document.documentElement;
+  h.classList.remove('no-js');
+  h.classList.add('js');
+  try {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      h.classList.remove('no-anim');
+      h.classList.add('anim-ok');
+    }
+  } catch (e) {}
+})();
+</script>
+<style>
+/* ============================================================
+   TESSERA - keramisch wandatelier
+   Zelfstandige Bron-template. Geen dependencies, alles inline.
+   ============================================================ */
+
+:root {
+  --chalk: #faf7ee;
+  --porcelain: #fffdf8;
+  --ink: #171411;
+  --muted: #665f56;
+  --line: #dfd5c7;
+  --teal: #164f63;
+  --teal-deep: #0e3441;
+  --cobalt: #2756d8;
+  --saffron: #e8a928;
+  --oxide: #b84a32;
+  --jade: #318b76;
+  --clay: #c88f64;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --maxw: 88rem;
+  --gutter: clamp(1rem, 4.5vw, 5rem);
+  --nav-h: 72px;
+  --section-y: clamp(4.5rem, 8vw, 8rem);
+  --gap: clamp(1rem, 2.2vw, 1.75rem);
+  --radius: 8px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --hard: cubic-bezier(.7, 0, .2, 1);
+  --shadow: 0 28px 70px -48px rgba(23, 20, 17, .55);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html.no-anim { scroll-behavior: auto; }
+
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--chalk);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .38;
+  background-image:
+    linear-gradient(rgba(23, 20, 17, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 20, 17, .04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(#000, transparent 78%);
+}
+
+img,
+svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+button,
+input,
+textarea { font: inherit; color: inherit; }
+button { border: 0; background: none; cursor: pointer; }
+ul { list-style: none; padding: 0; }
+
+::selection { background: var(--teal); color: var(--porcelain); }
+
+:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 680;
+  line-height: .98;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+.shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+section[id],
+footer[id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+.skip-link {
+  position: fixed;
+  z-index: 300;
+  top: .75rem;
+  left: .75rem;
+  transform: translateY(-160%);
+  color: var(--porcelain);
+  background: var(--teal-deep);
+  padding: .7rem 1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform .25s var(--ease);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.scroll-progress {
+  position: fixed;
+  z-index: 260;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--cobalt), var(--saffron), var(--oxide));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+html.no-anim .scroll-progress { display: none; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 220;
+  height: var(--nav-h);
+  border-bottom: 1px solid rgba(23, 20, 17, .08);
+  background: rgba(250, 247, 238, .86);
+  backdrop-filter: blur(16px);
+  transition: background-color .25s, box-shadow .25s;
+}
+
+.site-header.is-solid {
+  background: rgba(250, 247, 238, .96);
+  box-shadow: 0 16px 36px -32px rgba(23, 20, 17, .55);
+}
+
+.nav-inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .72rem;
+  color: var(--teal-deep);
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 760;
+  letter-spacing: 0;
+}
+
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--teal);
+  background: var(--porcelain);
+}
+
+.brand-mark i:nth-child(1) { background: var(--teal); }
+.brand-mark i:nth-child(2) { background: var(--saffron); }
+.brand-mark i:nth-child(3) { background: var(--oxide); }
+.brand-mark i:nth-child(4) { background: var(--cobalt); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(.35rem, 1vw, 1rem);
+  color: var(--muted);
+  font-weight: 760;
+  font-size: .94rem;
+}
+
+.nav-links a {
+  padding: .42rem .35rem;
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--teal-deep); }
+
+.nav-cta {
+  color: var(--porcelain) !important;
+  background: var(--teal);
+  border-radius: 999px;
+  padding: .62rem 1rem !important;
+}
+
+.nav-cta:hover { background: var(--teal-deep); }
+
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--porcelain);
+  color: var(--teal-deep);
+}
+
+.menu-toggle span,
+.menu-toggle span::before,
+.menu-toggle span::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin-inline: auto;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .24s var(--ease), opacity .2s;
+}
+
+.menu-toggle span::before,
+.menu-toggle span::after { content: ""; }
+.menu-toggle span::before { transform: translateY(-6px); }
+.menu-toggle span::after { transform: translateY(4px); }
+.menu-toggle[aria-expanded="true"] span { transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span::before { opacity: 0; transform: translateY(0); }
+.menu-toggle[aria-expanded="true"] span::after { transform: translateY(-2px) rotate(90deg); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--teal);
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: .55rem;
+  height: .55rem;
+  background: currentColor;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: .82rem 1.14rem;
+  font-weight: 850;
+  line-height: 1;
+  transition: transform .22s var(--ease), background-color .22s, color .22s, border-color .22s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { color: var(--porcelain); background: var(--teal); border-color: var(--teal); }
+.btn-primary:hover { background: var(--teal-deep); border-color: var(--teal-deep); }
+.btn-secondary { color: var(--teal-deep); background: rgba(255, 253, 248, .68); border-color: rgba(22, 79, 99, .24); }
+.btn-secondary:hover { background: var(--porcelain); border-color: var(--teal); }
+
+.hero {
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(250, 247, 238, .7), rgba(255, 253, 248, .92)),
+    linear-gradient(90deg, rgba(22, 79, 99, .08), transparent 48%, rgba(232, 169, 40, .12));
+  border-bottom: 1px solid var(--line);
+}
+
+.hero .shell {
+  padding-top: clamp(2.75rem, 6vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.hero-grid {
+  min-height: min(780px, calc(100vh - var(--nav-h)));
+  align-items: center;
+}
+
+.hero-copy {
+  grid-column: 1 / span 6;
+}
+
+.hero h1 {
+  max-width: 10.4ch;
+  margin-top: 1rem;
+  font-size: clamp(3.2rem, 7vw, 7.4rem);
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero .accent {
+  color: var(--oxide);
+}
+
+.hero-lead {
+  max-width: 38rem;
+  margin-top: clamp(1.2rem, 2.4vw, 2rem);
+  color: var(--muted);
+  font-size: clamp(1.12rem, 1.35vw, 1.3rem);
+  line-height: 1.58;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .85rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+  max-width: 40rem;
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+}
+
+.hero-facts span {
+  border-top: 1px solid var(--line);
+  padding-top: .7rem;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.hero-facts strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.hero-lab {
+  grid-column: 8 / span 5;
+}
+
+.lab {
+  position: relative;
+  border: 1px solid rgba(23, 20, 17, .18);
+  border-radius: var(--radius);
+  background: var(--porcelain);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.lab-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+  padding: .9rem 1rem;
+}
+
+.lab-title {
+  color: var(--teal-deep);
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.lab-room {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.mosaic-wrap {
+  position: relative;
+  padding: clamp(.85rem, 2vw, 1.25rem);
+  background:
+    linear-gradient(90deg, rgba(23, 20, 17, .04) 1px, transparent 1px),
+    linear-gradient(rgba(23, 20, 17, .04) 1px, transparent 1px),
+    #ede6d7;
+  background-size: 20px 20px;
+}
+
+.mosaic-wall {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 5px;
+  aspect-ratio: 1 / 1.05;
+  padding: 9px;
+  border: 1px solid rgba(23, 20, 17, .2);
+  background: #cabba9;
+}
+
+.tile {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid rgba(23, 20, 17, .13);
+  border-radius: 2px;
+  background: var(--tile-color, var(--teal));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .28),
+    inset 0 -8px 16px rgba(23, 20, 17, .06);
+  transform: rotate(var(--rot, 0deg));
+}
+
+html.anim-ok .tile {
+  animation: tile-settle .75s var(--ease) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes tile-settle {
+  from { opacity: .45; transform: translateY(10px) rotate(var(--rot, 0deg)); }
+  to { opacity: 1; transform: translateY(0) rotate(var(--rot, 0deg)); }
+}
+
+.lab-controls {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.control-row {
+  display: grid;
+  gap: .55rem;
+}
+
+.control-label {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .42rem;
+}
+
+.segmented button,
+.swatch-btn {
+  min-height: 2.3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--porcelain);
+  color: var(--ink);
+  padding: .54rem .78rem;
+  font-size: .9rem;
+  font-weight: 800;
+  transition: background-color .2s, border-color .2s, transform .2s;
+}
+
+.segmented button:hover,
+.swatch-btn:hover { transform: translateY(-1px); border-color: var(--teal); }
+
+.segmented button[aria-pressed="true"] {
+  color: var(--porcelain);
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .45rem;
+}
+
+.swatch-btn {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  justify-content: center;
+  padding-inline: .5rem;
+}
+
+.swatch-btn::before {
+  content: "";
+  width: .8rem;
+  height: .8rem;
+  border: 1px solid rgba(23, 20, 17, .18);
+  background: var(--sw);
+}
+
+.swatch-btn[aria-pressed="true"] {
+  border-color: var(--teal);
+  box-shadow: inset 0 0 0 2px rgba(22, 79, 99, .16);
+}
+
+.lab-output {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  border-top: 1px solid var(--line);
+  padding: 1rem;
+  background: rgba(250, 247, 238, .78);
+}
+
+.lab-output span {
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.lab-output strong {
+  display: block;
+  color: var(--teal-deep);
+  font-size: 1.05rem;
+}
+
+.intro {
+  background: var(--teal-deep);
+  color: var(--porcelain);
+}
+
+.intro-grid { align-items: start; }
+.intro .eyebrow { color: var(--saffron); }
+.intro h2 {
+  grid-column: 2 / span 6;
+  font-size: clamp(2.35rem, 5vw, 5.2rem);
+}
+.intro p {
+  grid-column: 9 / span 3;
+  color: rgba(255, 253, 248, .72);
+  font-size: clamp(1.1rem, 1.4vw, 1.28rem);
+}
+
+.collections {
+  background: var(--chalk);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  margin-bottom: clamp(2.2rem, 5vw, 4rem);
+}
+
+.section-head .eyebrow { grid-column: 1 / span 3; }
+.section-head h2 {
+  grid-column: 4 / span 7;
+  font-size: clamp(2.2rem, 4.6vw, 4.4rem);
+}
+
+.collection-list {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.2rem);
+}
+
+.collection {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: clamp(1.4rem, 3vw, 2rem);
+}
+
+.collection:nth-child(odd) .collection-copy { grid-column: 1 / span 5; }
+.collection:nth-child(odd) .tile-strip { grid-column: 7 / span 6; }
+.collection:nth-child(even) .tile-strip { grid-column: 1 / span 6; order: 1; }
+.collection:nth-child(even) .collection-copy { grid-column: 8 / span 5; order: 2; }
+
+.collection-copy h3 {
+  color: var(--teal-deep);
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+}
+
+.collection-copy p {
+  max-width: 34rem;
+  margin-top: .8rem;
+  color: var(--muted);
+}
+
+.collection-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin-top: 1rem;
+}
+
+.collection-meta span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .72);
+  padding: .38rem .68rem;
+  color: var(--teal-deep);
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.tile-strip {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 5px;
+  min-height: clamp(10rem, 18vw, 15rem);
+  border: 1px solid rgba(23, 20, 17, .16);
+  border-radius: var(--radius);
+  background: #d7cab8;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.tile-strip i {
+  background: var(--c);
+  border: 1px solid rgba(23, 20, 17, .13);
+  min-height: 2rem;
+}
+
+.process {
+  background: var(--porcelain);
+  border-block: 1px solid var(--line);
+}
+
+.process-track {
+  display: grid;
+  grid-template-columns: 1fr .85fr 1fr .75fr;
+  gap: var(--gap);
+}
+
+.step {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.step:nth-child(2) { margin-top: 4rem; }
+.step:nth-child(3) { margin-top: 1.5rem; }
+.step:nth-child(4) { margin-top: 5.5rem; }
+
+.step-no {
+  color: var(--oxide);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.step h3 {
+  margin-top: 1rem;
+  color: var(--teal-deep);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+.step p {
+  margin-top: .7rem;
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+.projects {
+  background: var(--chalk);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.project-feature {
+  position: sticky;
+  top: calc(var(--nav-h) + 1rem);
+  align-self: start;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--porcelain);
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+.project-feature h3 {
+  color: var(--teal-deep);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+}
+
+.project-feature p {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+.project-list {
+  display: grid;
+  gap: .75rem;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+}
+
+.project-row h3 {
+  color: var(--ink);
+  font-size: clamp(1.35rem, 2.4vw, 2.2rem);
+}
+
+.project-row p {
+  color: var(--muted);
+  font-size: .96rem;
+}
+
+.project-palette {
+  display: flex;
+  gap: .25rem;
+}
+
+.project-palette i {
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 1px solid rgba(23, 20, 17, .16);
+  background: var(--c);
+}
+
+.sample {
+  background: var(--teal);
+  color: var(--porcelain);
+}
+
+.sample-grid {
+  align-items: center;
+}
+
+.sample-copy {
+  grid-column: 1 / span 5;
+}
+
+.sample .eyebrow { color: var(--saffron); }
+.sample h2 {
+  margin-top: 1rem;
+  font-size: clamp(2.25rem, 5vw, 5rem);
+}
+
+.sample p {
+  max-width: 34rem;
+  margin-top: 1rem;
+  color: rgba(255, 253, 248, .75);
+  font-size: clamp(1.08rem, 1.3vw, 1.22rem);
+}
+
+.sample-box {
+  grid-column: 8 / span 4;
+  border: 1px solid rgba(255, 253, 248, .24);
+  border-radius: var(--radius);
+  background: rgba(14, 52, 65, .6);
+  padding: clamp(1.1rem, 3vw, 1.7rem);
+}
+
+.sample-box h3 {
+  color: var(--saffron);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+.sample-box ul {
+  display: grid;
+  gap: .7rem;
+  margin-top: 1rem;
+  color: rgba(255, 253, 248, .86);
+}
+
+.sample-box li::before {
+  content: "";
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .55rem;
+  background: var(--saffron);
+}
+
+.price {
+  margin-top: 1.2rem;
+  color: var(--porcelain);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1;
+}
+
+.quote {
+  background: var(--porcelain);
+}
+
+.quote blockquote {
+  grid-column: 2 / span 8;
+  color: var(--teal-deep);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.8vw, 5rem);
+  line-height: 1.02;
+}
+
+.quote cite {
+  grid-column: 10 / span 2;
+  align-self: end;
+  color: var(--muted);
+  font-style: normal;
+  font-weight: 760;
+}
+
+.faq {
+  background: var(--chalk);
+  border-top: 1px solid var(--line);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.faq h2 {
+  margin-top: 1rem;
+  font-size: clamp(2.2rem, 4.5vw, 4.3rem);
+}
+
+.faq-list {
+  display: grid;
+  gap: .72rem;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 248, .74);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  color: var(--ink);
+  text-align: left;
+  font-weight: 850;
+}
+
+.faq-q::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--oxide);
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.faq-item.open .faq-q::after { content: "-"; }
+
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .28s var(--ease);
+}
+
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
+.faq-a > div { overflow: hidden; }
+.faq-a p {
+  padding: 0 1.1rem 1.1rem;
+  color: var(--muted);
+}
+
+.contact {
+  background: var(--ink);
+  color: var(--porcelain);
+}
+
+.contact-grid { align-items: start; }
+.contact h2 {
+  grid-column: 1 / span 6;
+  font-size: clamp(2.6rem, 6vw, 6rem);
+}
+
+.contact-panel {
+  grid-column: 8 / span 4;
+  border: 1px solid rgba(255, 253, 248, .18);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 248, .05);
+  padding: clamp(1.2rem, 3vw, 1.7rem);
+}
+
+.contact-panel p {
+  color: rgba(255, 253, 248, .78);
+}
+
+.contact-panel .btn {
+  margin-top: 1.3rem;
+  color: var(--ink);
+  border-color: var(--saffron);
+  background: var(--saffron);
+}
+
+.site-footer {
+  border-top: 1px solid rgba(255, 253, 248, .14);
+  background: var(--ink);
+  color: rgba(255, 253, 248, .72);
+  padding-block: 2rem;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.site-footer .brand {
+  color: var(--porcelain);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: .94rem;
+}
+
+.footer-links a:hover { color: var(--saffron); }
+
+[data-rv] {
+  opacity: 1;
+  transform: none;
+}
+
+html.anim-ok [data-rv] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+
+html.anim-ok [data-rv].in-view {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1080px) {
+  .hero-copy { grid-column: 1 / span 12; }
+  .hero-lab {
+    grid-column: 2 / span 10;
+    margin-top: 2rem;
+  }
+  .intro h2,
+  .intro p,
+  .sample-copy,
+  .sample-box,
+  .quote blockquote,
+  .quote cite,
+  .contact h2,
+  .contact-panel {
+    grid-column: 1 / span 12;
+  }
+  .intro p,
+  .sample-box,
+  .quote cite,
+  .contact-panel { margin-top: 1.25rem; }
+  .process-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .step:nth-child(n) { margin-top: 0; }
+}
+
+@media (max-width: 760px) {
+  :root { --nav-h: 66px; }
+  .menu-toggle { display: inline-grid; place-items: center; }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: .35rem;
+    border-bottom: 1px solid var(--line);
+    background: rgba(250, 247, 238, .98);
+    padding: .8rem var(--gutter) 1rem;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .25s var(--ease), opacity .25s;
+  }
+  .nav-links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links a {
+    border-bottom: 1px solid var(--line);
+    padding: .8rem 0;
+  }
+  .nav-cta {
+    text-align: center;
+    padding: .82rem 1rem !important;
+  }
+  .hero .shell { padding-top: 2.3rem; }
+  .hero h1 { max-width: 8.5ch; }
+  .hero-facts { grid-template-columns: 1fr; }
+  .hero-lab { grid-column: 1 / span 12; }
+  .mosaic-wall {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    aspect-ratio: 1 / 1.12;
+  }
+  .swatches,
+  .lab-output { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .section-head { display: block; }
+  .section-head h2 { margin-top: 1rem; }
+  .collection {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .collection:nth-child(n) .collection-copy,
+  .collection:nth-child(n) .tile-strip {
+    grid-column: 1;
+    order: initial;
+  }
+  .collection:nth-child(odd) .tile-strip { order: -1; }
+  .process-track,
+  .project-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-feature { position: static; }
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+  .sample-grid,
+  .quote .grid12,
+  .contact-grid { display: grid; grid-template-columns: 1fr; }
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 440px) {
+  .hero-actions .btn,
+  .swatch-btn,
+  .segmented button { width: 100%; }
+  .swatches,
+  .lab-output { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Naar inhoud</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell nav-inner">
+    <a class="brand" href="#top" aria-label="Tessera home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Tessera</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">
+      <span aria-hidden="true"></span>
+      <span class="sr-only">Menu openen</span>
+    </button>
+    <nav class="nav-links" id="siteNav" aria-label="Hoofdmenu">
+      <a href="#collecties">Collecties</a>
+      <a href="#proces">Proces</a>
+      <a href="#projecten">Projecten</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#contact">Vraag proefvlak aan</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="shell grid12 hero-grid">
+      <div class="hero-copy" data-rv>
+        <span class="eyebrow">Keramisch wandatelier</span>
+        <h1 id="hero-title"><span>Wanden</span><span>met ritme,</span><span class="accent">kleur</span><span>en handwerk.</span></h1>
+        <p class="hero-lead">Tessera ontwerpt keramische tegels en maatwerkpatronen voor keukens, badkamers, bars en kleine hotels. Niet gladgestreken. Wel precies.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#lab">Ontwerp een proefvlak</a>
+          <a class="btn btn-secondary" href="#collecties">Bekijk collecties</a>
+        </div>
+        <div class="hero-facts" aria-label="Tessera in het kort">
+          <span><strong>41 kleuren</strong> mat, glans en craquele</span>
+          <span><strong>6 weken</strong> gemiddeld tot levering</span>
+          <span><strong>NL atelier</strong> kleine series en maatwerk</span>
+        </div>
+      </div>
+
+      <div class="hero-lab" id="lab" data-rv data-d="120ms">
+        <section class="lab" aria-labelledby="lab-title">
+          <div class="lab-top">
+            <h2 class="lab-title" id="lab-title">Mozaiekwand</h2>
+            <span class="lab-room" id="roomLabel">Keukenwand</span>
+          </div>
+          <div class="mosaic-wrap">
+            <div class="mosaic-wall" id="mosaicWall" aria-hidden="true"></div>
+          </div>
+          <div class="lab-controls">
+            <div class="control-row">
+              <span class="control-label">Ruimte</span>
+              <div class="segmented" id="roomControls" aria-label="Kies ruimte">
+                <button type="button" data-room="Keukenwand" aria-pressed="true">Keuken</button>
+                <button type="button" data-room="Hotelbar" aria-pressed="false">Bar</button>
+                <button type="button" data-room="Badkamer nis" aria-pressed="false">Badkamer</button>
+              </div>
+            </div>
+            <div class="control-row">
+              <span class="control-label">Patroon</span>
+              <div class="segmented" id="patternControls" aria-label="Kies patroon">
+                <button type="button" data-pattern="field" aria-pressed="true">Veld</button>
+                <button type="button" data-pattern="stripe" aria-pressed="false">Ritme</button>
+                <button type="button" data-pattern="scatter" aria-pressed="false">Strooi</button>
+              </div>
+            </div>
+            <div class="control-row">
+              <span class="control-label">Palet</span>
+              <div class="swatches" id="paletteControls" aria-label="Kies palet">
+                <button class="swatch-btn" type="button" style="--sw:#164f63" data-palette="harbor" aria-pressed="true">Haven</button>
+                <button class="swatch-btn" type="button" style="--sw:#e8a928" data-palette="market" aria-pressed="false">Markt</button>
+                <button class="swatch-btn" type="button" style="--sw:#b84a32" data-palette="terrace" aria-pressed="false">Terras</button>
+                <button class="swatch-btn" type="button" style="--sw:#318b76" data-palette="garden" aria-pressed="false">Tuin</button>
+              </div>
+            </div>
+          </div>
+          <div class="lab-output" aria-live="polite">
+            <span><strong id="tileCount">144</strong> tegels</span>
+            <span><strong id="leadTime">6 weken</strong> levertijd</span>
+            <span><strong id="estimate">&euro;420</strong> proefvlak</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intro" aria-labelledby="intro-title">
+    <div class="shell grid12 intro-grid">
+      <span class="eyebrow" data-rv>Waarom Tessera</span>
+      <h2 id="intro-title" data-rv data-d="80ms">Een tegelwand mag net zo persoonlijk zijn als een meubel.</h2>
+      <p data-rv data-d="160ms">Wij maken oppervlakken die je elke dag ziet: achter het fornuis, naast de wastafel, aan de bar. Daarom telt elk voegje, elke glans en elke afwijking.</p>
+    </div>
+  </section>
+
+  <section class="section collections" id="collecties" aria-labelledby="collecties-title">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow" data-rv>Collecties</span>
+        <h2 id="collecties-title" data-rv data-d="80ms">Drie families, elk met een eigen manier van licht vangen.</h2>
+      </div>
+      <div class="collection-list">
+        <article class="collection" data-rv>
+          <div class="collection-copy">
+            <h3>Getijden</h3>
+            <p>Diepe groenen en blauwen met subtiele glansverschillen. Gemaakt voor keukens en bars waar het licht door de dag heen beweegt.</p>
+            <div class="collection-meta"><span>mat en glans</span><span>7 kleuren</span><span>vierkant 10 cm</span></div>
+          </div>
+          <div class="tile-strip" aria-hidden="true">
+            <i style="--c:#0e3441"></i><i style="--c:#164f63"></i><i style="--c:#1f6f86"></i><i style="--c:#2756d8"></i><i style="--c:#faf7ee"></i><i style="--c:#164f63"></i><i style="--c:#0e3441"></i><i style="--c:#318b76"></i><i style="--c:#2756d8"></i><i style="--c:#164f63"></i>
+            <i style="--c:#318b76"></i><i style="--c:#faf7ee"></i><i style="--c:#164f63"></i><i style="--c:#0e3441"></i><i style="--c:#2756d8"></i><i style="--c:#1f6f86"></i><i style="--c:#164f63"></i><i style="--c:#faf7ee"></i><i style="--c:#0e3441"></i><i style="--c:#318b76"></i>
+          </div>
+        </article>
+
+        <article class="collection" data-rv>
+          <div class="collection-copy">
+            <h3>Marktdag</h3>
+            <p>Saffraan, tomaat, krijt en kobalt. Een vrolijker palet voor ontbijtplekken, winkels en kleine restaurants.</p>
+            <div class="collection-meta"><span>hoogglans</span><span>11 kleuren</span><span>rechthoek 6 x 12</span></div>
+          </div>
+          <div class="tile-strip" aria-hidden="true">
+            <i style="--c:#e8a928"></i><i style="--c:#b84a32"></i><i style="--c:#faf7ee"></i><i style="--c:#2756d8"></i><i style="--c:#e8a928"></i><i style="--c:#c88f64"></i><i style="--c:#b84a32"></i><i style="--c:#faf7ee"></i><i style="--c:#2756d8"></i><i style="--c:#e8a928"></i>
+            <i style="--c:#faf7ee"></i><i style="--c:#e8a928"></i><i style="--c:#2756d8"></i><i style="--c:#b84a32"></i><i style="--c:#faf7ee"></i><i style="--c:#c88f64"></i><i style="--c:#e8a928"></i><i style="--c:#2756d8"></i><i style="--c:#b84a32"></i><i style="--c:#faf7ee"></i>
+          </div>
+        </article>
+
+        <article class="collection" data-rv>
+          <div class="collection-copy">
+            <h3>Kalkkamer</h3>
+            <p>Zachte krijttinten met ruwe randen. Rustig genoeg voor een badkamer, levendig genoeg om niet klinisch te worden.</p>
+            <div class="collection-meta"><span>ongeglazuurd</span><span>9 tinten</span><span>handgesneden rand</span></div>
+          </div>
+          <div class="tile-strip" aria-hidden="true">
+            <i style="--c:#fffdf8"></i><i style="--c:#dfd5c7"></i><i style="--c:#c88f64"></i><i style="--c:#faf7ee"></i><i style="--c:#b9a997"></i><i style="--c:#fffdf8"></i><i style="--c:#dfd5c7"></i><i style="--c:#faf7ee"></i><i style="--c:#c88f64"></i><i style="--c:#fffdf8"></i>
+            <i style="--c:#dfd5c7"></i><i style="--c:#faf7ee"></i><i style="--c:#fffdf8"></i><i style="--c:#b9a997"></i><i style="--c:#dfd5c7"></i><i style="--c:#c88f64"></i><i style="--c:#faf7ee"></i><i style="--c:#fffdf8"></i><i style="--c:#dfd5c7"></i><i style="--c:#b9a997"></i>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process" id="proces" aria-labelledby="proces-title">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow" data-rv>Proces</span>
+        <h2 id="proces-title" data-rv data-d="80ms">Van proefvlak naar wand zonder verrassingen.</h2>
+      </div>
+      <div class="process-track">
+        <article class="step" data-rv>
+          <span class="step-no">01</span>
+          <h3>Intake</h3>
+          <p>We kijken naar licht, gebruik en maatvoering. Geen lange briefing, wel scherpe keuzes.</p>
+        </article>
+        <article class="step" data-rv data-d="80ms">
+          <span class="step-no">02</span>
+          <h3>Proefvlak</h3>
+          <p>Je ontvangt een handgemaakt vlak met echte voegen, zodat kleur en glans thuis kloppen.</p>
+        </article>
+        <article class="step" data-rv data-d="160ms">
+          <span class="step-no">03</span>
+          <h3>Productie</h3>
+          <p>We bakken per batch en nummeren elk pakket volgens het legplan.</p>
+        </article>
+        <article class="step" data-rv data-d="240ms">
+          <span class="step-no">04</span>
+          <h3>Plaatsing</h3>
+          <p>Je tegelzetter krijgt een helder plan. Voor complexe patronen plaatsen we zelf mee.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section projects" id="projecten" aria-labelledby="projecten-title">
+    <div class="shell">
+      <div class="project-grid">
+        <div class="project-feature" data-rv>
+          <span class="eyebrow">Projecten</span>
+          <h2 class="sr-only" id="projecten-title">Projecten</h2>
+          <h3>Geen twee wanden hoeven hetzelfde verhaal te vertellen.</h3>
+          <p>Een goede wand houdt de ruimte bij elkaar zonder alle aandacht op te eisen. Dit zijn drie recente richtingen.</p>
+        </div>
+        <div class="project-list">
+          <article class="project-row" data-rv>
+            <div>
+              <h3>Bar Loods, Rotterdam</h3>
+              <p>Diepe groene achterwand met onregelmatig kobalt in de hoeken.</p>
+            </div>
+            <span class="project-palette" aria-hidden="true"><i style="--c:#0e3441"></i><i style="--c:#164f63"></i><i style="--c:#2756d8"></i></span>
+          </article>
+          <article class="project-row" data-rv data-d="80ms">
+            <div>
+              <h3>Huis aan de Singel</h3>
+              <p>Rustige keukenwand met krijt, klei en een enkele saffraantegel.</p>
+            </div>
+            <span class="project-palette" aria-hidden="true"><i style="--c:#faf7ee"></i><i style="--c:#c88f64"></i><i style="--c:#e8a928"></i></span>
+          </article>
+          <article class="project-row" data-rv data-d="160ms">
+            <div>
+              <h3>Hotelkamer 12</h3>
+              <p>Badkamer-nis met matte jade en handgesneden randtegels.</p>
+            </div>
+            <span class="project-palette" aria-hidden="true"><i style="--c:#318b76"></i><i style="--c:#dfd5c7"></i><i style="--c:#fffdf8"></i></span>
+          </article>
+          <article class="project-row" data-rv data-d="240ms">
+            <div>
+              <h3>Bakbar Maan</h3>
+              <p>Open keuken met Marktdag-paletten en een smalle oxide bies.</p>
+            </div>
+            <span class="project-palette" aria-hidden="true"><i style="--c:#e8a928"></i><i style="--c:#b84a32"></i><i style="--c:#2756d8"></i></span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sample" aria-labelledby="sample-title">
+    <div class="shell grid12 sample-grid">
+      <div class="sample-copy" data-rv>
+        <span class="eyebrow">Proefpakket</span>
+        <h2 id="sample-title">Voel eerst de wand, beslis daarna pas.</h2>
+        <p>Een kleur op een scherm is nooit genoeg. Daarom maken we een klein, echt gevoegd vlak met jouw kleuren en patroonrichting.</p>
+      </div>
+      <article class="sample-box" data-rv data-d="120ms">
+        <h3>Proefvlak</h3>
+        <ul>
+          <li>12 tot 18 handgemaakte tegels</li>
+          <li>2 voegkleuren om naast elkaar te zien</li>
+          <li>Legplan voor jouw ruimte</li>
+        </ul>
+        <div class="price">&euro;420</div>
+        <a class="btn" href="#contact">Vraag proefvlak aan</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section quote" aria-labelledby="quote-title">
+    <div class="shell grid12">
+      <blockquote id="quote-title" data-rv>"De wand maakte de hele ruimte stiller en rijker. Alsof de keuken eindelijk een rug kreeg."</blockquote>
+      <cite data-rv data-d="120ms">- Nora, interieurarchitect</cite>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq" aria-labelledby="faq-title">
+    <div class="shell faq-grid">
+      <div data-rv>
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">Praktisch, voordat de oven aangaat.</h2>
+      </div>
+      <div class="faq-list" id="faqList" data-rv data-d="120ms">
+        <article class="faq-item open">
+          <h3><button class="faq-q" type="button" aria-expanded="true">Kan ik een bestaand patroon aanpassen?</button></h3>
+          <div class="faq-a"><div><p>Ja. De collecties zijn startpunten. We passen ritme, kleurverdeling, formaat en voegkleur aan op je ruimte.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Werken jullie met tegelzetters?</button></h3>
+          <div class="faq-a"><div><p>Ja. Je kunt met je eigen tegelzetter werken, of wij koppelen je aan iemand die vaker met onze legplannen werkt.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Zijn de tegels geschikt voor natte ruimtes?</button></h3>
+          <div class="faq-a"><div><p>De geglazuurde collecties zijn geschikt voor natte zones. Voor vloeren adviseren we alleen specifieke series.</p></div></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false">Hoeveel afwijking zit er in handwerk?</button></h3>
+          <div class="faq-a"><div><p>Genoeg om levend te zijn, niet zoveel dat het rommelig wordt. Het proefvlak laat precies zien waar die grens ligt.</p></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="shell grid12 contact-grid">
+      <h2 id="contact-title" data-rv>Stuur ons een muur, een schets of alleen een vermoeden.</h2>
+      <div class="contact-panel" data-rv data-d="120ms">
+        <p>We reageren binnen twee werkdagen met een richting, een grove inschatting en de vraag die nog mist.</p>
+        <a class="btn" href="mailto:atelier@tessera.example?subject=Proefvlak%20aanvragen">atelier@tessera.example</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="shell footer-inner">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Tessera</span></a>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#collecties">Collecties</a>
+      <a href="#proces">Proces</a>
+      <a href="#projecten">Projecten</a>
+      <a href="mailto:atelier@tessera.example">atelier@tessera.example</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var doc = document;
+  var root = doc.documentElement;
+  var reduced = root.classList.contains('no-anim');
+  var header = doc.getElementById('siteHeader');
+  var progress = doc.getElementById('scrollProgress');
+  var menuToggle = doc.getElementById('menuToggle');
+  var nav = doc.getElementById('siteNav');
+  var wall = doc.getElementById('mosaicWall');
+  var roomLabel = doc.getElementById('roomLabel');
+  var tileCount = doc.getElementById('tileCount');
+  var leadTime = doc.getElementById('leadTime');
+  var estimate = doc.getElementById('estimate');
+  var state = { room: 'Keukenwand', pattern: 'field', palette: 'harbor' };
+  var palettes = {
+    harbor: ['#0e3441', '#164f63', '#1f6f86', '#2756d8', '#faf7ee'],
+    market: ['#e8a928', '#b84a32', '#2756d8', '#faf7ee', '#c88f64'],
+    terrace: ['#b84a32', '#c88f64', '#e8a928', '#faf7ee', '#171411'],
+    garden: ['#318b76', '#164f63', '#dfd5c7', '#faf7ee', '#e8a928']
+  };
+
+  function setPressed(group, attr, value) {
+    doc.querySelectorAll(group + ' [data-' + attr + ']').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-' + attr) === value ? 'true' : 'false');
+    });
+  }
+
+  function colorFor(i, cols) {
+    var row = Math.floor(i / 12);
+    var col = i % 12;
+    if (state.pattern === 'stripe') {
+      return cols[(col + Math.floor(row / 2)) % cols.length];
+    }
+    if (state.pattern === 'scatter') {
+      return cols[(i * 7 + row * 3 + col * 5) % cols.length];
+    }
+    return cols[(row + col + (i % 5 === 0 ? 2 : 0)) % cols.length];
+  }
+
+  function drawWall() {
+    if (!wall) { return; }
+    var cols = palettes[state.palette] || palettes.harbor;
+    var count = window.innerWidth < 760 ? 96 : 144;
+    var html = '';
+    for (var i = 0; i < count; i++) {
+      var rot = ((i * 13) % 5) - 2;
+      html += '<span class="tile" style="--tile-color:' + colorFor(i, cols) + ';--rot:' + rot + 'deg;--delay:' + ((i % 24) * 12) + 'ms"></span>';
+    }
+    wall.innerHTML = html;
+    if (tileCount) { tileCount.textContent = String(count); }
+    if (leadTime) { leadTime.textContent = state.room === 'Hotelbar' ? '8 weken' : '6 weken'; }
+    if (estimate) { estimate.innerHTML = state.room === 'Hotelbar' ? '&euro;560' : (state.pattern === 'scatter' ? '&euro;480' : '&euro;420'); }
+    if (roomLabel) { roomLabel.textContent = state.room; }
+  }
+
+  function bindControls() {
+    doc.getElementById('roomControls')?.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-room]');
+      if (!btn) { return; }
+      state.room = btn.getAttribute('data-room');
+      setPressed('#roomControls', 'room', state.room);
+      drawWall();
+    });
+    doc.getElementById('patternControls')?.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-pattern]');
+      if (!btn) { return; }
+      state.pattern = btn.getAttribute('data-pattern');
+      setPressed('#patternControls', 'pattern', state.pattern);
+      drawWall();
+    });
+    doc.getElementById('paletteControls')?.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-palette]');
+      if (!btn) { return; }
+      state.palette = btn.getAttribute('data-palette');
+      setPressed('#paletteControls', 'palette', state.palette);
+      drawWall();
+    });
+  }
+
+  function setMenu(open) {
+    if (!menuToggle || !nav) { return; }
+    nav.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener('click', function () {
+      setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { setMenu(false); }
+    });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { setMenu(false); }
+    });
+  }
+
+  var faq = doc.getElementById('faqList');
+  if (faq) {
+    faq.addEventListener('click', function (e) {
+      var btn = e.target.closest('.faq-q');
+      if (!btn) { return; }
+      var item = btn.closest('.faq-item');
+      var open = !item.classList.contains('open');
+      faq.querySelectorAll('.faq-item').forEach(function (el) {
+        el.classList.remove('open');
+        var q = el.querySelector('.faq-q');
+        if (q) { q.setAttribute('aria-expanded', 'false'); }
+      });
+      item.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    if (header) { header.classList.toggle('is-solid', y > 10); }
+    if (progress) {
+      var max = doc.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.max(0, Math.min(1, y / max)) : 0).toFixed(4) + ')';
+    }
+  }
+  function requestFrame() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(frame);
+    }
+  }
+  window.addEventListener('scroll', requestFrame, { passive: true });
+  window.addEventListener('resize', function () { requestFrame(); drawWall(); }, { passive: true });
+
+  if (!reduced && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var delay = entry.target.getAttribute('data-d');
+          if (delay) { entry.target.style.setProperty('--d', delay); }
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
+    doc.querySelectorAll('[data-rv]').forEach(function (el) { observer.observe(el); });
+  }
+
+  bindControls();
+  drawWall();
+  frame();
+})();
+</script>
+</body>
+</html>
