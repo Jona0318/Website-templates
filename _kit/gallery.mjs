@@ -30,6 +30,8 @@ const rows = list.map((t) => {
     t.scheme || 'dark',           // 9 licht/donker (light | dark | light+dark)
     t.sector || 'algemeen'        // 10 sector
   ];
+  // 11 optionele download-override (bv. Shopify-thema-zip die niet downloads/<slug>.zip heet)
+  if (t.download) { row.push(t.download); }
   return '    ' + JSON.stringify(row);
 }).join(',\n');
 

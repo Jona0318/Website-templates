@@ -5830,6 +5830,61 @@
           "Light"
         ]
       }
+    },
+    {
+      "id": 114,
+      "slug": "114-aurum",
+      "path": "templates/114-aurum/",
+      "title": "Aurum — Shopify-thema",
+      "name": "Aurum",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/aurum-shopify-theme.zip",
+      "palette": [
+        "#0A0A0A",
+        "#C89B3C",
+        "#141414",
+        "#F5F2EC",
+        "#2A2A2A"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Assistant"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid). Zwart met goud-accent (#C89B3C), premium uitstraling. Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Aurum — premium Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify-thema in zwart × goud (#C89B3C): nette hero, uitgelichte producten, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🛒",
+        "grad": [
+          "#C89B3C",
+          "#0A0A0A"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Premium"
+        ]
+      }
     }
   ]
 }
