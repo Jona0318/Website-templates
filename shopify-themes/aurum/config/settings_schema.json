@@ -14,25 +14,25 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "default": "#0A0A0A"
+        "default": "#F7F4EE"
       },
       {
         "type": "color",
         "id": "color_surface",
         "label": "Surface / cards",
-        "default": "#141414"
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Text",
-        "default": "#F5F2EC"
+        "default": "#161310"
       },
       {
         "type": "color",
         "id": "color_text_muted",
         "label": "Muted text",
-        "default": "#A39E94"
+        "default": "#6B655B"
       },
       {
         "type": "color",
@@ -50,7 +50,7 @@
         "type": "color",
         "id": "color_border",
         "label": "Borders",
-        "default": "#2A2A2A"
+        "default": "#E7E1D5"
       }
     ]
   },

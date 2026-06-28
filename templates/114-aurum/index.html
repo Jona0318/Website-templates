@@ -9,8 +9,8 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
   :root{
-    --bg:#0A0A0A; --surface:#141414; --text:#F5F2EC; --muted:#A39E94;
-    --accent:#C89B3C; --accent-text:#0A0A0A; --border:#2A2A2A; --radius:4px;
+    --bg:#F7F4EE; --surface:#FFFFFF; --text:#161310; --muted:#6B655B;
+    --accent:#C89B3C; --accent-text:#0A0A0A; --border:#E7E1D5; --radius:4px;
     --serif:"Playfair Display",Georgia,"Times New Roman",serif;
     --sans:"Assistant",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
@@ -37,7 +37,7 @@
 
   /* announce + header */
   .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;padding:.55rem 1rem;font-weight:600}
-  header.site{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  header.site{position:sticky;top:0;z-index:10;background:rgba(247,244,238,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:2rem}
   .logo{font-family:var(--serif);font-size:1.5rem;letter-spacing:.04em} .logo span{color:var(--accent)}
   .menu{display:flex;gap:2rem} .menu a{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)} .menu a:hover{color:var(--text)}
@@ -48,13 +48,13 @@
   /* hero */
   .hero{position:relative;min-height:clamp(520px,80vh,760px);display:flex;align-items:center;overflow:hidden}
   .hero__bg{position:absolute;inset:0;z-index:0;background:
-     radial-gradient(60% 50% at 75% 25%,rgba(200,155,60,.30),transparent 60%),
-     radial-gradient(80% 70% at 20% 80%,rgba(200,155,60,.10),transparent 60%),
-     linear-gradient(180deg,#111,#070707)}
-  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
+     radial-gradient(60% 50% at 78% 28%,rgba(200,155,60,.20),transparent 60%),
+     radial-gradient(80% 70% at 18% 82%,rgba(200,155,60,.08),transparent 60%),
+     linear-gradient(180deg,#FBF9F4,#F1ECE2)}
+  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
   .hero__bg::after{content:"";position:absolute;inset:0;z-index:1;background:
-     linear-gradient(180deg,rgba(10,10,10,.35),rgba(10,10,10,.82)),
-     radial-gradient(115% 90% at 12% 18%,transparent 35%,rgba(10,10,10,.7))}
+     linear-gradient(90deg,rgba(247,244,238,.94) 0%,rgba(247,244,238,.62) 42%,rgba(247,244,238,.18) 100%),
+     linear-gradient(180deg,rgba(247,244,238,.15),rgba(247,244,238,.55))}
   .hero__inner{position:relative;z-index:2;max-width:640px}
   .hero h1{font-size:clamp(2.6rem,6vw,4.75rem);margin-bottom:1.25rem}
   .hero h1 em{font-style:italic;color:var(--accent)}
@@ -74,7 +74,7 @@
   .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
   .card-p{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.3s;display:flex;flex-direction:column}
   .card-p:hover{transform:translateY(-4px);border-color:var(--accent)}
-  .card-p__img{aspect-ratio:3/4;position:relative;overflow:hidden;background:#0d0d0d}
+  .card-p__img{aspect-ratio:3/4;position:relative;overflow:hidden;background:#EFE7DA}
   .card-p__img i{position:absolute;inset:0;display:block}
   .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
   .card-p:hover .card-p__img img{transform:scale(1.04)}
@@ -89,7 +89,7 @@
   /* split */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
   .split__media{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:var(--radius);background:
-     radial-gradient(70% 60% at 30% 20%,rgba(200,155,60,.25),transparent 60%),linear-gradient(160deg,#1b1b1b,#0c0c0c);
+     radial-gradient(70% 60% at 30% 20%,rgba(200,155,60,.20),transparent 60%),linear-gradient(160deg,#F2ECE0,#E7DFD0);
      border:1px solid var(--border)}
   .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .split__content p{color:var(--muted)}
@@ -109,7 +109,7 @@
   .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
 
   /* import note */
-  .import{background:linear-gradient(160deg,#15120b,#0c0c0c);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(28px,5vw,56px)}
+  .import{background:linear-gradient(160deg,#FBF6EA,#F2EAD8);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(28px,5vw,56px)}
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1.5rem;counter-reset:s}
   .step{padding:1.25rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}
   .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:999px;background:var(--accent);color:var(--accent-text);font-weight:700;margin-bottom:.6rem;font-family:var(--serif)}
@@ -179,10 +179,10 @@
       <p>Met de hand geselecteerde stukken uit onze nieuwste drop.</p>
     </div>
     <div class="grid">
-      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Sale</span><i style="background:radial-gradient(70% 60% at 40% 25%,rgba(200,155,60,.35),transparent 60%),linear-gradient(160deg,#23201a,#0d0d0d)"></i><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Signature horloge met leren band" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Signature Horloge</span><span class="card-p__price">€ 249,00 <s>€ 299,00</s></span></div></a>
-      <a class="card-p" href="#"><div class="card-p__img"><i style="background:radial-gradient(70% 60% at 60% 30%,rgba(200,155,60,.28),transparent 60%),linear-gradient(160deg,#1a1a1f,#0c0c0c)"></i><img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=700&q=80" alt="Leren portefeuille" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Leren Portefeuille</span><span class="card-p__price">€ 89,00</span></div></a>
-      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Nieuw</span><i style="background:radial-gradient(60% 60% at 30% 70%,rgba(200,155,60,.30),transparent 60%),linear-gradient(160deg,#201d17,#0b0b0b)"></i><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80" alt="Gouden ring" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Gouden Ring</span><span class="card-p__price">€ 129,00</span></div></a>
-      <a class="card-p" href="#"><div class="card-p__img"><i style="background:radial-gradient(70% 50% at 50% 30%,rgba(200,155,60,.22),transparent 60%),linear-gradient(160deg,#17171a,#0a0a0a)"></i><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=80" alt="Eau de parfum flacon" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Eau de Parfum</span><span class="card-p__price">€ 95,00</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Sale</span><i style="background:radial-gradient(70% 60% at 40% 25%,rgba(200,155,60,.22),transparent 60%),linear-gradient(160deg,#F3ECDE,#E8DFCD)"></i><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Signature horloge met leren band" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Signature Horloge</span><span class="card-p__price">€ 249,00 <s>€ 299,00</s></span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><i style="background:radial-gradient(70% 60% at 60% 30%,rgba(200,155,60,.18),transparent 60%),linear-gradient(160deg,#F1ECE3,#E6DECF)"></i><img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=700&q=80" alt="Leren portefeuille" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Leren Portefeuille</span><span class="card-p__price">€ 89,00</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Nieuw</span><i style="background:radial-gradient(60% 60% at 30% 70%,rgba(200,155,60,.22),transparent 60%),linear-gradient(160deg,#F4EEDF,#E9E0CE)"></i><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80" alt="Gouden ring" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Gouden Ring</span><span class="card-p__price">€ 129,00</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><i style="background:radial-gradient(70% 50% at 50% 30%,rgba(200,155,60,.16),transparent 60%),linear-gradient(160deg,#F1ECE3,#E5DDCC)"></i><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=80" alt="Eau de parfum flacon" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Eau de Parfum</span><span class="card-p__price">€ 95,00</span></div></a>
     </div>
   </div>
 </section>
