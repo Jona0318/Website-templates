@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#0A0A0A",
+    "color_surface": "#141414",
+    "color_text": "#F5F2EC",
+    "color_text_muted": "#A39E94",
+    "color_accent": "#C89B3C",
+    "color_accent_text": "#0A0A0A",
+    "color_border": "#2A2A2A",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 4,
+    "logo_width": 140
+  },
+  "presets": {
+    "Aurum": {
+      "color_background": "#0A0A0A",
+      "color_surface": "#141414",
+      "color_text": "#F5F2EC",
+      "color_text_muted": "#A39E94",
+      "color_accent": "#C89B3C",
+      "color_accent_text": "#0A0A0A",
+      "color_border": "#2A2A2A",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 4,
+      "logo_width": 140
+    }
+  }
+}
