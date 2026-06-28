@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurum — premium Shopify-thema (zwart × goud)</title>
+<meta name="description" content="Aurum: een premium, direct importeerbaar Shopify-thema in zwart met goud-accent (#C89B3C). Nette hero, productverkoop, modern en luxe.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A0A0A'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='%23C89B3C' font-family='serif'>A</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
+  :root{
+    --bg:#0A0A0A; --surface:#141414; --text:#F5F2EC; --muted:#A39E94;
+    --accent:#C89B3C; --accent-text:#0A0A0A; --border:#2A2A2A; --radius:4px;
+    --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:"Assistant",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.1;margin:0 0 .5em;letter-spacing:-.01em}
+  h1{font-size:clamp(2.4rem,5vw,4rem)} h2{font-size:clamp(1.9rem,3.4vw,2.75rem)} h3{font-size:1.15rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  .wrap{max-width:1280px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;color:var(--accent);margin-bottom:1rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 2rem;font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;transition:.25s}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .section{padding-block:clamp(48px,8vw,96px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:linear-gradient(90deg,#C89B3C,#e7c879);color:#0A0A0A;text-align:center;font-size:.8rem;font-weight:700;letter-spacing:.04em;padding:.6rem 1rem}
+  .ribbon a{border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* announce + header */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;padding:.55rem 1rem;font-weight:600}
+  header.site{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.5rem;letter-spacing:.04em} .logo span{color:var(--accent)}
+  .menu{display:flex;gap:2rem} .menu a{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)} .menu a:hover{color:var(--text)}
+  .icons{display:flex;gap:1rem;align-items:center}
+  .icons svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .cart-pill{background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.7rem;font-weight:700;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+
+  /* hero */
+  .hero{position:relative;min-height:clamp(520px,80vh,760px);display:flex;align-items:center;overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:
+     radial-gradient(60% 50% at 75% 25%,rgba(200,155,60,.30),transparent 60%),
+     radial-gradient(80% 70% at 20% 80%,rgba(200,155,60,.10),transparent 60%),
+     linear-gradient(180deg,#111,#070707)}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:
+     repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 2px,transparent 2px 22px)}
+  .hero__inner{position:relative;z-index:1;max-width:640px}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.75rem);margin-bottom:1.25rem}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p{font-size:1.1rem;color:var(--muted);max-width:480px;margin-bottom:2rem}
+  .rule{width:64px;height:2px;background:var(--accent);margin-bottom:1.4rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+
+  /* trust */
+  .trust{border-block:1px solid var(--border);background:var(--surface)}
+  .trust__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;padding-block:2rem}
+  .trust__item{display:flex;gap:.85rem;align-items:center;justify-content:center}
+  .trust__item svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.6;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.95rem} .trust__item span{color:var(--muted);font-size:.82rem}
+
+  /* products */
+  .head{text-align:center;max-width:640px;margin:0 auto 3rem} .head p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .card-p{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+  .card-p:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .card-p__img{aspect-ratio:3/4;position:relative;overflow:hidden}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__badge{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--accent-text);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .6rem;border-radius:var(--radius);z-index:2}
+  .card-p__body{padding:1.05rem 1.15rem 1.3rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
+  .card-p__vendor{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .card-p__title{font-family:var(--serif);font-size:1.08rem}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:auto;padding-top:.5rem;font-weight:600}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.9em;margin-left:.4rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+  .split__media{aspect-ratio:4/5;border-radius:var(--radius);background:
+     radial-gradient(70% 60% at 30% 20%,rgba(200,155,60,.25),transparent 60%),linear-gradient(160deg,#1b1b1b,#0c0c0c);
+     border:1px solid var(--border)}
+  .split__content p{color:var(--muted)}
+
+  /* newsletter */
+  .news{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(40px,6vw,72px);text-align:center}
+  .news__form{display:flex;gap:.75rem;max-width:460px;margin:1.5rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:1px solid var(--border);padding:.95rem 1.2rem;border-radius:var(--radius);font-family:inherit}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(48px,6vw,72px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-size:1.5rem;margin-bottom:1rem} .f-logo span{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:300px}
+  .f-col h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem} .f-col a{font-size:.92rem} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  /* import note */
+  .import{background:linear-gradient(160deg,#15120b,#0c0c0c);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(28px,5vw,56px)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1.5rem;counter-reset:s}
+  .step{padding:1.25rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:999px;background:var(--accent);color:var(--accent-text);font-weight:700;margin-bottom:.6rem;font-family:var(--serif)}
+  .step strong{display:block;margin-bottom:.25rem}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  @media(max-width:990px){.grid{grid-template-columns:repeat(3,1fr)}.f-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:749px){.menu{display:none}.grid{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.news__form{flex-direction:column}}
+  @media(max-width:480px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/aurum-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €100 — met zorg gemaakt</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#">Aurum<span>.</span></a>
+    <nav class="menu">
+      <a href="#shop">Shop</a><a href="#craft">Atelier</a><a href="#import">Shopify</a><a href="#">Journal</a>
+    </nav>
+    <div class="icons">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span style="display:inline-flex;gap:.4rem;align-items:center">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill">2</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="wrap hero__inner">
+    <span class="eyebrow">Nieuwe collectie</span>
+    <div class="rule"></div>
+    <h1>Tijdloos ontwerp, <em>gevat in goud</em></h1>
+    <p>Een zorgvuldig samengestelde collectie premium objecten, gemaakt om een leven lang mee te gaan.</p>
+    <div class="cta-row">
+      <a href="#shop" class="btn btn--primary">Shop de collectie</a>
+      <a href="#craft" class="btn btn--ghost">Ons verhaal</a>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €100</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg><div><strong>30 dagen retour</strong><span>Zonder gedoe</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Gemaakt om te blijven</strong><span>Alleen premium materialen</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Bestsellers</span>
+      <h2>Uitgelichte producten</h2>
+      <p>Met de hand geselecteerde stukken uit onze nieuwste drop.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Sale</span><i style="background:radial-gradient(70% 60% at 40% 25%,rgba(200,155,60,.35),transparent 60%),linear-gradient(160deg,#23201a,#0d0d0d)"></i></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Signature Horloge</span><span class="card-p__price">€ 249,00 <s>€ 299,00</s></span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><i style="background:radial-gradient(70% 60% at 60% 30%,rgba(200,155,60,.28),transparent 60%),linear-gradient(160deg,#1a1a1f,#0c0c0c)"></i></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Leren Portefeuille</span><span class="card-p__price">€ 89,00</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Nieuw</span><i style="background:radial-gradient(60% 60% at 30% 70%,rgba(200,155,60,.30),transparent 60%),linear-gradient(160deg,#201d17,#0b0b0b)"></i></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Gouden Manchetknopen</span><span class="card-p__price">€ 129,00</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><i style="background:radial-gradient(70% 50% at 50% 30%,rgba(200,155,60,.22),transparent 60%),linear-gradient(160deg,#17171a,#0a0a0a)"></i></div><div class="card-p__body"><span class="card-p__vendor">Aurum</span><span class="card-p__title">Zijden Sjaal</span><span class="card-p__price">€ 75,00</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="craft" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media"></div>
+      <div class="split__content">
+        <span class="eyebrow">Ons atelier</span>
+        <h2>Met intentie ontworpen</h2>
+        <p>Elk stuk in onze collectie is gemaakt van zorgvuldig geselecteerde materialen en met de hand afgewerkt. Wij geloven in minder, maar beter — objecten die hun plek verdienen en mooi verouderen.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:18ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:60ch">Aurum is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="cta-row" style="margin-top:1rem">
+        <a class="btn btn--primary" href="../../downloads/aurum-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #C89B3C).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Word lid van de inner circle</h2>
+      <p style="color:var(--muted);max-width:460px;margin-inline:auto">Vroege toegang tot drops, privé-aanbiedingen en verhalen uit het atelier.</p>
+      <form class="news__form" onsubmit="return false">
+        <input type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Aurum<span>.</span></div>
+        <p>Premium objecten, gemaakt om te blijven. Een Shopify-thema in zwart met goud-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#">Alle producten</a></li><li><a href="#">Nieuw</a></li><li><a href="#">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#">Over ons</a></li><li><a href="#">Atelier</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Aurum. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

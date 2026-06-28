@@ -559,7 +559,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     ["110","110-kindred","Kindred - relatie-companion","Warm-editoriale SaaS-landing in royal blue x powder blush: levende warmtekaart waar relaties afkoelen en via een zacht zetje weer opwarmen.","signature","K","#3447aa","#fbeaeb",["Warmtekaart","Relaties","Signature"],"light","tech"],
     ["111","111-tessera","Tessera - tegelatelier","Keramisch wandatelier met een interactieve mozaiekwand: kies ruimte, patroon en palet en zie direct een proefvlak ontstaan.","signature","T","#164f63","#e8a928",["Mozaiekwand","Interieur","Signature"],"light","interieur"],
     ["112","112-karterij","Karterij Noord - routeatelier","Kaartenwinkel met interactief topografisch routepaneel: kies terrein, tempo en kaartstijl en zie de route direct mee veranderen.","signature","K","#214f3b","#c86735",["Routekaart","Reizen","Signature"],"light","reizen"],
-    ["113","113-metselaar","Arends — metsel- & timmerwerk","Rood-wit thema voor een metselaar & timmerman: 6 diensten, projectengrid, werkwijze en contactformulier.","maatwerk","🧱","#b91c1c","#7f1d1d",["Bouw","Maatwerk","Light"],"light","bouw"]
+    ["113","113-metselaar","Arends — metsel- & timmerwerk","Rood-wit thema voor een metselaar & timmerman: 6 diensten, projectengrid, werkwijze en contactformulier.","maatwerk","🧱","#b91c1c","#7f1d1d",["Bouw","Maatwerk","Light"],"light","bouw"],
+    ["114","114-aurum","Aurum — premium Shopify-thema","Direct importeerbaar Shopify-thema in zwart × goud (#C89B3C): nette hero, uitgelichte producten, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","🛒","#C89B3C","#0A0A0A",["Shopify","Webshop","Premium"],"dark","retail","downloads/aurum-shopify-theme.zip"]
   ];
   /* @gallery:end */
 
@@ -586,6 +587,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
   T.forEach(function (r) {
     var num = r[0], slug = r[1], title = r[2], desc = r[3], tier = r[4], emoji = r[5], g1 = r[6], g2 = r[7], tags = r[8] || [], scheme = r[9] || 'dark', sector = r[10] || 'algemeen';
+    var dlHref = r[11] || ('downloads/' + slug + '.zip');
     var wide = tier === 'flagship';
     var href = 'templates/' + slug + '/index.html';
     var card = doc.createElement('article');
@@ -613,7 +615,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
         '<button type="button" class="fav-btn' + (favSlugs.has(slug) ? ' is-fav' : '') + '" aria-pressed="' + (favSlugs.has(slug) ? 'true' : 'false') + '" aria-label="' + (favSlugs.has(slug) ? 'Verwijder uit' : 'Voeg toe aan') + ' favorieten">' +
           '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 13.5S1.5 9.5 1.5 5.5a3 3 0 0 1 6-1.2 3 3 0 0 1 6 1.2c0 4-6.5 8-6.5 8z"/></svg>' +
         '</button>' +
-        '<a class="dl" href="downloads/' + slug + '.zip" download aria-label="Download ' + esc(title) + ' als zip" title="Download als zip">' +
+        '<a class="dl" href="' + dlHref + '" download aria-label="Download ' + esc(title) + ' als zip" title="Download als zip">' +
           '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13h10"/></svg>' +
         '</a>' +
         (RECIPE_SLUGS.indexOf(slug) !== -1 ?
