@@ -28,10 +28,10 @@
       assign heading_font = settings.heading_font
     -%}
 
-    {{ body_font | font_face: font_display: 'swap' }}
-    {{ heading_font | font_face: font_display: 'swap' }}
-
     <style>
+      {{ body_font | font_face: font_display: 'swap' }}
+      {{ heading_font | font_face: font_display: 'swap' }}
+
       :root {
         --color-background: {{ settings.color_background }};
         --color-surface: {{ settings.color_surface }};
