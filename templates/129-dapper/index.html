@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dapper — speels Shopify-thema voor een speelgoedwinkel</title>
+<meta name="description" content="Dapper: een direct importeerbaar Shopify-thema voor een speelgoedwinkel — speels, rond en vrolijk. Duurzaam speelgoed dat blij maakt.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='12' fill='%23FF4D6D'/><circle cx='12' cy='13' r='3' fill='%23FFD93D'/><circle cx='21' cy='13' r='3' fill='%2374C947'/><path d='M9 21c2 3 12 3 14 0' stroke='%23fff' stroke-width='2.4' fill='none' stroke-linecap='round'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap');
+  :root{
+    --bg:#FFF8EE; --surface:#FFFFFF; --text:#2B2138; --muted:#6E6480;
+    --accent:#FF4D6D; --accent-text:#FFFFFF; --border:#F0E6D6;
+    --yellow:#FFD93D; --green:#74C947; --blue:#4DB8E8; --pink:#FF4D6D;
+    --radius:26px; --radius-sm:16px;
+    --serif:"Baloo 2",system-ui,sans-serif;
+    --sans:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .4em;letter-spacing:-.01em;font-weight:800}
+  h1{font-size:clamp(2.6rem,6vw,4.6rem)} h2{font-size:clamp(2rem,4vw,3rem)} h3{font-size:1.2rem;font-weight:700}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+  .wrap{max-width:1200px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--serif);font-weight:700;font-size:.85rem;color:var(--accent);background:#FFE5EB;border-radius:999px;padding:.4rem 1rem;margin-bottom:1.1rem;transform:rotate(-2deg)}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2rem;font-family:var(--serif);font-weight:700;font-size:1rem;border:none;border-radius:999px;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+  .btn--primary{background:var(--accent);color:var(--accent-text);box-shadow:0 6px 0 #d63757}
+  .btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 0 #d63757}
+  .btn--primary:active{transform:translateY(4px);box-shadow:0 2px 0 #d63757}
+  .btn--ghost{background:var(--surface);color:var(--text);box-shadow:0 6px 0 var(--border)}
+  .btn--ghost:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--border)}
+  .btn--sun{background:var(--yellow);color:var(--text);box-shadow:0 6px 0 #e0b400}
+  .btn--sun:hover{transform:translateY(-2px);box-shadow:0 8px 0 #e0b400}
+  .section{padding-block:clamp(48px,8vw,92px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:linear-gradient(90deg,var(--pink),var(--yellow) 50%,var(--green));color:#2B2138;text-align:center;font-family:var(--serif);font-size:.85rem;font-weight:700;padding:.6rem 1rem}
+  .ribbon a{text-decoration:underline;text-underline-offset:2px}
+
+  /* announce */
+  .announce{background:var(--text);color:#fff;text-align:center;font-size:.85rem;font-weight:700;padding:.6rem 1rem;font-family:var(--serif)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(255,248,238,.9);backdrop-filter:blur(12px);border-bottom:3px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:1.5rem}
+  .logo{font-family:var(--serif);font-size:1.85rem;font-weight:800;display:inline-flex;align-items:center;gap:.5rem}
+  .logo .dot{width:14px;height:14px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 4px #FFE5EB}
+  .logo b{color:var(--accent)}
+  .menu{display:flex;gap:1.8rem}
+  .menu a{font-family:var(--serif);font-weight:700;font-size:1rem;color:var(--muted);transition:color .15s}
+  .menu a:hover{color:var(--accent)}
+  .icons{display:flex;gap:.7rem;align-items:center}
+  .icon-btn{width:44px;height:44px;border-radius:50%;background:var(--surface);border:2px solid var(--border);display:inline-flex;align-items:center;justify-content:center;position:relative;transition:transform .15s,border-color .15s}
+  .icon-btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .icon-btn svg{width:21px;height:21px;stroke:var(--text);fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  .cart-pill{position:absolute;top:-5px;right:-5px;background:var(--accent);color:#fff;border-radius:999px;font-family:var(--serif);font-size:.72rem;font-weight:700;min-width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border:2px solid var(--bg)}
+
+  /* hero */
+  .hero{position:relative;padding-block:clamp(48px,7vw,84px);overflow:hidden}
+  .hero__blob{position:absolute;border-radius:50%;z-index:0;filter:blur(2px);opacity:.55}
+  .b1{width:340px;height:340px;background:var(--yellow);top:-90px;right:6%}
+  .b2{width:220px;height:220px;background:var(--blue);bottom:-70px;left:-40px}
+  .b3{width:150px;height:150px;background:var(--green);top:40%;left:46%}
+  .hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,56px);align-items:center}
+  .hero h1 em{font-style:normal;color:var(--accent);position:relative;display:inline-block}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.18em;background:var(--yellow);border-radius:999px;z-index:-1}
+  .hero p{font-size:1.2rem;color:var(--muted);max-width:440px;margin-bottom:1.8rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .hero__media{position:relative}
+  .hero__photo{position:relative;aspect-ratio:1/1;border-radius:42% 58% 56% 44%/48% 42% 58% 52%;overflow:hidden;border:6px solid #fff;box-shadow:0 24px 50px rgba(43,33,56,.16);background:
+     radial-gradient(70% 60% at 30% 25%,rgba(255,217,61,.6),transparent 60%),
+     linear-gradient(150deg,#FFE5EB,#D9F0FF)}
+  .hero__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .sticker{position:absolute;font-family:var(--serif);font-weight:800;color:var(--text);background:var(--yellow);border:4px solid #fff;border-radius:50%;width:88px;height:88px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.95rem;line-height:1;box-shadow:0 8px 18px rgba(43,33,56,.18);z-index:2}
+  .st1{top:-14px;left:-14px;background:var(--green);color:#fff;transform:rotate(-12deg)}
+  .st2{bottom:6px;right:-18px;background:var(--blue);color:#fff;transform:rotate(10deg);width:96px;height:96px;font-size:.85rem}
+
+  /* trust */
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .trust__item{background:var(--surface);border:3px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.2rem;text-align:center;transition:transform .2s}
+  .trust__item:hover{transform:translateY(-4px) rotate(-1deg)}
+  .trust__ico{width:54px;height:54px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:.7rem}
+  .trust__item:nth-child(1) .trust__ico{background:#FFE5EB}
+  .trust__item:nth-child(2) .trust__ico{background:#E4F6D9}
+  .trust__item:nth-child(3) .trust__ico{background:#FFF3C7}
+  .trust__item:nth-child(4) .trust__ico{background:#D9F0FF}
+  .trust__ico svg{width:26px;height:26px;stroke:var(--text);fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+  .trust__item strong{display:block;font-family:var(--serif);font-size:1.05rem}
+  .trust__item span{color:var(--muted);font-size:.88rem}
+
+  /* products */
+  .head{text-align:center;max-width:640px;margin:0 auto 3rem}
+  .head p{color:var(--muted);font-size:1.1rem}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .card-p{background:var(--surface);border:3px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .22s ease, box-shadow .22s ease}
+  .card-p:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(43,33,56,.12);border-color:var(--accent)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;margin:12px;border-radius:var(--radius-sm);background:linear-gradient(150deg,#FFF3C7,#D9F0FF)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.06) rotate(-1deg)}
+  .badge{position:absolute;top:10px;left:10px;font-family:var(--serif);font-weight:700;font-size:.72rem;color:#fff;background:var(--accent);padding:.28rem .7rem;border-radius:999px;z-index:2;box-shadow:0 4px 8px rgba(43,33,56,.16)}
+  .badge--new{background:var(--green)} .badge--sale{background:var(--accent)}
+  .age{position:absolute;top:10px;right:10px;font-family:var(--serif);font-weight:800;font-size:.78rem;color:var(--text);background:var(--yellow);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;border:3px solid #fff;box-shadow:0 4px 8px rgba(43,33,56,.16)}
+  .card-p__body{padding:.4rem 1.1rem 1.3rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+  .card-p__title{font-family:var(--serif);font-weight:700;font-size:1.12rem}
+  .card-p__price{margin-top:auto;padding-top:.4rem;font-family:var(--serif);font-weight:800;color:var(--accent);font-size:1.2rem}
+  .card-p__price s{color:var(--muted);font-weight:600;font-size:.85em;margin-left:.4rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+  .split__media{position:relative;aspect-ratio:4/5;border-radius:48% 52% 56% 44%/52% 48% 52% 48%;overflow:hidden;border:6px solid #fff;box-shadow:0 22px 44px rgba(43,33,56,.14);background:linear-gradient(160deg,#E4F6D9,#D9F0FF)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content p{color:var(--muted);font-size:1.1rem}
+
+  /* import */
+  .import{background:var(--surface);border:3px dashed var(--accent);border-radius:36px;padding:clamp(30px,5vw,60px);position:relative;overflow:hidden}
+  .import::before{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:var(--yellow);opacity:.25;top:-70px;right:-50px}
+  .import .eyebrow{background:#E4F6D9;color:var(--green)}
+  .import p{color:var(--muted);max-width:62ch}
+  .import code{background:#FFE5EB;color:var(--accent);padding:.1em .45em;border-radius:8px;font-weight:700}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:1.8rem;counter-reset:s}
+  .step{background:var(--bg);border:3px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.3rem;position:relative}
+  .step::before{counter-increment:s;content:counter(s);display:flex;width:42px;height:42px;align-items:center;justify-content:center;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--serif);font-weight:800;font-size:1.2rem;margin-bottom:.8rem}
+  .step:nth-child(2)::before{background:var(--blue)}
+  .step:nth-child(3)::before{background:var(--green)}
+  .step strong{display:block;font-family:var(--serif);font-size:1.1rem;margin-bottom:.25rem}
+  .step span{color:var(--muted);font-size:.92rem}
+
+  /* newsletter */
+  .news{background:linear-gradient(150deg,var(--accent),#ff7a93);color:#fff;border-radius:36px;padding:clamp(40px,6vw,72px);text-align:center;position:relative;overflow:hidden}
+  .news::before,.news::after{content:"";position:absolute;border-radius:50%;opacity:.25}
+  .news::before{width:180px;height:180px;background:var(--yellow);top:-60px;left:-50px}
+  .news::after{width:150px;height:150px;background:var(--blue);bottom:-50px;right:-40px}
+  .news *{position:relative;z-index:1}
+  .news .eyebrow{background:rgba(255,255,255,.22);color:#fff}
+  .news p{color:rgba(255,255,255,.92);max-width:460px;margin-inline:auto;font-size:1.1rem}
+  .news__form{display:flex;gap:.75rem;max-width:480px;margin:1.6rem auto 0}
+  .news__form input{flex:1;background:#fff;color:var(--text);border:none;padding:1rem 1.3rem;border-radius:999px;font-family:inherit;font-size:1rem}
+
+  /* footer */
+  footer.site{background:var(--text);color:#fff;padding-block:clamp(48px,6vw,72px) 2rem;border-radius:48px 48px 0 0;margin-top:clamp(48px,8vw,92px)}
+  .f-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-weight:800;font-size:1.7rem;margin-bottom:1rem;display:inline-flex;align-items:center;gap:.5rem}
+  .f-logo b{color:var(--yellow)}
+  .f-grid>div>p{color:rgba(255,255,255,.7);max-width:320px}
+  .f-col h4{font-family:var(--serif);font-size:1rem;color:var(--yellow);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+  .f-col a{color:rgba(255,255,255,.8)} .f-col a:hover{color:#fff}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:rgba(255,255,255,.6);font-size:.85rem}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media(max-width:990px){
+    .hero__grid{grid-template-columns:1fr;text-align:center}
+    .hero p{margin-inline:auto}.cta-row{justify-content:center}
+    .hero__media{max-width:440px;margin:0 auto}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .menu{display:none}
+    .steps{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+  }
+  @media(max-width:430px){.grid{grid-template-columns:1fr}.trust__grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/dapper-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">🎁 Gratis verzending vanaf €35 — cadeauklaar ingepakt</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="dot" aria-hidden="true"></span>Dap<b>per</b></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Speelgoed</a><a href="#import">Shopify</a><a href="#shop">Leeftijd</a>
+    </nav>
+    <div class="icons">
+      <a class="icon-btn" href="#" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </a>
+      <a class="icon-btn" href="#" aria-label="Winkelmandje, 3 artikelen">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero__blob b1" aria-hidden="true"></span>
+  <span class="hero__blob b2" aria-hidden="true"></span>
+  <span class="hero__blob b3" aria-hidden="true"></span>
+  <div class="wrap hero__grid">
+    <div class="hero__inner">
+      <span class="eyebrow">🚀 Voor kleine ontdekkers</span>
+      <h1>Speelgoed dat <em>blij maakt</em></h1>
+      <p>Duurzaam en doordacht speelgoed dat de fantasie prikkelt. Stevig, veilig en gemaakt om mee te spelen.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop speelgoed</a>
+        <a href="#shop" class="btn btn--ghost">Op leeftijd</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <span class="sticker st1" aria-hidden="true">100%<br>hout</span>
+      <span class="sticker st2" aria-hidden="true">EN71<br>getest</span>
+      <div class="hero__photo">
+        <img src="https://images.unsplash.com/photo-1558877385-8c1b8e0a3f49?auto=format&fit=crop&w=1600&q=80" alt="Kleurrijk duurzaam speelgoed netjes uitgestald" loading="eager" onerror="this.remove()">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="trust__grid">
+      <div class="trust__item">
+        <span class="trust__ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="15" height="11" rx="2"/><path d="M16 9h4l3 3v5h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span>
+        <strong>Gratis verzending</strong><span>Bij orders boven €35</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <strong>Veilig &amp; getest</strong><span>EN71-gecertificeerd</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13M12 8S9 3 6.5 4.5 9 8 12 8s5-3.5 5.5-3.5S15 8 12 8z"/></svg></span>
+        <strong>Cadeauverpakking</strong><span>Klaar om te geven</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__ico"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg></span>
+        <strong>Snel retour</strong><span>30 dagen zonder gedoe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="shop" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">⭐ Bestsellers</span>
+      <h2>Uitgelicht speelgoed</h2>
+      <p>Met de hand gekozen favorieten voor elke leeftijd.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="age" aria-label="Vanaf 1 jaar">1+</span>
+          <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=700&q=80" alt="Houten Blokkenset" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Houten Blokkenset</span>
+          <span class="card-p__price">€ 29,95</span>
+        </div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="badge badge--new">Nieuw</span>
+          <span class="age" aria-label="Vanaf 1 jaar">1+</span>
+          <img src="https://images.unsplash.com/photo-1530325553146-7ee0b3a7e9e7?auto=format&fit=crop&w=700&q=80" alt="Knuffel Vos" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Knuffel Vos</span>
+          <span class="card-p__price">€ 19,95</span>
+        </div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="age" aria-label="Vanaf 3 jaar">3+</span>
+          <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=700&q=80" alt="Puzzel Boerderij" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Puzzel Boerderij</span>
+          <span class="card-p__price">€ 14,95</span>
+        </div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="badge badge--sale">Sale</span>
+          <span class="age" aria-label="Vanaf 6 jaar">6+</span>
+          <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80" alt="Tekenset" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Tekenset</span>
+          <span class="card-p__price">€ 12,95 <s>€ 16,95</s></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=900&q=80" alt="Kind dat speelt met kleurrijk speelgoed" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">🧸 Ons atelier</span>
+        <h2>Gemaakt om mee te spelen</h2>
+        <p>We kiezen speelgoed dat langer meegaat dan een trend — stevig, veilig en open, zodat kinderen blijven terugkomen.</p>
+        <a href="#shop" class="btn btn--sun">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">✅ Shopify-ready</span>
+      <h2 style="max-width:20ch">Dit thema importeer je zo in je eigen winkel</h2>
+      <p>Dapper is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste mappenstructuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code> en <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="cta-row" style="margin-top:1rem">
+        <a class="btn btn--primary" href="../../downloads/dapper-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #FF4D6D).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen!</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">💌 Blijf op de hoogte</span>
+      <h2>Word lid van de speelclub</h2>
+      <p>Nieuwe binnenkomers, cadeau-ideeën en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false" aria-label="Aanmelden nieuwsbrief">
+        <label for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--sun" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><span class="dot" aria-hidden="true"></span>Dap<b>per</b></div>
+        <p>Duurzaam speelgoed dat blij maakt. Een Shopify-thema in vrolijke kleuren.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#">Alle speelgoed</a></li><li><a href="#">Nieuw</a></li><li><a href="#">Sale</a></li><li><a href="#">Op leeftijd</a></li></ul></div>
+      <div class="f-col"><h4>Over Dapper</h4><ul><li><a href="#">Ons verhaal</a></li><li><a href="#">Duurzaamheid</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Hulp</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Veelgestelde vragen</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Dapper. Met liefde gemaakt.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison — Shopify-thema voor wonen &amp; interieur (taupe × rust)</title>
+<meta name="description" content="Maison: importeerbaar Shopify-thema voor wonen en interieur — warm, minimaal en redactioneel. Crème met rust-accent (#B0563D).">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F1ECE5'/><text x='16' y='23' font-size='19' text-anchor='middle' fill='%23B0563D' font-family='Georgia,serif' font-style='italic'>M</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600&display=swap');
+  :root{
+    --bg:#F1ECE5; --surface:#FFFFFF; --text:#25201B; --muted:#6F665A;
+    --accent:#B0563D; --accent-text:#FFFFFF; --border:#E4DBCD;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.06;margin:0 0 .5em;font-weight:500;letter-spacing:-.015em}
+  h1{font-size:clamp(2.8rem,7vw,5.5rem)} h2{font-size:clamp(2rem,4vw,3.2rem)} h3{font-size:1.2rem}
+  h1 em,h2 em{font-style:italic;color:var(--accent);font-weight:500}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:28px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:.32em;font-size:.7rem;font-weight:600;color:var(--accent);margin-bottom:1.1rem}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2.1rem;font-family:var(--sans);font-weight:500;font-size:.82rem;letter-spacing:.06em;cursor:pointer;border:1px solid var(--text);border-radius:999px;background:transparent;color:var(--text);transition:.3s ease}
+  .btn--primary{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:transparent;color:var(--accent)}
+  .btn--ghost:hover{background:var(--text);color:var(--bg)}
+  .btn--accent{border-color:var(--accent);color:var(--accent)}
+  .btn--accent:hover{background:var(--accent);color:var(--accent-text)}
+  .section{padding-block:clamp(56px,9vw,110px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:var(--bg);text-align:center;font-size:.78rem;letter-spacing:.04em;padding:.65rem 1rem}
+  .ribbon a{color:#E8B49F;border-bottom:1px solid currentColor;padding-bottom:1px;font-weight:600}
+  .ribbon a:hover{color:#fff}
+
+  /* announce + header */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;padding:.55rem 1rem;font-weight:500}
+  header.site{position:sticky;top:0;z-index:20;background:rgba(241,236,229,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.75rem;font-style:italic;letter-spacing:.01em}
+  .logo b{font-style:normal;font-weight:500}
+  .menu{display:flex;gap:2.2rem}
+  .menu a{font-size:.82rem;letter-spacing:.04em;color:var(--muted);position:relative}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--accent);transition:.3s}
+  .menu a:hover{color:var(--text)} .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;cursor:pointer;padding:4px;display:inline-flex}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .cart-btn{position:relative}
+  .cart-pill{position:absolute;top:-4px;right:-6px;background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.62rem;font-weight:600;min-width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
+
+  /* hero */
+  .hero{padding-top:clamp(40px,6vw,72px)}
+  .hero__grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,4vw,64px);align-items:center}
+  .hero h1{margin-bottom:1.4rem}
+  .hero p{font-size:1.12rem;color:var(--muted);max-width:42ch;margin-bottom:2rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .hero__media{position:relative;aspect-ratio:4/5;border-radius:2px;overflow:hidden;background:
+     radial-gradient(80% 60% at 70% 20%,rgba(176,86,61,.22),transparent 60%),
+     linear-gradient(150deg,#E7DCCB,#D8C6B0)}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__tag{position:absolute;bottom:18px;left:18px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:.5rem 1rem;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+  /* trust */
+  .trust{border-block:1px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{display:flex;gap:.9rem;align-items:flex-start;padding:1.8rem 1.4rem;border-left:1px solid var(--border)}
+  .trust__item:first-child{border-left:none}
+  .trust__item svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.5;flex:0 0 auto;margin-top:2px}
+  .trust__item strong{display:block;font-size:.92rem;font-weight:600} .trust__item span{color:var(--muted);font-size:.82rem}
+
+  /* products */
+  .head{max-width:680px;margin-bottom:3rem}
+  .head--row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;max-width:none}
+  .head p{color:var(--muted);margin:0}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 24px}
+  .card-p{display:flex;flex-direction:column}
+  .card-p__img{aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:2px;background:linear-gradient(155deg,#E9DECD,#D9C8B2)}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .7s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:14px;left:14px;background:var(--surface);color:var(--accent);font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.34rem .7rem;border-radius:999px;z-index:2}
+  .card-p__badge--sale{background:var(--accent);color:var(--accent-text)}
+  .card-p__quick{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;background:var(--surface);color:var(--text);text-align:center;font-size:.76rem;letter-spacing:.06em;padding:.7rem;border-radius:999px;opacity:0;transform:translateY(8px);transition:.35s}
+  .card-p:hover .card-p__quick,.card-p:focus-within .card-p__quick{opacity:1;transform:translateY(0)}
+  .card-p__body{padding:1.1rem .2rem 0}
+  .card-p__title{font-family:var(--serif);font-size:1.15rem;font-weight:500}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:.35rem;font-size:.92rem;font-weight:500;color:var(--muted)}
+  .card-p__price s{margin-right:.5rem;color:#b3a892}
+  .card-p__price ins{color:var(--accent);text-decoration:none}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:5/6;border-radius:2px;background:
+     radial-gradient(70% 60% at 30% 20%,rgba(176,86,61,.20),transparent 60%),linear-gradient(160deg,#E8DDCC,#D6C4AE)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content p{color:var(--muted);font-size:1.05rem;max-width:46ch}
+
+  /* import note */
+  .import{background:var(--text);color:var(--bg);border-radius:2px;padding:clamp(32px,5vw,68px)}
+  .import .eyebrow{color:#E8B49F} .import .eyebrow::before{background:#E8B49F}
+  .import h2{color:var(--bg)}
+  .import p{color:#c7bdae;max-width:62ch}
+  .import code{background:rgba(255,255,255,.08);padding:.1em .4em;border-radius:3px;font-size:.86em;color:#E8B49F}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;counter-reset:s}
+  .step{padding:1.5rem;border:1px solid rgba(255,255,255,.14);border-radius:2px}
+  .step::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--serif);font-size:1.5rem;color:#E8B49F;margin-bottom:.6rem}
+  .step strong{display:block;margin-bottom:.3rem;color:var(--bg);font-weight:600}
+  .step span{color:#c7bdae;font-size:.9rem}
+
+  /* newsletter */
+  .news{text-align:center;max-width:640px;margin-inline:auto}
+  .news p{color:var(--muted)}
+  .news__form{display:flex;gap:.75rem;max-width:480px;margin:1.8rem auto 0}
+  .news__form input{flex:1;background:var(--surface);color:var(--text);border:1px solid var(--border);padding:1rem 1.3rem;border-radius:999px;font-family:inherit;font-size:.92rem}
+  .news__form input:focus-visible{border-color:var(--accent)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);padding-block:clamp(52px,6vw,80px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-style:italic;font-size:1.6rem;margin-bottom:1rem}
+  .f-logo b{font-style:normal;font-weight:500}
+  .f-grid>div>p{color:var(--muted);max-width:32ch}
+  .f-col h4{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.65rem} .f-col a{font-size:.92rem;color:var(--muted)} .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:980px){
+    .hero__grid{grid-template-columns:1fr} .hero__media{aspect-ratio:16/10;order:-1}
+    .grid{grid-template-columns:repeat(2,1fr)} .trust__grid{grid-template-columns:1fr 1fr}
+    .trust__item:nth-child(3){border-left:none} .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .menu{display:none} .split{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr} .head--row{flex-direction:column;align-items:flex-start}
+    .news__form{flex-direction:column} .f-grid{grid-template-columns:1fr}
+    .trust__grid{grid-template-columns:1fr} .trust__item{border-left:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    .card-p:hover .card-p__img img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/maison-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €75 · stijl voor elk huis</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Maison startpagina">Maison<b>.</b></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Wonen</a><a href="#import">Shopify</a><a href="#story">Inspiratie</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart-btn" aria-label="Winkelmand, 3 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section hero">
+  <div class="wrap hero__grid">
+    <div class="hero__inner">
+      <span class="eyebrow">Voor thuis</span>
+      <h1>Objecten die een <em>kamer maken</em></h1>
+      <p>Gecureerd meubilair en decoratie voor een huis dat bij je past.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop interieur</a>
+        <a href="#story" class="btn btn--ghost">Kamer-ideeën</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1493663284031-b7e3aaf4c0d2?auto=format&fit=crop&w=1600&q=80" alt="Warm ingerichte woonkamer met natuurlijke materialen" loading="eager" onerror="this.remove()">
+      <span class="hero__tag">Styled at home</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Voordelen">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h13V5H3zM16 8h3l2 3v5h-5"/><circle cx="6.5" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €75</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Gecureerd</strong><span>Kwaliteit boven kwantiteit</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V11l9-7 9 7v10z"/><path d="M9 21v-7h6v7"/></svg><div><strong>Interieuradvies</strong><span>Gratis stylingtips</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg><div><strong>Snel retour</strong><span>30 dagen zonder gedoe</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head head--row">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>Uitgelicht voor thuis</h2>
+      </div>
+      <p>Met de hand gekozen objecten en meubels.</p>
+    </div>
+    <div class="grid">
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge">Nieuw</span>
+          <i style="background:radial-gradient(70% 60% at 40% 25%,rgba(176,86,61,.20),transparent 60%),linear-gradient(160deg,#EBE0CF,#DAC9B2)"></i>
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80" alt="Fauteuil bekleed met bouclé stof" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick">Snel bekijken</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Fauteuil Bouclé</span>
+          <div class="card-p__price">€ 349,00</div>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(70% 60% at 60% 30%,rgba(176,86,61,.16),transparent 60%),linear-gradient(160deg,#E9DECC,#D7C6AE)"></i>
+          <img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=700&q=80" alt="Wollen vloerkleed in warme tinten" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick">Snel bekijken</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Vloerkleed Wol</span>
+          <div class="card-p__price">€ 199,00</div>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(60% 60% at 30% 70%,rgba(176,86,61,.20),transparent 60%),linear-gradient(160deg,#ECE1D0,#DBCAB3)"></i>
+          <img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=700&q=80" alt="Keramieken vaas met matte afwerking" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick">Snel bekijken</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Keramieken Vaas</span>
+          <div class="card-p__price">€ 39,00</div>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge card-p__badge--sale">Sale</span>
+          <i style="background:radial-gradient(70% 50% at 50% 30%,rgba(176,86,61,.18),transparent 60%),linear-gradient(160deg,#E9DECC,#D6C4AC)"></i>
+          <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=700&q=80" alt="Ronde wandspiegel met dunne rand" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick">Snel bekijken</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Wandspiegel</span>
+          <div class="card-p__price"><s>€ 109,00</s><ins>€ 89,00</ins></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80" alt="Rustig gestylde hoek met gecureerde woonobjecten" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">Onze selectie</span>
+        <h2>Gecureerd, niet <em>overvol</em></h2>
+        <p>We kiezen een strakke selectie stukken die samen werken, zodat elke combinatie doordacht voelt.</p>
+        <a href="#shop" class="btn btn--accent">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:20ch">Dit thema importeer je direct in Shopify</h2>
+      <p>Maison is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code> en <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #B0563D).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+      <div class="cta-row" style="margin-top:2rem">
+        <a class="btn btn--primary" href="../../downloads/maison-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow" style="justify-content:center">Blijf op de hoogte</span>
+      <h2>Kom op de woonlijst</h2>
+      <p>Nieuwe binnenkomers, ideeën en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false" aria-label="Nieuwsbriefinschrijving">
+        <label for="news-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Maison<b>.</b></div>
+        <p>Objecten die een kamer maken. Een Shopify-thema in crème met rust-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle producten</a></li><li><a href="#shop">Wonen</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Maison</h4><ul><li><a href="#story">Onze selectie</a></li><li><a href="#story">Inspiratie</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Interieuradvies</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Maison. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

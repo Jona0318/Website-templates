@@ -1,0 +1,13 @@
+# Shopify CLI
+.shopify/
+*.theme-check-cache
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

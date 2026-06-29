@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom — botanisch Shopify-thema voor bloemisten (blush × groen)</title>
+<meta name="description" content="Bloom: importeerbaar Shopify-thema voor een bloemist — fris, botanisch en romantisch. Blush met groen-accent (#2F7D55), seizoensboeketten en bezorgbelofte.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%23FBF4F3'/><circle cx='16' cy='13' r='4' fill='%23E8A6AE'/><path d='M16 17v9' stroke='%232F7D55' stroke-width='2' stroke-linecap='round'/><path d='M16 22c-3 0-5-2-5-4 3 0 5 2 5 4z' fill='%232F7D55'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500;600&display=swap');
+  :root{
+    --bg:#FBF4F3; --surface:#FFFFFF; --text:#25201F; --muted:#7A6B69;
+    --accent:#2F7D55; --accent-text:#FFFFFF; --border:#F0E2DE;
+    --blush:#E8A6AE; --blush-soft:#F6D7D9; --radius:18px; --radius-sm:12px;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .4em;letter-spacing:0}
+  h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:500}
+  h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:500}
+  h3{font-size:1.3rem;font-weight:600}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--blush);color:var(--text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;text-transform:uppercase;letter-spacing:.24em;font-size:.7rem;font-weight:600;color:var(--accent);margin-bottom:1rem}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent);display:inline-block}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 2rem;font-weight:500;font-size:.85rem;letter-spacing:.04em;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:#256443;transform:translateY(-2px)}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--text)}
+  .btn--ghost:hover{background:var(--text);color:var(--bg)}
+  .section{padding-block:clamp(56px,9vw,108px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:#FBF4F3;text-align:center;font-size:.8rem;font-weight:500;letter-spacing:.02em;padding:.65rem 1rem}
+  .ribbon a{color:var(--blush);border-bottom:1px solid currentColor;padding-bottom:1px;font-weight:600}
+  .ribbon a:hover{color:#fff}
+
+  /* announce + header */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1rem;font-weight:500}
+  header.site{position:sticky;top:0;z-index:20;background:rgba(251,244,243,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.85rem;font-weight:600;display:flex;align-items:center;gap:.45rem}
+  .logo svg{width:26px;height:26px}
+  .menu{display:flex;gap:2.2rem}
+  .menu a{font-size:.86rem;letter-spacing:.02em;color:var(--muted);position:relative}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1.5px;background:var(--accent);transition:width .25s}
+  .menu a:hover{color:var(--text)} .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;color:var(--text);background:transparent;border:none;cursor:pointer;transition:.2s;position:relative}
+  .iconbtn:hover{background:var(--blush-soft)}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .cart-pill{position:absolute;top:2px;right:2px;background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.62rem;font-weight:600;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(48px,7vw,90px)}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero__copy p{font-size:1.15rem;color:var(--muted);max-width:440px;margin-bottom:2rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .hero__media{position:relative}
+  .hero__media .frame{position:relative;aspect-ratio:4/5;border-radius:240px 240px 22px 22px;overflow:hidden;background:
+     radial-gradient(75% 60% at 50% 20%,var(--blush-soft),transparent 70%),
+     linear-gradient(160deg,#F7E2E0,#E9F2EC);
+     border:1px solid var(--border)}
+  .hero__media .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__media .badge-float{position:absolute;bottom:18px;left:-14px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:.7rem 1.2rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 14px 40px rgba(47,125,85,.12);font-size:.84rem;font-weight:500}
+  .hero__media .badge-float svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.7;flex:0 0 auto}
+  .leaf{position:absolute;color:var(--blush);opacity:.5;z-index:-1}
+  .leaf--1{top:-30px;right:-20px;width:120px}
+  .leaf--2{bottom:-40px;left:-30px;width:140px;color:var(--accent);opacity:.18}
+
+  /* trust */
+  .trust{background:var(--surface);border-block:1px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;padding-block:2.4rem}
+  .trust__item{display:flex;gap:.9rem;align-items:center;justify-content:center;text-align:left}
+  .trust__item .ic{width:44px;height:44px;border-radius:999px;background:var(--blush-soft);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .trust__item svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.6}
+  .trust__item strong{display:block;font-size:.95rem;font-weight:600}
+  .trust__item span{color:var(--muted);font-size:.82rem}
+
+  /* products */
+  .head{text-align:center;max-width:620px;margin:0 auto 3.2rem}
+  .head .eyebrow{justify-content:center}
+  .head p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .card-p{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+  .card-p:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(47,125,85,.10)}
+  .card-p__img{aspect-ratio:4/5;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--blush-soft),#E9F2EC)}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .7s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:14px;left:14px;background:var(--surface);color:var(--accent);font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.34rem .7rem;border-radius:999px;z-index:2;border:1px solid var(--border)}
+  .card-p__badge.sale{background:var(--blush);color:var(--text);border-color:var(--blush)}
+  .card-p__body{padding:1.15rem 1.25rem 1.45rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+  .card-p__title{font-family:var(--serif);font-size:1.45rem;font-weight:600;line-height:1.1}
+  .card-p__price{margin-top:auto;padding-top:.55rem;font-weight:500;font-size:.98rem}
+  .card-p__price s{color:var(--muted);font-weight:400;margin-left:.45rem}
+  .card-p__add{margin-top:.85rem;width:100%;justify-content:center;font-size:.8rem;background:var(--blush-soft);color:var(--text)}
+  .card-p__add:hover{background:var(--accent);color:var(--accent-text)}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:1/1;border-radius:22px 22px 200px 200px;background:
+     radial-gradient(70% 60% at 30% 25%,var(--blush-soft),transparent 65%),linear-gradient(160deg,#EAF2EC,#F7E2E0);
+     border:1px solid var(--border)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content p{color:var(--muted)}
+
+  /* import note */
+  .import{position:relative;background:linear-gradient(155deg,#EAF3EC,#FBEEEC);border:1px solid var(--border);border-radius:26px;padding:clamp(30px,5vw,60px);overflow:hidden}
+  .import .leaf--bg{position:absolute;top:-40px;right:-30px;width:200px;color:var(--accent);opacity:.10}
+  .import p{color:var(--muted);max-width:62ch}
+  .import code{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.1rem .4rem;font-size:.85em;color:var(--accent)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.8rem;counter-reset:s}
+  .step{padding:1.4rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border-radius:999px;background:var(--blush-soft);color:var(--accent);font-weight:600;margin-bottom:.7rem;font-family:var(--serif);font-size:1.2rem}
+  .step strong{display:block;margin-bottom:.3rem;font-weight:600}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{position:relative;background:var(--accent);color:#fff;border-radius:26px;padding:clamp(44px,6vw,80px);text-align:center;overflow:hidden}
+  .news h2{color:#fff}
+  .news .eyebrow{color:var(--blush);justify-content:center}
+  .news .eyebrow::before{background:var(--blush)}
+  .news p{color:rgba(255,255,255,.85);max-width:460px;margin-inline:auto}
+  .news .leaf--bg{position:absolute;bottom:-50px;left:-40px;width:220px;color:#fff;opacity:.10}
+  .news__form{display:flex;gap:.75rem;max-width:480px;margin:1.8rem auto 0;position:relative}
+  .news__form input{flex:1;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4);padding:.95rem 1.3rem;border-radius:999px;font-family:inherit;font-size:.95rem}
+  .news__form input::placeholder{color:rgba(255,255,255,.7)}
+  .news__form .btn{background:#fff;color:var(--accent)}
+  .news__form .btn:hover{background:var(--blush);color:var(--text)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(52px,6vw,76px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-size:1.85rem;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:.45rem}
+  .f-logo svg{width:24px;height:24px}
+  .f-grid p{color:var(--muted);max-width:320px}
+  .f-col h4{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+  .f-col a{font-size:.94rem;color:var(--text)} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.84rem}
+
+  @media(max-width:980px){
+    .hero__grid{grid-template-columns:1fr}
+    .hero__media{order:-1;max-width:460px;margin-inline:auto}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:749px){
+    .menu{display:none}
+    .split{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+  }
+  @media(max-width:480px){.grid{grid-template-columns:1fr}.trust__grid{grid-template-columns:1fr}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    .card-p:hover,.btn:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ❀ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/bloom-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Vandaag besteld, vandaag bezorgd — gratis vanaf €35</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Bloom home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="12" r="4.2" fill="#E8A6AE"/><path d="M16 16v12" stroke="#2F7D55" stroke-width="2" stroke-linecap="round"/><path d="M16 23c-3.4 0-5.6-2.3-5.6-4.6 3.4 0 5.6 2.3 5.6 4.6z" fill="#2F7D55"/></svg>
+      Bloom
+    </a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Boeketten</a><a href="#import">Shopify</a><a href="#news">Abonnement</a>
+    </nav>
+    <div class="icons">
+      <button class="iconbtn" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="iconbtn" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">Vers gesneden</span>
+      <h1>Bloemen die het <em>zeggen</em></h1>
+      <p>Seizoensboeketten, met de hand geschikt en dezelfde dag bezorgd.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop boeketten</a>
+        <a href="#news" class="btn btn--ghost">Abonnementen</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <svg class="leaf leaf--1" viewBox="0 0 100 100" aria-hidden="true" fill="currentColor"><path d="M50 5C30 25 20 45 30 70c20-5 35-20 40-45-12 3-22 12-27 25 8-18 20-32 7-45z"/></svg>
+      <svg class="leaf leaf--2" viewBox="0 0 100 100" aria-hidden="true" fill="currentColor"><path d="M50 5C30 25 20 45 30 70c20-5 35-20 40-45-12 3-22 12-27 25 8-18 20-32 7-45z"/></svg>
+      <div class="frame">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80" alt="Romantisch seizoensboeket in blush en groen" loading="eager" onerror="this.remove()">
+      </div>
+      <div class="badge-float">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="6" width="15" height="11" rx="1"/><path d="M16 9h4l3 3v5h-7"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+        Vandaag bezorgd
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="6" width="15" height="11" rx="1"/><path d="M16 9h4l3 3v5h-7"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span><div><strong>Zelfde dag bezorgd</strong><span>Voor 14:00 besteld</span></div></div>
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11z"/></svg></span><div><strong>Vers gesneden</strong><span>Van de kweker</span></div></div>
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><strong>7 dagen fris</strong><span>Gegarandeerd</span></div></div>
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8c-2-4-7-4-7-1s5 1 7 1zm0 0c2-4 7-4 7-1s-5 1-7 1z"/></svg></span><div><strong>Cadeaukaartjes</strong><span>Voeg een briefje toe</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Bestsellers</span>
+      <h2>Uitgelichte boeketten</h2>
+      <p>Vanochtend met de hand geschikt.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge">Nieuw</span><i></i><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80" alt="Boeket" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Seizoensboeket</span><span class="card-p__price">€ 32,50</span><span class="btn card-p__add">In winkelwagen</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><i></i><img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=700&q=80" alt="Pioenrozen" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Pioenrozen</span><span class="card-p__price">€ 39,00</span><span class="btn card-p__add">In winkelwagen</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><i></i><img src="https://images.unsplash.com/photo-1462531315129-91d965cd6982?auto=format&fit=crop&w=700&q=80" alt="Droogboeket" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Droogboeket</span><span class="card-p__price">€ 27,00</span><span class="btn card-p__add">In winkelwagen</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge sale">Sale</span><i></i><img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=700&q=80" alt="Plant" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Kamerplant Gift</span><span class="card-p__price">€ 24,00 <s>€ 29,00</s></span><span class="btn card-p__add">In winkelwagen</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=900&q=80" alt="Onze winkel met verse bloemen" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">Onze winkel</span>
+        <h2>Met de hand geschikt</h2>
+        <p>Elk boeket wordt op bestelling gemaakt van bloemen die die ochtend zijn gesneden — nooit uit de koeling.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <svg class="leaf--bg" viewBox="0 0 100 100" aria-hidden="true" fill="currentColor"><path d="M50 5C30 25 20 45 30 70c20-5 35-20 40-45-12 3-22 12-27 25 8-18 20-32 7-45z"/></svg>
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:18ch">Dit thema importeer je direct in Shopify</h2>
+      <p>Bloom is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="cta-row" style="margin-top:1.2rem">
+        <a class="btn btn--primary" href="../../downloads/bloom-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (groen-accent staat op #2F7D55).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je boeketten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="news" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <svg class="leaf--bg" viewBox="0 0 100 100" aria-hidden="true" fill="currentColor"><path d="M50 5C30 25 20 45 30 70c20-5 35-20 40-45-12 3-22 12-27 25 8-18 20-32 7-45z"/></svg>
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Kom op de bloemenlijst</h2>
+      <p>Seizoensdrops, verzorgingstips en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="12" r="4.2" fill="#E8A6AE"/><path d="M16 16v12" stroke="#2F7D55" stroke-width="2" stroke-linecap="round"/><path d="M16 23c-3.4 0-5.6-2.3-5.6-4.6 3.4 0 5.6 2.3 5.6 4.6z" fill="#2F7D55"/></svg>
+          Bloom
+        </div>
+        <p>Bloemen die het zeggen. Een Shopify-thema in blush met groen-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Boeketten</a></li><li><a href="#shop">Planten</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bloem</h4><ul><li><a href="#story">Onze winkel</a></li><li><a href="#news">Abonnement</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Bezorging</a></li><li><a href="#">Verzorging</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Bloom. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

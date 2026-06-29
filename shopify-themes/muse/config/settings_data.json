@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#FAF8F4",
+    "color_surface": "#FFFFFF",
+    "color_text": "#18171C",
+    "color_text_muted": "#66636E",
+    "color_accent": "#5B3FD6",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#ECE9E2",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 10,
+    "logo_width": 140
+  },
+  "presets": {
+    "Muse": {
+      "color_background": "#FAF8F4",
+      "color_surface": "#FFFFFF",
+      "color_text": "#18171C",
+      "color_text_muted": "#66636E",
+      "color_accent": "#5B3FD6",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#ECE9E2",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 10,
+      "logo_width": 140
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Less waste",
+        "heading": "Everyday goods, <em>refilled</em>",
+        "text": "Pantry staples and home care without the single-use plastic.",
+        "button_label": "Shop refills",
+        "button_label_2": "Our mission"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Plastic-free",
+            "text": "Always"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Refill & save",
+            "text": "Bring it back"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €35"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Climate-neutral",
+            "text": "Shipping included"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured refills",
+        "subheading": "Hand-picked pantry & home staples.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our mission",
+        "heading": "Refill, don't replace",
+        "text": "<p>We sell what you use every day in packaging you bring back — so less ends up in the bin.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Refill, don't replace",
+        "text": "<p>We sell what you use every day in packaging you bring back — so less ends up in the bin.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the refill list",
+        "text": "New staples, tips and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

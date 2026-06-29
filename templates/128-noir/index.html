@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noir — minimalistisch Shopify-thema (zwart-wit geurhuis)</title>
+<meta name="description" content="Noir: een direct importeerbaar Shopify-thema voor een minimalistisch geurhuis — strak zwart-wit, monochroom en luxe.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230B0B0B'/><text x='16' y='23' font-size='17' text-anchor='middle' fill='%23F2F2F2' font-family='sans-serif' letter-spacing='1'>N</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Inter:wght@300;400;600&display=swap');
+  :root{
+    --bg:#0B0B0B; --surface:#141414; --text:#F2F2F2; --muted:#9C9C9C;
+    --accent:#FFFFFF; --accent-text:#0B0B0B; --border:#262626;
+    --serif:"Archivo",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .5em;font-weight:400;letter-spacing:-.02em}
+  h1{font-size:clamp(2.8rem,8vw,6.5rem)} h2{font-size:clamp(2rem,4.5vw,3.5rem)} h3{font-size:1rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:1320px;margin-inline:auto;padding-inline:32px}
+
+  /* tiny wide-tracked uppercase label */
+  .label{display:inline-block;text-transform:uppercase;letter-spacing:.42em;font-size:.62rem;color:var(--muted);font-weight:400}
+  .label--accent{color:var(--text)}
+
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.4rem;font-weight:400;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;transition:color .3s,background .3s,border-color .3s}
+  .btn--primary{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+  .btn--primary:hover{background:transparent;color:var(--text)}
+  .btn--ghost:hover{border-color:var(--text)}
+  .section{padding-block:clamp(72px,13vw,160px)}
+  .hr{height:1px;background:var(--border);border:0;margin:0}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:.7rem 1rem}
+  .ribbon a{border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* announce */
+  .announce{background:var(--bg);color:var(--muted);text-align:center;font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;padding:.85rem 1rem;border-bottom:1px solid var(--border)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.45rem;letter-spacing:.42em;text-transform:uppercase;padding-left:.42em}
+  .menu{display:flex;gap:2.4rem}
+  .menu a{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);transition:color .3s} .menu a:hover{color:var(--text)}
+  .icons{display:flex;gap:1.3rem;align-items:center}
+  .icons svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.3}
+  .icons button{background:none;border:0;color:inherit;cursor:pointer;padding:0;display:inline-flex}
+  .cart{display:inline-flex;gap:.5rem;align-items:center;background:none;border:0;color:inherit;cursor:pointer;padding:0}
+  .cart-pill{font-size:.58rem;font-weight:600;letter-spacing:.05em;color:var(--muted)}
+
+  /* hero */
+  .hero{position:relative;min-height:clamp(620px,92vh,900px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;border-bottom:1px solid var(--border)}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,#161616,#070707)}
+  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;filter:grayscale(1) contrast(1.05)}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 50% 50%,transparent 30%,rgba(11,11,11,.85) 100%)}
+  .hero__inner{position:relative;z-index:2;max-width:900px;padding-block:96px}
+  .hero .label{margin-bottom:2.4rem}
+  .hero h1{margin-bottom:1.6rem}
+  .hero h1 em{font-style:italic;font-weight:400}
+  .hero p{font-size:1.05rem;color:var(--muted);max-width:430px;margin:0 auto 2.6rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+
+  /* trust */
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{text-align:center;padding:clamp(28px,4vw,48px) 1.2rem;border-right:1px solid var(--border)}
+  .trust__item:last-child{border-right:0}
+  .trust__item strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.05rem;margin-bottom:.35rem}
+  .trust__item span{color:var(--muted);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase}
+
+  /* products */
+  .head{text-align:center;max-width:680px;margin:0 auto clamp(48px,7vw,88px)}
+  .head .label{margin-bottom:1.6rem} .head p{color:var(--muted);margin-top:1rem}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .card-p{background:var(--bg);overflow:hidden;display:flex;flex-direction:column;transition:background .35s}
+  .card-p:hover{background:var(--surface)}
+  .card-p__img{aspect-ratio:3/4;position:relative;overflow:hidden;background:linear-gradient(160deg,#1c1c1c,#0a0a0a)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:grayscale(1) contrast(1.03);transition:transform .8s ease,filter .5s}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:16px;left:16px;z-index:2;font-size:.55rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--text);border:1px solid var(--border);background:rgba(11,11,11,.7);padding:.35rem .65rem}
+  .card-p__body{padding:1.4rem 1.5rem 1.7rem;display:flex;flex-direction:column;gap:.55rem;flex:1;text-align:center}
+  .card-p__title{font-family:var(--serif);font-size:1.02rem;font-weight:400}
+  .card-p__price{margin-top:auto;padding-top:.6rem;color:var(--muted);font-size:.85rem;letter-spacing:.06em}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border:1px solid var(--border)}
+  .split__media{position:relative;overflow:hidden;min-height:clamp(360px,52vw,640px);background:linear-gradient(160deg,#1c1c1c,#070707)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+  .split__content{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,7vw,96px);border-left:1px solid var(--border)}
+  .split__content .label{margin-bottom:1.8rem}
+  .split__content p{color:var(--muted)}
+  .split__content .btn{margin-top:1.4rem;align-self:flex-start}
+
+  /* import */
+  .import{border:1px solid var(--border);background:var(--surface);padding:clamp(36px,6vw,80px)}
+  .import .label{margin-bottom:1.6rem}
+  .import h2{max-width:18ch}
+  .import p{color:var(--muted);max-width:62ch}
+  .import code{font-family:var(--serif);font-size:.85em;letter-spacing:.04em;color:var(--text);border-bottom:1px solid var(--border)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin:2.4rem 0;counter-reset:s}
+  .step{padding:2rem 1.6rem;background:var(--bg)}
+  .step::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--serif);font-size:1.6rem;color:var(--muted);margin-bottom:1rem}
+  .step strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.05rem;margin-bottom:.4rem}
+  .step span{color:var(--muted);font-size:.85rem}
+
+  /* newsletter */
+  .news{text-align:center;border:1px solid var(--border);padding:clamp(48px,8vw,112px)}
+  .news .label{margin-bottom:1.6rem}
+  .news p{color:var(--muted);max-width:460px;margin-inline:auto}
+  .news__form{display:flex;gap:0;max-width:480px;margin:2.4rem auto 0;border:1px solid var(--border)}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:0;padding:1.1rem 1.4rem;font-family:inherit;font-size:.85rem}
+  .news__form input::placeholder{color:var(--muted);letter-spacing:.1em}
+  .news__form button{border:0;border-left:1px solid var(--border)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);padding-block:clamp(56px,8vw,96px) 2.4rem}
+  .f-grid{display:grid;grid-template-columns:1.8fr repeat(3,1fr);gap:3rem}
+  .f-logo{font-family:var(--serif);font-size:1.3rem;letter-spacing:.42em;text-transform:uppercase;margin-bottom:1.4rem;padding-left:.42em}
+  .f-grid>div>p{color:var(--muted);max-width:320px;font-size:.92rem}
+  .f-col h4{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;font-weight:400}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.85rem}
+  .f-col a{font-size:.85rem;color:var(--muted);transition:color .3s} .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:4rem;padding-top:1.8rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}
+    .trust__item:nth-child(2){border-right:0}
+    .trust__item:nth-child(1),.trust__item:nth-child(2){border-bottom:1px solid var(--border)}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:749px){
+    .menu{display:none}
+    .split{grid-template-columns:1fr}
+    .split__content{border-left:0;border-top:1px solid var(--border)}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:520px){
+    .grid{grid-template-columns:1fr}
+    .trust__grid{grid-template-columns:1fr}
+    .trust__item{border-right:0;border-bottom:1px solid var(--border)}
+    .trust__item:last-child{border-bottom:0}
+    .news__form{flex-direction:column}
+    .news__form button{border-left:0;border-top:1px solid var(--border)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+    .card-p:hover .card-p__img img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/noir-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending &amp; sample — wereldwijd</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#">Noir</a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Parfum</a><a href="#import">Shopify</a><a href="#house">Huis</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="cart" type="button" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" id="cartCount">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1600&q=80" alt="" loading="eager" onerror="this.remove()">
+  </div>
+  <div class="wrap hero__inner">
+    <span class="label">Eau de Parfum</span>
+    <h1>Geur in <em>zwart-wit</em></h1>
+    <p>Een minimalistisch geurhuis. Niets te veel, niets te weinig.</p>
+    <div class="cta-row">
+      <a href="#shop" class="btn btn--primary">Shop de collectie</a>
+      <a href="#house" class="btn btn--ghost">Het huis</a>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="trust__grid">
+    <div class="trust__item"><strong>Gratis verzending</strong><span>Wereldwijd</span></div>
+    <div class="trust__item"><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div>
+    <div class="trust__item"><strong>Gratis sample</strong><span>Bij elke bestelling</span></div>
+    <div class="trust__item"><strong>Navulbaar</strong><span>Gemaakt om te blijven</span></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Bestsellers</span>
+      <h2>De collectie</h2>
+      <p>Een minimaal assortiment, met intentie samengesteld.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#">
+        <div class="card-p__img"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=80" alt="Noir 01 — Eau de Parfum flacon" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Noir 01 — Eau de Parfum</span><span class="card-p__price">€ 128,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge">Nieuw</span><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80" alt="Noir 02 — Eau de Parfum flacon" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Noir 02 — Eau de Parfum</span><span class="card-p__price">€ 128,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=700&q=80" alt="Reisflacon" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Reisflacon</span><span class="card-p__price">€ 58,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge">Set</span><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=700&q=80" alt="Geschenkset" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__title">Geschenkset</span><span class="card-p__price">€ 165,00</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="house" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&w=900&q=80" alt="Monochroom detail van het geurhuis" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="label">Het huis</span>
+        <h2>Gecomponeerd in monochroom</h2>
+        <p>We werken in zwart-wit zodat de geur spreekt. Elke compositie draait om één idee, doorgevoerd tot het einde.</p>
+        <a href="#shop" class="btn btn--ghost">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="label label--accent">Shopify-ready</span>
+      <h2>Dit thema importeer je direct in Shopify</h2>
+      <p>Noir is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #FFFFFF).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+      <a class="btn btn--primary" href="../../downloads/noir-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="label">Blijf op de hoogte</span>
+      <h2>Word lid van het huis</h2>
+      <p>Privé-lanceringen en uitnodigingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="email" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Noir</div>
+        <p>Een minimalistisch geurhuis. Een Shopify-thema in strak zwart-wit.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle parfums</a></li><li><a href="#shop">Nieuw</a></li><li><a href="#shop">Sets</a></li></ul></div>
+      <div class="f-col"><h4>Huis</h4><ul><li><a href="#house">Over Noir</a></li><li><a href="#house">Composities</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Navullen</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Noir</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F4F1E8",
+    "color_surface": "#FFFFFF",
+    "color_text": "#1E261D",
+    "color_text_muted": "#5E6B57",
+    "color_accent": "#2F6B4F",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#E2DECF",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 14,
+    "logo_width": 140
+  },
+  "presets": {
+    "Verdure": {
+      "color_background": "#F4F1E8",
+      "color_surface": "#FFFFFF",
+      "color_text": "#1E261D",
+      "color_text_muted": "#5E6B57",
+      "color_accent": "#2F6B4F",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#E2DECF",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 14,
+      "logo_width": 140
+    }
+  }
+}

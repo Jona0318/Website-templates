@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#FBF4EA",
+    "color_surface": "#FFFFFF",
+    "color_text": "#2A2018",
+    "color_text_muted": "#6E6051",
+    "color_accent": "#D2691E",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#ECE0CE",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 16,
+    "logo_width": 140
+  },
+  "presets": {
+    "Bazaar": {
+      "color_background": "#FBF4EA",
+      "color_surface": "#FFFFFF",
+      "color_text": "#2A2018",
+      "color_text_muted": "#6E6051",
+      "color_accent": "#D2691E",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#ECE0CE",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 16,
+      "logo_width": 140
+    }
+  }
+}

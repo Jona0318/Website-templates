@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "For the little ones",
+        "heading": "Soft starts, <em>made gentle</em>",
+        "text": "Thoughtful essentials for the nursery and the early years.",
+        "button_label": "Shop now",
+        "button_label_2": "Gift guide"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €40"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Safe & natural",
+            "text": "OEKO-TEX materials"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Gift wrapping",
+            "text": "Wrapped with love"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Easy returns",
+            "text": "60-day no fuss"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured for baby",
+        "subheading": "Hand-picked nursery essentials.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our promise",
+        "heading": "Chosen with care",
+        "text": "<p>We pick only what we'd use for our own little ones — soft, safe and built to be handed down.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Chosen with care",
+        "text": "<p>We pick only what we'd use for our own little ones — soft, safe and built to be handed down.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the little list",
+        "text": "New arrivals, gift ideas and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

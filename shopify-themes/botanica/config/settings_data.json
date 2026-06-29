@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#EEF0E6",
+    "color_surface": "#FBFBF4",
+    "color_text": "#232A1E",
+    "color_text_muted": "#647058",
+    "color_accent": "#3E6B43",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#DCE0CC",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 8,
+    "logo_width": 140
+  },
+  "presets": {
+    "Botanica": {
+      "color_background": "#EEF0E6",
+      "color_surface": "#FBFBF4",
+      "color_text": "#232A1E",
+      "color_text_muted": "#647058",
+      "color_accent": "#3E6B43",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#DCE0CC",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 8,
+      "logo_width": 140
+    }
+  }
+}

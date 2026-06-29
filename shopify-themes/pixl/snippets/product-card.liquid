@@ -1,0 +1,27 @@
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+<a href="{{ product.url }}" class="product-card">
+  <div class="product-card__media">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '250,350,500,700' }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+    {%- endif -%}
+    {%- if on_sale -%}
+      <span class="product-card__badge">{{ 'products.product.on_sale' | t }}</span>
+    {%- elsif product.available == false -%}
+      <span class="product-card__badge">{{ 'products.product.sold_out' | t }}</span>
+    {%- endif -%}
+  </div>
+  <div class="product-card__body">
+    {%- if product.vendor != blank -%}
+      <span class="product-card__vendor">{{ product.vendor }}</span>
+    {%- endif -%}
+    <span class="product-card__title">{{ product.title }}</span>
+    <span class="product-card__price">{% render 'price', price_target: product %}</span>
+  </div>
+</a>

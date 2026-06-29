@@ -1,0 +1,105 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "search": {
+      "search": "Search",
+      "placeholder": "Search products",
+      "results_with_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "no_results": "No results found for “{{ terms }}”.",
+      "results_for": "Results for “{{ terms }}”"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "newsletter_form": {
+      "email_placeholder": "Your email address",
+      "confirmation": "Thanks for subscribing.",
+      "submit": "Subscribe"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for does not exist.",
+      "link": "Continue shopping"
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "cart": "Cart",
+    "search": "Search",
+    "menu": "Menu",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "quantity": "Quantity",
+      "description": "Description",
+      "view_full_details": "View full details",
+      "from_price_html": "From {{ price }}",
+      "vendor": "Vendor"
+    },
+    "facets": {
+      "sort_by_label": "Sort by",
+      "product_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue shopping",
+      "subtotal": "Subtotal",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "checkout": "Check out",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "product": "Product",
+      "total": "Total"
+    }
+  },
+  "blogs": {
+    "article": {
+      "read_more": "Read more",
+      "by_author": "by {{ author }}",
+      "back_to_blog": "Back to {{ title }}"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Announcement",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "footer": {
+      "copyright": "All rights reserved."
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Account"
+    },
+    "login": {
+      "title": "Login"
+    }
+  }
+}

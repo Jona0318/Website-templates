@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Level up",
+        "heading": "Gear that <em>wins</em>",
+        "text": "Keyboards, mice and headsets built for the win — low latency, high style.",
+        "button_label": "Shop gear",
+        "button_label_2": "View setups"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €40"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Next-day",
+            "text": "Order before 10pm"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "2-year warranty",
+            "text": "On all gear"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Pro-tested",
+            "text": "By real players"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured gear",
+        "subheading": "Hand-picked for the win.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The lab",
+        "heading": "Tuned for the win",
+        "text": "<p>We test latency, switches and comfort over thousands of hours so your gear never holds you back.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Tuned for the win",
+        "text": "<p>We test latency, switches and comfort over thousands of hours so your gear never holds you back.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the squad",
+        "text": "Drops, restocks and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

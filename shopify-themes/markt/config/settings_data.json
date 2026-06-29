@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F4F6FB",
+    "color_surface": "#FFFFFF",
+    "color_text": "#14161C",
+    "color_text_muted": "#5A6273",
+    "color_accent": "#2864F0",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#E2E7F0",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 8,
+    "logo_width": 140
+  },
+  "presets": {
+    "Markt": {
+      "color_background": "#F4F6FB",
+      "color_surface": "#FFFFFF",
+      "color_text": "#14161C",
+      "color_text_muted": "#5A6273",
+      "color_accent": "#2864F0",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#E2E7F0",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 8,
+      "logo_width": 140
+    }
+  }
+}

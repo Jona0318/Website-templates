@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Het warenhuis",
+        "heading": "Een warenhuis <em>online</em>",
+        "text": "Gecureerde merken en producten voor het hele huis.",
+        "button_label": "Begin met shoppen",
+        "button_label_2": "Bekijk aanbiedingen"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Gratis verzending",
+            "text": "Vanaf €30"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Snel in huis",
+            "text": "1–2 werkdagen"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Persoonlijk advies",
+            "text": "In elke afdeling"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "30 dagen retour",
+            "text": "Gratis"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Uitgelicht per afdeling",
+        "heading": "Uitgelicht per afdeling",
+        "subheading": "Een gecureerde selectie uit al onze afdelingen.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Deze week",
+        "heading": "Geselecteerd tot -30%",
+        "text": "<p>Een gecureerde selectie uit al onze afdelingen.</p>",
+        "button_label": "Bekijk de selectie"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Het warenhuis",
+        "heading": "Een warenhuis online",
+        "text": "<p>Gecureerde merken en producten voor het hele huis.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Blijf op de hoogte",
+        "heading": "Mis geen enkele deal",
+        "text": "Ontvang de beste aanbiedingen in je inbox."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

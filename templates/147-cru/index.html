@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cru — bold Shopify-thema voor craft-brouwerijen (amber × charcoal)</title>
+<meta name="description" content="Cru: importeerbaar Shopify-thema voor een craft-brouwerij — bold, grafisch en vol karakter. Amber-accent (#E0A02A) op warm charcoal, met ABV/IBU spec-rows en taproom-feel.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23161210'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23E0A02A' font-family='sans-serif' font-weight='900'>C</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Space+Mono:wght@400;700&display=swap');
+  :root{
+    --bg:#161210; --surface:#211A14; --text:#F3E7D5; --muted:#B49E82;
+    --accent:#E0A02A; --accent-text:#161210; --border:#352A1F; --radius:3px;
+    --serif:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --sans:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:900;line-height:.95;margin:0 0 .4em;letter-spacing:-.02em;text-transform:uppercase}
+  h1{font-size:clamp(3rem,9vw,6.5rem)} h2{font-size:clamp(2.2rem,5vw,3.6rem)} h3{font-size:1.1rem;letter-spacing:0}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:1300px;margin-inline:auto;padding-inline:24px}
+  .mono-label{font-family:var(--sans);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);display:inline-block}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2.1rem;font-family:var(--sans);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;border-radius:var(--radius);border:2px solid var(--accent);cursor:pointer;transition:.2s;background:transparent;color:var(--text)}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:var(--text);border-color:var(--text);color:var(--bg)}
+  .btn--ghost:hover{background:var(--accent);color:var(--accent-text)}
+  .section{padding-block:clamp(56px,9vw,110px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--accent);color:var(--accent-text);text-align:center;font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.06em;padding:.6rem 1rem;text-transform:uppercase}
+  .ribbon a{border-bottom:2px solid currentColor;padding-bottom:1px;font-weight:700}
+
+  /* announce */
+  .announce{background:var(--bg);color:var(--muted);text-align:center;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;padding:.6rem 1rem;border-bottom:1px solid var(--border)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(22,18,16,.86);backdrop-filter:blur(12px);border-bottom:2px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:2rem}
+  .logo{font-family:var(--serif);font-weight:900;font-size:1.7rem;letter-spacing:.02em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.4rem}
+  .logo b{color:var(--accent);font-weight:900}
+  .logo .dot{width:10px;height:10px;background:var(--accent);border-radius:2px;display:inline-block;transform:rotate(45deg)}
+  .menu{display:flex;gap:2.2rem}
+  .menu a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700} .menu a:hover{color:var(--accent)}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;padding:0;cursor:pointer;display:inline-flex;align-items:center}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2}
+  .cart-pill{background:var(--accent);color:var(--accent-text);border-radius:2px;font-size:.68rem;font-weight:700;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;margin-left:.3rem}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;border-bottom:2px solid var(--border)}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:
+     radial-gradient(75% 70% at 85% 15%,rgba(224,160,42,.30),transparent 60%),
+     radial-gradient(60% 60% at 10% 95%,rgba(224,160,42,.10),transparent 60%),
+     linear-gradient(160deg,#1c1612,#100c0a)}
+  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;mix-blend-mode:luminosity}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,18,16,.95) 0%,rgba(22,18,16,.55) 55%,rgba(22,18,16,.30) 100%)}
+  .hero__inner{position:relative;z-index:2;max-width:760px;padding-block:clamp(70px,12vw,150px)}
+  .hero h1{margin-bottom:1.2rem}
+  .hero h1 em{font-style:normal;color:var(--accent);display:block}
+  .hero p{font-size:1.05rem;color:var(--muted);max-width:480px;margin-bottom:2rem}
+  .slab{display:inline-block;background:var(--accent);color:var(--accent-text);font-family:var(--sans);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:.4rem .8rem;margin-bottom:1.4rem;border-radius:2px}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  /* hero spec strip */
+  .specstrip{position:relative;z-index:2;border-top:2px solid var(--border);background:var(--surface)}
+  .specstrip ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+  .specstrip li{padding:1.1rem 1.4rem;border-right:1px solid var(--border);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .specstrip li:last-child{border-right:none}
+  .specstrip li b{display:block;font-family:var(--serif);font-weight:900;font-size:1.3rem;color:var(--accent);letter-spacing:0;margin-top:.2rem}
+
+  /* trust */
+  .trust{background:var(--bg);border-bottom:2px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .trust__item{display:flex;gap:.9rem;align-items:center;padding:1.6rem 1.2rem;border-right:1px solid var(--border)}
+  .trust__item:last-child{border-right:none}
+  .trust__item svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.8;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.82rem;font-family:var(--serif);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  .trust__item span{color:var(--muted);font-size:.72rem}
+
+  /* products */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.6rem;flex-wrap:wrap}
+  .head p{color:var(--muted);margin:0;max-width:42ch}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card-p{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+  .card-p:hover{border-color:var(--accent);transform:translateY(-5px)}
+  .card-p__img{aspect-ratio:4/5;position:relative;overflow:hidden;background:#2a2018}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:10px;left:10px;background:var(--accent);color:var(--accent-text);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .55rem;border-radius:2px;z-index:2;font-family:var(--sans)}
+  .card-p__body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
+  .card-p__title{font-family:var(--serif);font-weight:900;font-size:1.2rem;text-transform:uppercase;letter-spacing:-.01em}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .spec-rows{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.1rem}
+  .spec-rows span{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:2px;padding:.18rem .45rem}
+  .spec-rows span b{color:var(--accent);font-weight:700}
+  .card-p__price{margin-top:auto;padding-top:.6rem;font-weight:700;font-size:1.05rem;display:flex;align-items:baseline;gap:.5rem}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.85em}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .split__media{position:relative;overflow:hidden;min-height:420px;background:
+     radial-gradient(70% 70% at 30% 20%,rgba(224,160,42,.30),transparent 60%),linear-gradient(160deg,#241b14,#15100c)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content{padding:clamp(32px,5vw,64px);background:var(--surface);display:flex;flex-direction:column;justify-content:center}
+  .split__content p{color:var(--muted)}
+
+  /* import */
+  .import{background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:clamp(30px,5vw,60px);position:relative}
+  .import code{background:var(--bg);border:1px solid var(--border);padding:.1rem .4rem;border-radius:2px;font-size:.85em;color:var(--accent)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.8rem;counter-reset:s}
+  .step{padding:1.4rem;border:2px solid var(--border);border-radius:var(--radius);background:var(--bg)}
+  .step::before{counter-increment:s;content:"0" counter(s);display:inline-block;background:var(--accent);color:var(--accent-text);font-family:var(--serif);font-weight:900;font-size:1.1rem;padding:.15rem .5rem;border-radius:2px;margin-bottom:.7rem}
+  .step strong{display:block;margin-bottom:.3rem;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:.95rem}
+  .step span{color:var(--muted);font-size:.82rem}
+
+  /* newsletter */
+  .news{background:var(--accent);color:var(--accent-text);border-radius:var(--radius);padding:clamp(40px,6vw,76px);text-align:center}
+  .news .mono-label{color:var(--accent-text)}
+  .news h2{color:var(--accent-text)}
+  .news p{color:rgba(22,18,16,.75);max-width:44ch;margin-inline:auto}
+  .news__form{display:flex;gap:.7rem;max-width:480px;margin:1.6rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:2px solid var(--bg);padding:1rem 1.2rem;border-radius:var(--radius);font-family:var(--sans);font-size:.85rem}
+  .news__form input::placeholder{color:var(--muted)}
+  .news__form .btn{border-color:var(--bg);background:var(--bg);color:var(--text)}
+  .news__form .btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+  /* footer */
+  footer.site{border-top:2px solid var(--border);background:var(--bg);padding-block:clamp(48px,6vw,72px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-weight:900;font-size:1.7rem;text-transform:uppercase;margin-bottom:1rem}
+  .f-logo b{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:34ch;font-size:.85rem}
+  .f-col h4{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-family:var(--serif);font-weight:700}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+  .f-col a{font-size:.85rem;color:var(--muted)} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .trust__grid{grid-template-columns:1fr 1fr}
+    .trust__item:nth-child(2){border-right:none}
+    .specstrip ul{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:749px){
+    .menu{display:none}
+    .split{grid-template-columns:1fr}
+    .split__media{min-height:300px}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+    .trust__grid{grid-template-columns:1fr}
+    .trust__item{border-right:none;border-bottom:1px solid var(--border)}
+    .specstrip ul{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:480px){.grid{grid-template-columns:1fr}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    .card-p:hover{transform:none}
+    .card-p:hover .card-p__img img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/cru-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf 12 blikjes · vers gebrouwen</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Cru home"><span class="dot" aria-hidden="true"></span>Cru</a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Bieren</a><a href="#import">Shopify</a><a href="#story">Taproom</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" aria-label="Winkelwagen, 3 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=1600&q=80" alt="" loading="eager" onerror="this.remove()">
+  </div>
+  <div class="wrap hero__inner">
+    <span class="slab">Kleine batches</span>
+    <h1>Bier met <em>karakter</em></h1>
+    <p>Onafhankelijk gebrouwen in kleine batches. Bold, vers en met trots van ons.</p>
+    <div class="cta-row">
+      <a href="#shop" class="btn btn--primary">Shop bieren</a>
+      <a href="#story" class="btn btn--ghost">De taproom</a>
+    </div>
+  </div>
+  <div class="specstrip wrap" style="max-width:none;padding-inline:0">
+    <ul>
+      <li>Stijl <b>Hazy IPA</b></li>
+      <li>ABV <b>6,2 %</b></li>
+      <li>IBU <b>45</b></li>
+      <li>Batch <b>No. 014</b></li>
+    </ul>
+  </div>
+</section>
+
+<section class="trust" aria-label="Onze beloftes">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><div><strong>Gratis verzending</strong><span>Vanaf 12 blikjes</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v6M9 4h6M7 8h10l-1 13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2z"/></svg><div><strong>Vers gebrouwen</strong><span>Binnen dagen verstuurd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><div><strong>Mixpakketten</strong><span>Stel zelf samen</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16" r=".5" fill="currentColor"/></svg><div><strong>18+ alleen</strong><span>Wij checken leeftijd</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="mono-label">Bestsellers</span>
+        <h2>Uitgelichte bieren</h2>
+      </div>
+      <p>Met de hand gekozen uit de tanks.</p>
+    </div>
+    <div class="grid">
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge">Nieuw</span>
+          <i style="background:radial-gradient(70% 60% at 40% 25%,rgba(224,160,42,.30),transparent 60%),linear-gradient(160deg,#2a2018,#15100c)"></i>
+          <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=700&q=80" alt="Blikje Hazy IPA" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Hazy IPA</span>
+          <div class="spec-rows"><span>ABV <b>6,2%</b></span><span>IBU <b>45</b></span><span>Stijl <b>NEIPA</b></span></div>
+          <span class="card-p__price">€ 3,20</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(70% 60% at 60% 30%,rgba(224,160,42,.22),transparent 60%),linear-gradient(160deg,#271e15,#14100b)"></i>
+          <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=700&q=80" alt="Glas Pilsner" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Pilsner</span>
+          <div class="spec-rows"><span>ABV <b>4,8%</b></span><span>IBU <b>28</b></span><span>Stijl <b>Lager</b></span></div>
+          <span class="card-p__price">€ 2,40</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(60% 60% at 30% 70%,rgba(224,160,42,.24),transparent 60%),linear-gradient(160deg,#241b13,#100c0a)"></i>
+          <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?auto=format&fit=crop&w=700&q=80" alt="Glas Imperial Stout" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Imperial Stout</span>
+          <div class="spec-rows"><span>ABV <b>9,5%</b></span><span>IBU <b>60</b></span><span>Stijl <b>Stout</b></span></div>
+          <span class="card-p__price">€ 3,80</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge">Sale</span>
+          <i style="background:radial-gradient(70% 50% at 50% 30%,rgba(224,160,42,.22),transparent 60%),linear-gradient(160deg,#271d14,#13100b)"></i>
+          <img src="https://images.unsplash.com/photo-1518176258769-f227c798150e?auto=format&fit=crop&w=700&q=80" alt="Mixpakket met twaalf blikjes bier" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__title">Mixpakket 12</span>
+          <div class="spec-rows"><span>Blikjes <b>12×</b></span><span>Stijlen <b>6</b></span></div>
+          <span class="card-p__price">€ 32,00 <s>€ 39,00</s></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1532634726-8b9fb99825c1?auto=format&fit=crop&w=900&q=80" alt="Koperen brouwketels in de brouwerij" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="mono-label">De brouwerij</span>
+        <h2>Met de hand gebrouwen</h2>
+        <p>Elke batch wordt in eigen huis gebrouwen, geproefd en geblikt. Geen shortcuts, geen vulmiddelen — gewoon goed bier.</p>
+        <div class="cta-row"><a href="#shop" class="btn btn--primary">Ontdek meer</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="mono-label">Shopify-ready</span>
+      <h2 style="max-width:20ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:62ch">Cru is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen. Het amber-accent staat ingesteld op <code>#E0A02A</code>.</p>
+      <div class="cta-row" style="margin-top:1rem">
+        <a class="btn btn--primary" href="../../downloads/cru-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #E0A02A).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je bieren toe en klik op Publiceren. Klaar om te tappen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="mono-label">Blijf op de hoogte</span>
+      <h2>Kom op de taplijst</h2>
+      <p>Nieuwe brouwsels, drops en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Cru<b>.</b></div>
+        <p>Bier met karakter. Een Shopify-thema in charcoal met amber-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle bieren</a></li><li><a href="#shop">Mixpakketten</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Brouwerij</h4><ul><li><a href="#story">Over ons</a></li><li><a href="#story">Taproom</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">FAQ · 18+</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Cru. Drink met mate · 18+</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

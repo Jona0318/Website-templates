@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#EEF1F4",
+    "color_surface": "#FFFFFF",
+    "color_text": "#1B2127",
+    "color_text_muted": "#5E6770",
+    "color_accent": "#5C7E9E",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#DCE3E9",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 14,
+    "logo_width": 140
+  },
+  "presets": {
+    "Nimbus": {
+      "color_background": "#EEF1F4",
+      "color_surface": "#FFFFFF",
+      "color_text": "#1B2127",
+      "color_text_muted": "#5E6770",
+      "color_accent": "#5C7E9E",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#DCE3E9",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 14,
+      "logo_width": 140
+    }
+  }
+}

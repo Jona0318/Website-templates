@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F1ECE5",
+    "color_surface": "#FFFFFF",
+    "color_text": "#25201B",
+    "color_text_muted": "#6F665A",
+    "color_accent": "#B0563D",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#E4DBCD",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 6,
+    "logo_width": 140
+  },
+  "presets": {
+    "Maison": {
+      "color_background": "#F1ECE5",
+      "color_surface": "#FFFFFF",
+      "color_text": "#25201B",
+      "color_text_muted": "#6F665A",
+      "color_accent": "#B0563D",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#E4DBCD",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 6,
+      "logo_width": 140
+    }
+  }
+}

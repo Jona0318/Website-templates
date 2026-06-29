@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marginalia — Shopify-thema voor een onafhankelijke boekhandel</title>
+<meta name="description" content="Marginalia: een direct importeerbaar Shopify-thema voor een onafhankelijke boekhandel — warm, literair en redactioneel.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23F6EFE2'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%237A1F2B' font-family='Georgia,serif' font-style='italic'>M</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
+  :root{
+    --bg:#F6EFE2; --surface:#FFFDF8; --text:#211C17; --muted:#6A6155;
+    --accent:#7A1F2B; --accent-text:#FFFFFF; --border:#E4D9C4; --radius:2px;
+    --serif:"Playfair Display",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --paper:
+      radial-gradient(120% 90% at 0% 0%,rgba(122,31,43,.025),transparent 55%),
+      radial-gradient(110% 80% at 100% 100%,rgba(33,28,23,.03),transparent 55%);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);background-image:var(--paper);background-attachment:fixed;line-height:1.7;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:var(--serif);line-height:1.12;margin:0 0 .4em;letter-spacing:-.01em;font-weight:700}
+  h1{font-size:clamp(2.6rem,6vw,5rem)} h2{font-size:clamp(2rem,3.6vw,3rem)} h3{font-size:1.2rem}
+  p{margin:0 0 1rem}
+  em{font-style:italic}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--radius)}
+  .wrap{max-width:1180px;margin-inline:auto;padding-inline:28px}
+  .eyebrow{display:block;font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--accent);margin-bottom:.7rem;letter-spacing:.01em}
+  .kicker{display:inline-block;text-transform:uppercase;letter-spacing:.32em;font-size:.66rem;color:var(--muted);font-weight:600}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.7rem;font-weight:500;font-size:.82rem;letter-spacing:.06em;cursor:pointer;border:1px solid var(--accent);border-radius:var(--radius);transition:.22s;font-family:var(--sans)}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:#5e161f;border-color:#5e161f}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .section{padding-block:clamp(52px,8vw,104px)}
+  .rule-orn{display:flex;align-items:center;gap:1rem;color:var(--accent);font-size:.8rem;letter-spacing:.4em;margin:0 0 .9rem}
+  .rule-orn::before,.rule-orn::after{content:"";flex:1;height:1px;background:var(--border)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:var(--bg);text-align:center;font-size:.78rem;letter-spacing:.02em;padding:.6rem 1rem}
+  .ribbon a{color:var(--bg);border-bottom:1px solid rgba(246,239,226,.5);padding-bottom:1px;font-weight:500}
+  .ribbon a:hover{border-color:var(--bg)}
+
+  /* announce */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1rem;font-weight:500;font-family:var(--sans)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(246,239,226,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.85rem;font-weight:700;letter-spacing:.01em;display:flex;align-items:baseline;gap:.35rem}
+  .logo small{font-family:var(--serif);font-style:italic;font-weight:500;font-size:.7rem;color:var(--accent);letter-spacing:.1em}
+  .menu{display:flex;gap:2.1rem}
+  .menu a{font-size:.82rem;letter-spacing:.04em;color:var(--muted);position:relative;padding:.2rem 0}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s}
+  .menu a:hover{color:var(--text)} .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;cursor:pointer;padding:0;display:inline-flex}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .cart{position:relative;display:inline-flex}
+  .cart-pill{position:absolute;top:-7px;right:-9px;background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.62rem;font-weight:600;min-width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;font-family:var(--sans)}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(48px,7vw,92px)}
+  .hero__inner{max-width:560px}
+  .hero h1{margin-bottom:1.1rem}
+  .hero h1 em{color:var(--accent);font-style:italic}
+  .hero p{font-size:1.12rem;color:var(--muted);max-width:440px;margin-bottom:1.9rem}
+  .hero .cta-row{display:flex;gap:.9rem;flex-wrap:wrap}
+  .hero__media{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;background:
+     radial-gradient(80% 70% at 70% 25%,rgba(122,31,43,.18),transparent 60%),linear-gradient(160deg,#EFE5D2,#E2D5BC);
+     border:1px solid var(--border);box-shadow:0 30px 60px -38px rgba(33,28,23,.5)}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__media::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,253,248,.18)}
+  .hero__tag{position:absolute;left:18px;bottom:18px;background:rgba(255,253,248,.94);border:1px solid var(--border);border-radius:var(--radius);padding:.6rem .9rem;font-family:var(--serif);font-style:italic;font-size:.92rem;max-width:62%}
+  .hero__tag span{display:block;font-family:var(--sans);font-style:normal;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+
+  /* trust */
+  .trust{border-block:1px solid var(--border);background:var(--surface)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;padding-block:2rem}
+  .trust__item{display:flex;gap:.85rem;align-items:center}
+  .trust__item svg{width:25px;height:25px;stroke:var(--accent);fill:none;stroke-width:1.5;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.92rem;font-family:var(--serif)} .trust__item span{color:var(--muted);font-size:.8rem}
+
+  /* section head */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.6rem;flex-wrap:wrap}
+  .head__txt{max-width:560px} .head__txt p{color:var(--muted);margin:0}
+  .head .link{color:var(--accent);font-size:.82rem;border-bottom:1px solid var(--accent);padding-bottom:2px;white-space:nowrap}
+
+  /* products — staff picks */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .pick{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.28s}
+  .pick:hover{transform:translateY(-5px);box-shadow:0 24px 44px -32px rgba(33,28,23,.55)}
+  .pick__img{position:relative;aspect-ratio:3/4;overflow:hidden;background:
+     radial-gradient(70% 60% at 40% 25%,rgba(122,31,43,.14),transparent 60%),linear-gradient(160deg,#EFE5D2,#E0D2B8)}
+  .pick__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .pick:hover .pick__img img{transform:scale(1.05)}
+  .pick__badge{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--accent-text);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.32rem .6rem;border-radius:var(--radius)}
+  .pick__body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;flex:1}
+  .pick__quote{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:.86rem;line-height:1.5;margin-bottom:.7rem;border-left:2px solid var(--accent);padding-left:.7rem}
+  .pick__title{font-family:var(--serif);font-size:1.12rem;margin-bottom:.15rem}
+  .pick:hover .pick__title{color:var(--accent)}
+  .pick__sub{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+  .pick__foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+  .pick__price{font-weight:600;font-size:1.02rem}
+  .pick__price s{color:var(--muted);font-weight:400;font-size:.85em;margin-left:.35rem}
+  .pick__add{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:.4rem .8rem;transition:.2s}
+  .pick:hover .pick__add{border-color:var(--accent)}
+
+  /* boek van de week */
+  .week{background:var(--surface);border-block:1px solid var(--border)}
+  .week__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:center}
+  .week__media{position:relative;aspect-ratio:3/4;max-width:380px;border-radius:var(--radius);overflow:hidden;background:
+     radial-gradient(70% 60% at 30% 20%,rgba(122,31,43,.18),transparent 60%),linear-gradient(160deg,#ECE0CB,#DDCDB0);
+     border:1px solid var(--border);box-shadow:0 28px 52px -36px rgba(33,28,23,.55)}
+  .week__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .week blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.95rem);line-height:1.35;margin:.4rem 0 1.2rem;color:var(--text)}
+  .week blockquote::before{content:"\201C";color:var(--accent)}
+  .week blockquote::after{content:"\201D";color:var(--accent)}
+  .week cite{font-style:normal;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:1.6rem}
+  .week .price-line{font-weight:600;font-size:1.15rem;margin-bottom:1.3rem}
+
+  /* split / story */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,76px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:5/6;border-radius:var(--radius);background:
+     radial-gradient(70% 60% at 30% 20%,rgba(122,31,43,.16),transparent 60%),linear-gradient(160deg,#ECE0CB,#DBCBAE);
+     border:1px solid var(--border)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content{columns:1}
+  .split__content p{color:var(--muted)}
+  .split__content .lead::first-letter{font-family:var(--serif);font-size:3.4rem;line-height:.8;float:left;color:var(--accent);margin:.1rem .6rem 0 0;font-weight:700}
+
+  /* import */
+  .import{background:
+     repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(122,31,43,.06) 31px,rgba(122,31,43,.06) 32px),
+     var(--surface);
+     border:1px solid var(--border);border-radius:var(--radius);padding:clamp(30px,5vw,60px);position:relative}
+  .import::before{content:"";position:absolute;left:46px;top:0;bottom:0;width:1px;background:rgba(122,31,43,.22)}
+  @media(max-width:749px){.import::before{display:none}}
+  .import .inner{position:relative;padding-left:clamp(0px,2vw,28px)}
+  .import h2{max-width:20ch}
+  .import p{color:var(--muted);max-width:62ch}
+  .import code{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:.05rem .35rem;font-size:.85em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.8rem;counter-reset:s}
+  .step{padding:1.3rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:999px;background:var(--accent);color:var(--accent-text);font-weight:700;margin-bottom:.7rem;font-family:var(--serif)}
+  .step strong{display:block;margin-bottom:.25rem;font-family:var(--serif);font-size:1.05rem}
+  .step span{color:var(--muted);font-size:.88rem}
+
+  /* newsletter */
+  .news{text-align:center;max-width:620px;margin-inline:auto}
+  .news__form{display:flex;gap:.7rem;max-width:440px;margin:1.5rem auto 0}
+  .news__form input{flex:1;background:var(--surface);color:var(--text);border:1px solid var(--border);padding:.9rem 1.1rem;border-radius:var(--radius);font-family:inherit;font-size:.92rem}
+  .news__form input:focus{outline:none;border-color:var(--accent)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(50px,6vw,76px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-size:1.7rem;font-weight:700;margin-bottom:.8rem}
+  .f-grid p{color:var(--muted);max-width:320px;font-size:.95rem}
+  .f-col h4{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-family:var(--sans);font-weight:600}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+  .f-col a{font-size:.92rem;color:var(--muted)} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.8rem}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .f-grid{grid-template-columns:1fr 1fr}
+    .hero__grid{grid-template-columns:1fr;gap:2.5rem}
+    .hero__media{max-width:460px}
+    .week__grid{grid-template-columns:1fr;gap:2rem}
+    .week__media{margin-inline:auto}
+    .steps{grid-template-columns:1fr}
+  }
+  @media(max-width:749px){
+    .menu{display:none}
+    .trust__grid{grid-template-columns:1fr 1fr}
+    .split{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+  }
+  @media(max-width:480px){.grid{grid-template-columns:1fr}.trust__grid{grid-template-columns:1fr}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+    .pick:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/marginalia-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €30 — met de hand ingepakt</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Marginalia, naar startpagina">Marginalia<small>est.</small></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a>
+      <a href="#shop">Romans</a>
+      <a href="#import">Shopify</a>
+      <a href="#shop">Aanraders</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelmand, 2 artikelen">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__inner">
+      <span class="eyebrow">Onafhankelijke boekhandel</span>
+      <h1>Verhalen die <em>blijven</em></h1>
+      <p>Zorgvuldig gekozen titels, met de hand aanbevolen door onze boekverkopers.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop boeken</a>
+        <a href="#story" class="btn btn--ghost">Ons verhaal</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80" alt="Boekenkast vol romans in een sfeervolle boekhandel" loading="eager" onerror="this.remove()">
+      <div class="hero__tag"><span>Boekverkopers</span>Achter elke aanrader staat iemand die hem als eerste mooi vond.</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M3 7l3-4h12l3 4"/><line x1="12" y1="7" x2="12" y2="20"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €30</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M4 9V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><path d="M12 5c0-1.5-1-2.5-2.5-2.5S7 3.5 7 5M12 5c0-1.5 1-2.5 2.5-2.5S17 3.5 17 5"/><line x1="12" y1="5" x2="12" y2="20"/></svg><div><strong>Cadeauverpakking</strong><span>Met de hand ingepakt</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 0 1 2 2v13a3 3 0 0 0-3-3H4Z"/><path d="M20 5h-7a2 2 0 0 0-2 2v13a3 3 0 0 1 3-3h6Z"/></svg><div><strong>Onze aanraders</strong><span>Gelezen &amp; aanbevolen</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div class="head__txt">
+        <span class="kicker">Bestsellers</span>
+        <h2>Onze aanraders</h2>
+        <p>Met de hand aanbevolen door onze boekverkopers.</p>
+      </div>
+      <a class="link" href="#shop">Bekijk alle titels</a>
+    </div>
+    <div class="grid">
+
+      <article class="pick">
+        <div class="pick__img">
+          <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=80" alt="De Stille Tuin — boek" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="pick__body">
+          <p class="pick__quote">Een roman die fluistert en lang naklinkt.</p>
+          <h3 class="pick__title">De Stille Tuin</h3>
+          <span class="pick__sub">The Quiet Garden</span>
+          <div class="pick__foot">
+            <span class="pick__price">€ 22,99</span>
+            <a class="pick__add" href="#" aria-label="De Stille Tuin in winkelmand">In mand</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pick">
+        <div class="pick__img">
+          <span class="pick__badge">Nieuw</span>
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=700&q=80" alt="Nachtlicht — boek" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="pick__body">
+          <p class="pick__quote">Donker, teder en precies op tijd uit.</p>
+          <h3 class="pick__title">Nachtlicht</h3>
+          <span class="pick__sub">Nightlight</span>
+          <div class="pick__foot">
+            <span class="pick__price">€ 19,99</span>
+            <a class="pick__add" href="#" aria-label="Nachtlicht in winkelmand">In mand</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pick">
+        <div class="pick__img">
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=700&q=80" alt="Verzamelde Verhalen — boek" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="pick__body">
+          <p class="pick__quote">Korte verhalen om telkens naar terug te keren.</p>
+          <h3 class="pick__title">Verzamelde Verhalen</h3>
+          <span class="pick__sub">Collected Stories</span>
+          <div class="pick__foot">
+            <span class="pick__price">€ 27,50</span>
+            <a class="pick__add" href="#" aria-label="Verzamelde Verhalen in winkelmand">In mand</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pick">
+        <div class="pick__img">
+          <span class="pick__badge">Sale</span>
+          <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=700&q=80" alt="Het Kompas — boek" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="pick__body">
+          <p class="pick__quote">Een reisverhaal dat je richting geeft.</p>
+          <h3 class="pick__title">Het Kompas</h3>
+          <span class="pick__sub">The Compass</span>
+          <div class="pick__foot">
+            <span class="pick__price">€ 14,99 <s>€ 19,99</s></span>
+            <a class="pick__add" href="#" aria-label="Het Kompas in winkelmand">In mand</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="week section">
+  <div class="wrap week__grid">
+    <div class="week__media">
+      <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=80" alt="De Stille Tuin, boek van de week" loading="lazy" onerror="this.remove()">
+    </div>
+    <div>
+      <span class="eyebrow">Boek van de week</span>
+      <h2>De Stille Tuin</h2>
+      <blockquote>Soms vind je in een boek precies de stilte die je zelf niet kon vinden.</blockquote>
+      <cite>— Sanne, boekverkoper</cite>
+      <p class="price-line">€ 22,99</p>
+      <a href="#shop" class="btn btn--primary">Lees deze week mee</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=900&q=80" alt="Binnenkant van de onafhankelijke boekhandel" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">De winkel</span>
+        <h2>Voor wie leest</h2>
+        <p class="lead">We lezen alles wat we verkopen. Achter elke aanrader staat een boekverkoper die hem als eerste mooi vond.</p>
+        <p>Geen algoritme, geen tafel met stapels van de week — gewoon mensen die boeken doorgeven. Kom langs, blader rond en laat je verrassen door een titel waar je nooit op had gezocht.</p>
+        <a href="#shop" class="btn btn--ghost">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <div class="inner">
+        <span class="kicker">Shopify-ready</span>
+        <h2>Dit thema importeer je direct in Shopify</h2>
+        <p>Marginalia is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code> en <code>locales/</code> in de root — dus Shopify accepteert hem meteen. Het oxblood-accent staat ingesteld op <code>#7A1F2B</code>.</p>
+        <div class="cta-row" style="margin-top:1.2rem">
+          <a class="btn btn--primary" href="../../downloads/marginalia-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+        </div>
+        <div class="steps">
+          <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+          <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren — het accent staat op #7A1F2B.</span></div>
+          <div class="step"><strong>Publiceer</strong><span>Voeg je titels toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Kom op de leeslijst</h2>
+      <p style="color:var(--muted)">Nieuwe titels, aanraders en uitnodigingen voor avonden.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required autocomplete="email">
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Marginalia</div>
+        <p>Een onafhankelijke boekhandel. Een Shopify-thema in warm papier met oxblood-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle titels</a></li><li><a href="#shop">Romans</a></li><li><a href="#shop">Aanraders</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>De winkel</h4><ul><li><a href="#story">Over ons</a></li><li><a href="#story">Boekverkopers</a></li><li><a href="#">Avonden</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Cadeaubon</a></li><li><a href="#">Retourneren</a></li><li><a href="#import">Shopify-thema</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Marginalia. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

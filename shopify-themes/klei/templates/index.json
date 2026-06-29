@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Handmade studio",
+        "heading": "Ceramics with <em>soul</em>",
+        "text": "Hand-thrown and glazed — no two pieces are exactly alike.",
+        "button_label": "Shop ceramics",
+        "button_label_2": "The atelier"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €50"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Packed with care",
+            "text": "Safe arrival"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Handmade",
+            "text": "One of a kind"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "30-day returns",
+            "text": "No questions asked"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured pieces",
+        "subheading": "Hand-thrown in our studio.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The atelier",
+        "heading": "Shaped by hand",
+        "text": "<p>Each piece is thrown, trimmed and glazed by hand. The small irregularities are the point — they make it yours.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Shaped by hand",
+        "text": "<p>Each piece is thrown, trimmed and glazed by hand. The small irregularities are the point — they make it yours.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the studio list",
+        "text": "New batches, restocks and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

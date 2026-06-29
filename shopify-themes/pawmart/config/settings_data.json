@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F0F7F6",
+    "color_surface": "#FFFFFF",
+    "color_text": "#16201F",
+    "color_text_muted": "#5C6E6C",
+    "color_accent": "#1FA29B",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#DCEAE8",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 16,
+    "logo_width": 140
+  },
+  "presets": {
+    "Pawmart": {
+      "color_background": "#F0F7F6",
+      "color_surface": "#FFFFFF",
+      "color_text": "#16201F",
+      "color_text_muted": "#5C6E6C",
+      "color_accent": "#1FA29B",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#DCEAE8",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 16,
+      "logo_width": 140
+    }
+  }
+}

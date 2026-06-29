@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#EFE9DF",
+    "color_surface": "#FBF8F2",
+    "color_text": "#2A241D",
+    "color_text_muted": "#6F6557",
+    "color_accent": "#B5562E",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#DED5C5",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 12,
+    "logo_width": 140
+  },
+  "presets": {
+    "Klei": {
+      "color_background": "#EFE9DF",
+      "color_surface": "#FBF8F2",
+      "color_text": "#2A241D",
+      "color_text_muted": "#6F6557",
+      "color_accent": "#B5562E",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#DED5C5",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 12,
+      "logo_width": 140
+    }
+  }
+}

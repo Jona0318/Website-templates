@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Urban jungle",
+        "heading": "Bring the <em>outside</em> in",
+        "text": "Houseplants and everything to help them thrive, hand-picked for your home.",
+        "button_label": "Shop plants",
+        "button_label_2": "Care guide"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €40"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Healthy guarantee",
+            "text": "30-day plant promise"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Grown with care",
+            "text": "Fresh from the nursery"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Care support",
+            "text": "Help when you need it"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured plants",
+        "subheading": "Hand-picked from this week's harvest.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our nursery",
+        "heading": "Grown, not rushed",
+        "text": "<p>Every plant is raised with patience and shipped at its healthiest. We pick varieties that are forgiving, beautiful and built to last.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Grown, not rushed",
+        "text": "<p>Every plant is raised with patience and shipped at its healthiest. We pick varieties that are forgiving, beautiful and built to last.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the plant club",
+        "text": "Care tips, new arrivals and member-only offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

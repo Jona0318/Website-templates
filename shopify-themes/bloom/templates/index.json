@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Freshly cut",
+        "heading": "Flowers that <em>say it</em>",
+        "text": "Seasonal bouquets, arranged by hand and delivered the same day.",
+        "button_label": "Shop bouquets",
+        "button_label_2": "Subscriptions"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Same-day delivery",
+            "text": "Order before 2pm"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Freshly cut",
+            "text": "From the grower"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "7-day freshness",
+            "text": "Guaranteed"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Gift cards",
+            "text": "Add a note"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured bouquets",
+        "subheading": "Arranged by hand this morning.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our shop",
+        "heading": "Arranged by hand",
+        "text": "<p>Every bouquet is made to order from flowers cut that morning — never from a fridge.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Arranged by hand",
+        "text": "<p>Every bouquet is made to order from flowers cut that morning — never from a fridge.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the bloom list",
+        "text": "Seasonal drops, care tips and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

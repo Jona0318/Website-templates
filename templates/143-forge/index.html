@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge — industrieel Shopify-thema (staalgrijs × safety-oranje)</title>
+<meta name="description" content="Forge: importeerbaar Shopify-thema voor gereedschap en hardware — industrieel, stevig en praktisch.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='3' fill='%2314161A'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23FF6A00' font-family='sans-serif' font-weight='900'>F</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;900&family=Inter:wght@400;500;700&display=swap');
+  :root{
+    --bg:#14161A; --surface:#1D2026; --text:#ECEDEF; --muted:#969BA4;
+    --accent:#FF6A00; --accent-text:#14161A; --border:#2C3038; --radius:2px;
+    --serif:"Archivo",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --hazard:repeating-linear-gradient(45deg,var(--accent) 0 14px,#14161A 14px 28px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.02;margin:0 0 .5em;text-transform:uppercase;letter-spacing:-.01em;font-weight:900}
+  h1{font-size:clamp(2.6rem,7vw,5.5rem)} h2{font-size:clamp(2rem,4vw,3.25rem)} h3{font-size:1.05rem;font-weight:700}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:1320px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;font-weight:700;color:var(--accent);margin-bottom:1rem;font-family:var(--serif)}
+  .eyebrow::before{content:"";width:28px;height:8px;background:var(--hazard);border:1px solid var(--border)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-family:var(--serif);border:2px solid transparent;cursor:pointer;transition:.18s;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:#ff8124}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border);clip-path:none}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .section{padding-block:clamp(52px,8vw,104px)}
+
+  /* hazard strip */
+  .hazard{height:10px;background:var(--hazard)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--surface);color:var(--text);text-align:center;font-size:.8rem;font-weight:700;letter-spacing:.03em;padding:.65rem 1rem;border-bottom:1px solid var(--border)}
+  .ribbon strong{color:var(--accent);text-transform:uppercase;letter-spacing:.1em;font-family:var(--serif)}
+  .ribbon a{color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:1px}
+
+  /* announce + header */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1rem;font-weight:700;font-family:var(--serif)}
+  header.site{position:sticky;top:0;z-index:20;background:rgba(20,22,26,.92);backdrop-filter:blur(12px);border-bottom:2px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.02em;display:inline-flex;align-items:center;gap:.5rem}
+  .logo b{background:var(--accent);color:var(--accent-text);width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius);font-size:1.25rem}
+  .menu{display:flex;gap:2rem} .menu a{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--serif)} .menu a:hover{color:var(--accent)}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:0;color:inherit;cursor:pointer;display:inline-flex;padding:0}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2}
+  .cart-btn{position:relative;display:inline-flex;align-items:center}
+  .cart-pill{position:absolute;top:-8px;right:-10px;background:var(--accent);color:var(--accent-text);border-radius:var(--radius);font-size:.66rem;font-weight:700;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
+
+  /* hero */
+  .hero{position:relative;min-height:clamp(540px,82vh,800px);display:flex;align-items:flex-end;overflow:hidden;border-bottom:2px solid var(--border)}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:
+     radial-gradient(70% 60% at 80% 20%,rgba(255,106,0,.18),transparent 60%),
+     linear-gradient(160deg,#1A1D22,#0E0F12)}
+  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;filter:grayscale(.3) contrast(1.05)}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:
+     linear-gradient(0deg,rgba(20,22,26,.96) 0%,rgba(20,22,26,.45) 55%,rgba(20,22,26,.2) 100%),
+     linear-gradient(90deg,rgba(20,22,26,.7) 0%,transparent 60%)}
+  .hero__inner{position:relative;z-index:2;max-width:760px;padding-bottom:clamp(48px,7vw,90px)}
+  .hero h1{margin-bottom:1.1rem}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:2rem}
+  .hero__rule{width:80px;height:6px;background:var(--hazard);border:1px solid var(--border);margin-bottom:1.4rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+
+  /* trust */
+  .trust{background:var(--surface);border-bottom:2px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{display:flex;gap:.9rem;align-items:center;padding:1.7rem 1.4rem;border-right:1px solid var(--border)}
+  .trust__item:last-child{border-right:0}
+  .trust__item svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.8;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.92rem;font-family:var(--serif);text-transform:uppercase;letter-spacing:.03em} .trust__item span{color:var(--muted);font-size:.8rem}
+
+  /* products */
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
+  .head p{color:var(--muted);margin:0}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card-p{background:var(--surface);border:2px solid var(--border);overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+  .card-p:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(160deg,#23262C,#15171B)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .5s ease;filter:grayscale(.15)}
+  .card-p:hover .card-p__img img{transform:scale(1.05);filter:none}
+  .card-p__badge{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--accent-text);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .6rem;z-index:2;font-family:var(--serif)}
+  .card-p__body{padding:1.1rem 1.15rem 1.3rem;display:flex;flex-direction:column;gap:.35rem;flex:1;border-top:1px solid var(--border)}
+  .card-p__vendor{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .card-p__title{font-family:var(--serif);font-size:1.05rem;font-weight:700;text-transform:uppercase}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:auto;padding-top:.5rem;font-weight:700;font-family:var(--serif);font-size:1.1rem}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.78em;margin-left:.45rem;font-family:var(--sans)}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,#23262C,#101216);border:2px solid var(--border)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.2) contrast(1.05)}
+  .split__media::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:10px;background:var(--hazard)}
+  .split__content p{color:var(--muted)}
+
+  /* import note */
+  .import{background:var(--surface);border:2px solid var(--border);padding:clamp(28px,5vw,56px);position:relative;overflow:hidden}
+  .import::before{content:"";position:absolute;top:0;left:0;right:0;height:10px;background:var(--hazard)}
+  .import h2{max-width:18ch}
+  .import code{background:#0E0F12;color:var(--accent);padding:.1rem .35rem;border-radius:var(--radius);font-size:.85em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.75rem;counter-reset:s}
+  .step{padding:1.3rem;border:2px solid var(--border);background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;background:var(--accent);color:var(--accent-text);font-weight:900;margin-bottom:.7rem;font-family:var(--serif);border-radius:var(--radius)}
+  .step strong{display:block;margin-bottom:.3rem;font-family:var(--serif);text-transform:uppercase;font-size:.95rem;letter-spacing:.02em}
+  .step span{color:var(--muted);font-size:.88rem}
+
+  /* newsletter */
+  .news{background:var(--accent);color:var(--accent-text);padding:clamp(40px,6vw,72px);text-align:center;position:relative;overflow:hidden}
+  .news .eyebrow{color:var(--accent-text)} .news .eyebrow::before{background:repeating-linear-gradient(45deg,#14161A 0 14px,var(--accent) 14px 28px)}
+  .news h2{color:var(--accent-text)}
+  .news p{color:#3a2208;max-width:480px;margin-inline:auto}
+  .news__form{display:flex;gap:.75rem;max-width:480px;margin:1.5rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:2px solid var(--bg);padding:1rem 1.2rem;border-radius:var(--radius);font-family:inherit}
+  .news__form input:focus-visible{outline-color:#14161A}
+  .news .btn--primary{background:var(--bg);color:var(--text)}
+  .news .btn--primary:hover{background:#000}
+
+  /* footer */
+  footer.site{border-top:2px solid var(--border);background:var(--surface);padding-block:clamp(48px,6vw,72px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-size:1.6rem;font-weight:900;text-transform:uppercase;margin-bottom:1rem;display:inline-flex;align-items:center;gap:.5rem}
+  .f-logo b{background:var(--accent);color:var(--accent-text);width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius);font-size:1.2rem}
+  .f-grid p{color:var(--muted);max-width:320px}
+  .f-col h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-family:var(--serif)}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem} .f-col a{font-size:.92rem;color:var(--muted)} .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:990px){.grid{grid-template-columns:repeat(2,1fr)}.trust__grid{grid-template-columns:1fr 1fr}.trust__item:nth-child(2){border-right:0}.steps{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:749px){.menu{display:none}.split{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.news__form{flex-direction:column}.trust__item{border-right:0;border-bottom:1px solid var(--border)}}
+  @media(max-width:480px){.grid{grid-template-columns:1fr}.trust__grid{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.card-p:hover{transform:none}.card-p:hover .card-p__img img{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <strong>⬢ Shopify-ready</strong> — direct importeerbaar als .zip ·
+  <a href="../../downloads/forge-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €75 — pro-kwaliteit</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Forge home"><b>F</b>Forge</a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Gereedschap</a><a href="#import">Shopify</a><a href="#">Support</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart-btn" aria-label="Winkelwagen, 3 artikelen">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1600&q=80" alt="" loading="eager" onerror="this.remove()">
+  </div>
+  <div class="wrap hero__inner">
+    <span class="eyebrow">Robuust gebouwd</span>
+    <div class="hero__rule" aria-hidden="true"></div>
+    <h1>Gereedschap dat <em>het klaart</em></h1>
+    <p>Professioneel gereedschap en hardware, gebouwd om te incasseren.</p>
+    <div class="cta-row">
+      <a href="#shop" class="btn btn--primary">Shop gereedschap</a>
+      <a href="#shop" class="btn btn--ghost">Bekijk deals</a>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Voordelen">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €75</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Pro-kwaliteit</strong><span>Vakmankwaliteit</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>5 jaar garantie</strong><span>Op elektrisch gereedschap</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 9-12h-7Z"/></svg><div><strong>Snel verzonden</strong><span>Voor 16:00 dezelfde dag</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>Uitgelicht gereedschap</h2>
+      </div>
+      <p>Met de hand gekozen voor de klus.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Sale</span><img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=700&q=80" alt="Boormachine" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Forge</span><span class="card-p__title">Accuboormachine</span><span class="card-p__price">€ 129,00 <s>€ 159,00</s></span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Nieuw</span><img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=80" alt="Koffer" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Forge</span><span class="card-p__title">Gereedschapskoffer</span><span class="card-p__price">€ 89,00</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=700&q=80" alt="Hamer" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Forge</span><span class="card-p__title">Hamer Pro</span><span class="card-p__price">€ 24,95</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1581147036324-c1c89c2c8b5c?auto=format&fit=crop&w=700&q=80" alt="Schroevenset" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Forge</span><span class="card-p__title">Schroevenset 40</span><span class="card-p__price">€ 34,00</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80" alt="De werkplaats met gereedschap" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">De werkplaats</span>
+        <h2>Gemaakt voor hard gebruik</h2>
+        <p>Elk stuk gereedschap is gebouwd voor dagelijks geweld op de bouwplaats. Wij testen tot het stuk gaat, zodat jij dat niet meemaakt.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2>Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:60ch">Forge is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="cta-row" style="margin-top:1rem">
+        <a class="btn btn--primary" href="../../downloads/forge-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #FF6A00).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Kom op de vaklijst</h2>
+      <p>Nieuw gereedschap, deals en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="hazard" aria-hidden="true"></div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><b>F</b>Forge</div>
+        <p>Gereedschap dat het klaart. Een Shopify-thema in staalgrijs met safety-oranje accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#">Alle producten</a></li><li><a href="#">Elektrisch gereedschap</a></li><li><a href="#">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#">Over ons</a></li><li><a href="#">Werkplaats</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Garantie</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Forge. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

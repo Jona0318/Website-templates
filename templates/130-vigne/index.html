@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vigne — sfeervol Shopify-thema voor de wijnhandel (bordeaux × crème)</title>
+<meta name="description" content="Vigne: een direct importeerbaar Shopify-thema voor een wijnhandel — sfeervol, elegant en donker. Wijnen met karakter, met zorg geselecteerd.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A0E12'/><text x='16' y='23' font-size='19' text-anchor='middle' fill='%23C2455C' font-family='serif' font-style='italic'>V</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap');
+  :root{
+    --bg:#1A0E12; --surface:#241319; --text:#F1E7DC; --muted:#B79FA6;
+    --accent:#C2455C; --accent-text:#1A0E12; --border:#3A2229; --radius:3px;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --glow:radial-gradient(60% 55% at 50% 0%,rgba(194,69,92,.18),transparent 70%);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.04;margin:0 0 .4em;font-weight:500;letter-spacing:.005em}
+  h1{font-size:clamp(2.8rem,7vw,5.5rem)} h2{font-size:clamp(2.1rem,4vw,3.4rem)} h3{font-size:1.5rem}
+  em{font-style:italic;color:var(--accent)}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:26px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.7rem;text-transform:uppercase;letter-spacing:.34em;font-size:.68rem;color:var(--accent);margin-bottom:1.1rem;font-weight:500}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.1rem;font-family:var(--sans);font-weight:500;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;transition:.3s ease}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:#d6586f;transform:translateY(-2px)}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .section{padding-block:clamp(56px,9vw,118px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:#120A0D;color:var(--muted);text-align:center;font-size:.76rem;letter-spacing:.06em;padding:.6rem 1rem;border-bottom:1px solid var(--border)}
+  .ribbon b{color:var(--text);font-weight:500}
+  .ribbon a{color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* announce + header */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;padding:.55rem 1rem;font-weight:500}
+  header.site{position:sticky;top:0;z-index:20;background:rgba(26,14,18,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.9rem;font-style:italic;letter-spacing:.02em;line-height:1}
+  .logo span{color:var(--accent)}
+  .menu{display:flex;gap:2.2rem}
+  .menu a{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);position:relative}
+  .menu a:hover{color:var(--text)}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--accent);transition:width .3s}
+  .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:1.25rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;padding:0;cursor:pointer;display:inline-flex}
+  .icons svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .cart{display:inline-flex;gap:.45rem;align-items:center}
+  .cart-pill{background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.66rem;font-weight:600;min-width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;font-family:var(--sans)}
+
+  /* hero */
+  .hero{position:relative;min-height:clamp(580px,88vh,860px);display:flex;align-items:flex-end;overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:
+     radial-gradient(70% 60% at 72% 30%,rgba(194,69,92,.22),transparent 62%),
+     linear-gradient(160deg,#2a1117,#140a0d 70%)}
+  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(1.05) contrast(1.05)}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:
+     linear-gradient(180deg,rgba(26,14,18,.45) 0%,rgba(26,14,18,.2) 40%,rgba(26,14,18,.96) 100%),
+     linear-gradient(90deg,rgba(26,14,18,.7),transparent 60%)}
+  .hero__inner{position:relative;z-index:2;max-width:760px;padding-bottom:clamp(48px,8vw,96px)}
+  .hero h1{margin-bottom:1.3rem}
+  .hero p{font-size:1.18rem;color:var(--muted);max-width:440px;margin-bottom:2.2rem;font-weight:300}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .hero__scroll{position:absolute;right:26px;bottom:32px;z-index:2;writing-mode:vertical-rl;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+
+  /* trust */
+  .trust{border-bottom:1px solid var(--border);background:var(--surface)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+  .trust__item{background:var(--surface);display:flex;gap:.95rem;align-items:center;justify-content:center;padding:1.7rem 1rem;text-align:left}
+  .trust__item svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.4;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.92rem;font-weight:500;letter-spacing:.02em}
+  .trust__item span{color:var(--muted);font-size:.78rem}
+
+  /* products */
+  .head{max-width:640px;margin:0 auto 3.4rem;text-align:center} .head p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .card-p{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.35s ease;display:flex;flex-direction:column}
+  .card-p:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 22px 50px -28px rgba(194,69,92,.5)}
+  .card-p__img{aspect-ratio:3/4;position:relative;overflow:hidden}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .7s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:13px;left:13px;background:var(--accent);color:var(--accent-text);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.32rem .65rem;border-radius:999px;z-index:2}
+  .card-p__body{padding:1.3rem 1.3rem 1.5rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+  .card-p__meta{display:flex;flex-wrap:wrap;gap:.35rem}
+  .card-p__tag{font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:.22rem .55rem}
+  .card-p__title{font-family:var(--serif);font-size:1.45rem;line-height:1.1}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__note{color:var(--muted);font-size:.84rem;margin:0;font-style:italic;font-family:var(--serif)}
+  .card-p__buy{margin-top:auto;padding-top:.7rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)}
+  .card-p__price{font-weight:500;font-size:1.05rem}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.85em;margin-left:.45rem}
+  .card-p__add{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+  /* sommelier pick */
+  .somm{position:relative;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+  .somm__grid{display:grid;grid-template-columns:1.1fr 1fr;align-items:stretch}
+  .somm__media{position:relative;min-height:420px;background:radial-gradient(60% 60% at 40% 30%,rgba(194,69,92,.3),transparent 65%),linear-gradient(160deg,#2a1117,#160b0e)}
+  .somm__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+  .somm__media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(36,19,25,.9))}
+  .somm__body{padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;justify-content:center}
+  .somm__body p{color:var(--muted)}
+  .stars{color:var(--accent);letter-spacing:.2em;font-size:.95rem;margin-bottom:1rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,76px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:var(--radius);
+     background:radial-gradient(70% 60% at 30% 20%,rgba(194,69,92,.28),transparent 62%),linear-gradient(160deg,#2a1117,#160b0e);
+     border:1px solid var(--border)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+  .split__content p{color:var(--muted)}
+
+  /* import note */
+  .import{position:relative;border:1px solid var(--border);border-radius:var(--radius);padding:clamp(30px,5vw,60px);background:
+     var(--glow),linear-gradient(160deg,#2a1218,#1c0d11)}
+  .import code{background:rgba(194,69,92,.14);color:var(--accent);padding:.1rem .4rem;border-radius:3px;font-size:.85em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.8rem;counter-reset:s}
+  .step{padding:1.5rem;border:1px solid var(--border);border-radius:var(--radius);background:rgba(18,10,13,.6)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:999px;background:var(--accent);color:var(--accent-text);font-weight:600;margin-bottom:.8rem;font-family:var(--serif);font-size:1.1rem}
+  .step strong{display:block;margin-bottom:.3rem;font-weight:500;letter-spacing:.02em}
+  .step span{color:var(--muted);font-size:.88rem}
+
+  /* newsletter */
+  .news{position:relative;border:1px solid var(--border);border-radius:var(--radius);padding:clamp(44px,6vw,84px);text-align:center;overflow:hidden;background:var(--glow),var(--surface)}
+  .news__form{display:flex;gap:.75rem;max-width:460px;margin:1.7rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:1px solid var(--border);padding:1rem 1.2rem;border-radius:var(--radius);font-family:inherit}
+  .news__form input::placeholder{color:var(--muted)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:#140a0d;padding-block:clamp(52px,6vw,80px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.6rem}
+  .f-logo{font-family:var(--serif);font-style:italic;font-size:1.9rem;margin-bottom:1rem} .f-logo span{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:320px}
+  .f-col h4{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-weight:500}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.65rem} .f-col a{font-size:.9rem;color:var(--text)} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.8rem}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}
+    .somm__grid{grid-template-columns:1fr}
+    .somm__media{min-height:320px}.somm__media::after{background:linear-gradient(0deg,rgba(36,19,25,.9),transparent 55%)}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .menu{display:none}
+    .grid{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+    .hero__scroll{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important}
+    .card-p:hover{transform:none}
+    .card-p:hover .card-p__img img{transform:none}
+    .btn--primary:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ <b>Shopify-ready thema</b> — direct importeerbaar als .zip ·
+  <a href="../../downloads/vigne-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf 6 flessen — proefpakketten beschikbaar</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#">Vigne<span>.</span></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Wijnen</a><a href="#import">Shopify</a><a href="#cellar">Kelder</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" aria-label="Welkom bij Vigne">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=80" alt="Kaarslicht in een sfeervolle wijnkelder met flessen" loading="eager" onerror="this.remove()">
+  </div>
+  <div class="wrap hero__inner">
+    <span class="eyebrow">Wijnhandel</span>
+    <h1>Wijnen met <em>karakter</em></h1>
+    <p>Zorgvuldig geselecteerd door onze sommeliers, van klein domein tot klassieker.</p>
+    <div class="cta-row">
+      <a href="#shop" class="btn btn--primary">Shop wijnen</a>
+      <a href="#cellar" class="btn btn--ghost">De kelder</a>
+    </div>
+  </div>
+  <span class="hero__scroll" aria-hidden="true">Proef mee</span>
+</section>
+
+<section class="trust" aria-label="Onze beloften">
+  <div class="wrap" style="padding-inline:0">
+    <div class="trust__grid">
+      <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h13v9H3z"/><path d="M16 10h3l2 3v3h-5"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><div><strong>Gratis verzending</strong><span>Vanaf 6 flessen</span></div></div>
+      <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+      <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M5 3h14l-1 6a6 6 0 0 1-12 0Z"/></svg><div><strong>Sommelier-keuze</strong><span>Geproefd &amp; gekozen</span></div></div>
+      <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M12 7v5l3 2"/></svg><div><strong>Perfect bewaard</strong><span>Kelder-condities</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" style="justify-content:center">Bestsellers</span>
+      <h2>Uitgelichte flessen</h2>
+      <p>Met de hand geselecteerd uit onze kelder — elk met een eigen verhaal.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card-p">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(70% 60% at 40% 25%,rgba(194,69,92,.3),transparent 62%),linear-gradient(160deg,#2a1117,#160b0e)"></i>
+          <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?auto=format&fit=crop&w=700&q=80" alt="Wijnfles Côtes du Rhône 2021" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <div class="card-p__meta"><span class="card-p__tag">Rhône</span><span class="card-p__tag">Grenache</span><span class="card-p__tag">2021</span></div>
+          <h3 class="card-p__title">Côtes du Rhône 2021</h3>
+          <p class="card-p__note">Rijp rood fruit, kruidig en zacht in de afdronk.</p>
+          <div class="card-p__buy"><span class="card-p__price">€ 14,50</span><span class="card-p__add">In mand +</span></div>
+        </div>
+      </article>
+
+      <article class="card-p">
+        <div class="card-p__img">
+          <span class="card-p__badge">Nieuw</span>
+          <i style="background:radial-gradient(70% 60% at 60% 30%,rgba(194,69,92,.26),transparent 62%),linear-gradient(160deg,#2a1117,#160b0e)"></i>
+          <img src="https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=700&q=80" alt="Wijnfles Barolo 2019" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <div class="card-p__meta"><span class="card-p__tag">Piemonte</span><span class="card-p__tag">Nebbiolo</span><span class="card-p__tag">2019</span></div>
+          <h3 class="card-p__title">Barolo 2019</h3>
+          <p class="card-p__note">Roos, teer en kersen; krachtig met fijne tannines.</p>
+          <div class="card-p__buy"><span class="card-p__price">€ 32,00</span><span class="card-p__add">In mand +</span></div>
+        </div>
+      </article>
+
+      <article class="card-p">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(60% 60% at 30% 70%,rgba(194,69,92,.24),transparent 62%),linear-gradient(160deg,#2a1117,#160b0e)"></i>
+          <img src="https://images.unsplash.com/photo-1566995541428-f2246c19cd4e?auto=format&fit=crop&w=700&q=80" alt="Witte wijn Chablis 2022" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <div class="card-p__meta"><span class="card-p__tag">Bourgogne</span><span class="card-p__tag">Chardonnay</span><span class="card-p__tag">2022</span></div>
+          <h3 class="card-p__title">Chablis 2022</h3>
+          <p class="card-p__note">Strak, mineraal en fris met een citrus-finale.</p>
+          <div class="card-p__buy"><span class="card-p__price">€ 18,00</span><span class="card-p__add">In mand +</span></div>
+        </div>
+      </article>
+
+      <article class="card-p">
+        <div class="card-p__img">
+          <span class="card-p__badge">Sale</span>
+          <i style="background:radial-gradient(70% 50% at 50% 30%,rgba(194,69,92,.26),transparent 62%),linear-gradient(160deg,#2a1117,#160b0e)"></i>
+          <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&w=700&q=80" alt="Proefpakket met diverse wijnen" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <div class="card-p__meta"><span class="card-p__tag">Selectie</span><span class="card-p__tag">3 flessen</span><span class="card-p__tag">Proef</span></div>
+          <h3 class="card-p__title">Proefpakket</h3>
+          <p class="card-p__note">Onze drie favorieten van het seizoen om te ontdekken.</p>
+          <div class="card-p__buy"><span class="card-p__price">€ 39,00 <s>€ 48,00</s></span><span class="card-p__add">In mand +</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cellar" style="padding-top:0">
+  <div class="wrap">
+    <div class="somm">
+      <div class="somm__grid">
+        <div class="somm__media">
+          <img src="https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=900&q=80" alt="Een fles uit de sommelierselectie bij kaarslicht" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="somm__body">
+          <span class="eyebrow">De keuze van de sommelier</span>
+          <div class="stars" aria-label="Vijf van vijf sterren">★★★★★</div>
+          <h2>Barolo 2019</h2>
+          <p>De fles waar we deze maand niet over uitgepraat raken. Piemonte op zijn mooist: aromatisch, fluweelzacht en gemaakt om jaren te bewaren. Geschonken bij een rustig diner, met geduld.</p>
+          <div class="cta-row" style="margin-top:.6rem">
+            <a href="#shop" class="btn btn--primary">Ontdek de fles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=900&q=80" alt="Wijngaard bij schemering" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">De kelder</span>
+        <h2>Per glas gekozen</h2>
+        <p>Niets komt ongeproefd in de schappen. We werken met kleine wijnboeren die de wijngaard boven het etiket stellen — en dat proef je in elk glas.</p>
+        <a href="#shop" class="btn btn--ghost">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:16ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:62ch">Vigne is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen. Het accent staat ingesteld op <code>#C2455C</code>.</p>
+      <div class="cta-row" style="margin-top:1.2rem">
+        <a class="btn btn--primary" href="../../downloads/vigne-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #C2455C).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je wijnen toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow" style="justify-content:center">Blijf op de hoogte</span>
+      <h2>Word lid van de kelderclub</h2>
+      <p style="color:var(--muted);max-width:460px;margin-inline:auto">Nieuwe binnenkomers, proefnotities en ledenaanbiedingen — rechtstreeks uit de kelder.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Vigne<span>.</span></div>
+        <p>Wijnen met karakter. Een Shopify-thema in bordeaux met crème-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle wijnen</a></li><li><a href="#shop">Rood</a></li><li><a href="#shop">Wit</a></li><li><a href="#shop">Proefpakketten</a></li></ul></div>
+      <div class="f-col"><h4>De kelder</h4><ul><li><a href="#cellar">Ons verhaal</a></li><li><a href="#cellar">Wijnboeren</a></li><li><a href="#">Proefnotities</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Vigne. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

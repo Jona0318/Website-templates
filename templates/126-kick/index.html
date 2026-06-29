@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kick — Shopify-thema voor sneakers & streetwear (zwart × oranje)</title>
+<meta name="description" content="Kick: een direct importeerbaar Shopify-thema voor sneakers en streetwear — bold, energiek en urban. Limited drops en essentials.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230E0E0E'/><text x='16' y='23' font-size='20' font-weight='900' text-anchor='middle' fill='%23FF5A1F' font-family='sans-serif'>K</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;700&display=swap');
+  :root{
+    --bg:#0E0E0E; --surface:#161616; --text:#F4F4F0; --muted:#9A9A92;
+    --accent:#FF5A1F; --accent-text:#0E0E0E; --border:#2A2A28; --radius:2px;
+    --serif:"Archivo",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:900;line-height:.92;margin:0 0 .4em;letter-spacing:-.02em;text-transform:uppercase}
+  h1{font-size:clamp(3rem,11vw,8rem)} h2{font-size:clamp(2.2rem,6vw,4.5rem)} h3{font-size:1.1rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:1320px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-block;font-family:var(--serif);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:var(--accent);margin-bottom:1rem}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2.1rem;font-family:var(--serif);font-weight:900;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--radius);border:2px solid transparent;cursor:pointer;transition:.2s}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:var(--text);color:var(--bg)}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--text)}
+  .btn--ghost:hover{background:var(--text);color:var(--bg)}
+  .section{padding-block:clamp(56px,9vw,120px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:var(--bg);text-align:center;font-family:var(--serif);font-size:.8rem;font-weight:700;letter-spacing:.04em;padding:.6rem 1rem}
+  .ribbon a{color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:1px;font-weight:900}
+
+  /* announce — scrolling marquee */
+  .announce{background:var(--accent);color:var(--accent-text);overflow:hidden;white-space:nowrap;border-bottom:2px solid var(--bg)}
+  .announce__track{display:inline-flex;gap:0;animation:marq 22s linear infinite;will-change:transform}
+  .announce__track span{display:inline-flex;align-items:center;font-family:var(--serif);font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;padding:.5rem 0}
+  .announce__track span::after{content:"✦";margin-inline:1.4rem;opacity:.6}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(14,14,14,.86);backdrop-filter:blur(14px);border-bottom:2px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:2rem}
+  .logo{font-family:var(--serif);font-weight:900;font-size:1.7rem;letter-spacing:-.03em;text-transform:uppercase}
+  .logo span{color:var(--accent)}
+  .menu{display:flex;gap:2rem} .menu a{font-family:var(--serif);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)} .menu a:hover{color:var(--accent)}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:0;color:inherit;cursor:pointer;padding:0;display:inline-flex}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.9}
+  .cart-pill{background:var(--accent);color:var(--accent-text);border-radius:999px;font-family:var(--serif);font-size:.68rem;font-weight:900;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;margin-left:.35rem}
+
+  /* hero */
+  .hero{position:relative;min-height:clamp(560px,88vh,860px);display:flex;align-items:flex-end;overflow:hidden;border-bottom:2px solid var(--border)}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:
+     radial-gradient(70% 80% at 80% 20%,rgba(255,90,31,.35),transparent 55%),
+     linear-gradient(160deg,#1b1b1b,#0E0E0E)}
+  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:
+     linear-gradient(0deg,rgba(14,14,14,.95) 0%,rgba(14,14,14,.35) 45%,rgba(14,14,14,.15) 100%)}
+  /* giant outline watermark */
+  .hero__mark{position:absolute;top:6%;right:-2%;z-index:1;font-family:var(--serif);font-weight:900;font-size:clamp(8rem,26vw,22rem);line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px rgba(255,90,31,.22);text-stroke:2px rgba(255,90,31,.22);pointer-events:none;user-select:none}
+  .hero__inner{position:relative;z-index:2;max-width:960px;padding-bottom:clamp(40px,7vw,90px)}
+  .hero h1 em{font-style:normal;color:var(--accent);display:inline-block;transform:skewX(-6deg)}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:480px;margin-block:1.5rem 2rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  /* diagonal drop sticker */
+  .sticker{position:absolute;z-index:3;top:clamp(90px,14vw,150px);left:clamp(20px,5vw,64px);background:var(--accent);color:var(--accent-text);font-family:var(--serif);font-weight:900;text-transform:uppercase;font-size:.78rem;letter-spacing:.08em;padding:.55rem 1rem;transform:rotate(-7deg);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+  .sticker::before{content:"";position:absolute;inset:0;border:2px solid var(--accent-text);transform:translate(5px,5px);z-index:-1;opacity:.25}
+
+  /* trust — ticker style row */
+  .trust{background:var(--accent);color:var(--accent-text);border-bottom:2px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-block:0}
+  .trust__item{display:flex;gap:.8rem;align-items:center;justify-content:center;text-align:left;padding:1.5rem 1.25rem;border-left:2px solid rgba(14,14,14,.18)}
+  .trust__item:first-child{border-left:0}
+  .trust__item svg{width:26px;height:26px;stroke:var(--accent-text);fill:none;stroke-width:2;flex:0 0 auto}
+  .trust__item strong{display:block;font-family:var(--serif);font-weight:900;text-transform:uppercase;font-size:.9rem;letter-spacing:.02em} .trust__item span{font-size:.78rem;opacity:.8;font-weight:500}
+
+  /* products */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+  .head p{color:var(--muted);max-width:42ch;margin:0}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card-p{position:relative;background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+  .card-p:hover{border-color:var(--accent);transform:translateY(-5px)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(150deg,#222,#121212)}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .5s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.06) rotate(-1deg)}
+  .card-p__badge{position:absolute;top:14px;left:-2px;background:var(--accent);color:var(--accent-text);font-family:var(--serif);font-size:.72rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:.35rem .85rem;z-index:2;transform:rotate(-4deg);box-shadow:0 4px 14px rgba(0,0,0,.45)}
+  .card-p__body{padding:1.1rem 1.2rem 1.35rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+  .card-p__vendor{font-family:var(--serif);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .card-p__title{font-family:var(--serif);font-weight:900;text-transform:uppercase;font-size:1.12rem;letter-spacing:-.01em}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:auto;padding-top:.6rem;font-family:var(--serif);font-weight:700;font-size:1.05rem}
+  .card-p__price s{color:var(--muted);font-weight:500;font-size:.85em;margin-left:.45rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .split__media{position:relative;overflow:hidden;min-height:420px;background:linear-gradient(150deg,#262626,#101010);border-right:2px solid var(--border)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__media::after{content:"DROP 001";position:absolute;bottom:18px;left:18px;font-family:var(--serif);font-weight:900;font-size:.78rem;letter-spacing:.12em;color:var(--accent);background:rgba(14,14,14,.7);padding:.4rem .8rem;border:1px solid var(--accent)}
+  .split__content{padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;justify-content:center;background:var(--surface)}
+  .split__content p{color:var(--muted)}
+  .split__content .btn{align-self:flex-start;margin-top:.5rem}
+
+  /* import note */
+  .import{position:relative;background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:clamp(30px,5vw,60px);overflow:hidden}
+  .import::before{content:"⌁";position:absolute;top:-40px;right:-10px;font-size:14rem;color:var(--accent);opacity:.07;font-family:var(--serif);font-weight:900;line-height:1}
+  .import h2{max-width:18ch}
+  .import .lead{color:var(--muted);max-width:62ch}
+  .import code{background:var(--bg);border:1px solid var(--border);padding:.1rem .35rem;border-radius:3px;font-size:.85em;color:var(--accent)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem;counter-reset:s}
+  .step{position:relative;padding:1.4rem;border:2px solid var(--border);border-radius:var(--radius);background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);display:block;font-family:var(--serif);font-weight:900;font-size:2rem;color:var(--accent);margin-bottom:.5rem;line-height:1}
+  .step strong{display:block;margin-bottom:.3rem;font-family:var(--serif);font-weight:900;text-transform:uppercase;letter-spacing:.02em}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{position:relative;background:var(--accent);color:var(--accent-text);border-radius:var(--radius);padding:clamp(40px,7vw,88px);text-align:center;overflow:hidden}
+  .news .eyebrow{color:var(--accent-text)}
+  .news h2{color:var(--accent-text)}
+  .news p{color:rgba(14,14,14,.75);max-width:480px;margin-inline:auto}
+  .news__form{display:flex;gap:.7rem;max-width:480px;margin:1.6rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:2px solid var(--bg);padding:1rem 1.2rem;border-radius:var(--radius);font-family:inherit}
+  .news__form input::placeholder{color:var(--muted)}
+  .news__form .btn{background:var(--bg);color:var(--text)}
+  .news__form .btn:hover{background:var(--text);color:var(--bg)}
+
+  /* footer */
+  footer.site{border-top:2px solid var(--border);background:var(--surface);padding-block:clamp(48px,6vw,80px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-weight:900;font-size:1.9rem;text-transform:uppercase;margin-bottom:1rem} .f-logo span{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:320px}
+  .f-col h4{font-family:var(--serif);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem} .f-col a{font-size:.92rem;color:var(--muted)} .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:2px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem;font-family:var(--serif);text-transform:uppercase;letter-spacing:.05em}
+
+  @media(max-width:990px){.grid{grid-template-columns:repeat(2,1fr)}.trust__grid{grid-template-columns:repeat(2,1fr)}.trust__item:nth-child(3){border-left:0}.steps{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:749px){.menu{display:none}.split{grid-template-columns:1fr}.split__media{border-right:0;border-bottom:2px solid var(--border)}.f-grid{grid-template-columns:1fr}.news__form{flex-direction:column}.head{flex-direction:column;align-items:flex-start}}
+  @media(max-width:480px){.grid{grid-template-columns:1fr}.trust__grid{grid-template-columns:1fr}.trust__item{border-left:0;border-top:2px solid rgba(14,14,14,.18)}.trust__item:first-child{border-top:0}}
+  @media(prefers-reduced-motion:reduce){.announce__track{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/kick-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce" aria-label="Aankondiging">
+  <div class="announce__track" aria-hidden="true">
+    <span>Gratis next-day verzending vanaf €75 — nieuwe drop live</span>
+    <span>Gratis next-day verzending vanaf €75 — nieuwe drop live</span>
+    <span>Gratis next-day verzending vanaf €75 — nieuwe drop live</span>
+    <span>Gratis next-day verzending vanaf €75 — nieuwe drop live</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#">Kick<span>/</span></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Sneakers</a><a href="#import">Shopify</a><a href="#story">Drops</a>
+    </nav>
+    <div class="icons">
+      <button aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button aria-label="Winkelwagen, 3 items">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1600&q=80" alt="" loading="eager" onerror="this.remove()">
+  </div>
+  <span class="hero__mark" aria-hidden="true">KICK</span>
+  <span class="sticker">★ Limited drop</span>
+  <div class="wrap hero__inner">
+    <span class="eyebrow">Nieuwe drop</span>
+    <h1>Sneakers die <em>opvallen</em></h1>
+    <p>Limited drops en streetwear-essentials. Wees er snel bij.</p>
+    <div class="cta-row">
+      <a href="#shop" class="btn btn--primary">Shop de drop</a>
+      <a href="#shop" class="btn btn--ghost">Bekijk sneakers</a>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Onze beloftes">
+  <div class="wrap" style="padding-inline:0">
+  <div class="trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M3 7h13v8H3z"/><path d="M16 10h4l1 3v2h-5z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €75</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 1 3 6.7"/><path d="M3 21v-5h5"/></svg><div><strong>Snel retour</strong><span>14 dagen zonder gedoe</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V5Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>100% authentiek</strong><span>Gecontroleerde paren</span></div></div>
+  </div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>Uitgelichte kicks</h2>
+      </div>
+      <p>Met de hand geselecteerd uit de nieuwste drop.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge">−20%</span><i style="background:radial-gradient(70% 60% at 40% 30%,rgba(255,90,31,.22),transparent 60%),linear-gradient(150deg,#242424,#101010)"></i><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Sneaker" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Kick</span><span class="card-p__title">Runner OG</span><span class="card-p__price">€ 119,00 <s>€ 149,00</s></span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge">Nieuw</span><i style="background:radial-gradient(70% 60% at 60% 25%,rgba(255,90,31,.18),transparent 60%),linear-gradient(150deg,#222,#0f0f0f)"></i><img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=700&q=80" alt="High-top" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Kick</span><span class="card-p__title">High-Top Mono</span><span class="card-p__price">€ 139,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><i style="background:radial-gradient(60% 60% at 35% 65%,rgba(255,90,31,.16),transparent 60%),linear-gradient(150deg,#232323,#101010)"></i><img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=700&q=80" alt="Broek" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Kick</span><span class="card-p__title">Cargo Pant</span><span class="card-p__price">€ 89,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><i style="background:radial-gradient(70% 50% at 55% 30%,rgba(255,90,31,.16),transparent 60%),linear-gradient(150deg,#222,#0f0f0f)"></i><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80" alt="T-shirt" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Kick</span><span class="card-p__title">Logo Tee</span><span class="card-p__price">€ 39,00</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=900&q=80" alt="Sneakers op straat" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">De drop</span>
+        <h2>Gemaakt voor de straat</h2>
+        <p>Elke drop is gelimiteerd en gemaakt om te bewegen. We obsederen over pasvorm, materiaal en dat eerste-keer-gevoel.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2>Dit thema importeer je direct in Shopify</h2>
+      <p class="lead">Kick is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="cta-row" style="margin-top:1.2rem">
+        <a class="btn btn--primary" href="../../downloads/kick-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #FF5A1F).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om de drop te lanceren.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Kom op de drop-lijst</h2>
+      <p>Vroege toegang tot drops, raffles en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Je e-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Kick<span>/</span></div>
+        <p>Sneakers en streetwear, gemaakt voor de straat. Een Shopify-thema in zwart met oranje-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Sneakers</a></li><li><a href="#shop">Drops</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#story">Over ons</a></li><li><a href="#">Stores</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Kick. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Welkom op de markt",
+        "heading": "Een markt vol <em>vondsten</em>",
+        "text": "Van wonen tot mode — duizenden verkopers, één plek.",
+        "button_label": "Begin met shoppen",
+        "button_label_2": "Bekijk aanbiedingen"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Gratis verzending",
+            "text": "Vanaf €25"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Snel bezorgd",
+            "text": "1–2 werkdagen"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Veilig kopen",
+            "text": "Kopersbescherming"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "30 dagen retour",
+            "text": "Zonder gedoe"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Populair op de markt",
+        "heading": "Populair op de markt",
+        "subheading": "Elke week nieuwe vondsten uit alle hoeken van de markt.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Marktdag",
+        "heading": "Vondsten tot -40%",
+        "text": "<p>Elke week nieuwe vondsten uit alle hoeken van de markt.</p>",
+        "button_label": "Ontdek de markt"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Welkom op de markt",
+        "heading": "Een markt vol vondsten",
+        "text": "<p>Van wonen tot mode — duizenden verkopers, één plek.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Blijf op de hoogte",
+        "heading": "Mis geen enkele deal",
+        "text": "Ontvang de beste aanbiedingen in je inbox."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#1A0E12",
+    "color_surface": "#241319",
+    "color_text": "#F1E7DC",
+    "color_text_muted": "#B79FA6",
+    "color_accent": "#C2455C",
+    "color_accent_text": "#1A0E12",
+    "color_border": "#3A2229",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 4,
+    "logo_width": 140
+  },
+  "presets": {
+    "Vigne": {
+      "color_background": "#1A0E12",
+      "color_surface": "#241319",
+      "color_text": "#F1E7DC",
+      "color_text_muted": "#B79FA6",
+      "color_accent": "#C2455C",
+      "color_accent_text": "#1A0E12",
+      "color_border": "#3A2229",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 4,
+      "logo_width": 140
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Built tough",
+        "heading": "Tools that <em>get it done</em>",
+        "text": "Professional-grade tools and hardware, built to take a beating.",
+        "button_label": "Shop tools",
+        "button_label_2": "View deals"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €75"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Pro-grade",
+            "text": "Trade quality"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "5-year warranty",
+            "text": "On power tools"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Fast dispatch",
+            "text": "Same-day before 4pm"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured tools",
+        "subheading": "Hand-picked for the job.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The workshop",
+        "heading": "Made to be used hard",
+        "text": "<p>Every tool is built for daily abuse on the job site. We test to failure so you don't find it first.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Made to be used hard",
+        "text": "<p>Every tool is built for daily abuse on the job site. We test to failure so you don't find it first.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the trade list",
+        "text": "New tools, deals and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

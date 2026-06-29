@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Groove — Shopify-thema voor hifi &amp; vinyl (warm retro-modern)</title>
+<meta name="description" content="Groove: een direct importeerbaar Shopify-thema voor een hifi- en vinylwinkel — warm, retro-modern en sfeervol. Platenspelers, speakers en vinyl.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23161210'/><circle cx='16' cy='16' r='10' fill='none' stroke='%23E07A3A' stroke-width='2'/><circle cx='16' cy='16' r='2.5' fill='%23E07A3A'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;700&display=swap');
+  :root{
+    --bg:#161210; --surface:#211B17; --text:#F3E9DD; --muted:#B3A595;
+    --accent:#E07A3A; --accent-text:#161210; --border:#352B23;
+    --teal:#3AA89B; --brass:#C9A24B;
+    --radius:18px; --radius-sm:12px;
+    --serif:"DM Serif Display",Georgia,serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .4em;font-weight:400}
+  h1{font-size:clamp(2.6rem,6.5vw,5rem)} h2{font-size:clamp(2rem,4vw,3.2rem)} h3{font-size:1.25rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;text-transform:uppercase;letter-spacing:.26em;font-size:.7rem;font-weight:700;color:var(--accent);margin-bottom:1.1rem}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.9rem;font-weight:700;font-size:.82rem;letter-spacing:.06em;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s,color .2s,border-color .2s;font-family:var(--sans)}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{transform:translateY(-2px);background:#f08c4d}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--teal);color:var(--teal)}
+  .section{padding-block:clamp(56px,9vw,110px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:linear-gradient(90deg,var(--accent),var(--brass));color:var(--accent-text);text-align:center;font-size:.8rem;font-weight:700;letter-spacing:.02em;padding:.6rem 1rem}
+  .ribbon a{border-bottom:1.5px solid currentColor;padding-bottom:1px}
+  .ribbon a:hover{opacity:.75}
+
+  /* announce */
+  .announce{background:var(--surface);color:var(--muted);text-align:center;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:.6rem 1rem;font-weight:600;border-bottom:1px solid var(--border)}
+  .announce span{color:var(--teal)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(22,18,16,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:2rem}
+  .logo{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--serif);font-size:1.6rem;letter-spacing:.01em}
+  .logo .disc{width:26px;height:26px;border-radius:50%;border:2px solid var(--accent);position:relative;display:inline-block;flex:0 0 auto}
+  .logo .disc::after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--accent)}
+  .menu{display:flex;gap:2rem} .menu a{font-size:.82rem;letter-spacing:.08em;font-weight:600;color:var(--muted)} .menu a:hover{color:var(--text)}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;padding:0;cursor:pointer;display:inline-flex;align-items:center}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .cart-pill{background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.68rem;font-weight:700;min-width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;margin-left:.35rem}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:
+     radial-gradient(70% 60% at 82% 30%,rgba(224,122,58,.28),transparent 62%),
+     radial-gradient(60% 60% at 12% 85%,rgba(58,168,155,.16),transparent 60%),
+     var(--bg)}
+  .hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(56px,8vw,96px)}
+  .hero__copy h1{margin-bottom:.6rem}
+  .hero__copy h1 em{font-style:italic;color:var(--accent)}
+  .hero__copy p{font-size:1.12rem;color:var(--muted);max-width:440px;margin-bottom:2rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  /* turntable visual */
+  .turntable{position:relative;aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;background:
+     linear-gradient(150deg,#2a211a,#1b1511);border:1px solid var(--border);box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+  .turntable img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;z-index:2}
+  .platter{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);width:74%;aspect-ratio:1/1;border-radius:50%;
+     background:repeating-radial-gradient(circle at center,#0d0a08 0 2px,#1c1611 2px 4px);
+     box-shadow:0 0 0 10px #14100d,0 0 0 11px var(--border);animation:spin 8s linear infinite}
+  .platter::after{content:"";position:absolute;inset:38%;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px #1c1611}
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+  .vinyl-tag{position:absolute;z-index:3;bottom:16px;left:16px;background:rgba(22,18,16,.78);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:999px;padding:.5rem 1rem;font-size:.74rem;font-weight:600;display:flex;align-items:center;gap:.5rem}
+  .vinyl-tag b{color:var(--teal)}
+
+  /* trust */
+  .trust{background:var(--surface);border-block:1px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;padding-block:2rem}
+  .trust__item{display:flex;gap:.85rem;align-items:center}
+  .trust__item svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.5;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.95rem} .trust__item span{color:var(--muted);font-size:.82rem}
+
+  /* products */
+  .head{max-width:680px;margin:0 auto 3rem;text-align:center} .head p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .card-p{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+  .card-p:hover{transform:translateY(-6px);border-color:var(--accent)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(150deg,#2a211a,#181310)}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--accent-text);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .65rem;border-radius:999px;z-index:2}
+  .card-p__badge.sale{background:var(--teal)}
+  .card-p__body{padding:1.1rem 1.2rem 1.35rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
+  .card-p__vendor{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .card-p__title{font-family:var(--serif);font-size:1.18rem;line-height:1.15}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:auto;padding-top:.6rem;font-weight:700}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.9em;margin-left:.45rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:var(--radius);background:
+     radial-gradient(70% 60% at 30% 20%,rgba(58,168,155,.22),transparent 60%),linear-gradient(160deg,#2a211a,#181310);
+     border:1px solid var(--border)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content p{color:var(--muted)}
+
+  /* import */
+  .import{background:
+     radial-gradient(80% 90% at 90% 10%,rgba(224,122,58,.16),transparent 60%),
+     radial-gradient(70% 80% at 5% 95%,rgba(58,168,155,.12),transparent 60%),
+     var(--surface);
+     border:1px solid var(--border);border-radius:var(--radius);padding:clamp(28px,5vw,60px)}
+  .import code{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.1rem .4rem;font-size:.88em}
+  .accent-chip{display:inline-flex;align-items:center;gap:.45rem;font-weight:600}
+  .accent-chip i{width:14px;height:14px;border-radius:50%;background:var(--accent);display:inline-block}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;counter-reset:s}
+  .step{padding:1.4rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:50%;background:var(--accent);color:var(--accent-text);font-weight:700;margin-bottom:.7rem;font-family:var(--serif);font-size:1.1rem}
+  .step strong{display:block;margin-bottom:.3rem}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{position:relative;overflow:hidden;background:linear-gradient(150deg,#2a211a,#181310);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(40px,6vw,76px);text-align:center}
+  .news::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 70% at 50% 0%,rgba(224,122,58,.18),transparent 60%);pointer-events:none}
+  .news>*{position:relative;z-index:1}
+  .news__form{display:flex;gap:.75rem;max-width:480px;margin:1.6rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:1px solid var(--border);padding:.95rem 1.2rem;border-radius:999px;font-family:inherit}
+  .news__form input::placeholder{color:var(--muted)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(48px,6vw,72px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--serif);font-size:1.6rem;margin-bottom:1rem}
+  .f-logo .disc{width:24px;height:24px;border-radius:50%;border:2px solid var(--accent);position:relative;flex:0 0 auto}
+  .f-logo .disc::after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:300px}
+  .f-col h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem} .f-col a{font-size:.92rem;color:var(--text)} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .hero__grid{grid-template-columns:1fr}
+    .turntable{max-width:460px;margin-inline:auto;order:-1}
+    .trust__grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .menu{display:none}
+    .grid{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr}
+    .trust__grid{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .platter{animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/groove-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €60 — <span>vinyl &amp; gear</span></div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="disc" aria-hidden="true"></span>Groove</a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Audio</a><a href="#import">Shopify</a><a href="#shop">Vinyl</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">Warm geluid</span>
+      <h1>Audio met <em>karakter</em></h1>
+      <p>Platenspelers, speakers en vinyl — voor wie luistert met aandacht.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop audio</a>
+        <a href="#shop" class="btn btn--ghost">Bekijk vinyl</a>
+      </div>
+    </div>
+    <div class="turntable">
+      <span class="platter" aria-hidden="true"></span>
+      <img src="https://images.unsplash.com/photo-1542208998-f6dbbb33f5fa?auto=format&fit=crop&w=1600&q=80" alt="Platenspeler met draaiende plaat in een warme, retro-moderne winkel" loading="eager" onerror="this.remove()">
+      <span class="vinyl-tag"><b>33⅓</b> RPM · warm &amp; analoog</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="11" rx="2"/><path d="M16 9h3l3 3v5h-6"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €60</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>2 jaar garantie</strong><span>Op alle gear</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0v5a2 2 0 0 1-2 2h-1v-6h3"/><path d="M5 19H4a2 2 0 0 1-2-2v-5h3Z"/></svg><div><strong>Deskundig advies</strong><span>Wij luisteren echt</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" style="justify-content:center">Bestsellers</span>
+      <h2>Uitgelichte gear</h2>
+      <p>Met de hand gekozen voor warm, eerlijk geluid.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#">
+        <div class="card-p__img"><i style="background:radial-gradient(70% 60% at 40% 25%,rgba(224,122,58,.25),transparent 60%),linear-gradient(160deg,#2a211a,#181310)"></i><img src="https://images.unsplash.com/photo-1542208998-f6dbbb33f5fa?auto=format&fit=crop&w=700&q=80" alt="Platenspeler" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Groove</span><span class="card-p__title">Platenspeler Classic</span><span class="card-p__price">€ 349,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge">Nieuw</span><i style="background:radial-gradient(60% 60% at 60% 30%,rgba(58,168,155,.22),transparent 60%),linear-gradient(160deg,#2a211a,#181310)"></i><img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=700&q=80" alt="Speaker" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Groove</span><span class="card-p__title">Boekenplank Speaker (paar)</span><span class="card-p__price">€ 279,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><i style="background:radial-gradient(60% 60% at 30% 70%,rgba(224,122,58,.22),transparent 60%),linear-gradient(160deg,#2a211a,#181310)"></i><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=700&q=80" alt="Koptelefoon" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Groove</span><span class="card-p__title">Koptelefoon Open</span><span class="card-p__price">€ 199,00</span></div>
+      </a>
+      <a class="card-p" href="#">
+        <div class="card-p__img"><span class="card-p__badge sale">Sale</span><i style="background:radial-gradient(70% 50% at 50% 30%,rgba(201,162,75,.2),transparent 60%),linear-gradient(160deg,#2a211a,#181310)"></i><img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=700&q=80" alt="Vinyl" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body"><span class="card-p__vendor">Groove</span><span class="card-p__title">Vinyl Starterpakket</span><span class="card-p__price">€ 49,00 <s>€ 69,00</s></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80" alt="Sfeerbeeld van de winkel met platenspelers en vinyl" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">De winkel</span>
+        <h2>Afgestemd op luisteren</h2>
+        <p>We kiezen gear die aandacht beloont — warm, gedetailleerd en gebouwd voor decennia, niet seizoenen.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:20ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:62ch">Groove is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen. Het warme accent staat ingesteld op <span class="accent-chip"><i aria-hidden="true"></i>#E07A3A</span>.</p>
+      <div class="cta-row" style="margin-top:1.2rem">
+        <a class="btn btn--primary" href="../../downloads/groove-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #E07A3A).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je vinyl en gear toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow" style="justify-content:center">Blijf op de hoogte</span>
+      <h2>Word lid van de luisterclub</h2>
+      <p style="color:var(--muted);max-width:480px;margin-inline:auto">Nieuwe gear, vinyl-drops en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><span class="disc" aria-hidden="true"></span>Groove</div>
+        <p>Audio met karakter. Een Shopify-thema in charcoal met warm oranje-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Platenspelers</a></li><li><a href="#shop">Speakers</a></li><li><a href="#shop">Vinyl</a></li></ul></div>
+      <div class="f-col"><h4>Winkel</h4><ul><li><a href="#">Over ons</a></li><li><a href="#">Luisterruimte</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Groove. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

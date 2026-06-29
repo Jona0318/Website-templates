@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Built for the trail",
+        "heading": "Gear for <em>every horizon</em>",
+        "text": "Durable kit for hiking, camping and everything beyond the path.",
+        "button_label": "Shop gear",
+        "button_label_2": "Our routes"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €50"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Tested outdoors",
+            "text": "Field-proven gear"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Repair service",
+            "text": "Made to last"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Easy returns",
+            "text": "30-day no fuss"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured gear",
+        "subheading": "Hand-picked for the trail.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our field",
+        "heading": "Tested where it matters",
+        "text": "<p>We take every product into the mountains before it reaches the shelf. If it fails out there, it never makes it here.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Tested where it matters",
+        "text": "<p>We take every product into the mountains before it reaches the shelf. If it fails out there, it never makes it here.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the trail club",
+        "text": "Routes, gear drops and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

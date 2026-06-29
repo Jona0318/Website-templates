@@ -1,0 +1,53 @@
+<section class="section">
+  <div class="page-width">
+    <div class="newsletter">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      <h2>{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}
+        <p style="color: var(--color-text-muted); max-width: 460px; margin-inline: auto;">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+      {%- form 'customer', class: 'newsletter__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p style="margin:0;color:var(--color-accent);">{{ 'general.newsletter_form.confirmation' | t }}</p>
+        {%- else -%}
+          <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" required>
+          <button type="submit" class="btn btn--primary">{{ 'general.newsletter_form.submit' | t }}</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Stay in touch"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join the inner circle"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Early access to drops, private offers, and stories from the studio."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

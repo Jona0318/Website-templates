@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Warm sound",
+        "heading": "Audio with <em>character</em>",
+        "text": "Turntables, speakers and vinyl — for people who listen with attention.",
+        "button_label": "Shop audio",
+        "button_label_2": "View vinyl"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €60"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "Encrypted & protected"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "2-year warranty",
+            "text": "On all gear"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Expert advice",
+            "text": "We actually listen"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured gear",
+        "subheading": "Hand-picked for warm, honest sound.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The shop",
+        "heading": "Tuned for listening",
+        "text": "<p>We pick gear that rewards attention — warm, detailed and built to last decades, not seasons.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Tuned for listening",
+        "text": "<p>We pick gear that rewards attention — warm, detailed and built to last decades, not seasons.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the listening club",
+        "text": "New gear, vinyl drops and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

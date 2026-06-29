@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#161210",
+    "color_surface": "#211B17",
+    "color_text": "#F3E9DD",
+    "color_text_muted": "#B3A595",
+    "color_accent": "#E07A3A",
+    "color_accent_text": "#161210",
+    "color_border": "#352B23",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 6,
+    "logo_width": 140
+  },
+  "presets": {
+    "Groove": {
+      "color_background": "#161210",
+      "color_surface": "#211B17",
+      "color_text": "#F3E9DD",
+      "color_text_muted": "#B3A595",
+      "color_accent": "#E07A3A",
+      "color_accent_text": "#161210",
+      "color_border": "#352B23",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 6,
+      "logo_width": 140
+    }
+  }
+}

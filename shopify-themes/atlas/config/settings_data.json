@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F1EFE8",
+    "color_surface": "#FFFFFF",
+    "color_text": "#1E211C",
+    "color_text_muted": "#5F6657",
+    "color_accent": "#C75B27",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#DEDACB",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 6,
+    "logo_width": 140
+  },
+  "presets": {
+    "Atlas": {
+      "color_background": "#F1EFE8",
+      "color_surface": "#FFFFFF",
+      "color_text": "#1E211C",
+      "color_text_muted": "#5F6657",
+      "color_accent": "#C75B27",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#DEDACB",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 6,
+      "logo_width": 140
+    }
+  }
+}

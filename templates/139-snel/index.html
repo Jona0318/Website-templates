@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snel — quick-commerce Shopify-thema (wit × pink)</title>
+<meta name="description" content="Snel: een direct importeerbaar Shopify-thema in marktplaats-stijl — quick-commerce met een grote bezorgbelofte, categorie-bubbels en een punchy dealgrid.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%23FF2D6E'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>S</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+  :root{
+    --bg:#FFFFFF; --surface:#FFF6F8; --text:#15121A; --muted:#6B6473;
+    --accent:#FF2D6E; --accent-text:#FFFFFF; --border:#F1E3E9; --secondary:#111111;
+    --radius:18px; --pill:999px;
+    --display:"Plus Jakarta Sans",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --shadow:0 10px 30px rgba(255,45,110,.10);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0 0 .5em;letter-spacing:-.02em}
+  h1{font-size:clamp(2.4rem,6vw,4.25rem);font-weight:800}
+  h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800}
+  h3{font-size:1.1rem;font-weight:700}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:20px}
+  .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700;color:var(--accent);margin-bottom:.8rem}
+  .section{padding-block:clamp(40px,6vw,72px)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem 1.7rem;font-family:var(--display);font-weight:700;font-size:.95rem;border-radius:var(--pill);border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s,color .2s,border-color .2s;line-height:1}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn--ghost{background:#fff;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn--dark{background:var(--secondary);color:#fff}
+  .btn--dark:hover{transform:translateY(-2px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--secondary);color:#fff;text-align:center;font-size:.82rem;font-weight:700;letter-spacing:.02em;padding:.6rem 1rem}
+  .ribbon a{color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* announce */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.82rem;letter-spacing:.02em;padding:.55rem 1rem;font-weight:700}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;gap:1.25rem;height:74px}
+  .logo{font-family:var(--display);font-size:1.6rem;font-weight:800;letter-spacing:-.02em;flex:0 0 auto}
+  .logo span{color:var(--accent)}
+  .search{flex:1;display:flex;align-items:center;gap:.6rem;background:var(--surface);border:2px solid var(--border);border-radius:var(--pill);padding:.55rem 1rem;transition:border-color .2s;min-width:0}
+  .search:focus-within{border-color:var(--accent)}
+  .search svg{width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2;flex:0 0 auto}
+  .search input{flex:1;border:0;background:transparent;font-family:inherit;font-size:.95rem;color:var(--text);min-width:0}
+  .search input:focus{outline:none}
+  .search input::placeholder{color:var(--muted)}
+  .icons{display:flex;gap:.4rem;align-items:center;flex:0 0 auto}
+  .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--pill);background:var(--surface);position:relative;transition:background .2s}
+  .iconbtn:hover{background:#ffe7ef}
+  .iconbtn svg{width:21px;height:21px;stroke:var(--text);fill:none;stroke-width:1.9}
+  .cart-pill{position:absolute;top:4px;right:4px;background:var(--accent);color:#fff;border-radius:var(--pill);font-size:.62rem;font-weight:700;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;font-family:var(--display)}
+
+  /* hero / delivery promise */
+  .hero{padding-block:clamp(28px,5vw,56px)}
+  .hero__card{position:relative;overflow:hidden;border-radius:34px;background:
+     radial-gradient(120% 120% at 88% 10%,rgba(255,45,110,.16),transparent 55%),
+     linear-gradient(150deg,#fff,#fff0f5);
+     border:1px solid var(--border);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,48px);align-items:center}
+  .hero__inner{position:relative;z-index:2;max-width:560px}
+  .promise{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent);color:#fff;font-family:var(--display);font-weight:800;font-size:.9rem;padding:.5rem 1.05rem;border-radius:var(--pill);margin-bottom:1.25rem}
+  .promise svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;animation:tick 2s steps(1,end) infinite}
+  @keyframes tick{50%{opacity:.55}}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero__inner p{font-size:1.12rem;color:var(--muted);max-width:440px;margin-bottom:1.6rem}
+  .cta-row{display:flex;gap:.8rem;flex-wrap:wrap}
+  .hero__media{position:relative;aspect-ratio:4/3;border-radius:26px;overflow:hidden;background:
+     radial-gradient(80% 80% at 30% 20%,rgba(255,45,110,.22),transparent 60%),linear-gradient(160deg,#ffd9e6,#ffeef4)}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__badge{position:absolute;left:16px;bottom:16px;z-index:2;display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-radius:var(--pill);padding:.6rem .95rem;box-shadow:var(--shadow);font-family:var(--display);font-weight:700;font-size:.9rem}
+  .hero__badge svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.8}
+
+  /* category bubbles */
+  .cats{display:grid;grid-template-columns:repeat(8,1fr);gap:1rem}
+  .cat{display:flex;flex-direction:column;align-items:center;gap:.7rem;text-align:center}
+  .cat__bubble{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:2px solid var(--border);transition:transform .2s,border-color .2s,background .2s}
+  .cat:hover .cat__bubble{transform:translateY(-4px);border-color:var(--accent);background:#ffe7ef}
+  .cat__bubble svg{width:34px;height:34px;stroke:var(--accent);fill:none;stroke-width:1.7}
+  .cat span{font-size:.82rem;font-weight:600;color:var(--text)}
+
+  /* trust */
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  .trust__item{display:flex;gap:.85rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem}
+  .trust__item svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.7;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.95rem;font-family:var(--display)}
+  .trust__item span{color:var(--muted);font-size:.82rem}
+
+  /* products */
+  .row-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+  .row-head h2{margin:0}
+  .row-head a{font-family:var(--display);font-weight:700;color:var(--accent);font-size:.92rem;white-space:nowrap}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card-p{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+  .card-p:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(160deg,#ffe7ef,#fff0f5)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;font-size:.68rem;font-weight:700;font-family:var(--display);padding:.28rem .6rem;border-radius:var(--pill);z-index:2}
+  .card-p__fast{position:absolute;top:10px;right:10px;background:rgba(17,17,17,.85);color:#fff;font-size:.62rem;font-weight:700;font-family:var(--display);padding:.26rem .55rem;border-radius:var(--pill);z-index:2;display:inline-flex;align-items:center;gap:.25rem}
+  .card-p__fast svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.2}
+  .card-p__body{padding:.85rem .95rem 1rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
+  .card-p__rating{font-size:.78rem;color:var(--muted)}
+  .card-p__rating .star{color:var(--accent)}
+  .card-p__title{font-family:var(--display);font-size:1rem;font-weight:700}
+  .card-p__price{margin-top:auto;padding-top:.3rem;font-family:var(--display);font-weight:800;font-size:1.05rem;display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
+  .card-p__price s{color:var(--muted);font-weight:500;font-size:.82rem}
+  .card-p__add{margin-top:.7rem;width:100%;padding:.6rem;border-radius:var(--pill);border:2px solid var(--border);background:#fff;color:var(--text);font-family:var(--display);font-weight:700;font-size:.85rem;cursor:pointer;transition:.2s}
+  .card-p__add:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* deal strip */
+  .deal{position:relative;overflow:hidden;border-radius:28px;background:
+     radial-gradient(90% 140% at 90% 0%,rgba(255,255,255,.18),transparent 55%),
+     linear-gradient(120deg,var(--accent),#ff6da0);color:#fff;padding:clamp(28px,5vw,52px);display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+  .deal h2{color:#fff;margin-bottom:.4rem}
+  .deal .eyebrow{color:#fff;opacity:.85}
+  .deal p{color:#fff;opacity:.92;margin:0;max-width:46ch}
+  .deal .btn--ghost{background:#fff;border-color:#fff;color:var(--accent)}
+  .deal .btn--ghost:hover{background:transparent;color:#fff}
+
+  /* import */
+  .import{background:var(--surface);border:1px solid var(--border);border-radius:28px;padding:clamp(28px,5vw,56px)}
+  .import code{background:#fff;border:1px solid var(--border);border-radius:6px;padding:.05rem .35rem;font-size:.88em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem;counter-reset:s}
+  .step{padding:1.25rem;border:1px solid var(--border);border-radius:var(--radius);background:#fff}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:var(--pill);background:var(--accent);color:#fff;font-weight:800;font-family:var(--display);margin-bottom:.7rem}
+  .step strong{display:block;margin-bottom:.25rem;font-family:var(--display)}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{background:var(--secondary);color:#fff;border-radius:28px;padding:clamp(36px,6vw,64px);text-align:center}
+  .news h2{color:#fff}
+  .news p{color:rgba(255,255,255,.72);max-width:460px;margin-inline:auto}
+  .news__form{display:flex;gap:.6rem;max-width:480px;margin:1.5rem auto 0}
+  .news__form input{flex:1;background:#fff;color:var(--text);border:2px solid transparent;padding:.85rem 1.2rem;border-radius:var(--pill);font-family:inherit;font-size:.95rem;min-width:0}
+  .news__form input:focus{outline:none;border-color:var(--accent)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:#fff;padding-block:clamp(40px,5vw,64px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--display);font-size:1.6rem;font-weight:800;margin-bottom:.8rem}
+  .f-logo span{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:300px}
+  .f-col h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-family:var(--display);font-weight:700}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+  .f-col a{font-size:.92rem;color:var(--text)}
+  .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:990px){
+    .hero__card{grid-template-columns:1fr}
+    .hero__media{order:-1;aspect-ratio:16/9}
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .cats{grid-template-columns:repeat(4,1fr)}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .logo{font-size:1.35rem}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+    .cat__bubble{width:72px;height:72px}
+  }
+  @media(max-width:430px){
+    .cats{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    .card-p:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ⚡ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/snel-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">🛵 Binnen 1 uur bezorgd · Gratis vanaf €15</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Snel home">Snel<span>.</span></a>
+    <form class="search" role="search" onsubmit="return false">
+      <label for="q" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Zoeken</label>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="q" type="search" name="q" placeholder="Zoek &amp; bestel direct" autocomplete="off">
+    </form>
+    <div class="icons">
+      <a class="iconbtn" href="#" aria-label="Account">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      </a>
+      <a class="iconbtn" href="#" aria-label="Winkelmandje, 3 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap" aria-labelledby="hero-title">
+  <div class="hero__card">
+    <div class="hero__inner">
+      <span class="promise"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Binnen 1 uur bezorgd</span>
+      <h1 id="hero-title">Vandaag besteld, <em>nu bezorgd</em></h1>
+      <p>Duizenden producten, binnen een uur bij je thuis. Quick commerce zonder gedoe.</p>
+      <div class="cta-row">
+        <a href="#populair" class="btn btn--primary">Begin met shoppen</a>
+        <a href="#acties" class="btn btn--ghost">Bekijk acties</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=900&q=80" alt="Koerier bezorgt een bestelling" loading="eager" onerror="this.remove()">
+      <span class="hero__badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h2"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M9 18h6M3 9h7l3 5h4l1 2"/></svg> Koerier onderweg</span>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" aria-label="Categorieën">
+  <nav class="cats">
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span>Elektronica</span></a>
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span>Wonen</span></a>
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3 4 7l4 1v13h8V8l4-1-2-4-3 2a4 4 0 0 1-6 0Z"/></svg></span><span>Mode</span></a>
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></span><span>Speelgoed</span></a>
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2Z"/><path d="M4 17h14"/></svg></span><span>Boeken</span></a>
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span>Sport</span></a>
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c5-4 7-8 7-12a7 7 0 0 0-14 0c0 4 2 8 7 12Z"/><path d="M12 9v6"/></svg></span><span>Tuin</span></a>
+    <a class="cat" href="#"><span class="cat__bubble"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4a3 3 0 0 1-6 0Z"/><path d="M12 7v8a4 4 0 0 0 4 4H8"/></svg></span><span>Beauty</span></a>
+  </nav>
+</section>
+
+<section class="section wrap" style="padding-top:0" aria-label="Voordelen">
+  <div class="trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>Binnen 1 uur</strong><span>In de stad</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h2"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M9 18h6M3 9h7l3 5h4l1 2"/></svg><div><strong>Gratis verzending</strong><span>Vanaf €15</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c5-4 7-8 7-12a7 7 0 0 0-14 0c0 4 2 8 7 12Z"/><circle cx="12" cy="9" r="2"/></svg><div><strong>Volg je koerier</strong><span>Live tracking</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Veilig betalen</strong><span>iDEAL &amp; meer</span></div></div>
+  </div>
+</section>
+
+<section class="section wrap" id="populair" style="padding-top:0" aria-labelledby="row1-title">
+  <div class="row-head">
+    <h2 id="row1-title">Nu populair</h2>
+    <a href="#">Bekijk alles →</a>
+  </div>
+  <div class="grid">
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">-20%</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80" alt="Wireless Koptelefoon" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.6 (2.1k)</span><span class="card-p__title">Wireless Koptelefoon</span><span class="card-p__price">€ 79,99 <s>€ 99,99</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">Bestseller</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Smartwatch Series 5" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.7 (980)</span><span class="card-p__title">Smartwatch Series 5</span><span class="card-p__price">€ 149,00</span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">Deal</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80" alt="Bluetooth Speaker" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.4 (3.4k)</span><span class="card-p__title">Bluetooth Speaker</span><span class="card-p__price">€ 39,99 <s>€ 54,99</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80" alt="Laptop 14 inch Pro" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.8 (640)</span><span class="card-p__title">Laptop 14&quot; Pro</span><span class="card-p__price">€ 699,00</span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">-28%</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Sneakers Runner" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.5 (1.2k)</span><span class="card-p__title">Sneakers Runner</span><span class="card-p__price">€ 64,95 <s>€ 89,95</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">Nieuw</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=700&q=80" alt="Robotstofzuiger" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.3 (410)</span><span class="card-p__title">Robotstofzuiger</span><span class="card-p__price">€ 199,00</span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=700&q=80" alt="Houten Blokkenset" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.9 (220)</span><span class="card-p__title">Houten Blokkenset</span><span class="card-p__price">€ 24,95</span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">Deal</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=700&q=80" alt="Espressomachine" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.6 (1.7k)</span><span class="card-p__title">Espressomachine</span><span class="card-p__price">€ 129,00 <s>€ 159,00</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+  </div>
+</section>
+
+<section class="section wrap" id="acties" style="padding-top:0">
+  <div class="deal">
+    <div>
+      <span class="eyebrow">Nu super snel</span>
+      <h2>Acties tot -45%</h2>
+      <p>Bestel nu, vandaag nog in huis.</p>
+    </div>
+    <a href="#acties-grid" class="btn btn--ghost">Bekijk acties</a>
+  </div>
+</section>
+
+<section class="section wrap" id="acties-grid" style="padding-top:0" aria-labelledby="row2-title">
+  <div class="row-head">
+    <h2 id="row2-title">Acties</h2>
+    <a href="#">Bekijk alles →</a>
+  </div>
+  <div class="grid">
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">-28%</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Sneakers Runner" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.5 (1.2k)</span><span class="card-p__title">Sneakers Runner</span><span class="card-p__price">€ 64,95 <s>€ 89,95</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">Deal</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=700&q=80" alt="Espressomachine" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.6 (1.7k)</span><span class="card-p__title">Espressomachine</span><span class="card-p__price">€ 129,00 <s>€ 159,00</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">-20%</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80" alt="Wireless Koptelefoon" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.6 (2.1k)</span><span class="card-p__title">Wireless Koptelefoon</span><span class="card-p__price">€ 79,99 <s>€ 99,99</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+    <article class="card-p"><div class="card-p__img"><span class="card-p__badge">Deal</span><span class="card-p__fast"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>1u</span><img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80" alt="Bluetooth Speaker" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating"><span class="star">★</span> 4.4 (3.4k)</span><span class="card-p__title">Bluetooth Speaker</span><span class="card-p__price">€ 39,99 <s>€ 54,99</s></span><button class="card-p__add" type="button">In mandje</button></div></article>
+  </div>
+</section>
+
+<section class="section wrap" id="import" style="padding-top:0" aria-labelledby="import-title">
+  <div class="import">
+    <span class="eyebrow">Shopify-ready</span>
+    <h2 id="import-title" style="max-width:20ch">Dit thema importeer je direct in Shopify</h2>
+    <p style="color:var(--muted);max-width:62ch">Snel is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+    <div class="cta-row" style="margin-top:1rem">
+      <a class="btn btn--primary" href="../../downloads/snel-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+    </div>
+    <div class="steps">
+      <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+      <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, categorieën, bezorgbelofte en kleuren (accent staat op #FF2D6E).</span></div>
+      <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om snel te verkopen.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" style="padding-top:0">
+  <div class="news">
+    <span class="eyebrow" style="color:var(--accent)">Blijf op de hoogte</span>
+    <h2>Mis geen enkele deal</h2>
+    <p>Ontvang de scherpste acties en nieuwe producten als eerste in je inbox.</p>
+    <form class="news__form" onsubmit="return false">
+      <label for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+      <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+      <button class="btn btn--primary" type="submit">Aanmelden</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Snel<span>.</span></div>
+        <p>Quick-commerce: vandaag besteld, nu bezorgd. Een Shopify-thema in wit met pink-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#">Categorieën</a></li><li><a href="#">Acties</a></li><li><a href="#">Nu populair</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#">Over Snel</a></li><li><a href="#">Koeriers</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Hulp</h4><ul><li><a href="#">Bezorging</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Veelgestelde vragen</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Snel. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Demo cart counter — increment on "In mandje"
+  (function(){
+    var pill=document.querySelector('.cart-pill');
+    var count=parseInt(pill?pill.textContent:'0',10)||0;
+    document.querySelectorAll('.card-p__add').forEach(function(b){
+      b.addEventListener('click',function(){
+        count++;
+        if(pill){pill.textContent=count;}
+        b.textContent='Toegevoegd ✓';
+        setTimeout(function(){b.textContent='In mandje';},1200);
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

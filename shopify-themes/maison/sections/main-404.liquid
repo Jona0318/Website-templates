@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="page-width text-center" style="padding-block: clamp(60px, 12vw, 140px);">
+    <span class="eyebrow">404</span>
+    <h1>{{ 'general.404.title' | t }}</h1>
+    <p style="color:var(--color-text-muted);">{{ 'general.404.subtext' | t }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary" style="margin-top:1.5rem;">{{ 'general.404.link' | t }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404",
+  "settings": []
+}
+{% endschema %}

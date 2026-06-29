@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#15130F",
+    "color_surface": "#1F1B15",
+    "color_text": "#F4ECDD",
+    "color_text_muted": "#B4A88F",
+    "color_accent": "#E8B549",
+    "color_accent_text": "#15130F",
+    "color_border": "#322A1F",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 6,
+    "logo_width": 140
+  },
+  "presets": {
+    "Lumen": {
+      "color_background": "#15130F",
+      "color_surface": "#1F1B15",
+      "color_text": "#F4ECDD",
+      "color_text_muted": "#B4A88F",
+      "color_accent": "#E8B549",
+      "color_accent_text": "#15130F",
+      "color_border": "#322A1F",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 6,
+      "logo_width": 140
+    }
+  }
+}

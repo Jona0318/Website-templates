@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roots — zero-waste Shopify-thema (kraft × mosgroen)</title>
+<meta name="description" content="Roots: importeerbaar Shopify-thema voor een zero-waste en refill-winkel — eerlijk, aards en duurzaam.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F2EEE3'/><path d='M16 25c0-6 4-9 4-13 0 0-4 1-4 5 0-4-4-5-4-5 0 4 4 7 4 13z' fill='%234E6B3A'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+  :root{
+    --bg:#F2EEE3; --surface:#FBF9F2; --text:#232017; --muted:#6A6452;
+    --accent:#4E6B3A; --accent-text:#FFFFFF; --border:#E3DAC7; --radius:14px;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Work Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --paper:repeating-linear-gradient(135deg,rgba(106,100,82,.025) 0 2px,transparent 2px 7px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;background-image:var(--paper)}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.06;margin:0 0 .5em;letter-spacing:-.015em;font-weight:600}
+  h1{font-size:clamp(2.6rem,6vw,4.6rem)} h2{font-size:clamp(2rem,3.6vw,3rem)} h3{font-size:1.15rem}
+  p{margin:0 0 1rem}
+  em{font-style:italic}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;font-weight:600;color:var(--accent);margin-bottom:1rem}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.7rem;font-weight:600;font-size:.86rem;letter-spacing:.02em;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:.22s;font-family:inherit}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:#3d5530}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--text)}
+  .btn--ghost:hover{background:var(--text);color:var(--bg)}
+  .section{padding-block:clamp(54px,8vw,104px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:var(--bg);text-align:center;font-size:.8rem;font-weight:500;letter-spacing:.02em;padding:.6rem 1rem}
+  .ribbon a{color:#cfe0bd;border-bottom:1px solid currentColor;padding-bottom:1px;font-weight:600}
+  .ribbon a:hover{color:#fff}
+
+  /* announce + header */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1rem;font-weight:600}
+  header.site{position:sticky;top:0;z-index:20;background:rgba(242,238,227,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:2rem}
+  .logo{display:flex;align-items:center;gap:.55rem;font-family:var(--serif);font-size:1.6rem;font-weight:600}
+  .logo svg{width:26px;height:26px}
+  .menu{display:flex;gap:1.9rem} .menu a{font-size:.88rem;font-weight:500;color:var(--muted);position:relative} .menu a:hover{color:var(--accent)}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;cursor:pointer;padding:0;display:inline-flex}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .cart{position:relative;display:inline-flex}
+  .cart-pill{position:absolute;top:-7px;right:-9px;background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.62rem;font-weight:600;min-width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+  .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(48px,7vw,96px)}
+  .hero h1 em{color:var(--accent)}
+  .hero p{font-size:1.12rem;color:var(--muted);max-width:440px;margin-bottom:2rem}
+  .cta-row{display:flex;gap:.8rem;flex-wrap:wrap}
+  .hero__media{position:relative;aspect-ratio:4/5;border-radius:24px;overflow:hidden;border:1px solid var(--border);background:
+     radial-gradient(80% 70% at 70% 20%,rgba(78,107,58,.28),transparent 60%),
+     linear-gradient(160deg,#D9CFB6,#C7B998)}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__tag{position:absolute;left:18px;bottom:18px;z-index:2;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:.5rem 1rem;font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:.5rem}
+  .hero__tag svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.7}
+  .leaf-stamp{position:absolute;top:-40px;right:-40px;width:230px;height:230px;opacity:.5;z-index:0;color:var(--accent);pointer-events:none}
+
+  /* trust */
+  .trust{background:var(--text);color:var(--bg)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;padding-block:2.4rem}
+  .trust__item{display:flex;gap:.85rem;align-items:flex-start}
+  .trust__item svg{width:26px;height:26px;stroke:#cfe0bd;fill:none;stroke-width:1.6;flex:0 0 auto;margin-top:2px}
+  .trust__item strong{display:block;font-size:.96rem;font-family:var(--serif)} .trust__item span{color:#b9b3a3;font-size:.82rem}
+
+  /* products */
+  .head{max-width:680px;margin:0 0 3rem} .head p{color:var(--muted)}
+  .head--center{margin-inline:auto;text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .card-p{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+  .card-p:hover{transform:translateY(-5px);box-shadow:0 18px 36px -22px rgba(35,32,23,.4)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(160deg,#E4DBC5,#D2C6A8)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:12px;left:12px;background:var(--accent);color:var(--accent-text);font-size:.64rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.32rem .65rem;border-radius:999px;z-index:2}
+  .card-p__badge--sale{background:#b14a2e}
+  .card-p__body{padding:1.1rem 1.2rem 1.35rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+  .card-p__vendor{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .card-p__title{font-family:var(--serif);font-size:1.12rem;font-weight:600}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:auto;padding-top:.55rem;font-weight:600}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.9em;margin-left:.4rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:1/1;border-radius:24px;background:
+     radial-gradient(70% 60% at 30% 20%,rgba(78,107,58,.3),transparent 60%),linear-gradient(160deg,#D7CDB4,#C3B593);
+     border:1px solid var(--border)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content p{color:var(--muted)}
+
+  /* import */
+  .import{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:clamp(28px,5vw,60px);position:relative;overflow:hidden}
+  .import::after{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--accent),#8a9b5c)}
+  .import p code{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:.05rem .35rem;font-size:.85em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.75rem;counter-reset:s}
+  .step{padding:1.4rem;border:1px solid var(--border);border-radius:16px;background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:999px;background:var(--accent);color:var(--accent-text);font-weight:600;margin-bottom:.7rem;font-family:var(--serif)}
+  .step strong{display:block;margin-bottom:.25rem}
+  .step span{color:var(--muted);font-size:.9rem}
+  .accent-chip{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;font-size:.85rem}
+  .accent-chip i{width:14px;height:14px;border-radius:4px;background:var(--accent);border:1px solid rgba(0,0,0,.15)}
+
+  /* newsletter */
+  .news{background:var(--accent);color:var(--accent-text);border-radius:24px;padding:clamp(40px,6vw,76px);text-align:center;position:relative;overflow:hidden}
+  .news .eyebrow{color:#d6e6c4}
+  .news .eyebrow::before{background:#d6e6c4}
+  .news h2{color:#fff}
+  .news p{color:#dcebcf}
+  .news__form{display:flex;gap:.7rem;max-width:460px;margin:1.5rem auto 0}
+  .news__form input{flex:1;background:rgba(255,255,255,.95);color:var(--text);border:1.5px solid transparent;padding:.9rem 1.2rem;border-radius:999px;font-family:inherit}
+  .news__form .btn--primary{background:var(--text);color:var(--bg)}
+  .news__form .btn--primary:hover{background:#000}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(48px,6vw,72px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{display:flex;align-items:center;gap:.5rem;font-family:var(--serif);font-size:1.5rem;font-weight:600;margin-bottom:1rem}
+  .f-logo svg{width:24px;height:24px}
+  .f-grid p{color:var(--muted);max-width:300px}
+  .f-col h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem} .f-col a{font-size:.92rem;color:var(--muted)} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .hero__grid{grid-template-columns:1fr}
+    .hero__media{max-width:480px}
+    .trust__grid{grid-template-columns:1fr 1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:749px){
+    .menu{display:none}
+    .split{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+  }
+  @media(max-width:480px){.grid{grid-template-columns:1fr}.trust__grid{grid-template-columns:1fr}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+    .card-p:hover{transform:none}
+    .card-p:hover .card-p__img img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/roots-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €35 · plasticvrij verpakt</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Roots home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28c0-7 5-10 5-15 0 0-5 1-5 6 0-5-5-6-5-6 0 5 5 8 5 15z" fill="#4E6B3A"/></svg>
+      Roots
+    </a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Navullen</a><a href="#import">Shopify</a><a href="#mission">Onze missie</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelwagen, 3 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <svg class="leaf-stamp" viewBox="0 0 200 200" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="100" cy="100" r="90"/><path d="M100 160c0-40 30-55 30-90 0 0-30 6-30 36 0-30-30-36-30-36 0 35 30 50 30 90z" fill="currentColor" stroke="none" opacity=".5"/></svg>
+  <div class="wrap hero__grid">
+    <div class="hero__inner">
+      <span class="eyebrow">Minder afval</span>
+      <h1>Dagelijkse spullen, <em>navulbaar</em></h1>
+      <p>Voorraadkast-basics en schoonmaak zonder wegwerpplastic.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop navullingen</a>
+        <a href="#mission" class="btn btn--ghost">Onze missie</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80" alt="Refill-winkel met voorraadpotten en bulkdispensers" loading="eager" onerror="this.remove()">
+      <span class="hero__tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 4 21 9 16 9"/></svg> Breng het terug, vul het bij</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Onze beloften">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M8 12s2-5 4-5 4 5 4 5"/></svg><div><strong>Plasticvrij</strong><span>Altijd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 4 21 9 16 9"/></svg><div><strong>Navullen &amp; sparen</strong><span>Breng het terug</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 7h13v9H1z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="5" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €35</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l6 3"/></svg><div><strong>Klimaatneutraal</strong><span>Inclusief verzending</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Bestsellers</span>
+      <h2>Uitgelichte navullingen</h2>
+      <p>Met de hand gekozen basics voor keuken &amp; huis.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Nieuw</span><img src="https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=700&q=80" alt="Wasmiddel" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Roots</span><span class="card-p__title">Navul Wasmiddel</span><span class="card-p__price">€ 9,50</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1584473457409-ae5c91d211f8?auto=format&fit=crop&w=700&q=80" alt="Pot" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Roots</span><span class="card-p__title">Glazen Voorraadpot</span><span class="card-p__price">€ 7,00</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=700&q=80" alt="Tandenborstel" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Roots</span><span class="card-p__title">Bamboe Tandenborstel</span><span class="card-p__price">€ 4,50</span></div></a>
+      <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge card-p__badge--sale">Sale</span><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=700&q=80" alt="Zeep" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__vendor">Roots</span><span class="card-p__title">Zeepblok Set</span><span class="card-p__price">€ 12,00 <s>€ 15,00</s></span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="mission" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80" alt="Bulkproducten en navulbare verpakkingen in een zero-waste winkel" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">Onze missie</span>
+        <h2>Navullen, niet vervangen</h2>
+        <p>We verkopen wat je dagelijks gebruikt in verpakking die je terugbrengt — zodat er minder in de bak verdwijnt.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:18ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:62ch">Roots is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <p class="accent-chip"><i></i> Accentkleur: mosgroen <code>#4E6B3A</code></p>
+      <div class="cta-row" style="margin-top:1rem">
+        <a class="btn btn--primary" href="../../downloads/roots-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #4E6B3A).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Kom op de navul-lijst</h2>
+      <p style="max-width:460px;margin-inline:auto">Nieuwe basics, tips en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28c0-7 5-10 5-15 0 0-5 1-5 6 0-5-5-6-5-6 0 5 5 8 5 15z" fill="#4E6B3A"/></svg>
+          Roots
+        </div>
+        <p>Dagelijkse spullen, navulbaar. Een Shopify-thema in kraft met mosgroen-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle producten</a></li><li><a href="#shop">Navullingen</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#mission">Onze missie</a></li><li><a href="#">Winkels</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Navullen</a></li><li><a href="#">Verzending</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Roots. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
