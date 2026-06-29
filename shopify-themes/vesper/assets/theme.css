@@ -471,3 +471,14 @@ h1, h2, h3, h4 { letter-spacing: -0.005em; }
 .product-card__price, .price { font-variant-numeric: tabular-nums; }
 .product-card__media { transition: border-color 0.4s ease; }
 .product-card:hover .product-card__media { border-color: var(--color-accent); }
+
+/* ── VESPER campaign band (signature mid-page) ─────────────────────────────── */
+.campaign { position: relative; min-height: clamp(420px,60vh,640px); display: grid; place-items: center; text-align: center; overflow: hidden; border-block: var(--hair); }
+.campaign__media { position: absolute; inset: 0; }
+.campaign__media img { width: 100%; height: 100%; object-fit: cover; }
+.campaign__fill { position: absolute; inset: 0; background: radial-gradient(120% 100% at 60% 25%, color-mix(in srgb, var(--color-accent) 26%, transparent), transparent 52%), linear-gradient(150deg, #1B1922, #0D0C11); }
+.campaign__media::after { content: ""; position: absolute; inset: 0; background: radial-gradient(80% 80% at 50% 45%, transparent, color-mix(in srgb, #000 80%, transparent)); }
+.campaign__overlay { position: relative; z-index: 2; max-width: 42ch; padding: 2rem; }
+.campaign__overlay .eyebrow { justify-content: center; color: color-mix(in srgb, var(--color-accent) 80%, var(--color-text)); }
+.campaign__overlay h2 { font-size: clamp(2.4rem,6vw,5rem); font-style: italic; margin: 0 0 0.4rem; }
+.campaign__overlay p { color: var(--color-text-muted); margin: 1rem auto 2rem; max-width: 34ch; }

@@ -15,12 +15,37 @@
     "marquee": {
       "type": "marquee",
       "blocks": {
-        "m1": { "type": "item", "settings": { "text": "Hand-finished in 18k detail" } },
-        "m2": { "type": "item", "settings": { "text": "Made in limited series" } },
-        "m3": { "type": "item", "settings": { "text": "Lifetime restoration" } },
-        "m4": { "type": "item", "settings": { "text": "Discreet worldwide delivery" } }
+        "m1": {
+          "type": "item",
+          "settings": {
+            "text": "Hand-finished in 18k detail"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "text": "Made in limited series"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "text": "Lifetime restoration"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "text": "Discreet worldwide delivery"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4"]
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ]
     },
     "featured": {
       "type": "featured-collection",
@@ -63,11 +88,30 @@
         "columns": 3
       },
       "blocks": {
-        "t1": { "type": "tile", "settings": { "title": "Jewellery" } },
-        "t2": { "type": "tile", "settings": { "title": "Leather" } },
-        "t3": { "type": "tile", "settings": { "title": "Fragrance" } }
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "title": "Jewellery"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "title": "Leather"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "title": "Fragrance"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"]
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
     },
     "manifesto": {
       "type": "manifesto",
@@ -79,12 +123,41 @@
     "trust": {
       "type": "trust-bar",
       "blocks": {
-        "b1": { "type": "item", "settings": { "title": "Complimentary delivery", "text": "Insured, worldwide" } },
-        "b2": { "type": "item", "settings": { "title": "Lifetime restoration", "text": "Cared for, always" } },
-        "b3": { "type": "item", "settings": { "title": "Hallmarked materials", "text": "Solid gold & full-grain" } },
-        "b4": { "type": "item", "settings": { "title": "Private appointments", "text": "By request, in person" } }
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Complimentary delivery",
+            "text": "Insured, worldwide"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Lifetime restoration",
+            "text": "Cared for, always"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Hallmarked materials",
+            "text": "Solid gold & full-grain"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Private appointments",
+            "text": "By request, in person"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"]
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
     },
     "newsletter": {
       "type": "newsletter",
@@ -92,6 +165,15 @@
         "eyebrow": "Correspondence",
         "heading": "Join the inner circle",
         "text": "Quiet word of new series and private viewings. A few times a season — never more."
+      }
+    },
+    "campaign": {
+      "type": "campaign",
+      "settings": {
+        "eyebrow": "Campaign — Vol. I",
+        "heading": "The Midnight Edit",
+        "text": "Photographed by candlelight — a study of gold against the dark.",
+        "button_label": "Discover the film"
       }
     }
   },
@@ -102,6 +184,7 @@
     "image_text",
     "statement",
     "lookbook",
+    "campaign",
     "manifesto",
     "trust",
     "newsletter"

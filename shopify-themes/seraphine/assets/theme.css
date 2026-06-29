@@ -462,3 +462,11 @@ h1, h2, h3 { letter-spacing: 0.01em; }
 .product-card__price, .price { font-variant-numeric: tabular-nums; }
 .product-card__media { transition: border-color 0.4s ease; }
 .product-card:hover .product-card__media { border-color: var(--color-accent); }
+
+/* ── SÉRAPHINE process steps (signature mid-page) ──────────────────────────── */
+.proc { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(20px,3vw,52px); }
+.proc__i { border-top: 2px solid var(--color-accent); padding-top: 1.4rem; }
+.proc__n { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.16em; color: var(--color-accent); }
+.proc__i h3 { font-size: 1.6rem; margin: 0.7rem 0; }
+.proc__i p { color: var(--color-text-muted); }
+@media (max-width: 749px) { .proc { grid-template-columns: 1fr; gap: 2.4rem; } }

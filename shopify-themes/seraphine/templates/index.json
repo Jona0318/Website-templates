@@ -15,12 +15,41 @@
     "trust": {
       "type": "trust-bar",
       "blocks": {
-        "b1": { "type": "item", "settings": { "title": "Atelier-made", "text": "Cut & sewn by hand" } },
-        "b2": { "type": "item", "settings": { "title": "Shipping & returns", "text": "Complimentary, both ways" } },
-        "b3": { "type": "item", "settings": { "title": "Repairs for life", "text": "Mended, never discarded" } },
-        "b4": { "type": "item", "settings": { "title": "Responsibly sourced", "text": "Traceable materials" } }
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Atelier-made",
+            "text": "Cut & sewn by hand"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Shipping & returns",
+            "text": "Complimentary, both ways"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Repairs for life",
+            "text": "Mended, never discarded"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Responsibly sourced",
+            "text": "Traceable materials"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"]
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
     },
     "featured": {
       "type": "featured-collection",
@@ -63,11 +92,30 @@
         "columns": 3
       },
       "blocks": {
-        "t1": { "type": "tile", "settings": { "title": "Ready-to-wear" } },
-        "t2": { "type": "tile", "settings": { "title": "Leather" } },
-        "t3": { "type": "tile", "settings": { "title": "Knitwear" } }
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "title": "Ready-to-wear"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "title": "Leather"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "title": "Knitwear"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"]
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
     },
     "manifesto": {
       "type": "manifesto",
@@ -83,6 +131,44 @@
         "heading": "Join the atelier list",
         "text": "A quiet note when a new series is cut, and the occasional studio story. Never more than a few times a season."
       }
+    },
+    "process": {
+      "type": "process",
+      "settings": {
+        "eyebrow": "The making",
+        "heading": "From sketch to seam"
+      },
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Drafted",
+            "text": "Each pattern is drawn by hand and toiled in calico until the line is right."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Cut",
+            "text": "Cloth is cut in small lays from traceable linen, wool and cashmere."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Finished",
+            "text": "Seams are pressed and hand-finished, then checked one piece at a time."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
     }
   },
   "order": [
@@ -90,6 +176,7 @@
     "trust",
     "featured",
     "statement",
+    "process",
     "image_text",
     "lookbook",
     "manifesto",
