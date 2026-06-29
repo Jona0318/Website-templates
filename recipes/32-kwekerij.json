@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 32, "slug": "32-kwekerij", "title": "Wildgroei — stadskwekerij & plantenwinkel", "sector": "retail", "scheme": "light",
   "meta": { "title": "Wildgroei — stadskwekerij & plantenwinkel", "description": "Wildgroei is een stadskwekerij en plantenwinkel: zelf gekweekte kamerplanten, advies en workshops. Zie de planten voor je ogen groeien.", "themeColor": "#f3f1e6" },
   "theme": {

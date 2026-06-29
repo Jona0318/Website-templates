@@ -1,6 +1,6 @@
 # Terra — biologische boerderijwinkel
 
-Warme biologische boerderijwinkel in crème × bosgroen × klei: aardse editorial-look, seizoensoogst-grid met prijzen, een 'van het land'-verhaal, openingstijden en nieuwsbrief.
+Warme biologische boerderijwinkel in crème × bosgroen × klei: aardse editorial-look, seizoensoogst-grid met prijzen, een 'van het land'-verhaal en nieuwsbrief.
 
 - **Tier:** Premium
 - **Sector:** Retail

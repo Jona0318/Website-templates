@@ -1,12 +1,12 @@
 # Nebula — SaaS-platform
 
-Futuristisch SaaS/AI-platform in diep ruimteblauw × violet × cyaan: glasmorfe kaarten, aurora-gradients, een sterrenveld-canvas, feature-bento, prijstabel, FAQ en CTA.
+Futuristisch SaaS-platform in ruimteblauw × violet × cyaan: glasmorfe kaarten, aurora-gradients, een sterrenveld, feature-bento, prijstabel en FAQ.
 
 - **Tier:** Signature
 - **Sector:** Tech
 - **Sfeer:** donker
 - **Lettertypen:** Space Grotesk, Inter
-- **Technieken:** starfield-canvas, glassmorphism, bento-grid, pricing-table, faq-accordion, reveal-system, prefers-reduced-motion
+- **Technieken:** starfield-canvas, glassmorphism, bento-grid, pricing-table, faq-accordion, reveal-system
 
 ## Gebruiken
 

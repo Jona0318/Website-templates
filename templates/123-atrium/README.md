@@ -1,6 +1,6 @@
-# Atrium — architectuur & interieur studio
+# Atrium — architectuur & interieur
 
-Verfijnd Swiss-grid architectuurbureau in wit × zwart × terracotta: zichtbaar kolommenraster, hairline-regels, oversized sectienummers, projectenindex en contactformulier.
+Verfijnd Swiss-grid architectuurbureau in wit × zwart × terracotta: zichtbaar raster, hairlines, oversized sectienummers en projectenindex.
 
 - **Tier:** Editorieel
 - **Sector:** Interieur

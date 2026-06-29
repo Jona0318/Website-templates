@@ -1,6 +1,6 @@
 # Karterij Noord - routeatelier
 
-Kaartenwinkel en routeatelier met een interactief topografisch routepaneel: kies terrein, tempo en kaartstijl en zie de route direct mee veranderen.
+Kaartenwinkel met interactief topografisch routepaneel: kies terrein, tempo en kaartstijl en zie de route direct mee veranderen.
 
 - **Tier:** Signature
 - **Sector:** Reizen
@@ -10,11 +10,11 @@ Kaartenwinkel en routeatelier met een interactief topografisch routepaneel: kies
 
 ## Gebruiken
 
-Open `index.html` rechtstreeks in je browser - geen build-tools of dependencies nodig.
+Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
 Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 
-MIT - zie [LICENSE](../../LICENSE) in de hoofdmap.
+MIT — zie [LICENSE](../../LICENSE) in de hoofdmap.

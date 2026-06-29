@@ -18,6 +18,15 @@ jobs:
       - name: Structurele consistentie (templates ↔ previews ↔ downloads ↔ recepten)
         run: node _kit/verify.mjs
 
+      - name: Structurele HTML (unieke id's, kloppende interne ankers)
+        run: node _kit/html.mjs
+
+      - name: Interne links & assets bestaan
+        run: node _kit/links.mjs
+
+      - name: Toegankelijkheidsbasis (lang, title, viewport, alt + namen)
+        run: node _kit/a11y.mjs --strict
+
       - name: JS-syntaxcheck van alle inline scripts
         run: |
           status=0
