@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velocity — technisch Shopify-thema voor fietsen (leisteen × signaalgeel)</title>
+<meta name="description" content="Velocity: een direct importeerbaar Shopify-thema voor een fietsenwinkel — technisch, strak en industrieel. Frames, onderdelen en gear.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231F2A33'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23E5FF3A' font-family='monospace' font-weight='700'>V</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap');
+  :root{
+    --bg:#F2F4F5; --surface:#FFFFFF; --text:#14181C; --muted:#5C6670;
+    --accent:#1F2A33; --accent-text:#E5FF3A; --signal:#E5FF3A; --border:#DCE2E6;
+    --radius:2px;
+    --serif:"Space Grotesk",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .5em;letter-spacing:-.02em}
+  h1{font-size:clamp(2.6rem,6vw,4.6rem)} h2{font-size:clamp(1.9rem,3.6vw,2.9rem)} h3{font-size:1.1rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--signal);color:var(--accent)}
+  :focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+  .wrap{max-width:1320px;margin-inline:auto;padding-inline:24px}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;color:var(--muted);margin-bottom:1.1rem}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--signal)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.9rem;font-family:var(--mono);font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;border-radius:var(--radius);border:1.5px solid transparent;cursor:pointer;transition:.2s}
+  .btn--primary{background:var(--signal);color:var(--accent);border-color:var(--signal)}
+  .btn--primary:hover{background:transparent;color:var(--text);border-color:var(--text)}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--text)}
+  .btn--dark{background:var(--accent);color:var(--signal);border-color:var(--accent)}
+  .btn--dark:hover{background:transparent;color:var(--text);border-color:var(--text)}
+  .section{padding-block:clamp(52px,8vw,104px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--accent);color:#fff;text-align:center;font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;padding:.6rem 1rem}
+  .ribbon span{color:var(--signal)}
+  .ribbon a{color:var(--signal);border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* announce */
+  .announce{background:var(--signal);color:var(--accent);text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1rem;font-weight:700}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(242,244,245,.86);backdrop-filter:blur(12px);border-bottom:1.5px solid var(--text)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:2rem}
+  .logo{display:inline-flex;align-items:baseline;gap:.18rem;font-family:var(--serif);font-weight:700;font-size:1.5rem;letter-spacing:-.02em}
+  .logo b{color:var(--text);font-weight:700} .logo i{font-style:normal;color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;align-self:center;border:1px solid var(--border);padding:.05rem .35rem;border-radius:2px}
+  .menu{display:flex;gap:2rem} .menu a{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)} .menu a:hover{color:var(--text)}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:0;color:inherit;cursor:pointer;display:inline-flex;padding:0}
+  .icons svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .cart{position:relative;display:inline-flex}
+  .cart-pill{position:absolute;top:-8px;right:-10px;background:var(--signal);color:var(--accent);border-radius:2px;font-family:var(--mono);font-size:.6rem;font-weight:700;min-width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;padding:0 3px}
+
+  /* hero */
+  .hero{position:relative;border-bottom:1.5px solid var(--text);overflow:hidden;background:var(--accent)}
+  .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:clamp(520px,72vh,720px)}
+  .hero__inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,5vw,72px);color:#fff;
+     background-image:linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+     background-size:40px 40px}
+  .hero__inner .eyebrow{color:#9aa6b0}
+  .hero h1{color:#fff;margin-bottom:1.2rem;max-width:14ch}
+  .hero h1 em{font-style:normal;color:var(--signal);position:relative}
+  .hero p{color:#aeb8c0;font-size:1.08rem;max-width:42ch;margin-bottom:2rem}
+  .cta-row{display:flex;gap:.9rem;flex-wrap:wrap}
+  .hero__media{position:relative;background:
+     repeating-linear-gradient(135deg,#27333d 0 18px,#222d36 18px 36px)}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(31,42,51,.55),transparent 35%)}
+  .hero__spec{position:absolute;left:0;bottom:0;z-index:3;display:flex;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(20,24,28,.78);border-top:1px solid rgba(255,255,255,.14);border-right:1px solid rgba(255,255,255,.14)}
+  .hero__spec span{padding:.55rem .9rem;border-left:1px solid rgba(255,255,255,.12)}
+  .hero__spec span:first-child{border-left:0}
+  .hero__spec b{color:var(--signal)}
+
+  /* trust */
+  .trust{background:var(--surface);border-bottom:1.5px solid var(--text)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{display:flex;gap:.9rem;align-items:center;padding:1.4rem 1.2rem;border-left:1px solid var(--border)}
+  .trust__item:first-child{border-left:0}
+  .trust__item svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:1.7;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.9rem;font-family:var(--serif)} .trust__item span{color:var(--muted);font-size:.78rem;font-family:var(--mono);letter-spacing:.02em}
+
+  /* section head */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.6rem;border-bottom:1.5px solid var(--text);padding-bottom:1.4rem}
+  .head p{color:var(--muted);margin:0;max-width:40ch}
+  .head__no{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.18em}
+
+  /* products */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid var(--text);background:var(--text)}
+  .grid>*{outline:.75px solid var(--text)}
+  .card-p{background:var(--surface);overflow:hidden;transition:.25s;display:flex;flex-direction:column;position:relative}
+  .card-p:hover{background:var(--bg)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:
+     repeating-linear-gradient(135deg,#e6eaed 0 14px,#dde3e7 14px 28px)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:0;left:0;background:var(--signal);color:var(--accent);font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .55rem;z-index:2}
+  .card-p__badge--sale{background:var(--accent);color:var(--signal)}
+  .card-p__body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.35rem;flex:1;border-top:1px solid var(--border)}
+  .card-p__vendor{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .card-p__title{font-family:var(--serif);font-size:1.06rem;font-weight:500}
+  .card-p__price{margin-top:auto;padding-top:.6rem;font-family:var(--mono);font-weight:700;font-size:1rem;display:flex;align-items:baseline;gap:.5rem}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.82em}
+  .card-p__cta{display:flex;align-items:center;justify-content:space-between;margin-top:.7rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .card-p:hover .card-p__cta{color:var(--text)}
+  .card-p__cta svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--text)}
+  .split__media{position:relative;overflow:hidden;min-height:clamp(340px,46vw,560px);background:
+     repeating-linear-gradient(135deg,#27333d 0 18px,#222d36 18px 36px)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content{padding:clamp(32px,5vw,72px);display:flex;flex-direction:column;justify-content:center;background:var(--surface)}
+  .split__content p{color:var(--muted)}
+  .specrows{margin:.5rem 0 1.8rem;border-top:1px solid var(--border)}
+  .specrows div{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.78rem;letter-spacing:.04em}
+  .specrows dt{color:var(--muted);text-transform:uppercase;font-size:.7rem;letter-spacing:.12em}
+  .specrows dd{margin:0;font-weight:700}
+
+  /* import */
+  .import{background:var(--accent);color:#fff;border:1.5px solid var(--text);padding:clamp(32px,5vw,64px);position:relative;overflow:hidden}
+  .import::before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+  .import>*{position:relative}
+  .import .eyebrow{color:var(--signal)}
+  .import h2{color:#fff;max-width:18ch}
+  .import p{color:#aeb8c0;max-width:62ch}
+  .import code{font-family:var(--mono);color:var(--signal);font-size:.85em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2rem;border:1px solid rgba(255,255,255,.16);counter-reset:s}
+  .step{padding:1.4rem 1.3rem;border-left:1px solid rgba(255,255,255,.16)}
+  .step:first-child{border-left:0}
+  .step::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--mono);font-size:.8rem;color:var(--signal);letter-spacing:.1em;margin-bottom:.7rem}
+  .step strong{display:block;margin-bottom:.3rem;font-family:var(--serif);font-size:1.05rem}
+  .step span{color:#aeb8c0;font-size:.85rem}
+
+  /* newsletter */
+  .news{background:var(--surface);border:1.5px solid var(--text);padding:clamp(36px,6vw,72px);text-align:center}
+  .news__form{display:flex;gap:0;max-width:480px;margin:1.6rem auto 0;border:1.5px solid var(--text)}
+  .news__form input{flex:1;background:var(--surface);color:var(--text);border:0;padding:.95rem 1.2rem;font-family:var(--mono);font-size:.85rem}
+  .news__form input:focus{outline:none;background:#fafcfd}
+  .news__form button{border-radius:0;border:0;border-left:1.5px solid var(--text)}
+
+  /* footer */
+  footer.site{border-top:1.5px solid var(--text);background:var(--accent);color:#fff;padding-block:clamp(48px,6vw,76px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-weight:700;font-size:1.5rem;margin-bottom:1rem} .f-logo span{color:var(--signal)}
+  .f-grid>div>p{color:#9aa6b0;max-width:320px}
+  .f-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem} .f-col a{font-size:.9rem;color:#cdd5db} .f-col a:hover{color:#fff}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:#9aa6b0;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}.trust__item:nth-child(3){border-left:0}
+    .f-grid{grid-template-columns:1fr 1fr}
+    .hero__grid{grid-template-columns:1fr}.hero__media{min-height:300px}
+    .steps{grid-template-columns:1fr}.step{border-left:0;border-top:1px solid rgba(255,255,255,.16)}.step:first-child{border-top:0}
+  }
+  @media(max-width:749px){
+    .menu{display:none}
+    .split{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+    .head{flex-direction:column;align-items:flex-start;gap:1rem}
+  }
+  @media(max-width:480px){
+    .grid{grid-template-columns:1fr}
+    .trust__grid{grid-template-columns:1fr}.trust__item{border-left:0;border-top:1px solid var(--border)}.trust__item:first-child{border-top:0}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <span>✦</span> Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/velocity-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis montage &amp; verzending vanaf €50</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Velocity startpagina"><b>Velocity</b><i>NL</i></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Fietsen</a><a href="#import">Shopify</a><a href="#shop">Onderdelen</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" aria-label="Introductie">
+  <div class="hero__grid">
+    <div class="hero__inner">
+      <span class="eyebrow">Voor elke rit · EST. 2026</span>
+      <h1>Fietsen die <em>doorgaan</em></h1>
+      <p>Frames, onderdelen en gear — gebouwd voor snelheid en comfort.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop fietsen</a>
+        <a href="#shop" class="btn btn--ghost" style="color:#fff;border-color:rgba(255,255,255,.3)">Bekijk onderdelen</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1600&q=80" alt="Racefiets in beweging op de weg" loading="eager" onerror="this.remove()">
+      <div class="hero__spec" aria-hidden="true">
+        <span>Frame <b>6061-T6</b></span>
+        <span>Gewicht <b>8.4 kg</b></span>
+        <span>Versn. <b>2×11</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Voordelen">
+  <div class="wrap" style="padding-inline:0">
+  <div class="trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h2l2-9h11l2 6"/><circle cx="7.5" cy="18.5" r="2.5"/><circle cx="17.5" cy="18.5" r="2.5"/></svg><div><strong>Gratis montage</strong><span>Klaar om te rijden</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>2 jaar garantie</strong><span>Op alle frames</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="6" width="15" height="12" rx="1"/><path d="M16 9h4l3 3v6h-7z"/><circle cx="6" cy="18.5" r="2"/><circle cx="18" cy="18.5" r="2"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €50</span></div></div>
+  </div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>Uitgelichte fietsen</h2>
+      </div>
+      <p>Met de hand geselecteerd uit onze werkplaats.</p>
+    </div>
+    <div class="grid">
+      <a class="card-p" href="#" aria-label="Gravel Frameset, € 1.299,00">
+        <div class="card-p__img"><img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=700&q=80" alt="Gravel Frameset" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Velocity</span>
+          <span class="card-p__title">Gravel Frameset</span>
+          <span class="card-p__price">€ 1.299,00</span>
+          <span class="card-p__cta">In de winkelwagen <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+      <a class="card-p" href="#" aria-label="Stadsfiets Comfort, nieuw, € 749,00">
+        <div class="card-p__img"><span class="card-p__badge">Nieuw</span><img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&w=700&q=80" alt="Stadsfiets Comfort" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Velocity</span>
+          <span class="card-p__title">Stadsfiets Comfort</span>
+          <span class="card-p__price">€ 749,00</span>
+          <span class="card-p__cta">In de winkelwagen <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+      <a class="card-p" href="#" aria-label="Helm Aero, € 119,00">
+        <div class="card-p__img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=700&q=80" alt="Aero fietshelm" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Velocity</span>
+          <span class="card-p__title">Helm Aero</span>
+          <span class="card-p__price">€ 119,00</span>
+          <span class="card-p__cta">In de winkelwagen <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+      <a class="card-p" href="#" aria-label="Verlichtingsset, sale, € 34,95 van € 44,95">
+        <div class="card-p__img"><span class="card-p__badge card-p__badge--sale">Sale</span><img src="https://images.unsplash.com/photo-1571333250630-f0230c320b6d?auto=format&fit=crop&w=700&q=80" alt="Fietsverlichtingsset" loading="lazy" onerror="this.remove()"></div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Velocity</span>
+          <span class="card-p__title">Verlichtingsset</span>
+          <span class="card-p__price">€ 34,95 <s>€ 44,95</s></span>
+          <span class="card-p__cta">In de winkelwagen <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80" alt="Mechanicus stelt een fiets af in de werkplaats" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">De werkplaats</span>
+        <h2>Afgesteld door rijders</h2>
+        <p>Elke fiets wordt gecontroleerd, afgesteld en getest door mensen die dagelijks rijden. Goed gespecificeerd werkt gewoon.</p>
+        <dl class="specrows">
+          <div><dt>Controle</dt><dd>32-punts check</dd></div>
+          <div><dt>Afstelling</dt><dd>Hand-getuned</dd></div>
+          <div><dt>Testrit</dt><dd>Elke build</dd></div>
+        </dl>
+        <div><a href="#shop" class="btn btn--dark">Ontdek meer</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2>Dit thema importeer je direct in Shopify</h2>
+      <p>Velocity is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="cta-row" style="margin-top:.4rem">
+        <a class="btn btn--primary" href="../../downloads/velocity-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (signaalgeel-accent staat op #E5FF3A).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je fietsen en onderdelen toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow" style="justify-content:center">Blijf op de hoogte</span>
+      <h2>Sluit aan bij het peloton</h2>
+      <p style="color:var(--muted);max-width:48ch;margin-inline:auto">Nieuwe gear, builds en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" class="mono" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Velocity<span>.</span></div>
+        <p>Fietsen gebouwd om door te gaan. Een Shopify-thema in leisteen met signaalgeel-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle fietsen</a></li><li><a href="#shop">Onderdelen</a></li><li><a href="#shop">Gear</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#story">De werkplaats</a></li><li><a href="#">Over ons</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Garantie</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Velocity. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

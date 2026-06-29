@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Megastore",
+        "heading": "De laagste prijs, <em>elke dag</em>",
+        "text": "Duizenden gadgets en gear met dagelijkse flitsdeals.",
+        "button_label": "Shop deals",
+        "button_label_2": "Bekijk nieuw"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Gratis verzending",
+            "text": "Vanaf €15"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Vandaag verzonden",
+            "text": "Voor 22:00"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Prijsgarantie",
+            "text": "Laagste prijs"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "2 jaar garantie",
+            "text": "Op elektronica"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Best verkochte gadgets",
+        "heading": "Best verkochte gadgets",
+        "subheading": "Op = op. Nieuwe flitsdeals elk uur.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Flitsdeal",
+        "heading": "Tot -60% · nog 04:12:33",
+        "text": "<p>Op = op. Nieuwe flitsdeals elk uur.</p>",
+        "button_label": "Naar de deals"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Megastore",
+        "heading": "De laagste prijs, elke dag",
+        "text": "<p>Duizenden gadgets en gear met dagelijkse flitsdeals.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Blijf op de hoogte",
+        "heading": "Mis geen enkele deal",
+        "text": "Ontvang de beste aanbiedingen in je inbox."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

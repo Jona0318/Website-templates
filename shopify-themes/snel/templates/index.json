@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Quick commerce",
+        "heading": "Vandaag besteld, <em>nu bezorgd</em>",
+        "text": "Duizenden producten, binnen een uur bij je thuis.",
+        "button_label": "Begin met shoppen",
+        "button_label_2": "Bekijk acties"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Binnen 1 uur",
+            "text": "In de stad"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Gratis verzending",
+            "text": "Vanaf €15"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Volg je koerier",
+            "text": "Live tracking"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Veilig betalen",
+            "text": "iDEAL & meer"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Nu populair",
+        "heading": "Nu populair",
+        "subheading": "Bestel nu, vandaag nog in huis.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Nu super snel",
+        "heading": "Acties tot -45%",
+        "text": "<p>Bestel nu, vandaag nog in huis.</p>",
+        "button_label": "Bekijk acties"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Quick commerce",
+        "heading": "Vandaag besteld, nu bezorgd",
+        "text": "<p>Duizenden producten, binnen een uur bij je thuis.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Blijf op de hoogte",
+        "heading": "Mis geen enkele deal",
+        "text": "Ontvang de beste aanbiedingen in je inbox."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

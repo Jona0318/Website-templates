@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pigment — Shopify-thema voor een kunstprint- en posterwinkel</title>
+<meta name="description" content="Pigment: een direct importeerbaar Shopify-thema voor een kunstprint- en posterwinkel — galerie-wit, bold en beeldgericht. Gelimiteerde prints op archiefpapier.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FFFFFF'/><rect x='6' y='6' width='20' height='20' fill='none' stroke='%232A4BE0' stroke-width='2.5'/><rect x='12' y='12' width='8' height='8' fill='%232A4BE0'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600&display=swap');
+  :root{
+    --bg:#FFFFFF; --surface:#F7F7F4; --text:#111114; --muted:#5E5E68;
+    --accent:#2A4BE0; --accent-text:#FFFFFF; --border:#E6E6E2;
+    --serif:"Archivo",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --hair:1px solid var(--border);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1;margin:0 0 .4em;letter-spacing:-.02em;font-weight:900;text-transform:uppercase}
+  h1{font-size:clamp(3rem,9vw,7rem)}
+  h2{font-size:clamp(2.2rem,5vw,4rem)}
+  h3{font-size:1.1rem;letter-spacing:-.01em}
+  p{margin:0 0 1rem}
+  em{font-style:normal;color:var(--accent)}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:1320px;margin-inline:auto;padding-inline:clamp(20px,4vw,48px)}
+  .section{padding-block:clamp(56px,9vw,120px)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:.26em;font-size:.7rem;font-weight:600;color:var(--accent);margin-bottom:1.2rem}
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--accent)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.2rem;font-family:var(--serif);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--text);cursor:pointer;transition:.2s;background:transparent;color:var(--text)}
+  .btn--primary{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:var(--text);border-color:var(--text);color:#fff}
+  .btn--ghost:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:#fff;text-align:center;font-size:.78rem;font-weight:500;letter-spacing:.02em;padding:.6rem 1rem}
+  .ribbon a{color:#fff;border-bottom:1px solid var(--accent);padding-bottom:1px;font-weight:600}
+  .ribbon a:hover{color:var(--accent)}
+
+  /* announce */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1rem;font-weight:600}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:var(--hair)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:2rem}
+  .logo{font-family:var(--serif);font-weight:900;font-size:1.6rem;letter-spacing:-.03em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.5rem}
+  .logo .mark{width:18px;height:18px;background:var(--accent);display:inline-block}
+  .menu{display:flex;gap:2.2rem}
+  .menu a{font-size:.82rem;font-weight:500;color:var(--text);position:relative}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:width .25s}
+  .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;cursor:pointer;padding:0;display:inline-flex}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .cart{display:inline-flex;align-items:center;gap:.45rem}
+  .cart-pill{background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.68rem;font-weight:700;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+
+  /* hero */
+  .hero{border-bottom:var(--hair)}
+  .hero__grid{display:grid;grid-template-columns:1.05fr 1fr;min-height:clamp(520px,78vh,820px)}
+  .hero__text{display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,5vw,72px) clamp(20px,4vw,72px);border-right:var(--hair)}
+  .hero__text h1{margin-bottom:.3em}
+  .hero__text p{font-size:1.15rem;color:var(--muted);max-width:38ch;margin-bottom:2rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .hero__media{position:relative;overflow:hidden;background:
+     linear-gradient(135deg,#2A4BE0 0%,#1d35a8 55%,#101437 100%)}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__tag{position:absolute;left:0;bottom:0;z-index:2;background:#fff;border-top:var(--hair);border-right:var(--hair);padding:.7rem 1.1rem;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .hero__tag b{color:var(--text)}
+
+  /* trust */
+  .trust{border-bottom:var(--hair)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{padding:1.6rem clamp(16px,2vw,28px);border-right:var(--hair);display:flex;gap:.85rem;align-items:flex-start}
+  .trust__item:last-child{border-right:none}
+  .trust__item svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.6;flex:0 0 auto;margin-top:2px}
+  .trust__item strong{display:block;font-family:var(--serif);font-weight:700;font-size:.95rem;letter-spacing:-.01em}
+  .trust__item span{color:var(--muted);font-size:.82rem}
+
+  /* products */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+  .head p{color:var(--muted);max-width:44ch;margin:0}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px)}
+  .card-p{display:flex;flex-direction:column;background:var(--bg)}
+  .card-p__img{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--surface);border:var(--hair)}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:0;left:0;background:var(--accent);color:var(--accent-text);font-family:var(--serif);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .65rem;z-index:2}
+  /* museum label caption */
+  .label{margin-top:.9rem;padding-left:1rem;border-left:2px solid var(--accent)}
+  .label__vendor{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .label__title{font-family:var(--serif);font-weight:700;font-size:1.02rem;letter-spacing:-.01em;margin:.15rem 0}
+  .card-p:hover .label__title{color:var(--accent)}
+  .label__meta{font-size:.78rem;color:var(--muted);margin-bottom:.4rem}
+  .label__price{font-family:var(--serif);font-weight:700;font-size:.98rem}
+  .label__price s{color:var(--muted);font-weight:400;font-size:.85em;margin-left:.4rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;border:var(--hair)}
+  .split__media{position:relative;overflow:hidden;min-height:420px;background:
+     linear-gradient(135deg,#2A4BE0,#101437)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__content{padding:clamp(32px,5vw,72px);display:flex;flex-direction:column;justify-content:center;border-left:var(--hair)}
+  .split__content p{color:var(--muted)}
+
+  /* import */
+  .import{border:2px solid var(--text);background:var(--surface)}
+  .import__top{padding:clamp(28px,5vw,56px);border-bottom:var(--hair)}
+  .import__top p{color:var(--muted);max-width:64ch}
+  .import__top code{background:var(--bg);border:var(--hair);padding:.05em .4em;font-size:.85em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);counter-reset:s}
+  .step{padding:clamp(24px,3vw,40px);border-right:var(--hair)}
+  .step:last-child{border-right:none}
+  .step::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--serif);font-weight:900;font-size:2.2rem;color:var(--accent);line-height:1;margin-bottom:.6rem}
+  .step strong{display:block;font-family:var(--serif);font-weight:700;margin-bottom:.35rem}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{background:var(--accent);color:var(--accent-text);padding:clamp(40px,7vw,88px);text-align:center}
+  .news .eyebrow{color:#fff}.news .eyebrow::before{background:#fff}
+  .news h2{color:#fff}
+  .news p{color:rgba(255,255,255,.85);max-width:48ch;margin-inline:auto}
+  .news__form{display:flex;gap:.6rem;max-width:480px;margin:1.8rem auto 0}
+  .news__form input{flex:1;background:#fff;color:var(--text);border:2px solid #fff;padding:1rem 1.2rem;font-family:inherit;font-size:.95rem}
+  .news__form .btn{background:var(--text);border-color:var(--text);color:#fff}
+  .news__form .btn:hover{background:#fff;color:var(--accent)}
+
+  /* footer */
+  footer.site{border-top:var(--hair);padding-block:clamp(48px,6vw,80px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-weight:900;font-size:1.6rem;text-transform:uppercase;letter-spacing:-.03em;margin-bottom:1rem;display:inline-flex;align-items:center;gap:.5rem}
+  .f-logo .mark{width:16px;height:16px;background:var(--accent);display:inline-block}
+  .f-grid p{color:var(--muted);max-width:34ch}
+  .f-col h4{font-family:var(--serif);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+  .f-col a{font-size:.92rem;color:var(--muted)}.f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:980px){
+    .hero__grid{grid-template-columns:1fr}
+    .hero__media{min-height:340px}
+    .hero__text{border-right:none;border-bottom:var(--hair)}
+    .trust__grid{grid-template-columns:1fr 1fr}
+    .trust__item:nth-child(2){border-right:none}
+    .trust__item{border-bottom:var(--hair)}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr}
+    .split__content{border-left:none;border-top:var(--hair)}
+    .steps{grid-template-columns:1fr}
+    .step{border-right:none;border-bottom:var(--hair)}.step:last-child{border-bottom:none}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .menu{display:none}
+    .grid{grid-template-columns:1fr}
+    .trust__grid{grid-template-columns:1fr}
+    .trust__item{border-right:none}
+    .news__form{flex-direction:column}
+    .f-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    .card-p:hover .card-p__img img{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/pigment-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €45 — gedrukt op archiefpapier</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Pigment home"><span class="mark" aria-hidden="true"></span>Pigment</a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Prints</a><a href="#import">Shopify</a><a href="#gallery">Galerie</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelwagen, 3 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__grid">
+    <div class="hero__text">
+      <span class="eyebrow">Kunst voor aan de muur</span>
+      <h1>Prints met <em>impact</em></h1>
+      <p>Gelimiteerde kunstprints en posters, gedrukt op archiefpapier.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop prints</a>
+        <a href="#gallery" class="btn btn--ghost">De galerie</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?auto=format&fit=crop&w=1600&q=80" alt="Galerie-muur met ingelijste kunstprints" loading="eager" onerror="this.remove()">
+      <span class="hero__tag"><b>Pigment</b> · gelimiteerde serie nr. 01</span>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Onze beloftes">
+  <div class="wrap trust__grid" style="padding-inline:0">
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €45</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>Archiefkwaliteit</strong><span>Lichtechte inkten</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10H4z"/><path d="M4 7v10M20 7v10"/></svg><div><strong>Gerold verzonden</strong><span>Veilig in een koker</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>Uitgelichte prints</h2>
+      </div>
+      <p>Met de hand geselecteerd uit onze nieuwste serie.</p>
+    </div>
+    <div class="grid">
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:linear-gradient(135deg,#2A4BE0,#101437)"></i>
+          <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?auto=format&fit=crop&w=700&q=80" alt="Print — Blauw Veld" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="label">
+          <span class="label__vendor">Pigment · Editie</span>
+          <span class="label__title">Print — Blauw Veld</span>
+          <span class="label__meta">Archiefpapier · 50 × 70 cm</span>
+          <span class="label__price">€ 45,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge">Nieuw</span>
+          <i style="background:linear-gradient(135deg,#3a5bf0,#1a2670)"></i>
+          <img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=700&q=80" alt="Print — Horizon" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="label">
+          <span class="label__vendor">Pigment · Editie</span>
+          <span class="label__title">Print — Horizon</span>
+          <span class="label__meta">Archiefpapier · 50 × 70 cm</span>
+          <span class="label__price">€ 45,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:linear-gradient(135deg,#4660e8,#222a55)"></i>
+          <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?auto=format&fit=crop&w=700&q=80" alt="Lijst Eiken A2" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="label">
+          <span class="label__vendor">Pigment · Lijst</span>
+          <span class="label__title">Lijst Eiken A2</span>
+          <span class="label__meta">Massief eiken · A2-formaat</span>
+          <span class="label__price">€ 39,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge">Sale</span>
+          <i style="background:linear-gradient(135deg,#2A4BE0,#0d122e)"></i>
+          <img src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?auto=format&fit=crop&w=700&q=80" alt="Posterset (3)" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="label">
+          <span class="label__vendor">Pigment · Set</span>
+          <span class="label__title">Posterset (3)</span>
+          <span class="label__meta">Drie posters · A3-formaat</span>
+          <span class="label__price">€ 60,00 <s>€ 75,00</s></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Kunstenaar aan het werk in het atelier" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">De galerie</span>
+        <h2>Gedrukt om te blijven</h2>
+        <p>We werken met onafhankelijke kunstenaars en drukken op zwaar archiefpapier, zodat de kleur decennia trouw blijft.</p>
+        <div class="cta-row" style="margin-top:.5rem">
+          <a href="#shop" class="btn btn--ghost">Ontdek meer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <div class="import__top">
+        <span class="eyebrow">Shopify-ready</span>
+        <h2 style="max-width:16ch">Dit thema importeer je direct in Shopify</h2>
+        <p>Pigment is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen. Het kobalt-accent staat ingesteld op <code>#2A4BE0</code>.</p>
+        <div class="cta-row" style="margin-top:1.2rem">
+          <a class="btn btn--primary" href="../../downloads/pigment-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #2A4BE0).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je prints toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Kom op de galerielijst</h2>
+      <p>Nieuwe series, kunstenaars-drops en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false" aria-label="Nieuwsbrief aanmelden">
+        <label for="news-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Je e-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><span class="mark" aria-hidden="true"></span>Pigment</div>
+        <p>Gelimiteerde kunstprints op archiefpapier. Een Shopify-thema in galerie-wit met kobalt-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle prints</a></li><li><a href="#shop">Nieuw</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Galerie</h4><ul><li><a href="#gallery">Over ons</a></li><li><a href="#gallery">Kunstenaars</a></li><li><a href="#gallery">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Pigment. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

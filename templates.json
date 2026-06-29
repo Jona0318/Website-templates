@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 124,
+  "count": 139,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -6426,6 +6426,831 @@
           "Kust",
           "Horeca",
           "Maatwerk"
+        ]
+      }
+    },
+    {
+      "id": 125,
+      "slug": "125-verdure",
+      "path": "templates/125-verdure/",
+      "title": "Verdure — planten Shopify-thema",
+      "name": "Verdure",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/verdure-shopify-theme.zip",
+      "palette": [
+        "#F4F1E8",
+        "#2F6B4F",
+        "#FFFFFF",
+        "#1E261D",
+        "#E2DECF"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Work Sans"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify plantenthema in crème × bosgroen: botanische hero, plantengrid, kwekerij-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Verdure — planten Shopify-thema",
+        "blurb": "Importeerbaar Shopify plantenthema in crème × bosgroen: botanische hero, plantengrid, kwekerij-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🪴",
+        "grad": [
+          "#2F6B4F",
+          "#F4F1E8"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Planten"
+        ]
+      }
+    },
+    {
+      "id": 126,
+      "slug": "126-kick",
+      "path": "templates/126-kick/",
+      "title": "Kick — sneakers Shopify-thema",
+      "name": "Kick",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/kick-shopify-theme.zip",
+      "palette": [
+        "#0E0E0E",
+        "#FF5A1F",
+        "#161616",
+        "#F4F4F0",
+        "#2A2A28"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify sneaker/streetwear-thema in zwart × oranje: bold hero, product-slabs, drop-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Kick — sneakers Shopify-thema",
+        "blurb": "Importeerbaar Shopify sneaker/streetwear-thema in zwart × oranje: bold hero, product-slabs, drop-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "👟",
+        "grad": [
+          "#FF5A1F",
+          "#0E0E0E"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Streetwear"
+        ]
+      }
+    },
+    {
+      "id": 127,
+      "slug": "127-marginalia",
+      "path": "templates/127-marginalia/",
+      "title": "Marginalia — boeken Shopify-thema",
+      "name": "Marginalia",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/marginalia-shopify-theme.zip",
+      "palette": [
+        "#F6EFE2",
+        "#7A1F2B",
+        "#FFFDF8",
+        "#211C17",
+        "#E4D9C4"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify boekhandel-thema in papier × oxblood: literaire hero, aanrader-grid, winkel-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Marginalia — boeken Shopify-thema",
+        "blurb": "Importeerbaar Shopify boekhandel-thema in papier × oxblood: literaire hero, aanrader-grid, winkel-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "📚",
+        "grad": [
+          "#7A1F2B",
+          "#F6EFE2"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Boeken"
+        ]
+      }
+    },
+    {
+      "id": 128,
+      "slug": "128-noir",
+      "path": "templates/128-noir/",
+      "title": "Noir — parfum Shopify-thema",
+      "name": "Noir",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/noir-shopify-theme.zip",
+      "palette": [
+        "#0B0B0B",
+        "#FFFFFF",
+        "#141414",
+        "#F2F2F2",
+        "#262626"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify parfum-thema in monochroom zwart-wit: minimalistische hero, productsilhouetten, huis-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Noir — parfum Shopify-thema",
+        "blurb": "Importeerbaar Shopify parfum-thema in monochroom zwart-wit: minimalistische hero, productsilhouetten, huis-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🖤",
+        "grad": [
+          "#FFFFFF",
+          "#0B0B0B"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Parfum"
+        ]
+      }
+    },
+    {
+      "id": 129,
+      "slug": "129-dapper",
+      "path": "templates/129-dapper/",
+      "title": "Dapper — speelgoed Shopify-thema",
+      "name": "Dapper",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/dapper-shopify-theme.zip",
+      "palette": [
+        "#FFF8EE",
+        "#FF4D6D",
+        "#FFFFFF",
+        "#2B2138",
+        "#F0E6D6"
+      ],
+      "fonts": [
+        "Baloo 2",
+        "Nunito"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify speelgoed-thema in vrolijke kleuren: speelse hero, speelgoed-grid met leeftijdsbadges, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Dapper — speelgoed Shopify-thema",
+        "blurb": "Importeerbaar Shopify speelgoed-thema in vrolijke kleuren: speelse hero, speelgoed-grid met leeftijdsbadges, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🧸",
+        "grad": [
+          "#FF4D6D",
+          "#FFF8EE"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Speelgoed"
+        ]
+      }
+    },
+    {
+      "id": 130,
+      "slug": "130-vigne",
+      "path": "templates/130-vigne/",
+      "title": "Vigne — wijn Shopify-thema",
+      "name": "Vigne",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/vigne-shopify-theme.zip",
+      "palette": [
+        "#1A0E12",
+        "#C2455C",
+        "#241319",
+        "#F1E7DC",
+        "#3A2229"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify wijn-thema in bordeaux × crème: sfeervolle hero, flessen-grid met proefnotities, kelder-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Vigne — wijn Shopify-thema",
+        "blurb": "Importeerbaar Shopify wijn-thema in bordeaux × crème: sfeervolle hero, flessen-grid met proefnotities, kelder-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🍷",
+        "grad": [
+          "#C2455C",
+          "#1A0E12"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Wijn"
+        ]
+      }
+    },
+    {
+      "id": 131,
+      "slug": "131-velocity",
+      "path": "templates/131-velocity/",
+      "title": "Velocity — fietsen Shopify-thema",
+      "name": "Velocity",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/velocity-shopify-theme.zip",
+      "palette": [
+        "#F2F4F5",
+        "#1F2A33",
+        "#FFFFFF",
+        "#14181C",
+        "#DCE2E6"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify fietsen-thema in leisteen × signaalgeel: technische hero, fiets-grid met specs, werkplaats-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Velocity — fietsen Shopify-thema",
+        "blurb": "Importeerbaar Shopify fietsen-thema in leisteen × signaalgeel: technische hero, fiets-grid met specs, werkplaats-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🚲",
+        "grad": [
+          "#1F2A33",
+          "#F2F4F5"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Fietsen"
+        ]
+      }
+    },
+    {
+      "id": 132,
+      "slug": "132-klei",
+      "path": "templates/132-klei/",
+      "title": "Klei — keramiek Shopify-thema",
+      "name": "Klei",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/klei-shopify-theme.zip",
+      "palette": [
+        "#EFE9DF",
+        "#B5562E",
+        "#FBF8F2",
+        "#2A241D",
+        "#DED5C5"
+      ],
+      "fonts": [
+        "Spectral",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify keramiek-thema in klei × terracotta: tactiele hero, servies-grid, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Klei — keramiek Shopify-thema",
+        "blurb": "Importeerbaar Shopify keramiek-thema in klei × terracotta: tactiele hero, servies-grid, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🏺",
+        "grad": [
+          "#B5562E",
+          "#EFE9DF"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Keramiek"
+        ]
+      }
+    },
+    {
+      "id": 133,
+      "slug": "133-groove",
+      "path": "templates/133-groove/",
+      "title": "Groove — audio Shopify-thema",
+      "name": "Groove",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/groove-shopify-theme.zip",
+      "palette": [
+        "#161210",
+        "#E07A3A",
+        "#211B17",
+        "#F3E9DD",
+        "#352B23"
+      ],
+      "fonts": [
+        "DM Serif Display",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify audio/vinyl-thema in charcoal × warm oranje: retro hero, gear-grid met specs, winkel-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Groove — audio Shopify-thema",
+        "blurb": "Importeerbaar Shopify audio/vinyl-thema in charcoal × warm oranje: retro hero, gear-grid met specs, winkel-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🎵",
+        "grad": [
+          "#E07A3A",
+          "#161210"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Audio"
+        ]
+      }
+    },
+    {
+      "id": 134,
+      "slug": "134-pigment",
+      "path": "templates/134-pigment/",
+      "title": "Pigment — kunst Shopify-thema",
+      "name": "Pigment",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/pigment-shopify-theme.zip",
+      "palette": [
+        "#FFFFFF",
+        "#2A4BE0",
+        "#F7F7F4",
+        "#111114",
+        "#E6E6E2"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify kunstprint-thema in galerie-wit × kobalt: beeldgerichte hero, print-grid met museum-labels, galerie-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Pigment — kunst Shopify-thema",
+        "blurb": "Importeerbaar Shopify kunstprint-thema in galerie-wit × kobalt: beeldgerichte hero, print-grid met museum-labels, galerie-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🖼️",
+        "grad": [
+          "#2A4BE0",
+          "#FFFFFF"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Kunst"
+        ]
+      }
+    },
+    {
+      "id": 135,
+      "slug": "135-markt",
+      "path": "templates/135-markt/",
+      "title": "Markt — marktplaats Shopify-thema",
+      "name": "Markt",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/markt-shopify-theme.zip",
+      "palette": [
+        "#F4F6FB",
+        "#2864F0",
+        "#FFFFFF",
+        "#14161C",
+        "#E2E7F0"
+      ],
+      "fonts": [
+        "Plus Jakarta Sans",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify marktplaats-thema (bol.com-stijl) in blauw-wit: grote zoekbalk, categorietegels, deal-banner, dichte productrijen met sterren en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Markt — marktplaats Shopify-thema",
+        "blurb": "Importeerbaar Shopify marktplaats-thema (bol.com-stijl) in blauw-wit: grote zoekbalk, categorietegels, deal-banner, dichte productrijen met sterren en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🛍️",
+        "grad": [
+          "#2864F0",
+          "#F4F6FB"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Marktplaats"
+        ]
+      }
+    },
+    {
+      "id": 136,
+      "slug": "136-bazaar",
+      "path": "templates/136-bazaar/",
+      "title": "Bazaar — marktplaats Shopify-thema",
+      "name": "Bazaar",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/bazaar-shopify-theme.zip",
+      "palette": [
+        "#FBF4EA",
+        "#D2691E",
+        "#FFFFFF",
+        "#2A2018",
+        "#ECE0CE"
+      ],
+      "fonts": [
+        "Poppins",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify marktplaats-thema in amber × teal: categorie-bubbels, marktdag-deals, levendige productrijen met ratings en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Bazaar — marktplaats Shopify-thema",
+        "blurb": "Importeerbaar Shopify marktplaats-thema in amber × teal: categorie-bubbels, marktdag-deals, levendige productrijen met ratings en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🏬",
+        "grad": [
+          "#D2691E",
+          "#FBF4EA"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Marktplaats"
+        ]
+      }
+    },
+    {
+      "id": 137,
+      "slug": "137-hyper",
+      "path": "templates/137-hyper/",
+      "title": "Hyper — marktplaats Shopify-thema",
+      "name": "Hyper",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/hyper-shopify-theme.zip",
+      "palette": [
+        "#0D1117",
+        "#36E27B",
+        "#161D27",
+        "#E6EDF3",
+        "#26303C"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify marktplaats-thema in zwart × neon: countdown-dealbanner, dichte dealgrid met kortingsbadges, categorieën en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Hyper — marktplaats Shopify-thema",
+        "blurb": "Importeerbaar Shopify marktplaats-thema in zwart × neon: countdown-dealbanner, dichte dealgrid met kortingsbadges, categorieën en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "⚡",
+        "grad": [
+          "#36E27B",
+          "#0D1117"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Marktplaats"
+        ]
+      }
+    },
+    {
+      "id": 138,
+      "slug": "138-plaza",
+      "path": "templates/138-plaza/",
+      "title": "Plaza — marktplaats Shopify-thema",
+      "name": "Plaza",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/plaza-shopify-theme.zip",
+      "palette": [
+        "#F3F1EC",
+        "#0E7A5F",
+        "#FFFFFF",
+        "#1A1D1A",
+        "#E2DED3"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify marktplaats-thema in crème × emerald: gecureerde afdelingen, redactionele banners, dichte productrijen en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Plaza — marktplaats Shopify-thema",
+        "blurb": "Importeerbaar Shopify marktplaats-thema in crème × emerald: gecureerde afdelingen, redactionele banners, dichte productrijen en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🏛️",
+        "grad": [
+          "#0E7A5F",
+          "#F3F1EC"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Marktplaats"
+        ]
+      }
+    },
+    {
+      "id": 139,
+      "slug": "139-snel",
+      "path": "templates/139-snel/",
+      "title": "Snel — marktplaats Shopify-thema",
+      "name": "Snel",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/snel-shopify-theme.zip",
+      "palette": [
+        "#FFFFFF",
+        "#FF2D6E",
+        "#FFF6F8",
+        "#15121A",
+        "#F1E3E9"
+      ],
+      "fonts": [
+        "Plus Jakarta Sans",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify marktplaats-thema in wit × pink: grote bezorgbelofte, categorie-bubbels, punchy dealgrid en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Snel — marktplaats Shopify-thema",
+        "blurb": "Importeerbaar Shopify marktplaats-thema in wit × pink: grote bezorgbelofte, categorie-bubbels, punchy dealgrid en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🛵",
+        "grad": [
+          "#FF2D6E",
+          "#FFFFFF"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Marktplaats"
         ]
       }
     }

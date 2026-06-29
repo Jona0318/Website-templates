@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markt — Shopify-thema in marktplaats-stijl (blauw × wit)</title>
+<meta name="description" content="Markt: een direct importeerbaar Shopify-thema in bol.com-stijl — een brede marktplaats met zoekbalk, categorietegels, deals en dichte productrijen.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232864F0'/><text x='16' y='23' font-size='19' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-weight='800'>M</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+  :root{
+    --bg:#F4F6FB; --surface:#FFFFFF; --text:#14161C; --muted:#5A6273;
+    --accent:#2864F0; --accent-text:#FFFFFF; --border:#E2E7F0;
+    --secondary:#FF6B00; --radius:12px;
+    --serif:"Plus Jakarta Sans",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+  h1{font-size:clamp(2rem,4.5vw,3.2rem)} h2{font-size:clamp(1.4rem,2.6vw,1.9rem)} h3{font-size:1.05rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:#fff}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+  .wrap{max-width:1280px;margin-inline:auto;padding-inline:20px}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;font-weight:700;font-size:.92rem;border-radius:999px;border:2px solid transparent;cursor:pointer;font-family:var(--serif);transition:.2s}
+  .btn--primary{background:var(--accent);color:#fff}
+  .btn--primary:hover{background:#1b50d0}
+  .btn--secondary{background:var(--secondary);color:#fff}
+  .btn--secondary:hover{background:#e85f00}
+  .btn--ghost{background:#fff;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .section{padding-block:clamp(32px,5vw,56px)}
+  .skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:.6rem 1rem;z-index:100;border-radius:0 0 8px 0}
+  .skip:focus{left:0}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:linear-gradient(90deg,#14161C,#2b3142);color:#fff;text-align:center;font-size:.82rem;font-weight:600;padding:.55rem 1rem}
+  .ribbon a{color:#9fc0ff;border-bottom:1px solid currentColor;padding-bottom:1px;font-weight:700}
+  .ribbon a:hover{color:#fff}
+
+  /* announce bar */
+  .announce{background:var(--accent);color:#fff;text-align:center;font-size:.84rem;padding:.5rem 1rem;font-weight:600}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:0 1px 0 rgba(20,22,28,.02)}
+  .nav{display:flex;align-items:center;gap:1.25rem;height:74px}
+  .logo{font-family:var(--serif);font-size:1.6rem;font-weight:800;color:var(--accent);flex:0 0 auto;display:flex;align-items:center;gap:.45rem}
+  .logo .dot{width:10px;height:10px;border-radius:3px;background:var(--secondary)}
+  .search{flex:1;display:flex;align-items:center;gap:.5rem;background:var(--bg);border:2px solid var(--border);border-radius:999px;padding:.15rem .15rem .15rem 1rem;transition:.2s}
+  .search:focus-within{border-color:var(--accent);background:#fff}
+  .search svg{width:20px;height:20px;stroke:var(--muted);fill:none;stroke-width:2;flex:0 0 auto}
+  .search input{flex:1;border:0;background:transparent;font-family:inherit;font-size:.98rem;padding:.7rem .25rem;color:var(--text)}
+  .search input:focus{outline:none}
+  .search button{flex:0 0 auto;border:0;background:var(--accent);color:#fff;font-family:var(--serif);font-weight:700;font-size:.9rem;padding:.65rem 1.3rem;border-radius:999px;cursor:pointer;transition:.2s}
+  .search button:hover{background:#1b50d0}
+  .icons{display:flex;gap:.4rem;align-items:center;flex:0 0 auto}
+  .iconbtn{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.4rem .6rem;border-radius:10px;color:var(--text);position:relative;font-size:.68rem;font-weight:600}
+  .iconbtn:hover{background:var(--bg);color:var(--accent)}
+  .iconbtn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .cart-pill{position:absolute;top:.15rem;right:.45rem;background:var(--secondary);color:#fff;border-radius:999px;font-size:.62rem;font-weight:800;min-width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
+  .subnav{display:flex;gap:1.5rem;padding:.7rem 0;border-top:1px solid var(--border);overflow-x:auto}
+  .subnav a{font-size:.86rem;font-weight:600;color:var(--muted);white-space:nowrap}
+  .subnav a:first-child{color:var(--accent)}
+  .subnav a:hover{color:var(--accent)}
+
+  /* category tiles */
+  .cats{display:flex;gap:1rem;overflow-x:auto;padding:.5rem 0 1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .cat{flex:0 0 auto;width:108px;display:flex;flex-direction:column;align-items:center;gap:.55rem;text-align:center;scroll-snap-align:start}
+  .cat__icon{width:78px;height:78px;border-radius:50%;background:linear-gradient(160deg,#EAF1FE,#fff);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:2rem;transition:.2s}
+  .cat:hover .cat__icon{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 24px rgba(40,100,240,.16)}
+  .cat span{font-size:.84rem;font-weight:600}
+
+  /* hero + deal */
+  .hero{display:grid;grid-template-columns:1.55fr 1fr;gap:1.25rem}
+  .hero__main{position:relative;border-radius:var(--radius);overflow:hidden;min-height:340px;display:flex;align-items:flex-end;border:1px solid var(--border);
+    background:radial-gradient(70% 90% at 80% 10%,rgba(40,100,240,.22),transparent 60%),linear-gradient(160deg,#dbe6fd,#eef3fe)}
+  .hero__main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero__main::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,30,.78) 0%,rgba(8,14,30,.35) 55%,rgba(8,14,30,.08) 100%)}
+  .hero__inner{position:relative;z-index:2;padding:clamp(1.5rem,4vw,2.75rem);color:#fff;max-width:560px}
+  .hero__inner .eyebrow{display:inline-block;background:var(--secondary);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px;margin-bottom:.9rem;font-family:var(--serif)}
+  .hero h1{color:#fff;margin-bottom:.5rem;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+  .hero h1 em{font-style:normal;color:#ffd9b8}
+  .hero__inner p{color:rgba(255,255,255,.92);max-width:420px;margin-bottom:1.4rem}
+  .hero__cta{display:flex;gap:.7rem;flex-wrap:wrap}
+  .deal-card{border-radius:var(--radius);overflow:hidden;border:2px solid var(--secondary);background:linear-gradient(160deg,#FFF4EC,#fff);padding:clamp(1.5rem,3vw,2rem);display:flex;flex-direction:column;justify-content:center}
+  .deal-card .eyebrow{display:inline-block;align-self:flex-start;background:var(--secondary);color:#fff;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem;font-family:var(--serif)}
+  .deal-card h2{color:var(--secondary);font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:.4rem}
+  .deal-card p{color:var(--muted)}
+  .deal-card .btn{align-self:flex-start;margin-top:.4rem}
+
+  /* trust */
+  .trust{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.25rem}
+  .trust__item{display:flex;gap:.75rem;align-items:center;justify-content:center}
+  .trust__item svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.8;flex:0 0 auto}
+  .trust__item strong{display:block;font-size:.92rem} .trust__item span{color:var(--muted);font-size:.8rem}
+
+  /* product rows */
+  .rowhead{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
+  .rowhead h2{margin:0}
+  .rowhead a{color:var(--accent);font-weight:700;font-size:.9rem;white-space:nowrap}
+  .rowhead a:hover{text-decoration:underline}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .card-p{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+  .card-p:hover{box-shadow:0 14px 30px rgba(20,22,28,.10);border-color:#c9d6f2;transform:translateY(-3px)}
+  .card-p__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:linear-gradient(160deg,#EEF3FE,#dde7fb)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .5s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.05)}
+  .card-p__badge{position:absolute;top:10px;left:10px;background:var(--secondary);color:#fff;font-size:.72rem;font-weight:800;padding:.25rem .55rem;border-radius:999px;z-index:2;font-family:var(--serif)}
+  .card-p__badge.is-tag{background:var(--accent)}
+  .card-p__body{padding:.85rem .95rem 1.1rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
+  .card-p__rating{font-size:.78rem;color:#E8A317;font-weight:600}
+  .card-p__title{font-family:var(--serif);font-size:.98rem;font-weight:700;line-height:1.3;color:var(--text)}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:auto;padding-top:.4rem;font-weight:800;font-family:var(--serif);font-size:1.15rem}
+  .card-p__price s{color:var(--muted);font-weight:500;font-size:.82rem;margin-left:.4rem}
+  .card-p__cta{margin-top:.5rem;text-align:center;background:var(--bg);color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:.5rem;font-weight:700;font-size:.85rem;font-family:var(--serif);transition:.2s}
+  .card-p:hover .card-p__cta{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* deal strip */
+  .strip{background:linear-gradient(110deg,var(--secondary),#ff9248);color:#fff;border-radius:var(--radius);padding:clamp(1.5rem,4vw,2.5rem);display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;overflow:hidden;position:relative}
+  .strip::before{content:"%";position:absolute;right:-10px;top:-30px;font-size:14rem;font-weight:800;opacity:.12;font-family:var(--serif);line-height:1}
+  .strip__txt{position:relative;z-index:1}
+  .strip h2{color:#fff;margin-bottom:.25rem}
+  .strip p{margin:0;color:rgba(255,255,255,.92)}
+  .strip .btn{position:relative;z-index:1;background:#fff;color:var(--secondary)}
+  .strip .btn:hover{background:#14161C;color:#fff}
+
+  /* import */
+  .import{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(1.75rem,4vw,3rem)}
+  .import .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--accent);font-weight:800;margin-bottom:.75rem}
+  .import code{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:.05rem .35rem;font-size:.88em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;counter-reset:s}
+  .step{padding:1.25rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;margin-bottom:.7rem;font-family:var(--serif)}
+  .step strong{display:block;margin-bottom:.25rem}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{background:linear-gradient(160deg,#0f2a6e,#2864F0);color:#fff;border-radius:var(--radius);padding:clamp(2rem,5vw,3.25rem);text-align:center}
+  .news h2{color:#fff}
+  .news p{color:rgba(255,255,255,.9);max-width:480px;margin-inline:auto}
+  .news__form{display:flex;gap:.6rem;max-width:480px;margin:1.4rem auto 0}
+  .news__form input{flex:1;background:#fff;color:var(--text);border:0;padding:.9rem 1.2rem;border-radius:999px;font-family:inherit;font-size:.95rem}
+  .news__form input:focus{outline:3px solid #ffd9b8}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(40px,5vw,60px) 1.75rem;margin-top:clamp(32px,5vw,56px)}
+  .f-grid{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:2rem}
+  .f-logo{font-family:var(--serif);font-size:1.5rem;font-weight:800;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem}
+  .f-logo .dot{width:9px;height:9px;border-radius:3px;background:var(--secondary)}
+  .f-grid p{color:var(--muted);max-width:280px;font-size:.92rem}
+  .f-col h4{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:.9rem;font-family:var(--serif)}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.55rem} .f-col a{font-size:.9rem;color:var(--muted)} .f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:990px){
+    .hero{grid-template-columns:1fr}
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}
+    .f-grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+  }
+  @media(max-width:749px){
+    .nav{flex-wrap:wrap;height:auto;padding-block:.75rem;gap:.75rem}
+    .logo{order:1} .icons{order:2;margin-left:auto} .search{order:3;flex-basis:100%}
+    .iconbtn span:not(.cart-pill){display:none}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .news__form{flex-direction:column}
+    .f-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:430px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.search button span{display:none}.search button::after{content:"Zoek"}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Naar hoofdinhoud</a>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/markt-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €20 · Voor 23:59 besteld, morgen in huis</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="nav">
+      <a class="logo" href="#">Markt<span class="dot" aria-hidden="true"></span></a>
+      <form class="search" role="search" onsubmit="return false">
+        <label for="q" class="skip" style="position:absolute">Zoek artikelen</label>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="q" type="search" name="q" placeholder="Zoek uit miljoenen artikelen" aria-label="Zoek uit miljoenen artikelen">
+        <button type="submit"><span>Zoeken</span></button>
+      </form>
+      <nav class="icons" aria-label="Account en winkelwagen">
+        <a class="iconbtn" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Account</span></a>
+        <a class="iconbtn" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2 3h3l2.4 12.4a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L23 7H6"/></svg><span class="cart-pill" aria-label="3 artikelen in winkelwagen">3</span><span>Winkelwagen</span></a>
+      </nav>
+    </div>
+    <nav class="subnav" aria-label="Hoofdmenu">
+      <a href="#">Alle categorieën</a>
+      <a href="#deals">Deals</a>
+      <a href="#import">Shopify</a>
+      <a href="#">Klantenservice</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- category tiles -->
+  <section class="section" style="padding-bottom:0" aria-label="Categorieën">
+    <div class="wrap">
+      <div class="cats">
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">📱</span><span>Elektronica</span></a>
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">🛋️</span><span>Wonen</span></a>
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">👕</span><span>Mode</span></a>
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">🧸</span><span>Speelgoed</span></a>
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">📚</span><span>Boeken</span></a>
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">⚽</span><span>Sport</span></a>
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">🌿</span><span>Tuin</span></a>
+        <a class="cat" href="#"><span class="cat__icon" aria-hidden="true">💄</span><span>Beauty</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- hero + deal -->
+  <section class="section" style="padding-top:1.5rem" aria-label="Uitgelicht">
+    <div class="wrap">
+      <div class="hero">
+        <div class="hero__main">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80" alt="Brede selectie populaire producten" loading="eager" onerror="this.remove()">
+          <div class="hero__inner">
+            <span class="eyebrow">Welkom</span>
+            <h1>Alles voor <em>elke dag</em></h1>
+            <p>Miljoenen artikelen, snel in huis. Van elektronica tot tuin.</p>
+            <div class="hero__cta">
+              <a href="#veelgekocht" class="btn btn--primary">Begin met shoppen</a>
+              <a href="#deals" class="btn btn--ghost">Bekijk deals</a>
+            </div>
+          </div>
+        </div>
+        <aside class="deal-card" aria-label="Deal van de dag">
+          <span class="eyebrow">Deal van de dag</span>
+          <h2>Tot 50% korting</h2>
+          <p>Elke dag nieuwe deals op duizenden producten.</p>
+          <a href="#deals" class="btn btn--secondary">Bekijk alle deals</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- trust -->
+  <section class="section" style="padding-block:0" aria-label="Voordelen">
+    <div class="wrap">
+      <div class="trust">
+        <div class="trust__grid">
+          <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="6" width="14" height="12" rx="1"/><path d="M15 9h4l3 3v6h-7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><div><strong>Gratis verzending</strong><span>Vanaf €20</span></div></div>
+          <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>Morgen in huis</strong><span>Voor 23:59 besteld</span></div></div>
+          <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg><div><strong>30 dagen retour</strong><span>Gratis retourneren</span></div></div>
+          <div class="trust__item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Veilig betalen</strong><span>iDEAL &amp; meer</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- product row 1 -->
+  <section class="section" id="veelgekocht" aria-label="Veelgekocht">
+    <div class="wrap">
+      <div class="rowhead">
+        <h2>Veelgekocht</h2>
+        <a href="#">Bekijk alles →</a>
+      </div>
+      <div class="grid">
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">-20%</span><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80" alt="Wireless Koptelefoon" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.6 (2.1k)</span><span class="card-p__title">Wireless Koptelefoon</span><span class="card-p__price">€ 79,99 <s>€ 99,99</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge is-tag">Bestseller</span><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Smartwatch Series 5" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.7 (980)</span><span class="card-p__title">Smartwatch Series 5</span><span class="card-p__price">€ 149,00</span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Deal</span><img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80" alt="Bluetooth Speaker" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.4 (3.4k)</span><span class="card-p__title">Bluetooth Speaker</span><span class="card-p__price">€ 39,99 <s>€ 54,99</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80" alt="Laptop 14 inch Pro" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.8 (640)</span><span class="card-p__title">Laptop 14" Pro</span><span class="card-p__price">€ 699,00</span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">-28%</span><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Sneakers Runner" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.5 (1.2k)</span><span class="card-p__title">Sneakers Runner</span><span class="card-p__price">€ 64,95 <s>€ 89,95</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge is-tag">Nieuw</span><img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=700&q=80" alt="Robotstofzuiger" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.3 (410)</span><span class="card-p__title">Robotstofzuiger</span><span class="card-p__price">€ 199,00</span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=700&q=80" alt="Houten Blokkenset" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.9 (220)</span><span class="card-p__title">Houten Blokkenset</span><span class="card-p__price">€ 24,95</span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Deal</span><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=700&q=80" alt="Espressomachine" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.6 (1.7k)</span><span class="card-p__title">Espressomachine</span><span class="card-p__price">€ 129,00 <s>€ 159,00</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- deal strip -->
+  <section class="section" id="deals" style="padding-block:0" aria-label="Deal van de dag">
+    <div class="wrap">
+      <div class="strip">
+        <div class="strip__txt">
+          <h2>Deal van de dag — tot 50% korting</h2>
+          <p>Elke dag nieuwe deals op duizenden producten.</p>
+        </div>
+        <a href="#deals-van-de-dag" class="btn">Bekijk alle deals</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- product row 2 -->
+  <section class="section" id="deals-van-de-dag" aria-label="Deals van de dag">
+    <div class="wrap">
+      <div class="rowhead">
+        <h2>Deals van de dag</h2>
+        <a href="#">Bekijk alles →</a>
+      </div>
+      <div class="grid">
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">-28%</span><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Sneakers Runner" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.5 (1.2k)</span><span class="card-p__title">Sneakers Runner</span><span class="card-p__price">€ 64,95 <s>€ 89,95</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Deal</span><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=700&q=80" alt="Espressomachine" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.6 (1.7k)</span><span class="card-p__title">Espressomachine</span><span class="card-p__price">€ 129,00 <s>€ 159,00</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">-20%</span><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80" alt="Wireless Koptelefoon" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.6 (2.1k)</span><span class="card-p__title">Wireless Koptelefoon</span><span class="card-p__price">€ 79,99 <s>€ 99,99</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge">Deal</span><img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80" alt="Bluetooth Speaker" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.4 (3.4k)</span><span class="card-p__title">Bluetooth Speaker</span><span class="card-p__price">€ 39,99 <s>€ 54,99</s></span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge is-tag">Nieuw</span><img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=700&q=80" alt="Robotstofzuiger" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.3 (410)</span><span class="card-p__title">Robotstofzuiger</span><span class="card-p__price">€ 199,00</span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><span class="card-p__badge is-tag">Bestseller</span><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Smartwatch Series 5" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.7 (980)</span><span class="card-p__title">Smartwatch Series 5</span><span class="card-p__price">€ 149,00</span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=700&q=80" alt="Houten Blokkenset" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.9 (220)</span><span class="card-p__title">Houten Blokkenset</span><span class="card-p__price">€ 24,95</span><span class="card-p__cta">In winkelwagen</span></div></a>
+        <a class="card-p" href="#"><div class="card-p__img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80" alt="Laptop 14 inch Pro" loading="lazy" onerror="this.remove()"></div><div class="card-p__body"><span class="card-p__rating">★ 4.8 (640)</span><span class="card-p__title">Laptop 14" Pro</span><span class="card-p__price">€ 699,00</span><span class="card-p__cta">In winkelwagen</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- import -->
+  <section class="section" id="import" style="padding-top:0">
+    <div class="wrap">
+      <div class="import">
+        <span class="eyebrow">Shopify-ready</span>
+        <h2 style="max-width:22ch">Dit thema importeer je direct in Shopify</h2>
+        <p style="color:var(--muted);max-width:62ch">Markt is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+        <div style="margin-top:1rem">
+          <a class="btn btn--primary" href="../../downloads/markt-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+        </div>
+        <div class="steps">
+          <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+          <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, zoekbalk, categorieën, hero en kleuren (accent staat op #2864F0, deal-accent #FF6B00).</span></div>
+          <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- newsletter -->
+  <section class="section" style="padding-top:0" aria-label="Nieuwsbrief">
+    <div class="wrap">
+      <div class="news">
+        <h2>Mis geen enkele deal</h2>
+        <p>Schrijf je in en ontvang de beste aanbiedingen, nieuwe deals en kortingen rechtstreeks in je inbox.</p>
+        <form class="news__form" onsubmit="return false">
+          <label for="nl-email" class="skip" style="position:absolute">E-mailadres</label>
+          <input id="nl-email" type="email" placeholder="Je e-mailadres" required>
+          <button class="btn btn--secondary" type="submit">Aanmelden</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Markt<span class="dot" aria-hidden="true"></span></div>
+        <p>Een brede online marktplaats. Een Shopify-thema in vertrouwd blauw-wit.</p>
+      </div>
+      <div class="f-col"><h4>Winkelen</h4><ul><li><a href="#">Alle categorieën</a></li><li><a href="#deals">Deals</a></li><li><a href="#veelgekocht">Veelgekocht</a></li><li><a href="#">Nieuw binnen</a></li></ul></div>
+      <div class="f-col"><h4>Klantenservice</h4><ul><li><a href="#">Bestelling volgen</a></li><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Veelgestelde vragen</a></li></ul></div>
+      <div class="f-col"><h4>Over Markt</h4><ul><li><a href="#">Over ons</a></li><li><a href="#">Verkopen op Markt</a></li><li><a href="#">Werken bij</a></li><li><a href="#">Pers</a></li></ul></div>
+      <div class="f-col"><h4>Betalen</h4><ul><li><a href="#">iDEAL</a></li><li><a href="#">Creditcard</a></li><li><a href="#">Achteraf betalen</a></li><li><a href="#">Cadeaukaart</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Markt. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema · accent #2864F0</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

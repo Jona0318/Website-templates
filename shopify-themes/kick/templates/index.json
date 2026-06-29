@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "New drop",
+        "heading": "Sneakers that <em>stand out</em>",
+        "text": "Limited drops and streetwear essentials. Be quick.",
+        "button_label": "Shop the drop",
+        "button_label_2": "View sneakers"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €75"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "Encrypted & protected"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Easy returns",
+            "text": "14-day no fuss"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "100% authentic",
+            "text": "Verified pairs"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured kicks",
+        "subheading": "Hand-picked from the latest drop.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The drop",
+        "heading": "Built for the street",
+        "text": "<p>Every drop is limited and made to move. We obsess over fit, materials and that first-wear feeling.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Built for the street",
+        "text": "<p>Every drop is limited and made to move. We obsess over fit, materials and that first-wear feeling.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the drop list",
+        "text": "Early access to drops, raffles and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

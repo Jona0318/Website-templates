@@ -1,0 +1,57 @@
+<section class="trust-bar">
+  <div class="page-width">
+    <div class="trust-bar__grid">
+      {%- for block in section.blocks -%}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          <span class="trust-item__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/>
+            </svg>
+          </span>
+          <div>
+            <strong>{{ block.settings.title | escape }}</strong>
+            <span>{{ block.settings.text | escape }}</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free shipping"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "On all orders over €100"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "title": "Free shipping", "text": "On orders over €100" } },
+        { "type": "item", "settings": { "title": "Secure checkout", "text": "Encrypted & protected" } },
+        { "type": "item", "settings": { "title": "30-day returns", "text": "No questions asked" } },
+        { "type": "item", "settings": { "title": "Crafted to last", "text": "Premium materials only" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

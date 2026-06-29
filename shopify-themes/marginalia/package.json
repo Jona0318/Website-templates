@@ -1,0 +1,14 @@
+{
+  "name": "marginalia-shopify-theme",
+  "version": "1.0.0",
+  "description": "Marginalia — boeken Shopify theme (Online Store 2.0). Local dev via Shopify CLI.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "shopify theme dev",
+    "push": "shopify theme push",
+    "pull": "shopify theme pull",
+    "check": "shopify theme check",
+    "open": "shopify theme open"
+  }
+}

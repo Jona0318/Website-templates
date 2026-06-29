@@ -1,0 +1,17 @@
+# Kick — sneakers Shopify theme
+
+A Shopify **Online Store 2.0** theme, ready to import as a `.zip`. Accent colour `#FF5A1F`. Built to sell products: hero, featured collection, product/collection/cart pages, blog, search and more.
+
+## Import into Shopify
+
+1. Download `downloads/kick-shopify-theme.zip`.
+2. In Shopify admin: **Online Store → Themes**.
+3. **Add theme → Upload zip file**, pick the zip.
+4. **Customize** your logo, menus and hero image.
+5. **Publish**.
+
+> The zip already has the correct root structure, so Shopify accepts it directly.
+
+## Customize
+
+Colours and fonts are theme settings (**Customize → Theme settings**). Accent default: `#FF5A1F`, background `#0E0E0E`.

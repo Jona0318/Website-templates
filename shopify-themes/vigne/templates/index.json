@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Wine merchant",
+        "heading": "Wines with <em>character</em>",
+        "text": "Hand-selected by our sommeliers, from small estate to classic.",
+        "button_label": "Shop wines",
+        "button_label_2": "The cellar"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "From 6 bottles"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "Encrypted & protected"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Sommelier picks",
+            "text": "Tasted & chosen"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Perfectly stored",
+            "text": "Cellar conditions"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured bottles",
+        "subheading": "Hand-selected from our cellar.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The cellar",
+        "heading": "Chosen by the glass",
+        "text": "<p>Nothing reaches our shelves untasted. We work with small growers who put the vineyard before the label.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Chosen by the glass",
+        "text": "<p>Nothing reaches our shelves untasted. We work with small growers who put the vineyard before the label.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the cellar club",
+        "text": "New arrivals, tasting notes and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}
