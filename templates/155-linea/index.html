@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linea — editorial concept-store Shopify-thema (papier × inkt)</title>
+<meta name="description" content="Linea: importeerbaar Shopify-thema voor een concept-store. Editorial, strak en premium — haarlijn-grid, Fraunces-serif en mono labels. Accent #9A3B2C.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F4F1EC'/><text x='16' y='23' font-family='Georgia,serif' font-size='22' text-anchor='middle' fill='%231A1714'>L</text><circle cx='24' cy='9' r='2.4' fill='%239A3B2C'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+  :root{
+    --bg:#F4F1EC; --surface:#FBFAF7; --text:#1A1714; --muted:#8A8278;
+    --accent:#9A3B2C; --accent-text:#F4F1EC; --border:#DED7CC;
+    --hair:1px solid var(--border);
+    --display:"Fraunces",Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:"Space Mono",ui-monospace,Menlo,monospace;
+    --maxw:1360px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spacing:-.015em;font-optical-sizing:auto}
+  ::selection{background:var(--text);color:var(--bg)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(20px,5vw,64px)}
+  .section{padding-block:clamp(56px,9vw,128px)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .skip{position:absolute;left:-999px;background:var(--text);color:var(--bg);padding:.75rem 1.25rem;z-index:1000}
+  .skip:focus{left:1rem;top:1rem}
+
+  /* labels + links */
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;color:var(--muted);margin-bottom:1.4rem}
+  .eyebrow::before{content:"";width:1.6rem;height:1px;background:var(--accent)}
+  .link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text);padding-bottom:4px;background-image:linear-gradient(var(--text),var(--text));background-size:100% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .4s cubic-bezier(.22,1,.36,1),color .3s}
+  .link:hover{background-size:0 1px;color:var(--accent)}
+  .link .ar{transition:transform .35s}.link:hover .ar{transform:translateX(4px)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1.05rem 2.2rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--text);cursor:pointer;transition:background .35s,color .35s}
+  .btn--primary{background:var(--text);color:var(--bg)}.btn--primary:hover{background:transparent;color:var(--text)}
+
+  /* CSS placeholder fills (art-directed, no external images) */
+  .ph{position:relative;overflow:hidden;background:var(--surface)}
+  .ph::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(120% 90% at 78% 18%, rgba(154,59,44,.10), transparent 55%),
+    linear-gradient(150deg,#EDE7DD,#E3DACB 55%,#D8CBB7)}
+  .ph--2::after{background:radial-gradient(110% 80% at 25% 80%,rgba(154,59,44,.08),transparent 60%),linear-gradient(160deg,#F0EBE2,#DCD2C2)}
+  .ph--3::after{background:linear-gradient(135deg,#E7E0D4,#CFC3AF)}
+  .ph--4::after{background:radial-gradient(100% 90% at 60% 30%,rgba(26,23,20,.06),transparent 55%),linear-gradient(150deg,#ECE5DA,#D5C9B6)}
+  .ph--5::after{background:linear-gradient(160deg,#EFE9DF,#E0D6C6)}
+  .ph--6::after{background:radial-gradient(120% 100% at 30% 20%,rgba(154,59,44,.12),transparent 55%),linear-gradient(140deg,#E9E2D6,#D2C6B2)}
+  .ph__sig{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-style:italic;font-size:2.4rem;color:rgba(26,23,20,.16);z-index:1}
+
+  /* ribbon (gallery-facing) */
+  .ribbon{background:var(--accent);color:var(--accent-text);text-align:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1rem}
+  .ribbon a{border-bottom:1px solid rgba(244,241,236,.5)}.ribbon a:hover{border-color:var(--accent-text)}
+
+  /* announcement */
+  .announce{background:var(--text);color:var(--bg);text-align:center;font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;padding:.6rem 1rem}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:var(--hair)}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem;height:80px}
+  .logo{font-family:var(--display);font-size:1.6rem;letter-spacing:.02em;justify-self:start}.logo span{color:var(--accent)}
+  .menu{display:flex;gap:2.4rem;justify-self:center}
+  .menu a{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);position:relative;padding-block:.4rem}
+  .menu a:hover{color:var(--text)}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--text);transition:width .3s}.menu a:hover::after{width:100%}
+  .actions{display:flex;align-items:center;gap:1.2rem;justify-self:end}
+  .actions a{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+  .actions a:hover{color:var(--accent)}
+  .actions svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .burger{display:none;background:none;border:0;color:var(--text);cursor:pointer;justify-self:start}
+
+  /* hero */
+  .hero{border-bottom:var(--hair)}
+  .hero__inner{display:grid;grid-template-columns:1.04fr .96fr;min-height:clamp(560px,80vh,860px)}
+  .hero__text{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,7vw,104px) clamp(28px,5vw,84px);border-right:var(--hair)}
+  .hero__idx{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:auto;padding-bottom:2.5rem}
+  .hero h1{font-size:clamp(3rem,7.2vw,6.2rem);margin-bottom:1.5rem}.hero h1 em{font-style:italic;color:var(--accent)}
+  .hero__sub{font-size:1.1rem;color:var(--muted);max-width:44ch;margin-bottom:2.4rem}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:2rem;align-items:center}
+  .hero__media{position:relative}
+  .hero__media .ph{position:absolute;inset:0}
+  .hero__cap{position:absolute;left:1.4rem;bottom:1.4rem;z-index:2;font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:color-mix(in srgb,var(--text) 72%,transparent);padding:.45rem .8rem}
+
+  /* marquee */
+  .marq{border-bottom:var(--hair);overflow:hidden;white-space:nowrap;padding-block:1.1rem}
+  .marq__t{display:inline-flex;align-items:center;gap:3.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);animation:marq 38s linear infinite}
+  .marq__t span{display:inline-flex;align-items:center;gap:3.5rem}.marq__t span::after{content:"✦";color:var(--accent)}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* the edit */
+  .edit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;padding-bottom:2.8rem;margin-bottom:3.5rem;border-bottom:var(--hair);flex-wrap:wrap}
+  .edit-head h2{font-size:clamp(2rem,4.2vw,3.4rem)}
+  .edit-head .meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1.5rem}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,44px) clamp(16px,2vw,32px)}
+  .grid>:nth-child(even){transform:translateY(clamp(20px,4vw,60px))}
+  .card{display:flex;flex-direction:column}
+  .card__media{position:relative;aspect-ratio:3/4;border:var(--hair)}
+  .card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.22,1,.36,1)}
+  .card:hover .card__media img{transform:scale(1.04)}
+  .card__media .ph{position:absolute;inset:0;transition:transform .9s cubic-bezier(.22,1,.36,1)}.card:hover .card__media .ph{transform:scale(1.04)}
+  .badge{position:absolute;top:0;left:0;z-index:2;background:var(--text);color:var(--bg);font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:.35rem .7rem}
+  .card__body{padding:1rem 0 0;display:flex;flex-direction:column;gap:.35rem}
+  .card__idx{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+  .card__title{font-family:var(--display);font-size:1.25rem;line-height:1.2}.card:hover .card__title{color:var(--accent)}
+  .card__price{font-family:var(--mono);font-size:.82rem}.card__price s{color:var(--muted);margin-right:.5rem}.card__price em{font-style:normal;color:var(--accent)}
+
+  /* statement */
+  .stmt{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,90px);align-items:start}
+  .stmt__n{font-family:var(--display);font-style:italic;font-size:clamp(4rem,12vw,11rem);line-height:.8;color:var(--accent)}
+  .stmt__b{max-width:52ch}.stmt__b h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1.2rem}.stmt__b p{color:var(--muted);font-size:1.08rem;margin-bottom:1.5rem}
+
+  /* lookbook */
+  .intro{max-width:720px;margin-bottom:3.5rem}.intro h2{font-size:clamp(2rem,4.2vw,3.4rem)}
+  .look{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.5vw,20px)}
+  .tile{position:relative;aspect-ratio:3/4;overflow:hidden;border:var(--hair);display:block}
+  .tile .ph{position:absolute;inset:0;transition:transform .9s cubic-bezier(.22,1,.36,1)}.tile:hover .ph{transform:scale(1.05)}
+  .tile__l{position:absolute;inset:auto 0 0 0;z-index:2;padding:1.4rem;display:flex;justify-content:space-between;align-items:flex-end;color:var(--bg);background:linear-gradient(transparent,color-mix(in srgb,var(--text) 70%,transparent))}
+  .tile__l h3{color:var(--bg);font-size:1.5rem}.tile__l .ar{font-family:var(--mono)}
+
+  /* feature split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,100px);align-items:center}
+  .split__m{position:relative;aspect-ratio:4/5;border:var(--hair)}
+  .split__c p{color:var(--muted);font-size:1.05rem;margin-bottom:1.5rem}
+
+  /* manifesto */
+  .manif{text-align:center;max-width:28ch;margin-inline:auto}
+  .manif p{font-family:var(--display);font-style:italic;font-size:clamp(1.8rem,4.4vw,3.4rem);line-height:1.18}
+  .manif cite{display:block;margin-top:2rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-style:normal}
+
+  /* trust */
+  .trust{border-block:var(--hair)}
+  .trust__g{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__i{display:flex;flex-direction:column;gap:.4rem;padding:clamp(28px,4vw,46px) clamp(16px,2vw,34px);border-right:var(--hair)}
+  .trust__i:last-child{border-right:0}
+  .trust__i strong{font-family:var(--display);font-weight:400;font-size:1.2rem}
+  .trust__i span{color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.08em}
+
+  /* import (gallery-facing) */
+  .import{border:var(--hair);padding:clamp(28px,5vw,56px);background:var(--surface)}
+  .import code{font-family:var(--mono);font-size:.84em;background:var(--bg);border:var(--hair);padding:.05rem .35rem}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;counter-reset:s}
+  .step{border:var(--hair);padding:1.4rem;background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;margin-bottom:.7rem}
+  .step strong{font-family:var(--display);font-weight:400;font-size:1.15rem;display:block;margin-bottom:.25rem}
+  .step span{color:var(--muted);font-size:.92rem}
+
+  /* newsletter */
+  .news{border-block:var(--hair);text-align:center}
+  .news__in{max-width:640px;margin-inline:auto;padding-block:clamp(48px,7vw,92px)}
+  .news h2{font-size:clamp(2rem,4vw,3rem)}
+  .news p{color:var(--muted);max-width:46ch;margin-inline:auto}
+  .news__f{display:flex;align-items:center;gap:1rem;max-width:460px;margin:2.2rem auto 0;border-bottom:1px solid var(--text);padding-bottom:.6rem}
+  .news__f input{flex:1;background:transparent;border:0;padding:.4rem 0;font-family:var(--sans);font-size:1rem;color:var(--text)}
+  .news__f input:focus{outline:0}
+  .news__f button{background:none;border:0;cursor:pointer;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+  .news__f button:hover{color:var(--accent)}
+
+  /* footer */
+  footer.site{border-top:var(--hair);padding-block:clamp(48px,7vw,92px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.8fr repeat(3,1fr);gap:clamp(28px,4vw,64px)}
+  .f-logo{font-family:var(--display);font-size:clamp(2.4rem,5vw,3.8rem);line-height:.9;margin-bottom:1.4rem}.f-logo span{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:34ch;font-size:.95rem}
+  .f-soc{display:flex;gap:1.4rem;margin-top:1.4rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}.f-soc a:hover{color:var(--accent)}
+  .f-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+  .f-col ul{list-style:none;display:grid;gap:.7rem}.f-col a{font-size:.92rem}.f-col a:hover{color:var(--accent)}
+  .f-bottom{margin-top:4rem;padding-top:1.5rem;border-top:var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+
+  /* reveal */
+  [data-rv]{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  [data-rv].in{opacity:1;transform:none}
+
+  @media(max-width:990px){
+    .hero__inner{grid-template-columns:1fr;min-height:0}.hero__text{border-right:0;border-bottom:var(--hair)}.hero__media{aspect-ratio:16/11}
+    .grid{grid-template-columns:repeat(2,1fr)}.look{grid-template-columns:1fr 1fr}.stmt{grid-template-columns:1fr}
+    .trust__g{grid-template-columns:1fr 1fr}.trust__i:nth-child(2){border-right:0}.f-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}
+  }
+  @media(max-width:749px){
+    .burger{display:inline-flex}.nav{grid-template-columns:auto 1fr auto}
+    .menu{position:fixed;inset:80px 0 auto 0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:var(--hair);padding:.5rem clamp(20px,5vw,64px) 1.5rem;transform:translateY(-130%);transition:transform .35s;justify-self:stretch}
+    .menu.open{transform:translateY(0)}.menu a{padding:.85rem 0;width:100%;font-size:.8rem}
+    .grid{grid-template-columns:1fr 1fr}.grid>:nth-child(even){transform:none}
+    .look{grid-template-columns:1fr}.split{grid-template-columns:1fr}.trust__g{grid-template-columns:1fr}.trust__i{border-right:0;border-bottom:var(--hair)}.f-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}[data-rv]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="ribbon" lang="nl">Shopify-ready thema — direct importeerbaar · <a href="../../downloads/linea-shopify-theme.zip" download>Download het Shopify-thema (.zip)</a></div>
+<div class="announce">Vol. 01 — The Winter Edit · complimentary shipping over €150</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <button class="burger" aria-label="Menu" aria-expanded="false" data-burger><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    <a class="logo" href="#">Linea<span>.</span></a>
+    <nav class="menu" data-menu aria-label="Primary">
+      <a href="#edit">Shop</a><a href="#story">Editorial</a><a href="#look">Archive</a>
+    </nav>
+    <div class="actions">
+      <a href="#" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
+      <a href="#">Cart <span>(0)</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <span class="hero__idx">Vol. 01 — The Winter Edit</span>
+      <h1>Objects, <em>considered</em>.</h1>
+      <p class="hero__sub">A small, slow collection of homeware and apparel — drawn in clean lines, made to be kept.</p>
+      <div class="hero__cta">
+        <a href="#edit" class="link">Shop the edit <span class="ar">&rarr;</span></a>
+        <a href="#story" class="link">The studio <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="ph ph--6"><span class="ph__sig">Fig.&nbsp;01</span></div>
+      <span class="hero__cap">Fig. 01 — Atelier still life</span>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="marq__t">
+  <span>Free shipping over €150</span><span>Made in limited runs</span><span>Archival quality</span><span>Carbon-neutral delivery</span>
+  <span>Free shipping over €150</span><span>Made in limited runs</span><span>Archival quality</span><span>Carbon-neutral delivery</span>
+</div></div>
+
+<section class="section" id="edit">
+  <div class="wrap">
+    <div class="edit-head" data-rv>
+      <div><span class="eyebrow">Selected</span><h2>The Edit</h2></div>
+      <div class="meta"><span>Six pieces, this season</span><a href="#" class="link">View all <span class="ar">&rarr;</span></a></div>
+    </div>
+    <div class="grid">
+      <article class="card" data-rv><div class="card__media"><span class="badge">New</span><div class="ph ph--1"></div></div><div class="card__body"><span class="card__idx">001 · Atelier</span><span class="card__title">Stoneware Carafe</span><span class="card__price">€ 120,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--2"></div></div><div class="card__body"><span class="card__idx">002 · Linea</span><span class="card__title">Linen Throw, Ecru</span><span class="card__price">€ 185,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--3"></div></div><div class="card__body"><span class="card__idx">003 · Studio</span><span class="card__title">Oak Tray, Small</span><span class="card__price">€ 74,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><span class="badge">Sale</span><div class="ph ph--4"></div></div><div class="card__body"><span class="card__idx">004 · Atelier</span><span class="card__title">Wool Overshirt</span><span class="card__price"><s>€ 240,00</s><em>€ 168,00</em></span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--5"></div></div><div class="card__body"><span class="card__idx">005 · Linea</span><span class="card__title">Ceramic Vase, Tall</span><span class="card__price">€ 96,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--6"></div></div><div class="card__body"><span class="card__idx">006 · Studio</span><span class="card__title">Brass Candle Holder</span><span class="card__price">€ 58,00</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="stmt" data-rv>
+      <div class="stmt__n">01</div>
+      <div class="stmt__b">
+        <span class="eyebrow">The principle</span>
+        <h2>Fewer, better things</h2>
+        <p>We design in straight lines and honest materials. Every object earns its place — nothing is added to fill a grid, and nothing ships until it is right. The result is a collection meant to outlast the season it arrived in.</p>
+        <a href="#" class="link">Read the philosophy <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="look" style="padding-top:0">
+  <div class="wrap">
+    <div class="intro" data-rv><span class="eyebrow">Departments</span><h2>Shop by category</h2></div>
+    <div class="look">
+      <a class="tile" href="#" data-rv><div class="ph ph--2"></div><span class="tile__l"><h3>Homeware</h3><span class="ar">&rarr;</span></span></a>
+      <a class="tile" href="#" data-rv><div class="ph ph--4"></div><span class="tile__l"><h3>Apparel</h3><span class="ar">&rarr;</span></span></a>
+      <a class="tile" href="#" data-rv><div class="ph ph--1"></div><span class="tile__l"><h3>Objects</h3><span class="ar">&rarr;</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="split" data-rv>
+      <div class="split__c">
+        <span class="eyebrow">The studio</span>
+        <h2 style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1.2rem">Made by hand, in Amsterdam</h2>
+        <p>Each release is produced in small batches with makers we know by name. We keep runs short on purpose — so quality stays high and nothing ends up in a warehouse it shouldn't.</p>
+        <a href="#" class="link">Discover more <span class="ar">&rarr;</span></a>
+      </div>
+      <div class="split__m"><div class="ph ph--3"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-block:var(--hair);padding-block:clamp(48px,7vw,96px)">
+  <div class="wrap">
+    <blockquote class="manif" data-rv>
+      <p>Good design is as little design as possible — and as much patience as it takes.</p>
+      <cite>— The Linea studio</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="trust" aria-label="Our promise">
+  <div class="wrap"><div class="trust__g">
+    <div class="trust__i"><strong>Complimentary shipping</strong><span>On orders over €150</span></div>
+    <div class="trust__i"><strong>30-day returns</strong><span>Simple, no questions</span></div>
+    <div class="trust__i"><strong>Made to last</strong><span>Archival materials</span></div>
+    <div class="trust__i"><strong>Limited runs</strong><span>Never restocked twice</span></div>
+  </div></div>
+</section>
+
+<section class="section" id="import" lang="nl">
+  <div class="wrap">
+    <div class="import" data-rv>
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,3rem);max-width:20ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:64ch;margin-top:1rem">Linea is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste root-structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> — dus Shopify accepteert hem meteen. De merkfonts (Fraunces · Inter · Space Mono) zitten in het thema; het accent staat op <code>#9A3B2C</code>.</p>
+      <div style="margin-top:1.6rem"><a class="btn btn--primary" href="../../downloads/linea-shopify-theme.zip" download>Download Shopify-thema (.zip)</a></div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-beeld, lookbook-tegels en kleuren.</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="wrap"><div class="news__in" data-rv>
+    <span class="eyebrow" style="justify-content:center">Correspondence</span>
+    <h2>Join the index</h2>
+    <p>Quiet notes on new releases and restocks. No noise — a few times a season.</p>
+    <form class="news__f" onsubmit="return false">
+      <label class="sr" for="em">Your email address</label>
+      <input id="em" type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe &rarr;</button>
+    </form>
+  </div></div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Linea<span>.</span></div>
+        <p>Considered objects for the modern home. Made in limited runs, kept for a lifetime.</p>
+        <div class="f-soc"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Journal</a></div>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#edit">The Edit</a></li><li><a href="#look">Homeware</a></li><li><a href="#look">Apparel</a></li></ul></div>
+      <div class="f-col"><h4>Studio</h4><ul><li><a href="#story">About</a></li><li><a href="#story">Philosophy</a></li><li><a href="#">Stockists</a></li></ul></div>
+      <div class="f-col"><h4>Index</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 Linea — all rights reserved.</span><span>An importable Shopify Online Store 2.0 theme</span></div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  (function(){
+    var b=document.querySelector('[data-burger]'),m=document.querySelector('[data-menu]');
+    if(b&&m){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});}
+    // reveal on scroll
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items=document.querySelectorAll('[data-rv]');
+    if(!reduced&&'IntersectionObserver'in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+      items.forEach(function(el){io.observe(el);});
+    }else{items.forEach(function(el){el.classList.add('in');});}
+  })();
+</script>
+</body>
+</html>

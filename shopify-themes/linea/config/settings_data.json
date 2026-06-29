@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F4F1EC",
+    "color_surface": "#FBFAF7",
+    "color_text": "#1A1714",
+    "color_text_muted": "#8A8278",
+    "color_accent": "#9A3B2C",
+    "color_accent_text": "#F4F1EC",
+    "color_border": "#DED7CC",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1360,
+    "corner_radius": 0,
+    "logo_width": 130
+  },
+  "presets": {
+    "Linea": {
+      "color_background": "#F4F1EC",
+      "color_surface": "#FBFAF7",
+      "color_text": "#1A1714",
+      "color_text_muted": "#8A8278",
+      "color_accent": "#9A3B2C",
+      "color_accent_text": "#F4F1EC",
+      "color_border": "#DED7CC",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1360,
+      "corner_radius": 0,
+      "logo_width": 130
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<footer class="site-footer">
+  <div class="page-width">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <div class="site-footer__logo">{{ shop.name | split: ' ' | first }}<span>.</span></div>
+        <p>{{ section.settings.tagline | default: shop.description | escape }}</p>
+        <div class="footer-social">
+          {%- if settings.social_instagram_link != blank -%}
+            <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">Instagram</a>
+          {%- endif -%}
+          {%- if settings.social_tiktok_link != blank -%}
+            <a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener">TikTok</a>
+          {%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}
+            <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">Facebook</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>{{ section.settings.col1_title | escape }}</h4>
+        <ul>
+          {%- for link in linklists[section.settings.col1_menu].links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- else -%}
+            <li><a href="{{ routes.all_products_collection_url }}">All products</a></li>
+            <li><a href="{{ routes.search_url }}">Search</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{{ section.settings.col2_title | escape }}</h4>
+        <ul>
+          {%- for link in linklists[section.settings.col2_menu].links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- else -%}
+            <li><a href="{{ routes.root_url }}">About</a></li>
+            <li><a href="{{ routes.cart_url }}">Cart</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{{ section.settings.col3_title | escape }}</h4>
+        <p style="color: var(--color-text-muted); font-size: 0.92rem;">{{ section.settings.col3_text | escape }}</p>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} — {{ 'sections.footer.copyright' | t }}</span>
+      <span>{{ powered_by_link }}</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Brand tagline", "default": "Considered objects for the modern home. Made in limited runs, kept for a lifetime." },
+    { "type": "header", "content": "Column 1" },
+    { "type": "text", "id": "col1_title", "label": "Title", "default": "Shop" },
+    { "type": "link_list", "id": "col1_menu", "label": "Menu", "default": "footer" },
+    { "type": "header", "content": "Column 2" },
+    { "type": "text", "id": "col2_title", "label": "Title", "default": "Studio" },
+    { "type": "link_list", "id": "col2_menu", "label": "Menu" },
+    { "type": "header", "content": "Column 3" },
+    { "type": "text", "id": "col3_title", "label": "Title", "default": "Index" },
+    { "type": "text", "id": "col3_text", "label": "Text", "default": "An independent concept store. Amsterdam, est. 2026." }
+  ]
+}
+{% endschema %}
