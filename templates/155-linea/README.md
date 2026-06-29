@@ -1,5 +1,20 @@
-# Linea — editorial concept-store Shopify-thema
+# Linea — concept-store Shopify-thema
 
-Importeerbaar Shopify-thema voor een concept-store: editorial, strak en premium. Een compleet eigen vormtaal — papier × inkt, haarlijn-grid, scherpe hoeken, géén schaduwen. Hoog-contrast serif (Fraunces) met mono micro-labels (Space Mono). Accent #9A3B2C. Online Store 2.0 (Liquid), upload-klare zip.
+Editorial, strak en premium: papier × inkt met haarlijn-grid, hoog-contrast Fraunces-serif en mono labels. Split-hero, gestaggerde productgrid en lookbook. Importeerbaar Online Store 2.0-thema (Liquid).
 
-Download het importeerbare Shopify-thema: `downloads/linea-shopify-theme.zip`.
+- **Tier:** Premium
+- **Sector:** Retail
+- **Sfeer:** licht
+- **Lettertypen:** Fraunces, Inter, Space Mono
+- **Technieken:** shopify-os2.0, liquid-sections, theme-settings, product-grid, cart, newsletter, marquee, editorial-grid, lookbook, reveal-on-scroll
+
+## Gebruiken
+
+Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
+Een lokale server werkt ook: `python -m http.server` of `npx serve`.
+
+Dit bestand maakt deel uit van de [Bron](../../index.html).
+
+## Licentie
+
+MIT — zie [LICENSE](../../LICENSE) in de hoofdmap.

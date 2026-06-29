@@ -1,6 +1,6 @@
 # BASSIN | stedelijk badhuis
 
-Licht, mineraal badhuisconcept in koel wit x kobalt: Sora-display, architecturale beeldtaal, een ritueel-slider met drie tempo's en een heldere proposal-flow voor nieuwe locaties.
+Licht en architecturaal badhuis in koel wit x kobalt: Sora-display, ritueel-slider met drie tempo's, ruimtemozaiek en een heldere proposal-flow voor nieuwe locaties.
 
 - **Tier:** Signature
 - **Sector:** Wellness
@@ -10,11 +10,11 @@ Licht, mineraal badhuisconcept in koel wit x kobalt: Sora-display, architectural
 
 ## Gebruiken
 
-Open `index.html` rechtstreeks in je browser â€” geen build-tools of dependencies nodig.
+Open `index.html` rechtstreeks in je browser — geen build-tools of dependencies nodig.
 Een lokale server werkt ook: `python -m http.server` of `npx serve`.
 
 Dit bestand maakt deel uit van de [Bron](../../index.html).
 
 ## Licentie
 
-MIT â€” zie [LICENSE](../../LICENSE) in de hoofdmap.
+MIT — zie [LICENSE](../../LICENSE) in de hoofdmap.

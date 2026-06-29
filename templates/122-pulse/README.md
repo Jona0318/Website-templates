@@ -1,12 +1,12 @@
 # Pulse — elektronisch muziekfestival
 
-Neo-brutalist elektronisch festival in zwart × acid-groen × magenta: oversized display-type, scrollende tickers, line-up-grid, hard-shadow ticketkaarten en programmablok.
+Neo-brutalist elektronisch festival in zwart × acid-groen × magenta: oversized type, scrollende tickers, line-up-grid en hard-shadow ticketkaarten.
 
 - **Tier:** Grafisch
 - **Sector:** Muziek
 - **Sfeer:** donker
 - **Lettertypen:** Archivo Black, Space Mono
-- **Technieken:** marquee-ticker, lineup-grid, ticket-tiers, hard-shadows, reveal-system, prefers-reduced-motion
+- **Technieken:** marquee-ticker, lineup-grid, ticket-tiers, hard-shadows, reveal-system
 
 ## Gebruiken
 
