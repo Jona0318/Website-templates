@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 158,
+  "count": 159,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8326,6 +8326,67 @@
           "Shopify",
           "Webshop",
           "Concept-store"
+        ]
+      }
+    },
+    {
+      "id": 159,
+      "slug": "159-schriekenhol",
+      "path": "templates/159-schriekenhol/",
+      "title": "Schriek & Hol — grondwerk, sloop & recycling",
+      "name": "Schriek & Hol",
+      "sector": "bouw",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f3efe6",
+        "#2f6e3f",
+        "#e3a127",
+        "#171a16",
+        "#fbf9f4"
+      ],
+      "fonts": [
+        "Archivo",
+        "Barlow",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "sticky-header",
+        "mobile-menu",
+        "reveal-system",
+        "scroll-progress",
+        "countup",
+        "live-status",
+        "interactive-tool",
+        "svg-draw-in",
+        "marquee",
+        "contact-form",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "diensten",
+        "containers",
+        "recycling",
+        "werkwijze",
+        "duurzaamheid",
+        "over",
+        "contact"
+      ],
+      "note": "Maatwerk redesign-concept van schriekenhol.nl, een grond-, sloop- en puinrecyclingbedrijf uit Harskamp op de Veluwe. Live open/dicht-status uit de openingstijden, interactieve containerkiezer, zelftekenende recyclingketen, count-up cijfers, materieel-marquee en gevalideerd contactformulier. Palet: steen/zand x asfalt-zwart x veluwe-groen + machine-amber.",
+      "card": {
+        "title": "Schriek & Hol — grondwerk & recycling",
+        "blurb": "Veluws grond-, sloop- en recyclingbedrijf: live open-status, interactieve containerkiezer en zelftekenende recyclingketen.",
+        "emoji": "🚜",
+        "grad": [
+          "#2f6e3f",
+          "#171a16"
+        ],
+        "tags": [
+          "Bouw",
+          "Maatwerk",
+          "Light"
         ]
       }
     }

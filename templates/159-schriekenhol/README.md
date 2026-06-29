@@ -1,12 +1,12 @@
-# Schriek &amp; Hol — grondwerk, sloop &amp; puinrecycling
+# Schriek & Hol — grondwerk & recycling
 
-Redesign-concept voor een Veluws grond-, sloop- en recyclingbedrijf: interactieve containerkiezer, zelftekenende recyclingketen, live open/dicht-status uit de openingstijden, count-up cijfers en een geanimeerde SVG-graafmachine — steen/zand × asfalt-zwart × veluwe-groen + machine-amber.
+Veluws grond-, sloop- en recyclingbedrijf: live open-status, interactieve containerkiezer en zelftekenende recyclingketen.
 
 - **Tier:** Maatwerk
-- **Sector:** Bouw / grondwerk / recycling
+- **Sector:** Bouw
 - **Sfeer:** licht
 - **Lettertypen:** Archivo, Barlow, Space Mono
-- **Technieken:** sticky-header (hide-on-scroll), mobile-overlay-menu, reveal-system, scroll-progress, countup, live-open-status, interactieve containerkiezer, svg-draw-in proceslijn, kinetische marquee, contact-form-validate, reduced-motion-fallback
+- **Technieken:** sticky-header, mobile-menu, reveal-system, scroll-progress, countup, live-status, interactive-tool, svg-draw-in, marquee, contact-form, reduced-motion-fallback
 
 ## Gebruiken
 
