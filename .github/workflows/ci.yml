@@ -24,8 +24,8 @@ jobs:
       - name: Interne links & assets bestaan
         run: node _kit/links.mjs
 
-      - name: Toegankelijkheidsbasis (lang, title, viewport, alt)
-        run: node _kit/a11y.mjs
+      - name: Toegankelijkheidsbasis (lang, title, viewport, alt + namen)
+        run: node _kit/a11y.mjs --strict
 
       - name: JS-syntaxcheck van alle inline scripts
         run: |

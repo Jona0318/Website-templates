@@ -83,6 +83,8 @@ for (const file of pages()) {
   for (const re of [/<a\b[^>]*>([\s\S]*?)<\/a>/gi, /<button\b[^>]*>([\s\S]*?)<\/button>/gi]) {
     for (const m of s.matchAll(re)) {
       const tag = m[0].slice(0, m[0].indexOf('>') + 1);
+      // een <a> zonder href is geen link/control maar een anker-target → overslaan
+      if (/^<a\b/i.test(tag) && !hasAttr(tag, 'href')) continue;
       const text = m[1].replace(/<[^>]*>/g, '').replace(/&[a-z#0-9]+;/gi, ' ').trim();
       const named =
         text.length > 0 ||
