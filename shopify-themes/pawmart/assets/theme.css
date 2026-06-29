@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+/* ===== Theme typography (matches the library preview) ===== */
+:root{--font-heading-family:"Plus Jakarta Sans",sans-serif;--font-body-family:"Inter",sans-serif;--font-heading-weight:700;}
 /* ==========================================================================
    Pawmart — dierenwinkel Shopify theme
    ========================================================================== */

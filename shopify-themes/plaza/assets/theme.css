@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+/* ===== Theme typography (matches the library preview) ===== */
+:root{--font-heading-family:"Fraunces",serif;--font-body-family:"Inter",sans-serif;--font-heading-weight:600;}
 /* ==========================================================================
    Plaza — marktplaats Shopify theme
    ========================================================================== */

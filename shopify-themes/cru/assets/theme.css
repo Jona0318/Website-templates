@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap');
+/* ===== Theme typography (matches the library preview) ===== */
+:root{--font-heading-family:"Archivo Black",sans-serif;--font-body-family:"Space Mono",monospace;--font-heading-weight:400;}
 /* ==========================================================================
    Cru — bier Shopify theme
    ========================================================================== */

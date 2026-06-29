@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&family=Inter:wght@400;500;600;700&display=swap');
+/* ===== Theme typography (matches the library preview) ===== */
+:root{--font-heading-family:"Archivo",sans-serif;--font-body-family:"Inter",sans-serif;--font-heading-weight:700;}
 /* ==========================================================================
    Forge — gereedschap Shopify theme
    ========================================================================== */

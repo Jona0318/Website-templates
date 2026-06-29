@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Assistant:wght@400;600;700&display=swap');
+/* ===== Theme typography (matches the library preview) ===== */
+:root{--font-heading-family:"Playfair Display",serif;--font-body-family:"Assistant",sans-serif;--font-heading-weight:600;}
 /* ==========================================================================
    Aurum — premium black & gold Shopify theme
    ========================================================================== */
