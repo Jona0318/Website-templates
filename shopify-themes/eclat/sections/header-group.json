@@ -1,0 +1,19 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Drop 01 — Now live · express shipping on every order"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["announcement", "header"]
+}

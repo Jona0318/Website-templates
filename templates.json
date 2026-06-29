@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 155,
+  "count": 158,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8140,6 +8140,192 @@
           "Shopify",
           "Webshop",
           "Editorial"
+        ]
+      }
+    },
+    {
+      "id": 156,
+      "slug": "156-vesper",
+      "path": "templates/156-vesper/",
+      "title": "Vesper — luxe couture-huis Shopify-thema",
+      "name": "Vesper",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/vesper-shopify-theme.zip",
+      "palette": [
+        "#0E0D10",
+        "#C9A24B",
+        "#F3EFE6",
+        "#15141A",
+        "#2A2730"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter",
+        "marquee",
+        "reveal-on-scroll"
+      ],
+      "sections": [
+        "hero",
+        "marquee",
+        "featured-collection",
+        "image-with-text",
+        "editorial-statement",
+        "lookbook",
+        "manifesto",
+        "trust-bar",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify luxe-thema in ink × goud: luminous spotlight-hero, gilded marquee, gestaggerde ‘Maison Edit’-grid, atelier-sectie, manifest en collecties-lookbook. Didone Cormorant Garamond met mono labels, film-grain en hairline-grid. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Vesper — luxe couture-huis Shopify-thema",
+        "blurb": "After-dark luxe: ink × champagne-goud, didone Cormorant Garamond en een luminous spotlight-hero. Gilded productgrid, atelier en collecties-lookbook. Importeerbaar Online Store 2.0-thema (Liquid).",
+        "emoji": "🕯️",
+        "grad": [
+          "#0E0D10",
+          "#C9A24B"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Luxe"
+        ]
+      }
+    },
+    {
+      "id": 157,
+      "slug": "157-seraphine",
+      "path": "templates/157-seraphine/",
+      "title": "Séraphine — couture-atelier Shopify-thema",
+      "name": "Séraphine",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/seraphine-shopify-theme.zip",
+      "palette": [
+        "#F4EFE7",
+        "#1F5641",
+        "#FBF8F2",
+        "#1C2420",
+        "#DFD8CB"
+      ],
+      "fonts": [
+        "Marcellus",
+        "Outfit",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter",
+        "editorial-hero",
+        "reveal-on-scroll"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "editorial-statement",
+        "image-with-text",
+        "lookbook",
+        "manifesto",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify couture-thema in bone × smaragd: asymmetrische magazine-hero, belofte-band, gestaggerde ‘Collection’-grid, savoir-faire statement, atelier-sectie en wardrobe-lookbook. Marcellus-serif met veel rust en mono labels. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Séraphine — couture-atelier Shopify-thema",
+        "blurb": "Quiet luxury: warm bone × diep smaragd met Marcellus-serif en een asymmetrische magazine-hero. Gestaggerde collectie-grid, savoir-faire en wardrobe-lookbook. Importeerbaar Online Store 2.0-thema (Liquid).",
+        "emoji": "🧵",
+        "grad": [
+          "#1C2420",
+          "#1F5641"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Mode"
+        ]
+      }
+    },
+    {
+      "id": 158,
+      "slug": "158-eclat",
+      "path": "templates/158-eclat/",
+      "title": "Éclat — design-concept-store Shopify-thema",
+      "name": "Éclat",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/eclat-shopify-theme.zip",
+      "palette": [
+        "#F1F1EE",
+        "#1F2AFF",
+        "#FFFFFF",
+        "#0B0B0C",
+        "#DADAD4"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Manrope",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter",
+        "marquee",
+        "lookbook",
+        "horizontal-scroll",
+        "reveal-on-scroll"
+      ],
+      "sections": [
+        "hero",
+        "marquee",
+        "lookbook",
+        "featured-collection",
+        "editorial-statement",
+        "image-with-text",
+        "trust-bar",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Importeerbaar Shopify concept-store-thema in gallery-wit × electric ultramarijn: bold oversized-type hero, kinetische marquee, horizontale drop-strip, departments-lookbook en strakke vier-koloms ‘New Arrivals’-grid. Space Grotesk-display met mono labels. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Éclat — design-concept-store Shopify-thema",
+        "blurb": "Design-forward: gallery-wit × electric ultramarijn met Space Grotesk en een oversized-type hero. Kinetische marquee, horizontale drop-strip en vier-koloms productgrid. Importeerbaar Online Store 2.0-thema (Liquid).",
+        "emoji": "⚡",
+        "grad": [
+          "#0B0B0C",
+          "#1F2AFF"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Concept-store"
         ]
       }
     }

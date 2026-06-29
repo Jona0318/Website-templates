@@ -1,0 +1,11 @@
+{%- assign idx = index | default: 1 -%}
+<div class="product-card" data-reveal>
+  <div class="product-card__media">
+    {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+  </div>
+  <div class="product-card__body">
+    <span class="product-card__index">{{ idx | prepend: '00' | slice: -3, 3 }} · Atelier</span>
+    <span class="product-card__title">Example object</span>
+    <span class="product-card__price"><span class="price"><span>€ 120,00</span></span></span>
+  </div>
+</div>

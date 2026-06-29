@@ -1,0 +1,53 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Vesper",
+    "theme_version": "1.0.0",
+    "theme_author": "Vesper Atelier",
+    "theme_documentation_url": "https://shopify.dev/themes",
+    "theme_support_url": "https://shopify.dev/themes"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Background (ink)", "default": "#0E0D10" },
+      { "type": "color", "id": "color_surface", "label": "Surface", "default": "#15141A" },
+      { "type": "color", "id": "color_text", "label": "Text (ivory)", "default": "#F3EFE6" },
+      { "type": "color", "id": "color_text_muted", "label": "Muted text", "default": "#9A938A" },
+      { "type": "color", "id": "color_accent", "label": "Accent (gold)", "default": "#C9A24B" },
+      { "type": "color", "id": "color_accent_text", "label": "Text on accent", "default": "#0E0D10" },
+      { "type": "color", "id": "color_border", "label": "Hairline / borders", "default": "#2A2730" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "info": "The brand fonts (Cormorant Garamond · Jost · Space Mono) are set in the theme stylesheet. These pickers act as a fallback only.",
+    "settings": [
+      { "type": "font_picker", "id": "heading_font", "label": "Heading font", "default": "playfair_display_n5" },
+      { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "jost_n4" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "min": 1100, "max": 1600, "step": 20, "unit": "px", "label": "Page width", "default": 1360 },
+      { "type": "range", "id": "corner_radius", "min": 0, "max": 24, "step": 1, "unit": "px", "label": "Corner radius", "default": 0 }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "range", "id": "logo_width", "min": 80, "max": 240, "step": 10, "unit": "px", "label": "Logo width", "default": 130 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "text", "id": "social_instagram_link", "label": "Instagram", "info": "https://instagram.com/shop" },
+      { "type": "text", "id": "social_facebook_link", "label": "Facebook" },
+      { "type": "text", "id": "social_tiktok_link", "label": "TikTok" }
+    ]
+  }
+]

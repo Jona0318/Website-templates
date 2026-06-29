@@ -1,0 +1,30 @@
+<section class="section">
+  <div class="page-width">
+    <div class="statement" data-reveal>
+      <div class="statement__num">{{ section.settings.number | escape }}</div>
+      <div class="statement__body">
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading | escape }}</h2>
+        <div class="rte">{{ section.settings.text }}</div>
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="link-underline">{{ section.settings.button_label | escape }} <span class="arrow">&rarr;</span></a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial statement",
+  "settings": [
+    { "type": "text", "id": "number", "label": "Index numeral", "default": "01" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The principle" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Fewer, better things" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We design in straight lines and honest materials. Every object earns its place — nothing is added to fill a grid, and nothing ships until it is right. The result is a collection meant to outlast the season it arrived in.</p>" },
+    { "type": "text", "id": "button_label", "label": "Link label", "default": "Read the philosophy" },
+    { "type": "url", "id": "button_link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Editorial statement" }]
+}
+{% endschema %}

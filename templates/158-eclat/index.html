@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Éclat — design-forward concept-store Shopify theme (white × electric)</title>
+<meta name="description" content="Éclat: importeerbaar Shopify-thema voor een design-concept-store. Bold, kinetic, gallery-white × electric ultramarine — Space Grotesk, oversized type en een horizontale drop-strip. Accent #1F2AFF.">
+<meta name="theme-color" content="#F1F1EE">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F1F1EE'/><text x='16' y='24' font-family='Arial,sans-serif' font-weight='700' font-size='21' text-anchor='middle' fill='%230B0B0C'>E</text><circle cx='25' cy='8' r='2.6' fill='%231F2AFF'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root{
+    --bg:#F1F1EE; --surface:#FFFFFF; --text:#0B0B0C; --muted:#6E6E72;
+    --accent:#1F2AFF; --accent-text:#F1F1EE; --border:#DADAD4;
+    --hair:1px solid var(--border);
+    --display:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:"Space Mono",ui-monospace,Menlo,monospace;
+    --maxw:1400px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1;letter-spacing:-.02em}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(20px,5vw,64px)}
+  .section{padding-block:clamp(56px,9vw,128px)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .skip{position:absolute;left:-999px;background:var(--accent);color:var(--accent-text);padding:.75rem 1.25rem;z-index:1000}
+  .skip:focus{left:1rem;top:1rem}
+
+  /* labels + links */
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--muted);margin-bottom:1.4rem}
+  .eyebrow::before{content:"";width:1.6rem;height:2px;background:var(--accent)}
+  .link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text);padding-bottom:4px;background-image:linear-gradient(var(--accent),var(--accent));background-size:100% 2px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .4s cubic-bezier(.22,1,.36,1),color .3s}
+  .link:hover{background-size:0 2px;color:var(--accent)}
+  .link .ar{transition:transform .35s}.link:hover .ar{transform:translateX(4px)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1.05rem 2.3rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--accent);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}.btn--primary:hover{background:var(--text);border-color:var(--text);color:var(--bg)}
+
+  /* CSS placeholder fills — graphic, electric-tinted */
+  .ph{position:relative;overflow:hidden;background:var(--surface)}
+  .ph::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(90% 80% at 80% 14%, rgba(31,42,255,.16), transparent 55%),
+    linear-gradient(150deg,#E9E9E4,#D6D6CF)}
+  .ph--2::after{background:linear-gradient(160deg,#ECECE7,#D8D8D1)}
+  .ph--3::after{background:radial-gradient(100% 90% at 18% 82%,rgba(31,42,255,.14),transparent 60%),linear-gradient(135deg,#E6E6E1,#CFCFC8)}
+  .ph--4::after{background:linear-gradient(150deg,#EDEDE9,#D7D7D0)}
+  .ph--5::after{background:radial-gradient(80% 80% at 50% 28%,rgba(31,42,255,.12),transparent 60%),linear-gradient(160deg,#EAEAE5,#D3D3CC)}
+  .ph--6::after{background:radial-gradient(100% 90% at 70% 80%,rgba(31,42,255,.18),transparent 58%),linear-gradient(135deg,#E5E5E0,#CDCDC6)}
+  .ph__sig{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:2rem;color:rgba(11,11,12,.14);z-index:1}
+
+  /* ribbon (gallery-facing) */
+  .ribbon{background:var(--accent);color:var(--accent-text);text-align:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1rem}
+  .ribbon a{border-bottom:1px solid rgba(241,241,238,.5)}.ribbon a:hover{border-color:var(--accent-text)}
+  .announce{background:var(--surface);color:var(--text);text-align:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;padding:.6rem 1rem;border-bottom:var(--hair)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:var(--hair)}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem;height:78px}
+  .logo{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;text-transform:uppercase;justify-self:start}.logo span{color:var(--accent)}
+  .menu{display:flex;gap:2.2rem;justify-self:center}
+  .menu a{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);position:relative;padding-block:.4rem}
+  .menu a:hover{color:var(--text)}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--accent);transition:width .3s}.menu a:hover::after{width:100%}
+  .actions{display:flex;align-items:center;gap:1.2rem;justify-self:end}
+  .actions a{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+  .actions a:hover{color:var(--accent)}
+  .actions svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .burger{display:none;background:none;border:0;color:var(--text);cursor:pointer;justify-self:start}
+
+  /* hero — bold oversized type */
+  .hero{padding-block:clamp(48px,8vw,110px) clamp(36px,5vw,64px);border-bottom:var(--hair)}
+  .hero__idx{display:flex;justify-content:space-between;gap:1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding-bottom:clamp(24px,4vw,44px)}
+  .hero h1{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:clamp(3.2rem,14vw,11rem);line-height:.88;letter-spacing:-.03em}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero__row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-top:clamp(28px,4vw,52px);flex-wrap:wrap}
+  .hero__sub{font-size:1.12rem;color:var(--muted);max-width:46ch}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center}
+
+  /* drop strip — horizontal scroller (signature) */
+  .drop{border-bottom:var(--hair);padding-block:clamp(36px,5vw,64px)}
+  .drop__head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1.8rem;flex-wrap:wrap}
+  .drop__head h2{font-size:clamp(1.4rem,2.4vw,2rem);text-transform:uppercase}
+  .drop__head .hint{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .strip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;scrollbar-width:thin}
+  .strip::-webkit-scrollbar{height:6px}.strip::-webkit-scrollbar-thumb{background:var(--border)}
+  .scard{flex:0 0 clamp(220px,26vw,310px);scroll-snap-align:start}
+  .scard .ph{aspect-ratio:4/5;border:var(--hair)}
+  .scard .ph{transition:transform .6s cubic-bezier(.22,1,.36,1)}.scard:hover .ph{transform:scale(1.03)}
+  .scard__b{display:flex;justify-content:space-between;gap:1rem;padding-top:.8rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+  .scard__b b{font-weight:700}.scard__b span{color:var(--muted)}
+
+  /* departments */
+  .intro{max-width:720px;margin-bottom:3rem}.intro h2{font-size:clamp(2rem,4.4vw,3.4rem);text-transform:uppercase}
+  .look{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.5vw,18px)}
+  .tile{position:relative;aspect-ratio:4/5;overflow:hidden;border:var(--hair);display:block}
+  .tile .ph{position:absolute;inset:0;transition:transform .8s cubic-bezier(.22,1,.36,1)}.tile:hover .ph{transform:scale(1.05)}
+  .tile__l{position:absolute;inset:auto 0 0 0;z-index:2;padding:1.3rem;display:flex;justify-content:space-between;align-items:flex-end;color:var(--bg);background:linear-gradient(transparent,color-mix(in srgb,var(--text) 78%,transparent))}
+  .tile__l h3{color:var(--bg);font-size:1.6rem;text-transform:uppercase}.tile__l .ar{font-family:var(--mono);color:var(--bg)}
+
+  /* arrivals grid */
+  .edit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;padding-bottom:2.4rem;margin-bottom:3rem;border-bottom:2px solid var(--text);flex-wrap:wrap}
+  .edit-head h2{font-size:clamp(2rem,4.4vw,3.4rem);text-transform:uppercase}
+  .edit-head .meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1.5rem}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px)}
+  .card{display:flex;flex-direction:column}
+  .card__media{position:relative;aspect-ratio:4/5;border:var(--hair)}
+  .card__media .ph{position:absolute;inset:0;transition:transform .7s cubic-bezier(.22,1,.36,1)}.card:hover .card__media .ph{transform:scale(1.04)}
+  .badge{position:absolute;top:0;left:0;z-index:2;background:var(--accent);color:var(--accent-text);font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .7rem}
+  .card__body{padding:.9rem 0 0;display:flex;flex-direction:column;gap:.3rem}
+  .card__idx{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+  .card__title{font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.15;text-transform:uppercase;letter-spacing:-.01em}.card:hover .card__title{color:var(--accent)}
+  .card__price{font-family:var(--mono);font-size:.8rem}.card__price s{color:var(--muted);margin-right:.5rem}.card__price em{font-style:normal;color:var(--accent)}
+
+  /* statement */
+  .stmt{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,90px);align-items:start}
+  .stmt__n{font-family:var(--display);font-weight:700;font-size:clamp(5rem,15vw,13rem);line-height:.8;color:var(--accent)}
+  .stmt__b{max-width:52ch}.stmt__b h2{font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;margin-bottom:1.2rem}.stmt__b p{color:var(--muted);font-size:1.08rem;margin-bottom:1.5rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,100px);align-items:center}
+  .split--rev .split__m{order:2}
+  .split__m{position:relative;aspect-ratio:4/5;border:var(--hair)}
+  .split__c h2{font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;margin-bottom:1.2rem}.split__c p{color:var(--muted);font-size:1.05rem;margin-bottom:1.5rem}
+
+  /* trust */
+  .trust{border-block:var(--hair)}
+  .trust__g{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__i{display:flex;flex-direction:column;gap:.4rem;padding:clamp(28px,4vw,46px) clamp(16px,2vw,34px);border-right:var(--hair)}
+  .trust__i:last-child{border-right:0}
+  .trust__i strong{font-family:var(--display);font-weight:600;font-size:1.15rem;text-transform:uppercase;letter-spacing:-.01em}
+  .trust__i span{color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em}
+
+  /* import */
+  .import{border:2px solid var(--text);padding:clamp(28px,5vw,56px);background:var(--surface)}
+  .import code{font-family:var(--mono);font-size:.84em;background:var(--bg);border:var(--hair);padding:.05rem .35rem}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;counter-reset:s}
+  .step{border:var(--hair);padding:1.4rem;background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;margin-bottom:.7rem}
+  .step strong{font-family:var(--display);font-weight:600;font-size:1.1rem;text-transform:uppercase;display:block;margin-bottom:.25rem}
+  .step span{color:var(--muted);font-size:.92rem}
+
+  /* newsletter */
+  .news{border-block:var(--hair);text-align:center;background:var(--surface)}
+  .news__in{max-width:640px;margin-inline:auto;padding-block:clamp(48px,7vw,92px)}
+  .news h2{font-size:clamp(2rem,4.4vw,3.2rem);text-transform:uppercase}
+  .news p{color:var(--muted);max-width:48ch;margin-inline:auto}
+  .news__f{display:flex;align-items:center;gap:1rem;max-width:460px;margin:2.2rem auto 0;border-bottom:2px solid var(--text);padding-bottom:.6rem}
+  .news__f input{flex:1;background:transparent;border:0;padding:.4rem 0;font-family:var(--sans);font-size:1rem;color:var(--text)}
+  .news__f input::placeholder{color:var(--muted)}.news__f input:focus{outline:0}
+  .news__f button{background:none;border:0;cursor:pointer;color:var(--accent);font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+
+  /* footer */
+  footer.site{border-top:var(--hair);padding-block:clamp(48px,7vw,92px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.8fr repeat(3,1fr);gap:clamp(28px,4vw,64px)}
+  .f-logo{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,5vw,4.2rem);line-height:.9;text-transform:uppercase;letter-spacing:-.03em;margin-bottom:1.4rem}.f-logo span{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:34ch;font-size:.95rem}
+  .f-soc{display:flex;gap:1.4rem;margin-top:1.4rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}.f-soc a:hover{color:var(--accent)}
+  .f-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+  .f-col ul{list-style:none;display:grid;gap:.7rem}.f-col a{font-size:.92rem;color:var(--muted)}.f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:4rem;padding-top:1.5rem;border-top:var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-family:var(--mono);font-size:.68rem;letter-spacing:.06em}
+
+  /* reveal */
+  [data-rv]{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  [data-rv].in{opacity:1;transform:none}
+
+  @media(max-width:990px){
+    .grid{grid-template-columns:repeat(2,1fr)}.look{grid-template-columns:1fr}.stmt{grid-template-columns:1fr}.split{grid-template-columns:1fr}.split--rev .split__m{order:0}
+    .trust__g{grid-template-columns:1fr 1fr}.trust__i:nth-child(2){border-right:0}.f-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}
+  }
+  @media(max-width:749px){
+    .burger{display:inline-flex}.nav{grid-template-columns:auto 1fr auto}
+    .menu{position:fixed;inset:78px 0 auto 0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:var(--hair);padding:.5rem clamp(20px,5vw,64px) 1.5rem;transform:translateY(-130%);transition:transform .35s;justify-self:stretch}
+    .menu.open{transform:translateY(0)}.menu a{padding:.85rem 0;width:100%;font-size:.8rem}
+    .grid{grid-template-columns:1fr 1fr}.trust__g{grid-template-columns:1fr}.trust__i{border-right:0;border-bottom:var(--hair)}.f-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}[data-rv]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="ribbon" lang="nl">Shopify-ready thema — direct importeerbaar · <a href="../../downloads/eclat-shopify-theme.zip" download>Download het Shopify-thema (.zip)</a></div>
+<div class="announce">Drop 01 — Now live · express shipping on every order</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <button class="burger" aria-label="Menu" aria-expanded="false" data-burger><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    <a class="logo" href="#">Éclat<span>.</span></a>
+    <nav class="menu" data-menu aria-label="Primary">
+      <a href="#new">Shop</a><a href="#floor">Departments</a><a href="#studio">Studio</a>
+    </nav>
+    <div class="actions">
+      <a href="#" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
+      <a href="#">Cart <span>(0)</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__idx"><span>Drop 01 — Now live</span><span>Vol. 01 / 2026</span></div>
+    <h1>Design,<br><em>dropped</em>.</h1>
+    <div class="hero__row">
+      <p class="hero__sub">A concept store for design objects and a modern wardrobe — footwear, eyewear and the everyday, released in small monthly drops.</p>
+      <div class="hero__cta">
+        <a href="#new" class="btn btn--primary">Shop the drop</a>
+        <a href="#floor" class="link">Lookbook <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="drop" aria-label="This week's drop">
+  <div class="wrap">
+    <div class="drop__head"><h2>This week</h2><span class="hint">Scroll →</span></div>
+    <div class="strip" tabindex="0" aria-label="Drop carousel">
+      <article class="scard"><div class="ph ph--6"><span class="ph__sig">01</span></div><div class="scard__b"><b>Apex Runner</b><span>€ 240</span></div></article>
+      <article class="scard"><div class="ph ph--3"></div><div class="scard__b"><b>Halo Sunglasses</b><span>€ 180</span></div></article>
+      <article class="scard"><div class="ph ph--5"></div><div class="scard__b"><b>Field Tote</b><span>€ 150</span></div></article>
+      <article class="scard"><div class="ph ph--2"></div><div class="scard__b"><b>Mono Cap</b><span>€ 60</span></div></article>
+      <article class="scard"><div class="ph ph--4"></div><div class="scard__b"><b>Volt Bottle</b><span>€ 38</span></div></article>
+      <article class="scard"><div class="ph"></div><div class="scard__b"><b>Studio Tee</b><span>€ 55</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="floor">
+  <div class="wrap">
+    <div class="intro" data-rv><span class="eyebrow">Departments</span><h2>Browse the floor</h2></div>
+    <div class="look">
+      <a class="tile" href="#" data-rv><div class="ph ph--3"></div><span class="tile__l"><h3>Footwear</h3><span class="ar">&rarr;</span></span></a>
+      <a class="tile" href="#" data-rv><div class="ph ph--6"></div><span class="tile__l"><h3>Eyewear</h3><span class="ar">&rarr;</span></span></a>
+      <a class="tile" href="#" data-rv><div class="ph ph--5"></div><span class="tile__l"><h3>Objects</h3><span class="ar">&rarr;</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="new" style="padding-top:0">
+  <div class="wrap">
+    <div class="edit-head" data-rv>
+      <div><span class="eyebrow">Just in</span><h2>New Arrivals</h2></div>
+      <div class="meta"><span>This week's drop</span><a href="#" class="link">Shop all <span class="ar">&rarr;</span></a></div>
+    </div>
+    <div class="grid">
+      <article class="card" data-rv><div class="card__media"><span class="badge">New</span><div class="ph ph--6"></div></div><div class="card__body"><span class="card__idx">001 · Footwear</span><span class="card__title">Apex Runner</span><span class="card__price">€ 240,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--2"></div></div><div class="card__body"><span class="card__idx">002 · Eyewear</span><span class="card__title">Halo Sunglasses</span><span class="card__price">€ 180,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--3"></div></div><div class="card__body"><span class="card__idx">003 · Objects</span><span class="card__title">Field Tote</span><span class="card__price">€ 150,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><span class="badge">Sale</span><div class="ph ph--4"></div></div><div class="card__body"><span class="card__idx">004 · Caps</span><span class="card__title">Mono Cap</span><span class="card__price"><s>€ 60,00</s><em>€ 42,00</em></span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--5"></div></div><div class="card__body"><span class="card__idx">005 · Objects</span><span class="card__title">Volt Bottle</span><span class="card__price">€ 38,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph"></div></div><div class="card__body"><span class="card__idx">006 · Apparel</span><span class="card__title">Studio Tee</span><span class="card__price">€ 55,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><span class="badge">New</span><div class="ph ph--3"></div></div><div class="card__body"><span class="card__idx">007 · Footwear</span><span class="card__title">Track Low</span><span class="card__price">€ 210,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--6"></div></div><div class="card__body"><span class="card__idx">008 · Objects</span><span class="card__title">Grid Wallet</span><span class="card__price">€ 90,00</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="stmt" data-rv>
+      <div class="stmt__n">01</div>
+      <div class="stmt__b">
+        <span class="eyebrow">The idea</span>
+        <h2>A store, not a catalogue</h2>
+        <p>We design and curate in equal measure — objects and wardrobe that earn a place in real life. Everything lands in small, numbered runs. When a drop is gone, it's gone.</p>
+        <a href="#" class="link">How it works <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="studio" style="padding-top:0">
+  <div class="wrap">
+    <div class="split split--rev" data-rv>
+      <div class="split__m"><div class="ph ph--5"><span class="ph__sig">STUDIO</span></div></div>
+      <div class="split__c">
+        <span class="eyebrow">The studio</span>
+        <h2>Designed in-house, made in small runs</h2>
+        <p>From first sketch to final sample, every piece is developed in our own studio and produced with makers we trust. No middle layers, no filler — just considered design, released when it's ready.</p>
+        <a href="#" class="link">About the studio <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Our promise">
+  <div class="wrap"><div class="trust__g">
+    <div class="trust__i"><strong>Free express shipping</strong><span>On every order</span></div>
+    <div class="trust__i"><strong>30-day returns</strong><span>Quick &amp; easy</span></div>
+    <div class="trust__i"><strong>Designed in-house</strong><span>Studio originals</span></div>
+    <div class="trust__i"><strong>Secure checkout</strong><span>Encrypted &amp; protected</span></div>
+  </div></div>
+</section>
+
+<section class="section" id="import" lang="nl">
+  <div class="wrap">
+    <div class="import" data-rv>
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,3rem);max-width:22ch;text-transform:uppercase">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:64ch;margin-top:1rem">Éclat is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste root-structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> — dus Shopify accepteert hem meteen. De merkfonts (Space Grotesk · Manrope · Space Mono) zitten in het thema; het accent staat op <code>#1F2AFF</code>.</p>
+      <div style="margin-top:1.6rem"><a class="btn btn--primary" href="../../downloads/eclat-shopify-theme.zip" download>Download Shopify-thema (.zip)</a></div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-beeld, departments en kleuren.</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="wrap"><div class="news__in" data-rv>
+    <span class="eyebrow" style="justify-content:center">The list</span>
+    <h2>Get the next drop first</h2>
+    <p>Early access to every release, plus the occasional studio note. One email per drop — no noise.</p>
+    <form class="news__f" onsubmit="return false">
+      <label class="sr" for="em">Your email address</label>
+      <input id="em" type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe &rarr;</button>
+    </form>
+  </div></div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Éclat<span>.</span></div>
+        <p>A concept store for design objects and a modern wardrobe. Dropped in limited runs.</p>
+        <div class="f-soc"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Journal</a></div>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#new">New arrivals</a></li><li><a href="#floor">Footwear</a></li><li><a href="#floor">Eyewear</a></li></ul></div>
+      <div class="f-col"><h4>Studio</h4><ul><li><a href="#studio">About</a></li><li><a href="#studio">Process</a></li><li><a href="#">Stockists</a></li></ul></div>
+      <div class="f-col"><h4>Index</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 Éclat — all rights reserved.</span><span>An importable Shopify Online Store 2.0 theme</span></div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var b=document.querySelector('[data-burger]'),m=document.querySelector('[data-menu]');
+    if(b&&m){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});}
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items=document.querySelectorAll('[data-rv]');
+    if(!reduced&&'IntersectionObserver'in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+      items.forEach(function(el){io.observe(el);});
+    }else{items.forEach(function(el){el.classList.add('in');});}
+  })();
+</script>
+</body>
+</html>

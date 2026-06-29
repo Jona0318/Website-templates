@@ -1,0 +1,41 @@
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {%- for i in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      {%- else -%}
+        <span>Free shipping over €150</span>
+        <span>Made in limited runs</span>
+        <span>Archival quality</span>
+        <span>Carbon-neutral delivery</span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Phrase",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Phrase", "default": "Made in limited runs" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Free shipping over €150" } },
+        { "type": "item", "settings": { "text": "Made in limited runs" } },
+        { "type": "item", "settings": { "text": "Archival quality" } },
+        { "type": "item", "settings": { "text": "Carbon-neutral delivery" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

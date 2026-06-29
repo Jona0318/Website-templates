@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "index": "Vol. I",
+        "season": "The Midnight Edit",
+        "heading": "Worn after <em>dark</em>.",
+        "text": "A small house of jewellery, leather and scent — cast by hand, finished in gold, made to be kept for a lifetime.",
+        "button_label": "Shop the maison",
+        "button_label_2": "The atelier",
+        "caption": "Pl. I — Gilded still life"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "Hand-finished in 18k detail" } },
+        "m2": { "type": "item", "settings": { "text": "Made in limited series" } },
+        "m3": { "type": "item", "settings": { "text": "Lifetime restoration" } },
+        "m4": { "type": "item", "settings": { "text": "Discreet worldwide delivery" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Selected",
+        "heading": "The Maison Edit",
+        "subheading": "Six pieces, this season",
+        "products_to_show": 6,
+        "columns": 3,
+        "stagger": true,
+        "show_view_all": true,
+        "view_all_label": "View all"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The atelier",
+        "heading": "Cast by hand, finished in gold",
+        "text": "<p>Each piece is shaped in a single workshop, by makers we know by name. We keep our series short on purpose — so the finish stays flawless and nothing leaves the bench until it is right.</p>",
+        "button_label": "Discover the maison"
+      }
+    },
+    "statement": {
+      "type": "editorial-statement",
+      "settings": {
+        "number": "I",
+        "eyebrow": "The principle",
+        "heading": "Light, held in objects",
+        "text": "<p>We design in clean lines and honest metals. Gold is never decoration here — it is the way light is caught, kept and carried. The result is a collection meant to outlast the night it arrived in.</p>",
+        "button_label": "Read the philosophy"
+      }
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {
+        "eyebrow": "The house",
+        "heading": "Explore the collections",
+        "columns": 3
+      },
+      "blocks": {
+        "t1": { "type": "tile", "settings": { "title": "Jewellery" } },
+        "t2": { "type": "tile", "settings": { "title": "Leather" } },
+        "t3": { "type": "tile", "settings": { "title": "Fragrance" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "manifesto": {
+      "type": "manifesto",
+      "settings": {
+        "quote": "Luxury is restraint — lit, quietly, from within.",
+        "attribution": "— The Vesper atelier"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "title": "Complimentary delivery", "text": "Insured, worldwide" } },
+        "b2": { "type": "item", "settings": { "title": "Lifetime restoration", "text": "Cared for, always" } },
+        "b3": { "type": "item", "settings": { "title": "Hallmarked materials", "text": "Solid gold & full-grain" } },
+        "b4": { "type": "item", "settings": { "title": "Private appointments", "text": "By request, in person" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Correspondence",
+        "heading": "Join the inner circle",
+        "text": "Quiet word of new series and private viewings. A few times a season — never more."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "featured",
+    "image_text",
+    "statement",
+    "lookbook",
+    "manifesto",
+    "trust",
+    "newsletter"
+  ]
+}

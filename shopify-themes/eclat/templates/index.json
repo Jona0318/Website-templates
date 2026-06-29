@@ -1,0 +1,101 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "index": "Drop 01",
+        "season": "Now live",
+        "heading": "Design, <em>dropped</em>.",
+        "text": "A concept store for design objects and a modern wardrobe — footwear, eyewear and the everyday, released in small monthly drops.",
+        "button_label": "Shop the drop",
+        "button_label_2": "Lookbook",
+        "caption": "Drop 01 — The Lab"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "A new drop every month" } },
+        "m2": { "type": "item", "settings": { "text": "Designed in-house" } },
+        "m3": { "type": "item", "settings": { "text": "Express worldwide shipping" } },
+        "m4": { "type": "item", "settings": { "text": "Limited runs only" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {
+        "eyebrow": "Departments",
+        "heading": "Browse the floor",
+        "columns": 3
+      },
+      "blocks": {
+        "t1": { "type": "tile", "settings": { "title": "Footwear" } },
+        "t2": { "type": "tile", "settings": { "title": "Eyewear" } },
+        "t3": { "type": "tile", "settings": { "title": "Objects" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Just in",
+        "heading": "New Arrivals",
+        "subheading": "This week's drop",
+        "products_to_show": 8,
+        "columns": 4,
+        "stagger": false,
+        "show_view_all": true,
+        "view_all_label": "Shop all"
+      }
+    },
+    "statement": {
+      "type": "editorial-statement",
+      "settings": {
+        "number": "01",
+        "eyebrow": "The idea",
+        "heading": "A store, not a catalogue",
+        "text": "<p>We design and curate in equal measure — objects and wardrobe that earn a place in real life. Everything lands in small, numbered runs. When a drop is gone, it's gone.</p>",
+        "button_label": "How it works"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The studio",
+        "heading": "Designed in-house, made in small runs",
+        "text": "<p>From first sketch to final sample, every piece is developed in our own studio and produced with makers we trust. No middle layers, no filler — just considered design, released when it's ready.</p>",
+        "button_label": "About the studio"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "title": "Free express shipping", "text": "On every order" } },
+        "b2": { "type": "item", "settings": { "title": "30-day returns", "text": "Quick & easy" } },
+        "b3": { "type": "item", "settings": { "title": "Designed in-house", "text": "Studio originals" } },
+        "b4": { "type": "item", "settings": { "title": "Secure checkout", "text": "Encrypted & protected" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "The list",
+        "heading": "Get the next drop first",
+        "text": "Early access to every release, plus the occasional studio note. One email per drop — no noise."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "lookbook",
+    "featured",
+    "statement",
+    "image_text",
+    "trust",
+    "newsletter"
+  ]
+}

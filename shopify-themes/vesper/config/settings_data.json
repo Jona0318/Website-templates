@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#0E0D10",
+    "color_surface": "#15141A",
+    "color_text": "#F3EFE6",
+    "color_text_muted": "#9A938A",
+    "color_accent": "#C9A24B",
+    "color_accent_text": "#0E0D10",
+    "color_border": "#2A2730",
+    "heading_font": "playfair_display_n5",
+    "body_font": "jost_n4",
+    "page_width": 1360,
+    "corner_radius": 0,
+    "logo_width": 130
+  },
+  "presets": {
+    "Vesper": {
+      "color_background": "#0E0D10",
+      "color_surface": "#15141A",
+      "color_text": "#F3EFE6",
+      "color_text_muted": "#9A938A",
+      "color_accent": "#C9A24B",
+      "color_accent_text": "#0E0D10",
+      "color_border": "#2A2730",
+      "heading_font": "playfair_display_n5",
+      "body_font": "jost_n4",
+      "page_width": 1360,
+      "corner_radius": 0,
+      "logo_width": 130
+    }
+  }
+}

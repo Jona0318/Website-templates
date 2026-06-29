@@ -1,0 +1,19 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "The Spring Collection · complimentary shipping & returns"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["announcement", "header"]
+}

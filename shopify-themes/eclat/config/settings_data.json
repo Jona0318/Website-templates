@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F1F1EE",
+    "color_surface": "#FFFFFF",
+    "color_text": "#0B0B0C",
+    "color_text_muted": "#6E6E72",
+    "color_accent": "#1F2AFF",
+    "color_accent_text": "#F1F1EE",
+    "color_border": "#DADAD4",
+    "heading_font": "work_sans_n7",
+    "body_font": "work_sans_n4",
+    "page_width": 1400,
+    "corner_radius": 0,
+    "logo_width": 120
+  },
+  "presets": {
+    "Éclat": {
+      "color_background": "#F1F1EE",
+      "color_surface": "#FFFFFF",
+      "color_text": "#0B0B0C",
+      "color_text_muted": "#6E6E72",
+      "color_accent": "#1F2AFF",
+      "color_accent_text": "#F1F1EE",
+      "color_border": "#DADAD4",
+      "heading_font": "work_sans_n7",
+      "body_font": "work_sans_n4",
+      "page_width": 1400,
+      "corner_radius": 0,
+      "logo_width": 120
+    }
+  }
+}

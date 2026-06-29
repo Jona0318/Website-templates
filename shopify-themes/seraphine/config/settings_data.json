@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F4EFE7",
+    "color_surface": "#FBF8F2",
+    "color_text": "#1C2420",
+    "color_text_muted": "#7C786E",
+    "color_accent": "#1F5641",
+    "color_accent_text": "#F4EFE7",
+    "color_border": "#DFD8CB",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1360,
+    "corner_radius": 2,
+    "logo_width": 140
+  },
+  "presets": {
+    "Séraphine": {
+      "color_background": "#F4EFE7",
+      "color_surface": "#FBF8F2",
+      "color_text": "#1C2420",
+      "color_text_muted": "#7C786E",
+      "color_accent": "#1F5641",
+      "color_accent_text": "#F4EFE7",
+      "color_border": "#DFD8CB",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1360,
+      "corner_radius": 2,
+      "logo_width": 140
+    }
+  }
+}

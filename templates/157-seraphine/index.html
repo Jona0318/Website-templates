@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séraphine — warm ivory couture-atelier Shopify theme (bone × emerald)</title>
+<meta name="description" content="Séraphine: importeerbaar Shopify-thema voor een couture-atelier. Quiet luxury, bone & emerald — Marcellus-serif, hairline grid en een editorial magazine-hero. Accent #1F5641.">
+<meta name="theme-color" content="#F4EFE7">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F4F0E7'/><text x='16' y='23' font-family='Georgia,serif' font-size='21' text-anchor='middle' fill='%231C2420'>S</text><circle cx='24' cy='9' r='2.3' fill='%231F5641'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+  :root{
+    --bg:#F4EFE7; --surface:#FBF8F2; --text:#1C2420; --muted:#7C786E;
+    --accent:#1F5641; --accent-soft:#2E7357; --accent-text:#F4EFE7; --border:#DFD8CB;
+    --hair:1px solid var(--border);
+    --display:"Marcellus",Georgia,serif;
+    --sans:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:"Space Mono",ui-monospace,Menlo,monospace;
+    --maxw:1360px; --r:2px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);font-weight:300;color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:.01em}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(20px,5vw,64px)}
+  .section{padding-block:clamp(60px,9vw,134px)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .skip{position:absolute;left:-999px;background:var(--accent);color:var(--accent-text);padding:.75rem 1.25rem;z-index:1000}
+  .skip:focus{left:1rem;top:1rem}
+
+  /* labels + links */
+  .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.28em;font-size:.7rem;color:var(--accent);margin-bottom:1.5rem}
+  .eyebrow::before{content:"";width:1.8rem;height:1px;background:var(--accent)}
+  .link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text);padding-bottom:4px;background-image:linear-gradient(var(--accent),var(--accent));background-size:100% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .4s cubic-bezier(.22,1,.36,1),color .3s}
+  .link:hover{background-size:0 1px;color:var(--accent)}
+  .link .ar{transition:transform .35s}.link:hover .ar{transform:translateX(4px)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1.05rem 2.3rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--accent);border-radius:var(--r);cursor:pointer;transition:background .35s,color .35s}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}.btn--primary:hover{background:transparent;color:var(--accent)}
+
+  /* CSS placeholder fills — warm bone still lifes */
+  .ph{position:relative;overflow:hidden;background:var(--surface);border-radius:var(--r)}
+  .ph::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(120% 90% at 75% 18%, rgba(31,86,65,.10), transparent 55%),
+    linear-gradient(150deg,#EDE7DB,#E3DCCB 55%,#D9CFBC)}
+  .ph--2::after{background:radial-gradient(110% 80% at 25% 80%,rgba(31,86,65,.08),transparent 60%),linear-gradient(160deg,#F0EBDF,#DCD3C2)}
+  .ph--3::after{background:linear-gradient(135deg,#E7E0D2,#CFC4AD)}
+  .ph--4::after{background:radial-gradient(100% 90% at 60% 30%,rgba(28,36,32,.06),transparent 55%),linear-gradient(150deg,#ECE5D8,#D5CBB4)}
+  .ph--5::after{background:linear-gradient(160deg,#EFE9DD,#E0D6C4)}
+  .ph--6::after{background:radial-gradient(120% 100% at 30% 20%,rgba(31,86,65,.13),transparent 55%),linear-gradient(140deg,#E9E2D4,#D2C8B0)}
+  .ph__sig{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:2.2rem;color:rgba(28,36,32,.16);z-index:1}
+
+  /* ribbon (gallery-facing) */
+  .ribbon{background:var(--accent);color:var(--accent-text);text-align:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1rem}
+  .ribbon a{border-bottom:1px solid rgba(244,239,231,.5)}.ribbon a:hover{border-color:var(--accent-text)}
+  .announce{background:var(--surface);color:var(--muted);text-align:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;padding:.6rem 1rem;border-bottom:var(--hair)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:var(--hair)}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem;height:82px}
+  .logo{font-family:var(--display);font-size:1.7rem;letter-spacing:.06em;justify-self:start}.logo span{color:var(--accent)}
+  .menu{display:flex;gap:2.4rem;justify-self:center}
+  .menu a{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);position:relative;padding-block:.4rem}
+  .menu a:hover{color:var(--text)}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .3s}.menu a:hover::after{width:100%}
+  .actions{display:flex;align-items:center;gap:1.2rem;justify-self:end}
+  .actions a{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+  .actions a:hover{color:var(--accent)}
+  .actions svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .burger{display:none;background:none;border:0;color:var(--text);cursor:pointer;justify-self:start}
+
+  /* hero — asymmetric editorial */
+  .hero{padding-block:clamp(40px,6vw,80px) clamp(56px,8vw,120px);border-bottom:var(--hair)}
+  .hero__top{display:flex;justify-content:space-between;gap:1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding-bottom:clamp(28px,5vw,56px)}
+  .hero__grid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,5vw,72px);align-items:end}
+  .hero__l h1{font-size:clamp(3rem,8vw,7rem);margin-bottom:1.8rem}
+  .hero__l h1 em{font-style:normal;color:var(--accent)}
+  .hero__rule{width:64px;height:2px;background:var(--accent);margin-bottom:1.6rem}
+  .hero__sub{font-size:1.12rem;color:var(--muted);max-width:42ch;margin-bottom:2.4rem}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:2rem;align-items:center}
+  .hero__r{position:relative}
+  .hero__r .ph{aspect-ratio:3/4.1;border:var(--hair)}
+  .hero__cap{position:absolute;left:1.2rem;bottom:1.2rem;z-index:2;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-text);background:color-mix(in srgb,var(--text) 72%,transparent);padding:.45rem .8rem;border-radius:var(--r)}
+  .hero__tag{position:absolute;top:1.2rem;right:1.2rem;z-index:2;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-text);background:var(--accent);padding:.4rem .7rem;border-radius:var(--r)}
+
+  /* trust */
+  .trust{border-bottom:var(--hair)}
+  .trust__g{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__i{display:flex;flex-direction:column;gap:.45rem;padding:clamp(28px,4vw,46px) clamp(16px,2vw,34px);border-right:var(--hair)}
+  .trust__i:last-child{border-right:0}
+  .trust__i strong{font-family:var(--display);font-weight:400;font-size:1.3rem}
+  .trust__i span{color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.08em}
+
+  /* collection */
+  .edit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;padding-bottom:2.8rem;margin-bottom:3.5rem;border-bottom:var(--hair);flex-wrap:wrap}
+  .edit-head h2{font-size:clamp(2.1rem,4.4vw,3.6rem)}
+  .edit-head .meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1.5rem}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,48px) clamp(16px,2vw,32px)}
+  .grid>:nth-child(even){transform:translateY(clamp(20px,4vw,60px))}
+  .card{display:flex;flex-direction:column}
+  .card__media{position:relative;aspect-ratio:3/4;border:var(--hair)}
+  .card__media .ph{position:absolute;inset:0;transition:transform .9s cubic-bezier(.22,1,.36,1)}.card:hover .card__media .ph{transform:scale(1.04)}
+  .badge{position:absolute;top:0;left:0;z-index:2;background:var(--accent);color:var(--accent-text);font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:.35rem .7rem}
+  .card__body{padding:1.1rem 0 0;display:flex;flex-direction:column;gap:.4rem}
+  .card__idx{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+  .card__title{font-family:var(--display);font-size:1.4rem;line-height:1.2;letter-spacing:.01em}.card:hover .card__title{color:var(--accent)}
+  .card__price{font-family:var(--mono);font-size:.82rem}.card__price s{color:var(--muted);margin-right:.5rem}.card__price em{font-style:normal;color:var(--accent)}
+
+  /* statement */
+  .stmt{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,90px);align-items:start}
+  .stmt__n{font-family:var(--display);font-size:clamp(4.5rem,13vw,12rem);line-height:.8;color:var(--accent)}
+  .stmt__b{max-width:52ch}.stmt__b h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1.2rem}.stmt__b p{color:var(--muted);font-size:1.08rem;margin-bottom:1.5rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,100px);align-items:center}
+  .split__m{position:relative;aspect-ratio:4/5;border:var(--hair)}
+  .split__c h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1.2rem}.split__c p{color:var(--muted);font-size:1.05rem;margin-bottom:1.5rem}
+  .split__pts{list-style:none;display:grid;gap:.8rem;margin:0 0 1.8rem}
+  .split__pts li{display:flex;gap:.8rem;align-items:baseline;color:var(--text)}
+  .split__pts li::before{content:"—";color:var(--accent)}
+
+  /* lookbook */
+  .intro{max-width:720px;margin-bottom:3.5rem}.intro h2{font-size:clamp(2.1rem,4.4vw,3.6rem)}
+  .look{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.5vw,20px)}
+  .tile{position:relative;aspect-ratio:3/4;overflow:hidden;border:var(--hair);display:block;border-radius:var(--r)}
+  .tile .ph{position:absolute;inset:0;border-radius:0;transition:transform .9s cubic-bezier(.22,1,.36,1)}.tile:hover .ph{transform:scale(1.05)}
+  .tile__l{position:absolute;inset:auto 0 0 0;z-index:2;padding:1.4rem;display:flex;justify-content:space-between;align-items:flex-end;color:var(--accent-text);background:linear-gradient(transparent,color-mix(in srgb,var(--text) 72%,transparent))}
+  .tile__l h3{font-size:1.7rem;letter-spacing:.02em}.tile__l .ar{font-family:var(--mono)}
+
+  /* manifesto */
+  .manif{text-align:center;max-width:26ch;margin-inline:auto}
+  .manif p{font-family:var(--display);font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.2}
+  .manif cite{display:block;margin-top:2rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-style:normal}
+
+  /* import */
+  .import{border:var(--hair);padding:clamp(28px,5vw,56px);background:var(--surface);border-radius:var(--r)}
+  .import code{font-family:var(--mono);font-size:.84em;background:var(--bg);border:var(--hair);padding:.05rem .35rem}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;counter-reset:s}
+  .step{border:var(--hair);padding:1.4rem;background:var(--bg);border-radius:var(--r)}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.8rem;color:var(--accent);display:block;margin-bottom:.7rem}
+  .step strong{font-family:var(--display);font-weight:400;font-size:1.25rem;display:block;margin-bottom:.25rem}
+  .step span{color:var(--muted);font-size:.92rem}
+
+  /* newsletter */
+  .news{border-block:var(--hair);text-align:center;background:var(--surface)}
+  .news__in{max-width:640px;margin-inline:auto;padding-block:clamp(48px,7vw,92px)}
+  .news h2{font-size:clamp(2.1rem,4.4vw,3.2rem)}
+  .news p{color:var(--muted);max-width:48ch;margin-inline:auto}
+  .news__f{display:flex;align-items:center;gap:1rem;max-width:460px;margin:2.2rem auto 0;border-bottom:1px solid var(--accent);padding-bottom:.6rem}
+  .news__f input{flex:1;background:transparent;border:0;padding:.4rem 0;font-family:var(--sans);font-size:1rem;color:var(--text)}
+  .news__f input::placeholder{color:var(--muted)}.news__f input:focus{outline:0}
+  .news__f button{background:none;border:0;cursor:pointer;color:var(--accent);font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+
+  /* footer */
+  footer.site{border-top:var(--hair);padding-block:clamp(48px,7vw,92px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.8fr repeat(3,1fr);gap:clamp(28px,4vw,64px)}
+  .f-logo{font-family:var(--display);font-size:clamp(2.6rem,5vw,4rem);line-height:.9;margin-bottom:1.4rem;letter-spacing:.02em}.f-logo span{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:34ch;font-size:.95rem}
+  .f-soc{display:flex;gap:1.4rem;margin-top:1.4rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}.f-soc a:hover{color:var(--accent)}
+  .f-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+  .f-col ul{list-style:none;display:grid;gap:.7rem}.f-col a{font-size:.92rem;color:var(--muted)}.f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:4rem;padding-top:1.5rem;border-top:var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+
+  /* reveal */
+  [data-rv]{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  [data-rv].in{opacity:1;transform:none}
+
+  @media(max-width:990px){
+    .hero__grid{grid-template-columns:1fr}.hero__r{order:-1}.hero__r .ph{aspect-ratio:16/11}
+    .grid{grid-template-columns:repeat(2,1fr)}.look{grid-template-columns:1fr 1fr}.stmt{grid-template-columns:1fr}
+    .trust__g{grid-template-columns:1fr 1fr}.trust__i:nth-child(2){border-right:0}.f-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.split{grid-template-columns:1fr}
+  }
+  @media(max-width:749px){
+    .burger{display:inline-flex}.nav{grid-template-columns:auto 1fr auto}
+    .menu{position:fixed;inset:82px 0 auto 0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:var(--hair);padding:.5rem clamp(20px,5vw,64px) 1.5rem;transform:translateY(-130%);transition:transform .35s;justify-self:stretch}
+    .menu.open{transform:translateY(0)}.menu a{padding:.85rem 0;width:100%;font-size:.8rem}
+    .grid{grid-template-columns:1fr 1fr}.grid>:nth-child(even){transform:none}
+    .look{grid-template-columns:1fr}.trust__g{grid-template-columns:1fr}.trust__i{border-right:0;border-bottom:var(--hair)}.f-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}[data-rv]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="ribbon" lang="nl">Shopify-ready thema — direct importeerbaar · <a href="../../downloads/seraphine-shopify-theme.zip" download>Download het Shopify-thema (.zip)</a></div>
+<div class="announce">The Spring Collection · complimentary shipping &amp; returns</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <button class="burger" aria-label="Menu" aria-expanded="false" data-burger><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    <a class="logo" href="#">Séraphine<span>.</span></a>
+    <nav class="menu" data-menu aria-label="Primary">
+      <a href="#edit">Collection</a><a href="#story">Atelier</a><a href="#look">Wardrobe</a>
+    </nav>
+    <div class="actions">
+      <a href="#" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
+      <a href="#">Cart <span>(0)</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__top"><span>Vol. IV — The Spring Collection</span><span>01 / 04</span></div>
+    <div class="hero__grid">
+      <div class="hero__l">
+        <h1>Made to be <em>lived in</em>.</h1>
+        <div class="hero__rule"></div>
+        <p class="hero__sub">Ready-to-wear and leather, cut by hand from linen, wool and time — a quiet wardrobe made to be kept and repaired, never replaced.</p>
+        <div class="hero__cta">
+          <a href="#edit" class="btn btn--primary">Shop the collection</a>
+          <a href="#story" class="link">The atelier <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="hero__r" data-rv>
+        <div class="ph ph--6"><span class="ph__sig">No.&nbsp;04</span></div>
+        <span class="hero__tag">Series No. 04</span>
+        <span class="hero__cap">Pl. 01 — Atelier, morning light</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Our promise">
+  <div class="wrap"><div class="trust__g">
+    <div class="trust__i"><strong>Atelier-made</strong><span>Cut &amp; sewn by hand</span></div>
+    <div class="trust__i"><strong>Shipping &amp; returns</strong><span>Complimentary, both ways</span></div>
+    <div class="trust__i"><strong>Repairs for life</strong><span>Mended, never discarded</span></div>
+    <div class="trust__i"><strong>Responsibly sourced</strong><span>Traceable materials</span></div>
+  </div></div>
+</section>
+
+<section class="section" id="edit">
+  <div class="wrap">
+    <div class="edit-head" data-rv>
+      <div><span class="eyebrow">Selected</span><h2>The Collection</h2></div>
+      <div class="meta"><span>Twelve pieces, this season</span><a href="#" class="link">View all <span class="ar">&rarr;</span></a></div>
+    </div>
+    <div class="grid">
+      <article class="card" data-rv><div class="card__media"><span class="badge">New</span><div class="ph ph--2"></div></div><div class="card__body"><span class="card__idx">001 · Atelier</span><span class="card__title">Linen Atelier Coat</span><span class="card__price">€ 690,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--3"></div></div><div class="card__body"><span class="card__idx">002 · Séraphine</span><span class="card__title">Wide Wool Trouser</span><span class="card__price">€ 320,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--6"></div></div><div class="card__body"><span class="card__idx">003 · Cuir</span><span class="card__title">Soft Leather Tote</span><span class="card__price">€ 540,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><span class="badge">Sale</span><div class="ph ph--4"></div></div><div class="card__body"><span class="card__idx">004 · Maille</span><span class="card__title">Cashmere Crewneck</span><span class="card__price"><s>€ 380,00</s><em>€ 266,00</em></span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph ph--5"></div></div><div class="card__body"><span class="card__idx">005 · Atelier</span><span class="card__title">Silk Slip Dress</span><span class="card__price">€ 295,00</span></div></article>
+      <article class="card" data-rv><div class="card__media"><div class="ph"></div></div><div class="card__body"><span class="card__idx">006 · Cuir</span><span class="card__title">Hand-stitched Belt</span><span class="card__price">€ 165,00</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="stmt" data-rv>
+      <div class="stmt__n">01</div>
+      <div class="stmt__b">
+        <span class="eyebrow">Savoir-faire</span>
+        <h2>Cut by hand, finished slowly</h2>
+        <p>Every garment is drafted, cut and sewn in one atelier. We work in small series so the patterns can be perfected and the finish stays honest — nothing is rushed onto a rail to fill a season.</p>
+        <a href="#" class="link">Read the philosophy <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split" data-rv>
+      <div class="split__m"><div class="ph ph--3"><span class="ph__sig">Pl.&nbsp;02</span></div></div>
+      <div class="split__c">
+        <span class="eyebrow">The atelier</span>
+        <h2>Linen, wool, and time</h2>
+        <p>We choose materials that age beautifully and makers we know by name. The result is a small wardrobe of pieces that feel better with every wear — the opposite of fast.</p>
+        <ul class="split__pts">
+          <li>Cut and sewn in one workshop</li>
+          <li>Traceable linen, wool and cashmere</li>
+          <li>Free repairs, for the life of the piece</li>
+        </ul>
+        <a href="#" class="link">Inside the atelier <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="look" style="padding-top:0">
+  <div class="wrap">
+    <div class="intro" data-rv><span class="eyebrow">The wardrobe</span><h2>Shop by category</h2></div>
+    <div class="look">
+      <a class="tile" href="#" data-rv><div class="ph ph--2"></div><span class="tile__l"><h3>Ready-to-wear</h3><span class="ar">&rarr;</span></span></a>
+      <a class="tile" href="#" data-rv><div class="ph ph--6"></div><span class="tile__l"><h3>Leather</h3><span class="ar">&rarr;</span></span></a>
+      <a class="tile" href="#" data-rv><div class="ph ph--4"></div><span class="tile__l"><h3>Knitwear</h3><span class="ar">&rarr;</span></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-block:var(--hair);padding-block:clamp(48px,7vw,96px);background:var(--surface)">
+  <div class="wrap">
+    <blockquote class="manif" data-rv>
+      <p>Elegance is what remains when nothing is in a hurry.</p>
+      <cite>— The Séraphine atelier</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section" id="import" lang="nl">
+  <div class="wrap">
+    <div class="import" data-rv>
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,3rem);max-width:20ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:64ch;margin-top:1rem">Séraphine is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste root-structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> — dus Shopify accepteert hem meteen. De merkfonts (Marcellus · Outfit · Space Mono) zitten in het thema; het accent staat op <code>#1F5641</code>.</p>
+      <div style="margin-top:1.6rem"><a class="btn btn--primary" href="../../downloads/seraphine-shopify-theme.zip" download>Download Shopify-thema (.zip)</a></div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-beeld, collecties en kleuren.</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="wrap"><div class="news__in" data-rv>
+    <span class="eyebrow" style="justify-content:center">Correspondence</span>
+    <h2>Join the atelier list</h2>
+    <p>A quiet note when a new series is cut, and the occasional studio story. Never more than a few times a season.</p>
+    <form class="news__f" onsubmit="return false">
+      <label class="sr" for="em">Your email address</label>
+      <input id="em" type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe &rarr;</button>
+    </form>
+  </div></div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Séraphine<span>.</span></div>
+        <p>Quiet couture for a considered wardrobe. Cut by hand, in limited series.</p>
+        <div class="f-soc"><a href="#">Instagram</a><a href="#">Journal</a><a href="#">Stockists</a></div>
+      </div>
+      <div class="f-col"><h4>Collection</h4><ul><li><a href="#edit">New in</a></li><li><a href="#look">Ready-to-wear</a></li><li><a href="#look">Leather</a></li></ul></div>
+      <div class="f-col"><h4>Atelier</h4><ul><li><a href="#story">Savoir-faire</a></li><li><a href="#story">Materials</a></li><li><a href="#">Repairs</a></li></ul></div>
+      <div class="f-col"><h4>Index</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 Séraphine — all rights reserved.</span><span>An importable Shopify Online Store 2.0 theme</span></div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var b=document.querySelector('[data-burger]'),m=document.querySelector('[data-menu]');
+    if(b&&m){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});}
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items=document.querySelectorAll('[data-rv]');
+    if(!reduced&&'IntersectionObserver'in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+      items.forEach(function(el){io.observe(el);});
+    }else{items.forEach(function(el){el.classList.add('in');});}
+  })();
+</script>
+</body>
+</html>

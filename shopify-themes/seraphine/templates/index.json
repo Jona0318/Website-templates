@@ -1,0 +1,98 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "index": "Vol. IV",
+        "season": "The Spring Collection",
+        "heading": "Made to be <em>lived in</em>.",
+        "text": "Ready-to-wear and leather, cut by hand from linen, wool and time. A quiet wardrobe, made in limited series to be kept and repaired — never replaced.",
+        "button_label": "Shop the collection",
+        "button_label_2": "The atelier",
+        "caption": "Pl. 01 — Atelier, morning light"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "title": "Atelier-made", "text": "Cut & sewn by hand" } },
+        "b2": { "type": "item", "settings": { "title": "Shipping & returns", "text": "Complimentary, both ways" } },
+        "b3": { "type": "item", "settings": { "title": "Repairs for life", "text": "Mended, never discarded" } },
+        "b4": { "type": "item", "settings": { "title": "Responsibly sourced", "text": "Traceable materials" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Selected",
+        "heading": "The Collection",
+        "subheading": "Twelve pieces, this season",
+        "products_to_show": 6,
+        "columns": 3,
+        "stagger": true,
+        "show_view_all": true,
+        "view_all_label": "View all"
+      }
+    },
+    "statement": {
+      "type": "editorial-statement",
+      "settings": {
+        "number": "01",
+        "eyebrow": "Savoir-faire",
+        "heading": "Cut by hand, finished slowly",
+        "text": "<p>Every garment is drafted, cut and sewn in one atelier. We work in small series so the patterns can be perfected and the finish stays honest. Nothing is rushed onto a rail to fill a season.</p>",
+        "button_label": "Read the philosophy"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "normal",
+        "eyebrow": "The atelier",
+        "heading": "Linen, wool, and time",
+        "text": "<p>We choose materials that age beautifully and makers we know by name. The result is a small wardrobe of pieces that feel better with every wear — the opposite of fast.</p>",
+        "button_label": "Inside the atelier"
+      }
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {
+        "eyebrow": "The wardrobe",
+        "heading": "Shop by category",
+        "columns": 3
+      },
+      "blocks": {
+        "t1": { "type": "tile", "settings": { "title": "Ready-to-wear" } },
+        "t2": { "type": "tile", "settings": { "title": "Leather" } },
+        "t3": { "type": "tile", "settings": { "title": "Knitwear" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "manifesto": {
+      "type": "manifesto",
+      "settings": {
+        "quote": "Elegance is what remains when nothing is in a hurry.",
+        "attribution": "— The Séraphine atelier"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Correspondence",
+        "heading": "Join the atelier list",
+        "text": "A quiet note when a new series is cut, and the occasional studio story. Never more than a few times a season."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "statement",
+    "image_text",
+    "lookbook",
+    "manifesto",
+    "newsletter"
+  ]
+}
