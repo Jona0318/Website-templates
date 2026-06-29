@@ -212,11 +212,11 @@ p { margin: 0 0 1rem; }
   display: inline-flex; align-items: center; gap: 3.5rem;
   font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--color-text-muted);
-  animation: linea-marquee 38s linear infinite;
+  animation: marquee-scroll 38s linear infinite;
 }
 .marquee__track span { display: inline-flex; align-items: center; gap: 3.5rem; }
 .marquee__track span::after { content: "✦"; color: var(--color-accent); }
-@keyframes linea-marquee { to { transform: translateX(-50%); } }
+@keyframes marquee-scroll { to { transform: translateX(-50%); } }
 
 /* Featured collection — editorial header + staggered grid ----------------- */
 .edit-head {
@@ -440,3 +440,25 @@ h1, h2, h3 { letter-spacing: 0.01em; }
 .look-tile__label h3 { font-family: var(--font-display); letter-spacing: 0.02em; }
 .product-card__title { letter-spacing: 0.01em; }
 .site-footer__logo span, .site-header__logo span { color: var(--color-accent); }
+
+/* ── SÉRAPHINE hero parity — asymmetric editorial magazine ─────────────────── */
+.hero { padding-block: clamp(40px,6vw,80px) clamp(56px,8vw,120px); border-bottom: var(--hair); min-height: 0; }
+.hero__top { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-muted); padding-bottom: clamp(28px,5vw,56px); }
+.hero__grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: clamp(28px,5vw,72px); align-items: end; }
+.hero__l .hero__title { font-size: clamp(3rem,8vw,7rem); margin: 0 0 1.8rem; }
+.hero__l .hero__title em { font-style: normal; color: var(--color-accent); }
+.hero__rule { width: 64px; height: 2px; background: var(--color-accent); margin-bottom: 1.6rem; }
+.hero__l .hero__text { font-size: 1.12rem; color: var(--color-text-muted); max-width: 42ch; margin-bottom: 2.4rem; }
+.hero__l .hero__cta { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
+.hero__r { position: relative; }
+.hero__media { position: relative; aspect-ratio: 3 / 4.1; border: var(--hair); overflow: hidden; background: color-mix(in srgb, var(--color-text) 5%, var(--color-surface)); }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.hero__media-fill { position: absolute; inset: 0; background: radial-gradient(120% 100% at 30% 20%, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 55%), linear-gradient(140deg, #E9E2D4, #D2C8B0); }
+.hero__tag { position: absolute; top: 1.2rem; right: 1.2rem; z-index: 2; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-text); background: var(--color-accent); padding: 0.4rem 0.7rem; border-radius: var(--radius); }
+.hero__caption { position: absolute; left: 1.2rem; bottom: 1.2rem; z-index: 2; font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-text); background: color-mix(in srgb, var(--color-text) 72%, transparent); padding: 0.45rem 0.8rem; border-radius: var(--radius); }
+@media (max-width: 990px) { .hero__grid { grid-template-columns: 1fr; } .hero__r { order: -1; } .hero__media { aspect-ratio: 16/11; } }
+
+/* premium detailing (shared) */
+.product-card__price, .price { font-variant-numeric: tabular-nums; }
+.product-card__media { transition: border-color 0.4s ease; }
+.product-card:hover .product-card__media { border-color: var(--color-accent); }

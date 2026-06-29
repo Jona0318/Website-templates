@@ -5,11 +5,19 @@
       "settings": {
         "index": "Drop 01",
         "season": "Now live",
-        "heading": "Design, <em>dropped</em>.",
+        "volume": "Vol. 01 / 2026",
+        "heading": "Design,<br><em>dropped</em>.",
         "text": "A concept store for design objects and a modern wardrobe — footwear, eyewear and the everyday, released in small monthly drops.",
         "button_label": "Shop the drop",
-        "button_label_2": "Lookbook",
-        "caption": "Drop 01 — The Lab"
+        "button_label_2": "Lookbook"
+      }
+    },
+    "dropstrip": {
+      "type": "drop-strip",
+      "settings": {
+        "heading": "This week",
+        "hint": "Scroll →",
+        "products_to_show": 8
       }
     },
     "marquee": {
@@ -90,6 +98,7 @@
   },
   "order": [
     "hero",
+    "dropstrip",
     "marquee",
     "lookbook",
     "featured",
