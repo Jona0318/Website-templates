@@ -1,0 +1,56 @@
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__col hero__col--text">
+      <span class="hero__index">
+        {{ section.settings.index | default: 'Vol. 01' | escape }} — {{ section.settings.season | default: 'The Winter Edit' | escape }}
+      </span>
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}
+        <p class="hero__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+      <div class="hero__cta">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="link-underline">
+            {{ section.settings.button_label | escape }} <span class="arrow">&rarr;</span>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 }}" class="link-underline">
+            {{ section.settings.button_label_2 | escape }} <span class="arrow">&rarr;</span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="hero__col hero__col--media">
+      <div class="hero__media-wrap">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600,900,1200,1600,2000' }}
+        {%- else -%}
+          {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
+        {%- endif -%}
+        {%- if section.settings.caption != blank -%}
+          <span class="hero__caption">{{ section.settings.caption | escape }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Volume label", "default": "Vol. 01" },
+    { "type": "text", "id": "season", "label": "Season / edit label", "default": "The Winter Edit" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Objects, <em>considered</em>." },
+    { "type": "text", "id": "text", "label": "Subtext", "default": "A small, slow collection of homeware and apparel — drawn in clean lines, made to be kept." },
+    { "type": "text", "id": "button_label", "label": "Primary link label", "default": "Shop the edit" },
+    { "type": "url", "id": "button_link", "label": "Primary link" },
+    { "type": "text", "id": "button_label_2", "label": "Secondary link label", "default": "The studio" },
+    { "type": "url", "id": "button_link_2", "label": "Secondary link" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "caption", "label": "Image caption", "default": "Fig. 01 — Atelier still life" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

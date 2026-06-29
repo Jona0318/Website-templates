@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "index": "Vol. 01",
+        "season": "The Winter Edit",
+        "heading": "Objects, <em>considered</em>.",
+        "text": "A small, slow collection of homeware and apparel — drawn in clean lines, made to be kept.",
+        "button_label": "Shop the edit",
+        "button_label_2": "The studio",
+        "caption": "Fig. 01 — Atelier still life"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "Free shipping over €150" } },
+        "m2": { "type": "item", "settings": { "text": "Made in limited runs" } },
+        "m3": { "type": "item", "settings": { "text": "Archival quality" } },
+        "m4": { "type": "item", "settings": { "text": "Carbon-neutral delivery" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Selected",
+        "heading": "The Edit",
+        "subheading": "Six pieces, this season",
+        "products_to_show": 6,
+        "columns": 3,
+        "stagger": true,
+        "show_view_all": true,
+        "view_all_label": "View all"
+      }
+    },
+    "statement": {
+      "type": "editorial-statement",
+      "settings": {
+        "number": "01",
+        "eyebrow": "The principle",
+        "heading": "Fewer, better things",
+        "text": "<p>We design in straight lines and honest materials. Every object earns its place — nothing is added to fill a grid, and nothing ships until it is right. The result is a collection meant to outlast the season it arrived in.</p>",
+        "button_label": "Read the philosophy"
+      }
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {
+        "eyebrow": "Departments",
+        "heading": "Shop by category",
+        "columns": 3
+      },
+      "blocks": {
+        "t1": { "type": "tile", "settings": { "title": "Homeware" } },
+        "t2": { "type": "tile", "settings": { "title": "Apparel" } },
+        "t3": { "type": "tile", "settings": { "title": "Objects" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The studio",
+        "heading": "Made by hand, in Amsterdam",
+        "text": "<p>Each release is produced in small batches with makers we know by name. We keep runs short on purpose — so quality stays high and nothing ends up in a warehouse it shouldn't.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "manifesto": {
+      "type": "manifesto",
+      "settings": {
+        "quote": "Good design is as little design as possible — and as much patience as it takes.",
+        "attribution": "— The Linea studio"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": { "type": "item", "settings": { "title": "Complimentary shipping", "text": "On orders over €150" } },
+        "b2": { "type": "item", "settings": { "title": "30-day returns", "text": "Simple, no questions" } },
+        "b3": { "type": "item", "settings": { "title": "Made to last", "text": "Archival materials" } },
+        "b4": { "type": "item", "settings": { "title": "Limited runs", "text": "Never restocked twice" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Correspondence",
+        "heading": "Join the index",
+        "text": "Quiet notes on new releases and restocks. No noise — a few times a season."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "featured",
+    "statement",
+    "lookbook",
+    "image_text",
+    "manifesto",
+    "trust",
+    "newsletter"
+  ]
+}

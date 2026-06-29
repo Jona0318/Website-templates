@@ -12,6 +12,7 @@
     "readmes": "node _kit/readmes.mjs",
     "pack": "node _kit/pack.mjs",
     "seo": "node _kit/seo.mjs",
+    "verify": "node _kit/verify.mjs",
     "dist": "node _kit/gallery.mjs && node _kit/readmes.mjs && node _kit/pack.mjs && node _kit/seo.mjs"
   }
 }

@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 154,
+  "count": 155,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8076,6 +8076,70 @@
           "Shopify",
           "Webshop",
           "Dieren"
+        ]
+      }
+    },
+    {
+      "id": 155,
+      "slug": "155-linea",
+      "path": "templates/155-linea/",
+      "title": "Linea — concept-store Shopify-thema",
+      "name": "Linea",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/linea-shopify-theme.zip",
+      "palette": [
+        "#F4F1EC",
+        "#1A1714",
+        "#9A3B2C",
+        "#FBFAF7",
+        "#DED7CC"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter",
+        "marquee",
+        "editorial-grid",
+        "lookbook",
+        "reveal-on-scroll"
+      ],
+      "sections": [
+        "hero",
+        "marquee",
+        "featured-collection",
+        "editorial-statement",
+        "lookbook",
+        "image-with-text",
+        "manifesto",
+        "trust-bar",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Editorial concept-store Shopify-thema in papier × inkt: asymmetrische split-hero, trage marquee, gestaggerde “Edit”-grid, statement- en manifest-secties, lookbook en minimale nieuwsbrief. Haarlijn-grid, scherpe hoeken, geen schaduwen — Fraunces-serif met mono labels. Online Store 2.0 (Liquid), upload-klare zip.",
+      "card": {
+        "title": "Linea — concept-store Shopify-thema",
+        "blurb": "Editorial, strak en premium: papier × inkt met haarlijn-grid, hoog-contrast Fraunces-serif en mono labels. Split-hero, gestaggerde productgrid en lookbook. Importeerbaar Online Store 2.0-thema (Liquid).",
+        "emoji": "✦",
+        "grad": [
+          "#1A1714",
+          "#9A3B2C"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Editorial"
         ]
       }
     }
