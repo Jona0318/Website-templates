@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ 'gift_cards.issued.title' | t: value: gift_card.initial_value | money, shop: shop.name }}</title>
+    {%- assign gift_value = gift_card.initial_value | money -%}
+    <title>{{ 'gift_cards.issued.title' | t: value: gift_value, shop: shop.name }}</title>
     {{ content_for_header }}
     <style>
       body { font-family: sans-serif; background: #0A0A0A; color: #F5F2EC; text-align: center; padding: 60px 20px; }

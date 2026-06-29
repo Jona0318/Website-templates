@@ -13,6 +13,16 @@
     "pack": "node _kit/pack.mjs",
     "seo": "node _kit/seo.mjs",
     "verify": "node _kit/verify.mjs",
+    "themecheck": "node _kit/theme-check.mjs",
+    "a11y": "node _kit/a11y-check.mjs",
+    "lighthouse": "node _kit/lighthouse-check.mjs",
+    "quality": "node _kit/theme-check.mjs && node _kit/a11y-check.mjs && node _kit/lighthouse-check.mjs",
     "dist": "node _kit/gallery.mjs && node _kit/readmes.mjs && node _kit/pack.mjs && node _kit/seo.mjs"
+  },
+  "devDependencies": {
+    "@shopify/theme-check-node": "^3.26.1",
+    "axe-core": "^4.10.2",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.2.1"
   }
 }

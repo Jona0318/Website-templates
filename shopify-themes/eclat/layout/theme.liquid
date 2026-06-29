@@ -60,7 +60,7 @@
       window.themeMoney = {{ shop.money_format | json }};
       window.themeStrings = { noResults: {{ 'general.search.no_results_short' | t | json }}, viewAll: {{ 'general.search.view_all' | t | json }} };
     </script>
-    {{ 'theme.js' | asset_url | script_tag }}
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
   </head>
 
   <body class="template-{{ template.name | handle }}">

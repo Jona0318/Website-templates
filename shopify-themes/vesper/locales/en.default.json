@@ -103,5 +103,13 @@
     "login": {
       "title": "Login"
     }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "{{ value }} gift card for {{ shop }}",
+      "subtext": "Here's your gift card!",
+      "redeem": "Use this code at checkout to redeem your gift card",
+      "copy_code": "Copy code"
+    }
   }
 }
