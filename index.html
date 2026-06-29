@@ -175,8 +175,8 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .filters-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .filters-badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.15rem;height:1.15rem;padding:0 .35rem;border-radius:99px;background:var(--violet);color:#fff;font-size:.62rem;letter-spacing:0}
 .filters-badge[hidden]{display:none}
-.more-filters{display:contents}
-@media (min-width:681px){.filters-toggle{display:none}.more-filters{display:contents}}
+.more-filters{display:none}
+@media (min-width:681px){.filters-toggle{display:inline-flex;width:auto;margin-top:.7rem}.more-filters.is-open{display:contents}}
 @media (max-width:680px){
   .toolbar .wrap{flex-direction:column;align-items:stretch;overflow:hidden}
   .chips{justify-content:flex-start;overflow-x:auto;padding-bottom:.2rem;min-width:0;width:100%}
@@ -1039,6 +1039,12 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   reflect();
   applySort();
   apply();
+
+  /* desktop start ingeklapt; open automatisch als er al een geavanceerd filter actief is (bv. via deellink) */
+  if (filtersToggle && moreFilters && (state.tags.length || state.scheme !== 'alle' || state.sector !== 'alle' || state.sort !== 'num')) {
+    moreFilters.classList.add('is-open');
+    filtersToggle.setAttribute('aria-expanded', 'true');
+  }
 
   var resetBtn = doc.getElementById('reset');
   if (resetBtn) {
