@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#0B0A14",
+    "color_surface": "#151325",
+    "color_text": "#ECE9FB",
+    "color_text_muted": "#9A93C2",
+    "color_accent": "#A855F7",
+    "color_accent_text": "#0B0A14",
+    "color_border": "#262146",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 8,
+    "logo_width": 140
+  },
+  "presets": {
+    "Pixl": {
+      "color_background": "#0B0A14",
+      "color_surface": "#151325",
+      "color_text": "#ECE9FB",
+      "color_text_muted": "#9A93C2",
+      "color_accent": "#A855F7",
+      "color_accent_text": "#0B0A14",
+      "color_border": "#262146",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 8,
+      "logo_width": 140
+    }
+  }
+}

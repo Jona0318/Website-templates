@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Design lighting",
+        "heading": "Light that <em>sets the mood</em>",
+        "text": "Sculptural lamps and warm bulbs for a home that glows.",
+        "button_label": "Shop lighting",
+        "button_label_2": "The showroom"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €60"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Dimmable",
+            "text": "Warm, adjustable light"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "5-year warranty",
+            "text": "On fittings"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Design advice",
+            "text": "Free consult"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured lighting",
+        "subheading": "Hand-picked to set the mood.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The showroom",
+        "heading": "Designed around light",
+        "text": "<p>We choose fittings for the quality of the light they give — warm, even and easy on the eyes.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Designed around light",
+        "text": "<p>We choose fittings for the quality of the light they give — warm, even and easy on the eyes.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the lumen list",
+        "text": "New designs, drops and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

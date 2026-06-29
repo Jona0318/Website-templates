@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pelt — Shopify-thema voor lederwaren (crème × cognac)</title>
+<meta name="description" content="Pelt: importeerbaar Shopify-thema voor lederwaren — warm, ambachtelijk en tijdloos. Crème met cognac-accent (#9C5A2C).">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%239C5A2C'/><text x='16' y='23' font-size='19' text-anchor='middle' fill='%23FFFBF4' font-family='Georgia,serif' font-style='italic'>P</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap');
+  :root{
+    --bg:#F4EEE3; --surface:#FFFBF4; --text:#2A2018; --muted:#6E6052;
+    --accent:#9C5A2C; --accent-text:#FFFFFF; --border:#E5D9C6;
+    --accent-soft:rgba(156,90,44,.10);
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --stitch:repeating-linear-gradient(90deg,var(--accent) 0 7px,transparent 7px 14px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .4em;font-weight:600;letter-spacing:.005em}
+  h1{font-size:clamp(2.9rem,7vw,5.6rem)} h2{font-size:clamp(2.1rem,4vw,3.4rem)} h3{font-size:1.3rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:26px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:.34em;font-size:.68rem;font-weight:500;color:var(--accent);margin-bottom:1.1rem}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);display:inline-block}
+
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2.1rem;font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border:1px solid var(--accent);border-radius:2px;transition:.28s ease;position:relative}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{background:#823f17;border-color:#823f17}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .arrow{transition:transform .28s ease}
+  .btn:hover .arrow{transform:translateX(4px)}
+  .section{padding-block:clamp(56px,9vw,118px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:var(--bg);text-align:center;font-size:.78rem;letter-spacing:.06em;padding:.6rem 1rem;font-weight:400}
+  .ribbon strong{color:#E8B488;font-weight:500;letter-spacing:.1em}
+  .ribbon a{color:var(--bg);border-bottom:1px solid #E8B488;padding-bottom:1px}
+  .ribbon a:hover{color:#E8B488}
+
+  /* announce */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;padding:.6rem 1rem;font-weight:500}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(244,238,227,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:2rem;font-weight:600;letter-spacing:.02em;line-height:1;display:flex;align-items:baseline;gap:.18em}
+  .logo b{font-weight:600}
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+  .menu{display:flex;gap:2.4rem}
+  .menu a{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);position:relative;padding:.2rem 0}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .28s ease}
+  .menu a:hover{color:var(--text)} .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:1.3rem;align-items:center}
+  .icons button{background:none;border:0;color:inherit;cursor:pointer;padding:0;display:inline-flex;align-items:center}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .cart{position:relative;display:inline-flex}
+  .cart-pill{position:absolute;top:-7px;right:-9px;background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.62rem;font-weight:600;min-width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;font-family:var(--sans)}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:var(--surface);border-bottom:1px solid var(--border)}
+  .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;min-height:clamp(540px,82vh,820px)}
+  .hero__inner{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px) clamp(26px,5vw,80px) clamp(40px,6vw,96px);max-width:680px}
+  .hero h1{margin-bottom:1.3rem}
+  .hero h1 em{font-style:italic;color:var(--accent);display:inline-block}
+  .hero p{font-size:1.14rem;color:var(--muted);max-width:440px;margin-bottom:2.2rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .hero__media{position:relative;overflow:hidden;background:
+     radial-gradient(80% 70% at 70% 30%,rgba(156,90,44,.28),transparent 60%),
+     linear-gradient(150deg,#C98A55,#7A4421)}
+  .hero__media::after{content:"";position:absolute;inset:0;z-index:2;
+     background:linear-gradient(105deg,rgba(255,251,244,.4),transparent 26%),
+     repeating-linear-gradient(125deg,rgba(0,0,0,.04) 0 2px,transparent 2px 5px);
+     pointer-events:none;mix-blend-mode:multiply}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+  .hero__tag{position:absolute;z-index:3;left:clamp(20px,4vw,40px);bottom:clamp(20px,4vw,40px);background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:.85rem 1.2rem;font-size:.74rem;letter-spacing:.04em;color:var(--text);max-width:230px;box-shadow:0 14px 40px -18px rgba(42,32,24,.5)}
+  .hero__tag b{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:600;letter-spacing:.01em}
+
+  /* stitched divider */
+  .stitch{height:1px;background:var(--stitch);opacity:.55}
+
+  /* trust */
+  .trust{background:var(--bg)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{display:flex;gap:1rem;align-items:flex-start;padding:clamp(28px,4vw,44px) clamp(18px,2.4vw,32px);border-right:1px solid var(--border)}
+  .trust__item:last-child{border-right:0}
+  .trust__item svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.4;flex:0 0 auto;margin-top:2px}
+  .trust__item strong{display:block;font-family:var(--serif);font-size:1.32rem;font-weight:600;line-height:1.1}
+  .trust__item span{color:var(--muted);font-size:.86rem;letter-spacing:.02em}
+
+  /* products */
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+  .head p{color:var(--muted);max-width:34ch;margin:0}
+  .head__link{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);white-space:nowrap;display:inline-flex;gap:.5rem;align-items:center}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 26px}
+  .card-p{display:flex;flex-direction:column;background:transparent}
+  .card-p__img{aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:3px;background:linear-gradient(160deg,#EDE2D0,#D8C4A8);border:1px solid var(--border)}
+  .card-p__img i{position:absolute;inset:0;display:block;background:
+     radial-gradient(70% 60% at 40% 30%,rgba(156,90,44,.22),transparent 62%),
+     repeating-linear-gradient(120deg,rgba(0,0,0,.025) 0 3px,transparent 3px 7px)}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+  .card-p:hover .card-p__img img{transform:scale(1.06)}
+  .card-p__badge{position:absolute;top:0;left:0;z-index:2;background:var(--surface);color:var(--accent);font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .75rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);border-bottom-right-radius:3px}
+  .card-p__badge--sale{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+  .card-p__quick{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;background:var(--surface);color:var(--text);text-align:center;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:.7rem;border:1px solid var(--border);border-radius:2px;opacity:0;transform:translateY(8px);transition:.3s ease}
+  .card-p:hover .card-p__quick,.card-p:focus-within .card-p__quick{opacity:1;transform:translateY(0)}
+  .card-p__body{padding:1.05rem .15rem 0;display:flex;flex-direction:column;gap:.2rem}
+  .card-p__vendor{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .card-p__title{font-family:var(--serif);font-size:1.4rem;font-weight:600;line-height:1.1;transition:color .2s}
+  .card-p:hover .card-p__title{color:var(--accent)}
+  .card-p__price{margin-top:.15rem;font-size:.95rem;letter-spacing:.02em;color:var(--text)}
+  .card-p__price s{color:var(--muted);margin-left:.5rem;font-size:.86em}
+
+  /* split / story */
+  .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,80px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:3px;border:1px solid var(--border);background:
+     radial-gradient(70% 60% at 30% 20%,rgba(156,90,44,.28),transparent 60%),linear-gradient(155deg,#C98A55,#6E3c18)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__media::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,251,244,.5);border-radius:2px;z-index:2;pointer-events:none}
+  .split__content p{color:var(--muted);font-size:1.05rem;max-width:46ch}
+  .split__content .lead{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--text);line-height:1.4;margin-bottom:1.4rem;max-width:24ch}
+
+  /* import */
+  .import{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:clamp(32px,5vw,64px);position:relative;overflow:hidden}
+  .import::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--stitch);opacity:.7}
+  .import p code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82em;background:var(--accent-soft);color:var(--accent);padding:.1em .4em;border-radius:3px}
+  .import .hex{font-family:ui-monospace,monospace;color:var(--accent);font-weight:600}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;counter-reset:s}
+  .step{padding:1.5rem 1.4rem;border:1px solid var(--border);border-radius:3px;background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);display:block;font-family:var(--serif);font-style:italic;font-size:1.8rem;color:var(--accent);margin-bottom:.5rem;line-height:1}
+  .step strong{display:block;margin-bottom:.3rem;font-family:var(--serif);font-size:1.25rem;font-weight:600}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{background:var(--text);color:var(--bg);border-radius:4px;padding:clamp(42px,7vw,84px);text-align:center;position:relative;overflow:hidden}
+  .news::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 80% 10%,rgba(156,90,44,.45),transparent 60%);pointer-events:none}
+  .news>*{position:relative;z-index:1}
+  .news .eyebrow{color:#E8B488}.news .eyebrow::before{background:#E8B488}
+  .news h2{color:var(--bg)}
+  .news p{color:rgba(244,238,227,.78);max-width:480px;margin-inline:auto}
+  .news__form{display:flex;gap:.7rem;max-width:480px;margin:1.8rem auto 0}
+  .news__form input{flex:1;background:rgba(255,251,244,.07);color:var(--bg);border:1px solid rgba(244,238,227,.3);padding:1rem 1.3rem;border-radius:2px;font-family:inherit;font-size:.95rem}
+  .news__form input::placeholder{color:rgba(244,238,227,.55)}
+  .news__form input:focus-visible{outline-color:#E8B488}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(52px,7vw,84px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-size:2rem;font-weight:600;margin-bottom:1rem;display:flex;align-items:baseline;gap:.18em}
+  .f-logo .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+  .f-grid .tag{color:var(--muted);max-width:34ch}
+  .f-col h4{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem;font-family:var(--sans);font-weight:500}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.7rem}
+  .f-col a{font-size:.95rem;color:var(--muted)} .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:3.2rem;padding-top:1.6rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.8rem;letter-spacing:.02em}
+
+  @media(max-width:990px){
+    .hero__grid{grid-template-columns:1fr}.hero__media{min-height:340px;order:-1}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}.trust__item:nth-child(2){border-right:0}.trust__item{border-bottom:1px solid var(--border)}
+    .split{grid-template-columns:1fr}.split__media{aspect-ratio:16/10}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .menu{display:none}
+    .grid{grid-template-columns:1fr}
+    .trust__grid{grid-template-columns:1fr}.trust__item{border-right:0}
+    .news__form{flex-direction:column}
+    .f-grid{grid-template-columns:1fr}
+    .head{align-items:flex-start}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <strong>Shopify-ready</strong> — direct importeerbaar thema (.zip) ·
+  <a href="../../downloads/pelt-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis gravure — verzending vanaf €60</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Pelt — home"><b>Pelt</b><span class="dot" aria-hidden="true"></span></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Tassen</a><a href="#import">Shopify</a><a href="#atelier">Atelier</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero__grid">
+    <div class="hero__inner">
+      <span class="eyebrow">Volnerf leer</span>
+      <h1>Leer dat <em>mooi veroudert</em></h1>
+      <p>Met de hand gesneden tassen en accessoires, gemaakt voor een leven lang — en langer.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop de collectie <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#atelier" class="btn btn--ghost">Ons vakmanschap</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=1600&q=80" alt="Leren tas van Pelt op een werkbank in het atelier" loading="eager" onerror="this.remove()">
+      <div class="hero__tag" aria-hidden="true"><b>Eén huid</b>met de hand gesneden &amp; gezadelstikt</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Onze beloften">
+  <div class="wrap trust__grid">
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div><strong>Gratis gravure</strong><span>Maak het van jou</span></div>
+    </div>
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke-dasharray="3 3"/></svg>
+      <div><strong>Volnerf leer</strong><span>Veroudert prachtig</span></div>
+    </div>
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+      <div><strong>Reparatieservice</strong><span>Levenslange zorg</span></div>
+    </div>
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="6" width="15" height="11" rx="1.5"/><path d="M16 9h4l3 3v5h-7Z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+      <div><strong>Gratis verzending</strong><span>Bij orders boven €60</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>Uitgelichte stukken</h2>
+        <p>Met de hand gesneden uit volnerf leer.</p>
+      </div>
+      <a class="head__link" href="#shop">Bekijk alles <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="grid">
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge">Nieuw</span>
+          <i aria-hidden="true"></i>
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80" alt="Leren schoudertas in cognac" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick" aria-hidden="true">Bekijk</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Pelt</span>
+          <span class="card-p__title">Schoudertas</span>
+          <span class="card-p__price">€ 219,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i aria-hidden="true"></i>
+          <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=700&q=80" alt="Leren portefeuille" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick" aria-hidden="true">Bekijk</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Pelt</span>
+          <span class="card-p__title">Leren Portefeuille</span>
+          <span class="card-p__price">€ 79,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i aria-hidden="true"></i>
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80" alt="Cognac leren riem" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick" aria-hidden="true">Bekijk</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Pelt</span>
+          <span class="card-p__title">Riem Cognac</span>
+          <span class="card-p__price">€ 59,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge card-p__badge--sale">Sale</span>
+          <i aria-hidden="true"></i>
+          <img src="https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?auto=format&fit=crop&w=700&q=80" alt="Leren laptophoes" loading="lazy" onerror="this.remove()">
+          <span class="card-p__quick" aria-hidden="true">Bekijk</span>
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Pelt</span>
+          <span class="card-p__title">Laptophoes</span>
+          <span class="card-p__price">€ 89,00 <s>€ 109,00</s></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="stitch" aria-hidden="true"></div></div>
+
+<section class="section" id="atelier">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=900&q=80" alt="Detail van leerbewerking in het atelier" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">Ons atelier</span>
+        <h2>Met de hand gesneden en gestikt</h2>
+        <p class="lead">Elk stuk wordt uit één huid gesneden en met de hand gezadelstikt.</p>
+        <p>Het begint mooi en wordt alleen maar beter. Geen twee stukken zijn gelijk — de patina vertelt jouw verhaal.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:18ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:62ch">Pelt is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="cta-row" style="margin-top:.5rem">
+        <a class="btn btn--primary" href="../../downloads/pelt-shopify-theme.zip" download>Download Shopify-thema (.zip) <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op <span class="hex">#9C5A2C</span>).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Kom op de atelierlijst</h2>
+      <p>Nieuwe stukken, restocks en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false" aria-label="Inschrijven nieuwsbrief">
+        <label for="news-email" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required autocomplete="email">
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Pelt<span class="dot" aria-hidden="true"></span></div>
+        <p class="tag">Leer dat mooi veroudert. Een Shopify-thema in crème met cognac-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle producten</a></li><li><a href="#shop">Tassen</a></li><li><a href="#shop">Accessoires</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Atelier</h4><ul><li><a href="#atelier">Ons vakmanschap</a></li><li><a href="#atelier">Reparatieservice</a></li><li><a href="#atelier">Materialen</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Gravure</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Pelt. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Demo cart counter — no dependencies
+  (function(){
+    var btn=document.querySelector('.cart'),pill=document.querySelector('.cart-pill');
+    document.querySelectorAll('.card-p__quick').forEach(function(q){
+      q.parentElement.parentElement.addEventListener('click',function(e){
+        e.preventDefault();
+        var n=parseInt(pill.textContent,10)+1;pill.textContent=n;
+        btn.setAttribute('aria-label','Winkelwagen, '+n+' artikelen');
+      });
+    });
+  })();
+</script>
+</body>
+</html>

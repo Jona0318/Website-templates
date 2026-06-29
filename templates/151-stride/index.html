@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stride — dynamisch Shopify-thema voor hardloop- en sportkleding</title>
+<meta name="description" content="Stride: importeerbaar Shopify-thema voor hardloop- en sportkleding — dynamisch, energiek en modern.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230C1116'/><path d='M7 20 L16 8 L18 14 L25 12' stroke='%231E6BFF' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap');
+  :root{
+    --bg:#0C1116; --surface:#141B22; --text:#EAF0F6; --muted:#8C99A6;
+    --accent:#1E6BFF; --accent-text:#FFFFFF; --border:#233039;
+    --lime:#C8FF3C; --radius:14px;
+    --serif:"Space Grotesk",-apple-system,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.02;margin:0 0 .5em;letter-spacing:-.02em;font-weight:700}
+  h1{font-size:clamp(2.8rem,7vw,5.5rem);text-transform:uppercase}
+  h2{font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase}
+  h3{font-size:1.1rem}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--lime);color:#0C1116}
+  :focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1320px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;color:var(--lime);margin-bottom:1rem;font-family:var(--serif)}
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--lime);transform:skewX(-20deg)}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2rem;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s,color .2s,border-color .2s;font-family:var(--serif)}
+  .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4}
+  .btn--primary{background:var(--accent);color:var(--accent-text)}
+  .btn--primary:hover{transform:translateY(-3px);background:var(--lime);color:#0C1116}
+  .btn--lime{background:var(--lime);color:#0C1116}
+  .btn--lime:hover{transform:translateY(-3px);background:var(--accent);color:#fff}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-3px)}
+  .section{padding-block:clamp(56px,9vw,110px)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:linear-gradient(90deg,var(--accent),#5b94ff);color:#fff;text-align:center;font-size:.8rem;font-weight:700;letter-spacing:.03em;padding:.6rem 1rem;font-family:var(--serif)}
+  .ribbon a{border-bottom:2px solid var(--lime);padding-bottom:1px;color:var(--lime)}
+
+  /* announce */
+  .announce{background:var(--lime);color:#0C1116;text-align:center;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1rem;font-weight:700;font-family:var(--serif)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:30;background:rgba(12,17,22,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:2rem}
+  .logo{font-family:var(--serif);font-size:1.6rem;font-weight:700;letter-spacing:-.03em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.45rem}
+  .logo svg{width:26px;height:26px;stroke:var(--lime);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .logo b{color:var(--accent)}
+  .menu{display:flex;gap:2rem}
+  .menu a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;position:relative;font-family:var(--serif)}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--lime);transition:width .25s}
+  .menu a:hover{color:var(--text)} .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:none;color:inherit;cursor:pointer;padding:0;display:inline-flex}
+  .icons svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .cart{position:relative;display:inline-flex}
+  .cart-pill{position:absolute;top:-8px;right:-10px;background:var(--lime);color:#0C1116;border-radius:999px;font-size:.66rem;font-weight:700;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;font-family:var(--serif)}
+
+  /* hero */
+  .hero{position:relative;min-height:clamp(560px,86vh,820px);display:flex;align-items:center;overflow:hidden;background:var(--bg)}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:
+     radial-gradient(70% 60% at 80% 30%,rgba(30,107,255,.40),transparent 62%),
+     radial-gradient(60% 70% at 12% 95%,rgba(200,255,60,.16),transparent 60%),
+     linear-gradient(160deg,#0C1116,#0a0e13)}
+  .hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+  .hero__bg::after{content:"";position:absolute;inset:0;z-index:1;background:
+     linear-gradient(90deg,rgba(12,17,22,.96) 0%,rgba(12,17,22,.70) 46%,rgba(12,17,22,.15) 100%)}
+  /* motion lines */
+  .speedlines{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.5;overflow:hidden}
+  .speedlines span{position:absolute;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--lime));transform:skewX(-26deg);animation:zoom 2.6s linear infinite}
+  .speedlines span:nth-child(1){top:24%;width:160px;animation-delay:0s}
+  .speedlines span:nth-child(2){top:42%;width:240px;background:linear-gradient(90deg,transparent,var(--accent));animation-delay:.6s}
+  .speedlines span:nth-child(3){top:66%;width:120px;animation-delay:1.1s}
+  .speedlines span:nth-child(4){top:80%;width:200px;background:linear-gradient(90deg,transparent,var(--accent));animation-delay:1.6s}
+  @keyframes zoom{0%{left:-30%;opacity:0}20%{opacity:1}100%{left:120%;opacity:0}}
+  .hero__inner{position:relative;z-index:3;max-width:720px}
+  .hero h1{margin-bottom:1.3rem;font-size:clamp(3rem,8.5vw,6.5rem)}
+  .hero h1 em{font-style:normal;color:var(--accent);display:inline-block;position:relative}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.12em;background:var(--lime)}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:480px;margin-bottom:2.2rem}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  /* hero stats */
+  .stats{display:flex;gap:2.4rem;margin-top:2.6rem;flex-wrap:wrap}
+  .stat strong{display:block;font-family:var(--serif);font-size:2rem;color:var(--lime);line-height:1}
+  .stat span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+  /* trust */
+  .trust{background:var(--surface);border-block:1px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem;padding-block:2.2rem}
+  .trust__item{display:flex;gap:.9rem;align-items:center}
+  .trust__item .ic{width:44px;height:44px;flex:0 0 auto;border-radius:12px;background:rgba(30,107,255,.14);display:inline-flex;align-items:center;justify-content:center}
+  .trust__item svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.9}
+  .trust__item strong{display:block;font-size:.95rem;font-family:var(--serif)} .trust__item span{color:var(--muted);font-size:.82rem}
+
+  /* products */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.6rem;flex-wrap:wrap}
+  .head p{color:var(--muted);margin:0}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card-p{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+  .card-p:hover{transform:translateY(-6px);border-color:var(--accent)}
+  .card-p__img{aspect-ratio:3/4;position:relative;overflow:hidden;background:linear-gradient(160deg,#1b2530,#0e141a)}
+  .card-p__img i{position:absolute;inset:0;display:block}
+  .card-p__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
+  .card-p:hover .card-p__img img{transform:scale(1.06)}
+  .card-p__badge{position:absolute;top:12px;left:12px;background:var(--lime);color:#0C1116;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .65rem;border-radius:999px;z-index:2;font-family:var(--serif)}
+  .card-p__badge.is-sale{background:var(--accent);color:#fff}
+  .card-p__body{padding:1.05rem 1.15rem 1.35rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
+  .card-p__vendor{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-family:var(--serif)}
+  .card-p__title{font-family:var(--serif);font-size:1.08rem}
+  .card-p:hover .card-p__title{color:var(--lime)}
+  .card-p__price{margin-top:auto;padding-top:.5rem;font-weight:700;font-family:var(--serif)}
+  .card-p__price s{color:var(--muted);font-weight:400;font-size:.9em;margin-left:.4rem}
+
+  /* split */
+  .split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+  .split__media{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:var(--radius);background:linear-gradient(160deg,#1b2530,#0e141a);border:1px solid var(--border);clip-path:polygon(0 0,100% 0,100% 92%,0 100%)}
+  .split__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .split__media .tag{position:absolute;left:18px;bottom:26px;z-index:2;background:var(--lime);color:#0C1116;padding:.5rem .9rem;border-radius:999px;font-family:var(--serif);font-weight:700;font-size:.78rem;letter-spacing:.04em}
+  .split__content p{color:var(--muted)}
+
+  /* import note */
+  .import{position:relative;background:linear-gradient(150deg,#101922,#0c1116);border:1px solid var(--border);border-radius:20px;padding:clamp(28px,5vw,60px);overflow:hidden}
+  .import::before{content:"";position:absolute;top:-40%;right:-10%;width:480px;height:480px;background:radial-gradient(circle,rgba(30,107,255,.30),transparent 70%);pointer-events:none}
+  .import>*{position:relative}
+  .import code{background:rgba(200,255,60,.12);color:var(--lime);padding:.1rem .4rem;border-radius:5px;font-size:.85em}
+  .accent-chip{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--serif);font-weight:700;font-size:.8rem}
+  .accent-chip i{width:16px;height:16px;border-radius:4px;background:var(--accent);display:inline-block}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.3rem;margin-top:1.8rem;counter-reset:s}
+  .step{padding:1.4rem;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+  .step::before{counter-increment:s;content:counter(s);display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;margin-bottom:.7rem;font-family:var(--serif)}
+  .step strong{display:block;margin-bottom:.3rem;font-family:var(--serif)}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{position:relative;background:linear-gradient(135deg,var(--accent),#0b3aa0);border-radius:20px;padding:clamp(40px,6vw,80px);text-align:center;overflow:hidden}
+  .news::after{content:"";position:absolute;bottom:-30%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(200,255,60,.25),transparent 70%);pointer-events:none}
+  .news>*{position:relative}
+  .news .eyebrow{color:var(--lime)}
+  .news h2,.news p{color:#fff}
+  .news__form{display:flex;gap:.75rem;max-width:480px;margin:1.6rem auto 0}
+  .news__form input{flex:1;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);padding:1rem 1.2rem;border-radius:999px;font-family:inherit}
+  .news__form input::placeholder{color:rgba(255,255,255,.7)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(48px,6vw,76px) 2rem}
+  .f-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-size:1.6rem;font-weight:700;text-transform:uppercase;margin-bottom:1rem;display:inline-flex;align-items:center;gap:.4rem}
+  .f-logo svg{width:24px;height:24px;stroke:var(--lime);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .f-logo b{color:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:320px}
+  .f-col h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-family:var(--serif)}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem} .f-col a{font-size:.92rem;color:var(--muted)} .f-col a:hover{color:var(--lime)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:990px){.grid{grid-template-columns:repeat(2,1fr)}.f-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:749px){.menu{display:none}.split{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.news__form{flex-direction:column}.head{align-items:flex-start}}
+  @media(max-width:480px){.grid{grid-template-columns:1fr}.stats{gap:1.5rem}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .speedlines{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ⚡ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/stride-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis verzending vanaf €50 · klaar voor je PR</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#" aria-label="Stride home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 22 L15 7 L18 15 L27 12"/></svg>
+      Stri<b>de</b>
+    </a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Schoenen</a><a href="#import">Shopify</a><a href="#story">Training</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelwagen, 3 artikelen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-pill" aria-hidden="true">3</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=1600&q=80" alt="" loading="eager" onerror="this.remove()">
+  </div>
+  <div class="speedlines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="wrap hero__inner">
+    <span class="eyebrow">Loop sneller</span>
+    <h1>Gear dat <em>het tempo houdt</em></h1>
+    <p>Schoenen en kleding ontworpen voor elke kilometer en elke PR.</p>
+    <div class="cta-row">
+      <a href="#shop" class="btn btn--primary">Shop hardloop
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#story" class="btn btn--ghost">Trainingstips</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>30d</strong><span>Proefrondje</span></div>
+      <div class="stat"><strong>€50+</strong><span>Gratis verzending</span></div>
+      <div class="stat"><strong>100%</strong><span>Door lopers getest</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Onze voordelen">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h13l3-5h2v9H3z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><div><strong>Gratis verzending</strong><span>Bij orders boven €50</span></div></div>
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 1 3 6.7"/><polyline points="3 21 3 15 9 15"/></svg></span><div><strong>Proefrondje</strong><span>30 dagen testen</span></div></div>
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><strong>Prestatie-getest</strong><span>Door echte lopers</span></div></div>
+    <div class="trust__item"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg></span><div><strong>Snel retour</strong><span>Zonder gedoe</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>Uitgelichte gear</h2>
+      </div>
+      <p>Met de hand gekozen voor je volgende rondje.</p>
+    </div>
+    <div class="grid">
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge">Nieuw</span>
+          <i style="background:radial-gradient(70% 60% at 40% 25%,rgba(30,107,255,.25),transparent 60%),linear-gradient(160deg,#1b2530,#0e141a)"></i>
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Hardloopschoen Pro" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Stride</span>
+          <span class="card-p__title">Hardloopschoen Pro</span>
+          <span class="card-p__price">€ 139,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(70% 60% at 60% 30%,rgba(200,255,60,.16),transparent 60%),linear-gradient(160deg,#1b2530,#0e141a)"></i>
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80" alt="Hardloopshirt" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Stride</span>
+          <span class="card-p__title">Hardloopshirt</span>
+          <span class="card-p__price">€ 34,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <i style="background:radial-gradient(60% 60% at 30% 70%,rgba(30,107,255,.22),transparent 60%),linear-gradient(160deg,#1b2530,#0e141a)"></i>
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=80" alt="Sporthorloge GPS" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Stride</span>
+          <span class="card-p__title">Sporthorloge GPS</span>
+          <span class="card-p__price">€ 199,00</span>
+        </div>
+      </a>
+
+      <a class="card-p" href="#">
+        <div class="card-p__img">
+          <span class="card-p__badge is-sale">Sale</span>
+          <i style="background:radial-gradient(70% 50% at 50% 30%,rgba(200,255,60,.14),transparent 60%),linear-gradient(160deg,#1b2530,#0e141a)"></i>
+          <img src="https://images.unsplash.com/photo-1586350977771-2a1c8ee2c0c0?auto=format&fit=crop&w=700&q=80" alt="Compressiesokken" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-p__body">
+          <span class="card-p__vendor">Stride</span>
+          <span class="card-p__title">Compressiesokken</span>
+          <span class="card-p__price">€ 16,00 <s>€ 22,00</s></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="story" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__media">
+        <span class="tag">Het lab</span>
+        <img src="https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=900&q=80" alt="Loper test gear over echte kilometers" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">Het lab</span>
+        <h2>Gebouwd voor het tempo</h2>
+        <p>Elk product wordt over echte kilometers getest zodat het standhoudt als jouw wedstrijddag dat ook doet.</p>
+        <a href="#shop" class="btn btn--lime">Ontdek meer
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:18ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:62ch">Stride is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <p class="accent-chip"><i></i> Accentkleur staat op <code>#1E6BFF</code> (electric blue) met lime accenten.</p>
+      <div class="cta-row" style="margin-top:1.2rem">
+        <a class="btn btn--primary" href="../../downloads/stride-shopify-theme.zip" download>Download Shopify-thema (.zip)
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #1E6BFF).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Word lid van de runclub</h2>
+      <p style="max-width:480px;margin-inline:auto">Drops, trainingstips en ledenaanbiedingen.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="news-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--lime" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 22 L15 7 L18 15 L27 12"/></svg>Stri<b>de</b></div>
+        <p>Gear dat het tempo houdt. Een Shopify-thema in donker met electric-blauw accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle producten</a></li><li><a href="#shop">Schoenen</a></li><li><a href="#shop">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#story">Over ons</a></li><li><a href="#story">Het lab</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Stride. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

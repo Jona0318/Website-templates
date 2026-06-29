@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "For makers",
+        "heading": "Tools to <em>create</em>",
+        "text": "Quality art supplies for painters, illustrators and dreamers.",
+        "button_label": "Shop supplies",
+        "button_label_2": "Get inspired"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €30"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Artist-grade",
+            "text": "Pigment-rich quality"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Bulk & sets",
+            "text": "Save more together"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Easy returns",
+            "text": "30-day no fuss"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured supplies",
+        "subheading": "Hand-picked for your next piece.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our studio",
+        "heading": "Made to make with",
+        "text": "<p>We test every material in our own studio. If we wouldn't paint with it, we won't sell it.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Made to make with",
+        "text": "<p>We test every material in our own studio. If we wouldn't paint with it, we won't sell it.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the makers list",
+        "text": "New supplies, tutorials and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,25 @@
+<article class="section">
+  <div class="page-width page-content">
+    <div class="text-center" style="margin-bottom:2.5rem;">
+      <span class="eyebrow">{{ article.published_at | date: '%d %B %Y' }}</span>
+      <h1>{{ article.title }}</h1>
+      {%- if article.author != blank -%}
+        <p style="color:var(--color-text-muted);">{{ 'blogs.article.by_author' | t: author: article.author }}</p>
+      {%- endif -%}
+    </div>
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.title | escape }}" style="border-radius:var(--radius);margin-bottom:2.5rem;" width="1400" height="788">
+    {%- endif -%}
+    <div class="rte">{{ article.content }}</div>
+    <p style="margin-top:3rem;">
+      <a href="{{ blog.url }}" class="link-underline">← {{ 'blogs.article.back_to_blog' | t: title: blog.title }}</a>
+    </p>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

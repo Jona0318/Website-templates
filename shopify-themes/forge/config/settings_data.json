@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#14161A",
+    "color_surface": "#1D2026",
+    "color_text": "#ECEDEF",
+    "color_text_muted": "#969BA4",
+    "color_accent": "#FF6A00",
+    "color_accent_text": "#14161A",
+    "color_border": "#2C3038",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 2,
+    "logo_width": 140
+  },
+  "presets": {
+    "Forge": {
+      "color_background": "#14161A",
+      "color_surface": "#1D2026",
+      "color_text": "#ECEDEF",
+      "color_text_muted": "#969BA4",
+      "color_accent": "#FF6A00",
+      "color_accent_text": "#14161A",
+      "color_border": "#2C3038",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 2,
+      "logo_width": 140
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Full-grain leather",
+        "heading": "Leather that <em>ages well</em>",
+        "text": "Hand-cut bags and accessories made to last a lifetime — and then some.",
+        "button_label": "Shop the collection",
+        "button_label_2": "Our craft"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free engraving",
+            "text": "Make it yours"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Full-grain leather",
+            "text": "Ages beautifully"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Repair service",
+            "text": "Lifetime care"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €60"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured pieces",
+        "subheading": "Hand-cut from full-grain leather.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our atelier",
+        "heading": "Cut and stitched by hand",
+        "text": "<p>Each piece is cut from a single hide and saddle-stitched by hand. It starts beautiful and only gets better.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Cut and stitched by hand",
+        "text": "<p>Each piece is cut from a single hide and saddle-stitched by hand. It starts beautiful and only gets better.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the atelier list",
+        "text": "New pieces, restocks and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

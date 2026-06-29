@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Small-batch",
+        "heading": "Beer with <em>character</em>",
+        "text": "Independently brewed in small batches. Bold, fresh and proudly ours.",
+        "button_label": "Shop beers",
+        "button_label_2": "The taproom"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "From 12 cans"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Brewed fresh",
+            "text": "Shipped within days"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Mixed packs",
+            "text": "Build your own"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "18+ only",
+            "text": "We verify age"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured beers",
+        "subheading": "Hand-picked from the tanks.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "The brewery",
+        "heading": "Brewed by hand",
+        "text": "<p>Every batch is brewed, tasted and canned in-house. No shortcuts, no fillers — just good beer.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Brewed by hand",
+        "text": "<p>Every batch is brewed, tasted and canned in-house. No shortcuts, no fillers — just good beer.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the tap list",
+        "text": "New brews, drops and member offers."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

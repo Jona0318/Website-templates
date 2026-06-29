@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#F4EEE3",
+    "color_surface": "#FFFBF4",
+    "color_text": "#2A2018",
+    "color_text_muted": "#6E6052",
+    "color_accent": "#9C5A2C",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#E5D9C6",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 4,
+    "logo_width": 140
+  },
+  "presets": {
+    "Pelt": {
+      "color_background": "#F4EEE3",
+      "color_surface": "#FFFBF4",
+      "color_text": "#2A2018",
+      "color_text_muted": "#6E6052",
+      "color_accent": "#9C5A2C",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#E5D9C6",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 4,
+      "logo_width": 140
+    }
+  }
+}
