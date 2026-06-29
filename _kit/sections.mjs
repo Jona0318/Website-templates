@@ -143,7 +143,7 @@ export const sections = {
   logos(d = {}) {
     const items = list(d.items);
     const row = items.map((x) => `<span>${a(x)}</span>`).join('');
-    return `<div class="logos" aria-label="${alabel(d.label || 'Vertrouwd door')}">
+    return `<div class="logos" role="group" aria-label="${alabel(d.label || 'Vertrouwd door')}">
   <div class="logos-track" aria-hidden="true">${row}${row}</div>
 </div>`;
   },
@@ -350,7 +350,7 @@ export const sections = {
 
   marquee(d = {}) {
     var row = list(d.items).map((x) => `<span>${a(x)}</span>`).join('');
-    return `<div class="marquee ${d.outline ? 'marquee--outline' : ''}" aria-label="${alabel(d.label || 'Slogan')}">
+    return `<div class="marquee ${d.outline ? 'marquee--outline' : ''}" role="group" aria-label="${alabel(d.label || 'Slogan')}">
   <div class="marquee-track2" aria-hidden="true">${row}${row}</div>
 </div>`;
   },

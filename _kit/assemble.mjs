@@ -48,7 +48,7 @@ export function buildMenu(r) {
 export function buildFooter(r) {
   const b = r.brand;
   const f = r.footer || {};
-  const cols = (f.columns || []).map((c) => `<div class="footer-col"><h4>${a(c.title)}</h4><ul>${(c.links || []).map((l) => `<li><a href="${attr(l.href)}">${a(l.label)}</a></li>`).join('')}</ul></div>`).join('');
+  const cols = (f.columns || []).map((c) => `<div class="footer-col"><h3>${a(c.title)}</h3><ul>${(c.links || []).map((l) => `<li><a href="${attr(l.href)}">${a(l.label)}</a></li>`).join('')}</ul></div>`).join('');
   return `<footer class="footer ${f.dark ? 'dark' : ''}" aria-label="Footer">
   <div class="container">
     <div class="footer-grid">
