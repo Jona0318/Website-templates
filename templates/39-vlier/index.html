@@ -1572,7 +1572,7 @@
       </div>
     </footer>
 
-    <div class="bar" id="bar" aria-hidden="true">
+    <div class="bar" id="bar" aria-hidden="true" inert>
       <div class="wrap">
         <span class="b-status" id="bar-status" data-open="true"
           ><span class="lamp"></span><span id="bar-status-text">Open</span>
@@ -1801,6 +1801,7 @@
             var show = y > heroH && resvTop > window.innerHeight * 0.5;
             bar.classList.toggle("show", show);
             bar.setAttribute("aria-hidden", show ? "false" : "true");
+            if (show) { bar.removeAttribute("inert"); } else { bar.setAttribute("inert", ""); }
           }
         }
         function tick() {
