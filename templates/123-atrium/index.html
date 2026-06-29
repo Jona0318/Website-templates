@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atrium — architectuur &amp; interieur studio</title>
+<meta name="description" content="Atrium is een architectuur- en interieurstudio: woningen, herbestemming en interieur. Verfijnd, kalm, intentioneel.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#FBFBF9;
+  --white:#FFFFFF;
+  --ink:#111111;
+  --muted:#6B6B66;
+  --hair:#DAD9D3;
+  --accent:#C2410C;
+  --gutter:clamp(1.25rem,4vw,3.5rem);
+  --maxw:1440px;
+  --grid:12;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+::selection{background:var(--accent);color:#fff}
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.skip{
+  position:absolute;left:-999px;top:0;z-index:1000;
+  background:var(--ink);color:#fff;padding:.75rem 1.25rem;
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.skip:focus{left:.5rem;top:.5rem}
+
+/* ---------- shell + grid ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(var(--grid),1fr);
+  column-gap:clamp(.75rem,2vw,1.5rem);
+}
+
+/* visible column hairlines overlay */
+.rulebed{position:relative}
+.rulebed::before{
+  content:"";
+  position:absolute;inset:0;
+  max-width:var(--maxw);margin:0 auto;
+  left:var(--gutter);right:var(--gutter);
+  background-image:repeating-linear-gradient(
+    to right,
+    var(--hair) 0,var(--hair) 1px,
+    transparent 1px,transparent calc((100% - 11px)/12 + 1px)
+  );
+  opacity:.55;
+  pointer-events:none;
+  z-index:0;
+}
+@media (max-width:760px){.rulebed::before{display:none}}
+
+.label{
+  font-family:'Archivo',sans-serif;
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+.secnum{
+  font-family:'Archivo',sans-serif;
+  font-weight:800;
+  font-size:clamp(3.5rem,11vw,9rem);
+  line-height:.82;
+  letter-spacing:-.03em;
+  color:var(--ink);
+}
+.secnum .dot{color:var(--accent)}
+
+.hair{border:0;border-top:1px solid var(--hair);width:100%}
+
+/* ---------- header ---------- */
+header.site{
+  position:sticky;top:0;z-index:60;
+  background:rgba(251,251,249,.86);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--hair);
+}
+.site-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.wordmark{
+  font-family:'Archivo',sans-serif;
+  font-weight:800;font-size:1.15rem;letter-spacing:-.01em;
+  display:flex;align-items:baseline;gap:.4rem;
+}
+.wordmark .sq{
+  width:.55rem;height:.55rem;background:var(--accent);
+  display:inline-block;align-self:center;
+}
+.wordmark small{
+  font-weight:500;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);font-family:'Inter',sans-serif;
+}
+nav.primary ul{display:flex;gap:clamp(1rem,2.5vw,2.25rem);list-style:none}
+nav.primary a{
+  font-size:.82rem;font-weight:500;letter-spacing:.04em;
+  position:relative;padding:.25rem 0;
+}
+nav.primary a::after{
+  content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;
+  background:var(--accent);transition:width .3s ease;
+}
+nav.primary a:hover::after,nav.primary a:focus-visible::after{width:100%}
+.navtoggle{display:none}
+@media (max-width:760px){
+  nav.primary{display:none}
+  .navtoggle{
+    display:inline-flex;background:none;border:1px solid var(--hair);
+    padding:.5rem .8rem;font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;cursor:pointer;font-family:'Archivo',sans-serif;
+    font-weight:600;
+  }
+}
+nav.mobile{display:none;border-top:1px solid var(--hair)}
+nav.mobile.open{display:block}
+nav.mobile ul{list-style:none;padding:1rem var(--gutter)}
+nav.mobile li{border-bottom:1px solid var(--hair)}
+nav.mobile a{display:block;padding:.9rem 0;font-size:1rem;font-weight:500}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(3.5rem,9vw,8rem) 0 clamp(2.5rem,6vw,5rem);position:relative}
+.hero .grid{position:relative;z-index:1}
+.hero .eyebrow{grid-column:1 / -1;margin-bottom:clamp(1.5rem,4vw,3rem)}
+.hero h1{
+  grid-column:1 / -1;
+  font-family:'Archivo',sans-serif;
+  font-weight:800;
+  font-size:clamp(2.6rem,8.5vw,7.5rem);
+  line-height:.95;
+  letter-spacing:-.035em;
+  max-width:16ch;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{
+  grid-column:1 / span 6;
+  margin-top:clamp(1.75rem,4vw,3rem);
+  font-size:clamp(1.05rem,1.6vw,1.3rem);
+  color:var(--muted);max-width:46ch;line-height:1.5;
+}
+@media (max-width:760px){.hero .lede{grid-column:1 / -1}}
+.hero .metarow{
+  grid-column:1 / -1;
+  margin-top:clamp(2.5rem,6vw,4.5rem);
+  border-top:1px solid var(--ink);
+  padding-top:1.25rem;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+}
+@media (max-width:760px){.hero .metarow{grid-template-columns:repeat(2,1fr)}}
+.metarow .cell .k{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:clamp(1.4rem,3vw,2.1rem);letter-spacing:-.02em;
+}
+.metarow .cell .v{font-size:.78rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:.35rem}
+
+/* ---------- section scaffolding ---------- */
+.section{padding:clamp(3.5rem,8vw,7rem) 0;position:relative}
+.section.alt{background:var(--white);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.sec-head{
+  display:grid;grid-template-columns:repeat(var(--grid),1fr);
+  column-gap:clamp(.75rem,2vw,1.5rem);
+  align-items:end;
+  margin-bottom:clamp(2rem,5vw,3.5rem);
+}
+.sec-head .num{grid-column:1 / span 3}
+.sec-head .title{grid-column:5 / -1}
+@media (max-width:760px){
+  .sec-head{grid-template-columns:1fr;gap:.75rem}
+  .sec-head .num,.sec-head .title{grid-column:1}
+}
+.sec-head h2{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:clamp(1.6rem,3.2vw,2.6rem);letter-spacing:-.02em;line-height:1.05;
+}
+.sec-head p{color:var(--muted);margin-top:.65rem;max-width:50ch;font-size:.98rem}
+
+/* ---------- projects ---------- */
+.projects-index{grid-column:1 / -1;border-top:1px solid var(--ink)}
+.proj-row{
+  display:grid;
+  grid-template-columns:3.5rem 1fr auto;
+  gap:1.25rem;align-items:baseline;
+  padding:1.1rem .25rem;
+  border-bottom:1px solid var(--hair);
+  transition:padding-left .35s ease,background .35s ease;
+}
+.proj-row:hover{background:rgba(194,65,12,.04);padding-left:1rem}
+.proj-row .idx{font-family:'Archivo',sans-serif;font-weight:700;color:var(--muted);font-size:.9rem}
+.proj-row .nm{font-family:'Archivo',sans-serif;font-weight:600;font-size:clamp(1.05rem,2vw,1.4rem);letter-spacing:-.01em}
+.proj-row .meta{font-size:.82rem;color:var(--muted);letter-spacing:.04em;text-align:right;white-space:nowrap}
+.proj-row .meta .arr{color:var(--accent);opacity:0;transition:opacity .3s ease;margin-left:.6rem}
+.proj-row:hover .meta .arr,.proj-row:focus-visible .meta .arr{opacity:1}
+
+.proj-grid{
+  grid-column:1 / -1;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(.75rem,2vw,1.5rem);
+  margin-top:clamp(2.5rem,5vw,4rem);
+}
+@media (max-width:900px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.proj-grid{grid-template-columns:1fr}}
+.card{display:block;position:relative}
+.card .frame{
+  position:relative;aspect-ratio:4/5;overflow:hidden;
+  background:linear-gradient(135deg,#e9e8e2 0%,#d8d7d0 50%,#cfceC6 100%);
+  border:1px solid var(--hair);
+}
+.card .frame img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s ease;
+  filter:grayscale(100%) contrast(1.02);
+}
+.card:hover .frame img,.card:focus-visible .frame img{transform:scale(1.05);filter:grayscale(0%)}
+.card .overlay{
+  position:absolute;inset:0;
+  display:flex;align-items:flex-end;
+  padding:1rem;
+  background:linear-gradient(to top,rgba(17,17,17,.55),transparent 55%);
+  opacity:0;transition:opacity .4s ease;
+}
+.card:hover .overlay,.card:focus-visible .overlay{opacity:1}
+.card .overlay span{color:#fff;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase}
+.card .cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.75rem;padding-bottom:.4rem;border-bottom:1px solid var(--hair)}
+.card .cap .t{font-family:'Archivo',sans-serif;font-weight:600;font-size:1.02rem}
+.card .cap .y{font-size:.8rem;color:var(--muted)}
+.card .loc{font-size:.8rem;color:var(--muted);margin-top:.4rem;letter-spacing:.03em}
+
+/* ---------- about / manifest split ---------- */
+.about .grid{align-items:start}
+.about .manifest{grid-column:1 / span 6}
+.about .body{grid-column:8 / -1}
+@media (max-width:760px){.about .manifest,.about .body{grid-column:1 / -1}}
+.about .manifest p{
+  font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1.18;letter-spacing:-.015em;
+}
+.about .manifest p em{font-style:normal;color:var(--accent)}
+.about .body p{color:var(--muted);margin-bottom:1.1rem;max-width:48ch}
+.about .body p:first-child{color:var(--ink);font-weight:500}
+
+/* ---------- werkwijze ---------- */
+.steps{grid-column:1 / -1;border-top:1px solid var(--ink)}
+.step{
+  display:grid;
+  grid-template-columns:repeat(var(--grid),1fr);
+  column-gap:clamp(.75rem,2vw,1.5rem);
+  padding:clamp(1.5rem,3vw,2.5rem) 0;
+  border-bottom:1px solid var(--hair);
+  align-items:start;
+}
+.step .n{grid-column:1 / span 2}
+.step .n span{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(2rem,4.5vw,3.5rem);letter-spacing:-.03em;line-height:.85}
+.step .n span b{color:var(--accent);font-weight:800}
+.step .h{grid-column:3 / span 4}
+.step .h h3{font-family:'Archivo',sans-serif;font-weight:600;font-size:clamp(1.1rem,2vw,1.5rem);letter-spacing:-.01em}
+.step .d{grid-column:8 / -1;color:var(--muted);font-size:.95rem;max-width:46ch}
+@media (max-width:760px){
+  .step{grid-template-columns:1fr;gap:.6rem}
+  .step .n,.step .h,.step .d{grid-column:1}
+}
+
+/* ---------- stats / team ---------- */
+.stats{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--hair)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:clamp(1.5rem,3vw,2.25rem) clamp(1rem,2vw,1.5rem);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.stat .k{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1}
+.stat .k sup{color:var(--accent);font-size:.45em;vertical-align:super}
+.stat .v{font-size:.8rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:.75rem}
+
+.team{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.75rem,2vw,1.5rem);margin-top:clamp(2.5rem,5vw,4rem)}
+@media (max-width:900px){.team{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.team{grid-template-columns:1fr}}
+.member .pf{aspect-ratio:1/1;background:linear-gradient(135deg,#e9e8e2,#d3d2cb);border:1px solid var(--hair);overflow:hidden;position:relative}
+.member .pf img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter .5s ease}
+.member:hover .pf img{filter:grayscale(0%)}
+.member .nm{font-family:'Archivo',sans-serif;font-weight:600;margin-top:.7rem;font-size:1rem}
+.member .rl{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+
+/* ---------- contact ---------- */
+.contact .grid{align-items:start}
+.contact .info{grid-column:1 / span 5}
+.contact .formwrap{grid-column:7 / -1}
+@media (max-width:760px){.contact .info,.contact .formwrap{grid-column:1 / -1}.contact .formwrap{margin-top:2.5rem}}
+.contact .info .big{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.3rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:1.75rem}
+.contact .info dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.25rem;font-size:.92rem}
+.contact .info dt{color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-size:.72rem;align-self:center}
+.contact .info dd{font-weight:500}
+.contact .info dd a:hover{color:var(--accent)}
+
+form .field{margin-bottom:1.25rem}
+form label{display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;font-weight:600}
+form input,form textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid var(--hair);
+  padding:.65rem 0;font-family:'Inter',sans-serif;font-size:1rem;color:var(--ink);
+  transition:border-color .3s ease;
+}
+form input:focus,form textarea:focus{outline:none;border-bottom-color:var(--accent)}
+form textarea{resize:vertical;min-height:5rem}
+form .err{display:block;color:var(--accent);font-size:.75rem;margin-top:.4rem;min-height:1rem;letter-spacing:.02em}
+form .field.invalid input,form .field.invalid textarea{border-bottom-color:var(--accent)}
+button.submit{
+  margin-top:.5rem;background:var(--ink);color:#fff;border:0;
+  padding:1rem 2rem;font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.75rem;transition:background .3s ease;
+}
+button.submit:hover{background:var(--accent)}
+button.submit .sq{width:.5rem;height:.5rem;background:var(--accent);transition:background .3s ease}
+button.submit:hover .sq{background:#fff}
+.formnote{font-size:.82rem;color:var(--muted);margin-top:1rem}
+.formsuccess{display:none;border:1px solid var(--accent);padding:1.25rem;margin-top:1.25rem;font-size:.92rem}
+.formsuccess.show{display:block}
+
+/* ---------- footer ---------- */
+footer.site{background:var(--ink);color:var(--paper);padding:clamp(3rem,6vw,5rem) 0 2rem}
+footer.site .grid{row-gap:2.5rem}
+footer .fbrand{grid-column:1 / span 5}
+@media (max-width:760px){footer .fbrand{grid-column:1 / -1}}
+footer .fbrand .wm{font-family:'Archivo',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.02em;display:flex;align-items:center;gap:.5rem}
+footer .fbrand .wm .sq{width:.6rem;height:.6rem;background:var(--accent);display:inline-block}
+footer .fbrand p{color:#9d9d97;margin-top:1rem;max-width:32ch;font-size:.92rem}
+footer .fcol{grid-column:span 3}
+@media (max-width:760px){footer .fcol{grid-column:span 6}}
+footer .fcol h4{font-family:'Archivo',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#9d9d97;margin-bottom:1rem;font-weight:600}
+footer .fcol ul{list-style:none}
+footer .fcol li{margin-bottom:.55rem}
+footer .fcol a{font-size:.92rem;color:var(--paper)}
+footer .fcol a:hover{color:var(--accent)}
+footer .fine{grid-column:1 / -1;border-top:1px solid #2b2b2b;padding-top:1.5rem;margin-top:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer .fine,footer .fine *{font-size:.76rem;color:#7d7d77;letter-spacing:.03em}
+footer .fine a:hover{color:var(--accent)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .card .frame img,.proj-row,.card,.member .pf img{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Naar hoofdinhoud</a>
+
+<header class="site">
+  <div class="shell site-inner">
+    <a class="wordmark" href="#top" aria-label="Atrium — naar boven">
+      <span class="sq" aria-hidden="true"></span>Atrium
+      <small>architectuur &amp; interieur</small>
+    </a>
+    <nav class="primary" aria-label="Hoofdnavigatie">
+      <ul>
+        <li><a href="#projecten">Projecten</a></li>
+        <li><a href="#over">Bureau</a></li>
+        <li><a href="#werkwijze">Werkwijze</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="mobilenav">Menu</button>
+  </div>
+  <nav class="mobile" id="mobilenav" aria-label="Mobiele navigatie">
+    <ul>
+      <li><a href="#projecten">Projecten</a></li>
+      <li><a href="#over">Bureau</a></li>
+      <li><a href="#werkwijze">Werkwijze</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero rulebed" aria-labelledby="hero-h">
+  <div class="shell">
+    <div class="grid">
+      <p class="eyebrow label">Architectenbureau — Amsterdam, sinds 2009</p>
+      <h1 id="hero-h">Ruimte met <em>discipline</em>, gebouwd op licht en lijn.</h1>
+      <p class="lede">Atrium ontwerpt woningen, herbestemmingen en interieurs. Wij werken kalm en precies — elk project begint bij de plek, de maat en het licht.</p>
+      <div class="metarow">
+        <div class="cell"><div class="k">15</div><div class="v">jaar praktijk</div></div>
+        <div class="cell"><div class="k">90+</div><div class="v">opgeleverde projecten</div></div>
+        <div class="cell"><div class="k">04</div><div class="v">disciplines</div></div>
+        <div class="cell"><div class="k">NL/BE</div><div class="v">werkgebied</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section alt rulebed" id="projecten" aria-labelledby="proj-h">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="num secnum">01<span class="dot">.</span></div>
+      <div class="title">
+        <p class="label">Geselecteerd werk</p>
+        <h2 id="proj-h">Projectenindex</h2>
+        <p>Een selectie woningen, herbestemmingen en interieurs — met plaats en jaar van oplevering.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="projects-index reveal">
+        <a class="proj-row" href="#contact"><span class="idx">01</span><span class="nm">Huis aan de Singel</span><span class="meta">Utrecht · 2024 — Woning<span class="arr" aria-hidden="true">→</span></span></a>
+        <a class="proj-row" href="#contact"><span class="idx">02</span><span class="nm">Pakhuis De Werf</span><span class="meta">Rotterdam · 2023 — Herbestemming<span class="arr" aria-hidden="true">→</span></span></a>
+        <a class="proj-row" href="#contact"><span class="idx">03</span><span class="nm">Atelierwoning Noord</span><span class="meta">Amsterdam · 2023 — Woning<span class="arr" aria-hidden="true">→</span></span></a>
+        <a class="proj-row" href="#contact"><span class="idx">04</span><span class="nm">Interieur Galerie K</span><span class="meta">Antwerpen · 2022 — Interieur<span class="arr" aria-hidden="true">→</span></span></a>
+        <a class="proj-row" href="#contact"><span class="idx">05</span><span class="nm">School in de Kerk</span><span class="meta">Haarlem · 2021 — Herbestemming<span class="arr" aria-hidden="true">→</span></span></a>
+        <a class="proj-row" href="#contact"><span class="idx">06</span><span class="nm">Dubbelhuis Vondel</span><span class="meta">Amsterdam · 2021 — Woning<span class="arr" aria-hidden="true">→</span></span></a>
+      </div>
+
+      <div class="proj-grid">
+        <a class="card reveal" href="#contact" aria-label="Huis aan de Singel, Utrecht, 2024">
+          <div class="frame"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=70" alt="Lichte woonruimte met grote raampartijen, Huis aan de Singel" loading="lazy" onerror="this.remove()"><div class="overlay"><span>Bekijk project →</span></div></div>
+          <div class="cap"><span class="t">Huis aan de Singel</span><span class="y">2024</span></div>
+          <div class="loc">Utrecht — Woning</div>
+        </a>
+        <a class="card reveal" href="#contact" aria-label="Pakhuis De Werf, Rotterdam, 2023">
+          <div class="frame"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=70" alt="Herbestemd pakhuis met ruwe materialen, Pakhuis De Werf" loading="lazy" onerror="this.remove()"><div class="overlay"><span>Bekijk project →</span></div></div>
+          <div class="cap"><span class="t">Pakhuis De Werf</span><span class="y">2023</span></div>
+          <div class="loc">Rotterdam — Herbestemming</div>
+        </a>
+        <a class="card reveal" href="#contact" aria-label="Atelierwoning Noord, Amsterdam, 2023">
+          <div class="frame"><img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=900&q=70" alt="Atelierwoning met dubbele hoogte en daglicht, Amsterdam Noord" loading="lazy" onerror="this.remove()"><div class="overlay"><span>Bekijk project →</span></div></div>
+          <div class="cap"><span class="t">Atelierwoning Noord</span><span class="y">2023</span></div>
+          <div class="loc">Amsterdam — Woning</div>
+        </a>
+        <a class="card reveal" href="#contact" aria-label="Interieur Galerie K, Antwerpen, 2022">
+          <div class="frame"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=70" alt="Minimalistisch galerie-interieur met witte wanden, Galerie K" loading="lazy" onerror="this.remove()"><div class="overlay"><span>Bekijk project →</span></div></div>
+          <div class="cap"><span class="t">Interieur Galerie K</span><span class="y">2022</span></div>
+          <div class="loc">Antwerpen — Interieur</div>
+        </a>
+        <a class="card reveal" href="#contact" aria-label="School in de Kerk, Haarlem, 2021">
+          <div class="frame"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=70" alt="Herbestemde kerk met nieuwe vloeren en trappen, Haarlem" loading="lazy" onerror="this.remove()"><div class="overlay"><span>Bekijk project →</span></div></div>
+          <div class="cap"><span class="t">School in de Kerk</span><span class="y">2021</span></div>
+          <div class="loc">Haarlem — Herbestemming</div>
+        </a>
+        <a class="card reveal" href="#contact" aria-label="Dubbelhuis Vondel, Amsterdam, 2021">
+          <div class="frame"><img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=900&q=70" alt="Twee samengevoegde stadswoningen met centrale trap, Vondel" loading="lazy" onerror="this.remove()"><div class="overlay"><span>Bekijk project →</span></div></div>
+          <div class="cap"><span class="t">Dubbelhuis Vondel</span><span class="y">2021</span></div>
+          <div class="loc">Amsterdam — Woning</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / MANIFEST -->
+<section class="section about rulebed" id="over" aria-labelledby="about-h">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="num secnum">02<span class="dot">.</span></div>
+      <div class="title">
+        <p class="label">Over het bureau</p>
+        <h2 id="about-h">Een kalme, intentionele praktijk</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="manifest reveal">
+        <p>Wij geloven dat goede architectuur <em>terughoudend</em> is. Niet luid, maar duurzaam — een raster van licht, maat en materiaal dat een leven lang meegaat.</p>
+      </div>
+      <div class="body reveal">
+        <p>Atrium is een onafhankelijk architectuur- en interieurbureau in Amsterdam, opgericht in 2009. Wij ontwerpen woningen, herbestemmingen en interieurs voor particulieren, instellingen en ontwikkelaars.</p>
+        <p>Elk project begint bij de plek: de oriëntatie, de bestaande structuur, het licht dat binnenvalt. Vanuit die analyse bouwen we een precieze, heldere logica op — van de stedenbouwkundige maat tot het detail van een deurkruk.</p>
+        <p>Wij werken in kleine teams, met aandacht en zonder haast. Liever één project goed dan tien projecten gehaast. Die discipline is geen beperking, maar onze methode.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WERKWIJZE -->
+<section class="section alt rulebed" id="werkwijze" aria-labelledby="wk-h">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="num secnum">03<span class="dot">.</span></div>
+      <div class="title">
+        <p class="label">Hoe wij werken</p>
+        <h2 id="wk-h">Werkwijze in vier fasen</h2>
+        <p>Een transparant proces, van eerste schets tot oplevering en nazorg.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="steps reveal">
+        <div class="step">
+          <div class="n"><span>0<b>1</b></span></div>
+          <div class="h"><h3>Analyse &amp; ambitie</h3></div>
+          <div class="d">We onderzoeken de plek, het programma en uw wensen. Een heldere ambitie en een realistisch budget vormen het fundament.</div>
+        </div>
+        <div class="step">
+          <div class="n"><span>0<b>2</b></span></div>
+          <div class="h"><h3>Ontwerp &amp; ruimte</h3></div>
+          <div class="d">Van schetsontwerp naar definitief ontwerp. Maquettes, plattegronden en materiaalstudies maken het ontwerp tastbaar.</div>
+        </div>
+        <div class="step">
+          <div class="n"><span>0<b>3</b></span></div>
+          <div class="h"><h3>Techniek &amp; vergunning</h3></div>
+          <div class="d">Technische uitwerking, bestek en vergunningsaanvraag. Wij coördineren adviseurs en bewaken de kwaliteit tot in het detail.</div>
+        </div>
+        <div class="step">
+          <div class="n"><span>0<b>4</b></span></div>
+          <div class="h"><h3>Uitvoering &amp; oplevering</h3></div>
+          <div class="d">Directievoering op de bouwplaats, oplevering en nazorg. Wij blijven betrokken tot de ruimte werkelijk klopt.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS + TEAM -->
+<section class="section rulebed" id="team" aria-labelledby="team-h">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="num secnum">04<span class="dot">.</span></div>
+      <div class="title">
+        <p class="label">Mensen &amp; cijfers</p>
+        <h2 id="team-h">Het team achter Atrium</h2>
+        <p>Een vast, klein team van architecten en ontwerpers — met een netwerk van vertrouwde adviseurs.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="stats reveal" role="list">
+        <div class="stat" role="listitem"><div class="k">2009</div><div class="v">opgericht</div></div>
+        <div class="stat" role="listitem"><div class="k">8</div><div class="v">vaste medewerkers</div></div>
+        <div class="stat" role="listitem"><div class="k">12<sup>×</sup></div><div class="v">prijzen &amp; nominaties</div></div>
+        <div class="stat" role="listitem"><div class="k">96<sup>%</sup></div><div class="v">tevreden opdrachtgevers</div></div>
+      </div>
+
+      <div class="team">
+        <div class="member reveal">
+          <div class="pf"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=70" alt="Portret van Maaike de Vries, oprichtend architect" loading="lazy" onerror="this.remove()"></div>
+          <div class="nm">Maaike de Vries</div><div class="rl">Oprichtend architect</div>
+        </div>
+        <div class="member reveal">
+          <div class="pf"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=70" alt="Portret van Joost Bakker, architect-partner" loading="lazy" onerror="this.remove()"></div>
+          <div class="nm">Joost Bakker</div><div class="rl">Architect-partner</div>
+        </div>
+        <div class="member reveal">
+          <div class="pf"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=70" alt="Portret van Sanne Visser, interieurontwerper" loading="lazy" onerror="this.remove()"></div>
+          <div class="nm">Sanne Visser</div><div class="rl">Interieurontwerper</div>
+        </div>
+        <div class="member reveal">
+          <div class="pf"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=70" alt="Portret van Daan Hoekstra, projectarchitect" loading="lazy" onerror="this.remove()"></div>
+          <div class="nm">Daan Hoekstra</div><div class="rl">Projectarchitect</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section alt contact rulebed" id="contact" aria-labelledby="ct-h">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="num secnum">05<span class="dot">.</span></div>
+      <div class="title">
+        <p class="label">Aan de slag</p>
+        <h2 id="ct-h">Een project bespreken?</h2>
+        <p>Vertel ons over uw plek en ambitie. Wij reageren doorgaans binnen twee werkdagen.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="info reveal">
+        <p class="big">Laten we beginnen bij de plek.</p>
+        <dl>
+          <dt>E-mail</dt><dd><a href="mailto:studio@atrium-arch.nl">studio@atrium-arch.nl</a></dd>
+          <dt>Telefoon</dt><dd><a href="tel:+31201234567">+31 (0)20 123 45 67</a></dd>
+          <dt>Studio</dt><dd>Prinsengracht 212, Amsterdam</dd>
+          <dt>Uren</dt><dd>Ma–vr, 09:00–17:30</dd>
+        </dl>
+      </div>
+      <div class="formwrap reveal">
+        <form id="contactform" novalidate>
+          <div class="field">
+            <label for="naam">Naam</label>
+            <input type="text" id="naam" name="naam" autocomplete="name" required>
+            <span class="err" data-for="naam" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <span class="err" data-for="email" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="onderwerp">Type project</label>
+            <input type="text" id="onderwerp" name="onderwerp" placeholder="Woning, herbestemming of interieur" required>
+            <span class="err" data-for="onderwerp" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="bericht">Bericht</label>
+            <textarea id="bericht" name="bericht" rows="4" required></textarea>
+            <span class="err" data-for="bericht" aria-live="polite"></span>
+          </div>
+          <button type="submit" class="submit"><span class="sq" aria-hidden="true"></span>Verstuur aanvraag</button>
+          <p class="formnote">Door te versturen gaat u akkoord met het verwerken van uw gegevens voor contact.</p>
+          <div class="formsuccess" id="formsuccess" role="status">Dank u — uw bericht is ontvangen. Wij nemen spoedig contact met u op.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site rulebed">
+  <div class="shell">
+    <div class="grid">
+      <div class="fbrand">
+        <div class="wm"><span class="sq" aria-hidden="true"></span>Atrium</div>
+        <p>Architectuur- en interieurstudio. Woningen, herbestemming en interieur — kalm, precies, intentioneel.</p>
+      </div>
+      <div class="fcol">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#over">Over het bureau</a></li>
+          <li><a href="#werkwijze">Werkwijze</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#projecten">Projecten</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:studio@atrium-arch.nl">studio@atrium-arch.nl</a></li>
+          <li><a href="tel:+31201234567">+31 (0)20 123 45 67</a></li>
+          <li><a href="#contact">Prinsengracht 212, Amsterdam</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Volg</h4>
+        <ul>
+          <li><a href="#contact">Instagram</a></li>
+          <li><a href="#contact">LinkedIn</a></li>
+          <li><a href="#contact">Nieuwsbrief</a></li>
+        </ul>
+      </div>
+      <div class="fine">
+        <span>© <span id="jaar">2026</span> Atrium architecten — KvK 12345678 — BTW NL001234567B01</span>
+        <span><a href="#top">Privacy</a> · <a href="#top">Voorwaarden</a> · <a href="#top">Naar boven ↑</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // year
+  var y=document.getElementById('jaar'); if(y){y.textContent=new Date().getFullYear();}
+
+  // mobile nav
+  var tog=document.getElementById('navtoggle'), mob=document.getElementById('mobilenav');
+  if(tog&&mob){
+    tog.addEventListener('click',function(){
+      var open=mob.classList.toggle('open');
+      tog.setAttribute('aria-expanded',open?'true':'false');
+    });
+    mob.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){mob.classList.remove('open');tog.setAttribute('aria-expanded','false');}
+    });
+  }
+
+  // reveal system
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var items=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver'in window)){
+    items.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+    items.forEach(function(el){io.observe(el);});
+  }
+
+  // form validation
+  var form=document.getElementById('contactform');
+  if(form){
+    var success=document.getElementById('formsuccess');
+    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    function setErr(field,msg){
+      var wrap=field.closest('.field');
+      var span=wrap.querySelector('.err');
+      if(msg){wrap.classList.add('invalid');field.setAttribute('aria-invalid','true');span.textContent=msg;}
+      else{wrap.classList.remove('invalid');field.removeAttribute('aria-invalid');span.textContent='';}
+    }
+    function validate(field){
+      var v=field.value.trim();
+      if(!v){setErr(field,'Dit veld is verplicht.');return false;}
+      if(field.type==='email'&&!emailRe.test(v)){setErr(field,'Vul een geldig e-mailadres in.');return false;}
+      setErr(field,'');return true;
+    }
+    var fields=Array.prototype.slice.call(form.querySelectorAll('input,textarea'));
+    fields.forEach(function(f){
+      f.addEventListener('blur',function(){validate(f);});
+      f.addEventListener('input',function(){if(f.closest('.field').classList.contains('invalid'))validate(f);});
+    });
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var ok=true, first=null;
+      fields.forEach(function(f){if(!validate(f)){ok=false;if(!first)first=f;}});
+      if(!ok){if(first)first.focus();if(success)success.classList.remove('show');return;}
+      form.reset();
+      if(success){success.classList.add('show');success.focus&&success.focus();}
+    });
+  }
+})();
+</script>
+</body>
+</html>
