@@ -59,6 +59,13 @@
   .swatch .hex{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase}
   .presets{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.55rem}
   .preset{width:24px;height:24px;border-radius:7px;border:1px solid var(--line-strong);cursor:pointer;padding:0}
+  .field > label .rngval{float:right;text-transform:none;letter-spacing:0;color:var(--muted)}
+  .rng{width:100%;-webkit-appearance:none;appearance:none;height:4px;border-radius:99px;background:var(--line-strong);cursor:pointer}
+  .rng::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:var(--violet);border:2px solid var(--surface);cursor:pointer}
+  .rng::-moz-range-thumb{width:16px;height:16px;border:2px solid var(--surface);border-radius:50%;background:var(--violet);cursor:pointer}
+  .seg--pane{display:flex;border:1px solid var(--line-strong);border-radius:99px;overflow:hidden}
+  .seg--pane button{flex:1;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;padding:.5rem .8rem;color:var(--muted);background:none;cursor:pointer;border:none}
+  .seg--pane button[aria-pressed=true]{background:var(--violet);color:#0a0a12}
   .preset:hover{transform:scale(1.12)}
   .actions{display:flex;flex-direction:column;gap:.6rem;margin-top:1.6rem}
   .btn{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:.8rem 1rem;border-radius:99px;cursor:pointer;border:1px solid transparent;text-align:center}
@@ -164,6 +171,22 @@
           </div>
           <div class="presets" id="presets"></div>
         </div>
+        <div class="group">Vorm &amp; sfeer</div>
+        <div class="field">
+          <label for="radius">Hoeken <span class="rngval" id="radiusVal">16px</span></label>
+          <input id="radius" class="rng" type="range" min="0" max="28" step="1" value="16">
+        </div>
+        <div class="field">
+          <label for="maxw">Content-breedte <span class="rngval" id="maxwVal">1440px</span></label>
+          <input id="maxw" class="rng" type="range" min="1080" max="1600" step="20" value="1440">
+        </div>
+        <div class="field">
+          <label>Sfeer</label>
+          <div class="seg seg--pane" role="group" aria-label="Licht of donker">
+            <button type="button" id="schLight" aria-pressed="true">Licht</button>
+            <button type="button" id="schDark" aria-pressed="false">Donker</button>
+          </div>
+        </div>
       </div>
 
       <div class="actions">
@@ -237,6 +260,10 @@
       { label: 'Outfit + Lora', grotesk: 'Outfit', serif: 'Lora', href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap' },
       { label: 'Jakarta + Fraunces', grotesk: 'Plus Jakarta Sans', serif: 'Fraunces', href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap' },
     ];
+    /* coherente licht/donker-paletten — overschrijven alleen de neutrale tokens, niet het accent */
+    var LIGHT_PAL = { '--bg':'#ffffff','--bg-2':'#f5f3ee','--surface':'#ffffff','--ink':'#16140f','--muted':'rgba(22,20,15,.62)','--faint':'rgba(22,20,15,.40)','--line':'rgba(22,20,15,.14)','--line-strong':'rgba(22,20,15,.26)' };
+    var DARK_PAL  = { '--bg':'#14130f','--bg-2':'#1d1b15','--surface':'#26231b','--ink':'#efeadf','--muted':'rgba(239,234,223,.64)','--faint':'rgba(239,234,223,.42)','--line':'rgba(239,234,223,.14)','--line-strong':'rgba(239,234,223,.26)' };
+    function isDarkBg(v){ if (!v) return false; var m = /#([0-9a-fA-F]{6})/.exec(String(v)); if (!m) return false; return luminance('#' + m[1]) < 0.4; }
     var $ = function(id){ return document.getElementById(id); };
     var assemble = null;
     var coreCss = '', coreJs = '';
@@ -267,6 +294,14 @@
       r.theme['--accent-2'] = ui.accent2;
       r.theme['--accent-soft'] = hexToRgba(ui.accent, 0.10);
       r.theme['--on-accent'] = onAccent(ui.accent);
+      if (ui.radius != null) { r.theme['--radius'] = ui.radius + 'px'; }
+      if (ui.maxw != null) { r.theme['--maxw'] = ui.maxw + 'px'; }
+      /* sfeer: alleen overschrijven als de gebruiker afwijkt van het oorspronkelijke schema */
+      var nativeDark = isDarkBg((work.theme || {})['--bg']);
+      if (ui.dark != null && ui.dark !== nativeDark) {
+        var pal = ui.dark ? DARK_PAL : LIGHT_PAL;
+        for (var k in pal) { if (pal.hasOwnProperty(k)) { r.theme[k] = pal[k]; } }
+      }
       return r;
     }
 
@@ -282,11 +317,17 @@
       $('accent').value = ui.accent; $('accentHex').textContent = ui.accent;
       $('accent2').value = ui.accent2; $('accent2Hex').textContent = ui.accent2;
       var fs = $('fontSel'); if (fs) { fs.value = String(ui.font || 0); }
+      var rd = $('radius'); if (rd) { rd.value = ui.radius; $('radiusVal').textContent = ui.radius + 'px'; }
+      var mw = $('maxw'); if (mw) { mw.value = ui.maxw; $('maxwVal').textContent = ui.maxw + 'px'; }
+      var sl = $('schLight'), sd = $('schDark');
+      if (sl) { sl.setAttribute('aria-pressed', ui.dark ? 'false' : 'true'); }
+      if (sd) { sd.setAttribute('aria-pressed', ui.dark ? 'true' : 'false'); }
     }
 
     function uiFromRecipe(r){
       var t = r.theme || {};
-      return { accent: t['--accent'] || '#a06bff', accent2: t['--accent-2'] || t['--accent'] || '#a06bff', font: 0 };
+      return { accent: t['--accent'] || '#a06bff', accent2: t['--accent-2'] || t['--accent'] || '#a06bff', font: 0,
+               radius: parseInt(t['--radius'], 10) || 16, maxw: parseInt(t['--maxw'], 10) || 1440, dark: isDarkBg(t['--bg']) };
     }
 
     /* ============== generieke content-builder ============== */
@@ -629,6 +670,12 @@
       }
       $('accent').addEventListener('input', function(){ ui.accent = this.value; $('accentHex').textContent = this.value; changed(); });
       $('accent2').addEventListener('input', function(){ ui.accent2 = this.value; $('accent2Hex').textContent = this.value; changed(); });
+      var rd = $('radius'); if (rd) { rd.addEventListener('input', function(){ ui.radius = parseInt(this.value, 10); $('radiusVal').textContent = ui.radius + 'px'; changed(); }); }
+      var mw = $('maxw'); if (mw) { mw.addEventListener('input', function(){ ui.maxw = parseInt(this.value, 10); $('maxwVal').textContent = ui.maxw + 'px'; changed(); }); }
+      var sl = $('schLight'), sd = $('schDark');
+      function setScheme(dark){ ui.dark = dark; if (sl) { sl.setAttribute('aria-pressed', dark ? 'false' : 'true'); } if (sd) { sd.setAttribute('aria-pressed', dark ? 'true' : 'false'); } changed(); }
+      if (sl) { sl.addEventListener('click', function(){ setScheme(false); }); }
+      if (sd) { sd.addEventListener('click', function(){ setScheme(true); }); }
 
       sel.addEventListener('change', function(){ var url = new URL(location.href); url.searchParams.set('t', sel.value); url.searchParams.delete('s'); history.replaceState(null, '', url); loadRecipe(sel.value); });
       $('download').addEventListener('click', download);
