@@ -3,3 +3,6 @@ node_modules/
 
 # test-screenshots (verificatie-artefacten, geen onderdeel van de site)
 screenshot-*.png
+
+# full-page screenshot-artefacten (lokaal gegenereerd via _kit/shot.mjs, geen onderdeel van de site)
+screenshots/
