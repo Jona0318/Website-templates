@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bron — 112 kant-en-klare websites</title>
-<meta name="description" content="Een verzameling van 112 complete, responsive website-templates: van basis tot premium en flagship, plus een rij signature-designs met live canvas-interactie en een aanpasbare starter. Filter, zoek en bekijk ze allemaal.">
+<title>Bron — 154 kant-en-klare websites</title>
+<meta name="description" content="Een verzameling van 154 complete, responsive website-templates: van basis tot premium en flagship, plus een rij signature-designs met live canvas-interactie en een aanpasbare starter. Filter, zoek en bekijk ze allemaal.">
 <meta name="theme-color" content="#0a0a12">
 <link rel="canonical" href="https://template-rh4.pages.dev/">
 <meta property="og:url" content="https://template-rh4.pages.dev/">
 <meta property="og:site_name" content="Bron">
-<meta property="og:title" content="Bron — 112 kant-en-klare websites">
-<meta property="og:description" content="112 complete, responsive templates — pure HTML/CSS/JS, geen build-tools. Filter, zoek en open ze direct.">
+<meta property="og:title" content="Bron — 154 kant-en-klare websites">
+<meta property="og:description" content="154 complete, responsive templates — pure HTML/CSS/JS, geen build-tools. Filter, zoek en open ze direct.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="previews/19-studio.jpg">
 <meta property="og:image:alt" content="Voorbeeld uit de Bron: flagship Studio Kaap.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bron — 112 kant-en-klare websites">
-<meta name="twitter:description" content="112 complete, responsive templates — pure HTML/CSS/JS, geen build-tools.">
+<meta name="twitter:title" content="Bron — 154 kant-en-klare websites">
+<meta name="twitter:description" content="154 complete, responsive templates — pure HTML/CSS/JS, geen build-tools.">
 <meta name="twitter:image" content="previews/19-studio.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -223,17 +223,42 @@ html.anim-ok .hero .pills{animation-delay:.5s}
 .thumb .dl:hover{background:var(--violet)}
 .thumb .dl svg{width:15px;height:15px}
 @media (hover:none){.thumb .dl{opacity:1;transform:none}}
-.thumb .edit{position:absolute;bottom:.7rem;right:3.2rem;z-index:3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background-color .2s}
+.thumb .edit{position:absolute;bottom:.7rem;right:5.7rem;z-index:3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background-color .2s}
 .card:hover .thumb .edit,.thumb .edit:focus-visible{opacity:1;transform:none}
 .thumb .edit:hover{background:var(--violet)}
 .thumb .edit svg{width:15px;height:15px}
 @media (hover:none){.thumb .edit{opacity:1;transform:none}}
+.thumb .preview-btn{position:absolute;bottom:.7rem;right:3.2rem;z-index:3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:none;cursor:pointer;color:#fff;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background-color .2s}
+.card:hover .thumb .preview-btn,.thumb .preview-btn:focus-visible{opacity:1;transform:none}
+.thumb .preview-btn:hover{background:var(--violet)}
+.thumb .preview-btn svg{width:16px;height:16px}
+@media (hover:none){.thumb .preview-btn{opacity:1;transform:none}}
 .thumb .fav-btn{position:absolute;bottom:.7rem;left:.8rem;z-index:3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:none;cursor:pointer;color:#fff;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background-color .2s}
 .card:hover .thumb .fav-btn,.thumb .fav-btn:focus-visible,.thumb .fav-btn.is-fav{opacity:1;transform:none}
 .thumb .fav-btn:hover,.thumb .fav-btn.is-fav{background:var(--pink)}
 .thumb .fav-btn svg{width:14px;height:14px}
 .thumb .fav-btn.is-fav svg{fill:currentColor}
 @media (hover:none){.thumb .fav-btn{opacity:1;transform:none}}
+/* ---- live preview-lightbox ---- */
+.pv-modal{position:fixed;inset:0;z-index:200;display:none;padding:clamp(.6rem,2.5vw,2rem);background:rgba(6,6,12,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transition:opacity .25s var(--ease)}
+.pv-modal.is-open{display:flex;align-items:center;justify-content:center;opacity:1}
+.pv-dialog{display:flex;flex-direction:column;width:min(1180px,100%);height:min(860px,100%);background:var(--surface,#15151f);border:1px solid var(--line-strong,rgba(255,255,255,.16));border-radius:16px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55);transform:translateY(12px) scale(.985);transition:transform .3s var(--ease)}
+.pv-modal.is-open .pv-dialog{transform:none}
+.pv-bar{display:flex;align-items:center;gap:.7rem;padding:.65rem .8rem;border-bottom:1px solid var(--line,rgba(255,255,255,.09));flex-wrap:wrap}
+.pv-bar .pv-title{font-family:var(--f-display);font-weight:700;font-size:1rem;letter-spacing:-.01em;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+.pv-seg{display:inline-flex;border:1px solid var(--line-strong,rgba(255,255,255,.16));border-radius:99px;overflow:hidden}
+.pv-seg button{padding:.4rem .8rem;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text);background:transparent;border:none;cursor:pointer;transition:background-color .2s,color .2s}
+.pv-seg button[aria-pressed="true"]{background:var(--violet,#6a5bff);color:#fff}
+.pv-act{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .85rem;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text);text-decoration:none;background:transparent;border:1px solid var(--line-strong,rgba(255,255,255,.16));border-radius:99px;cursor:pointer;transition:border-color .2s,color .2s}
+.pv-act:hover{border-color:var(--violet,#6a5bff);color:#fff}
+.pv-act svg{width:13px;height:13px}
+.pv-close{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-strong,rgba(255,255,255,.16));background:transparent;color:var(--text);cursor:pointer;transition:background-color .2s,border-color .2s}
+.pv-close:hover{background:var(--violet,#6a5bff);border-color:var(--violet,#6a5bff);color:#fff}
+.pv-close svg{width:16px;height:16px}
+.pv-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:repeating-conic-gradient(rgba(255,255,255,.025) 0% 25%,transparent 0% 50%) 0/22px 22px}
+.pv-frame{width:100%;height:100%;border:0;background:#fff;transition:width .3s var(--ease),max-height .3s var(--ease),border-radius .3s var(--ease)}
+.pv-stage.is-mobile .pv-frame{width:390px;max-width:100%;max-height:calc(100% - 1.4rem);border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.4)}
+@media (max-width:640px){.pv-bar .pv-title{max-width:100%;width:100%;order:-1}.pv-seg{display:none}}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none}
 .card:hover .thumb::after{transform:translateX(120%)}
 .body{display:flex;flex-direction:column;flex:1;padding:1.2rem 1.3rem 1.35rem;gap:.5rem}
@@ -324,7 +349,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
 <main id="top">
   <section class="hero" aria-label="Introductie">
     <div class="wrap">
-      <span class="eyebrow" id="eyebrow"><span class="live" aria-hidden="true"></span><span id="eyebrow-count">101</span> kant-en-klare websites · pure HTML/CSS/JS</span>
+      <span class="eyebrow" id="eyebrow"><span class="live" aria-hidden="true"></span><span id="eyebrow-count">154</span> kant-en-klare websites · pure HTML/CSS/JS</span>
       <h1>Kant-en-klare <span class="grad">website-templates.</span></h1>
       <p class="lead">Van strakke bedrijfssites tot premium animaties, twee flagships en signature-designs met live canvas. Klik, kopieer, klaar — geen build-tools nodig.</p>
       <div class="hero-cta">
@@ -401,7 +426,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     <div class="wrap">
       <div>
         <a class="brand" href="#top" aria-label="Bron"><span class="dot" aria-hidden="true"></span>Bron</a>
-        <p class="blurb">112 complete, responsive templates — pure HTML, CSS en JavaScript, zonder build-tools of dependencies. Elke template staat in zijn eigen map onder <code>templates/</code>. De nieuwste worden gebouwd uit korte recepten met een gedeelde kern (<code>_kit/</code>).</p>
+        <p class="blurb">154 complete, responsive templates — pure HTML, CSS en JavaScript, zonder build-tools of dependencies. Elke template staat in zijn eigen map onder <code>templates/</code>. De nieuwste worden gebouwd uit korte recepten met een gedeelde kern (<code>_kit/</code>).</p>
       </div>
       <div>
         <h4>In de collectie</h4>
@@ -427,6 +452,91 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     </div>
   </footer>
 </main>
+
+<div class="pv-modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="pvTitle" aria-hidden="true">
+  <div class="pv-dialog">
+    <div class="pv-bar">
+      <span class="pv-title" id="pvTitle">Preview</span>
+      <div class="pv-seg" role="group" aria-label="Previewbreedte">
+        <button type="button" data-device="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-device="mobile" aria-pressed="false">Mobiel</button>
+      </div>
+      <a class="pv-act" id="pvOpen" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M9.5 2.5H14V7M14 2.5 7.5 9"/></svg>
+        Open
+      </a>
+      <a class="pv-act" id="pvDl" href="#" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13h10"/></svg>
+        Zip
+      </a>
+      <button type="button" class="pv-close" id="pvClose" aria-label="Sluit preview">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+      </button>
+    </div>
+    <div class="pv-stage" id="pvStage">
+      <iframe class="pv-frame" id="pvFrame" title="Live preview van de geselecteerde template" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---- live preview-lightbox: opent de echte template in een iframe ---- */
+(function () {
+  var doc = document;
+  var modal = doc.getElementById('previewModal');
+  var grid = doc.getElementById('grid');
+  if (!modal || !grid) { return; }
+  var frame = doc.getElementById('pvFrame');
+  var titleEl = doc.getElementById('pvTitle');
+  var openLink = doc.getElementById('pvOpen');
+  var dlLink = doc.getElementById('pvDl');
+  var stage = doc.getElementById('pvStage');
+  var closeBtn = doc.getElementById('pvClose');
+  var deviceBtns = Array.prototype.slice.call(modal.querySelectorAll('[data-device]'));
+  var lastFocus = null;
+
+  function setDevice(mode) {
+    stage.classList.toggle('is-mobile', mode === 'mobile');
+    deviceBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-device') === mode ? 'true' : 'false'); });
+  }
+  function open(card) {
+    var href = card.getAttribute('data-href');
+    if (!href) { return; }
+    lastFocus = doc.activeElement;
+    titleEl.textContent = card.getAttribute('data-title-display') || card.querySelector('h3') && card.querySelector('h3').textContent || 'Preview';
+    openLink.href = href;
+    var dl = card.getAttribute('data-dl');
+    if (dl) { dlLink.href = dl; dlLink.hidden = false; } else { dlLink.hidden = true; }
+    setDevice('desktop');
+    frame.src = href;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    doc.documentElement.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    doc.documentElement.style.overflow = '';
+    frame.src = 'about:blank';
+    if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
+  }
+
+  grid.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest ? e.target.closest('[data-preview]') : null;
+    if (!btn || !grid.contains(btn)) { return; }
+    e.preventDefault(); e.stopPropagation();
+    var card = btn.closest('.card');
+    if (card) { open(card); }
+  });
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', function (e) { if (e.target === modal) { close(); } });
+  deviceBtns.forEach(function (b) { b.addEventListener('click', function () { setDevice(b.getAttribute('data-device')); }); });
+  doc.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) { close(); }
+  });
+})();
+</script>
 
 <script>
 (function () {
@@ -639,6 +749,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     card.setAttribute('data-id', String(parseInt(num, 10)));
     card.setAttribute('data-title', title.toLowerCase());
     card.setAttribute('data-href', href);
+    card.setAttribute('data-dl', dlHref);
     card.setAttribute('data-text', (title + ' ' + desc + ' ' + TIERS[tier].label + ' ' + sector + ' ' + tags.join(' ')).toLowerCase());
     card.setAttribute('data-tags', tags.map(function (t) { return t.toLowerCase(); }).join('|'));
     card.setAttribute('data-slug', slug);
@@ -660,6 +771,9 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
         '<a class="dl" href="' + dlHref + '" download aria-label="Download ' + esc(title) + ' als zip" title="Download als zip">' +
           '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13h10"/></svg>' +
         '</a>' +
+        '<button type="button" class="preview-btn" data-preview aria-label="Bekijk een live preview van ' + esc(title) + '" title="Live preview">' +
+          '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8s2.5-4.7 7-4.7S15 8 15 8s-2.5 4.7-7 4.7S1 8 1 8z"/><circle cx="8" cy="8" r="2"/></svg>' +
+        '</button>' +
         (RECIPE_SLUGS.indexOf(slug) !== -1 ?
           '<a class="edit" href="studio.html?t=' + slug + '" aria-label="Personaliseer ' + esc(title) + ' in de Studio" title="Personaliseer in Studio">' +
           '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 2.5 13.5 5 6 12.5 3 13l.5-3z"/></svg>' +
