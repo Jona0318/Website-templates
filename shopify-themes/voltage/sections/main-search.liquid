@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section__intro text-center">
+      <span class="eyebrow">{{ 'general.search.search' | t }}</span>
+      <h1>{{ 'general.search.search' | t }}</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search" style="max-width:480px;margin:1.5rem auto 0;display:flex;gap:0.5rem;">
+        <input type="search" name="q" value="{{ search.terms | escape }}"
+               placeholder="{{ 'general.search.placeholder' | t }}"
+               style="flex:1;background:var(--color-surface);color:var(--color-text);border:1px solid var(--color-border);padding:0.9rem 1rem;border-radius:var(--radius);">
+        <button type="submit" class="btn btn--primary">{{ 'general.search.search' | t }}</button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      <p class="text-center" style="color:var(--color-text-muted);margin-bottom:2.5rem;">
+        {{ 'general.search.results_with_count' | t: count: search.results_count }}
+      </p>
+      {%- if search.results.size > 0 -%}
+        <div class="product-grid" style="--grid-cols: 4;">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- else -%}
+              <a href="{{ item.url }}" class="product-card">
+                <div class="product-card__body" style="justify-content:center;min-height:120px;">
+                  <span class="product-card__title">{{ item.title }}</span>
+                </div>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="empty-state">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search results",
+  "settings": []
+}
+{% endschema %}

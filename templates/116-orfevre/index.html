@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orfèvre — luxe Shopify-thema voor sieraden (ivoor × goud)</title>
+<meta name="description" content="Orfèvre: een verfijnd, symmetrisch Shopify-thema voor een luxe sieradenhuis. Ivoor palet met goud-accent (#B8902E), direct importeerbaar als .zip.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23FAF6EF'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='%23B8902E' font-family='serif'>O</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
+  :root{
+    --bg:#FAF6EF; --surface:#FFFFFF; --text:#1B1611; --muted:#6E6557;
+    --accent:#B8902E; --accent-text:#FFFFFF; --border:#E8E0D0;
+    --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);font-weight:300;color:var(--text);background:var(--bg);line-height:1.8;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;margin:0}
+  p{margin:0}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  .wrap{max-width:1180px;margin-inline:auto;padding-inline:28px}
+  .center{text-align:center}
+  .eyebrow{display:block;text-transform:uppercase;letter-spacing:.42em;font-size:.66rem;font-weight:400;color:var(--accent);margin-bottom:1.4rem}
+  .divider{width:1px;height:54px;background:var(--accent);margin:1.6rem auto}
+  .divider--h{width:70px;height:1px;background:var(--accent);margin:1.6rem auto}
+  .section{padding-block:clamp(64px,10vw,128px)}
+
+  /* refined centered buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:1rem 2.6rem;font-family:var(--sans);font-weight:400;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;cursor:pointer;border:1px solid var(--accent);background:transparent;color:var(--text);transition:.35s ease}
+  .btn--solid{background:var(--accent);color:var(--accent-text)}
+  .btn--solid:hover{background:transparent;color:var(--accent)}
+  .btn--line{color:var(--text)}
+  .btn--line:hover{background:var(--accent);color:var(--accent-text)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:var(--text);color:var(--bg);text-align:center;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;padding:.7rem 1rem}
+  .ribbon a{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px}
+  .ribbon a:hover{color:var(--bg);border-color:var(--bg)}
+
+  /* announce */
+  .announce{text-align:center;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);padding:.8rem 1rem;background:var(--bg)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(250,246,239,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:92px}
+  .nav__left{justify-self:start}
+  .nav__right{justify-self:end}
+  .menu{display:flex;gap:2.4rem}
+  .menu a{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);position:relative;padding-bottom:3px}
+  .menu a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:1px;background:var(--accent);transition:.3s ease;transform:translateX(-50%)}
+  .menu a:hover{color:var(--text)} .menu a:hover::after{width:100%}
+  .logo{font-family:var(--serif);font-size:1.7rem;letter-spacing:.18em;text-align:center}
+  .icons{display:flex;gap:1.3rem;align-items:center}
+  .icons button{background:none;border:0;color:inherit;padding:0;cursor:pointer;display:inline-flex;align-items:center}
+  .icons svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.4}
+  .cart{position:relative}
+  .cart-count{position:absolute;top:-8px;right:-9px;background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.6rem;min-width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px;font-family:var(--sans)}
+
+  /* hairline frame helper */
+  .frame{position:relative;padding:14px}
+  .frame::before{content:"";position:absolute;inset:0;border:1px solid var(--accent);pointer-events:none;z-index:3}
+  .frame__media{position:relative;overflow:hidden;background:
+     radial-gradient(80% 70% at 50% 30%,rgba(184,144,46,.16),transparent 65%),
+     linear-gradient(160deg,#F4EDDD,#EBE2D0)}
+  .frame__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+  /* hero */
+  .hero{padding-block:clamp(56px,9vw,108px)}
+  .hero__inner{max-width:760px;margin:0 auto;text-align:center}
+  .hero h1{font-size:clamp(2.6rem,6.5vw,5rem);letter-spacing:.01em}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p{color:var(--muted);font-size:1.05rem;max-width:480px;margin:1.6rem auto 2.4rem}
+  .hero .cta{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap}
+  .hero__media{max-width:880px;margin:clamp(40px,6vw,72px) auto 0}
+  .hero__media .frame__media{aspect-ratio:16/9}
+
+  /* trust */
+  .trust{border-block:1px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{text-align:center;padding:2.4rem 1.2rem;border-left:1px solid var(--border)}
+  .trust__item:first-child{border-left:0}
+  .trust__item svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.2;margin:0 auto .9rem}
+  .trust__item strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.02rem;letter-spacing:.02em}
+  .trust__item span{display:block;color:var(--muted);font-size:.74rem;letter-spacing:.06em;margin-top:.2rem}
+
+  /* section head */
+  .head{max-width:560px;margin:0 auto 4rem;text-align:center}
+  .head h2{font-size:clamp(2rem,4vw,3rem)}
+  .head p{color:var(--muted);margin-top:1rem}
+
+  /* products */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px)}
+  .card{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .card__media{width:100%;position:relative;padding:10px}
+  .card__media::before{content:"";position:absolute;inset:0;border:1px solid var(--border);transition:.4s ease;z-index:3;pointer-events:none}
+  .card:hover .card__media::before{border-color:var(--accent)}
+  .card__inner{position:relative;overflow:hidden;aspect-ratio:1/1;background:
+     radial-gradient(80% 70% at 50% 35%,rgba(184,144,46,.16),transparent 65%),linear-gradient(160deg,#F4EDDD,#EBE2D0)}
+  .card__inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .card:hover .card__inner img{transform:scale(1.05)}
+  .card__badge{position:absolute;top:16px;left:50%;transform:translateX(-50%);background:var(--surface);color:var(--accent);border:1px solid var(--accent);font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.28rem .7rem;z-index:4}
+  .card__vendor{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:1.4rem}
+  .card__title{font-family:var(--serif);font-size:1.18rem;margin-top:.5rem;transition:.3s}
+  .card:hover .card__title{color:var(--accent)}
+  .card__price{margin-top:.5rem;color:var(--text);font-size:.92rem;letter-spacing:.04em}
+  .card__price s{color:var(--muted);margin-left:.5rem}
+
+  /* atelier split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .split .frame__media{aspect-ratio:4/5}
+  .split__content{text-align:center}
+  .split__content p{color:var(--muted);margin-top:1.2rem;margin-bottom:2rem}
+
+  /* import */
+  .import{text-align:center;max-width:860px;margin:0 auto}
+  .import p.lead{color:var(--muted);max-width:60ch;margin:1.2rem auto 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,32px);margin-top:3rem;counter-reset:s}
+  .step{text-align:center;padding:2rem 1.2rem;border:1px solid var(--border);background:var(--surface);transition:.35s}
+  .step:hover{border-color:var(--accent)}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);display:block;font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--accent);margin-bottom:.8rem}
+  .step strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.1rem;margin-bottom:.4rem}
+  .step span{color:var(--muted);font-size:.82rem;letter-spacing:.03em;line-height:1.7}
+  .import .btn{margin-top:3rem}
+
+  /* newsletter */
+  .news{text-align:center;max-width:560px;margin:0 auto}
+  .news p{color:var(--muted);margin-top:1rem}
+  .news__form{display:flex;gap:0;max-width:440px;margin:2.2rem auto 0;border:1px solid var(--accent)}
+  .news__form input{flex:1;background:var(--surface);color:var(--text);border:0;padding:1rem 1.3rem;font-family:var(--sans);font-weight:300;letter-spacing:.04em}
+  .news__form input:focus{outline:none}
+  .news__form button{border:0;border-left:1px solid var(--accent)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);padding-block:clamp(56px,7vw,88px) 2.4rem;background:var(--surface)}
+  .f-top{text-align:center}
+  .f-logo{font-family:var(--serif);font-size:1.8rem;letter-spacing:.18em}
+  .f-top p{color:var(--muted);max-width:440px;margin:1.2rem auto 0;font-size:.9rem}
+  .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;max-width:760px;margin:3.5rem auto 0;text-align:center}
+  .f-col h4{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-family:var(--sans);font-weight:400}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.7rem}
+  .f-col a{font-size:.86rem;color:var(--muted);letter-spacing:.05em}
+  .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:3.5rem;padding-top:1.8rem;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+
+  @media(max-width:900px){
+    .nav{grid-template-columns:auto 1fr auto}
+    .menu{display:none}
+    .trust__grid{grid-template-columns:repeat(2,1fr)}
+    .trust__item:nth-child(3){border-left:0}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:520px){
+    .grid{grid-template-columns:1fr}
+    .trust__grid{grid-template-columns:1fr}
+    .trust__item{border-left:0!important;border-top:1px solid var(--border)}
+    .trust__item:first-child{border-top:0}
+    .news__form{flex-direction:column}
+    .news__form button{border-left:0;border-top:1px solid var(--accent)}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/orfevre-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis gegraveerd — verzending vanaf €50</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <nav class="menu nav__left" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a>
+      <a href="#collecties">Collecties</a>
+      <a href="#import">Shopify</a>
+      <a href="#atelier">Atelier</a>
+    </nav>
+    <a class="logo" href="#" aria-label="Orfèvre home">Orfèvre</a>
+    <div class="icons nav__right">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelmand, 2 artikelen">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__inner">
+      <span class="eyebrow">Handgemaakt</span>
+      <h1>Sieraden, <em>gevat in goud</em></h1>
+      <span class="divider--h" aria-hidden="true"></span>
+      <p>Tijdloze stukken van edele metalen, met de hand vervaardigd in ons atelier.</p>
+      <div class="cta">
+        <a href="#shop" class="btn btn--solid">Shop de collectie</a>
+        <a href="#atelier" class="btn btn--line">Ons verhaal</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="frame">
+        <div class="frame__media">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80" alt="Verfijnde gouden sieraden gepresenteerd op een lichte ondergrond" loading="eager" onerror="this.remove()">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="trust__grid">
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24"><path d="M3 7h13l3 4h2v6H3z"/><circle cx="8" cy="17" r="1.5"/><circle cx="17" cy="17" r="1.5"/></svg>
+      <strong>Gratis verzending</strong><span>Bij orders boven €50</span>
+    </div>
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 8.2-7 10-4-1.8-7-5.6-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span>
+    </div>
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.7-5 2.7 1-5.5-4-3.9 5.5-.8z"/></svg>
+      <strong>Levenslange garantie</strong><span>Op edelmetaal</span>
+    </div>
+    <div class="trust__item">
+      <svg viewBox="0 0 24 24"><path d="M12 19l-7-7a4 4 0 1 1 5.7-5.7L12 7.6l1.3-1.3A4 4 0 1 1 19 12z"/></svg>
+      <strong>Gratis gravure</strong><span>Persoonlijk gemaakt</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head" id="collecties">
+      <span class="eyebrow">Bestsellers</span>
+      <h2>Uitgelichte stukken</h2>
+      <span class="divider--h" aria-hidden="true"></span>
+      <p>Met de hand geselecteerd uit onze collectie.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="#">
+        <div class="card__media"><div class="card__inner"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80" alt="Gouden ring" loading="lazy" onerror="this.remove()"></div></div>
+        <span class="card__vendor">Orfèvre</span>
+        <span class="card__title">Gouden Ring</span>
+        <span class="card__price">€ 189,00</span>
+      </a>
+      <a class="card" href="#">
+        <div class="card__media"><span class="card__badge">Nieuw</span><div class="card__inner"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Diamant collier" loading="lazy" onerror="this.remove()"></div></div>
+        <span class="card__vendor">Orfèvre</span>
+        <span class="card__title">Diamant Collier</span>
+        <span class="card__price">€ 349,00</span>
+      </a>
+      <a class="card" href="#">
+        <div class="card__media"><div class="card__inner"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=80" alt="Parel oorbellen" loading="lazy" onerror="this.remove()"></div></div>
+        <span class="card__vendor">Orfèvre</span>
+        <span class="card__title">Parel Oorbellen</span>
+        <span class="card__price">€ 129,00</span>
+      </a>
+      <a class="card" href="#">
+        <div class="card__media"><span class="card__badge">Sale</span><div class="card__inner"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=80" alt="Gouden armband" loading="lazy" onerror="this.remove()"></div></div>
+        <span class="card__vendor">Orfèvre</span>
+        <span class="card__title">Gouden Armband</span>
+        <span class="card__price">€ 159,00 <s>€ 199,00</s></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="atelier" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="frame">
+        <div class="frame__media">
+          <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=900&q=80" alt="Edelsmid aan het werk in het atelier" loading="lazy" onerror="this.remove()">
+        </div>
+      </div>
+      <div class="split__content">
+        <span class="eyebrow">Ons atelier</span>
+        <h2>Met de hand vervaardigd</h2>
+        <span class="divider--h" aria-hidden="true"></span>
+        <p>Elk sieraad begint als een schets en wordt met de hand gezet door onze edelsmeden. Wij geloven in stukken die generaties meegaan.</p>
+        <a href="#shop" class="btn btn--line">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2>Dit thema importeer je direct in Shopify</h2>
+      <span class="divider--h" aria-hidden="true"></span>
+      <p class="lead">Orfèvre is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code> en <code>locales/</code> in de root — dus Shopify accepteert hem meteen.</p>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #B8902E).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je sieraden toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+      <a class="btn btn--solid" href="../../downloads/orfevre-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Word lid van de inner circle</h2>
+      <span class="divider--h" aria-hidden="true"></span>
+      <p>Vroege toegang tot nieuwe collecties, privé-aanbiedingen en verhalen uit het atelier.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="nl-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="nl-email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--solid" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-logo">Orfèvre</div>
+      <p>Handgemaakte sieraden, gemaakt om te blijven. Een Shopify-thema in ivoor met goud-accent.</p>
+    </div>
+    <div class="f-grid">
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#">Alle sieraden</a></li><li><a href="#">Nieuw</a></li><li><a href="#">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#">Over ons</a></li><li><a href="#">Atelier</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Garantie</a></li></ul></div>
+    </div>
+    <div class="f-bottom">© 2026 Orfèvre. Alle rechten voorbehouden.</div>
+  </div>
+</footer>
+
+</body>
+</html>

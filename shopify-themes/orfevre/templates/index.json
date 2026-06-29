@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Handcrafted",
+        "heading": "Jewellery, <em>set in gold</em>",
+        "text": "Timeless pieces in precious metals, handcrafted in our atelier.",
+        "button_label": "Shop the collection",
+        "button_label_2": "Our story"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €50"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "Encrypted & protected"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Lifetime warranty",
+            "text": "On precious metals"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Free engraving",
+            "text": "Made personal"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured pieces",
+        "subheading": "Hand-picked from our collection.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our atelier",
+        "heading": "Crafted by hand",
+        "text": "<p>Every piece starts as a sketch and is hand-set by our goldsmiths. We believe in jewellery that lasts generations.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "The craft",
+        "heading": "For those who notice the detail",
+        "text": "<p>From the first design to the final polish we obsess over the details most overlook.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the inner circle",
+        "text": "Early access to new collections, private offers and stories from the atelier."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

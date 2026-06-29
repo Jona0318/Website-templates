@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "New gadgets",
+        "heading": "Tech with <em>golden details</em>",
+        "text": "Premium audio and accessories, designed for everyday life.",
+        "button_label": "Shop the collection",
+        "button_label_2": "View audio"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €50"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "Encrypted & protected"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "2-year warranty",
+            "text": "On all devices"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Next-day delivery",
+            "text": "Order before 10pm"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured products",
+        "subheading": "Hand-picked from our range.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our lab",
+        "heading": "Designed to perform",
+        "text": "<p>Every product is tested down to the smallest detail. We believe in tech that works — sleek, reliable and beautiful.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "The engineering",
+        "heading": "For those who notice the detail",
+        "text": "<p>From the first prototype to the final firmware we obsess over the details most overlook.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the club",
+        "text": "Early access to drops, private offers and product updates."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

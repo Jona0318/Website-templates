@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
-  "generated": "2026-06-16",
-  "count": 113,
+  "generated": "2026-06-29",
+  "count": 119,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5883,6 +5883,281 @@
           "Shopify",
           "Webshop",
           "Premium"
+        ]
+      }
+    },
+    {
+      "id": 115,
+      "slug": "115-velours",
+      "path": "templates/115-velours/",
+      "title": "Velours — mode Shopify-thema",
+      "name": "Velours",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/velours-shopify-theme.zip",
+      "palette": [
+        "#16131B",
+        "#C89B3C",
+        "#201C28",
+        "#F3EFEA",
+        "#322B3C"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Manrope"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor mode. Eigen look met goud-accent (#C89B3C). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Velours — mode Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify mode-thema in ink × goud (#C89B3C): hero, uitgelichte stuks, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🧥",
+        "grad": [
+          "#C89B3C",
+          "#16131B"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Mode"
+        ]
+      }
+    },
+    {
+      "id": 116,
+      "slug": "116-orfevre",
+      "path": "templates/116-orfevre/",
+      "title": "Orfèvre — sieraden Shopify-thema",
+      "name": "Orfèvre",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/orfevre-shopify-theme.zip",
+      "palette": [
+        "#FAF6EF",
+        "#B8902E",
+        "#FFFFFF",
+        "#1B1611",
+        "#E8E0D0"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Jost"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor sieraden. Eigen look met goud-accent (#B8902E). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Orfèvre — sieraden Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify sieraden-thema in ivoor × goud (#B8902E): hero, uitgelichte stukken, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "💍",
+        "grad": [
+          "#B8902E",
+          "#FAF6EF"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Sieraden"
+        ]
+      }
+    },
+    {
+      "id": 117,
+      "slug": "117-voltage",
+      "path": "templates/117-voltage/",
+      "title": "Voltage — elektronica Shopify-thema",
+      "name": "Voltage",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/voltage-shopify-theme.zip",
+      "palette": [
+        "#0C0E13",
+        "#D4A23A",
+        "#151922",
+        "#ECEFF5",
+        "#232A36"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor elektronica. Eigen look met goud-accent (#D4A23A). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Voltage — elektronica Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify elektronica-thema in zwart × goud (#D4A23A): hero, uitgelichte producten, lab-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🎧",
+        "grad": [
+          "#D4A23A",
+          "#0C0E13"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Elektronica"
+        ]
+      }
+    },
+    {
+      "id": 118,
+      "slug": "118-cascara",
+      "path": "templates/118-cascara/",
+      "title": "Cascara — koffie Shopify-thema",
+      "name": "Cascara",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/cascara-shopify-theme.zip",
+      "palette": [
+        "#1B130C",
+        "#C89B3C",
+        "#261A11",
+        "#F4E9DB",
+        "#3A2A1B"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Work Sans"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor koffie. Eigen look met goud-accent (#C89B3C). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Cascara — koffie Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify koffie-thema in espresso × goud (#C89B3C): hero, uitgelichte bonen, branderij-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "☕",
+        "grad": [
+          "#C89B3C",
+          "#1B130C"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Koffie"
+        ]
+      }
+    },
+    {
+      "id": 119,
+      "slug": "119-lumiere",
+      "path": "templates/119-lumiere/",
+      "title": "Lumière — beauty Shopify-thema",
+      "name": "Lumière",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/lumiere-shopify-theme.zip",
+      "palette": [
+        "#FCF5F3",
+        "#C0922F",
+        "#FFFFFF",
+        "#221A1B",
+        "#F0E2DD"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Outfit"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor beauty. Eigen look met goud-accent (#C0922F). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Lumière — beauty Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify beauty-thema in blush × goud (#C0922F): hero, uitgelichte producten, lab-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "✨",
+        "grad": [
+          "#C0922F",
+          "#FCF5F3"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Beauty"
         ]
       }
     }

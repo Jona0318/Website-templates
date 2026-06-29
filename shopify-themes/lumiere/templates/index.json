@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "New arrivals",
+        "heading": "Skincare with <em>a golden glow</em>",
+        "text": "Refined formulas with natural ingredients, for visibly radiant skin.",
+        "button_label": "Shop the collection",
+        "button_label_2": "Our ritual"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "text": "On orders over €40"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "Encrypted & protected"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Cruelty-free",
+            "text": "Never tested on animals"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Free sample",
+            "text": "With every order"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Featured products",
+        "subheading": "Hand-picked from our collection.",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "reverse",
+        "eyebrow": "Our lab",
+        "heading": "Formulated with intention",
+        "text": "<p>Every formula is composed with carefully chosen ingredients and dermatologically tested. We believe in fewer, better things — care that works.</p>",
+        "button_label": "Discover more"
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "The formula",
+        "heading": "For those who notice the detail",
+        "text": "<p>From the first ingredient to the final texture we obsess over the details most overlook.</p>"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in touch",
+        "heading": "Join the glow club",
+        "text": "Early access to new products, private offers and skincare tips."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "featured",
+    "image_text",
+    "rich_text",
+    "newsletter"
+  ]
+}

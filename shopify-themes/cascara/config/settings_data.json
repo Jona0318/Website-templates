@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#1B130C",
+    "color_surface": "#261A11",
+    "color_text": "#F4E9DB",
+    "color_text_muted": "#B7A48E",
+    "color_accent": "#C89B3C",
+    "color_accent_text": "#1B130C",
+    "color_border": "#3A2A1B",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 16,
+    "logo_width": 140
+  },
+  "presets": {
+    "Cascara": {
+      "color_background": "#1B130C",
+      "color_surface": "#261A11",
+      "color_text": "#F4E9DB",
+      "color_text_muted": "#B7A48E",
+      "color_accent": "#C89B3C",
+      "color_accent_text": "#1B130C",
+      "color_border": "#3A2A1B",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 16,
+      "logo_width": 140
+    }
+  }
+}

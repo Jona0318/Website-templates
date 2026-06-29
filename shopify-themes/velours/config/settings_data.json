@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#16131B",
+    "color_surface": "#201C28",
+    "color_text": "#F3EFEA",
+    "color_text_muted": "#A99FB2",
+    "color_accent": "#C89B3C",
+    "color_accent_text": "#14101A",
+    "color_border": "#322B3C",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 0,
+    "logo_width": 140
+  },
+  "presets": {
+    "Velours": {
+      "color_background": "#16131B",
+      "color_surface": "#201C28",
+      "color_text": "#F3EFEA",
+      "color_text_muted": "#A99FB2",
+      "color_accent": "#C89B3C",
+      "color_accent_text": "#14101A",
+      "color_border": "#322B3C",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 0,
+      "logo_width": 140
+    }
+  }
+}

@@ -560,7 +560,12 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     ["111","111-tessera","Tessera - tegelatelier","Keramisch wandatelier met een interactieve mozaiekwand: kies ruimte, patroon en palet en zie direct een proefvlak ontstaan.","signature","T","#164f63","#e8a928",["Mozaiekwand","Interieur","Signature"],"light","interieur"],
     ["112","112-karterij","Karterij Noord - routeatelier","Kaartenwinkel met interactief topografisch routepaneel: kies terrein, tempo en kaartstijl en zie de route direct mee veranderen.","signature","K","#214f3b","#c86735",["Routekaart","Reizen","Signature"],"light","reizen"],
     ["113","113-metselaar","Arends — metsel- & timmerwerk","Rood-wit thema voor een metselaar & timmerman: 6 diensten, projectengrid, werkwijze en contactformulier.","maatwerk","🧱","#b91c1c","#7f1d1d",["Bouw","Maatwerk","Light"],"light","bouw"],
-    ["114","114-aurum","Aurum — premium Shopify-thema","Direct importeerbaar Shopify-thema in zwart × goud (#C89B3C): nette hero, uitgelichte producten, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","🛒","#C89B3C","#0A0A0A",["Shopify","Webshop","Premium"],"dark","retail","downloads/aurum-shopify-theme.zip"]
+    ["114","114-aurum","Aurum — premium Shopify-thema","Direct importeerbaar Shopify-thema in zwart × goud (#C89B3C): nette hero, uitgelichte producten, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","🛒","#C89B3C","#0A0A0A",["Shopify","Webshop","Premium"],"dark","retail","downloads/aurum-shopify-theme.zip"],
+    ["115","115-velours","Velours — mode Shopify-thema","Direct importeerbaar Shopify mode-thema in ink × goud (#C89B3C): hero, uitgelichte stuks, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","🧥","#C89B3C","#16131B",["Shopify","Webshop","Mode"],"dark","retail","downloads/velours-shopify-theme.zip"],
+    ["116","116-orfevre","Orfèvre — sieraden Shopify-thema","Direct importeerbaar Shopify sieraden-thema in ivoor × goud (#B8902E): hero, uitgelichte stukken, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","💍","#B8902E","#FAF6EF",["Shopify","Webshop","Sieraden"],"light","retail","downloads/orfevre-shopify-theme.zip"],
+    ["117","117-voltage","Voltage — elektronica Shopify-thema","Direct importeerbaar Shopify elektronica-thema in zwart × goud (#D4A23A): hero, uitgelichte producten, lab-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","🎧","#D4A23A","#0C0E13",["Shopify","Webshop","Elektronica"],"dark","retail","downloads/voltage-shopify-theme.zip"],
+    ["118","118-cascara","Cascara — koffie Shopify-thema","Direct importeerbaar Shopify koffie-thema in espresso × goud (#C89B3C): hero, uitgelichte bonen, branderij-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","☕","#C89B3C","#1B130C",["Shopify","Webshop","Koffie"],"dark","retail","downloads/cascara-shopify-theme.zip"],
+    ["119","119-lumiere","Lumière — beauty Shopify-thema","Direct importeerbaar Shopify beauty-thema in blush × goud (#C0922F): hero, uitgelichte producten, lab-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.","premium","✨","#C0922F","#FCF5F3",["Shopify","Webshop","Beauty"],"light","retail","downloads/lumiere-shopify-theme.zip"]
   ];
   /* @gallery:end */
 
@@ -604,6 +609,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     card.setAttribute('data-slug', slug);
     card.setAttribute('data-ntags', String(tags.length));
     card.setAttribute('data-fav', favSlugs.has(slug) ? '1' : '0');
+    var isShopify = tags.map(function (t) { return String(t).toLowerCase(); }).indexOf('shopify') !== -1;
+    card.setAttribute('data-shopify', isShopify ? '1' : '0');
     var tagHtml = tags.length ? '<div class="tags">' + tags.map(function (t) { return '<button type="button" class="tag" data-tag="' + esc(t.toLowerCase()) + '" aria-pressed="false" aria-label="Filter op ' + esc(t) + '">' + t + '</button>'; }).join('') + '</div>' : '';
     var studioHtml = RECIPE_SLUGS.indexOf(slug) !== -1 ? '<a class="studio-link" href="studio.html?t=' + slug + '"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M11 2.5 13.5 5 6 12.5 3 13l.5-3z"/></svg>Personaliseer in Studio</a>' : '';
     card.innerHTML =
@@ -644,6 +651,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   var chipsEl = doc.getElementById('chips');
   var chipDefs = [{ key: 'alle', label: 'Alle', color: 'var(--violet)', n: T.length }];
   Object.keys(TIERS).forEach(function (k) { if (counts[k]) { chipDefs.push({ key: k, label: TIERS[k].label, color: TIERS[k].color, fg: TIERS[k].fg, n: counts[k] }); } });
+  var shopifyCount = T.filter(function (r) { return (r[8] || []).some(function (t) { return String(t).toLowerCase() === 'shopify'; }); }).length;
+  chipDefs.splice(1, 0, { key: 'shopify', label: 'Shopify-ready', color: '#C89B3C', fg: '#0a0a12', n: shopifyCount, isShopify: true });
   chipDefs.push({ key: 'fav', label: 'Favorieten', color: 'var(--pink)', n: favSlugs.size, isFav: true });
   chipDefs.forEach(function (c, i) {
     var b = doc.createElement('button');
@@ -653,6 +662,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     if (c.fg) { b.style.setProperty('--fg', c.fg); }
     if (c.isFav) {
       b.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" style="width:11px;height:11px;margin-right:.25rem;vertical-align:-.1em" aria-hidden="true"><path d="M8 13.5S1.5 9.5 1.5 5.5a3 3 0 0 1 6-1.2 3 3 0 0 1 6 1.2c0 4-6.5 8-6.5 8z"/></svg>' + c.label + ' <span class="n">' + c.n + '</span>';
+    } else if (c.isShopify) {
+      b.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="width:11px;height:11px;margin-right:.3rem;vertical-align:-.1em" aria-hidden="true"><path d="M3.2 5h9.6l-.75 8.1a1 1 0 0 1-1 .9H4.95a1 1 0 0 1-1-.9L3.2 5z"/><path d="M5.6 5V3.9a2.4 2.4 0 0 1 4.8 0V5"/></svg>' + c.label + ' <span class="n">' + c.n + '</span>';
     } else {
       b.innerHTML = '<span class="swatch" aria-hidden="true"></span>' + c.label + ' <span class="n">' + c.n + '</span>';
     }
@@ -723,6 +734,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   function cardHasTag(card, tag) { return ('|' + card.getAttribute('data-tags') + '|').indexOf('|' + tag + '|') !== -1; }
   function matches(card, st) {
     if (st.tier === 'fav') { if (card.getAttribute('data-fav') !== '1') { return false; } }
+    else if (st.tier === 'shopify') { if (card.getAttribute('data-shopify') !== '1') { return false; } }
     else if (st.tier !== 'alle' && card.getAttribute('data-tier') !== st.tier) { return false; }
     if (st.scheme !== 'alle' && card.getAttribute('data-scheme').indexOf(st.scheme) === -1) { return false; }
     if (st.sector !== 'alle' && card.getAttribute('data-sector') !== st.sector) { return false; }
@@ -776,6 +788,8 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     if (resultTitle) {
       var label;
       if (state.q) { label = 'Zoekresultaten'; }
+      else if (state.tier === 'shopify') { label = 'Shopify-ready templates'; }
+      else if (state.tier === 'fav') { label = 'Favorieten'; }
       else if (state.tier !== 'alle') { label = (TIERS[state.tier] ? TIERS[state.tier].label : '') + '-templates'; }
       else if (state.sector !== 'alle') { label = cap(state.sector); }
       else if (state.tags.length || state.scheme !== 'alle') { label = 'Gefilterd'; }
@@ -866,7 +880,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
       var key = kv.slice(0, i), val;
       try { val = decodeURIComponent(kv.slice(i + 1)); } catch (e) { return; }
       if (key === 'q') { state.q = val.toLowerCase(); }
-      else if (key === 'tier' && (val === 'alle' || val === 'fav' || TIERS[val])) { state.tier = val; }
+      else if (key === 'tier' && (val === 'alle' || val === 'fav' || val === 'shopify' || TIERS[val])) { state.tier = val; }
       else if (key === 'scheme' && (val === 'light' || val === 'dark')) { state.scheme = val; }
       else if (key === 'sector' && sectorCounts[val]) { state.sector = val; }
       else if (key === 'tags') { state.tags = val.split(',').map(function (t) { return t.toLowerCase(); }).filter(Boolean); }
