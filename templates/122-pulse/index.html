@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulse — elektronisch muziekfestival · 18–20 juli 2026</title>
+<meta name="description" content="Pulse: drie dagen elektronische muziek op de Strekdam, Amsterdam-Noord. 18–20 juli 2026. Headliners, vier stages, tickets vanaf €49." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@800;900&family=Space+Mono:wght@400;700&display=swap');
+
+  :root{
+    --bg:#0B0B0B;
+    --ink:#0B0B0B;
+    --text:#F5F5F0;
+    --acid:#C6FF00;
+    --mag:#FF2E92;
+    --cyan:#18E0FF;
+    --shadow:8px 8px 0 #000;
+    --shadow-sm:4px 4px 0 #000;
+    --border:4px solid #0B0B0B;
+    --border-light:4px solid #F5F5F0;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Space Mono',monospace;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Archivo Black','Archivo',sans-serif;
+    line-height:0.92;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+  }
+
+  a{color:inherit;}
+
+  img{max-width:100%;display:block;}
+
+  /* Focus */
+  a:focus-visible,button:focus-visible{
+    outline:4px solid var(--cyan);
+    outline-offset:3px;
+  }
+
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+  .skip{
+    position:absolute;left:-9999px;top:0;z-index:999;
+    background:var(--acid);color:var(--ink);padding:10px 16px;
+    font-weight:700;border:var(--border);
+  }
+  .skip:focus{left:8px;top:8px;}
+
+  /* ===== TICKER ===== */
+  .ticker{
+    background:var(--acid);
+    color:var(--ink);
+    border-top:var(--border);
+    border-bottom:var(--border);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:10px 0;
+  }
+  .ticker.mag{background:var(--mag);color:var(--text);}
+  .ticker__track{
+    display:inline-block;
+    white-space:nowrap;
+    animation:scroll 28s linear infinite;
+    font-family:'Archivo Black',sans-serif;
+    font-size:1.1rem;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .ticker__track span{padding:0 1.2rem;}
+  .ticker__track .dot{color:var(--mag);}
+  .ticker.mag .ticker__track .dot{color:var(--acid);}
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ===== HEADER ===== */
+  header.site{
+    position:sticky;top:0;z-index:100;
+    background:var(--bg);
+    border-bottom:var(--border-light);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;max-width:1200px;margin:0 auto;gap:16px;
+  }
+  .logo{
+    font-family:'Archivo Black',sans-serif;
+    font-size:1.6rem;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    color:var(--acid);
+    text-decoration:none;
+  }
+  .logo span{color:var(--mag);}
+  .nav__links{display:flex;gap:22px;align-items:center;}
+  .nav__links a{
+    text-decoration:none;font-weight:700;font-size:0.95rem;
+    text-transform:uppercase;letter-spacing:0.02em;
+  }
+  .nav__links a:hover{color:var(--acid);}
+  .btn{
+    display:inline-block;
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    text-decoration:none;
+    background:var(--acid);
+    color:var(--ink);
+    border:var(--border);
+    box-shadow:var(--shadow-sm);
+    padding:12px 22px;
+    font-size:1rem;
+    letter-spacing:0.01em;
+    transition:transform .08s ease, box-shadow .08s ease;
+    cursor:pointer;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000;}
+  .btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #000;}
+  .btn--mag{background:var(--mag);color:var(--text);}
+  .btn--cyan{background:var(--cyan);color:var(--ink);}
+  .btn--lg{padding:18px 34px;font-size:1.3rem;box-shadow:var(--shadow);}
+  .nav__toggle{display:none;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:60px 0 70px;
+    border-bottom:var(--border-light);
+    overflow:hidden;
+  }
+  .hero__bg{
+    position:absolute;inset:0;z-index:0;opacity:0.25;
+    background:linear-gradient(135deg,#FF2E92 0%,#0B0B0B 45%,#18E0FF 100%);
+  }
+  .hero__bg img{width:100%;height:100%;object-fit:cover;mix-blend-mode:luminosity;}
+  .hero .wrap{position:relative;z-index:1;}
+  .hero__badge{
+    display:inline-block;
+    background:var(--mag);color:var(--text);
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    padding:8px 16px;
+    border:var(--border-light);
+    box-shadow:var(--shadow-sm);
+    transform:rotate(-3deg);
+    margin-bottom:24px;
+    font-size:0.95rem;
+    letter-spacing:0.04em;
+  }
+  .hero h1{
+    font-size:clamp(4rem,18vw,13rem);
+    color:var(--acid);
+    margin:0 0 8px;
+    text-shadow:6px 6px 0 var(--mag);
+  }
+  .hero__meta{
+    display:flex;flex-wrap:wrap;gap:14px 28px;
+    margin:26px 0 34px;
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    font-size:clamp(1rem,2.4vw,1.6rem);
+  }
+  .hero__meta .k{color:var(--cyan);}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+  .hero__note{font-size:0.85rem;opacity:0.8;max-width:340px;}
+
+  /* ===== SECTION HEADS ===== */
+  section{padding:70px 0;}
+  .sec-head{
+    display:flex;align-items:baseline;gap:18px;
+    margin-bottom:40px;flex-wrap:wrap;
+  }
+  .sec-head h2{
+    font-size:clamp(2.4rem,7vw,5rem);
+  }
+  .sec-head .num{
+    font-family:'Space Mono',monospace;
+    color:var(--mag);font-weight:700;font-size:1.2rem;
+  }
+  .acid{color:var(--acid);}
+  .mag{color:var(--mag);}
+  .cyan{color:var(--cyan);}
+
+  /* ===== LINE-UP ===== */
+  #lineup{background:var(--acid);color:var(--ink);border-top:var(--border);border-bottom:var(--border);}
+  #lineup .sec-head h2{color:var(--ink);}
+  #lineup .sec-head .num{color:var(--mag);}
+  .lineup-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border:var(--border);
+    background:var(--ink);
+  }
+  .act{
+    background:var(--acid);
+    color:var(--ink);
+    border:2px solid var(--ink);
+    padding:26px 20px;
+    min-height:150px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:background .1s ease, color .1s ease, transform .1s ease;
+  }
+  .act:hover{background:var(--ink);color:var(--acid);transform:scale(0.99);}
+  .act__name{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;
+    font-size:clamp(1.4rem,3vw,2.2rem);
+    line-height:0.95;
+  }
+  .act__foot{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-top:18px;font-size:0.8rem;font-weight:700;text-transform:uppercase;
+  }
+  .tag{
+    display:inline-block;
+    background:var(--mag);color:var(--text);
+    border:2px solid var(--ink);
+    padding:3px 9px;font-size:0.7rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.05em;
+    transform:rotate(-2deg);
+  }
+  .act:hover .tag{background:var(--cyan);color:var(--ink);}
+
+  /* ===== STAGES ===== */
+  .stages-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  }
+  .stage{
+    border:var(--border-light);
+    box-shadow:var(--shadow);
+    padding:26px;
+    background:var(--bg);
+  }
+  .stage:nth-child(1){border-color:var(--acid);}
+  .stage:nth-child(2){border-color:var(--mag);}
+  .stage:nth-child(3){border-color:var(--cyan);}
+  .stage:nth-child(4){border-color:var(--text);}
+  .stage h3{
+    font-size:1.8rem;margin-bottom:6px;
+  }
+  .stage:nth-child(1) h3{color:var(--acid);}
+  .stage:nth-child(2) h3{color:var(--mag);}
+  .stage:nth-child(3) h3{color:var(--cyan);}
+  .stage__sub{font-size:0.85rem;opacity:0.8;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.05em;}
+  .stage ul{list-style:none;}
+  .stage li{
+    display:flex;justify-content:space-between;gap:12px;
+    padding:8px 0;border-bottom:1px dashed #333;font-size:0.9rem;
+  }
+  .stage li:last-child{border-bottom:none;}
+  .stage li .t{color:var(--acid);font-weight:700;}
+
+  /* ===== TICKETS ===== */
+  #tickets{background:var(--mag);color:var(--ink);border-top:var(--border);border-bottom:var(--border);}
+  #tickets .sec-head h2{color:var(--ink);}
+  #tickets .sec-head .num{color:var(--text);}
+  .tiers{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  }
+  .tier{
+    background:var(--bg);
+    color:var(--text);
+    border:var(--border-light);
+    box-shadow:var(--shadow);
+    padding:30px 26px;
+    display:flex;flex-direction:column;
+  }
+  .tier--feat{
+    background:var(--acid);color:var(--ink);border-color:var(--ink);
+    transform:translateY(-10px);
+  }
+  .tier__name{font-size:1.6rem;margin-bottom:4px;}
+  .tier--feat .tier__name{color:var(--ink);}
+  .tier:not(.tier--feat) .tier__name{color:var(--acid);}
+  .tier__price{
+    font-family:'Archivo Black',sans-serif;
+    font-size:3.4rem;margin:10px 0 4px;line-height:1;
+  }
+  .tier__price small{font-size:1rem;}
+  .tier__tag{
+    align-self:flex-start;
+    background:var(--mag);color:var(--text);
+    border:2px solid currentColor;
+    padding:3px 10px;font-size:0.7rem;font-weight:700;
+    text-transform:uppercase;margin-bottom:14px;transform:rotate(-2deg);
+  }
+  .tier ul{list-style:none;margin:18px 0 24px;flex:1;}
+  .tier li{padding:7px 0;font-size:0.9rem;border-bottom:1px dashed currentColor;}
+  .tier li::before{content:"▸ ";color:var(--mag);}
+  .tier--feat li::before{color:var(--ink);}
+  .tier li:last-child{border-bottom:none;}
+
+  /* ===== INFO ===== */
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .info-card{
+    border:var(--border-light);
+    box-shadow:var(--shadow-sm);
+    padding:24px;
+  }
+  .info-card h3{font-size:1.3rem;color:var(--cyan);margin-bottom:10px;}
+  .info-card p{font-size:0.9rem;}
+
+  .faq{margin-top:50px;}
+  .faq h3{font-size:1.5rem;margin-bottom:20px;color:var(--acid);}
+  details{
+    border:var(--border-light);
+    margin-bottom:14px;
+    box-shadow:var(--shadow-sm);
+    background:#111;
+  }
+  summary{
+    cursor:pointer;padding:16px 20px;font-weight:700;
+    text-transform:uppercase;font-size:0.95rem;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";color:var(--acid);font-size:1.4rem;font-family:'Archivo Black';}
+  details[open] summary::after{content:"–";}
+  details p{padding:0 20px 18px;font-size:0.9rem;opacity:0.9;}
+
+  /* ===== BIG CTA ===== */
+  .bigcta{
+    background:var(--acid);color:var(--ink);
+    border-top:var(--border);border-bottom:var(--border);
+    text-align:center;
+  }
+  .bigcta h2{
+    font-size:clamp(2.6rem,9vw,7rem);color:var(--ink);
+    text-shadow:5px 5px 0 var(--mag);margin-bottom:24px;
+  }
+  .bigcta p{font-size:1.1rem;margin-bottom:30px;font-weight:700;text-transform:uppercase;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--bg);padding:60px 0 40px;
+    border-top:var(--border-light);
+  }
+  .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;}
+  .foot-logo{font-family:'Archivo Black';font-size:2.4rem;color:var(--acid);text-transform:uppercase;}
+  .foot-logo span{color:var(--mag);}
+  .foot-col h4{text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-size:0.95rem;}
+  .foot-col a{display:block;text-decoration:none;font-size:0.9rem;padding:4px 0;opacity:0.85;}
+  .foot-col a:hover{color:var(--acid);opacity:1;}
+  .foot-bottom{
+    margin-top:40px;padding-top:20px;border-top:1px dashed #333;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+    font-size:0.8rem;opacity:0.7;
+  }
+
+  /* ===== REVEAL SYSTEM ===== */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .55s ease, transform .55s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:900px){
+    .lineup-grid{grid-template-columns:repeat(2,1fr);}
+    .tiers{grid-template-columns:1fr;}
+    .tier--feat{transform:none;}
+    .info-grid{grid-template-columns:1fr;}
+    .stages-grid{grid-template-columns:1fr;}
+    .foot-grid{flex-direction:column;}
+  }
+  @media(max-width:640px){
+    .nav__links{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;background:var(--bg);
+      border-bottom:var(--border-light);padding:16px 20px;gap:12px;
+    }
+    .nav__links.open{display:flex;}
+    .nav__links .btn{align-self:flex-start;}
+    .nav__toggle{
+      display:inline-block;background:var(--acid);color:var(--ink);
+      border:var(--border);box-shadow:var(--shadow-sm);
+      font-family:'Archivo Black';padding:8px 14px;cursor:pointer;
+    }
+    .lineup-grid{grid-template-columns:1fr;}
+    .hero__meta{font-size:1rem;}
+  }
+
+  /* ===== REDUCED MOTION ===== */
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important;}
+    .ticker__track{animation:none !important;white-space:normal;display:block;text-align:center;}
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+    .btn,.act{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Direct naar inhoud</a>
+
+<!-- ===== TICKER 1 ===== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>PULSE 2026</span><span class="dot">●</span><span>18–20 JULI</span><span class="dot">●</span><span>STREKDAM · AMSTERDAM-NOORD</span><span class="dot">●</span><span>4 STAGES</span><span class="dot">●</span><span>40+ ACTS</span><span class="dot">●</span><span>EARLY BIRD = OP</span><span class="dot">●</span>
+    <span>PULSE 2026</span><span class="dot">●</span><span>18–20 JULI</span><span class="dot">●</span><span>STREKDAM · AMSTERDAM-NOORD</span><span class="dot">●</span><span>4 STAGES</span><span class="dot">●</span><span>40+ ACTS</span><span class="dot">●</span><span>EARLY BIRD = OP</span><span class="dot">●</span>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="site">
+  <nav class="nav" aria-label="Hoofdnavigatie">
+    <a href="#top" class="logo">PUL<span>SE</span></a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="navlinks">MENU</button>
+    <div class="nav__links" id="navlinks">
+      <a href="#lineup">Line-up</a>
+      <a href="#stages">Programma</a>
+      <a href="#tickets">Tickets</a>
+      <a href="#info">Info</a>
+      <a href="#tickets" class="btn btn--mag">Tickets</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?auto=format&fit=crop&w=1600&q=70" alt="" onerror="this.remove()" />
+  </div>
+  <div class="wrap">
+    <span class="hero__badge reveal">Editie 09 · Niet voor watjes</span>
+    <h1 class="reveal">PULSE</h1>
+    <div class="hero__meta reveal">
+      <div><span class="k">DATUM //</span> 18–20 JULI 2026</div>
+      <div><span class="k">LOCATIE //</span> STREKDAM, A'DAM-NOORD</div>
+      <div><span class="k">TIJD //</span> 14:00–04:00</div>
+    </div>
+    <div class="hero__cta reveal">
+      <a href="#tickets" class="btn btn--lg">Koop tickets</a>
+      <a href="#lineup" class="btn btn--cyan">Bekijk line-up</a>
+      <p class="hero__note">Drie dagen rauwe elektronische muziek aan het IJ. Weekend-tickets bijna uitverkocht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LINE-UP ===== -->
+<section id="lineup">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="num">[ 01 ]</span>
+      <h2>Line-up</h2>
+    </div>
+    <div class="lineup-grid reveal">
+      <div class="act"><div class="act__name">NOVA KRAFT</div><div class="act__foot"><span>Techno</span><span class="tag">Headliner</span></div></div>
+      <div class="act"><div class="act__name">DELTA VOID</div><div class="act__foot"><span>Acid / Hardgroove</span><span class="tag">Headliner</span></div></div>
+      <div class="act"><div class="act__name">SABLE RUE</div><div class="act__foot"><span>Melodic House</span><span class="tag">Headliner</span></div></div>
+      <div class="act"><div class="act__name">MACHINE OF LOVING GRACE</div><div class="act__foot"><span>Industrial</span><span></span></div></div>
+      <div class="act"><div class="act__name">KAYO SYSTEM</div><div class="act__foot"><span>Breakbeat</span><span></span></div></div>
+      <div class="act"><div class="act__name">VELVET STATIC</div><div class="act__foot"><span>Electro</span><span></span></div></div>
+      <div class="act"><div class="act__name">BRUTAL JOY</div><div class="act__foot"><span>Hard Techno</span><span></span></div></div>
+      <div class="act"><div class="act__name">MIRA &amp; THE GRID</div><div class="act__foot"><span>Live / Modular</span><span></span></div></div>
+      <div class="act"><div class="act__name">PHANTOM DUB</div><div class="act__foot"><span>Bass / Dub</span><span></span></div></div>
+      <div class="act"><div class="act__name">CITRINE</div><div class="act__foot"><span>Trance Revival</span><span></span></div></div>
+      <div class="act"><div class="act__name">LOW SIGNAL</div><div class="act__foot"><span>Minimal</span><span></span></div></div>
+      <div class="act"><div class="act__name">DJ KROOT</div><div class="act__foot"><span>Gabber / Local</span><span></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TICKER 2 ===== -->
+<div class="ticker mag" aria-hidden="true">
+  <div class="ticker__track">
+    <span>NOVA KRAFT</span><span class="dot">✶</span><span>DELTA VOID</span><span class="dot">✶</span><span>SABLE RUE</span><span class="dot">✶</span><span>BRUTAL JOY</span><span class="dot">✶</span><span>CITRINE</span><span class="dot">✶</span><span>MIRA &amp; THE GRID</span><span class="dot">✶</span>
+    <span>NOVA KRAFT</span><span class="dot">✶</span><span>DELTA VOID</span><span class="dot">✶</span><span>SABLE RUE</span><span class="dot">✶</span><span>BRUTAL JOY</span><span class="dot">✶</span><span>CITRINE</span><span class="dot">✶</span><span>MIRA &amp; THE GRID</span><span class="dot">✶</span>
+  </div>
+</div>
+
+<!-- ===== STAGES / PROGRAMMA ===== -->
+<section id="stages">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="num">[ 02 ]</span>
+      <h2>Programma <span class="mag">/ Stages</span></h2>
+    </div>
+    <div class="stages-grid">
+      <div class="stage reveal">
+        <h3>De Kade</h3>
+        <p class="stage__sub">Mainstage · openlucht · capaciteit 6000</p>
+        <ul>
+          <li><span class="t">15:00</span> Low Signal</li>
+          <li><span class="t">17:30</span> Velvet Static</li>
+          <li><span class="t">20:00</span> Sable Rue</li>
+          <li><span class="t">22:30</span> Nova Kraft</li>
+        </ul>
+      </div>
+      <div class="stage reveal">
+        <h3>Bunker</h3>
+        <p class="stage__sub">Hard / Industrial · overdekt · pikdonker</p>
+        <ul>
+          <li><span class="t">16:00</span> DJ Kroot</li>
+          <li><span class="t">18:30</span> Brutal Joy</li>
+          <li><span class="t">21:00</span> Machine of Loving Grace</li>
+          <li><span class="t">00:00</span> Delta Void</li>
+        </ul>
+      </div>
+      <div class="stage reveal">
+        <h3>Het Floppertje</h3>
+        <p class="stage__sub">Breaks / Electro · loods aan het water</p>
+        <ul>
+          <li><span class="t">15:30</span> Citrine</li>
+          <li><span class="t">18:00</span> Kayo System</li>
+          <li><span class="t">20:30</span> Phantom Dub</li>
+          <li><span class="t">23:00</span> Mira &amp; The Grid (live)</li>
+        </ul>
+      </div>
+      <div class="stage reveal">
+        <h3>Tuin</h3>
+        <p class="stage__sub">Daytime / Minimal · groen · zonsondergang</p>
+        <ul>
+          <li><span class="t">14:00</span> Local Heroes Showcase</li>
+          <li><span class="t">17:00</span> Low Signal (b2b)</li>
+          <li><span class="t">19:30</span> Velvet Static</li>
+          <li><span class="t">21:30</span> Sunset Closing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TICKETS ===== -->
+<section id="tickets">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="num">[ 03 ]</span>
+      <h2>Tickets</h2>
+    </div>
+    <div class="tiers">
+      <div class="tier reveal">
+        <span class="tier__tag">Per dag</span>
+        <div class="tier__name">Day</div>
+        <div class="tier__price">€49<small> p.p.</small></div>
+        <ul>
+          <li>Toegang 1 festivaldag</li>
+          <li>Alle 4 stages</li>
+          <li>Garderobe inbegrepen</li>
+          <li>In/uit-loop tot 22:00</li>
+        </ul>
+        <a href="#" class="btn btn--mag">Kies dag</a>
+      </div>
+      <div class="tier tier--feat reveal">
+        <span class="tier__tag">Meest gekozen</span>
+        <div class="tier__name">Weekend</div>
+        <div class="tier__price">€119<small> p.p.</small></div>
+        <ul>
+          <li>Alle 3 dagen</li>
+          <li>Alle stages, hele dag</li>
+          <li>Gratis camping (zat. + zon.)</li>
+          <li>Festival-shirt</li>
+        </ul>
+        <a href="#" class="btn btn--mag">Koop weekend</a>
+      </div>
+      <div class="tier reveal">
+        <span class="tier__tag">Luxe</span>
+        <div class="tier__name">VIP</div>
+        <div class="tier__price">€199<small> p.p.</small></div>
+        <ul>
+          <li>Alles van Weekend</li>
+          <li>VIP-deck met uitzicht op De Kade</li>
+          <li>Eigen bar &amp; sanitair</li>
+          <li>Welkomstdrankje + lockers</li>
+        </ul>
+        <a href="#" class="btn btn--cyan">Word VIP</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INFO ===== -->
+<section id="info">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="num">[ 04 ]</span>
+      <h2>Praktische <span class="cyan">info</span></h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <h3>Locatie</h3>
+        <p>Strekdam, IJplein-terrein, Amsterdam-Noord. Pont vanaf Centraal (5 min) of fiets via de IJtunnel. Geen parkeerplekken — kom met OV of pont.</p>
+      </div>
+      <div class="info-card reveal">
+        <h3>Tijden</h3>
+        <p>Vrijdag 18 juli: 16:00–04:00<br>Zaterdag 19 juli: 14:00–04:00<br>Zondag 20 juli: 14:00–01:00<br>Deuren sluiten 1 uur na laatste act.</p>
+      </div>
+      <div class="info-card reveal">
+        <h3>Goed om te weten</h3>
+        <p>18+ met geldig ID. Cashless betalen. Eigen drinkwater toegestaan in afgesloten flessen. Oordoppen bij de info-balie.</p>
+      </div>
+    </div>
+
+    <div class="faq reveal">
+      <h3>Veelgestelde vragen</h3>
+      <details>
+        <summary>Is er camping bij het festival?</summary>
+        <p>Ja. Weekend- en VIP-tickets bevatten gratis camping voor zaterdag- en zondagnacht. Aanmelden doe je via je ticketcode.</p>
+      </details>
+      <details>
+        <summary>Kan ik mijn ticket doorverkopen?</summary>
+        <p>Doorverkoop kan alleen via ons officiële Ticketswap-kanaal. Tickets buiten dit kanaal worden geweigerd bij de ingang.</p>
+      </details>
+      <details>
+        <summary>Wat is het terugbetaalbeleid?</summary>
+        <p>Tickets zijn niet retourneerbaar, behalve als het festival volledig wordt geannuleerd. Bij verplaatsing blijven tickets geldig.</p>
+      </details>
+      <details>
+        <summary>Is het terrein rolstoeltoegankelijk?</summary>
+        <p>De Kade, Tuin en het info-plein zijn volledig toegankelijk. Vraag een toegankelijkheidsband aan via info@pulsefestival.nl.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIG CTA ===== -->
+<section class="bigcta">
+  <div class="wrap">
+    <h2 class="reveal">ZIE JE<br>OP DE KADE</h2>
+    <p class="reveal">18–20 juli 2026 · Strekdam · Amsterdam-Noord</p>
+    <a href="#tickets" class="btn btn--lg btn--mag reveal">Pak je ticket</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">PUL<span>SE</span></div>
+        <p style="max-width:280px;margin-top:12px;opacity:0.8;font-size:0.9rem;">Elektronisch muziekfestival aan het IJ. Drie dagen, vier stages, één pols.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Festival</h4>
+        <a href="#lineup">Line-up</a>
+        <a href="#stages">Programma</a>
+        <a href="#tickets">Tickets</a>
+        <a href="#info">Praktische info</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@pulsefestival.nl">info@pulsefestival.nl</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Soundcloud</a>
+      </div>
+      <div class="foot-col">
+        <h4>Nieuwsbrief</h4>
+        <p style="font-size:0.85rem;opacity:0.8;margin-bottom:10px;">Mis geen line-up drop.</p>
+        <a href="#" class="btn btn--cyan">Schrijf je in</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Pulse Festival · Amsterdam</span>
+      <span>Algemene voorwaarden · Privacy · Huisregels</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  (function(){
+    var t = document.querySelector('.nav__toggle');
+    var links = document.getElementById('navlinks');
+    if(t){
+      t.addEventListener('click', function(){
+        var open = links.classList.toggle('open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+          links.classList.remove('open');
+          t.setAttribute('aria-expanded','false');
+        });
+      });
+    }
+  })();
+
+  // Reveal system (respects reduced motion)
+  (function(){
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if(reduced || !('IntersectionObserver' in window)){
+      els.forEach(function(el){el.classList.add('in');});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.12});
+    els.forEach(function(el){io.observe(el);});
+  })();
+</script>
+</body>
+</html>

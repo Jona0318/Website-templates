@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marée — kustrestaurant & oesterbar aan zee</title>
+<meta name="description" content="Marée, sfeervol kustrestaurant & oesterbar aan zee. Dagverse vis, oesters per stuk en een verfijnde menukaart. Reserveer uw tafel met zicht op de getijden." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+  :root{
+    --bg:#0C2A33;
+    --surface:#103640;
+    --text:#F1EBDD;
+    --muted:#9FB3B2;
+    --coral:#FF6B5C;
+    --sand:#E9DCC3;
+    --line:rgba(233,220,195,.16);
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --body:"Jost", system-ui, sans-serif;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:.005em}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:var(--body);
+    font-size:.72rem;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:500;
+  }
+  .muted{color:var(--muted)}
+
+  /* focus */
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+    outline:2px solid var(--coral);
+    outline-offset:3px;
+    border-radius:3px;
+  }
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;
+    font-family:var(--body);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+    padding:.95em 1.8em;border-radius:999px;cursor:pointer;border:1px solid transparent;
+    transition:transform .4s var(--ease), background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+  }
+  .btn-primary{background:var(--coral);color:#1a1410}
+  .btn-primary:hover{transform:translateY(-2px);background:#ff8275}
+  .btn-ghost{border-color:var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--sand);background:rgba(233,220,195,.06)}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    transition:background .5s var(--ease), backdrop-filter .5s var(--ease), border-color .5s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.site.scrolled{
+    background:rgba(12,42,51,.86);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{font-family:var(--serif);font-size:1.7rem;letter-spacing:.04em;font-weight:600}
+  .brand span{color:var(--coral)}
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-links a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .3s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .menu-toggle{display:none;background:none;border:none;color:var(--text);font-family:var(--body);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(160deg,#0C2A33,#0a222a 55%,#06161b)}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.7}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(12,42,51,.55) 0%, rgba(12,42,51,.25) 35%, rgba(12,42,51,.85) 78%, rgba(12,42,51,.98) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:9vh;padding-top:120px}
+  .hero h1{font-size:clamp(3.2rem,9.5vw,8.4rem);font-weight:500;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--sand)}
+  .hero .lede{max-width:46ch;margin-top:1.4rem;font-size:clamp(1rem,1.4vw,1.18rem);color:var(--text);font-weight:300}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:2.4rem;align-items:center}
+  .hero-meta{
+    position:absolute;right:28px;bottom:9vh;z-index:2;text-align:right;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);line-height:2.1;
+  }
+  .hero-meta strong{color:var(--sand);font-weight:500}
+
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
+    font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .scroll-hint .bar{width:1px;height:42px;background:linear-gradient(var(--coral),transparent);animation:drip 2.4s var(--ease) infinite}
+  @keyframes drip{0%{transform:scaleY(.2);transform-origin:top;opacity:.3}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(.2);transform-origin:bottom;opacity:.3}}
+
+  /* ---------- generic section ---------- */
+  section{position:relative}
+  .pad{padding:clamp(80px,12vw,150px) 0}
+  .section-head{max-width:60ch}
+  .section-head h2{font-size:clamp(2.2rem,5vw,3.8rem);margin-top:1rem}
+  .section-head p{margin-top:1.2rem;color:var(--muted);font-size:1.05rem}
+
+  /* intro split */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .split .text h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+  .split .text p{margin-top:1.3rem;color:var(--muted);font-size:1.05rem}
+  .split .text .pull{
+    font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.9rem);
+    color:var(--sand);margin-top:2rem;line-height:1.3;border-left:2px solid var(--coral);padding-left:22px;
+  }
+  .figure{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(150deg,#103640,#0a222a)}
+  .figure img{width:100%;height:100%;object-fit:cover}
+  .figure .tag{
+    position:absolute;left:18px;bottom:18px;background:rgba(12,42,51,.7);backdrop-filter:blur(6px);
+    border:1px solid var(--line);padding:.5em 1em;border-radius:999px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);
+  }
+
+  /* ---------- menu ---------- */
+  .menu-wrap{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);margin-top:clamp(40px,6vw,70px)}
+  .menu-col h3{font-size:1.7rem;display:flex;align-items:baseline;gap:14px;color:var(--sand)}
+  .menu-col h3::after{content:"";flex:1;height:1px;background:var(--line)}
+  .dish{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px dashed var(--line)}
+  .dish:last-child{border-bottom:none}
+  .dish .d-name{font-family:var(--serif);font-size:1.3rem;color:var(--text);font-weight:500}
+  .dish .d-desc{display:block;font-family:var(--body);font-size:.84rem;color:var(--muted);margin-top:.2rem;font-weight:300;letter-spacing:.01em}
+  .dish .d-price{font-family:var(--serif);font-size:1.3rem;color:var(--coral);white-space:nowrap;font-weight:500}
+  .menu-note{margin-top:clamp(40px,5vw,60px);text-align:center;color:var(--muted);font-size:.92rem}
+
+  /* ---------- tide strip ---------- */
+  .tide{position:relative;overflow:hidden;background:linear-gradient(135deg,#0a222a,#0C2A33)}
+  .tide-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .tide-cell{padding:clamp(28px,4vw,46px) clamp(20px,3vw,34px);border-right:1px solid var(--line)}
+  .tide-cell:last-child{border-right:none}
+  .tide-cell .k{font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--coral)}
+  .tide-cell .v{font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);margin-top:.5rem;color:var(--sand)}
+  .tide-cell .s{font-size:.84rem;color:var(--muted);margin-top:.4rem}
+  .tide-head{text-align:center;margin-bottom:clamp(36px,5vw,54px)}
+  .tide-head h2{font-size:clamp(2rem,4.4vw,3.2rem);margin-top:.8rem}
+  .tide-head p{color:var(--muted);margin-top:1rem;max-width:54ch;margin-inline:auto}
+
+  /* wine note */
+  .wine{display:flex;gap:22px;align-items:flex-start;max-width:70ch;margin:clamp(40px,5vw,60px) auto 0;
+    background:rgba(233,220,195,.05);border:1px solid var(--line);border-radius:8px;padding:28px 30px}
+  .wine .glyph{font-family:var(--serif);font-size:2.4rem;color:var(--coral);line-height:1}
+  .wine h4{font-size:1.4rem;color:var(--sand)}
+  .wine p{color:var(--muted);margin-top:.5rem;font-size:.96rem}
+
+  /* ---------- gallery ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(40px,6vw,60px)}
+  .gallery figure{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:3/4;background:linear-gradient(150deg,#103640,#0a222a)}
+  .gallery figure:nth-child(2){margin-top:34px}
+  .gallery figure:nth-child(4){margin-top:34px}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+  .gallery figure:hover img{transform:scale(1.06)}
+
+  /* ---------- hours + location ---------- */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px)}
+  .hours-list{margin-top:1.6rem}
+  .hours-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+  .hours-row .day{color:var(--text);letter-spacing:.04em}
+  .hours-row .time{color:var(--muted)}
+  .hours-row.closed .time{color:var(--coral)}
+  .loc p{color:var(--muted);margin-top:.7rem;line-height:1.9}
+  .loc .addr{font-family:var(--serif);font-size:1.4rem;color:var(--sand);font-style:italic}
+
+  /* ---------- reservation ---------- */
+  .reserve-wrap{background:var(--surface);border-top:1px solid var(--line)}
+  .reserve-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,80px);align-items:start}
+  form{display:grid;gap:20px}
+  .field{display:grid;gap:8px}
+  .field label{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .field input,.field select{
+    background:var(--bg);border:1px solid var(--line);color:var(--text);
+    padding:14px 16px;border-radius:6px;font-family:var(--body);font-size:1rem;font-weight:300;
+    transition:border-color .3s;
+  }
+  .field input:hover,.field select:hover{border-color:rgba(233,220,195,.35)}
+  .field.invalid input,.field.invalid select{border-color:var(--coral)}
+  .field .err{font-size:.78rem;color:var(--coral);letter-spacing:.02em;min-height:0;display:none}
+  .field.invalid .err{display:block}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .form-success{
+    display:none;background:rgba(255,107,92,.1);border:1px solid var(--coral);border-radius:8px;
+    padding:26px 28px;color:var(--text);
+  }
+  .form-success.show{display:block;animation:fadeUp .6s var(--ease)}
+  .form-success h4{font-size:1.6rem;color:var(--sand)}
+  .form-success p{color:var(--muted);margin-top:.5rem}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239FB3B2' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+
+  /* ---------- footer ---------- */
+  footer{padding:clamp(60px,8vw,90px) 0 50px;border-top:1px solid var(--line)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-grid .brand{font-size:2rem}
+  footer p{color:var(--muted);font-size:.92rem;margin-top:.9rem;max-width:34ch}
+  .foot-col h5{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:1rem}
+  .foot-col a,.foot-col span{display:block;color:var(--muted);font-size:.95rem;padding:5px 0;transition:color .3s}
+  .foot-col a:hover{color:var(--text)}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:clamp(50px,7vw,80px);padding-top:26px;border-top:1px solid var(--line);font-size:.8rem;letter-spacing:.06em;color:var(--muted)}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .menu-toggle{display:block}
+    .nav-links.open{display:flex;position:absolute;top:84px;left:0;right:0;flex-direction:column;gap:0;background:rgba(12,42,51,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:8px 28px 24px}
+    .nav-links.open a{padding:14px 0;border-bottom:1px solid var(--line);width:100%}
+    .split,.info-grid,.reserve-grid,.menu-grid{grid-template-columns:1fr}
+    .figure{aspect-ratio:16/11}
+    .tide-inner{grid-template-columns:1fr 1fr}
+    .tide-cell:nth-child(2){border-right:none}
+    .tide-cell{border-bottom:1px solid var(--line)}
+    .tide-cell:nth-last-child(-n+2){border-bottom:none}
+    .gallery{grid-template-columns:1fr 1fr}
+    .gallery figure:nth-child(n){margin-top:0}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .hero-meta{display:none}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 20px}
+    .field-row{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .hero-actions{gap:12px}
+    .btn{width:100%;justify-content:center}
+    .hero-actions .btn{width:auto;flex:1}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .reveal{opacity:1!important;transform:none!important;transition:none!important}
+    .scroll-hint .bar{animation:none}
+    .gallery img{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site" id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand">Mar<span>é</span>e</a>
+    <nav class="nav-links" id="navLinks" aria-label="Hoofdnavigatie">
+      <a href="#over">Over ons</a>
+      <a href="#menu">Menukaart</a>
+      <a href="#getij">Getij</a>
+      <a href="#galerij">Galerij</a>
+      <a href="#bezoek">Bezoek</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#reserveren" class="btn btn-primary">Reserveren</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Welkom bij Marée">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=2000&q=80"
+         alt="Verse oesters op ijs met citroen aan de kust" onerror="this.remove()" />
+  </div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal">Kustrestaurant &amp; oesterbar &middot; aan zee</p>
+    <h1 class="reveal">Het ritme<br><em>van de zee</em></h1>
+    <p class="lede reveal">Dagverse vis, oesters per stuk en wijnen die ruiken naar zilte lucht. Marée volgt het getij — wat de zee vandaag brengt, staat vanavond op uw bord.</p>
+    <div class="hero-actions reveal">
+      <a href="#reserveren" class="btn btn-primary">Reserveer een tafel</a>
+      <a href="#menu" class="btn btn-ghost">Bekijk de menukaart</a>
+    </div>
+  </div>
+  <div class="hero-meta" aria-hidden="true">
+    <div><strong>51&deg; 32' N</strong> &middot; aan de Noordzee</div>
+    <div>Dagelijks vers &middot; <strong>vangst van de dag</strong></div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span>Verken</span><span class="bar"></span></div>
+</section>
+
+<!-- ============ OVER / INTRO ============ -->
+<section class="pad" id="over">
+  <div class="wrap split">
+    <div class="text">
+      <p class="eyebrow reveal">Over Marée</p>
+      <h2 class="reveal">Een tafel waar het tij<br>de kaart bepaalt</h2>
+      <p class="reveal">Op een steenworp van de branding serveren wij wat de kust ons geeft. Onze vissers varen bij het eerste licht uit; tegen de middag liggen de kreeften, oesters en tongen op ijs in onze keuken. Niets reist verder dan het strand achter ons.</p>
+      <p class="reveal">Verwacht een keuken zonder opsmuk maar vol precisie: heldere bouillons, gerookte vis boven zeewier, en boter met zeezout van eigen pannen. Drink erbij wat de zee verdraagt — droge, minerale wijnen die de zilte smaak omarmen.</p>
+      <p class="pull reveal">&ldquo;De beste oester eet je met blote voeten in het zand, en een glas dat naar krijt smaakt.&rdquo;</p>
+    </div>
+    <div class="figure reveal">
+      <img src="https://images.unsplash.com/photo-1606731640696-6d22c39b66e6?auto=format&fit=crop&w=1100&q=80"
+           alt="Chef die verse zeevruchten bereidt in een open keuken" onerror="this.remove()" />
+      <span class="tag">Vangst van de dag</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENUKAART ============ -->
+<section class="menu-wrap pad" id="menu">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center;margin:0 auto">
+      <p class="eyebrow">De kaart van vandaag</p>
+      <h2>Menukaart</h2>
+      <p style="margin-inline:auto">Onze kaart wisselt met het getij. Vraag uw gastheer naar de vangst van vandaag — soms staat het mooiste niet op papier.</p>
+    </div>
+
+    <div class="menu-grid">
+      <!-- voorgerechten -->
+      <div class="menu-col reveal">
+        <h3>Voorgerechten</h3>
+        <div class="dish">
+          <div><span class="d-name">Zilte zeebries-bouillon</span><span class="d-desc">heldere visfumet, zeekraal, dashi van wakame</span></div>
+          <span class="d-price">&euro;14</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Gerookte makreel</span><span class="d-desc">crème van mierikswortel, appel, roggebrood</span></div>
+          <span class="d-price">&euro;16</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Carpaccio van coquilles</span><span class="d-desc">yuzu, bloedsinaasappel, fleur de sel</span></div>
+          <span class="d-price">&euro;19</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Noordzeekrab</span><span class="d-desc">avocado, komkommer, krokant zeewier</span></div>
+          <span class="d-price">&euro;21</span>
+        </div>
+      </div>
+
+      <!-- hoofdgerechten -->
+      <div class="menu-col reveal">
+        <h3>Hoofdgerechten</h3>
+        <div class="dish">
+          <div><span class="d-name">Gebakken tong meunière</span><span class="d-desc">bruine boter, kappertjes, citroen</span></div>
+          <span class="d-price">&euro;34</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Kabeljauwrug uit de oven</span><span class="d-desc">venkel, witte wijn-saffraansaus, mosselen</span></div>
+          <span class="d-price">&euro;29</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Hele kreeft van de kust</span><span class="d-desc">kruidenboter, frites de mer, citroenmayonaise</span></div>
+          <span class="d-price">&euro;46</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Bouillabaisse van het tij</span><span class="d-desc">dagverse vis, rouille, geroosterd brood</span></div>
+          <span class="d-price">&euro;32</span>
+        </div>
+      </div>
+
+      <!-- oesters & schaaldieren -->
+      <div class="menu-col reveal">
+        <h3>Oesters &amp; schaaldieren</h3>
+        <div class="dish">
+          <div><span class="d-name">Zeeuwse creuse (per stuk)</span><span class="d-desc">natuur, sjalottenvinaigrette of citroen</span></div>
+          <span class="d-price">&euro;3,5</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Platte oester &ldquo;Fines de Claire&rdquo; (per stuk)</span><span class="d-desc">vol en romig, met krijt-mineraliteit</span></div>
+          <span class="d-price">&euro;4,5</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Plateau de la mer</span><span class="d-desc">oesters, langoustines, krab, wulken &middot; voor twee</span></div>
+          <span class="d-price">&euro;58</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Mosselen uit de schelp</span><span class="d-desc">witte wijn, prei, roomboter, friet</span></div>
+          <span class="d-price">&euro;24</span>
+        </div>
+      </div>
+
+      <!-- dessert -->
+      <div class="menu-col reveal">
+        <h3>Dessert</h3>
+        <div class="dish">
+          <div><span class="d-name">Crème brûlée van vanille</span><span class="d-desc">krokant karamel, zeezout</span></div>
+          <span class="d-price">&euro;11</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Citroentaart &ldquo;tarte au citron&rdquo;</span><span class="d-desc">Italiaanse meringue, basilicum</span></div>
+          <span class="d-price">&euro;12</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Chocolade &amp; fleur de sel</span><span class="d-desc">donkere ganache, hazelnoot, olijfolie</span></div>
+          <span class="d-price">&euro;13</span>
+        </div>
+        <div class="dish">
+          <div><span class="d-name">Selectie kustkazen</span><span class="d-desc">drie soorten, vijgencompote, noten</span></div>
+          <span class="d-price">&euro;15</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- wine pairing note -->
+    <div class="wine reveal">
+      <div class="glyph" aria-hidden="true">&#9826;</div>
+      <div>
+        <h4>Wijnsuggestie van de sommelier</h4>
+        <p>Bij de oesters schenken wij graag een glas <em>Muscadet Sèvre-et-Maine sur lie</em> — droog, ziltig en krijtachtig, alsof u de zee zelf proeft. Liever bubbels? Een Blanc de Blancs tilt elk schaaldier naar grote hoogte.</p>
+      </div>
+    </div>
+
+    <p class="menu-note reveal">Allergie of dieetwens? Laat het ons weten — wij denken graag met u mee. Prijzen zijn inclusief btw.</p>
+  </div>
+</section>
+
+<!-- ============ GETIJ / TIDE STRIP ============ -->
+<section class="tide pad" id="getij">
+  <div class="wrap">
+    <div class="tide-head reveal">
+      <p class="eyebrow">Getij van vandaag</p>
+      <h2>Wij koken op het ritme van het water</h2>
+      <p>Eb en vloed bepalen wanneer de boten uitvaren en wat de kust prijsgeeft. Dit is het tij van vandaag, 28 juni — plan uw bezoek met de zee mee.</p>
+    </div>
+    <div class="tide-inner reveal">
+      <div class="tide-cell">
+        <div class="k">Laagwater</div>
+        <div class="v">06:42</div>
+        <div class="s">ochtendvangst binnen</div>
+      </div>
+      <div class="tide-cell">
+        <div class="k">Hoogwater</div>
+        <div class="v">12:58</div>
+        <div class="s">terras op zijn mooist</div>
+      </div>
+      <div class="tide-cell">
+        <div class="k">Laagwater</div>
+        <div class="v">19:11</div>
+        <div class="s">oesters geraapt</div>
+      </div>
+      <div class="tide-cell">
+        <div class="k">Watertemp.</div>
+        <div class="v">16&deg;C</div>
+        <div class="s">Noordzee, kalm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIJ ============ -->
+<section class="pad" id="galerij">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">In beeld</p>
+      <h2>Zout, licht en zee</h2>
+      <p>Een glimp van het huis: de open keuken, het terras op de duinrand en de schalen die voorbijkomen.</p>
+    </div>
+    <div class="gallery">
+      <figure class="reveal">
+        <img src="https://images.unsplash.com/photo-1572441710534-8b9eb52f9bbe?auto=format&fit=crop&w=800&q=80"
+             alt="Bord met fijn opgemaakte zeevruchten" onerror="this.remove()" />
+      </figure>
+      <figure class="reveal">
+        <img src="https://images.unsplash.com/photo-1514516816566-de580c621376?auto=format&fit=crop&w=800&q=80"
+             alt="Glas witte wijn bij het raam met zicht op zee" onerror="this.remove()" />
+      </figure>
+      <figure class="reveal">
+        <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=800&q=80"
+             alt="Golven die uitrollen op het strand bij avondlicht" onerror="this.remove()" />
+      </figure>
+      <figure class="reveal">
+        <img src="https://images.unsplash.com/photo-1535007813616-79dc02ba4021?auto=format&fit=crop&w=800&q=80"
+             alt="Sfeervol gedekte tafel in het restaurant" onerror="this.remove()" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPENINGSTIJDEN + LOCATIE ============ -->
+<section class="pad" id="bezoek">
+  <div class="wrap info-grid">
+    <div class="hours reveal">
+      <p class="eyebrow">Openingstijden</p>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin-top:1rem">Wanneer u welkom bent</h2>
+      <div class="hours-list">
+        <div class="hours-row"><span class="day">Maandag</span><span class="time">12:00 – 22:00</span></div>
+        <div class="hours-row"><span class="day">Dinsdag</span><span class="time">12:00 – 22:00</span></div>
+        <div class="hours-row closed"><span class="day">Woensdag</span><span class="time">Gesloten</span></div>
+        <div class="hours-row"><span class="day">Donderdag</span><span class="time">12:00 – 22:30</span></div>
+        <div class="hours-row"><span class="day">Vrijdag</span><span class="time">12:00 – 23:00</span></div>
+        <div class="hours-row"><span class="day">Zaterdag</span><span class="time">11:00 – 23:00</span></div>
+        <div class="hours-row"><span class="day">Zondag</span><span class="time">11:00 – 21:30</span></div>
+      </div>
+    </div>
+    <div class="loc reveal">
+      <p class="eyebrow">Locatie</p>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin-top:1rem">Aan zee, op de duinrand</h2>
+      <p class="addr">Zeedijk 1, Strandpaviljoen Noord</p>
+      <p>4356 AB &nbsp;Kustplaats &middot; aan de Noordzee<br>
+         Parkeren op het duinplein, 2 minuten lopen.<br>
+         Het terras kijkt uit over de branding — bij hoogwater hoort u de zee.</p>
+      <p style="margin-top:1.4rem">
+        <a href="tel:+31201234567" style="color:var(--sand)">+31 (0)20 123 45 67</a><br>
+        <a href="mailto:reserveren@maree-aanzee.nl" style="color:var(--sand)">reserveren@maree-aanzee.nl</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVERING ============ -->
+<section class="reserve-wrap pad" id="reserveren">
+  <div class="wrap reserve-grid">
+    <div class="reserve-intro reveal">
+      <p class="eyebrow">Reserveren</p>
+      <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);margin-top:1rem">Reserveer<br>uw tafel</h2>
+      <p class="muted" style="margin-top:1.3rem;font-size:1.05rem">Geef uw voorkeuren door, dan houden wij een plekje vrij met zicht op zee. Voor grotere gezelschappen (vanaf 8 personen) belt u ons graag rechtstreeks.</p>
+      <p class="muted" style="margin-top:1rem;font-size:.92rem">Wij bevestigen elke reservering per e-mail. De keuken sluit een uur voor sluitingstijd.</p>
+    </div>
+
+    <div class="reserve-form reveal">
+      <form id="resForm" novalidate>
+        <div class="field-row">
+          <div class="field" id="f-datum">
+            <label for="datum">Datum</label>
+            <input type="date" id="datum" name="datum" required />
+            <span class="err">Kies een datum (vandaag of later).</span>
+          </div>
+          <div class="field" id="f-tijd">
+            <label for="tijd">Tijd</label>
+            <select id="tijd" name="tijd" required>
+              <option value="">Kies een tijd</option>
+              <option>12:00</option><option>12:30</option><option>13:00</option>
+              <option>17:30</option><option>18:00</option><option>18:30</option>
+              <option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option>
+            </select>
+            <span class="err">Kies een tijd.</span>
+          </div>
+        </div>
+
+        <div class="field" id="f-personen">
+          <label for="personen">Aantal personen</label>
+          <select id="personen" name="personen" required>
+            <option value="">Selecteer</option>
+            <option>1 persoon</option><option>2 personen</option><option>3 personen</option>
+            <option>4 personen</option><option>5 personen</option><option>6 personen</option><option>7 personen</option>
+          </select>
+          <span class="err">Geef het aantal personen op.</span>
+        </div>
+
+        <div class="field" id="f-naam">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="naam" placeholder="Uw naam" required />
+          <span class="err">Vul uw naam in.</span>
+        </div>
+
+        <div class="field" id="f-email">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="email" placeholder="naam@voorbeeld.nl" required />
+          <span class="err">Vul een geldig e-mailadres in.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top:6px">Reservering bevestigen</button>
+      </form>
+
+      <div class="form-success" id="resSuccess" role="status" aria-live="polite">
+        <h4>Bedankt, tot aan zee!</h4>
+        <p id="successMsg">Wij hebben uw aanvraag ontvangen en sturen u een bevestiging per e-mail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand">Mar<span>é</span>e</a>
+        <p>Kustrestaurant &amp; oesterbar aan de Noordzee. Dagverse vis, oesters per stuk en zilte wijnen — op het ritme van het tij.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Ontdek</h5>
+        <a href="#over">Over ons</a>
+        <a href="#menu">Menukaart</a>
+        <a href="#getij">Getij</a>
+        <a href="#galerij">Galerij</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <span>Zeedijk 1, Kustplaats</span>
+        <a href="tel:+31201234567">+31 (0)20 123 45 67</a>
+        <a href="mailto:reserveren@maree-aanzee.nl">reserveren@maree-aanzee.nl</a>
+        <a href="#reserveren">Reserveren</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Marée — aan zee. Alle rechten voorbehouden.</span>
+      <span>Met zorg gemaakt aan de kust &middot; zilte groeten</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- header scroll state ----
+  var header = document.querySelector('header.site');
+  function onScroll(){
+    if(window.scrollY > 40){ header.classList.add('scrolled'); }
+    else { header.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- mobile nav ----
+  var toggle = document.getElementById('menuToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // ---- reveal system (prefers-reduced-motion safe) ----
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  // ---- set min date on datum field ----
+  (function(){
+    var d = new Date();
+    var iso = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    var datum = document.getElementById('datum');
+    datum.min = iso;
+  })();
+
+  // ---- reservation form validation ----
+  var form = document.getElementById('resForm');
+  var success = document.getElementById('resSuccess');
+  var successMsg = document.getElementById('successMsg');
+
+  function setError(id, isErr){
+    document.getElementById(id).classList.toggle('invalid', isErr);
+  }
+  function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+
+    var datum = document.getElementById('datum');
+    var tijd = document.getElementById('tijd');
+    var personen = document.getElementById('personen');
+    var naam = document.getElementById('naam');
+    var email = document.getElementById('email');
+
+    // datum: required + not in the past
+    var datumBad = !datum.value || (datum.min && datum.value < datum.min);
+    setError('f-datum', datumBad); if(datumBad) ok = false;
+
+    var tijdBad = !tijd.value; setError('f-tijd', tijdBad); if(tijdBad) ok = false;
+    var persBad = !personen.value; setError('f-personen', persBad); if(persBad) ok = false;
+    var naamBad = naam.value.trim().length < 2; setError('f-naam', naamBad); if(naamBad) ok = false;
+    var emailBad = !isEmail(email.value.trim()); setError('f-email', emailBad); if(emailBad) ok = false;
+
+    if(!ok){
+      var firstErr = form.querySelector('.field.invalid input, .field.invalid select');
+      if(firstErr) firstErr.focus();
+      return;
+    }
+
+    successMsg.textContent = 'Bedankt ' + naam.value.trim() + ', wij hebben uw aanvraag voor '
+      + personen.value + ' op ' + datum.value + ' om ' + tijd.value
+      + ' uur ontvangen. U krijgt zo een bevestiging op ' + email.value.trim() + '.';
+    form.style.display = 'none';
+    success.classList.add('show');
+    success.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+  });
+
+  // clear individual error on input
+  ['datum','tijd','personen','naam','email'].forEach(function(id){
+    var el = document.getElementById(id);
+    var wrap = 'f-' + id;
+    el.addEventListener('input', function(){ document.getElementById(wrap).classList.remove('invalid'); });
+    el.addEventListener('change', function(){ document.getElementById(wrap).classList.remove('invalid'); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#FAF6EF",
+    "color_surface": "#FFFFFF",
+    "color_text": "#1B1611",
+    "color_text_muted": "#6E6557",
+    "color_accent": "#B8902E",
+    "color_accent_text": "#FFFFFF",
+    "color_border": "#E8E0D0",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 2,
+    "logo_width": 140
+  },
+  "presets": {
+    "Orfèvre": {
+      "color_background": "#FAF6EF",
+      "color_surface": "#FFFFFF",
+      "color_text": "#1B1611",
+      "color_text_muted": "#6E6557",
+      "color_accent": "#B8902E",
+      "color_accent_text": "#FFFFFF",
+      "color_border": "#E8E0D0",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 2,
+      "logo_width": 140
+    }
+  }
+}

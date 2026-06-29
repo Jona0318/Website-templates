@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_background": "#0C0E13",
+    "color_surface": "#151922",
+    "color_text": "#ECEFF5",
+    "color_text_muted": "#93A0B5",
+    "color_accent": "#D4A23A",
+    "color_accent_text": "#0C0E13",
+    "color_border": "#232A36",
+    "heading_font": "playfair_display_n4",
+    "body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 6,
+    "logo_width": 140
+  },
+  "presets": {
+    "Voltage": {
+      "color_background": "#0C0E13",
+      "color_surface": "#151922",
+      "color_text": "#ECEFF5",
+      "color_text_muted": "#93A0B5",
+      "color_accent": "#D4A23A",
+      "color_accent_text": "#0C0E13",
+      "color_border": "#232A36",
+      "heading_font": "playfair_display_n4",
+      "body_font": "assistant_n4",
+      "page_width": 1280,
+      "corner_radius": 6,
+      "logo_width": 140
+    }
+  }
+}

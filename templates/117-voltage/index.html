@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voltage — premium elektronica Shopify-thema (dark × goud)</title>
+<meta name="description" content="Voltage: een dark, importeerbaar Shopify-thema voor elektronica & audio. Bento-grid, monospace micro-labels en goud-accent (#D4A23A).">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230C0E13'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23D4A23A' font-family='monospace' font-weight='700'>V</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+  :root{
+    --bg:#0C0E13; --surface:#151922; --surface-2:#1B202B; --text:#ECEFF5; --muted:#93A0B5;
+    --accent:#D4A23A; --accent-text:#0C0E13; --border:#232A36;
+    --r:14px;
+    --grotesk:"Space Grotesk",system-ui,sans-serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:"Space Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(50% 35% at 80% -5%,rgba(212,162,58,.10),transparent 60%);background-attachment:fixed}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--grotesk);line-height:1.05;margin:0 0 .4em;letter-spacing:-.02em;font-weight:700}
+  h1{font-size:clamp(2.6rem,7vw,5rem)} h2{font-size:clamp(2rem,4vw,3rem)} h3{font-size:1.05rem;letter-spacing:-.01em}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:22px}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;font-size:.68rem;color:var(--accent)}
+  .badge{display:inline-block;font-family:var(--mono);font-weight:700;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:.28rem .5rem;border-radius:5px;border:1px solid var(--accent);color:var(--accent);background:rgba(212,162,58,.08)}
+  .badge--solid{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;font-family:var(--grotesk);font-weight:600;font-size:.85rem;
+    letter-spacing:.02em;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:.22s;line-height:1}
+  .btn--primary{background:var(--accent);color:var(--accent-text);box-shadow:0 0 0 0 rgba(212,162,58,.5)}
+  .btn--primary:hover{box-shadow:0 0 28px -4px rgba(212,162,58,.6);transform:translateY(-1px)}
+  .btn--ghost{background:var(--surface);color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .section{padding-block:clamp(54px,8vw,100px)}
+  .glow{box-shadow:0 0 0 1px var(--border),0 24px 60px -30px rgba(212,162,58,.35)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:linear-gradient(90deg,#1B202B,#0C0E13);color:var(--text);text-align:center;font-family:var(--mono);
+    font-size:.7rem;letter-spacing:.1em;padding:.55rem 1rem;border-bottom:1px solid var(--border)}
+  .ribbon b{color:var(--accent)}
+  .ribbon a{color:var(--accent);border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* announce */
+  .announce{background:var(--accent);color:var(--accent-text);text-align:center;font-family:var(--mono);font-weight:700;
+    font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem 1rem}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(12,14,19,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:1.5rem}
+  .logo{font-family:var(--grotesk);font-weight:700;font-size:1.45rem;letter-spacing:-.03em;display:flex;align-items:center;gap:.45rem}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px 1px var(--accent)}
+  .menu{display:flex;gap:1.8rem}
+  .menu a{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .menu a:hover{color:var(--accent)}
+  .icons{display:flex;gap:.4rem;align-items:center}
+  .ibtn{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);
+    border-radius:10px;background:var(--surface);color:var(--text)}
+  .ibtn:hover{border-color:var(--accent);color:var(--accent)}
+  .ibtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .cart{position:relative}
+  .cart .count{position:absolute;top:-6px;right:-6px;background:var(--accent);color:var(--accent-text);font-family:var(--mono);
+    font-weight:700;font-size:.6rem;min-width:18px;height:18px;border-radius:999px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+  .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,4vw,56px);align-items:center;padding-block:clamp(40px,7vw,90px)}
+  .hero h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 38px rgba(212,162,58,.45)}
+  .hero p{color:var(--muted);font-size:1.1rem;max-width:440px;margin:1.2rem 0 1.8rem}
+  .hero .cta-row{display:flex;gap:.8rem;flex-wrap:wrap}
+  .hero__media{position:relative;aspect-ratio:5/4;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);
+    background:radial-gradient(80% 70% at 70% 20%,rgba(212,162,58,.28),transparent 60%),linear-gradient(160deg,#1B202B,#0C0E13)}
+  .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+  .hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 40%,rgba(12,14,19,.55))}
+  .hero__tag{position:absolute;left:14px;bottom:14px;z-index:2;display:flex;gap:.4rem}
+  .hero__stats{display:flex;gap:2rem;margin-top:1.6rem;flex-wrap:wrap}
+  .hero__stats div span{display:block;font-family:var(--grotesk);font-weight:700;font-size:1.5rem}
+  .hero__stats div small{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  /* trust */
+  .trust{border-bottom:1px solid var(--border)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust__item{padding:1.4rem;display:flex;gap:.85rem;align-items:flex-start;border-right:1px solid var(--border)}
+  .trust__item:last-child{border-right:0}
+  .trust__item svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.6;flex:0 0 auto;margin-top:2px}
+  .trust__item strong{display:block;font-family:var(--grotesk);font-size:.95rem}
+  .trust__item span{color:var(--muted);font-size:.8rem}
+
+  /* section head */
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-bottom:2.2rem;flex-wrap:wrap}
+  .head p{color:var(--muted);margin:0}
+  .head .mono{display:block;margin-bottom:.7rem}
+
+  /* bento */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(210px,auto);gap:16px}
+  .tile{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:.25s}
+  .tile:hover{border-color:var(--accent);transform:translateY(-3px)}
+  /* feature tile */
+  .tile--feat{grid-column:span 2;grid-row:span 1;padding:1.6rem;display:flex;flex-direction:column;justify-content:space-between;
+    background:radial-gradient(70% 90% at 100% 0%,rgba(212,162,58,.16),transparent 60%),var(--surface)}
+  .tile--feat h3{font-size:1.5rem;margin-bottom:.4rem}
+  .tile--feat p{color:var(--muted);font-size:.9rem;margin:0;max-width:34ch}
+  .tile--feat .arrow{font-family:var(--mono);color:var(--accent);font-size:.72rem;letter-spacing:.14em;margin-top:1rem;display:inline-block}
+  /* product tile */
+  .tile--prod{display:flex;flex-direction:column}
+  .tile--big{grid-row:span 2}
+  .tile__img{position:relative;flex:1;min-height:140px;overflow:hidden;
+    background:radial-gradient(60% 60% at 50% 35%,rgba(212,162,58,.18),transparent 60%),linear-gradient(160deg,#1B202B,#11151D)}
+  .tile__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .tile--prod:hover .tile__img img{transform:scale(1.05)}
+  .tile__badges{position:absolute;top:12px;left:12px;display:flex;gap:.4rem;z-index:2}
+  .tile__body{padding:.95rem 1.1rem 1.15rem;border-top:1px solid var(--border)}
+  .tile__vendor{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .tile__title{font-family:var(--grotesk);font-weight:600;font-size:1.05rem;margin:.25rem 0 .55rem}
+  .tile--prod:hover .tile__title{color:var(--accent)}
+  .tile__price{font-family:var(--mono);font-weight:700;font-size:.95rem;color:var(--text)}
+  .tile__price s{color:var(--muted);font-weight:400;margin-left:.45rem;font-size:.85em}
+  /* spec tile */
+  .tile--spec{grid-column:span 2;padding:1.5rem;background:linear-gradient(160deg,var(--surface-2),var(--surface))}
+  .tile--spec h3{margin-bottom:1rem}
+  .spec-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-top:1px dashed var(--border);
+    font-family:var(--mono);font-size:.72rem}
+  .spec-row span:first-child{color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .spec-row span:last-child{color:var(--accent)}
+
+  /* lab feature */
+  .lab{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px);align-items:center}
+  .lab__media{position:relative;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);
+    background:radial-gradient(70% 60% at 30% 30%,rgba(212,162,58,.22),transparent 60%),linear-gradient(160deg,#1B202B,#0C0E13)}
+  .lab__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+  .lab__content p{color:var(--muted)}
+
+  /* import */
+  .import{border:1px solid var(--border);border-radius:var(--r);padding:clamp(28px,5vw,56px);
+    background:radial-gradient(60% 80% at 100% 0%,rgba(212,162,58,.14),transparent 60%),var(--surface)}
+  .import h2{max-width:20ch}
+  .import p{color:var(--muted);max-width:62ch}
+  .import code{font-family:var(--mono);color:var(--accent);font-size:.85em;background:rgba(212,162,58,.08);padding:.1em .35em;border-radius:4px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:1.6rem 0;counter-reset:s}
+  .step{padding:1.3rem;border:1px solid var(--border);border-radius:10px;background:var(--bg)}
+  .step::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--mono);font-weight:700;font-size:1.1rem;
+    color:var(--accent);margin-bottom:.6rem}
+  .step strong{display:block;font-family:var(--grotesk);margin-bottom:.3rem}
+  .step span{color:var(--muted);font-size:.85rem}
+
+  /* newsletter */
+  .news{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:var(--r);padding:clamp(36px,6vw,72px);text-align:center;
+    background:radial-gradient(60% 100% at 50% 0%,rgba(212,162,58,.16),transparent 60%),var(--surface)}
+  .news p{color:var(--muted);max-width:460px;margin-inline:auto}
+  .news__form{display:flex;gap:.6rem;max-width:440px;margin:1.4rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:1px solid var(--border);padding:.85rem 1.1rem;border-radius:10px;font-family:var(--mono);font-size:.8rem}
+  .news__form input::placeholder{color:var(--muted)}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(44px,6vw,68px) 1.8rem}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.2rem}
+  .f-logo{font-family:var(--grotesk);font-weight:700;font-size:1.4rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.45rem}
+  .f-grid p{color:var(--muted);max-width:300px;font-size:.9rem}
+  .f-col h4{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}
+  .f-col a{font-size:.9rem;color:var(--muted)} .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:1rem;color:var(--muted);font-family:var(--mono);font-size:.66rem;letter-spacing:.08em}
+
+  @media(max-width:980px){
+    .hero__grid{grid-template-columns:1fr}.lab{grid-template-columns:1fr}
+    .bento{grid-template-columns:repeat(2,1fr)}.tile--feat,.tile--spec{grid-column:span 2}
+    .f-grid{grid-template-columns:1fr 1fr}.trust__grid{grid-template-columns:1fr 1fr}
+    .trust__item:nth-child(2){border-right:0}.trust__item{border-bottom:1px solid var(--border)}
+  }
+  @media(max-width:620px){
+    .menu{display:none}.steps{grid-template-columns:1fr}.bento{grid-template-columns:1fr}
+    .tile--feat,.tile--spec{grid-column:span 1}.tile--big{grid-row:span 1}
+    .f-grid{grid-template-columns:1fr}.news__form{flex-direction:column}
+    .trust__grid{grid-template-columns:1fr}.trust__item{border-right:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ <b>Shopify-ready thema</b> — direct importeerbaar als .zip ·
+  <a href="../../downloads/voltage-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Gratis next-day verzending vanaf €50</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#"><span class="dot"></span>Voltage</a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Audio</a><a href="#import">Shopify</a><a href="#">Support</a>
+    </nav>
+    <div class="icons">
+      <a class="ibtn" href="#" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </a>
+      <a class="ibtn cart" href="#" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="count">2</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="mono">Nieuwe gadgets</span>
+      <h1>Techniek met <em>gouden details</em></h1>
+      <p>Premium audio en accessoires, ontworpen voor het dagelijks leven.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop de collectie</a>
+        <a href="#shop" class="btn btn--ghost">Bekijk audio</a>
+      </div>
+      <div class="hero__stats">
+        <div><span>40u</span><small>Speeltijd</small></div>
+        <div><span>−42dB</span><small>Noise cancel</small></div>
+        <div><span>2 jr</span><small>Garantie</small></div>
+      </div>
+    </div>
+    <div class="hero__media glow">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1600&q=80" alt="Premium wireless koptelefoon in goud-accent" loading="eager" onerror="this.remove()">
+      <div class="hero__tag"><span class="badge badge--solid">Drop 01</span><span class="badge">In stock</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><div><strong>Gratis verzending</strong><span>Bij orders boven €50</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><strong>2 jaar garantie</strong><span>Op alle toestellen</span></div></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><strong>Next-day levering</strong><span>Voor 22:00 besteld</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="mono">Bestsellers</span>
+        <h2>Uitgelichte producten</h2>
+      </div>
+      <p>Met de hand geselecteerd uit ons assortiment.</p>
+    </div>
+
+    <div class="bento">
+      <!-- feature tile -->
+      <div class="tile tile--feat">
+        <span class="badge">Lab-tested</span>
+        <div>
+          <h3>Studio-geluid, draadloos</h3>
+          <p>Adaptive noise-cancelling, 40 uur speeltijd en een afwerking met goud-accent.</p>
+          <a class="arrow" href="#shop">→ Bekijk audio</a>
+        </div>
+      </div>
+
+      <!-- big product -->
+      <a class="tile tile--prod tile--big" href="#">
+        <div class="tile__img">
+          <div class="tile__badges"><span class="badge badge--solid">Sale</span><span class="badge">−20%</span></div>
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80" alt="Wireless koptelefoon" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="tile__body">
+          <span class="tile__vendor">Voltage</span>
+          <div class="tile__title">Wireless Koptelefoon</div>
+          <div class="tile__price">€ 199,00 <s>€ 249,00</s></div>
+        </div>
+      </a>
+
+      <!-- product -->
+      <a class="tile tile--prod" href="#">
+        <div class="tile__img">
+          <div class="tile__badges"><span class="badge badge--solid">Nieuw</span></div>
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=80" alt="Smartwatch Pro" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="tile__body">
+          <span class="tile__vendor">Voltage</span>
+          <div class="tile__title">Smartwatch Pro</div>
+          <div class="tile__price">€ 249,00</div>
+        </div>
+      </a>
+
+      <!-- spec tile -->
+      <div class="tile tile--spec">
+        <span class="mono">Specs · in cijfers</span>
+        <h3 style="margin-top:.6rem">Gebouwd op detail</h3>
+        <div class="spec-row"><span>Bluetooth</span><span>5.4 LE</span></div>
+        <div class="spec-row"><span>Driver</span><span>40mm dynamic</span></div>
+        <div class="spec-row"><span>Opladen</span><span>USB-C · 10 min = 5u</span></div>
+        <div class="spec-row"><span>Waterbestendig</span><span>IPX5</span></div>
+      </div>
+
+      <!-- product -->
+      <a class="tile tile--prod" href="#">
+        <div class="tile__img">
+          <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80" alt="Bluetooth speaker" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="tile__body">
+          <span class="tile__vendor">Voltage</span>
+          <div class="tile__title">Bluetooth Speaker</div>
+          <div class="tile__price">€ 129,00</div>
+        </div>
+      </a>
+
+      <!-- product -->
+      <a class="tile tile--prod" href="#">
+        <div class="tile__img">
+          <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80" alt="Draadloze earbuds" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="tile__body">
+          <span class="tile__vendor">Voltage</span>
+          <div class="tile__title">Draadloze Earbuds</div>
+          <div class="tile__price">€ 99,00</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="lab">
+      <div class="lab__media glow">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Detail van een printplaat in ons lab" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="lab__content">
+        <span class="mono">Ons lab</span>
+        <h2>Ontworpen om te presteren</h2>
+        <p>Elk product wordt getest tot in het kleinste detail. Wij geloven in techniek die werkt — strak, betrouwbaar en mooi.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="mono">Shopify-ready</span>
+      <h2>Dit thema importeer je direct in Shopify</h2>
+      <p>Voltage is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen. Het goud-accent staat ingesteld op <code>#D4A23A</code>.</p>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent op <code>#D4A23A</code>).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je producten toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+      <a class="btn btn--primary" href="../../downloads/voltage-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="mono">Blijf op de hoogte</span>
+      <h2>Word lid van de club</h2>
+      <p>Vroege toegang tot drops, privé-aanbiedingen en product-updates.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="nl-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="nl-email" type="email" placeholder="jij@voorbeeld.nl" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><span class="dot" style="width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px 1px var(--accent)"></span>Voltage</div>
+        <p>Premium elektronica, ontworpen om te presteren. Een Shopify-thema in zwart met goud-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#">Alle producten</a></li><li><a href="#">Audio</a></li><li><a href="#">Accessoires</a></li><li><a href="#">Sale</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#">Over ons</a></li><li><a href="#">Ons lab</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Garantie</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Voltage. Alle rechten voorbehouden.</span>
+      <span>Direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

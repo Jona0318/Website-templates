@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
-  "generated": "2026-06-16",
-  "count": 113,
+  "generated": "2026-06-29",
+  "count": 124,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -5883,6 +5883,549 @@
           "Shopify",
           "Webshop",
           "Premium"
+        ]
+      }
+    },
+    {
+      "id": 115,
+      "slug": "115-velours",
+      "path": "templates/115-velours/",
+      "title": "Velours — mode Shopify-thema",
+      "name": "Velours",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/velours-shopify-theme.zip",
+      "palette": [
+        "#16131B",
+        "#C89B3C",
+        "#201C28",
+        "#F3EFEA",
+        "#322B3C"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Manrope"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor mode. Eigen look met goud-accent (#C89B3C). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Velours — mode Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify mode-thema in ink × goud (#C89B3C): hero, uitgelichte stuks, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🧥",
+        "grad": [
+          "#C89B3C",
+          "#16131B"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Mode"
+        ]
+      }
+    },
+    {
+      "id": 116,
+      "slug": "116-orfevre",
+      "path": "templates/116-orfevre/",
+      "title": "Orfèvre — sieraden Shopify-thema",
+      "name": "Orfèvre",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/orfevre-shopify-theme.zip",
+      "palette": [
+        "#FAF6EF",
+        "#B8902E",
+        "#FFFFFF",
+        "#1B1611",
+        "#E8E0D0"
+      ],
+      "fonts": [
+        "Playfair Display",
+        "Jost"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor sieraden. Eigen look met goud-accent (#B8902E). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Orfèvre — sieraden Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify sieraden-thema in ivoor × goud (#B8902E): hero, uitgelichte stukken, atelier-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "💍",
+        "grad": [
+          "#B8902E",
+          "#FAF6EF"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Sieraden"
+        ]
+      }
+    },
+    {
+      "id": 117,
+      "slug": "117-voltage",
+      "path": "templates/117-voltage/",
+      "title": "Voltage — elektronica Shopify-thema",
+      "name": "Voltage",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/voltage-shopify-theme.zip",
+      "palette": [
+        "#0C0E13",
+        "#D4A23A",
+        "#151922",
+        "#ECEFF5",
+        "#232A36"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor elektronica. Eigen look met goud-accent (#D4A23A). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Voltage — elektronica Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify elektronica-thema in zwart × goud (#D4A23A): hero, uitgelichte producten, lab-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "🎧",
+        "grad": [
+          "#D4A23A",
+          "#0C0E13"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Elektronica"
+        ]
+      }
+    },
+    {
+      "id": 118,
+      "slug": "118-cascara",
+      "path": "templates/118-cascara/",
+      "title": "Cascara — koffie Shopify-thema",
+      "name": "Cascara",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "dark",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/cascara-shopify-theme.zip",
+      "palette": [
+        "#1B130C",
+        "#C89B3C",
+        "#261A11",
+        "#F4E9DB",
+        "#3A2A1B"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Work Sans"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor koffie. Eigen look met goud-accent (#C89B3C). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Cascara — koffie Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify koffie-thema in espresso × goud (#C89B3C): hero, uitgelichte bonen, branderij-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "☕",
+        "grad": [
+          "#C89B3C",
+          "#1B130C"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Koffie"
+        ]
+      }
+    },
+    {
+      "id": 119,
+      "slug": "119-lumiere",
+      "path": "templates/119-lumiere/",
+      "title": "Lumière — beauty Shopify-thema",
+      "name": "Lumière",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "platform": "shopify",
+      "download": "downloads/lumiere-shopify-theme.zip",
+      "palette": [
+        "#FCF5F3",
+        "#C0922F",
+        "#FFFFFF",
+        "#221A1B",
+        "#F0E2DD"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Outfit"
+      ],
+      "mechanics": [
+        "shopify-os2.0",
+        "liquid-sections",
+        "theme-settings",
+        "product-grid",
+        "cart",
+        "newsletter"
+      ],
+      "sections": [
+        "hero",
+        "trust-bar",
+        "featured-collection",
+        "image-with-text",
+        "newsletter",
+        "footer"
+      ],
+      "note": "Direct importeerbaar Shopify-thema (Online Store 2.0, Liquid) voor beauty. Eigen look met goud-accent (#C0922F). Download is de upload-klare .zip met juiste root-structuur; de preview toont de storefront in HTML.",
+      "card": {
+        "title": "Lumière — beauty Shopify-thema",
+        "blurb": "Direct importeerbaar Shopify beauty-thema in blush × goud (#C0922F): hero, uitgelichte producten, lab-sectie, nieuwsbrief en footer. Online Store 2.0 (Liquid), upload-klare zip.",
+        "emoji": "✨",
+        "grad": [
+          "#C0922F",
+          "#FCF5F3"
+        ],
+        "tags": [
+          "Shopify",
+          "Webshop",
+          "Beauty"
+        ]
+      }
+    },
+    {
+      "id": 120,
+      "slug": "120-nebula",
+      "path": "templates/120-nebula/",
+      "title": "Nebula — SaaS-platform",
+      "name": "Nebula",
+      "sector": "tech",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0A0A18",
+        "#7C5CFF",
+        "#22D3EE",
+        "#EAEAF5",
+        "#9A9AB8"
+      ],
+      "fonts": [
+        "Space Grotesk",
+        "Inter"
+      ],
+      "mechanics": [
+        "starfield-canvas",
+        "glassmorphism",
+        "bento-grid",
+        "pricing-table",
+        "faq-accordion",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "stats",
+        "features",
+        "pricing",
+        "faq",
+        "cta",
+        "footer"
+      ],
+      "note": "Futuristisch SaaS-platform in ruimteblauw × violet × cyaan: glasmorfe kaarten, aurora-gradients, een sterrenveld, feature-bento, prijstabel en FAQ.",
+      "card": {
+        "title": "Nebula — SaaS-platform",
+        "blurb": "Futuristisch SaaS-platform in ruimteblauw × violet × cyaan: glasmorfe kaarten, aurora-gradients, een sterrenveld, feature-bento, prijstabel en FAQ.",
+        "emoji": "🌌",
+        "grad": [
+          "#7C5CFF",
+          "#0A0A18"
+        ],
+        "tags": [
+          "SaaS",
+          "Glass",
+          "Signature"
+        ]
+      }
+    },
+    {
+      "id": 121,
+      "slug": "121-terra",
+      "path": "templates/121-terra/",
+      "title": "Terra — biologische boerderijwinkel",
+      "name": "Terra",
+      "sector": "retail",
+      "tier": "premium",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#F6F2E9",
+        "#4B6B3C",
+        "#C2703D",
+        "#23201A",
+        "#6E6656"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Work Sans"
+      ],
+      "mechanics": [
+        "produce-grid",
+        "story-split",
+        "hours-block",
+        "newsletter",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "usps",
+        "aanbod",
+        "verhaal",
+        "openingstijden",
+        "nieuwsbrief",
+        "footer"
+      ],
+      "note": "Warme biologische boerderijwinkel in crème × bosgroen × klei: aardse editorial-look, seizoensoogst-grid met prijzen, een 'van het land'-verhaal en nieuwsbrief.",
+      "card": {
+        "title": "Terra — biologische boerderijwinkel",
+        "blurb": "Warme biologische boerderijwinkel in crème × bosgroen × klei: aardse editorial-look, seizoensoogst-grid met prijzen, een 'van het land'-verhaal en nieuwsbrief.",
+        "emoji": "🌾",
+        "grad": [
+          "#4B6B3C",
+          "#C2703D"
+        ],
+        "tags": [
+          "Eco",
+          "Editorial",
+          "Premium"
+        ]
+      }
+    },
+    {
+      "id": 122,
+      "slug": "122-pulse",
+      "path": "templates/122-pulse/",
+      "title": "Pulse — elektronisch muziekfestival",
+      "name": "Pulse",
+      "sector": "muziek",
+      "tier": "grafisch",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0B0B0B",
+        "#C6FF00",
+        "#FF2E92",
+        "#F5F5F0",
+        "#18E0FF"
+      ],
+      "fonts": [
+        "Archivo Black",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "marquee-ticker",
+        "lineup-grid",
+        "ticket-tiers",
+        "hard-shadows",
+        "reveal-system"
+      ],
+      "sections": [
+        "ticker",
+        "hero",
+        "line-up",
+        "programma",
+        "tickets",
+        "info",
+        "footer"
+      ],
+      "note": "Neo-brutalist elektronisch festival in zwart × acid-groen × magenta: oversized type, scrollende tickers, line-up-grid en hard-shadow ticketkaarten.",
+      "card": {
+        "title": "Pulse — elektronisch muziekfestival",
+        "blurb": "Neo-brutalist elektronisch festival in zwart × acid-groen × magenta: oversized type, scrollende tickers, line-up-grid en hard-shadow ticketkaarten.",
+        "emoji": "🎛️",
+        "grad": [
+          "#C6FF00",
+          "#FF2E92"
+        ],
+        "tags": [
+          "Festival",
+          "Grafisch",
+          "Brutalist"
+        ]
+      }
+    },
+    {
+      "id": 123,
+      "slug": "123-atrium",
+      "path": "templates/123-atrium/",
+      "title": "Atrium — architectuur & interieur",
+      "name": "Atrium",
+      "sector": "interieur",
+      "tier": "editorial",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#FBFBF9",
+        "#C2410C",
+        "#111111",
+        "#6B6B66",
+        "#DAD9D3"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "mechanics": [
+        "swiss-grid",
+        "oversized-numbers",
+        "project-index",
+        "werkwijze-steps",
+        "form-validate",
+        "reveal-system"
+      ],
+      "sections": [
+        "hero",
+        "projecten",
+        "over",
+        "werkwijze",
+        "contact",
+        "footer"
+      ],
+      "note": "Verfijnd Swiss-grid architectuurbureau in wit × zwart × terracotta: zichtbaar raster, hairlines, oversized sectienummers en projectenindex.",
+      "card": {
+        "title": "Atrium — architectuur & interieur",
+        "blurb": "Verfijnd Swiss-grid architectuurbureau in wit × zwart × terracotta: zichtbaar raster, hairlines, oversized sectienummers en projectenindex.",
+        "emoji": "🏛️",
+        "grad": [
+          "#C2410C",
+          "#111111"
+        ],
+        "tags": [
+          "Swiss",
+          "Editorial",
+          "Grid"
+        ]
+      }
+    },
+    {
+      "id": 124,
+      "slug": "124-maree",
+      "path": "templates/124-maree/",
+      "title": "Marée — kustrestaurant & oesterbar",
+      "name": "Marée",
+      "sector": "horeca",
+      "tier": "maatwerk",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0C2A33",
+        "#FF6B5C",
+        "#E9DCC3",
+        "#F1EBDD",
+        "#9FB3B2"
+      ],
+      "fonts": [
+        "Cormorant Garamond",
+        "Jost"
+      ],
+      "mechanics": [
+        "photo-hero",
+        "menu-kaart",
+        "getij-detail",
+        "gallery",
+        "reservation-form",
+        "form-validate"
+      ],
+      "sections": [
+        "hero",
+        "over",
+        "menukaart",
+        "galerij",
+        "openingstijden",
+        "reserveren",
+        "footer"
+      ],
+      "note": "Sfeervol kustrestaurant & oesterbar in zeegroen × koraal × zand: fotografische hero, dagverse menukaart, getij-detail, galerij en reservering.",
+      "card": {
+        "title": "Marée — kustrestaurant & oesterbar",
+        "blurb": "Sfeervol kustrestaurant & oesterbar in zeegroen × koraal × zand: fotografische hero, dagverse menukaart, getij-detail, galerij en reservering.",
+        "emoji": "🦪",
+        "grad": [
+          "#FF6B5C",
+          "#0C2A33"
+        ],
+        "tags": [
+          "Kust",
+          "Horeca",
+          "Maatwerk"
         ]
       }
     }

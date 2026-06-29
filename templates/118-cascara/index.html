@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cascara — ambachtelijke koffiebranderij (Shopify-thema)</title>
+<meta name="description" content="Cascara: een warm, handgemaakt Shopify-thema voor specialty koffie. Espresso met goud-accent (#C89B3C), bonenplank en roostniveaus. Direct importeerbaar als .zip.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%231B130C'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='%23C89B3C' font-family='serif'>C</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap');
+  :root{
+    --bg:#1B130C; --surface:#261A11; --text:#F4E9DB; --muted:#B7A48E;
+    --accent:#C89B3C; --accent-text:#1B130C; --border:#3A2A1B;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Work Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --r:22px; --r-lg:34px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .4em;font-weight:800;letter-spacing:-.01em}
+  h1{font-size:clamp(2.6rem,6vw,4.6rem)} h2{font-size:clamp(2rem,4vw,3.1rem)} h3{font-size:1.2rem;font-weight:600}
+  p{margin:0 0 1rem}
+  ::selection{background:var(--accent);color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:1200px;margin-inline:auto;padding-inline:24px}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:600;color:var(--accent);margin-bottom:.9rem}
+  .eyebrow::before{content:"✦"}
+  .section{padding-block:clamp(54px,9vw,104px)}
+
+  /* pill buttons */
+  .btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.9rem;font-family:var(--sans);font-weight:600;font-size:.95rem;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn--primary{background:var(--accent);color:var(--accent-text);box-shadow:0 8px 24px rgba(200,155,60,.28)}
+  .btn--primary:hover{background:#dcb255}
+  .btn--ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* Shopify-ready ribbon */
+  .ribbon{background:linear-gradient(90deg,#C89B3C,#e7c879 55%,#C89B3C);color:#1B130C;text-align:center;font-size:.82rem;font-weight:600;padding:.6rem 1rem}
+  .ribbon a{font-weight:700;border-bottom:2px solid currentColor;padding-bottom:1px}
+
+  /* announce */
+  .announce{background:var(--surface);color:var(--muted);text-align:center;font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-bottom:1px solid var(--border)}
+  .announce b{color:var(--accent)}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:20;background:rgba(27,19,12,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:1.5rem}
+  .logo{font-family:var(--serif);font-weight:800;font-size:1.7rem;letter-spacing:.01em;display:inline-flex;align-items:center;gap:.45rem}
+  .logo .dot{width:14px;height:14px;border-radius:50%;background:var(--accent);display:inline-block}
+  .menu{display:flex;gap:1.8rem}
+  .menu a{font-size:.92rem;font-weight:500;color:var(--muted)} .menu a:hover{color:var(--text)}
+  .icons{display:flex;gap:1.1rem;align-items:center}
+  .icons button{background:none;border:0;color:inherit;cursor:pointer;padding:0;display:inline-flex}
+  .icons svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .cart{position:relative;display:inline-flex;align-items:center}
+  .cart-count{position:absolute;top:-8px;right:-10px;background:var(--accent);color:var(--accent-text);border-radius:999px;font-size:.66rem;font-weight:700;min-width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  .hero__inner{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(40px,7vw,88px)}
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:46ch;margin-bottom:1.8rem}
+  .hero .cta-row{display:flex;gap:.9rem;flex-wrap:wrap}
+  .hero__media{position:relative}
+  .hero__media .photo{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;position:relative;background:
+     radial-gradient(70% 60% at 30% 20%,rgba(200,155,60,.35),transparent 60%),
+     linear-gradient(160deg,#3a2a1b,#1f150d);
+     border:1px solid var(--border);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+  .hero__media .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  /* hand-drawn sticker badge */
+  .sticker{position:absolute;z-index:3;display:grid;place-items:center;width:118px;height:118px;border-radius:50%;background:var(--accent);color:var(--accent-text);text-align:center;font-family:var(--serif);font-weight:800;font-size:.95rem;line-height:1.1;transform:rotate(-12deg);box-shadow:0 10px 24px rgba(0,0,0,.4);border:3px dashed rgba(27,19,12,.45)}
+  .hero .sticker{bottom:-26px;left:-22px}
+  .sticker small{display:block;font-family:var(--sans);font-weight:600;font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;margin-top:.15rem}
+
+  /* trust row */
+  .trust{border-block:1px solid var(--border);background:var(--surface)}
+  .trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;padding-block:1.8rem}
+  .trust__item{display:flex;gap:.85rem;align-items:center}
+  .trust__ic{flex:0 0 auto;width:44px;height:44px;border-radius:14px;background:rgba(200,155,60,.14);display:grid;place-items:center}
+  .trust__ic svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .trust__item strong{display:block;font-size:.96rem;font-weight:600} .trust__item span{color:var(--muted);font-size:.83rem}
+
+  /* section head */
+  .head{max-width:640px;margin-bottom:2.4rem} .head p{color:var(--muted)}
+  .head--center{margin-inline:auto;text-align:center}
+
+  /* bean shelf (horizontal scroll) */
+  .shelf{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 26px;margin-inline:-4px;scrollbar-width:thin;scrollbar-color:var(--accent) var(--surface)}
+  .shelf::-webkit-scrollbar{height:9px}
+  .shelf::-webkit-scrollbar-track{background:var(--surface);border-radius:999px}
+  .shelf::-webkit-scrollbar-thumb{background:var(--accent);border-radius:999px}
+  .bean{scroll-snap-align:start;flex:0 0 280px;max-width:280px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease}
+  .bean:hover{transform:translateY(-6px);border-color:var(--accent)}
+  .bean__img{aspect-ratio:1/1;position:relative;overflow:hidden;background:radial-gradient(70% 60% at 40% 30%,rgba(200,155,60,.30),transparent 60%),linear-gradient(160deg,#3a2a1b,#1f150d)}
+  .bean__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .bean:hover .bean__img img{transform:scale(1.06)}
+  .bean__badge{position:absolute;top:14px;left:14px;z-index:2;background:var(--accent);color:var(--accent-text);font-family:var(--serif);font-weight:800;font-size:.74rem;padding:.32rem .72rem;border-radius:999px;transform:rotate(-6deg);box-shadow:0 6px 16px rgba(0,0,0,.35);border:2px dashed rgba(27,19,12,.4)}
+  .bean__body{padding:1.1rem 1.25rem 1.35rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+  .bean__vendor{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .bean__title{font-family:var(--serif);font-size:1.18rem;font-weight:600}
+  .bean:hover .bean__title{color:var(--accent)}
+  /* roast indicator */
+  .roast{display:flex;align-items:center;gap:.55rem;font-size:.76rem;color:var(--muted)}
+  .roast__dots{display:inline-flex;gap:5px}
+  .roast__dots i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--accent);display:inline-block}
+  .roast__dots i.on{background:var(--accent)}
+  .bean__foot{margin-top:auto;padding-top:.6rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+  .bean__price{font-weight:600;font-size:1.05rem}
+  .bean__price s{color:var(--muted);font-weight:400;font-size:.85em;margin-left:.35rem}
+  .bean__add{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:rgba(200,155,60,.14);border:0;color:var(--accent);font-size:1.3rem;cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .bean__add:hover{background:var(--accent);color:var(--accent-text)}
+  .shelf-hint{font-size:.8rem;color:var(--muted);margin-top:-.6rem}
+
+  /* roastery feature */
+  .feature{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(24px,4vw,48px)}
+  .feature__media{position:relative;aspect-ratio:5/4;border-radius:var(--r);overflow:hidden;background:radial-gradient(70% 60% at 30% 20%,rgba(200,155,60,.30),transparent 60%),linear-gradient(160deg,#3a2a1b,#1f150d);border:1px solid var(--border)}
+  .feature__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .feature__media .sticker{top:-24px;right:-20px;width:104px;height:104px;font-size:.85rem}
+  .feature__content p{color:var(--muted)}
+
+  /* import */
+  .import{background:radial-gradient(80% 100% at 90% 0%,rgba(200,155,60,.14),transparent 55%),var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(28px,5vw,60px)}
+  .import code{background:rgba(200,155,60,.16);color:var(--accent);padding:.1em .45em;border-radius:8px;font-size:.86em}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.8rem;counter-reset:s}
+  .step{position:relative;padding:1.4rem 1.3rem;border:1px solid var(--border);border-radius:var(--r);background:var(--bg)}
+  .step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--accent-text);font-family:var(--serif);font-weight:800;font-size:1.2rem;margin-bottom:.8rem;transform:rotate(-6deg)}
+  .step strong{display:block;margin-bottom:.25rem;font-size:1.05rem}
+  .step span{color:var(--muted);font-size:.9rem}
+
+  /* newsletter */
+  .news{background:linear-gradient(160deg,#2c1e13,#1f150d);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(36px,6vw,72px);text-align:center}
+  .news__form{display:flex;gap:.7rem;max-width:480px;margin:1.6rem auto 0}
+  .news__form input{flex:1;background:var(--bg);color:var(--text);border:1px solid var(--border);padding:.95rem 1.3rem;border-radius:999px;font-family:inherit;font-size:.95rem}
+  .news__form input::placeholder{color:var(--muted)}
+  .news p{color:var(--muted);max-width:50ch;margin-inline:auto}
+
+  /* footer */
+  footer.site{border-top:1px solid var(--border);background:var(--surface);padding-block:clamp(48px,6vw,72px) 2rem;margin-top:clamp(48px,8vw,96px)}
+  .f-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:2.5rem}
+  .f-logo{font-family:var(--serif);font-weight:800;font-size:1.6rem;margin-bottom:.8rem;display:inline-flex;align-items:center;gap:.4rem}
+  .f-logo .dot{width:12px;height:12px;border-radius:50%;background:var(--accent)}
+  .f-grid p{color:var(--muted);max-width:34ch}
+  .f-col h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+  .f-col ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+  .f-col a{font-size:.93rem;color:var(--muted)} .f-col a:hover{color:var(--text)}
+  .f-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.82rem}
+
+  @media(max-width:900px){
+    .hero__inner{grid-template-columns:1fr}.hero__media{order:-1;max-width:440px}
+    .trust__grid{grid-template-columns:1fr 1fr}
+    .feature{grid-template-columns:1fr}.feature__media{order:-1}
+    .steps{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .menu{display:none}
+    .trust__grid{grid-template-columns:1fr}
+    .news__form{flex-direction:column}
+    .f-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  ✦ Shopify-ready thema — direct importeerbaar als .zip ·
+  <a href="../../downloads/cascara-shopify-theme.zip" download>Download het Shopify-thema</a>
+</div>
+
+<div class="announce">Vers gebrand — <b>gratis verzending vanaf €35</b></div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#">Cascara<span class="dot" aria-hidden="true"></span></a>
+    <nav class="menu" aria-label="Hoofdmenu">
+      <a href="#shop">Shop</a><a href="#shop">Bonen</a><a href="#import">Shopify</a><a href="#branderij">Branderij</a>
+    </nav>
+    <div class="icons">
+      <button type="button" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button type="button" class="cart" aria-label="Winkelwagen, 2 artikelen">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" aria-hidden="true">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__content">
+      <span class="eyebrow">Vers gebrand</span>
+      <h1>Koffie met <em>een gouden crema</em></h1>
+      <p>Specialty bonen, ambachtelijk gebrand in kleine batches.</p>
+      <div class="cta-row">
+        <a href="#shop" class="btn btn--primary">Shop de bonen</a>
+        <a href="#branderij" class="btn btn--ghost">Onze branderij</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1600&q=80" alt="Verse kop koffie met latte art en koffiebonen" loading="eager" onerror="this.remove()">
+      </div>
+      <div class="sticker" aria-hidden="true">Klein<br>gebrand<small>kleine batches</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="Voordelen">
+  <div class="wrap trust__grid">
+    <div class="trust__item"><span class="trust__ic"><svg viewBox="0 0 24 24"><path d="M3 7h13v9H3z"/><path d="M16 10h4l1 3v3h-5"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></span><div><strong>Gratis verzending</strong><span>Bij orders boven €35</span></div></div>
+    <div class="trust__item"><span class="trust__ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><div><strong>Veilig afrekenen</strong><span>Versleuteld &amp; beschermd</span></div></div>
+    <div class="trust__item"><span class="trust__ic"><svg viewBox="0 0 24 24"><path d="M5 8h11v7a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3z"/><path d="M16 9h2a2 2 0 0 1 0 4h-2"/><path d="M8 3v2M11 2v3M14 3v2"/></svg></span><div><strong>Vers gebrand</strong><span>Binnen 48 uur verstuurd</span></div></div>
+    <div class="trust__item"><span class="trust__ic"><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 8 9 8 9s8-4 8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></span><div><strong>Direct trade</strong><span>Eerlijke bonen</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Bestsellers</span>
+      <h2>Uitgelichte bonen</h2>
+      <p>Met de hand geselecteerd uit onze branderij.</p>
+    </div>
+    <p class="shelf-hint">← Schuif door de bonenplank →</p>
+    <div class="shelf" role="list" aria-label="Bonenplank met producten">
+
+      <article class="bean" role="listitem">
+        <div class="bean__img"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=700&q=80" alt="Zak Huismelange koffiebonen 250 gram" loading="lazy" onerror="this.remove()"></div>
+        <div class="bean__body">
+          <span class="bean__vendor">Cascara</span>
+          <h3 class="bean__title">Huismelange 250g</h3>
+          <div class="roast" title="Roostniveau: medium"><span class="roast__dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span><span>medium · licht→donker</span></div>
+          <div class="bean__foot"><span class="bean__price">€ 12,50</span><button class="bean__add" type="button" aria-label="Huismelange 250g toevoegen">+</button></div>
+        </div>
+      </article>
+
+      <article class="bean" role="listitem">
+        <div class="bean__img"><span class="bean__badge">Nieuw</span><img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=700&q=80" alt="Single Origin Ethiopië koffiebonen" loading="lazy" onerror="this.remove()"></div>
+        <div class="bean__body">
+          <span class="bean__vendor">Cascara</span>
+          <h3 class="bean__title">Single Origin Ethiopië</h3>
+          <div class="roast" title="Roostniveau: licht"><span class="roast__dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span>licht · licht→donker</span></div>
+          <div class="bean__foot"><span class="bean__price">€ 15,00</span><button class="bean__add" type="button" aria-label="Single Origin Ethiopië toevoegen">+</button></div>
+        </div>
+      </article>
+
+      <article class="bean" role="listitem">
+        <div class="bean__img"><img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?auto=format&fit=crop&w=700&q=80" alt="Espresso Blend koffiebonen" loading="lazy" onerror="this.remove()"></div>
+        <div class="bean__body">
+          <span class="bean__vendor">Cascara</span>
+          <h3 class="bean__title">Espresso Blend</h3>
+          <div class="roast" title="Roostniveau: donker"><span class="roast__dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span>donker · licht→donker</span></div>
+          <div class="bean__foot"><span class="bean__price">€ 13,50</span><button class="bean__add" type="button" aria-label="Espresso Blend toevoegen">+</button></div>
+        </div>
+      </article>
+
+      <article class="bean" role="listitem">
+        <div class="bean__img"><span class="bean__badge">Sale</span><img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=700&q=80" alt="Cold Brew Pakket" loading="lazy" onerror="this.remove()"></div>
+        <div class="bean__body">
+          <span class="bean__vendor">Cascara</span>
+          <h3 class="bean__title">Cold Brew Pakket</h3>
+          <div class="roast" title="Roostniveau: medium"><span class="roast__dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span><span>medium · licht→donker</span></div>
+          <div class="bean__foot"><span class="bean__price">€ 18,00 <s>€ 22,00</s></span><button class="bean__add" type="button" aria-label="Cold Brew Pakket toevoegen">+</button></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="branderij" style="padding-top:0">
+  <div class="wrap">
+    <div class="feature">
+      <div class="feature__media">
+        <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=900&q=80" alt="Koffiebrander aan het werk in de branderij" loading="lazy" onerror="this.remove()">
+        <div class="sticker" aria-hidden="true">Met<br>de hand<small>gebrand</small></div>
+      </div>
+      <div class="feature__content">
+        <span class="eyebrow">Onze branderij</span>
+        <h2>Gebrand met zorg</h2>
+        <p>Elke batch wordt met de hand gebrand en geproefd. Wij geloven in koffie met karakter — vers, eerlijk en vol smaak.</p>
+        <a href="#shop" class="btn btn--primary">Ontdek meer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="import" style="padding-top:0">
+  <div class="wrap">
+    <div class="import">
+      <span class="eyebrow">Shopify-ready</span>
+      <h2 style="max-width:20ch">Dit thema importeer je direct in Shopify</h2>
+      <p style="color:var(--muted);max-width:62ch">Cascara is een volledig Online Store 2.0-thema (Liquid). De zip heeft de juiste structuur — <code>config/</code>, <code>layout/</code>, <code>templates/</code>, <code>sections/</code>, <code>snippets/</code>, <code>assets/</code>, <code>locales/</code> in de root — dus Shopify accepteert hem meteen. Het goud-accent staat vooraf ingesteld op <code>#C89B3C</code>.</p>
+      <div class="cta-row" style="margin-top:1.2rem">
+        <a class="btn btn--primary" href="../../downloads/cascara-shopify-theme.zip" download>Download Shopify-thema (.zip)</a>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>Upload de zip</strong><span>Shopify-beheer → Onlinewinkel → Thema's → Thema toevoegen → Zip-bestand uploaden.</span></div>
+        <div class="step"><strong>Pas aan</strong><span>Klik op Aanpassen: logo, menu's, hero-afbeelding en kleuren (accent staat op #C89B3C).</span></div>
+        <div class="step"><strong>Publiceer</strong><span>Voeg je bonen toe en klik op Publiceren. Klaar om te verkopen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="news">
+      <span class="eyebrow">Blijf op de hoogte</span>
+      <h2>Word lid van de koffieclub</h2>
+      <p>Vroege toegang tot nieuwe branders, privé-aanbiedingen en verhalen uit de branderij.</p>
+      <form class="news__form" onsubmit="return false">
+        <label for="email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">E-mailadres</label>
+        <input id="email" type="email" placeholder="Je e-mailadres" required>
+        <button class="btn btn--primary" type="submit">Aanmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo">Cascara<span class="dot" aria-hidden="true"></span></div>
+        <p>Specialty koffie, vers gebrand. Een Shopify-thema in espresso met goud-accent.</p>
+      </div>
+      <div class="f-col"><h4>Shop</h4><ul><li><a href="#shop">Alle bonen</a></li><li><a href="#shop">Nieuw</a></li><li><a href="#shop">Cadeaus</a></li></ul></div>
+      <div class="f-col"><h4>Bedrijf</h4><ul><li><a href="#branderij">Over ons</a></li><li><a href="#branderij">Branderij</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div class="f-col"><h4>Service</h4><ul><li><a href="#">Verzending</a></li><li><a href="#">Retourneren</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Cascara. Alle rechten voorbehouden.</span>
+      <span>Een direct importeerbaar Shopify-thema</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
