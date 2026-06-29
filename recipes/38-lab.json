@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 38, "slug": "38-lab", "title": "Synaps — AI-lab", "sector": "tech", "scheme": "dark",
   "meta": { "title": "Synaps — toegepast AI-lab", "description": "Synaps is een toegepast AI-lab: van prototype tot productie. Taalmodellen, computer vision en betrouwbare AI op maat.", "themeColor": "#07090f" },
   "theme": {

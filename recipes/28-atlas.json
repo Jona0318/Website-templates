@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 28,
   "slug": "28-atlas",
   "title": "Atlas — aanpasbare starter",

@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 30, "slug": "30-vinyl", "title": "Groef — onafhankelijk platenlabel", "sector": "muziek", "scheme": "dark",
   "meta": { "title": "Groef — onafhankelijk platenlabel & perserij", "description": "Groef is een onafhankelijk platenlabel uit Utrecht: vinyl, releases en een eigen perserij. Speel een groove en kijk de visualizer mee.", "themeColor": "#161009" },
   "theme": {

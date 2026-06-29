@@ -12,8 +12,10 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sections as sectionRenderers } from './sections.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const __dir = dirname(fileURLToPath(import.meta.url));
 const errors = [];
 const warnings = [];
 const err = (msg) => errors.push(msg);
@@ -30,12 +32,70 @@ try {
 const templates = data.templates || [];
 const slugSet = new Set(templates.map((t) => t.slug));
 
-// 2 · alle recepten parsebaar
+// 2 · alle recepten parsebaar (geparste objecten bewaren voor veldvalidatie)
 const recipeDir = join(ROOT, 'recipes');
 const recipeFiles = readdirSync(recipeDir).filter((f) => f.endsWith('.json') && !f.startsWith('_'));
+const recipes = new Map(); // bestandsnaam → geparst object
 for (const f of recipeFiles) {
-  try { JSON.parse(readFileSync(join(recipeDir, f), 'utf8')); }
+  try { recipes.set(f, JSON.parse(readFileSync(join(recipeDir, f), 'utf8'))); }
   catch (e) { err(`recipes/${f} is niet parsebaar — ${e.message}`); }
+}
+
+// 2b · veldvalidatie van recepten (dependency-vrij; spiegelt _kit/recipe.schema.json)
+const VALID_USE = new Set(Object.keys(sectionRenderers));
+const VALID_SCHEME = new Set(['light', 'dark', 'light+dark']);
+const KNOWN_TOP = new Set([
+  '$schema', 'id', 'slug', 'title', 'sector', 'scheme', 'meta', 'theme',
+  'fonts', 'brand', 'nav', 'headerCta', 'sections', 'footer',
+  'customCss', 'customJs', 'customCssFile', 'customJsFile',
+]);
+const byId = new Map(templates.map((t) => [t.id, t]));
+const bySlug = new Map(templates.map((t) => [t.slug, t]));
+
+for (const [f, r] of recipes) {
+  const at = `recipes/${f}`;
+  // verplichte velden + types
+  if (!Number.isInteger(r.id)) err(`${at}: 'id' ontbreekt of is geen geheel getal`);
+  if (typeof r.slug !== 'string' || !r.slug) err(`${at}: 'slug' ontbreekt`);
+  if (typeof r.title !== 'string' || !r.title) err(`${at}: 'title' ontbreekt`);
+  if (typeof r.sector !== 'string' || !r.sector) err(`${at}: 'sector' ontbreekt`);
+  if (!VALID_SCHEME.has(r.scheme)) err(`${at}: 'scheme' moet light | dark | light+dark zijn (kreeg ${JSON.stringify(r.scheme)})`);
+  if (!r.brand || typeof r.brand.name !== 'string' || !r.brand.name) err(`${at}: 'brand.name' ontbreekt`);
+  if (!Array.isArray(r.sections) || r.sections.length === 0) {
+    err(`${at}: 'sections' ontbreekt of is leeg`);
+  } else {
+    r.sections.forEach((s, i) => {
+      if (!s || typeof s !== 'object') { err(`${at}: sectie[${i}] is geen object`); return; }
+      if (!s.use) err(`${at}: sectie[${i}] mist 'use'`);
+      else if (!VALID_USE.has(s.use)) err(`${at}: sectie[${i}] gebruikt onbekend type '${s.use}' (zie _kit/sections.mjs)`);
+    });
+  }
+  // onbekende top-level sleutels → waarschijnlijk een typefout
+  for (const k of Object.keys(r)) {
+    if (!KNOWN_TOP.has(k)) warn(`${at}: onbekende sleutel '${k}' (typefout? niet in recipe.schema.json)`);
+  }
+  // bestandsnaam ↔ slug
+  if (r.slug && f !== `${r.slug}.json`) warn(`${at}: bestandsnaam komt niet overeen met slug '${r.slug}'`);
+  // consistentie met templates.json (id/slug/scheme/sector op twee plekken)
+  const t = bySlug.get(r.slug);
+  if (t) {
+    if (t.id !== r.id) err(`${at}: id ${r.id} ≠ templates.json id ${t.id} voor slug '${r.slug}'`);
+    // 'light+dark' in de galerij = toggle-template; recept bouwt vanuit één basis (light óf dark) → toegestaan
+    if (t.scheme !== 'light+dark' && t.scheme !== r.scheme) err(`${at}: scheme '${r.scheme}' ≠ templates.json '${t.scheme}' voor '${r.slug}'`);
+    if (t.sector !== r.sector) warn(`${at}: sector '${r.sector}' ≠ templates.json '${t.sector}' voor '${r.slug}'`);
+  } else if (byId.has(r.id) && byId.get(r.id).slug !== r.slug) {
+    err(`${at}: id ${r.id} hoort in templates.json bij slug '${byId.get(r.id).slug}', niet '${r.slug}'`);
+  }
+}
+
+// 2c · het schema-enum mag niet stilletjes afwijken van de echte dispatcher
+try {
+  const schema = JSON.parse(readFileSync(join(__dir, 'recipe.schema.json'), 'utf8'));
+  const schemaUses = new Set(schema.properties?.sections?.items?.properties?.use?.enum || []);
+  for (const u of VALID_USE) if (!schemaUses.has(u)) err(`recipe.schema.json mist sectietype '${u}' dat _kit/sections.mjs wél kent`);
+  for (const u of schemaUses) if (!VALID_USE.has(u)) err(`recipe.schema.json noemt sectietype '${u}' dat _kit/sections.mjs niet (meer) kent`);
+} catch (e) {
+  err(`recipe.schema.json niet leesbaar/parsebaar — ${e.message}`);
 }
 
 // 3 · per template: map, index.html, download-zip, preview

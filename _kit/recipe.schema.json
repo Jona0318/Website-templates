@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://template-rh4.pages.dev/recipe.schema.json",
+  "title": "Template-recept",
+  "description": "Een recept dat _kit/build.mjs uitvouwt tot een zelfstandig templates/<slug>/index.html. Zie recipes/_schema.md voor de volledige uitleg per sectie.",
+  "type": "object",
+  "required": ["id", "slug", "title", "sector", "scheme", "brand", "sections"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "integer", "minimum": 1, "description": "Numeriek id, gelijk aan de entry in templates.json." },
+    "slug": { "type": "string", "pattern": "^[0-9]+-[a-z0-9-]+$", "description": "Map-naam onder templates/, bv. \"25-makelaar\"." },
+    "title": { "type": "string", "minLength": 1 },
+    "sector": { "type": "string", "minLength": 1, "description": "Branche; vrij veld, gelijk aan templates.json." },
+    "scheme": { "enum": ["light", "dark", "light+dark"] },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "themeColor": { "type": "string" }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "description": "CSS :root-overrides (semantische tokens, zie recipes/_schema.md).",
+      "additionalProperties": { "type": "string" }
+    },
+    "fonts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "googleHref": { "type": "string" },
+        "serif": { "type": "string" },
+        "grotesk": { "type": "string" },
+        "mono": { "type": "string" }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "tagline": { "type": "string" },
+        "email": { "type": "string" },
+        "tel": { "type": "string" },
+        "address": { "type": "string" },
+        "mark": { "type": "string", "description": "Optioneel logo-teken; anders de eerste letter van de naam." }
+      }
+    },
+    "nav": {
+      "type": "array",
+      "description": "Vult zowel de desktop-links als het overlay-menu.",
+      "items": {
+        "type": "object",
+        "required": ["href", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "href": { "type": "string" },
+          "label": { "type": "string" }
+        }
+      }
+    },
+    "headerCta": {
+      "type": "object",
+      "required": ["href", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "href": { "type": "string" },
+        "label": { "type": "string" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Geordende lijst secties. `use` kiest de renderer (zie enum); `id` is het optionele anker waar de nav naartoe linkt.",
+      "items": {
+        "type": "object",
+        "required": ["use"],
+        "additionalProperties": false,
+        "properties": {
+          "use": {
+            "description": "Sectietype — moet een sleutel zijn uit _kit/sections.mjs.",
+            "enum": [
+              "banner", "bento", "comparison", "contact", "cta", "custom",
+              "faq", "features", "gallery", "hero", "logos", "manifest",
+              "marquee", "metrics", "pricing", "quote", "showcase", "split",
+              "stats", "steps", "tabs", "team", "testimonials", "timeline", "zigzag"
+            ]
+          },
+          "id": { "type": "string", "pattern": "^[A-Za-z][\\w-]*$", "description": "Anker-id; nav-links verwijzen hiernaar met #id." },
+          "data": { "type": "object", "description": "Sectie-specifieke inhoud; zie recipes/_schema.md." }
+        }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "blurb": { "type": "string" },
+        "bottom": { "type": "string" },
+        "dark": { "type": "boolean" },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "title": { "type": "string" },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["href", "label"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "href": { "type": "string" },
+                    "label": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "customCss": { "type": "string", "description": "Inline CSS ná de core (escape hatch)." },
+    "customJs": { "type": "string", "description": "Inline JS ná de core (escape hatch)." },
+    "customCssFile": { "type": "string", "description": "Pad naar een sidecar-CSS-bestand, ingelaten door build.mjs." },
+    "customJsFile": { "type": "string", "description": "Pad naar een sidecar-JS-bestand, ingelaten door build.mjs." }
+  }
+}

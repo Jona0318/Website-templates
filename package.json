@@ -16,7 +16,7 @@
     "html": "node _kit/html.mjs",
     "links": "node _kit/links.mjs",
     "a11y": "node _kit/a11y.mjs",
-    "check": "node _kit/verify.mjs && node _kit/html.mjs && node _kit/links.mjs && node _kit/a11y.mjs",
-    "dist": "node _kit/gallery.mjs && node _kit/readmes.mjs && node _kit/pack.mjs && node _kit/seo.mjs"
+    "check": "node _kit/verify.mjs && node _kit/html.mjs && node _kit/links.mjs && node _kit/a11y.mjs --strict",
+    "dist": "node _kit/build.mjs all && node _kit/gallery.mjs && node _kit/readmes.mjs && node _kit/pack.mjs && node _kit/seo.mjs && npm run check"
   }
 }

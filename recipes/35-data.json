@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 35, "slug": "35-data", "title": "Meetlat — data-analyse & dashboards", "sector": "tech", "scheme": "dark",
   "meta": { "title": "Meetlat — data-analyse, dashboards & datastrategie", "description": "Meetlat helpt organisaties beslissen op basis van data: dashboards, voorspellende modellen en heldere datastrategie.", "themeColor": "#0c1018" },
   "theme": {

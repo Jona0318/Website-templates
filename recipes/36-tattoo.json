@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 36, "slug": "36-tattoo", "title": "Inktzwart — tattoo studio", "sector": "creatief", "scheme": "light",
   "meta": { "title": "Inktzwart — tattoo studio & private atelier", "description": "Inktzwart is een tattoo studio in Den Bosch: fineline, blackwork en maatwerk in een rustig privé-atelier. Teken mee in de inkt.", "themeColor": "#f2ece0" },
   "theme": {

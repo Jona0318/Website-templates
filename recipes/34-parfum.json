@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 34, "slug": "34-parfum", "title": "Sillage — geurhuis & parfumeur", "sector": "retail", "scheme": "dark",
   "meta": { "title": "Sillage — onafhankelijk geurhuis & parfumeur", "description": "Sillage is een onafhankelijk geurhuis: nichegeuren met de hand gecomponeerd, plus een geurpiramide en parfumconsult.", "themeColor": "#16100c" },
   "theme": {

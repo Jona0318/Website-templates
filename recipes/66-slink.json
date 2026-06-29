@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 66,
   "slug": "66-slink",
   "title": "Slink — cocktailbar Amsterdam",

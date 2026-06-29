@@ -1,4 +1,5 @@
 {
+  "$schema": "../_kit/recipe.schema.json",
   "id": 31, "slug": "31-arcade", "title": "Neonburcht — game studio", "sector": "games", "scheme": "dark",
   "meta": { "title": "Neonburcht — onafhankelijke game studio", "description": "Neonburcht is een onafhankelijke game studio. Wij maken games met lef, stijl en een synthwave-hart.", "themeColor": "#140426" },
   "theme": {
