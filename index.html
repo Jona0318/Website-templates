@@ -739,7 +739,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   var favSlugs = new Set();
   try { (JSON.parse(localStorage.getItem('bron-favs') || '[]') || []).forEach(function(s){ if(s){ favSlugs.add(s); } }); } catch(e){}
   /* recept-gebaseerde templates kunnen live in de Studio gepersonaliseerd worden */
-  var RECIPE_SLUGS = ['25-makelaar','26-helder','27-nocturne','28-atlas','29-noorderlicht','30-vinyl','31-arcade','32-kwekerij','33-keramiek','34-parfum','35-data','36-tattoo','37-getij','38-lab'];
+  var RECIPE_SLUGS = ['25-makelaar','26-helder','27-nocturne','28-atlas','29-noorderlicht','30-vinyl','31-arcade','32-kwekerij','33-keramiek','34-parfum','35-data','36-tattoo','37-getij','38-lab','66-slink','69-grip','79-noot'];
   var arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>';
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
   T.forEach(function (r) {
