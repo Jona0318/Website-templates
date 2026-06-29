@@ -177,7 +177,7 @@ template/
 ├── README.md
 ├── templates.json          <- doorzoekbare index van alle templates
 ├── PATTERNS.md             <- herbruikbare bouwblokken + snippets
-├── screenshots/            <- previews per template
+├── previews/               <- galerij-thumbnails (760×475 JPEG) per template
 └── templates/
     ├── 01-business/        <- meerdere pagina's + losse css/ en js/
     │   ├── index.html, about.html, services.html, contact.html, 404.html
