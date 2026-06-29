@@ -10,7 +10,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
   :root{
-    --bg:#F1F1EE; --surface:#FFFFFF; --text:#0B0B0C; --muted:#6E6E72;
+    --bg:#F1F1EE; --surface:#FFFFFF; --text:#0B0B0C; --muted:#67676B;
     --accent:#1F2AFF; --accent-text:#F1F1EE; --border:#DADAD4;
     --hair:1px solid var(--border);
     --display:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -163,6 +163,16 @@
   .f-col ul{list-style:none;display:grid;gap:.7rem}.f-col a{font-size:.92rem;color:var(--muted)}.f-col a:hover{color:var(--text)}
   .f-bottom{margin-top:4rem;padding-top:1.5rem;border-top:var(--hair);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-family:var(--mono);font-size:.68rem;letter-spacing:.06em}
 
+  /* release schedule (signature mid-page) */
+  .sched{list-style:none;display:grid;border-top:2px solid var(--text)}
+  .sched__r{display:grid;grid-template-columns:auto 1fr auto auto;gap:1.2rem;align-items:center;padding:1.4rem 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+  .sched__n{color:var(--muted)}
+  .sched__t{font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,2vw,1.6rem);text-transform:uppercase;letter-spacing:-.01em}
+  .sched__d{color:var(--muted)}
+  .sched__s{border:1px solid var(--border);padding:.3rem .7rem;color:var(--muted)}
+  .sched__s--live{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+  @media(max-width:749px){.sched__r{grid-template-columns:auto 1fr;row-gap:.5rem}.sched__d,.sched__s{grid-column:2;justify-self:start}}
+
   /* reveal */
   [data-rv]{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
   [data-rv].in{opacity:1;transform:none}
@@ -270,6 +280,18 @@
         <a href="#" class="link">How it works <span class="ar">&rarr;</span></a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section" id="schedule" style="padding-top:0">
+  <div class="wrap">
+    <div class="intro" data-rv><span class="eyebrow">Calendar</span><h2>Upcoming drops</h2></div>
+    <ul class="sched">
+      <li class="sched__r" data-rv><span class="sched__n">01</span><span class="sched__t">Apex Runner — Restock</span><span class="sched__d">12 Sep</span><span class="sched__s sched__s--live">Live</span></li>
+      <li class="sched__r" data-rv><span class="sched__n">02</span><span class="sched__t">Halo Eyewear — Vol. 02</span><span class="sched__d">26 Sep</span><span class="sched__s">Soon</span></li>
+      <li class="sched__r" data-rv><span class="sched__n">03</span><span class="sched__t">Studio Objects — Winter</span><span class="sched__d">10 Oct</span><span class="sched__s">Soon</span></li>
+      <li class="sched__r" data-rv><span class="sched__n">04</span><span class="sched__t">The Archive Sale</span><span class="sched__d">24 Oct</span><span class="sched__s">Soon</span></li>
+    </ul>
   </div>
 </section>
 

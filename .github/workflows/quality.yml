@@ -1,0 +1,47 @@
+name: Quality
+
+# Premium-theme quality gate: validates the importable Shopify themes with the
+# official Shopify theme-check, and audits the gallery + premium previews for
+# accessibility (axe-core, WCAG 2.1 AA) and Lighthouse (a11y / best-practices /
+# SEO thresholds; performance is reported but never fails the build).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  theme-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Shopify theme-check (Vesper · Séraphine · Éclat)
+        run: node _kit/theme-check.mjs
+
+  browser-audits:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      - name: Accessibility — axe-core (WCAG 2.1 A/AA)
+        run: node _kit/a11y-check.mjs
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+      - name: Lighthouse — a11y / best-practices / SEO thresholds
+        run: node _kit/lighthouse-check.mjs
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}

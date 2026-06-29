@@ -1,36 +1,35 @@
 <section class="hero">
-  <div class="hero__inner">
-    <div class="hero__col hero__col--text">
-      <span class="hero__index">
-        {{ section.settings.index | default: 'Vol. 01' | escape }} — {{ section.settings.season | default: 'The Winter Edit' | escape }}
-      </span>
-      <h1 class="hero__title">{{ section.settings.heading }}</h1>
-      {%- if section.settings.text != blank -%}
-        <p class="hero__text">{{ section.settings.text | escape }}</p>
-      {%- endif -%}
-      <div class="hero__cta">
-        {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="link-underline">
-            {{ section.settings.button_label | escape }} <span class="arrow">&rarr;</span>
-          </a>
-        {%- endif -%}
-        {%- if section.settings.button_label_2 != blank -%}
-          <a href="{{ section.settings.button_link_2 }}" class="link-underline">
-            {{ section.settings.button_label_2 | escape }} <span class="arrow">&rarr;</span>
-          </a>
-        {%- endif -%}
-      </div>
+  <div class="page-width">
+    <div class="hero__top">
+      <span>{{ section.settings.index | default: 'Vol. IV' | escape }} — {{ section.settings.season | default: 'The Spring Collection' | escape }}</span>
+      {%- if section.settings.ratio_label != blank -%}<span>{{ section.settings.ratio_label | escape }}</span>{%- endif -%}
     </div>
-    <div class="hero__col hero__col--media">
-      <div class="hero__media-wrap">
-        {%- if section.settings.image != blank -%}
-          {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600,900,1200,1600,2000' }}
-        {%- else -%}
-          {{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}
+    <div class="hero__grid">
+      <div class="hero__l">
+        <h1 class="hero__title">{{ section.settings.heading }}</h1>
+        <div class="hero__rule"></div>
+        {%- if section.settings.text != blank -%}
+          <p class="hero__text">{{ section.settings.text | escape }}</p>
         {%- endif -%}
-        {%- if section.settings.caption != blank -%}
-          <span class="hero__caption">{{ section.settings.caption | escape }}</span>
-        {%- endif -%}
+        <div class="hero__cta">
+          {%- if section.settings.button_label != blank -%}
+            <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn--primary">{{ section.settings.button_label | escape }}</a>
+          {%- endif -%}
+          {%- if section.settings.button_label_2 != blank -%}
+            <a href="{{ section.settings.button_link_2 }}" class="link-underline">{{ section.settings.button_label_2 | escape }} <span class="arrow">&rarr;</span></a>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="hero__r">
+        <div class="hero__media">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 44vw, 100vw', widths: '500,750,1000,1400' }}
+          {%- else -%}
+            <span class="hero__media-fill" aria-hidden="true"></span>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.tag != blank -%}<span class="hero__tag">{{ section.settings.tag | escape }}</span>{%- endif -%}
+        {%- if section.settings.caption != blank -%}<span class="hero__caption">{{ section.settings.caption | escape }}</span>{%- endif -%}
       </div>
     </div>
   </div>
@@ -40,16 +39,18 @@
 {
   "name": "Hero",
   "settings": [
-    { "type": "text", "id": "index", "label": "Volume label", "default": "Vol. 01" },
-    { "type": "text", "id": "season", "label": "Season / edit label", "default": "The Winter Edit" },
-    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Objects, <em>considered</em>." },
-    { "type": "text", "id": "text", "label": "Subtext", "default": "A small, slow collection of homeware and apparel — drawn in clean lines, made to be kept." },
-    { "type": "text", "id": "button_label", "label": "Primary link label", "default": "Shop the edit" },
-    { "type": "url", "id": "button_link", "label": "Primary link" },
-    { "type": "text", "id": "button_label_2", "label": "Secondary link label", "default": "The studio" },
+    { "type": "text", "id": "index", "label": "Volume label", "default": "Vol. IV" },
+    { "type": "text", "id": "season", "label": "Collection label", "default": "The Spring Collection" },
+    { "type": "text", "id": "ratio_label", "label": "Top-right label", "default": "01 / 04" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Made to be <em>lived in</em>." },
+    { "type": "text", "id": "text", "label": "Subtext", "default": "Ready-to-wear and leather, cut by hand from linen, wool and time — a quiet wardrobe made to be kept and repaired, never replaced." },
+    { "type": "text", "id": "button_label", "label": "Primary button label", "default": "Shop the collection" },
+    { "type": "url", "id": "button_link", "label": "Primary button link" },
+    { "type": "text", "id": "button_label_2", "label": "Secondary link label", "default": "The atelier" },
     { "type": "url", "id": "button_link_2", "label": "Secondary link" },
-    { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "text", "id": "caption", "label": "Image caption", "default": "Fig. 01 — Atelier still life" }
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "tag", "label": "Image tag", "default": "Series No. 04" },
+    { "type": "text", "id": "caption", "label": "Image caption", "default": "Pl. 01 — Atelier, morning light" }
   ],
   "presets": [{ "name": "Hero" }]
 }

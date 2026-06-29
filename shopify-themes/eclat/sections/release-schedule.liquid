@@ -1,0 +1,53 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section__intro">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | escape }}</h2>
+    </div>
+    <ul class="sched">
+      {%- for block in section.blocks -%}
+        <li class="sched__r" data-reveal {{ block.shopify_attributes }}>
+          <span class="sched__n">{{ block.settings.number | escape }}</span>
+          <span class="sched__t">{{ block.settings.title | escape }}</span>
+          <span class="sched__d">{{ block.settings.date | escape }}</span>
+          <span class="sched__s {% if block.settings.live %}sched__s--live{% endif %}">{{ block.settings.status | escape }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Release schedule",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Calendar" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Upcoming drops" }
+  ],
+  "blocks": [
+    {
+      "type": "drop",
+      "name": "Drop",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "01" },
+        { "type": "text", "id": "title", "label": "Title", "default": "New drop" },
+        { "type": "text", "id": "date", "label": "Date", "default": "12 Sep" },
+        { "type": "text", "id": "status", "label": "Status label", "default": "Soon" },
+        { "type": "checkbox", "id": "live", "label": "Highlight as live", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Release schedule",
+      "blocks": [
+        { "type": "drop", "settings": { "number": "01", "title": "Apex Runner — Restock", "date": "12 Sep", "status": "Live", "live": true } },
+        { "type": "drop", "settings": { "number": "02", "title": "Halo Eyewear — Vol. 02", "date": "26 Sep", "status": "Soon", "live": false } },
+        { "type": "drop", "settings": { "number": "03", "title": "Studio Objects — Winter", "date": "10 Oct", "status": "Soon", "live": false } },
+        { "type": "drop", "settings": { "number": "04", "title": "The Archive Sale", "date": "24 Oct", "status": "Soon", "live": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

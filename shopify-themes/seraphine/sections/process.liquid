@@ -1,0 +1,49 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section__intro">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | escape }}</h2>
+    </div>
+    <div class="proc">
+      {%- for block in section.blocks -%}
+        <div class="proc__i" data-reveal {{ block.shopify_attributes }}>
+          <span class="proc__n">{{ block.settings.number | escape }}</span>
+          <h3>{{ block.settings.title | escape }}</h3>
+          <p>{{ block.settings.text | escape }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Process steps",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The making" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "From sketch to seam" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "01" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Drafted" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Each pattern is drawn by hand and toiled in calico until the line is right." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process steps",
+      "blocks": [
+        { "type": "step", "settings": { "number": "01", "title": "Drafted", "text": "Each pattern is drawn by hand and toiled in calico until the line is right." } },
+        { "type": "step", "settings": { "number": "02", "title": "Cut", "text": "Cloth is cut in small lays from traceable linen, wool and cashmere." } },
+        { "type": "step", "settings": { "number": "03", "title": "Finished", "text": "Seams are pressed and hand-finished, then checked one piece at a time." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

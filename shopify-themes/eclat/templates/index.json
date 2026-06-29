@@ -5,22 +5,55 @@
       "settings": {
         "index": "Drop 01",
         "season": "Now live",
-        "heading": "Design, <em>dropped</em>.",
+        "volume": "Vol. 01 / 2026",
+        "heading": "Design,<br><em>dropped</em>.",
         "text": "A concept store for design objects and a modern wardrobe — footwear, eyewear and the everyday, released in small monthly drops.",
         "button_label": "Shop the drop",
-        "button_label_2": "Lookbook",
-        "caption": "Drop 01 — The Lab"
+        "button_label_2": "Lookbook"
+      }
+    },
+    "dropstrip": {
+      "type": "drop-strip",
+      "settings": {
+        "heading": "This week",
+        "hint": "Scroll →",
+        "products_to_show": 8
       }
     },
     "marquee": {
       "type": "marquee",
       "blocks": {
-        "m1": { "type": "item", "settings": { "text": "A new drop every month" } },
-        "m2": { "type": "item", "settings": { "text": "Designed in-house" } },
-        "m3": { "type": "item", "settings": { "text": "Express worldwide shipping" } },
-        "m4": { "type": "item", "settings": { "text": "Limited runs only" } }
+        "m1": {
+          "type": "item",
+          "settings": {
+            "text": "A new drop every month"
+          }
+        },
+        "m2": {
+          "type": "item",
+          "settings": {
+            "text": "Designed in-house"
+          }
+        },
+        "m3": {
+          "type": "item",
+          "settings": {
+            "text": "Express worldwide shipping"
+          }
+        },
+        "m4": {
+          "type": "item",
+          "settings": {
+            "text": "Limited runs only"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4"]
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ]
     },
     "lookbook": {
       "type": "lookbook",
@@ -30,11 +63,30 @@
         "columns": 3
       },
       "blocks": {
-        "t1": { "type": "tile", "settings": { "title": "Footwear" } },
-        "t2": { "type": "tile", "settings": { "title": "Eyewear" } },
-        "t3": { "type": "tile", "settings": { "title": "Objects" } }
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "title": "Footwear"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "title": "Eyewear"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "title": "Objects"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3"]
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
     },
     "featured": {
       "type": "featured-collection",
@@ -72,12 +124,41 @@
     "trust": {
       "type": "trust-bar",
       "blocks": {
-        "b1": { "type": "item", "settings": { "title": "Free express shipping", "text": "On every order" } },
-        "b2": { "type": "item", "settings": { "title": "30-day returns", "text": "Quick & easy" } },
-        "b3": { "type": "item", "settings": { "title": "Designed in-house", "text": "Studio originals" } },
-        "b4": { "type": "item", "settings": { "title": "Secure checkout", "text": "Encrypted & protected" } }
+        "b1": {
+          "type": "item",
+          "settings": {
+            "title": "Free express shipping",
+            "text": "On every order"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "title": "30-day returns",
+            "text": "Quick & easy"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "title": "Designed in-house",
+            "text": "Studio originals"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "title": "Secure checkout",
+            "text": "Encrypted & protected"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"]
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
     },
     "newsletter": {
       "type": "newsletter",
@@ -86,14 +167,71 @@
         "heading": "Get the next drop first",
         "text": "Early access to every release, plus the occasional studio note. One email per drop — no noise."
       }
+    },
+    "schedule": {
+      "type": "release-schedule",
+      "settings": {
+        "eyebrow": "Calendar",
+        "heading": "Upcoming drops"
+      },
+      "blocks": {
+        "d1": {
+          "type": "drop",
+          "settings": {
+            "number": "01",
+            "title": "Apex Runner — Restock",
+            "date": "12 Sep",
+            "status": "Live",
+            "live": true
+          }
+        },
+        "d2": {
+          "type": "drop",
+          "settings": {
+            "number": "02",
+            "title": "Halo Eyewear — Vol. 02",
+            "date": "26 Sep",
+            "status": "Soon",
+            "live": false
+          }
+        },
+        "d3": {
+          "type": "drop",
+          "settings": {
+            "number": "03",
+            "title": "Studio Objects — Winter",
+            "date": "10 Oct",
+            "status": "Soon",
+            "live": false
+          }
+        },
+        "d4": {
+          "type": "drop",
+          "settings": {
+            "number": "04",
+            "title": "The Archive Sale",
+            "date": "24 Oct",
+            "status": "Soon",
+            "live": false
+          }
+        }
+      },
+      "block_order": [
+        "d1",
+        "d2",
+        "d3",
+        "d4"
+      ]
     }
   },
   "order": [
     "hero",
+    "dropstrip",
     "marquee",
     "lookbook",
     "featured",
     "statement",
+    "schedule",
     "image_text",
     "trust",
     "newsletter"
