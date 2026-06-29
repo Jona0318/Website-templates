@@ -56,6 +56,10 @@
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
+    <script>
+      window.themeMoney = {{ shop.money_format | json }};
+      window.themeStrings = { noResults: {{ 'general.search.no_results_short' | t | json }}, viewAll: {{ 'general.search.view_all' | t | json }} };
+    </script>
     {{ 'theme.js' | asset_url | script_tag }}
   </head>
 

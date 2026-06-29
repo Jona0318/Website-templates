@@ -13,7 +13,15 @@
       "settings": {
         "menu": "main-menu"
       }
+    },
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "settings": {}
     }
   },
-  "order": ["announcement", "header"]
+  "order": [
+    "announcement",
+    "header",
+    "cart-drawer"
+  ]
 }

@@ -29,18 +29,21 @@
           <div class="product__vendor">{{ product.vendor }}</div>
         {%- endif -%}
         <h1 class="product__title">{{ product.title }}</h1>
-        <div class="product__price">{% render 'price', price_target: product %}</div>
+        <div class="product__price" data-product-price>{% render 'price', price_target: product %}</div>
 
         {%- form 'product', product, class: 'product__form', id: 'product-form' -%}
           {%- unless product.has_only_default_variant -%}
             {%- for option in product.options_with_values -%}
-              <div class="product__option">
-                <label for="Option-{{ option.position }}">{{ option.name }}</label>
-                <select id="Option-{{ option.position }}" name="options[{{ option.name | escape }}]">
+              <div class="product__option" data-option-index="{{ forloop.index0 }}">
+                <span class="product__option-label">{{ option.name }}</span>
+                <div class="variant-pills">
                   {%- for value in option.values -%}
-                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                    <label class="variant-pill">
+                      <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                      <span>{{ value }}</span>
+                    </label>
                   {%- endfor -%}
-                </select>
+                </div>
               </div>
             {%- endfor -%}
           {%- endunless -%}
@@ -48,23 +51,22 @@
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
           <div class="product__option">
-            <label>{{ 'products.product.quantity' | t }}</label>
+            <span class="product__option-label">{{ 'products.product.quantity' | t }}</span>
             <div class="quantity-input" data-quantity>
-              <button type="button" data-qty-step="-1" aria-label="Decrease">−</button>
+              <button type="button" data-qty-step="-1" aria-label="Decrease">&minus;</button>
               <input type="number" name="quantity" value="1" min="1" inputmode="numeric">
               <button type="button" data-qty-step="1" aria-label="Increase">+</button>
             </div>
           </div>
 
-          {%- if product.available -%}
-            <button type="submit" name="add" class="btn btn--primary btn--block">
-              {{ 'products.product.add_to_cart' | t }}
-            </button>
-          {%- else -%}
-            <button type="button" class="btn btn--ghost btn--block" disabled>
-              {{ 'products.product.sold_out' | t }}
-            </button>
-          {%- endif -%}
+          <button type="submit" name="add"
+                  data-add-btn
+                  data-add="{{ 'products.product.add_to_cart' | t }}"
+                  data-soldout="{{ 'products.product.sold_out' | t }}"
+                  data-unavailable="{{ 'products.product.unavailable' | t }}"
+                  class="btn btn--primary btn--block"{% unless product.available %} disabled{% endunless %}>
+            {%- if product.available -%}{{ 'products.product.add_to_cart' | t }}{%- else -%}{{ 'products.product.sold_out' | t }}{%- endif -%}
+          </button>
         {%- endform -%}
 
         {%- if product.description != blank -%}
@@ -78,6 +80,38 @@
       </div>
     </div>
   </div>
+
+  <script type="application/json" data-variants>{{ product.variants | json }}</script>
+
+  <div class="sticky-atc" data-sticky-atc aria-hidden="true">
+    <div class="page-width sticky-atc__inner">
+      <span class="sticky-atc__title">{{ product.title }}</span>
+      <span class="sticky-atc__price" data-sticky-price>{% render 'price', price_target: product %}</span>
+      <button type="submit" form="product-form" name="add" class="btn btn--primary"{% unless product.available %} disabled{% endunless %}>{{ 'products.product.add_to_cart' | t }}</button>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ shop.url | append: product.url | json }},
+    {% if product.featured_image %}"image": {{ product.featured_image | image_url: width: 1200 | prepend: "https:" | json }},{% endif %}
+    {% if product.description != blank %}"description": {{ product.description | strip_html | truncate: 400 | json }},{% endif %}
+    {% if product.vendor != blank %}"brand": { "@type": "Brand", "name": {{ product.vendor | json }} },{% endif %}
+    "offers": [
+      {% for v in product.variants %}{
+        "@type": "Offer",
+        "sku": {{ v.sku | json }},
+        "price": {{ v.price | divided_by: 100.0 | json }},
+        "priceCurrency": {{ shop.currency | json }},
+        "availability": {% if v.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %},
+        "url": {{ shop.url | append: v.url | json }}
+      }{% unless forloop.last %},{% endunless %}{% endfor %}
+    ]
+  }
+  </script>
 </section>
 
 {% schema %}

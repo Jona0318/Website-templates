@@ -12,6 +12,8 @@
         "other": "{{ count }} results"
       },
       "no_results": "No results found for “{{ terms }}”.",
+      "no_results_short": "No results found.",
+      "view_all": "View all results",
       "results_for": "Results for “{{ terms }}”"
     },
     "pagination": {
