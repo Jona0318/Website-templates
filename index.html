@@ -719,10 +719,16 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
   T.forEach(function (r) { counts[r[4]] = (counts[r[4]] || 0) + 1; });
   var pillsEl = doc.getElementById('pills');
   if (pillsEl) {
-    Object.keys(TIERS).forEach(function (k) {
-      if (!counts[k]) { return; }
+    var tagCount = function (name) { return T.filter(function (r) { return (r[8] || []).some(function (t) { return String(t).toLowerCase() === name; }); }).length; };
+    var stats = [
+      { c: 'var(--teal)', n: T.length, label: 'templates' },
+      { c: 'var(--blue)', n: tagCount('shopify'), label: 'Shopify-ready' },
+      { c: 'var(--violet)', n: tagCount('canvas'), label: 'met live canvas' },
+      { c: 'var(--gold)', n: 0, label: 'dependencies' }
+    ];
+    stats.forEach(function (s) {
       var p = doc.createElement('span'); p.className = 'pill';
-      p.innerHTML = '<span class="swatch" style="background:' + TIERS[k].color + '"></span><b>' + counts[k] + '</b> ' + TIERS[k].label.toLowerCase();
+      p.innerHTML = '<span class="swatch" style="background:' + s.c + '"></span><b>' + s.n + '</b> ' + s.label;
       pillsEl.appendChild(p);
     });
   }
