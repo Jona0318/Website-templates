@@ -31,7 +31,7 @@ export const sections = {
     ${ctas(d.ctas)}
     ${strip}`;
     if (layout === 'split') {
-      return `<section class="hero hero--split" id="${attr(d.id || 'top')}" aria-label="Introductie">
+      return `<section class="hero hero--split"${d.id ? ` id="${attr(d.id)}"` : ''} aria-label="Introductie">
   <div class="container">
     <div class="hero-copy">${copy}</div>
     <div class="hero-visual" data-tilt aria-hidden="true">${d.image ? imgEl(d.image) : `<span class="glyph">${a(d.glyph || '◆')}</span>`}</div>
@@ -39,7 +39,7 @@ export const sections = {
 </section>`;
     }
     const cls = layout === 'center' ? 'hero hero--center' : layout === 'media' ? 'hero hero--media hero--center' : 'hero';
-    return `<section class="${cls}" id="${attr(d.id || 'top')}" aria-label="Introductie">
+    return `<section class="${cls}"${d.id ? ` id="${attr(d.id)}"` : ''} aria-label="Introductie">
   <div class="container">
     ${copy}
   </div>

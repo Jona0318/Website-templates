@@ -21,7 +21,8 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"></noscript>
 <script>
   (function () {
     var h = document.documentElement; h.classList.remove('no-js');
@@ -772,7 +773,7 @@ html.anim-ok .card.in{transition:transform .35s var(--ease),box-shadow .35s,bord
     var studioHtml = RECIPE_SLUGS.indexOf(slug) !== -1 ? '<a class="studio-link" href="studio.html?t=' + slug + '"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M11 2.5 13.5 5 6 12.5 3 13l.5-3z"/></svg>Personaliseer in Studio</a>' : '';
     card.innerHTML =
       '<div class="thumb" style="--g1:' + g1 + ';--g2:' + g2 + '">' +
-        '<img class="shot" loading="lazy" alt="Voorbeeldweergave van ' + esc(title) + '" src="previews/' + slug + '.jpg">' +
+        '<img class="shot" loading="lazy" decoding="async" width="760" height="475" alt="Voorbeeldweergave van ' + esc(title) + '" src="previews/' + slug + '.jpg">' +
         '<span class="num">' + num + '</span>' +
         '<span class="badge" style="--bc:' + TIERS[tier].color + '">' + TIERS[tier].label + '</span>' +
         '<span class="emoji">' + emoji + '</span>' +

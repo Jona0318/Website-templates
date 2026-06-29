@@ -32,6 +32,9 @@ export function buildMenu(r) {
   const nav = r.nav || [];
   const items = nav.map((n, i) => `<li><a href="${attr(n.href)}"><span class="idx">${('0' + (i + 1)).slice(-2)}</span>${a(n.label)}</a></li>`).join('');
   const b = r.brand;
+  // adres linkt naar de contact-sectie; recepten mogen die anders noemen (bv. "praktisch")
+  const contact = (r.sections || []).find((s) => s.use === 'contact');
+  const contactHref = '#' + (contact?.id || (contact?.data && contact.data.id) || 'contact');
   return `<div class="menu-overlay" id="menuOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigatie">
   <button class="menu-overlay__close" id="menuClose" type="button" aria-label="Menu sluiten"></button>
   <div class="container">
@@ -39,7 +42,7 @@ export function buildMenu(r) {
     <div class="menu-foot">
       ${b.email ? `<a href="mailto:${attr(b.email)}">${a(b.email)}</a>` : ''}
       ${b.tel ? `<a href="tel:${attr((b.tel || '').replace(/[^+\d]/g, ''))}">${a(b.tel)}</a>` : ''}
-      ${b.address ? `<a href="#contact">${a(b.address)}</a>` : ''}
+      ${b.address ? `<a href="${attr(contactHref)}">${a(b.address)}</a>` : ''}
     </div>
   </div>
 </div>`;
@@ -83,7 +86,12 @@ export function assemble(r, coreCss, coreJs) {
   const body = (r.sections || []).map((s) => {
     const fn = sections[s.use];
     if (!fn) throw new Error(`Onbekende sectie: "${s.use}"`);
-    return fn(s.data || s, ctx);
+    // De sectie-wrapper is {use, id, data}: hijs een id op de wrapper door naar
+    // de data, zodat <section id="..."> klopt en de nav-ankers werken.
+    const data = s.data
+      ? (s.id != null && s.data.id == null ? { ...s.data, id: s.id } : s.data)
+      : s;
+    return fn(data, ctx);
   }).join('\n');
 
   const meta = r.meta || {};
