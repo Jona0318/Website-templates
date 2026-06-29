@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Structurele consistentie (templates ↔ previews ↔ downloads ↔ recepten)
+        run: node _kit/verify.mjs
+
+      - name: JS-syntaxcheck van alle inline scripts
+        run: |
+          status=0
+          for f in index.html studio.html templates/*/index.html; do
+            node _kit/checkjs.mjs "$f" || status=1
+          done
+          exit $status
+
+      - name: Geen drift in gegenereerde bestanden (gallery + sitemap/robots)
+        run: |
+          node _kit/gallery.mjs
+          node _kit/seo.mjs
+          if ! git diff --quiet -- index.html sitemap.xml robots.txt; then
+            echo "::error::Gegenereerde bestanden lopen achter op templates.json. Draai 'npm run dist' en commit het resultaat."
+            git --no-pager diff --stat -- index.html sitemap.xml robots.txt
+            exit 1
+          fi
