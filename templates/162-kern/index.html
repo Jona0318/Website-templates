@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="nl" class="js no-anim">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kern — Sander Roos · strateeg &amp; merkbouwer</title>
+<meta name="description" content="Kern — Sander Roos, strateeg &amp; merkbouwer. Begin bij de kern: een helder waarom als motor voor groei. Bold, direct, tweetalig (NL/EN).">
+<meta name="theme-color" content="#f2e9d6">
+<meta property="og:title" content="Kern — Sander Roos, strateeg">
+<meta property="og:description" content="Begin bij de kern. Een helder waarom als motor voor groei.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var h = document.documentElement;
+  h.classList.remove('no-js');
+  try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { h.classList.remove('no-anim'); h.classList.add('anim-ok'); } } catch (e) {}
+  try { var l = localStorage.getItem('kern-lang'); if (l === 'en') h.setAttribute('lang', 'en'); } catch (e) {}
+})();
+</script>
+<style>
+/* ============================================================
+   KERN — Sander Roos · strateeg & merkbouwer (signature, bold grafisch)
+   Pronkstuk = een BOLD, platte canvas-"Golden Circle" (wat/hoe/waarom) met
+   dikke ringen die met de scroll-reis meebewegen. Neo-brutalist warm:
+   crème, hard-zwarte randen, offset-schaduwen, gouden accentblokken.
+   Tweetalig (NL/EN). Eén zelfstandig bestand.
+   ============================================================ */
+:root{
+  --bg:#f2e9d6; --panel:#fbf6ea; --panel-2:#ffffff;
+  --ink:#141009; --ink-2:#2c2618; --soft:#5c5340;
+  --gold:#e3a52b; --gold-d:#c2861a; --gold-soft:#f6dfa6;
+  --teal:#1f5b52; --teal-d:#164138;
+  --line:#141009;
+  --maxw:1200px; --gutter:clamp(1rem,4.5vw,3.5rem); --header-h:72px;
+  --ease:cubic-bezier(.22,1,.36,1); --ease-hard:cubic-bezier(.7,0,.2,1);
+  --disp:"Archivo",system-ui,sans-serif; --body:"Inter","Helvetica Neue",Arial,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+  --shadow:5px 5px 0 var(--ink); --shadow-lg:8px 8px 0 var(--ink);
+  --radius:6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.02rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea{font:inherit;color:inherit}
+img,svg,canvas{display:block;max-width:100%}
+::selection{background:var(--gold);color:var(--ink)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--disp);font-weight:900;line-height:.98;letter-spacing:-.02em;text-transform:none}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;top:-120px;left:1rem;z-index:400;background:var(--ink);color:var(--bg);padding:.7rem 1.1rem;border-radius:6px;font-weight:700;transition:top .25s}
+.skip:focus{top:1rem}
+.section{padding-block:clamp(4rem,8vw,7rem);position:relative}
+.kicker{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:.35rem .7rem;border:2px solid var(--ink);border-radius:999px}
+.kicker.teal{background:var(--teal);color:#fff}
+.sec-head{max-width:60ch}
+.sec-head h2{font-size:clamp(2.1rem,5.2vw,3.8rem);margin:1.1rem 0 .7rem}
+.lead{color:var(--ink-2)}
+.gold{color:var(--gold-d)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--disp);font-weight:800;font-size:.98rem;padding:.85rem 1.5rem;border:2.5px solid var(--ink);border-radius:999px;cursor:pointer;background:var(--panel-2);box-shadow:var(--shadow);transition:transform .16s var(--ease),box-shadow .16s var(--ease),background .2s,color .2s}
+.btn .ar{transition:transform .25s var(--ease)}.btn:hover .ar{transform:translateX(4px)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-ink{background:var(--ink);color:var(--bg)}
+
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--gold);z-index:200;border-bottom:2px solid var(--ink)}
+
+/* intro */
+.intro{position:fixed;inset:0;z-index:350;background:var(--gold);display:grid;place-content:center;justify-items:center;gap:1rem;text-align:center;transition:opacity .6s var(--ease),visibility .6s}
+.intro b{font-family:var(--disp);font-weight:900;font-size:clamp(2.4rem,9vw,4.5rem);letter-spacing:-.03em;color:var(--ink)}
+.intro span{font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
+.intro .ring-mini{width:70px;height:70px;border-radius:50%;border:4px solid var(--ink);border-top-color:transparent;animation:spin 1s linear infinite}
+html.no-anim .intro,html.intro-done .intro{opacity:0;visibility:hidden}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* header */
+.header{position:fixed;top:0;left:0;right:0;z-index:180;height:var(--header-h);display:flex;align-items:center;transition:transform .4s var(--ease),background .3s;border-bottom:3px solid transparent}
+.header.is-solid{background:var(--bg);border-bottom-color:var(--ink)}
+.header.is-hidden{transform:translateY(-100%)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:inline-flex;align-items:center;gap:.6rem}
+.brand .mk{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;background:var(--gold);border:2.5px solid var(--ink);font-family:var(--disp);font-weight:900;font-size:1.2rem;box-shadow:2px 2px 0 var(--ink)}
+.brand .nm{display:flex;flex-direction:column;line-height:1}
+.brand .nm b{font-family:var(--disp);font-weight:900;font-size:1.15rem;letter-spacing:-.01em}
+.brand .nm small{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-top:.2rem}
+.nav{display:flex;align-items:center;gap:.5rem}
+.nav-links{display:flex;gap:.1rem}
+.nav-links a{padding:.5rem .75rem;font-family:var(--disp);font-weight:700;font-size:.9rem;color:var(--ink);border-radius:6px;transition:background .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{background:var(--ink);color:var(--bg)}
+.header-actions{display:flex;align-items:center;gap:.6rem}
+.lang{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;font-family:var(--mono);font-size:.72rem;font-weight:700}
+.lang button{background:transparent;border:0;padding:.34rem .6rem;cursor:pointer;color:var(--ink);letter-spacing:.06em;transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.menu-toggle{display:none;width:46px;height:46px;border:2.5px solid var(--ink);border-radius:8px;background:var(--panel-2);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:2px 2px 0 var(--ink)}
+.menu-toggle span{width:20px;height:2.5px;background:var(--ink)}
+
+/* overlay-menu */
+.menu-overlay{position:fixed;inset:0;z-index:190;background:var(--gold);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;display:grid;place-content:center}
+.menu-overlay.is-open{opacity:1;visibility:visible}
+.menu-overlay .close{position:absolute;top:1.1rem;right:1.1rem;width:48px;height:48px;border:2.5px solid var(--ink);border-radius:8px;background:var(--panel-2);cursor:pointer;color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.menu-overlay .close::before,.menu-overlay .close::after{content:"";position:absolute;left:12px;top:22px;width:23px;height:2.5px;background:currentColor}
+.menu-overlay .close::before{transform:rotate(45deg)}.menu-overlay .close::after{transform:rotate(-45deg)}
+.menu-list{display:grid;gap:.2rem;text-align:center}
+.menu-list a{display:inline-flex;align-items:baseline;gap:.8rem;justify-content:center;font-family:var(--disp);font-weight:900;font-size:clamp(2.2rem,8vw,3.6rem);color:var(--ink);text-transform:uppercase;transition:transform .15s}
+.menu-list a .idx{font-family:var(--mono);font-size:.9rem;font-weight:700}
+.menu-list a:hover{transform:translateX(6px)}
+.menu-lang{display:flex;justify-content:center;margin-top:1.6rem}
+.menu-foot{margin-top:1.6rem;display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;font-family:var(--mono);font-weight:700;font-size:.8rem;color:var(--ink)}
+
+/* HERO */
+.hero{position:relative;padding-top:calc(var(--header-h) + clamp(1.5rem,5vw,3.5rem));padding-bottom:clamp(1.5rem,4vw,3rem)}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.hero h1{font-size:clamp(3rem,10vw,7rem);font-weight:900;letter-spacing:-.04em;line-height:.9;margin:1.3rem 0}
+.hero h1 .hl{background:var(--gold);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 .12em;border:3px solid var(--ink);border-radius:6px}
+.hero .sub{max-width:42ch;color:var(--ink-2);font-size:clamp(1.05rem,1.7vw,1.25rem);font-weight:500}
+.hero .cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.8rem}
+.hero-figure{position:relative}
+.hero-stats{display:flex;gap:.8rem;margin-top:2.4rem;flex-wrap:wrap}
+.hero-stats .st{border:2.5px solid var(--ink);border-radius:10px;background:var(--panel-2);padding:.8rem 1.1rem;box-shadow:var(--shadow)}
+.hero-stats .st b{display:block;font-family:var(--disp);font-size:clamp(1.7rem,3.6vw,2.3rem);font-weight:900;line-height:1}
+.hero-stats .st span{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-top:.3rem;display:block}
+
+/* bold embleem */
+.emblem{position:relative;aspect-ratio:1;max-width:400px;margin-inline:auto;width:100%}
+.emblem .ring{position:absolute;border-radius:50%;border:3px solid var(--ink)}
+.emblem .r-what{inset:0;background:var(--panel-2)}
+.emblem .r-how{inset:15%;background:var(--teal)}
+.emblem .r-why{inset:32%;background:var(--gold)}
+.emblem .lab{position:absolute;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.emblem .lab-what{top:3%;color:var(--ink)}
+.emblem .lab-how{top:17.5%;color:#fff}
+.emblem .lab-why{top:50%;transform:translate(-50%,-50%);color:var(--ink);font-size:.9rem;font-weight:700}
+html.anim-ok .emblem{animation:bob 6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* MARQUEE ticker */
+.ticker{border-block:3px solid var(--ink);background:var(--ink);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-flex;gap:2.5rem;padding:.7rem 0;will-change:transform}
+html.anim-ok .ticker .track{animation:marquee 26s linear infinite}
+.ticker span{font-family:var(--disp);font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.02em;color:var(--bg);display:inline-flex;align-items:center;gap:2.5rem}
+.ticker span::after{content:"◎";color:var(--gold)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* OVER */
+.over-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,3.5rem);align-items:start}
+.portrait .ph{aspect-ratio:1;border:3px solid var(--ink);border-radius:12px;background:var(--teal);display:grid;place-items:center;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.portrait .ph .init{font-family:var(--disp);font-weight:900;font-size:clamp(4rem,12vw,7rem);color:var(--gold)}
+.socials{display:flex;gap:.6rem;margin-top:1.1rem}
+.socials a{width:46px;height:46px;border-radius:8px;display:grid;place-items:center;border:2.5px solid var(--ink);background:var(--panel-2);color:var(--ink);box-shadow:2px 2px 0 var(--ink);transition:transform .15s,background .2s,color .2s}
+.socials a:hover{transform:translate(-1px,-1px);background:var(--gold)}
+.socials svg{width:20px;height:20px}
+.over-copy h2{font-size:clamp(1.9rem,4.4vw,3rem);margin-bottom:.5rem}
+.over-copy .blk{margin-top:1.7rem}
+.over-copy .blk h3{font-family:var(--disp);font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gold-d);margin-bottom:.6rem}
+.over-copy .blk p{color:var(--ink-2)}
+.factlist{margin-top:2rem;display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem}
+.factlist div{border:2px solid var(--ink);border-radius:8px;background:var(--panel-2);padding:.7rem .9rem}
+.factlist dt{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.factlist dd{font-family:var(--disp);font-weight:800;margin-top:.2rem}
+
+/* WAAROM */
+.waarom{background:var(--panel);border-block:3px solid var(--ink)}
+.waarom .intro-head{text-align:center;max-width:58ch;margin:0 auto 1.4rem}
+.waarom .intro-head h2{font-size:clamp(2.2rem,5.5vw,3.9rem);margin:1rem 0 .7rem}
+.ring-tabs{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem}
+.ring-tabs button{font-family:var(--disp);font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;padding:.5rem 1.1rem;border-radius:999px;border:2.5px solid var(--ink);background:var(--panel-2);color:var(--ink);cursor:pointer;box-shadow:2px 2px 0 var(--ink);transition:all .15s}
+.ring-tabs button[data-r="what"].on{background:var(--ink);color:var(--bg)}
+.ring-tabs button[data-r="how"].on{background:var(--teal);color:#fff}
+.ring-tabs button[data-r="why"].on{background:var(--gold)}
+.journey{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+.journey .stage{position:sticky;top:calc(var(--header-h) + 2vh);height:min(76vh,600px);display:flex;align-items:center;justify-content:center}
+.canvas-shell{position:relative;width:100%;height:100%;display:grid;place-items:center}
+.canvas-shell canvas{width:100%;height:100%}
+.canvas-cap{position:absolute;left:50%;bottom:0;transform:translateX(-50%);font-family:var(--mono);font-weight:700;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.steps{display:grid;gap:1.1rem;padding-block:6vh}
+.step{border:2.5px solid var(--ink);background:var(--panel-2);border-radius:10px;padding:clamp(1.3rem,3vw,1.9rem);position:relative;transition:transform .18s var(--ease),box-shadow .18s var(--ease)}
+.step .toprow{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.7rem}
+.step .num{font-family:var(--disp);font-weight:900;font-size:1.6rem;color:var(--ink);opacity:.35}
+.step .ringtag{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border:2px solid var(--ink);border-radius:999px}
+.step h3{font-size:clamp(1.35rem,2.8vw,1.95rem);margin-bottom:.5rem}
+.step p{color:var(--ink-2)}
+.step.is-active{transform:translate(-3px,-3px);box-shadow:var(--shadow)}
+.step[data-ring="what"].is-active{box-shadow:5px 5px 0 var(--ink)}
+.step[data-ring="how"].is-active{box-shadow:5px 5px 0 var(--teal)}
+.step[data-ring="why"].is-active{box-shadow:5px 5px 0 var(--gold-d)}
+.step[data-ring="all"].is-active{box-shadow:5px 5px 0 var(--gold-d)}
+.step .ringtag[data-r="how"]{background:var(--teal);color:#fff}
+.step .ringtag[data-r="why"]{background:var(--gold)}
+
+.dotnav{position:fixed;right:clamp(.5rem,1.8vw,1.1rem);top:50%;transform:translateY(-50%);z-index:150;display:none;flex-direction:column;gap:.7rem}
+.dotnav.show{display:flex}
+.dotnav a{width:13px;height:13px;border-radius:50%;border:2.5px solid var(--ink);background:var(--bg);transition:all .2s;position:relative}
+.dotnav a.on{background:var(--gold)}
+.dotnav a .tip{position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--mono);font-size:.62rem;font-weight:700;text-transform:uppercase;color:var(--ink);background:var(--gold);border:2px solid var(--ink);border-radius:4px;padding:1px 5px;opacity:0;pointer-events:none;transition:opacity .2s}
+.dotnav a:hover .tip{opacity:1}
+
+/* AANPAK — chunky cards */
+.aanpak-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
+.stepcard{border:3px solid var(--ink);background:var(--panel-2);border-radius:12px;padding:clamp(1.4rem,3vw,2rem);box-shadow:var(--shadow);transition:transform .18s var(--ease),box-shadow .18s var(--ease)}
+.stepcard:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg)}
+.stepcard .no{display:inline-grid;place-items:center;width:52px;height:52px;border:2.5px solid var(--ink);border-radius:10px;background:var(--gold);font-family:var(--disp);font-weight:900;font-size:1.5rem}
+.stepcard:nth-child(2) .no{background:var(--teal);color:#fff}
+.stepcard h3{font-size:1.5rem;margin:.8rem 0 .6rem}
+.stepcard p{color:var(--ink-2);font-size:.97rem}
+.closing{margin-top:2.6rem;border:3px solid var(--ink);border-radius:14px;background:var(--gold);padding:clamp(1.8rem,4vw,3rem);text-align:center;box-shadow:var(--shadow-lg)}
+.closing p{font-family:var(--disp);font-weight:800;font-size:clamp(1.4rem,3.2vw,2.2rem);max-width:34ch;margin-inline:auto;line-height:1.1}
+.closing .flow{display:flex;gap:.6rem;justify-content:center;align-items:center;margin-top:1.3rem;font-family:var(--mono);font-weight:700;font-size:.82rem;text-transform:uppercase;color:var(--ink-2);flex-wrap:wrap}
+.closing .flow b{color:var(--ink)}
+
+/* ERVARING — bold rows */
+.exp{margin-top:2.6rem;display:grid;gap:.8rem}
+.exp .row{display:grid;grid-template-columns:auto 1fr auto;gap:.4rem 1.4rem;align-items:center;border:2.5px solid var(--ink);border-radius:10px;background:var(--panel-2);padding:1rem 1.2rem;transition:transform .15s}
+.exp .row:hover{transform:translateX(4px)}
+.exp .yr{font-family:var(--mono);font-weight:700;font-size:.78rem;color:var(--soft);white-space:nowrap;min-width:10ch}
+.exp .role{display:flex;flex-direction:column}
+.exp .role b{font-family:var(--disp);font-weight:900;font-size:1.15rem}
+.exp .role span{color:var(--soft);font-size:.88rem}
+.exp .tag{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .55rem;border:2px solid var(--ink);border-radius:999px}
+.exp .tag.now{background:var(--gold)}
+.exp .tag.sold{background:var(--panel);color:var(--soft)}
+
+/* CONTACT */
+.contact{background:var(--panel);border-top:3px solid var(--ink)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start}
+.contact-info h2{font-size:clamp(2rem,4.4vw,3rem);margin:.7rem 0}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.7rem}
+.act{display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem;border:2.5px solid var(--ink);border-radius:10px;background:var(--panel-2);box-shadow:3px 3px 0 var(--ink);transition:transform .15s}
+.act:hover{transform:translate(-2px,-2px)}
+.act .ic{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;background:var(--gold);border:2px solid var(--ink);color:var(--ink);flex:none}
+.act .ic svg{width:20px;height:20px}
+.act .tx{display:flex;flex-direction:column;min-width:0}
+.act .tx b{font-family:var(--disp);font-weight:800;font-size:.98rem}
+.act .tx span{font-size:.8rem;color:var(--soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contact-detail{margin-top:1.6rem;display:grid;gap:.6rem}
+.contact-detail div{display:flex;gap:.9rem;font-size:.92rem;color:var(--ink-2)}
+.contact-detail div b{font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);min-width:6ch}
+form{border:3px solid var(--ink);background:var(--panel-2);border-radius:14px;padding:clamp(1.5rem,3.5vw,2.4rem);position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-family:var(--disp);font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em;margin-bottom:.45rem}
+.field input,.field textarea{width:100%;background:var(--bg);border:2.5px solid var(--ink);border-radius:8px;padding:.8rem .95rem;color:var(--ink);transition:box-shadow .15s,transform .15s;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;box-shadow:3px 3px 0 var(--gold);transform:translate(-1px,-1px)}
+.field.invalid input,.field.invalid textarea{border-color:#c0361f;box-shadow:3px 3px 0 #c0361f}
+.field .err{display:none;color:#a5301b;font-size:.78rem;margin-top:.4rem;font-family:var(--mono);font-weight:700}
+.field.invalid .err{display:block}
+form button[type=submit]{width:100%;justify-content:center;margin-top:.3rem}
+.form-note{margin-top:.9rem;font-size:.78rem;color:var(--soft);text-align:center}
+.sent-overlay{position:absolute;inset:0;background:var(--gold);display:grid;place-content:center;justify-items:center;gap:.7rem;text-align:center;padding:2rem;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.sent-overlay.on{opacity:1;visibility:visible}
+.sent-overlay .ck{width:64px;height:64px;border-radius:50%;background:var(--panel-2);border:3px solid var(--ink);display:grid;place-items:center;color:var(--ink)}
+.sent-overlay h3{font-size:1.6rem}
+.sent-overlay p{color:var(--ink-2);max-width:32ch;font-weight:500}
+
+/* FOOTER */
+.footer{padding-block:3rem 2.3rem;border-top:3px solid var(--ink);background:var(--ink);color:var(--bg)}
+.footer a{color:var(--bg)}
+.footer .wrap{display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:space-between;align-items:center}
+.footer .fbrand b{font-family:var(--disp);font-weight:900;font-size:1.3rem}
+.footer .fbrand span{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--gold);margin-top:.25rem}
+.footer nav{display:flex;gap:1.1rem;flex-wrap:wrap;font-family:var(--disp);font-weight:700;font-size:.9rem}
+.footer nav a:hover{color:var(--gold)}
+.footer .to-top{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-weight:700;font-size:.74rem;text-transform:uppercase;color:var(--gold)}
+.footer .to-top svg{width:14px;height:14px}
+.copy{margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid rgba(242,233,214,.2);font-size:.8rem;color:rgba(242,233,214,.7);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+
+/* reveal */
+html.anim-ok [data-rv]{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+html.anim-ok [data-rv].in{opacity:1;transform:none}
+html.no-anim [data-rv]{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:1000px){
+  .nav-links{display:none}
+  .menu-toggle{display:flex}
+  .hero .wrap{grid-template-columns:1fr;gap:2.2rem}
+  .hero-figure{order:-1;max-width:300px;margin-inline:auto;width:100%}
+  .over-grid,.contact-grid{grid-template-columns:1fr}
+  .portrait{max-width:320px}
+  .aanpak-grid{grid-template-columns:1fr}
+  .journey{grid-template-columns:1fr}
+  .journey .stage{position:sticky;top:var(--header-h);height:40vh;background:var(--panel);z-index:5;margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);border-bottom:3px solid var(--ink)}
+  .steps{padding-block:2vh}
+}
+@media (max-width:560px){
+  .actions{grid-template-columns:1fr}
+  .exp .row{grid-template-columns:1fr auto}
+  .exp .yr{grid-column:1 / -1}
+  .header-actions .lang{display:none}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main" data-nl="Direct naar inhoud" data-en="Skip to content">Direct naar inhoud</a>
+<div class="progress" id="scrollProgress" aria-hidden="true"></div>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="ring-mini" aria-hidden="true"></div>
+  <b>Kern</b>
+  <span>Sander Roos</span>
+</div>
+
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Kern — naar boven" data-nl-al="Kern — naar boven" data-en-al="Kern — back to top">
+      <span class="mk" aria-hidden="true">K</span>
+      <span class="nm"><b>KERN</b><small data-nl="strateeg &amp; merkbouwer" data-en="strategist &amp; brand builder">strateeg &amp; merkbouwer</small></span>
+    </a>
+    <nav class="nav" aria-label="Hoofdmenu" data-nl-al="Hoofdmenu" data-en-al="Main menu">
+      <div class="nav-links" id="navLinks">
+        <a href="#over" data-nl="Over" data-en="About">Over</a>
+        <a href="#waarom" data-nl="Waarom" data-en="Why">Waarom</a>
+        <a href="#aanpak" data-nl="Aanpak" data-en="Approach">Aanpak</a>
+        <a href="#ervaring" data-nl="Ervaring" data-en="Experience">Ervaring</a>
+        <a href="#contact" data-nl="Contact" data-en="Contact">Contact</a>
+      </div>
+      <div class="header-actions">
+        <div class="lang" role="group" aria-label="Taal / Language">
+          <button type="button" data-lang="nl" aria-pressed="true">NL</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu openen" data-nl-al="Menu openen" data-en-al="Open menu"><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Navigatie" data-nl-al="Navigatie" data-en-al="Navigation" aria-hidden="true">
+  <button class="close" id="menuClose" type="button" aria-label="Menu sluiten" data-nl-al="Menu sluiten" data-en-al="Close menu"></button>
+  <ul class="menu-list">
+    <li><a href="#over"><span class="idx">01</span><span data-nl="Over" data-en="About">Over</span></a></li>
+    <li><a href="#waarom"><span class="idx">02</span><span data-nl="Waarom" data-en="Why">Waarom</span></a></li>
+    <li><a href="#aanpak"><span class="idx">03</span><span data-nl="Aanpak" data-en="Approach">Aanpak</span></a></li>
+    <li><a href="#ervaring"><span class="idx">04</span><span data-nl="Ervaring" data-en="Experience">Ervaring</span></a></li>
+    <li><a href="#contact"><span class="idx">05</span><span data-nl="Contact" data-en="Contact">Contact</span></a></li>
+  </ul>
+  <div class="menu-lang" role="group" aria-label="Taal / Language">
+    <div class="lang">
+      <button type="button" data-lang="nl" aria-pressed="true">NL</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+  <div class="menu-foot">
+    <a href="mailto:hoi@kern.studio">hoi@kern.studio</a>
+    <a href="tel:+31658012277">+31 6 58 01 22 77</a>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker" data-nl="Strateeg &amp; merkbouwer · Start with why" data-en="Strategist &amp; brand builder · Start with why">Strateeg &amp; merkbouwer · Start with why</span>
+      <h1 id="heroTitle"><span data-nl="Begin bij de" data-en="Start at the">Begin bij de</span> <span class="hl" data-nl="kern." data-en="core.">kern.</span></h1>
+      <p class="sub" data-nl="Ik help ondernemers en teams om vanuit hun waarom te bouwen: scherpe keuzes, een sterk merk en groei met karakter. Geen ruis — de kern." data-en="I help founders and teams build from their why: sharp choices, a strong brand and growth with character. No noise — the core.">Ik help ondernemers en teams om vanuit hun waarom te bouwen: scherpe keuzes, een sterk merk en groei met karakter. Geen ruis — de kern.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="#waarom"><span data-nl="Ontdek het waarom" data-en="Discover the why">Ontdek het waarom</span> <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn" href="#contact" data-nl="Neem contact op" data-en="Get in touch">Neem contact op</a>
+      </div>
+      <div class="hero-stats">
+        <div class="st"><b data-count="22" data-suffix="+">22+</b><span data-nl="Jaar bouwen" data-en="Years building">Jaar bouwen</span></div>
+        <div class="st"><b data-count="40" data-suffix="+">40+</b><span data-nl="Merken gebouwd" data-en="Brands built">Merken gebouwd</span></div>
+        <div class="st"><b data-count="5">5</b><span data-nl="Exits" data-en="Exits">Exits</span></div>
+      </div>
+    </div>
+    <div class="hero-figure" aria-hidden="true">
+      <div class="emblem">
+        <div class="ring r-what"></div>
+        <div class="ring r-how"></div>
+        <div class="ring r-why"></div>
+        <span class="lab lab-what" data-nl="Wat" data-en="What">Wat</span>
+        <span class="lab lab-how" data-nl="Hoe" data-en="How">Hoe</span>
+        <span class="lab lab-why" data-nl="Waarom" data-en="Why">Waarom</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span data-nl="Waarom" data-en="Why">Waarom</span><span data-nl="Hoe" data-en="How">Hoe</span><span data-nl="Wat" data-en="What">Wat</span><span data-nl="Strategie" data-en="Strategy">Strategie</span><span data-nl="Merk" data-en="Brand">Merk</span><span data-nl="Groei" data-en="Growth">Groei</span>
+    <span data-nl="Waarom" data-en="Why">Waarom</span><span data-nl="Hoe" data-en="How">Hoe</span><span data-nl="Wat" data-en="What">Wat</span><span data-nl="Strategie" data-en="Strategy">Strategie</span><span data-nl="Merk" data-en="Brand">Merk</span><span data-nl="Groei" data-en="Growth">Groei</span>
+  </div>
+</div>
+
+<section class="section" id="over" aria-labelledby="overTitle">
+  <div class="wrap">
+    <div class="over-grid">
+      <div class="portrait" data-rv>
+        <div class="ph"><span class="init" aria-hidden="true">SR</span></div>
+        <div class="socials">
+          <a href="mailto:hoi@kern.studio" aria-label="E-mail" data-nl-al="E-mail" data-en-al="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a href="https://www.linkedin.com/in/sanderroos" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.5 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.34-2.03-3.34-2.03 0-2.34 1.58-2.34 3.23V21h-4z"/></svg></a>
+          <a href="https://wa.me/31658012277" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 0 1 6.9 12.6l-.2.3.8 2.9-3-.8-.3.2A8.2 8.2 0 1 1 12 3.8zM8.5 7.3c-.2 0-.5.06-.7.35-.24.29-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.18 1.8 2.87 4.46 3.9 2.2.86 2.65.7 3.13.66.48-.04 1.54-.63 1.76-1.24.22-.6.22-1.13.15-1.24-.06-.11-.24-.18-.5-.31s-1.54-.76-1.78-.85c-.24-.09-.42-.13-.6.13-.17.26-.68.85-.83 1.02-.15.18-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.29-.78-.69-1.3-1.55-1.45-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.31.4-.46.09-.11.13-.19.2-.32z"/></svg></a>
+        </div>
+      </div>
+      <div class="over-copy" data-rv data-d=".08s">
+        <span class="kicker teal" data-nl="Over" data-en="About">Over</span>
+        <h2 id="overTitle" data-nl="Bouwer met een scherpe kern." data-en="A builder with a sharp core.">Bouwer met een scherpe kern.</h2>
+        <div class="blk">
+          <h3 data-nl="Over mij" data-en="About me">Over mij</h3>
+          <p data-nl="Ik bouw al ruim twintig jaar merken en bedrijven. Mijn drijfveer is simpel: help mensen bouwen vanuit hun waarom, niet vanuit de waan van de dag. Als de kern klopt, komt de rest los." data-en="I've been building brands and companies for over twenty years. My drive is simple: help people build from their why, not from the noise of the day. When the core is right, the rest follows.">Ik bouw al ruim twintig jaar merken en bedrijven. Mijn drijfveer is simpel: help mensen bouwen vanuit hun waarom, niet vanuit de waan van de dag. Als de kern klopt, komt de rest los.</p>
+        </div>
+        <div class="blk">
+          <h3 data-nl="Wie ben ik" data-en="Who am I">Wie ben ik</h3>
+          <p data-nl="Direct, nieuwsgierig en gedreven. Ik hou van bouwen: van eerste schets tot draaiend merk. Altijd op zoek naar de kern onder het idee — en de mensen die er iets moois van willen maken." data-en="Direct, curious and driven. I love building: from first sketch to a running brand. Always looking for the core beneath the idea — and the people who want to make something great of it.">Direct, nieuwsgierig en gedreven. Ik hou van bouwen: van eerste schets tot draaiend merk. Altijd op zoek naar de kern onder het idee — en de mensen die er iets moois van willen maken.</p>
+        </div>
+        <dl class="factlist">
+          <div><dt data-nl="Rol" data-en="Role">Rol</dt><dd data-nl="Strateeg &amp; bouwer" data-en="Strategist &amp; builder">Strateeg &amp; bouwer</dd></div>
+          <div><dt data-nl="Basis" data-en="Based">Basis</dt><dd>Rotterdam (NL)</dd></div>
+          <div><dt data-nl="Talen" data-en="Languages">Talen</dt><dd data-nl="Nederlands · Engels" data-en="Dutch · English">Nederlands · Engels</dd></div>
+          <div><dt data-nl="Focus" data-en="Focus">Focus</dt><dd data-nl="Merk &amp; groei" data-en="Brand &amp; growth">Merk &amp; groei</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section waarom" id="waarom" aria-labelledby="waaromTitle">
+  <div class="wrap">
+    <div class="intro-head" data-rv>
+      <span class="kicker" data-nl="De Golden Circle" data-en="The Golden Circle">De Golden Circle</span>
+      <h2 id="waaromTitle" data-nl="Van waarom naar hoe naar wat." data-en="From why to how to what.">Van waarom naar hoe naar wat.</h2>
+      <p class="lead" data-nl="Scroll door de reis van buiten naar binnen. De cirkel beweegt mee — van wát je doet naar de kern: wáárom." data-en="Scroll through the journey from the outside in. The circle moves along — from what you do to the core: why.">Scroll door de reis van buiten naar binnen. De cirkel beweegt mee — van wát je doet naar de kern: wáárom.</p>
+    </div>
+    <div class="ring-tabs" id="ringTabs" role="group" aria-label="Golden Circle-ringen" data-nl-al="Golden Circle-ringen" data-en-al="Golden Circle rings">
+      <button type="button" data-r="what" data-nl="Wat" data-en="What">Wat</button>
+      <button type="button" data-r="how" data-nl="Hoe" data-en="How">Hoe</button>
+      <button type="button" data-r="why" data-nl="Waarom" data-en="Why">Waarom</button>
+    </div>
+    <div class="journey" id="journey">
+      <div class="stage">
+        <div class="canvas-shell">
+          <canvas id="circleCanvas" role="img" aria-label="Golden Circle met de ringen wat, hoe en waarom" data-nl-al="Golden Circle met de ringen wat, hoe en waarom" data-en-al="Golden Circle with the what, how and why rings"></canvas>
+          <span class="canvas-cap" data-nl="Sinek · wat / hoe / waarom" data-en="Sinek · what / how / why">Sinek · wat / hoe / waarom</span>
+        </div>
+      </div>
+      <div class="steps" id="steps">
+        <article class="step" id="step-1" data-ring="what" data-rv>
+          <div class="toprow"><span class="num">01</span><span class="ringtag" data-r="what" data-nl="Wat" data-en="What">Wat</span></div>
+          <h3 data-nl="Iedereen weet wát." data-en="Everyone knows what.">Iedereen weet wát.</h3>
+          <p data-nl="Ieder mens, ieder bedrijf weet voor 100% wát het doet — welk product, welke dienst." data-en="Every person, every company knows 100% what they do — which product, which service.">Ieder mens, ieder bedrijf weet voor 100% wát het doet — welk product, welke dienst.</p>
+        </article>
+        <article class="step" id="step-2" data-ring="how" data-rv>
+          <div class="toprow"><span class="num">02</span><span class="ringtag" data-r="how" data-nl="Hoe" data-en="How">Hoe</span></div>
+          <h3 data-nl="Sommigen weten hóe." data-en="Some know how.">Sommigen weten hóe.</h3>
+          <p data-nl="Sommigen weten hóe ze het doen. De één noemt het toegevoegde waarde, de ander z'n USP's." data-en="Some know how they do it. One calls it added value, another their USPs.">Sommigen weten hóe ze het doen. De één noemt het toegevoegde waarde, de ander z'n USP's.</p>
+        </article>
+        <article class="step" id="step-3" data-ring="why" data-rv>
+          <div class="toprow"><span class="num">03</span><span class="ringtag" data-r="why" data-nl="Waarom" data-en="Why">Waarom</span></div>
+          <h3 data-nl="Weinigen weten wáárom." data-en="Few know why.">Weinigen weten wáárom.</h3>
+          <p data-nl="Heel weinig bedrijven weten wáárom ze bestaan. En met waarom bedoelen we niet 'winst' — winst is een resultaat, geen doel." data-en="Very few companies know why they exist. And by why we don't mean 'profit' — profit is a result, not a purpose.">Heel weinig bedrijven weten wáárom ze bestaan. En met waarom bedoelen we niet 'winst' — winst is een resultaat, geen doel.</p>
+        </article>
+        <article class="step" id="step-4" data-ring="why" data-rv>
+          <div class="toprow"><span class="num">04</span><span class="ringtag" data-r="why" data-nl="Waarom" data-en="Why">Waarom</span></div>
+          <h3 data-nl="Wat we met waarom bedoelen." data-en="What we mean by why.">Wat we met waarom bedoelen.</h3>
+          <p data-nl="Wat is je overtuiging? Waar sta je 's ochtends voor op? Waarom bestaat je bedrijf — en waarom zou het iemand iets uitmaken?" data-en="What is your conviction? What do you get up for in the morning? Why does your company exist — and why would anyone care?">Wat is je overtuiging? Waar sta je 's ochtends voor op? Waarom bestaat je bedrijf — en waarom zou het iemand iets uitmaken?</p>
+        </article>
+        <article class="step" id="step-5" data-ring="what" data-rv>
+          <div class="toprow"><span class="num">05</span><span class="ringtag" data-r="what" data-nl="Van buiten naar binnen" data-en="Outside in">Van buiten naar binnen</span></div>
+          <h3 data-nl="Van buiten naar binnen." data-en="From the outside in.">Van buiten naar binnen.</h3>
+          <p data-nl="De meesten werken van buiten naar binnen: van het heldere (wát) naar het vage. Logisch, maar zelden meeslepend." data-en="Most work from the outside in: from the clear (what) toward the vague. Logical, but rarely compelling.">De meesten werken van buiten naar binnen: van het heldere (wát) naar het vage. Logisch, maar zelden meeslepend.</p>
+        </article>
+        <article class="step" id="step-6" data-ring="why" data-rv>
+          <div class="toprow"><span class="num">06</span><span class="ringtag" data-r="why" data-nl="Van binnen naar buiten" data-en="Inside out">Van binnen naar buiten</span></div>
+          <h3 data-nl="Van binnen naar buiten." data-en="From the inside out.">Van binnen naar buiten.</h3>
+          <p data-nl="Sterke bouwers doen het omgekeerd: ze denken, doen en communiceren van binnen naar buiten. Ze beginnen bij de kern." data-en="Strong builders do the opposite: they think, act and communicate from the inside out. They start at the core.">Sterke bouwers doen het omgekeerd: ze denken, doen en communiceren van binnen naar buiten. Ze beginnen bij de kern.</p>
+        </article>
+        <article class="step" id="step-7" data-ring="why" data-rv>
+          <div class="toprow"><span class="num">07</span><span class="ringtag" data-r="why" data-nl="De kern" data-en="The core">De kern</span></div>
+          <h3 data-nl="Mensen kopen het waarom." data-en="People buy the why.">Mensen kopen het waarom.</h3>
+          <p data-nl="Mensen kopen niet wát je doet. Ze kopen wáárom je het doet." data-en="People don't buy what you do. They buy why you do it.">Mensen kopen niet wát je doet. Ze kopen wáárom je het doet.</p>
+        </article>
+        <article class="step" id="step-8" data-ring="all" data-rv>
+          <div class="toprow"><span class="num">08</span><span class="ringtag" data-nl="Groei" data-en="Growth">Groei</span></div>
+          <h3 data-nl="Van kern naar groei." data-en="From core to growth.">Van kern naar groei.</h3>
+          <p data-nl="Een sterk bedrijf begint niet met een plan, maar met een heldere kern. Vanuit dat waarom bouwen we het merk, de keuzes en de groei." data-en="A strong company doesn't start with a plan, but with a clear core. From that why we build the brand, the choices and the growth.">Een sterk bedrijf begint niet met een plan, maar met een heldere kern. Vanuit dat waarom bouwen we het merk, de keuzes en de groei.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="aanpak" aria-labelledby="aanpakTitle">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="kicker" data-nl="De aanpak" data-en="The approach">De aanpak</span>
+      <h2 id="aanpakTitle" data-nl="Van kern naar groei — in drie stappen." data-en="From core to growth — in three steps.">Van kern naar groei — in drie stappen.</h2>
+      <p class="lead" data-nl="Geen dikke rapporten. Scherpe keuzes en een plan waar je morgen mee bouwt." data-en="No thick reports. Sharp choices and a plan you build with tomorrow.">Geen dikke rapporten. Scherpe keuzes en een plan waar je morgen mee bouwt.</p>
+    </div>
+    <div class="aanpak-grid">
+      <article class="stepcard" data-rv><div class="no">01</div><h3 data-nl="Strategie" data-en="Strategy">Strategie</h3><p data-nl="We graven naar je waarom, missie, kernwaarden en ambitie. We bepalen wat écht telt en waar je naartoe bouwt." data-en="We dig for your why, mission, core values and ambition. We define what really counts and where you're building toward.">We graven naar je waarom, missie, kernwaarden en ambitie. We bepalen wat écht telt en waar je naartoe bouwt.</p></article>
+      <article class="stepcard" data-rv data-d=".08s"><div class="no">02</div><h3 data-nl="Plan van aanpak" data-en="Action plan">Plan van aanpak</h3><p data-nl="We vertalen de strategie naar concrete doelen, prioriteiten en acties. Praktisch, begrijpelijk en direct bruikbaar." data-en="We translate the strategy into concrete goals, priorities and actions. Practical, understandable and immediately usable.">We vertalen de strategie naar concrete doelen, prioriteiten en acties. Praktisch, begrijpelijk en direct bruikbaar.</p></article>
+      <article class="stepcard" data-rv data-d=".16s"><div class="no">03</div><h3 data-nl="Realisatie" data-en="Delivery">Realisatie</h3><p data-nl="Bouwen is het echte werk. We begeleiden de uitvoering, creëren eigenaarschap en zorgen dat plannen resultaat worden." data-en="Building is the real work. We guide execution, create ownership and make sure plans become results.">Bouwen is het echte werk. We begeleiden de uitvoering, creëren eigenaarschap en zorgen dat plannen resultaat worden.</p></article>
+    </div>
+    <div class="closing" data-rv>
+      <p data-nl="Bedrijven die hun kern kennen, maken scherpere keuzes en groeien met karakter." data-en="Companies that know their core make sharper choices and grow with character.">Bedrijven die hun kern kennen, maken scherpere keuzes en groeien met karakter.</p>
+      <div class="flow" aria-hidden="true"><b data-nl="Waarom" data-en="Why">Waarom</b><span>→</span><b data-nl="Hoe" data-en="How">Hoe</b><span>→</span><b data-nl="Wat" data-en="What">Wat</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ervaring" aria-labelledby="ervTitle">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <span class="kicker teal" data-nl="Ervaring" data-en="Experience">Ervaring</span>
+      <h2 id="ervTitle" data-nl="Ruim twintig jaar bouwen &amp; verkopen." data-en="Over twenty years of building &amp; selling.">Ruim twintig jaar bouwen &amp; verkopen.</h2>
+    </div>
+    <div class="exp">
+      <div class="row" data-rv><span class="yr">2020 — <span data-nl="heden" data-en="today">heden</span></span><span class="role"><b>Kern Studio</b><span data-nl="Oprichter · strateeg" data-en="Founder · strategist">Oprichter · strateeg</span></span><span class="tag now" data-nl="Actief" data-en="Active">Actief</span></div>
+      <div class="row" data-rv><span class="yr">2012 — <span data-nl="heden" data-en="today">heden</span></span><span class="role"><b>Roos Ventures</b><span data-nl="Directeur" data-en="Director">Directeur</span></span><span class="tag now" data-nl="Actief" data-en="Active">Actief</span></div>
+      <div class="row" data-rv><span class="yr">2017 — <span data-nl="heden" data-en="today">heden</span></span><span class="role"><b>Bouwlust</b><span data-nl="Mede-oprichter" data-en="Co-founder">Mede-oprichter</span></span><span class="tag now" data-nl="Actief" data-en="Active">Actief</span></div>
+      <div class="row" data-rv><span class="yr">2015 — 2021</span><span class="role"><b>Fundament Merkbureau</b><span data-nl="Directeur" data-en="Director">Directeur</span></span><span class="tag sold" data-nl="Verkocht" data-en="Sold">Verkocht</span></div>
+      <div class="row" data-rv><span class="yr">2008 — 2018</span><span class="role"><b>Stevig &amp; Co</b><span data-nl="Algemeen directeur" data-en="General manager">Algemeen directeur</span></span><span class="tag sold" data-nl="Verkocht" data-en="Sold">Verkocht</span></div>
+      <div class="row" data-rv><span class="yr">2004 — 2012</span><span class="role"><b>Basis Studio</b><span data-nl="Salesdirecteur" data-en="Sales director">Salesdirecteur</span></span><span class="tag sold" data-nl="Verkocht" data-en="Sold">Verkocht</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact" aria-labelledby="contactTitle">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info" data-rv>
+        <span class="kicker" data-nl="Contact" data-en="Contact">Contact</span>
+        <h2 id="contactTitle" data-nl="Zullen we bouwen?" data-en="Shall we build?">Zullen we bouwen?</h2>
+        <p class="lead" data-nl="Over een vastgelopen merk, een frisse start of gewoon om te sparren. Kies wat je het handigst vindt." data-en="About a stalled brand, a fresh start or just to spar. Pick whatever suits you best.">Over een vastgelopen merk, een frisse start of gewoon om te sparren. Kies wat je het handigst vindt.</p>
+        <div class="actions">
+          <a class="act" href="tel:+31658012277"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg></span><span class="tx"><b data-nl="Bellen" data-en="Call">Bellen</b><span>+31 6 58 01 22 77</span></span></a>
+          <a class="act" href="mailto:hoi@kern.studio"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="tx"><b data-nl="Mailen" data-en="Email">Mailen</b><span>hoi@kern.studio</span></span></a>
+          <a class="act" href="https://wa.me/31658012277" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 0 1 6.9 12.6l-.2.3.8 2.9-3-.8-.3.2A8.2 8.2 0 1 1 12 3.8zM8.5 7.3c-.2 0-.5.06-.7.35-.24.29-.9.88-.9 2.15s.92 2.5 1.05 2.67c.13.18 1.8 2.87 4.46 3.9 2.2.86 2.65.7 3.13.66.48-.04 1.54-.63 1.76-1.24.22-.6.22-1.13.15-1.24-.06-.11-.24-.18-.5-.31s-1.54-.76-1.78-.85c-.24-.09-.42-.13-.6.13-.17.26-.68.85-.83 1.02-.15.18-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.29-.78-.69-1.3-1.55-1.45-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.31.4-.46.09-.11.13-.19.2-.32z"/></svg></span><span class="tx"><b>WhatsApp</b><span>+31 6 58 01 22 77</span></span></a>
+          <a class="act" href="https://maps.google.com/?q=Coolsingel+Rotterdam" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="tx"><b data-nl="Route" data-en="Directions">Route</b><span>Coolsingel 40, Rotterdam</span></span></a>
+        </div>
+        <div class="contact-detail">
+          <div><b data-nl="Adres" data-en="Address">Adres</b><span>Coolsingel 40, 3011 AD Rotterdam</span></div>
+          <div><b data-nl="Uren" data-en="Hours">Uren</b><span data-nl="Ma–vr · op afspraak" data-en="Mon–Fri · by appointment">Ma–vr · op afspraak</span></div>
+        </div>
+      </div>
+      <form id="contactForm" novalidate data-rv data-d=".08s">
+        <div class="field">
+          <label for="cname" data-nl="Naam" data-en="Name">Naam</label>
+          <input id="cname" name="name" type="text" autocomplete="name" required data-nl-ph="Jouw naam" data-en-ph="Your name" placeholder="Jouw naam">
+          <span class="err" data-nl="Vul je naam in." data-en="Please enter your name.">Vul je naam in.</span>
+        </div>
+        <div class="field">
+          <label for="cemail" data-nl="E-mail" data-en="Email">E-mail</label>
+          <input id="cemail" name="email" type="email" autocomplete="email" required data-nl-ph="jij@voorbeeld.nl" data-en-ph="you@example.com" placeholder="jij@voorbeeld.nl">
+          <span class="err" data-nl="Vul een geldig e-mailadres in." data-en="Please enter a valid email address.">Vul een geldig e-mailadres in.</span>
+        </div>
+        <div class="field">
+          <label for="cmsg" data-nl="Bericht" data-en="Message">Bericht</label>
+          <textarea id="cmsg" name="message" rows="5" required data-nl-ph="Waar wil je het over hebben?" data-en-ph="What would you like to talk about?" placeholder="Waar wil je het over hebben?"></textarea>
+          <span class="err" data-nl="Schrijf even een kort bericht." data-en="Please write a short message.">Schrijf even een kort bericht.</span>
+        </div>
+        <button class="btn btn-ink" type="submit"><span data-nl="Verstuur bericht" data-en="Send message">Verstuur bericht</span> <span class="ar" aria-hidden="true">→</span></button>
+        <p class="form-note" data-nl="Demo-formulier — koppel aan je eigen mail- of form-service." data-en="Demo form — connect it to your own mail or form service.">Demo-formulier — koppel aan je eigen mail- of form-service.</p>
+        <div class="sent-overlay" id="sentOverlay" aria-live="polite">
+          <span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="30" height="30"><path d="m5 13 4 4L19 7"/></svg></span>
+          <h3 data-nl="Bericht verstuurd" data-en="Message sent">Bericht verstuurd</h3>
+          <p data-nl="Bedankt! Ik neem snel contact met je op." data-en="Thanks! I'll get back to you soon.">Bedankt! Ik neem snel contact met je op.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="fbrand"><b>KERN</b><span data-nl="Sander Roos · strateeg &amp; merkbouwer" data-en="Sander Roos · strategist &amp; brand builder">Sander Roos · strateeg &amp; merkbouwer</span></div>
+    <nav aria-label="Footer" data-nl-al="Footer" data-en-al="Footer">
+      <a href="#over" data-nl="Over" data-en="About">Over</a>
+      <a href="#waarom" data-nl="Waarom" data-en="Why">Waarom</a>
+      <a href="#aanpak" data-nl="Aanpak" data-en="Approach">Aanpak</a>
+      <a href="#ervaring" data-nl="Ervaring" data-en="Experience">Ervaring</a>
+      <a href="#contact" data-nl="Contact" data-en="Contact">Contact</a>
+    </nav>
+    <a class="to-top" href="#top"><span data-nl="Naar boven" data-en="Back to top">Naar boven</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 14V2M3 7l5-5 5 5"/></svg></a>
+  </div>
+  <div class="wrap">
+    <div class="copy">
+      <span>&copy; <span data-year>2026</span> Kern — <span data-nl="Alle rechten voorbehouden" data-en="All rights reserved">Alle rechten voorbehouden</span></span>
+      <span data-nl="Mensen kopen het waarom." data-en="People buy the why.">Mensen kopen het waarom.</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="dotnav" id="dotnav" aria-label="Golden Circle-stappen" data-nl-al="Golden Circle-stappen" data-en-al="Golden Circle steps"></nav>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var animOK = root.classList.contains('anim-ok');
+  var reduced = !animOK;
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  (function () {
+    var intro = $('#intro'); if (!intro) return;
+    var seen = false; try { seen = sessionStorage.getItem('kern-intro') === '1'; } catch (e) {}
+    if (reduced || seen) { root.classList.add('intro-done'); return; }
+    window.setTimeout(function () { root.classList.add('intro-done'); try { sessionStorage.setItem('kern-intro', '1'); } catch (e) {} }, 1000);
+  })();
+
+  $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  (function () {
+    var stored = 'nl';
+    try { var s = localStorage.getItem('kern-lang'); if (s === 'en' || s === 'nl') stored = s; } catch (e) {}
+    function apply(lang) {
+      root.setAttribute('lang', lang);
+      $$('[data-nl]').forEach(function (el) { var v = el.getAttribute('data-' + lang); if (v != null) el.textContent = v; });
+      $$('[data-nl-ph]').forEach(function (el) { var v = el.getAttribute('data-' + lang + '-ph'); if (v != null) el.setAttribute('placeholder', v); });
+      $$('[data-nl-al]').forEach(function (el) { var v = el.getAttribute('data-' + lang + '-al'); if (v != null) el.setAttribute('aria-label', v); });
+      $$('.lang button, .menu-lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false'); });
+      try { localStorage.setItem('kern-lang', lang); } catch (e) {}
+      window.__lang = lang;
+      if (window.__redrawCircle) window.__redrawCircle();
+    }
+    $$('.lang button, .menu-lang button').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+    apply(stored);
+  })();
+
+  (function () {
+    var toggle = $('#menuToggle'), overlay = $('#menuOverlay'), close = $('#menuClose');
+    if (!toggle || !overlay) return;
+    var headerEl = $('#header'), mainEl = $('#main'), footerEl = $('.footer');
+    var lastFocus = null;
+    function setMenu(open) {
+      overlay.classList.toggle('is-open', open);
+      overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (headerEl) headerEl.inert = open;
+      if (mainEl) mainEl.inert = open;
+      if (footerEl) footerEl.inert = open;
+      if (open) { lastFocus = document.activeElement; var f = overlay.querySelector('a,button'); if (f) f.focus(); }
+      else if (lastFocus) { lastFocus.focus(); }
+    }
+    toggle.addEventListener('click', function () { setMenu(true); });
+    if (close) close.addEventListener('click', function () { setMenu(false); });
+    $$('#menuOverlay .menu-list a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('is-open')) setMenu(false); });
+  })();
+
+  (function () {
+    if (!animOK || !('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { var d = en.target.getAttribute('data-d'); if (d) en.target.style.setProperty('--d', d); en.target.classList.add('in'); obs.unobserve(en.target); } });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    $$('[data-rv]').forEach(function (el) { obs.observe(el); });
+  })();
+
+  (function () {
+    var els = $$('[data-count]'); if (!els.length) return;
+    if (reduced || !('IntersectionObserver' in window)) { els.forEach(function (el) { el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || ''); }); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, target = parseFloat(el.getAttribute('data-count')) || 0, suffix = el.getAttribute('data-suffix') || '', start = null;
+        function tick(ts) { if (start === null) start = ts; var p = Math.min((ts - start) / 1400, 1); el.textContent = Math.round(target * (1 - Math.pow(1 - p, 4))) + suffix; if (p < 1) requestAnimationFrame(tick); }
+        requestAnimationFrame(tick); io.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  (function () {
+    var form = $('#contactForm'); if (!form) return;
+    var overlay = $('#sentOverlay'), reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    function validate(field) { var input = field.querySelector('input,textarea'), ok = input.type === 'email' ? reEmail.test(input.value.trim()) : input.value.trim().length > 0; field.classList.toggle('invalid', !ok); return ok; }
+    $$('.field', form).forEach(function (f) { var input = f.querySelector('input,textarea'); input.addEventListener('blur', function () { validate(f); }); input.addEventListener('input', function () { if (f.classList.contains('invalid')) validate(f); }); });
+    form.addEventListener('submit', function (e) { e.preventDefault(); var allOK = true; $$('.field', form).forEach(function (f) { if (!validate(f)) allOK = false; }); if (!allOK) { var bad = form.querySelector('.field.invalid input,.field.invalid textarea'); if (bad) bad.focus(); return; } if (overlay) overlay.classList.add('on'); form.reset(); });
+  })();
+
+  (function () {
+    var map = { what: '#step-1', how: '#step-2', why: '#step-3' };
+    $$('#ringTabs button').forEach(function (b) { b.addEventListener('click', function () { var t = document.querySelector(map[b.getAttribute('data-r')]); if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); }); });
+  })();
+
+  var dotLinks = [];
+  (function () {
+    var nav = $('#dotnav'), steps = $$('#steps .step'); if (!nav || !steps.length) return;
+    steps.forEach(function (st, i) {
+      var a = document.createElement('a'); a.href = '#' + st.id;
+      a.setAttribute('data-nl-al', 'Stap ' + (i + 1)); a.setAttribute('data-en-al', 'Step ' + (i + 1));
+      a.setAttribute('aria-label', (window.__lang === 'en' ? 'Step ' : 'Stap ') + (i + 1));
+      var tip = document.createElement('span'); tip.className = 'tip'; tip.textContent = (st.querySelector('h3') ? st.querySelector('h3').textContent : ('Stap ' + (i + 1))); a.appendChild(tip);
+      a.addEventListener('click', function (e) { e.preventDefault(); st.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' }); });
+      nav.appendChild(a); dotLinks.push(a);
+    });
+  })();
+
+  var setActiveRing = function () {};
+  (function () {
+    var canvas = $('#circleCanvas'); if (!canvas) return;
+    var ctx = canvas.getContext('2d'); if (!ctx) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0, raf = null, t0 = 0;
+    var rings = [
+      { key: 'what', label: { nl: 'Wat', en: 'What' }, r: 0.92, color: '#141009' },
+      { key: 'how',  label: { nl: 'Hoe', en: 'How' },  r: 0.63, color: '#1f5b52' },
+      { key: 'why',  label: { nl: 'Waarom', en: 'Why' }, r: 0.35, color: '#e3a52b' }
+    ];
+    var active = 'why', glowAmt = { what: 0, how: 0, why: 1 }, px = 0, py = 0, tx = 0, ty = 0, seed = 13;
+    function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+    var orbs = []; rings.forEach(function (rg, idx) { var n = idx === 2 ? 3 : (idx === 1 ? 4 : 5); for (var k = 0; k < n; k++) orbs.push({ ring: idx, a: rnd() * Math.PI * 2, sp: (0.1 + rnd() * 0.12) * (idx === 0 ? 1 : -1) }); });
+
+    function resize() { var r = canvas.getBoundingClientRect(); W = r.width; H = r.height; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+
+    function draw(t) {
+      var time = (t - t0) / 1000;
+      ctx.clearRect(0, 0, W, H);
+      px += (tx - px) * 0.06; py += (ty - py) * 0.06;
+      var cx = W / 2 + px * 10, cy = H / 2 + py * 10, base = Math.min(W, H) * 0.46;
+      rings.forEach(function (rg) { var goal = (active === rg.key || active === 'all') ? 1 : 0.16; glowAmt[rg.key] += (goal - glowAmt[rg.key]) * 0.09; });
+
+      // bold platte ringen (dik, hard, geen glow)
+      rings.forEach(function (rg) {
+        var r = base * rg.r, g = glowAmt[rg.key];
+        ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.strokeStyle = rg.color; ctx.globalAlpha = 0.28 + 0.62 * g; ctx.lineWidth = 2.5 + 5 * g; ctx.stroke(); ctx.restore();
+        if (g > 0.5 && !reduced) {
+          var sweep = time * (rg.key === 'why' ? 0.5 : (rg.key === 'how' ? -0.55 : 0.4));
+          ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, sweep, sweep + 0.7);
+          ctx.strokeStyle = rg.color; ctx.globalAlpha = (g - 0.5) * 2; ctx.lineWidth = 6 + 4 * g; ctx.lineCap = 'butt'; ctx.stroke(); ctx.restore();
+        }
+      });
+      orbs.forEach(function (o) { var rg = rings[o.ring], r = base * rg.r, ang = o.a + (reduced ? 0 : time * o.sp), x = cx + Math.cos(ang) * r, y = cy + Math.sin(ang) * r, g = glowAmt[rg.key], s = 3 + 3 * g; ctx.save(); ctx.fillStyle = rg.color; ctx.globalAlpha = 0.3 + 0.6 * g; ctx.fillRect(x - s / 2, y - s / 2, s, s); ctx.restore(); });
+
+      var lang = window.__lang || 'nl', act = rings.filter(function (r) { return r.key === active; })[0] || rings[2], innerR = base * rings[2].r;
+      // gevulde kern bij actieve why
+      var fillAlpha = 0.1 + 0.16 * glowAmt[active === 'all' ? 'why' : active];
+      ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, innerR - 3, 0, Math.PI * 2);
+      ctx.fillStyle = act.color; ctx.globalAlpha = fillAlpha; ctx.fill(); ctx.restore();
+      var lbl = active === 'all' ? (lang === 'en' ? 'Why' : 'Waarom') : act.label[lang];
+      ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = active === 'how' ? '#1f5b52' : '#141009'; ctx.globalAlpha = 0.95;
+      ctx.font = '900 ' + Math.max(15, Math.round(base * 0.12)) + 'px Archivo, system-ui, sans-serif';
+      ctx.fillText(lbl.toUpperCase(), cx, cy); ctx.restore();
+    }
+
+    function loop(t) { if (!t0) t0 = t; draw(t); raf = requestAnimationFrame(loop); }
+    function start() { if (!reduced && raf === null) { t0 = 0; raf = requestAnimationFrame(loop); } }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    window.__redrawCircle = function () { resize(); draw(performance.now ? performance.now() : 0); };
+    setActiveRing = function (key) { active = key; $$('#ringTabs button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-r') === key); }); if (reduced) draw(0); };
+
+    canvas.addEventListener('pointermove', function (e) { var r = canvas.getBoundingClientRect(); tx = ((e.clientX - r.left) / r.width - 0.5) * 2; ty = ((e.clientY - r.top) / r.height - 0.5) * 2; }, { passive: true });
+    canvas.addEventListener('pointerleave', function () { tx = 0; ty = 0; });
+    canvas.addEventListener('click', function () { var order = ['why', 'how', 'what'], i = order.indexOf(active === 'all' ? 'why' : active); setActiveRing(order[(i + 1) % order.length]); });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    window.addEventListener('resize', function () { resize(); if (reduced) draw(0); }, { passive: true });
+
+    if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { resize(); if (reduced) draw(0); else start(); io.disconnect(); } }); }, { threshold: 0.05 }); io.observe(canvas); }
+    else { resize(); draw(0); }
+  })();
+
+  (function () {
+    var header = $('#header'), progress = $('#scrollProgress'), steps = $$('#steps .step'), dotnav = $('#dotnav');
+    var lastY = window.scrollY, hidden = false, ticking = false;
+    var mqMobile = window.matchMedia('(max-width:1000px)');
+    function currentStep() {
+      var mid = window.innerHeight * 0.5, best = -1, bestDist = Infinity;
+      if (mqMobile.matches) { var stg = document.querySelector('#journey .stage'); if (stg) { var sr = stg.getBoundingClientRect(); if (sr.bottom > 0 && sr.bottom < window.innerHeight) mid = sr.bottom + (window.innerHeight - sr.bottom) * 0.5; } }
+      steps.forEach(function (st, i) { var r = st.getBoundingClientRect(), c = r.top + r.height / 2, dist = Math.abs(c - mid); if (r.bottom > 0 && r.top < window.innerHeight && dist < bestDist) { bestDist = dist; best = i; } });
+      return best;
+    }
+    function frame() {
+      ticking = false; var y = window.scrollY, docH = document.documentElement.scrollHeight - window.innerHeight;
+      if (progress) progress.style.transform = 'scaleX(' + (docH > 0 ? y / docH : 0) + ')';
+      if (header) { header.classList.toggle('is-solid', y > 20); if (y > lastY && y > 320) { if (!hidden) { header.classList.add('is-hidden'); hidden = true; } } else if (hidden) { header.classList.remove('is-hidden'); hidden = false; } }
+      lastY = y;
+      if (steps.length) {
+        var idx = currentStep(), jr = $('#journey'), jv = false;
+        if (jr) { var jrb = jr.getBoundingClientRect(); jv = jrb.top < window.innerHeight * 0.6 && jrb.bottom > window.innerHeight * 0.3; }
+        if (dotnav) dotnav.classList.toggle('show', jv);
+        steps.forEach(function (st, i) { st.classList.toggle('is-active', i === idx); });
+        dotLinks.forEach(function (a, i) { a.classList.toggle('on', i === idx); });
+        if (idx >= 0) setActiveRing(steps[idx].getAttribute('data-ring'));
+      }
+    }
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    window.addEventListener('scroll', req, { passive: true }); window.addEventListener('resize', req, { passive: true }); frame();
+  })();
+
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var links = {}; $$('#navLinks a').forEach(function (a) { var h = a.getAttribute('href'); if (h) links[h.slice(1)] = a; });
+    var spy = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { Object.keys(links).forEach(function (k) { links[k].classList.toggle('active', k === en.target.id); }); } }); }, { rootMargin: '-45% 0px -50% 0px' });
+    ['over', 'waarom', 'aanpak', 'ervaring', 'contact'].forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  })();
+})();
+</script>
+</body>
+</html>

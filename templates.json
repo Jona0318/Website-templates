@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 160,
+  "count": 162,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8447,6 +8447,126 @@
           "Interactief",
           "Canvas",
           "Tweetalig"
+        ]
+      }
+    },
+    {
+      "id": 161,
+      "slug": "161-klaarte",
+      "path": "templates/161-klaarte/",
+      "title": "Klaarte — Machteld Veen, merkstrateeg",
+      "name": "Klaarte",
+      "sector": "advies",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f5f0e6",
+        "#a97f28",
+        "#3f605c",
+        "#1b1712",
+        "#fbf8f1"
+      ],
+      "fonts": [
+        "Newsreader",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-golden-circle",
+        "scroll-linked-storytelling",
+        "language-toggle",
+        "sticky-header",
+        "mobile-menu",
+        "reveal-system",
+        "scroll-progress",
+        "countup",
+        "dot-nav",
+        "contact-form",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "over",
+        "waarom(golden-circle)",
+        "aanpak",
+        "ervaring",
+        "contact"
+      ],
+      "note": "Licht-redactionele variant van de Golden Circle-adviseurssite. Pronkstuk = een verfijnde, LICHTE canvas-cirkel (wat/hoe/waarom) met dunne inkt/goud-lijnen die met de scroll-reis meebeweegt. Warm papier, hairline-regels, elegante Newsreader-serif, drop-cap, ledger-tijdlijn en subtiel goud als accent. Volledige NL/EN-taalwissel, focus-trap, gevalideerd formulier. Quiet-luxury tegenpool van het donkere Waarom (160).",
+      "card": {
+        "title": "Klaarte — merkstrateeg",
+        "blurb": "Licht-redactionele Golden Circle-site: verfijnde canvas-cirkel met dunne inkt/goud-lijnen, warm papier en subtiel goud. Volledige NL/EN-taalwissel.",
+        "emoji": "◔",
+        "grad": [
+          "#f5f0e6",
+          "#a97f28"
+        ],
+        "tags": [
+          "Interactief",
+          "Canvas",
+          "Tweetalig"
+        ]
+      }
+    },
+    {
+      "id": 162,
+      "slug": "162-kern",
+      "path": "templates/162-kern/",
+      "title": "Kern — Sander Roos, strateeg & merkbouwer",
+      "name": "Kern",
+      "sector": "advies",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f2e9d6",
+        "#e3a52b",
+        "#1f5b52",
+        "#141009",
+        "#fbf6ea"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-golden-circle",
+        "scroll-linked-storytelling",
+        "language-toggle",
+        "marquee",
+        "sticky-header",
+        "mobile-menu",
+        "reveal-system",
+        "scroll-progress",
+        "countup",
+        "dot-nav",
+        "contact-form",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "ticker",
+        "over",
+        "waarom(golden-circle)",
+        "aanpak",
+        "ervaring",
+        "contact"
+      ],
+      "note": "Bold-grafische (neo-brutalist warme) variant van de Golden Circle-adviseurssite. Pronkstuk = een BOLD, platte canvas-cirkel (wat/hoe/waarom) met dikke ringen die met de scroll-reis meebewegen. Crème + hard-zwarte randen, offset-schaduwen, gouden accentblokken, heavy Archivo-display, marquee-ticker en chunky hard-shadow kaarten. Volledige NL/EN-taalwissel, focus-trap, gevalideerd formulier. Direct en energiek tegenover het lichte Klaarte (161) en donkere Waarom (160).",
+      "card": {
+        "title": "Kern — strateeg & merkbouwer",
+        "blurb": "Bold-grafische Golden Circle-site: platte dikke canvas-ringen, crème + hard-zwart met gouden accentblokken, marquee-ticker en hard-shadow kaarten. Volledige NL/EN-taalwissel.",
+        "emoji": "◉",
+        "grad": [
+          "#141009",
+          "#e3a52b"
+        ],
+        "tags": [
+          "Interactief",
+          "Canvas",
+          "Bold"
         ]
       }
     }
