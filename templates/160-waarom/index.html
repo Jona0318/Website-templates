@@ -338,12 +338,13 @@ html.anim-ok [data-rv].in{opacity:1;transform:none}
   .nav-links{display:none}
   .menu-toggle{display:flex}
   .hero .wrap{grid-template-columns:1fr;gap:2.5rem}
-  .emblem{max-width:320px;order:-1}
+  .emblem{max-width:320px}
+  .hero-visual{order:-1}
   .over-grid,.contact-grid{grid-template-columns:1fr}
   .portrait{max-width:340px}
   .aanpak-grid{grid-template-columns:1fr}
   .journey{grid-template-columns:1fr}
-  .journey .stage{position:sticky;top:var(--header-h);height:46vh;background:var(--bg);z-index:5;margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);border-bottom:1px solid var(--line)}
+  .journey .stage{position:sticky;top:var(--header-h);height:42vh;background:var(--bg);z-index:5;margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);border-bottom:1px solid var(--line)}
   .steps{padding-block:2vh}
   .factlist{grid-template-columns:1fr}
 }
@@ -352,9 +353,8 @@ html.anim-ok [data-rv].in{opacity:1;transform:none}
   .tl-item{grid-template-columns:1fr auto;gap:.2rem .8rem}
   .tl-when{grid-column:1 / -1}
   .header-actions .lang{display:none}
-  .menu-lang{display:flex !important}
 }
-.menu-lang{display:none;justify-content:center;margin-top:1.6rem}
+.menu-lang{display:flex;justify-content:center;margin-top:1.6rem}
 
 /* forceer eindstaten wanneer animatie uit staat */
 html.no-anim [data-rv]{opacity:1;transform:none}
@@ -366,18 +366,18 @@ html.no-anim [data-rv]{opacity:1;transform:none}
 
 <div class="intro" id="intro" aria-hidden="true">
   <div class="ring-mini" aria-hidden="true"></div>
-  <b>Waarom</b>
+  <b data-nl="Waarom" data-en="Why">Waarom</b>
   <span>Ruben Daalder</span>
 </div>
 
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Ruben Daalder — naar boven">
+    <a class="brand" href="#top" aria-label="Ruben Daalder — naar boven" data-nl-al="Ruben Daalder — naar boven" data-en-al="Ruben Daalder — back to top">
       <span class="mk" aria-hidden="true">R</span>
       <span class="nm"><b>Ruben Daalder</b><small data-nl="strategisch adviseur" data-en="strategy advisor">strategisch adviseur</small></span>
     </a>
-    <nav class="nav" aria-label="Hoofdmenu">
+    <nav class="nav" aria-label="Hoofdmenu" data-nl-al="Hoofdmenu" data-en-al="Main menu">
       <div class="nav-links" id="navLinks">
         <a href="#over" data-nl="Over" data-en="About">Over</a>
         <a href="#waarom" data-nl="Waarom" data-en="Why">Waarom</a>
@@ -397,7 +397,7 @@ html.no-anim [data-rv]{opacity:1;transform:none}
 </header>
 
 <!-- ============ MENU OVERLAY ============ -->
-<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Navigatie" aria-hidden="true">
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Navigatie" data-nl-al="Navigatie" data-en-al="Navigation" aria-hidden="true">
   <button class="close" id="menuClose" type="button" aria-label="Menu sluiten" data-nl-al="Menu sluiten" data-en-al="Close menu"></button>
   <ul class="menu-list">
     <li><a href="#over"><span class="idx">01</span><span data-nl="Over" data-en="About">Over</span></a></li>
@@ -447,9 +447,9 @@ html.no-anim [data-rv]{opacity:1;transform:none}
         <div class="sweep"></div>
         <div class="ring r-why"></div>
         <div class="ring r-core"></div>
-        <span class="lab lab-what">Wat</span>
-        <span class="lab lab-how">Hoe</span>
-        <span class="lab lab-why">Waarom</span>
+        <span class="lab lab-what" data-nl="Wat" data-en="What">Wat</span>
+        <span class="lab lab-how" data-nl="Hoe" data-en="How">Hoe</span>
+        <span class="lab lab-why" data-nl="Waarom" data-en="Why">Waarom</span>
       </div>
     </div>
   </div>
@@ -503,7 +503,7 @@ html.no-anim [data-rv]{opacity:1;transform:none}
       <h2 id="waaromTitle" data-nl="Van waarom naar hoe naar wat." data-en="From why to how to what.">Van waarom naar hoe naar wat.</h2>
       <p class="lead" data-nl="Scroll door de reis. De cirkel beweegt mee — van de buitenkant (wát) naar de kern (wáárom). Klik op een ring om ernaartoe te springen." data-en="Scroll through the journey. The circle moves with you — from the outside (what) to the core (why). Click a ring to jump there.">Scroll door de reis. De cirkel beweegt mee — van de buitenkant (wát) naar de kern (wáárom). Klik op een ring om ernaartoe te springen.</p>
     </div>
-    <div class="ring-tabs" id="ringTabs" role="group" aria-label="Golden Circle-ringen">
+    <div class="ring-tabs" id="ringTabs" role="group" aria-label="Golden Circle-ringen" data-nl-al="Golden Circle-ringen" data-en-al="Golden Circle rings">
       <button type="button" data-r="what" data-nl="Wat" data-en="What">Wat</button>
       <button type="button" data-r="how" data-nl="Hoe" data-en="How">Hoe</button>
       <button type="button" data-r="why" data-nl="Waarom" data-en="Why">Waarom</button>
@@ -590,7 +590,7 @@ html.no-anim [data-rv]{opacity:1;transform:none}
     <div class="closing" data-rv>
       <p data-nl="Organisaties die hun waarom kennen, maken betere keuzes, inspireren mensen en behalen duurzaam resultaat." data-en="Organisations that know their why make better choices, inspire people and achieve lasting results.">Organisaties die hun waarom kennen, maken betere keuzes, inspireren mensen en behalen duurzaam resultaat.</p>
       <div class="flow" aria-hidden="true">
-        <b class="why">Waarom</b><span class="ar">→</span><b class="how">Hoe</b><span class="ar">→</span><b>Wat</b>
+        <b class="why" data-nl="Waarom" data-en="Why">Waarom</b><span class="ar">→</span><b class="how" data-nl="Hoe" data-en="How">Hoe</b><span class="ar">→</span><b data-nl="Wat" data-en="What">Wat</b>
       </div>
     </div>
   </div>
@@ -741,7 +741,7 @@ html.no-anim [data-rv]{opacity:1;transform:none}
 </footer>
 
 <!-- vertical dot-nav voor de Golden Circle-reis -->
-<nav class="dotnav" id="dotnav" aria-label="Golden Circle-stappen"></nav>
+<nav class="dotnav" id="dotnav" aria-label="Golden Circle-stappen" data-nl-al="Golden Circle-stappen" data-en-al="Golden Circle steps"></nav>
 
 <script>
 (function () {
@@ -803,12 +803,17 @@ html.no-anim [data-rv]{opacity:1;transform:none}
   (function () {
     var toggle = $('#menuToggle'), overlay = $('#menuOverlay'), close = $('#menuClose');
     if (!toggle || !overlay) return;
+    var headerEl = $('#header'), mainEl = $('#main'), footerEl = $('.footer');
     var lastFocus = null;
     function setMenu(open) {
       overlay.classList.toggle('is-open', open);
       overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.body.style.overflow = open ? 'hidden' : '';
+      // focus-trap: maak de rest van de pagina inert zolang het menu open is
+      if (headerEl) headerEl.inert = open;
+      if (mainEl) mainEl.inert = open;
+      if (footerEl) footerEl.inert = open;
       if (open) { lastFocus = document.activeElement; var f = overlay.querySelector('a,button'); if (f) f.focus(); }
       else if (lastFocus) { lastFocus.focus(); }
     }
@@ -909,7 +914,9 @@ html.no-anim [data-rv]{opacity:1;transform:none}
     steps.forEach(function (st, i) {
       var a = document.createElement('a');
       a.href = '#' + st.id;
-      a.setAttribute('aria-label', 'Stap ' + (i + 1));
+      a.setAttribute('data-nl-al', 'Stap ' + (i + 1));
+      a.setAttribute('data-en-al', 'Step ' + (i + 1));
+      a.setAttribute('aria-label', (window.__lang === 'en' ? 'Step ' : 'Stap ') + (i + 1));
       var tip = document.createElement('span');
       tip.className = 'tip';
       tip.textContent = (st.querySelector('h3') ? st.querySelector('h3').textContent : ('Stap ' + (i + 1)));
@@ -1103,10 +1110,20 @@ html.no-anim [data-rv]{opacity:1;transform:none}
     var dotnav = $('#dotnav');
     var lastY = window.scrollY, hidden = false;
     var ticking = false;
+    var mqMobile = window.matchMedia('(max-width:1000px)');
 
     function currentStep() {
       // stap wiens midden het dichtst bij het schermmidden ligt
       var mid = window.innerHeight * 0.5, best = -1, bestDist = Infinity;
+      // op mobiel plakt de canvas-stage bovenaan vast; mik dan op de zichtbare
+      // zone eronder, anders zou de "actieve" stap achter de stage vallen
+      if (mqMobile.matches) {
+        var stg = document.querySelector('#journey .stage');
+        if (stg) {
+          var sr = stg.getBoundingClientRect();
+          if (sr.bottom > 0 && sr.bottom < window.innerHeight) mid = sr.bottom + (window.innerHeight - sr.bottom) * 0.5;
+        }
+      }
       steps.forEach(function (st, i) {
         var r = st.getBoundingClientRect();
         var c = r.top + r.height / 2;
