@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 159,
+  "count": 160,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8387,6 +8387,66 @@
           "Bouw",
           "Maatwerk",
           "Light"
+        ]
+      }
+    },
+    {
+      "id": 160,
+      "slug": "160-waarom",
+      "path": "templates/160-waarom/",
+      "title": "Waarom — Ruben Daalder, strategisch adviseur",
+      "name": "Waarom",
+      "sector": "advies",
+      "tier": "signature",
+      "scheme": "dark",
+      "multipage": false,
+      "palette": [
+        "#0b0d16",
+        "#e9b44c",
+        "#7c9cff",
+        "#eef0fa",
+        "#141830"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Manrope",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "canvas-golden-circle",
+        "scroll-linked-storytelling",
+        "language-toggle",
+        "sticky-header",
+        "mobile-menu",
+        "reveal-system",
+        "scroll-progress",
+        "countup",
+        "drawing-timeline",
+        "dot-nav",
+        "contact-form",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero",
+        "over",
+        "waarom(golden-circle)",
+        "aanpak",
+        "ervaring",
+        "contact"
+      ],
+      "note": "Signature persoonlijke merk-/adviseurssite rond Simon Sineks Golden Circle. Pronkstuk = een interactieve <canvas>-cirkel (wat/hoe/waarom) die met de scroll-reis meebeweegt: de actieve ring licht op, deeltjes orbiten en een centrale gloed toont het huidige woord. Volledige NL/EN-taalwissel (data-nl/data-en, onthouden in localStorage), tekenende ervaring-tijdlijn met verkocht-badges, count-up cijfers, dot-navigatie, ABC-stijl contactknoppen (bellen/mailen/WhatsApp/route) en gevalideerd formulier. Herbouwt een WordPress-iframe-ervaring native — deep-linkbaar en SEO-vriendelijk. Palet: nacht-indigo x goud (waarom) x korenblauw (hoe).",
+      "card": {
+        "title": "Waarom — strategisch adviseur",
+        "blurb": "Persoonlijke merk-site rond de Golden Circle: een interactieve canvas-cirkel (wat/hoe/waarom) die met de scroll meebeweegt, plus volledige NL/EN-taalwissel.",
+        "emoji": "◎",
+        "grad": [
+          "#0b0d16",
+          "#e9b44c"
+        ],
+        "tags": [
+          "Interactief",
+          "Canvas",
+          "Tweetalig"
         ]
       }
     }
