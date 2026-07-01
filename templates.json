@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 163,
+  "count": 164,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8620,6 +8620,67 @@
         "tags": [
           "Redactioneel",
           "Content-first",
+          "Tweetalig"
+        ]
+      }
+    },
+    {
+      "id": 164,
+      "slug": "164-doen",
+      "path": "templates/164-doen/",
+      "title": "Doen — Sander Vosman, ondernemer & bedrijvenbouwer",
+      "name": "Doen",
+      "sector": "persoonlijk",
+      "tier": "maatwerk",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f7f6f1",
+        "#c2410c",
+        "#175457",
+        "#20241f",
+        "#eceae2"
+      ],
+      "fonts": [
+        "Sora",
+        "Instrument Sans",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "language-toggle",
+        "scroll-linked-storytelling",
+        "dot-nav",
+        "sticky-sidebar",
+        "scroll-spy",
+        "sticky-header",
+        "mobile-menu",
+        "reveal-system",
+        "scroll-progress",
+        "contact-form",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero(caps-slogan)",
+        "over-mij",
+        "wie-ben-ik",
+        "ervaring(tijdlijn+verkocht-badges)",
+        "cta-naar-waarom",
+        "sidebar(foto+social+gegevens)",
+        "waarom(golden-circle-reis-10-stappen)",
+        "contact(actieknoppen+formulier)"
+      ],
+      "note": "1-op-1 herbouw van een klassieke persoonlijke business-/CV-site (WordPress-stramien) als moderne one-pager: lichte hero-band met caps-slogan en streepje, hoofdcontent + sticky sidebar (ronde foto, vierkante social-knoppen, gegevensblokken), ervaring-tijdlijn met logo-chips en VERKOCHT-badges, en als kern een scroll-gestuurde Golden Circle-reis in tien stappen met eigen dot-nav en meebewegende CSS-cirkel (wat/hoe/waarom, stroomrichting buiten↔binnen). Contact in 'actieknoppen-stijl' (bel/mail/WhatsApp/route) plus demo-formulier met validatie. Volledig tweetalig NL/EN. Palet: warm wit × petrol × koraal.",
+      "card": {
+        "title": "Doen — persoonlijke business-site",
+        "blurb": "CV-stramien mét een verhaal: hero-band, sticky sidebar, ervaring-tijdlijn met VERKOCHT-badges en een scroll-gestuurde Golden Circle-reis in tien stappen. Actieknoppen-contact en volledige NL/EN-taalwissel.",
+        "emoji": "→",
+        "grad": [
+          "#175457",
+          "#c2410c"
+        ],
+        "tags": [
+          "Persoonlijk",
+          "CV + why-reis",
           "Tweetalig"
         ]
       }
