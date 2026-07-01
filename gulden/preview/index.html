@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GULDEN — Het moderne warenhuis · Editie van vandaag</title>
+<meta name="description" content="GULDEN is het moderne warenhuis: elke dag een nieuwe editie met de best beoordeelde producten in tech, wonen, fashion, sport, boeken en beauty. Vandaag besteld, morgen in huis.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c9a227'/%3E%3Ctext x='32' y='46' font-size='42' font-family='Georgia,serif' font-style='italic' text-anchor='middle' fill='%2314120b'%3E%C6%92%3C/text%3E%3C/svg%3E">
+<script>
+(function(){
+  var h=document.documentElement;h.classList.remove('no-js');h.classList.add('js');
+  try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){h.classList.add('anim');}}catch(e){}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/gulden.css">
+</head>
+<body>
+<a class="skip" href="#main">Direct naar de inhoud</a>
+
+<!-- ══ Tijdsbalk ══ -->
+<div class="tijdsbalk">
+  <div class="rand tijdsbalk-in">
+    <div class="tb-berichten" id="tbBerichten" aria-live="off">
+      <span class="is-actief">Vandaag besteld — <b>morgen in huis</b></span>
+      <span>Gratis bezorging vanaf € 25</span>
+      <span>30 dagen bedenktijd, gratis retour</span>
+    </div>
+    <nav class="tb-links" aria-label="Service">
+      <a href="#">Klantenservice</a>
+      <a href="#">Bestellingen</a>
+      <span class="tb-locale">NL · EUR</span>
+    </nav>
+  </div>
+</div>
+
+<!-- ══ Masthead ══ -->
+<header class="masthead" id="masthead">
+  <div class="rand masthead-in">
+    <button class="mh-menuknop" id="menuKnop" aria-expanded="false" aria-controls="megaMenu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span>Alle rubrieken</span>
+    </button>
+    <a class="woordmerk" href="index.html" aria-label="GULDEN — naar de voorpagina"><span class="fl">ƒ</span>GULDEN</a>
+    <form class="zoek" id="zoekForm" role="search" autocomplete="off">
+      <input class="zoek-veld" id="zoekVeld" type="search" placeholder="Zoek in 24.512 artikelen…" aria-label="Zoek in het warenhuis" aria-expanded="false" aria-controls="zoekLade">
+      <button class="zoek-knop" type="submit" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.6 15.6 21 21" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+      <div class="zoeklade" id="zoekLade" hidden>
+        <div class="zl-blok">
+          <p class="zl-kop">Populair gezocht</p>
+          <p class="zl-termen" id="zlTermen">
+            <button type="button" data-term="airfryer">airfryer</button><i>·</i>
+            <button type="button" data-term="LEGO Technic">LEGO Technic</button><i>·</i>
+            <button type="button" data-term="OLED tv">OLED tv</button><i>·</i>
+            <button type="button" data-term="espressomachine">espressomachine</button><i>·</i>
+            <button type="button" data-term="zonnebrand">zonnebrand</button>
+          </p>
+        </div>
+        <div class="zl-blok">
+          <p class="zl-kop" id="zlResultKop">Uit de index</p>
+          <ol class="zl-lijst" id="zlLijst"></ol>
+        </div>
+      </div>
+    </form>
+    <nav class="mh-acties" aria-label="Account en winkelwagen">
+      <a class="mh-actie" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4.8 20c1.2-3.6 4-5.4 7.2-5.4s6 1.8 7.2 5.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Inloggen</span>
+      </a>
+      <a class="mh-actie" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.4-4.6-9.2-9C1.6 7.6 3.6 4.6 6.8 4.6c2 0 3.6 1.1 4.4 2.7l.8 1.5.8-1.5c.8-1.6 2.4-2.7 4.4-2.7 3.2 0 5.2 3 4 6.4-1.8 4.4-9.2 9-9.2 9Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span>Favorieten</span>
+      </a>
+      <button class="mh-actie mh-cart" id="cartKnop" aria-haspopup="dialog" aria-controls="cartDrawer">
+        <span class="cart-ikoon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.6 8V6.4a3.4 3.4 0 0 1 6.8 0V8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <b class="cart-badge" id="cartBadge"><i class="flap" id="cartFlap">0</i></b>
+        </span>
+        <span>Winkelwagen</span>
+      </button>
+    </nav>
+  </div>
+  <nav class="rubrieken" aria-label="Rubrieken">
+    <div class="rand rubrieken-in">
+      <a class="rubriek" href="#rubrieken"><i>01</i>Tech</a>
+      <a class="rubriek" href="#rubrieken"><i>02</i>Wonen</a>
+      <a class="rubriek" href="#rubrieken"><i>03</i>Fashion</a>
+      <a class="rubriek" href="#rubrieken"><i>04</i>Sport</a>
+      <a class="rubriek" href="#rubrieken"><i>05</i>Boeken</a>
+      <a class="rubriek" href="#rubrieken"><i>06</i>Beauty</a>
+      <a class="rubriek rubriek-deals" href="#deals"><i>07</i>Deals</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ══ Mega-menu: de index ══ -->
+<div class="megamenu" id="megaMenu" hidden>
+  <div class="rand megamenu-in">
+    <section class="mm-kolom">
+      <h3><i>01</i> Tech</h3>
+      <ol><li><a href="#">Audio &amp; koptelefoons</a></li><li><a href="#">Televisies</a></li><li><a href="#">Telefonie</a></li><li><a href="#">Computers</a></li><li><a href="#">Foto &amp; video</a></li><li><a href="#">Smart home</a></li></ol>
+    </section>
+    <section class="mm-kolom">
+      <h3><i>02</i> Wonen</h3>
+      <ol><li><a href="#">Meubels</a></li><li><a href="#">Verlichting</a></li><li><a href="#">Keuken</a></li><li><a href="#">Textiel</a></li><li><a href="#">Opbergen</a></li><li><a href="#">Tuin &amp; balkon</a></li></ol>
+    </section>
+    <section class="mm-kolom">
+      <h3><i>03</i> Fashion</h3>
+      <ol><li><a href="#">Dames</a></li><li><a href="#">Heren</a></li><li><a href="#">Schoenen</a></li><li><a href="#">Tassen</a></li><li><a href="#">Horloges</a></li><li><a href="#">Zonnebrillen</a></li></ol>
+    </section>
+    <section class="mm-kolom">
+      <h3><i>04</i> Sport</h3>
+      <ol><li><a href="#">Hardlopen</a></li><li><a href="#">Fitness</a></li><li><a href="#">Fietsen</a></li><li><a href="#">Outdoor</a></li><li><a href="#">Wintersport</a></li><li><a href="#">Sporthorloges</a></li></ol>
+    </section>
+    <section class="mm-kolom">
+      <h3><i>05</i> Boeken</h3>
+      <ol><li><a href="#">Literatuur</a></li><li><a href="#">Thrillers</a></li><li><a href="#">Non-fictie</a></li><li><a href="#">Kinderboeken</a></li><li><a href="#">Studieboeken</a></li><li><a href="#">Engelstalig</a></li></ol>
+    </section>
+    <section class="mm-kolom">
+      <h3><i>06</i> Beauty</h3>
+      <ol><li><a href="#">Huidverzorging</a></li><li><a href="#">Parfum</a></li><li><a href="#">Make-up</a></li><li><a href="#">Haarverzorging</a></li><li><a href="#">Scheren</a></li><li><a href="#">Cadeausets</a></li></ol>
+    </section>
+    <p class="mm-voet"><a href="#deals">Alle deals van editie <span class="editie-ref">27</span> — scherp geprijsd, zolang de voorraad strekt →</a></p>
+  </div>
+</div>
+<div class="scherm" id="scherm" hidden></div>
+
+<main id="main">
+
+<!-- ══ Hero: de voorpagina ══ -->
+<section class="hero" aria-labelledby="heroKop">
+  <div class="rand hero-in">
+    <div class="hero-a">
+      <div class="hero-top" data-rv>
+        <div class="stempel" aria-hidden="true"><b>Nº <span class="editie-ref">27</span></b><span class="st-label">editie</span></div>
+        <div class="dateline">
+          <p class="dl-datum"><span id="dateline">Donderdag 2 juli 2026</span> · editie Nº <span class="editie-ref">27</span> · 24.512 artikelen op voorraad</p>
+          <p class="dl-deadline">Bestel binnen <b class="cijfers" id="deadline">5 u 24 m</b> — morgen in huis</p>
+        </div>
+      </div>
+      <h1 id="heroKop" data-rv data-d="1">De zomer,<br>geïndexeerd.</h1>
+      <p class="hero-lead" data-rv data-d="2">Van ventilator tot strandstoel — de 250 best beoordeelde zomerproducten, geselecteerd door de redactie.</p>
+      <div class="hero-cta" data-rv data-d="3">
+        <a class="knop" href="#vandaag">Shop editie <span class="editie-ref">27</span> <span aria-hidden="true">→</span></a>
+        <a class="tekstlink" href="#rubrieken">Bekijk de volledige index</a>
+      </div>
+    </div>
+    <aside class="hero-b" aria-label="Op de voorpagina">
+      <article class="vp-artikel" data-rv>
+        <header class="vp-kop"><b class="vp-nr">№ 01</b><span class="vp-label">Op de voorpagina</span></header>
+        <a class="vp-beeld" href="#"><img src="img/koptelefoon.jpg" alt="Zwarte koptelefoon Nova X3 op een witte achtergrond" width="900" height="1125"></a>
+        <div class="vp-info">
+          <p class="vp-merk">Nova</p>
+          <h3 class="vp-naam"><a href="#">Koptelefoon Nova X3 — noise cancelling</a></h3>
+          <div class="vp-prijsrij">
+            <p class="prijs">€ 249,95 <s class="prijs-oud">€ 299,95</s></p>
+            <button class="plusknop" data-add="nova-x3" aria-label="Koptelefoon Nova X3 in winkelwagen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
+              <em>In winkelwagen</em>
+            </button>
+          </div>
+        </div>
+      </article>
+      <article class="vp-artikel" data-rv data-d="1">
+        <header class="vp-kop"><b class="vp-nr">№ 02</b><span class="vp-label">Keuze van de redactie</span></header>
+        <a class="vp-beeld" href="#"><img src="img/chronograaf.jpg" alt="Stalen chronograaf-horloge met donkere wijzerplaat" width="900" height="1125"></a>
+        <div class="vp-info">
+          <p class="vp-merk">Hanze</p>
+          <h3 class="vp-naam"><a href="#">Chronograaf Staal 42&nbsp;mm — saffierglas</a></h3>
+          <div class="vp-prijsrij">
+            <p class="prijs">€ 329,00</p>
+            <button class="plusknop" data-add="chrono-staal" aria-label="Chronograaf Staal in winkelwagen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg>
+              <em>In winkelwagen</em>
+            </button>
+          </div>
+        </div>
+      </article>
+    </aside>
+  </div>
+  <div class="ticker" aria-label="Koers van vandaag">
+    <b class="ticker-label"><span class="fl">ƒ</span> Koers vandaag</b>
+    <div class="ticker-baan">
+      <div class="ticker-groep" id="tickerGroep">
+        <a href="#deals">Koptelefoon Nova X3 <b>−17%</b> <i class="op">▲2</i></a>
+        <a href="#deals">Speaker Blok <b>−20%</b> <i>●</i></a>
+        <a href="#deals">Smartwatch Puur <b>−20%</b> <i class="neer">▼1</i></a>
+        <a href="#deals">Hardloopschoen Tempo <b>−18%</b> <i class="op">▲4</i></a>
+        <a href="#deals">Sneaker Sprint <b>−29%</b> <i class="op">nieuw</i></a>
+        <a href="#koers">Milk and Honey <i class="op">▲3</i></a>
+        <a href="#vandaag">Editie <span class="editie-ref">27</span> — 24.512 artikelen</a>
+        <a href="#usp">Gratis bezorging vanaf € 25</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ De rubrieken: inhoudsopgave ══ -->
+<section class="sectie" id="rubrieken">
+  <div class="rand">
+    <header class="kopregel" data-rv>
+      <h2>De rubrieken</h2>
+      <p class="kopregel-meta">De volledige index van het warenhuis</p>
+    </header>
+    <ol class="toc">
+      <li data-rv><a href="#">
+        <b class="toc-nr">01</b><span class="toc-naam">Tech</span><span class="toc-lijn" aria-hidden="true"></span>
+        <span class="toc-thumbs" aria-hidden="true"><img src="img/koptelefoon.jpg" alt="" loading="lazy"><img src="img/instantcamera.jpg" alt="" loading="lazy"><img src="img/smartphone.jpg" alt="" loading="lazy"></span>
+        <span class="toc-aantal">6.480 artikelen</span><span class="toc-pijl" aria-hidden="true">→</span>
+      </a></li>
+      <li data-rv data-d="1"><a href="#">
+        <b class="toc-nr">02</b><span class="toc-naam">Wonen</span><span class="toc-lijn" aria-hidden="true"></span>
+        <span class="toc-thumbs" aria-hidden="true"><img src="img/wonen-1.jpg" alt="" loading="lazy"><img src="img/wonen-2.jpg" alt="" loading="lazy"><img src="img/wonen-3.jpg" alt="" loading="lazy"></span>
+        <span class="toc-aantal">4.212 artikelen</span><span class="toc-pijl" aria-hidden="true">→</span>
+      </a></li>
+      <li data-rv data-d="2"><a href="#">
+        <b class="toc-nr">03</b><span class="toc-naam">Fashion</span><span class="toc-lijn" aria-hidden="true"></span>
+        <span class="toc-thumbs" aria-hidden="true"><img src="img/sneaker-zwart.jpg" alt="" loading="lazy"><img src="img/zonnebril.jpg" alt="" loading="lazy"><img src="img/rugzak.jpg" alt="" loading="lazy"></span>
+        <span class="toc-aantal">5.890 artikelen</span><span class="toc-pijl" aria-hidden="true">→</span>
+      </a></li>
+      <li data-rv data-d="3"><a href="#">
+        <b class="toc-nr">04</b><span class="toc-naam">Sport</span><span class="toc-lijn" aria-hidden="true"></span>
+        <span class="toc-thumbs" aria-hidden="true"><img src="img/hardloopschoen.jpg" alt="" loading="lazy"><img src="img/sneaker-multi.jpg" alt="" loading="lazy"><img src="img/smartwatch-zwart.jpg" alt="" loading="lazy"></span>
+        <span class="toc-aantal">2.304 artikelen</span><span class="toc-pijl" aria-hidden="true">→</span>
+      </a></li>
+      <li data-rv data-d="4"><a href="#">
+        <b class="toc-nr">05</b><span class="toc-naam">Boeken</span><span class="toc-lijn" aria-hidden="true"></span>
+        <span class="toc-thumbs" aria-hidden="true"><img src="img/boeken-stapel.jpg" alt="" loading="lazy"><img src="img/boek.jpg" alt="" loading="lazy"></span>
+        <span class="toc-aantal">3.126 artikelen</span><span class="toc-pijl" aria-hidden="true">→</span>
+      </a></li>
+      <li data-rv data-d="5"><a href="#">
+        <b class="toc-nr">06</b><span class="toc-naam">Beauty</span><span class="toc-lijn" aria-hidden="true"></span>
+        <span class="toc-thumbs" aria-hidden="true"><img src="img/bodylotion.jpg" alt="" loading="lazy"><img src="img/kokosolie.jpg" alt="" loading="lazy"><img src="img/makeup.jpg" alt="" loading="lazy"></span>
+        <span class="toc-aantal">2.500 artikelen</span><span class="toc-pijl" aria-hidden="true">→</span>
+      </a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ Vandaag gekozen ══ -->
+<section class="sectie" id="vandaag">
+  <div class="rand">
+    <header class="kopregel" data-rv>
+      <h2>Vandaag gekozen</h2>
+      <p class="kopregel-meta">Door de redactie, voor editie <span class="editie-ref">27</span> · <a class="tekstlink" href="#">bekijk alles</a></p>
+    </header>
+    <div class="catalogus" data-rv>
+
+      <article class="cel" data-id="sneaker-vlucht">
+        <div class="cel-top"><b class="cel-nr">Nº 01</b><span class="badge badge-nieuw">Nieuw</span></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/sneaker-zwart.jpg" alt="Zwarte sneaker Vlucht, zwevend gefotografeerd op wit" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Vlucht</p>
+          <h3 class="cel-naam"><a href="#">Sneaker Vlucht — Zwart</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:92%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,6 (876)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 129,95</p>
+            <button class="plusknop" data-add="sneaker-vlucht" aria-label="Sneaker Vlucht in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="cel" data-id="smartwatch-puur">
+        <div class="cel-top"><b class="cel-nr">Nº 02</b><span class="badge badge-deal">Deal −20%</span></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/smartwatch-wit.jpg" alt="Witte smartwatch Puur met twee bandjes op lichte achtergrond" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Puur</p>
+          <h3 class="cel-naam"><a href="#">Smartwatch Puur — Wit</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:90%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,5 (1.203)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 199,00 <s class="prijs-oud">€ 249,00</s></p>
+            <button class="plusknop" data-add="smartwatch-puur" aria-label="Smartwatch Puur in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="cel" data-id="camera-kiek">
+        <div class="cel-top"><b class="cel-nr">Nº 03</b></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/instantcamera.jpg" alt="Witte instantcamera op lichtgrijze achtergrond" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Kiek</p>
+          <h3 class="cel-naam"><a href="#">Instantcamera Kiek Retro</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:94%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,7 (658)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 94,95</p>
+            <button class="plusknop" data-add="camera-kiek" aria-label="Instantcamera Kiek Retro in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="cel" data-id="rugzak-dagmars">
+        <div class="cel-top"><b class="cel-nr">Nº 04</b></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/rugzak.jpg" alt="Donkerblauwe rugzak Dagmars op lichte achtergrond" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Dagmars</p>
+          <h3 class="cel-naam"><a href="#">Rugzak Dagmars 22&nbsp;L</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:96%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,8 (1.532)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 79,95</p>
+            <button class="plusknop" data-add="rugzak-dagmars" aria-label="Rugzak Dagmars in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="cel" data-id="zonnebril-noir">
+        <div class="cel-top"><b class="cel-nr">Nº 05</b></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/zonnebril.jpg" alt="Klassieke zwarte zonnebril op witte achtergrond" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Noir</p>
+          <h3 class="cel-naam"><a href="#">Zonnebril Klassiek — Zwart</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:92%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,6 (322)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 149,00</p>
+            <button class="plusknop" data-add="zonnebril-noir" aria-label="Zonnebril Klassiek in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="cel" data-id="lotion-atelier">
+        <div class="cel-top"><b class="cel-nr">Nº 06</b><span class="badge badge-nieuw">Nieuw</span></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/bodylotion.jpg" alt="Witte tube bodylotion op wit textiel" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Atelier Nº 3</p>
+          <h3 class="cel-naam"><a href="#">Bodylotion Nº 3 — 250&nbsp;ml</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:98%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,9 (208)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 24,95</p>
+            <button class="plusknop" data-add="lotion-atelier" aria-label="Bodylotion Nº 3 in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="cel" data-id="tempo-schoen">
+        <div class="cel-top"><b class="cel-nr">Nº 07</b><span class="badge badge-deal">Deal −18%</span></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/hardloopschoen.jpg" alt="Witte hardloopschoen met koraalrode zool op lichtgrijs" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Tempo</p>
+          <h3 class="cel-naam"><a href="#">Hardloopschoen Tempo</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:90%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,5 (947)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 139,95 <s class="prijs-oud">€ 169,95</s></p>
+            <button class="plusknop" data-add="tempo-schoen" aria-label="Hardloopschoen Tempo in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="cel" data-id="boek-milk">
+        <div class="cel-top"><b class="cel-nr">Nº 08</b></div>
+        <a class="cel-beeld" href="#" tabindex="-1"><img src="img/boek.jpg" alt="Boek Milk and Honey van Rupi Kaur op een houten tafel" loading="lazy" width="800" height="1000"></a>
+        <div class="cel-info">
+          <p class="cel-merk">Boeken</p>
+          <h3 class="cel-naam"><a href="#">Milk and Honey — Rupi Kaur</a></h3>
+          <p class="cel-sterren"><span class="sterren" style="--vol:96%" aria-hidden="true"><i>★★★★★</i>★★★★★</span><span>4,8 (5.203)</span></p>
+          <p class="cel-bezorg">Morgen in huis</p>
+          <div class="cel-prijsrij">
+            <p class="prijs">€ 19,99</p>
+            <button class="plusknop" data-add="boek-milk" aria-label="Milk and Honey in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ De koerslijst ══ -->
+<section class="sectie" id="koers">
+  <div class="rand">
+    <header class="kopregel" data-rv>
+      <h2>De koerslijst</h2>
+      <p class="kopregel-meta">De tien populairste artikelen · <span class="cijfers">▲▼</span> positie t.o.v. vorige week</p>
+    </header>
+    <div class="koers-grid">
+      <ol class="koerslijst" id="koersLijst" data-rv>
+        <li class="koers-rij" data-id="nova-x3">
+          <b class="k-pos cijfers">01</b><span class="k-bew k-op cijfers" title="Twee plaatsen gestegen deze week">▲2<span class="sr-only"> — twee plaatsen gestegen</span></span>
+          <img class="k-thumb" src="img/koptelefoon.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Koptelefoon Nova X3</a>
+          <span class="k-ster">★ 4,8</span><b class="k-prijs">€ 249,95</b>
+          <button class="plusknop plusknop-klein" data-add="nova-x3" aria-label="Koptelefoon Nova X3 in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="speaker-blok">
+          <b class="k-pos cijfers">02</b><span class="k-bew cijfers" title="Gelijk aan vorige week">●<span class="sr-only"> — gelijk gebleven</span></span>
+          <img class="k-thumb" src="img/speaker.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Speaker Blok — Draagbaar</a>
+          <span class="k-ster">★ 4,6</span><b class="k-prijs">€ 119,95</b>
+          <button class="plusknop plusknop-klein" data-add="speaker-blok" aria-label="Speaker Blok in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="boek-milk">
+          <b class="k-pos cijfers">03</b><span class="k-bew k-op cijfers" title="Drie plaatsen gestegen deze week">▲3<span class="sr-only"> — drie plaatsen gestegen</span></span>
+          <img class="k-thumb" src="img/boek.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Milk and Honey — Rupi Kaur</a>
+          <span class="k-ster">★ 4,8</span><b class="k-prijs">€ 19,99</b>
+          <button class="plusknop plusknop-klein" data-add="boek-milk" aria-label="Milk and Honey in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="smartwatch-puur">
+          <b class="k-pos cijfers">04</b><span class="k-bew k-neer cijfers" title="Eén plaats gedaald deze week">▼1<span class="sr-only"> — één plaats gedaald</span></span>
+          <img class="k-thumb" src="img/smartwatch-wit.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Smartwatch Puur — Wit</a>
+          <span class="k-ster">★ 4,5</span><b class="k-prijs">€ 199,00</b>
+          <button class="plusknop plusknop-klein" data-add="smartwatch-puur" aria-label="Smartwatch Puur in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="sneaker-vlucht">
+          <b class="k-pos cijfers">05</b><span class="k-bew k-op cijfers" title="Eén plaats gestegen deze week">▲1<span class="sr-only"> — één plaats gestegen</span></span>
+          <img class="k-thumb" src="img/sneaker-zwart.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Sneaker Vlucht — Zwart</a>
+          <span class="k-ster">★ 4,6</span><b class="k-prijs">€ 129,95</b>
+          <button class="plusknop plusknop-klein" data-add="sneaker-vlucht" aria-label="Sneaker Vlucht in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="telefoon-vonk">
+          <b class="k-pos cijfers">06</b><span class="k-bew k-neer cijfers" title="Twee plaatsen gedaald deze week">▼2<span class="sr-only"> — twee plaatsen gedaald</span></span>
+          <img class="k-thumb" src="img/smartphone.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Smartphone Vonk 128&nbsp;GB</a>
+          <span class="k-ster">★ 4,8</span><b class="k-prijs">€ 699,00</b>
+          <button class="plusknop plusknop-klein" data-add="telefoon-vonk" aria-label="Smartphone Vonk in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="rugzak-dagmars">
+          <b class="k-pos cijfers">07</b><span class="k-bew cijfers" title="Gelijk aan vorige week">●<span class="sr-only"> — gelijk gebleven</span></span>
+          <img class="k-thumb" src="img/rugzak.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Rugzak Dagmars 22&nbsp;L</a>
+          <span class="k-ster">★ 4,8</span><b class="k-prijs">€ 79,95</b>
+          <button class="plusknop plusknop-klein" data-add="rugzak-dagmars" aria-label="Rugzak Dagmars in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="tempo-schoen">
+          <b class="k-pos cijfers">08</b><span class="k-bew k-op cijfers" title="Vier plaatsen gestegen deze week">▲4<span class="sr-only"> — vier plaatsen gestegen</span></span>
+          <img class="k-thumb" src="img/hardloopschoen.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Hardloopschoen Tempo</a>
+          <span class="k-ster">★ 4,5</span><b class="k-prijs">€ 139,95</b>
+          <button class="plusknop plusknop-klein" data-add="tempo-schoen" aria-label="Hardloopschoen Tempo in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="kokosolie-coco">
+          <b class="k-pos cijfers">09</b><span class="k-bew k-neer cijfers" title="Drie plaatsen gedaald deze week">▼3<span class="sr-only"> — drie plaatsen gedaald</span></span>
+          <img class="k-thumb" src="img/kokosolie.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Kokosolie Glans — 200&nbsp;ml</a>
+          <span class="k-ster">★ 4,7</span><b class="k-prijs">€ 18,95</b>
+          <button class="plusknop plusknop-klein" data-add="kokosolie-coco" aria-label="Kokosolie Glans in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+        <li class="koers-rij" data-id="zonnebril-noir">
+          <b class="k-pos cijfers">10</b><span class="k-bew k-op" title="Nieuw in de lijst">nieuw</span>
+          <img class="k-thumb" src="img/zonnebril.jpg" alt="" loading="lazy">
+          <a class="k-naam" href="#">Zonnebril Klassiek — Zwart</a>
+          <span class="k-ster">★ 4,6</span><b class="k-prijs">€ 149,00</b>
+          <button class="plusknop plusknop-klein" data-add="zonnebril-noir" aria-label="Zonnebril Klassiek in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg></button>
+        </li>
+      </ol>
+      <aside class="koers-preview" id="koersPreview" aria-hidden="true">
+        <div class="kp-beeld"><img id="kpImg" src="img/koptelefoon.jpg" alt=""></div>
+        <div class="kp-info">
+          <b class="kp-pos" id="kpPos">01</b>
+          <p class="kp-naam" id="kpNaam">Koptelefoon Nova X3</p>
+          <p class="kp-prijs" id="kpPrijs">€ 249,95</p>
+        </div>
+        <button class="knop kp-knop" id="kpKnop" data-add="nova-x3">In winkelwagen</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Scherp geprijsd (zwarte band) ══ -->
+<section class="band" id="deals">
+  <div class="rand">
+    <header class="kopregel kopregel-invert" data-rv>
+      <h2>Scherp geprijsd</h2>
+      <p class="kopregel-meta">Vandaag in de aanbieding · loopt af over <b class="cijfers" id="dealKlok">06:23:11</b></p>
+    </header>
+    <div class="deals-grid" data-rv>
+
+      <article class="deal">
+        <span class="badge badge-deal">−20%</span>
+        <a class="deal-beeld" href="#" tabindex="-1"><img src="img/smartwatch-wit.jpg" alt="Witte smartwatch Puur met twee bandjes" loading="lazy" width="800" height="1000"></a>
+        <h3 class="deal-naam"><a href="#">Smartwatch Puur — Wit</a></h3>
+        <p class="deal-prijs">€ 199,00 <s class="prijs-oud">€ 249,00</s></p>
+        <p class="voorraad"><span class="voorraad-balk" style="--vul:35%" aria-hidden="true"></span>Nog 14 stuks</p>
+        <button class="plusknop plusknop-invert" data-add="smartwatch-puur" aria-label="Smartwatch Puur in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+      </article>
+
+      <article class="deal">
+        <span class="badge badge-deal">−20%</span>
+        <a class="deal-beeld" href="#" tabindex="-1"><img src="img/speaker.jpg" alt="Zwarte draagbare speaker Blok" loading="lazy" width="800" height="1000"></a>
+        <h3 class="deal-naam"><a href="#">Speaker Blok — Draagbaar</a></h3>
+        <p class="deal-prijs">€ 119,95 <s class="prijs-oud">€ 149,95</s></p>
+        <p class="voorraad"><span class="voorraad-balk" style="--vul:20%" aria-hidden="true"></span>Nog 8 stuks</p>
+        <button class="plusknop plusknop-invert" data-add="speaker-blok" aria-label="Speaker Blok in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+      </article>
+
+      <article class="deal">
+        <span class="badge badge-deal">−18%</span>
+        <a class="deal-beeld" href="#" tabindex="-1"><img src="img/hardloopschoen.jpg" alt="Witte hardloopschoen Tempo met koraalrode zool" loading="lazy" width="800" height="1000"></a>
+        <h3 class="deal-naam"><a href="#">Hardloopschoen Tempo</a></h3>
+        <p class="deal-prijs">€ 139,95 <s class="prijs-oud">€ 169,95</s></p>
+        <p class="voorraad"><span class="voorraad-balk" style="--vul:55%" aria-hidden="true"></span>Nog 23 stuks</p>
+        <button class="plusknop plusknop-invert" data-add="tempo-schoen" aria-label="Hardloopschoen Tempo in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+      </article>
+
+      <article class="deal">
+        <span class="badge badge-deal">−29%</span>
+        <a class="deal-beeld" href="#" tabindex="-1"><img src="img/sneaker-multi.jpg" alt="Kleurrijke chunky sneaker Sprint op wit" loading="lazy" width="800" height="1000"></a>
+        <h3 class="deal-naam"><a href="#">Sneaker Sprint — Multi</a></h3>
+        <p class="deal-prijs">€ 99,95 <s class="prijs-oud">€ 139,95</s></p>
+        <p class="voorraad"><span class="voorraad-balk" style="--vul:12%" aria-hidden="true"></span>Nog 5 stuks</p>
+        <button class="plusknop plusknop-invert" data-add="sneaker-sprint" aria-label="Sneaker Sprint in winkelwagen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/></svg><em>In winkelwagen</em></button>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ Service-index ══ -->
+<section class="usp" id="usp">
+  <div class="rand usp-in">
+    <div class="usp-cel" data-rv>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 9h17v14H3zM20 13h5l4 4v6h-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="25" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="24" cy="25" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <h3>Morgen in huis</h3><p>Voor 23.00 uur besteld, de volgende dag bezorgd.</p>
+    </div>
+    <div class="usp-cel" data-rv data-d="1">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 11 16 5l11 6v10l-11 6-11-6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 11l11 6 11-6M16 17v10" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <h3>Gratis bezorging</h3><p>Bij bestellingen vanaf € 25 — anders € 2,95.</p>
+    </div>
+    <div class="usp-cel" data-rv data-d="2">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a12 12 0 1 1-8.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 3v5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 10v7l5 3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <h3>30 dagen bedenktijd</h3><p>Niet goed? Gratis retour, geld direct terug.</p>
+    </div>
+    <div class="usp-cel" data-rv data-d="3">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 6h24v16H14l-6 5v-5H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 12h12M10 16h8" stroke="currentColor" stroke-width="1.6"/></svg>
+      <h3>Elke dag bereikbaar</h3><p>Klantenservice van 08.00 tot 23.00 uur.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Uit de redactie ══ -->
+<section class="sectie redactie" id="redactie">
+  <div class="rand redactie-in">
+    <figure class="redactie-beeld" data-rv>
+      <img src="img/redactie.jpg" alt="Zwart-witfoto van het GULDEN-magazijn met rekken vol producten" loading="lazy" width="1200" height="800">
+      <figcaption>Het magazijn, 06.12 uur — de eerste bestellingen van editie <span class="editie-ref">27</span> gaan de deur uit.</figcaption>
+    </figure>
+    <div class="redactie-tekst" data-rv data-d="1">
+      <h2>Uit de redactie</h2>
+      <blockquote class="quote">‘Een goed product hoeft niet te schreeuwen. Wij zetten het gewoon op de juiste pagina.’</blockquote>
+      <p>Elke editie testen, vergelijken en kiezen wij — zodat u dat niet hoeft te doen. Lees de koopgidsen bij deze editie:</p>
+      <ul class="gids-links">
+        <li><a class="tekstlink" href="#">De Gids: welke ventilator past bij deze zomer?</a></li>
+        <li><a class="tekstlink" href="#">Getest: zes koptelefoons onder de € 250</a></li>
+        <li><a class="tekstlink" href="#">Zo kiest u een smartwatch die u blijft dragen</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ De welkomstgulden ══ -->
+<section class="sectie sectie-coupon">
+  <div class="rand">
+    <div class="coupon" data-rv>
+      <p class="coupon-label"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="17" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 8.4 20 18M8 15.6 20 6" stroke="currentColor" stroke-width="1.5"/></svg> Knip uit — uw welkomstgulden</p>
+      <h2>Mis geen enkele editie</h2>
+      <p class="coupon-tekst">Schrijf u in voor de nieuwsbrief en ontvang <b><span class="fl">ƒ</span> 5 korting</b> op uw eerste bestelling. Elke week de nieuwe editie, als eerste in uw postvak.</p>
+      <form class="coupon-form" id="nieuwsbrief" novalidate>
+        <label class="sr-only" for="nbMail">E-mailadres</label>
+        <input id="nbMail" type="email" placeholder="uw@mailadres.nl" required>
+        <button class="knop" type="submit">Abonneer</button>
+      </form>
+      <p class="coupon-fout" id="nbFout" hidden>Dat lijkt geen geldig e-mailadres — probeer het nog eens.</p>
+      <p class="coupon-succes" id="nbSucces" hidden>✓ Uw gulden is onderweg. Welkom bij de editie van volgende week.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ Colofon ══ -->
+<footer class="colofon">
+  <div class="rand">
+    <p class="colofon-merk"><span class="fl">ƒ</span>GULDEN</p>
+    <div class="colofon-kolommen">
+      <nav aria-label="Klantenservice">
+        <h3>Klantenservice</h3>
+        <ul><li><a href="#">Bezorgen &amp; ophalen</a></li><li><a href="#">Retourneren</a></li><li><a href="#">Bestelling volgen</a></li><li><a href="#">Garantie</a></li><li><a href="#">Contact</a></li></ul>
+      </nav>
+      <nav aria-label="Rubrieken">
+        <h3>Rubrieken</h3>
+        <ul><li><a href="#rubrieken">Tech</a></li><li><a href="#rubrieken">Wonen</a></li><li><a href="#rubrieken">Fashion</a></li><li><a href="#rubrieken">Sport</a></li><li><a href="#rubrieken">Boeken</a></li><li><a href="#rubrieken">Beauty</a></li></ul>
+      </nav>
+      <nav aria-label="Over GULDEN">
+        <h3>Over GULDEN</h3>
+        <ul><li><a href="#">De redactie</a></li><li><a href="#">Koopgidsen</a></li><li><a href="#">Duurzaamheid</a></li><li><a href="#">Werken bij</a></li><li><a href="#">Pers</a></li></ul>
+      </nav>
+      <nav aria-label="Betalen en bezorgen">
+        <h3>Betalen &amp; bezorgen</h3>
+        <ul><li><a href="#">Betaalmethoden</a></li><li><a href="#">Cadeaukaart</a></li><li><a href="#">Zakelijk bestellen</a></li><li><a href="#">Afhaalpunten</a></li></ul>
+      </nav>
+    </div>
+    <div class="colofon-onder">
+      <p class="betaal-chips" aria-label="Betaalmethoden"><span>iDEAL</span><span>Klarna</span><span>Mastercard</span><span>VISA</span><span>PayPal</span></p>
+      <p class="colofon-noot">© 2026 GULDEN Warenhuis B.V. · <a href="#">Voorwaarden</a> · <a href="#">Privacy</a> · <a href="#">Cookies</a></p>
+      <p class="colofon-motto">Ontworpen als courant — elke dag een nieuwe editie.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ Kassabon (winkelwagen-drawer) ══ -->
+<aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Winkelwagen" hidden>
+  <header class="drawer-kop">
+    <div><b>Kassabon</b><span class="drawer-datum cijfers" id="bonDatum">—</span></div>
+    <button class="drawer-sluit" id="drawerSluit" aria-label="Winkelwagen sluiten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="1.8"/></svg></button>
+  </header>
+  <div class="verzendmeter">
+    <div class="vm-ticks" aria-hidden="true"><i id="vmVul" style="--vul:0%"></i></div>
+    <p id="vmTekst">Gratis bezorging vanaf € 25</p>
+  </div>
+  <ul class="bon" id="bonLijst"></ul>
+  <p class="bon-leeg" id="bonLeeg">Uw bon is nog leeg — de redactie heeft <a href="#vandaag">suggesties</a>.</p>
+  <footer class="drawer-voet">
+    <div class="bon-rij bon-sub"><span>Subtotaal</span><b class="cijfers" id="bonSub">€ 0,00</b></div>
+    <div class="bon-rij bon-verzend"><span>Bezorging</span><b class="cijfers" id="bonVerzend">€ 2,95</b></div>
+    <div class="bon-rij bon-totaal"><span>Totaal</span><b class="cijfers" id="bonTotaal">€ 0,00</b></div>
+    <button class="knop knop-vol" type="button">Naar de kassa</button>
+    <p class="drawer-notitie">Preview — in het Shopify-thema gaat deze knop naar de echte checkout.</p>
+  </footer>
+</aside>
+
+<!-- ══ Mobiele kassabalk ══ -->
+<button class="kassabalk" id="kassabalk" hidden>
+  <span class="kb-links"><b class="cijfers" id="kbTeller">0</b> artikelen · <b class="cijfers" id="kbTotaal">€ 0,00</b></span>
+  <span class="kb-cta">Bekijk winkelwagen →</span>
+</button>
+
+<script src="assets/gulden.js"></script>
+</body>
+</html>
