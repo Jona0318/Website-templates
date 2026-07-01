@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="nl" class="js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essentie — Lena de Wit · strateeg &amp; schrijver</title>
+<meta name="description" content="Essentie — Lena de Wit, strateeg &amp; schrijver. Terug naar de essentie: een helder waarom, in woorden. Een rustige, content-first leespagina. Tweetalig (NL/EN).">
+<meta name="theme-color" content="#faf8f2">
+<meta property="og:title" content="Essentie — Lena de Wit, strateeg">
+<meta property="og:description" content="Terug naar de essentie. Een helder waarom, in woorden.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+/* taalherstel vóór de CSS (voorkomt flikker bij EN) */
+(function () {
+  var h = document.documentElement; h.classList.remove('no-js');
+  try { var l = localStorage.getItem('essentie-lang'); if (l === 'en') h.setAttribute('lang', 'en'); } catch (e) {}
+})();
+</script>
+<style>
+/* ============================================================
+   ESSENTIE — Lena de Wit · strateeg & schrijver
+   "Puur inhoud": geen canvas, geen bold graphics, geen kaarten.
+   Een rustige, redactionele leespagina — één kolom, leesserif,
+   hairline-regels en één ingehouden gouden accent.
+   Tweetalig (NL/EN) via data-nl/data-en. Eén zelfstandig bestand.
+   ============================================================ */
+:root{
+  --paper:#faf8f2; --ink:#1c1a15; --ink-2:#39352c; --soft:#6f6857; --faint:#a89e88;
+  --line:#e7e2d5; --line-2:#d8d1bf;
+  --gold:#9a7b2e; --gold-2:#b6902f;
+  --measure:38rem; --gutter:clamp(1.25rem,6vw,2.5rem); --header-h:58px;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --mono:"Space Mono",ui-monospace,SFMono-Regular,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html{scroll-padding-top:calc(var(--header-h) + 1.5rem)}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.18rem;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"liga","onum","pnum"}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+::selection{background:#f0e6c9;color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-weight:500;line-height:1.12;letter-spacing:-.01em}
+em,i{font-style:italic}
+
+.skip{position:fixed;top:-100px;left:1rem;z-index:50;background:var(--ink);color:var(--paper);padding:.6rem 1rem;border-radius:4px;transition:top .2s;font-family:var(--mono);font-size:.8rem}
+.skip:focus{top:1rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* leesmaat */
+.measure{width:100%;max-width:var(--measure);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* minimale, rustige header */
+.masthead{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
+.masthead.solid{border-bottom-color:var(--line)}
+.masthead .bar{max-width:52rem;margin-inline:auto;padding-inline:var(--gutter);height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:inline-flex;align-items:baseline;gap:.55rem}
+.brand b{font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:.01em}
+.brand small{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.lang{display:inline-flex;gap:.1rem;font-family:var(--mono);font-size:.72rem}
+.lang button{background:transparent;border:0;padding:.3rem .45rem;color:var(--faint);letter-spacing:.06em;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.lang button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+.lang .sep{color:var(--line-2);align-self:center}
+
+/* hoofdinhoud */
+main{padding-bottom:5rem}
+.piece{padding-block:clamp(2.6rem,6vw,4.2rem)}
+.piece + .piece{border-top:1px solid var(--line)}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.1rem}
+.tag .n{color:var(--faint)}
+
+/* hero */
+.lede{padding-top:clamp(2.6rem,8vw,5rem)}
+.lede .kick{font-family:var(--mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:1.4rem}
+.lede h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:500;letter-spacing:-.02em;line-height:1.04}
+.lede h1 em{color:var(--gold)}
+.lede .stand{margin-top:1.5rem;font-size:clamp(1.2rem,2.6vw,1.5rem);font-weight:300;color:var(--ink-2);line-height:1.5;font-style:italic}
+.lede .by{margin-top:1.8rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--soft)}
+.lede .by b{color:var(--ink);font-family:var(--serif);font-weight:600;font-style:normal}
+
+/* index / inhoudsopgave */
+.index{margin-top:2.6rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.index a{display:flex;align-items:baseline;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line);transition:color .2s,padding .2s}
+.index a:last-child{border-bottom:0}
+.index a .no{font-family:var(--mono);font-size:.76rem;color:var(--gold);min-width:2.2rem}
+.index a .ti{font-size:1.15rem}
+.index a .ar{margin-left:auto;color:var(--faint);transition:transform .2s,color .2s}
+.index a:hover{color:var(--gold);padding-left:.4rem}
+.index a:hover .ar{transform:translateX(4px);color:var(--gold)}
+.index a.active .no::after{content:" ●";color:var(--gold);font-size:.6em;vertical-align:middle}
+
+/* prozablokken */
+h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:500;margin-bottom:.4rem}
+h3{font-size:1.2rem;font-weight:600;margin:2rem 0 .5rem;letter-spacing:.01em}
+.piece p{margin-top:1.1rem;color:var(--ink-2)}
+.piece p:first-of-type{margin-top:1.3rem}
+.piece p strong,.piece p b{font-weight:600;color:var(--ink)}
+.piece .sub{color:var(--soft);font-size:1.02rem;font-style:italic;margin-top:.3rem}
+.dropcap::first-letter{initial-letter:2.4;font-weight:600;color:var(--gold);margin-right:.6rem}
+@supports not (initial-letter: 2){.dropcap::first-letter{font-size:3.2em;float:left;line-height:.8;font-weight:600;color:var(--gold);margin:.1em .12em 0 0}}
+
+/* Golden Circle — puur typografisch, met klein statisch motief */
+.circle-motif{display:block;margin:.5rem auto 2rem;width:120px;height:120px;color:var(--gold)}
+.circle-motif circle{fill:none;stroke:currentColor}
+.gc{margin-top:1.6rem;border-top:1px solid var(--line)}
+.gc .term{padding:1.5rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:7.5rem 1fr;gap:.4rem 1.4rem;align-items:baseline}
+.gc .term dt{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.gc .term dt small{display:block;color:var(--faint);font-size:.66rem;letter-spacing:.1em;margin-top:.3rem}
+.gc .term dd h3{margin:0 0 .4rem;font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-.01em}
+.gc .term dd p{margin:0;color:var(--ink-2);font-size:1.08rem}
+.pull{margin:2.4rem 0 .6rem;padding-left:1.3rem;border-left:2px solid var(--gold);font-size:clamp(1.4rem,3.4vw,1.9rem);font-weight:400;font-style:italic;line-height:1.3;color:var(--ink)}
+
+/* aanpak — genummerde prozalijst */
+.steps{margin-top:1.6rem;counter-reset:s}
+.steps li{counter-increment:s;padding:1.4rem 0;border-top:1px solid var(--line);display:grid;grid-template-columns:3rem 1fr;gap:.3rem 1.2rem;align-items:baseline}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.9rem;color:var(--gold)}
+.steps li h3{margin:0 0 .35rem;font-size:1.25rem}
+.steps li p{margin:0;color:var(--ink-2);font-size:1.06rem}
+
+/* ervaring — leesregister */
+.reg{margin-top:1.4rem}
+.reg .r{display:grid;grid-template-columns:8rem 1fr auto;gap:.2rem 1.2rem;align-items:baseline;padding:.85rem 0;border-top:1px solid var(--line)}
+.reg .r .yr{font-family:var(--mono);font-size:.78rem;color:var(--soft);white-space:nowrap}
+.reg .r .rl b{font-weight:600}
+.reg .r .rl span{color:var(--soft)}
+.reg .r .st{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.reg .r .st.now{color:var(--gold)}
+
+/* contact — pure links */
+.contact-lines{margin-top:1.6rem;display:grid;gap:0}
+.contact-lines a{display:flex;align-items:baseline;gap:1rem;padding:.9rem 0;border-top:1px solid var(--line);transition:color .2s,padding .2s}
+.contact-lines a:hover{color:var(--gold);padding-left:.4rem}
+.contact-lines a .w{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);min-width:7rem}
+.contact-lines a .v{font-size:1.15rem}
+.contact-lines a:hover .w{color:var(--gold)}
+.addr{margin-top:1.6rem;font-family:var(--mono);font-size:.82rem;color:var(--soft);line-height:1.8}
+
+/* footer */
+.foot{border-top:1px solid var(--line-2);padding-block:2.6rem 3rem;margin-top:1rem}
+.foot .row{display:flex;flex-wrap:wrap;gap:1rem 1.6rem;justify-content:space-between;align-items:baseline}
+.foot .row b{font-family:var(--serif);font-weight:600}
+.foot nav{display:flex;gap:1.1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.78rem}
+.foot nav a{color:var(--soft)}.foot nav a:hover{color:var(--gold)}
+.foot .fine{margin-top:1.6rem;font-family:var(--mono);font-size:.72rem;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.foot .fine a:hover{color:var(--gold)}
+
+@media (max-width:560px){
+  .gc .term{grid-template-columns:1fr}
+  .steps li,.reg .r{grid-template-columns:1fr}
+  .reg .r .st{grid-column:1;justify-self:start}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main" data-nl="Direct naar inhoud" data-en="Skip to content">Direct naar inhoud</a>
+
+<header class="masthead" id="masthead">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="Essentie — naar boven" data-nl-al="Essentie — naar boven" data-en-al="Essentie — back to top">
+      <b>Essentie</b><small data-nl="Lena de Wit" data-en="Lena de Wit">Lena de Wit</small>
+    </a>
+    <div class="lang" role="group" aria-label="Taal / Language">
+      <button type="button" data-lang="nl" aria-pressed="true">NL</button>
+      <span class="sep" aria-hidden="true">/</span>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="measure">
+
+    <section class="lede" aria-labelledby="heroTitle">
+      <span class="kick" data-nl="Strateeg &amp; schrijver · Start with why" data-en="Strategist &amp; writer · Start with why">Strateeg &amp; schrijver · Start with why</span>
+      <h1 id="heroTitle" data-nl="Terug naar de essentie." data-en="Back to the essence.">Terug naar de essentie.</h1>
+      <p class="stand" data-nl="De meeste merken hebben geen tekort aan ideeën, kanalen of tactieken. Ze zijn hun waarom kwijt. Dit is een pleidooi voor minder ruis en meer betekenis — in woorden." data-en="Most brands don't lack ideas, channels or tactics. They've lost their why. This is a case for less noise and more meaning — in words.">De meeste merken hebben geen tekort aan ideeën, kanalen of tactieken. Ze zijn hun waarom kwijt. Dit is een pleidooi voor minder ruis en meer betekenis — in woorden.</p>
+      <p class="by"><span data-nl="Door" data-en="By">Door</span> <b>Lena de Wit</b> · <span data-nl="strateeg &amp; schrijver" data-en="strategist &amp; writer">strateeg &amp; schrijver</span></p>
+    </section>
+
+    <nav class="index" aria-label="Inhoud" data-nl-al="Inhoud" data-en-al="Contents">
+      <a href="#over"><span class="no">01</span><span class="ti" data-nl="Over" data-en="About">Over</span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="#waarom"><span class="no">02</span><span class="ti" data-nl="Het waarom" data-en="The why">Het waarom</span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="#aanpak"><span class="no">03</span><span class="ti" data-nl="De aanpak" data-en="The approach">De aanpak</span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="#ervaring"><span class="no">04</span><span class="ti" data-nl="Ervaring" data-en="Experience">Ervaring</span><span class="ar" aria-hidden="true">→</span></a>
+      <a href="#contact"><span class="no">05</span><span class="ti" data-nl="Contact" data-en="Contact">Contact</span><span class="ar" aria-hidden="true">→</span></a>
+    </nav>
+
+    <section class="piece" id="over" aria-labelledby="overTitle">
+      <span class="tag"><span class="n">01</span> — <span data-nl="Over" data-en="About">Over</span></span>
+      <h2 id="overTitle" data-nl="Over mij" data-en="About me">Over mij</h2>
+      <p class="dropcap" data-nl="Al bijna twintig jaar help ik ondernemers en teams om te zeggen wat ze bedoelen. Niet met meer woorden, maar met de juiste. Mijn werk begint zelden bij een campagne of een logo — het begint bij een vraag: waarom bestaan jullie eigenlijk, en voor wie? Als dat helder is, schrijft de rest zichzelf." data-en="For nearly twenty years I've helped founders and teams say what they mean. Not with more words, but with the right ones. My work rarely starts with a campaign or a logo — it starts with a question: why do you exist, and for whom? Once that's clear, the rest writes itself.">Al bijna twintig jaar help ik ondernemers en teams om te zeggen wat ze bedoelen. Niet met meer woorden, maar met de juiste. Mijn werk begint zelden bij een campagne of een logo — het begint bij een vraag: waarom bestaan jullie eigenlijk, en voor wie? Als dat helder is, schrijft de rest zichzelf.</p>
+      <h3 data-nl="Wie ben ik" data-en="Who am I">Wie ben ik</h3>
+      <p data-nl="Opdrachtgevers omschrijven me als rustig, precies en nieuwsgierig. Ik lees veel, schrijf graag en houd van het moment waarop een vage ambitie ineens één heldere zin wordt. Naast advieswerk schrijf ik essays over merk, taal en betekenis." data-en="Clients describe me as calm, precise and curious. I read a lot, love to write and live for the moment a vague ambition suddenly becomes one clear sentence. Alongside advising, I write essays on brand, language and meaning.">Opdrachtgevers omschrijven me als rustig, precies en nieuwsgierig. Ik lees veel, schrijf graag en houd van het moment waarop een vage ambitie ineens één heldere zin wordt. Naast advieswerk schrijf ik essays over merk, taal en betekenis.</p>
+    </section>
+
+    <section class="piece" id="waarom" aria-labelledby="waaromTitle">
+      <span class="tag"><span class="n">02</span> — <span data-nl="Het waarom" data-en="The why">Het waarom</span></span>
+      <h2 id="waaromTitle" data-nl="Van waarom naar hoe naar wat." data-en="From why to how to what.">Van waarom naar hoe naar wat.</h2>
+      <p class="sub" data-nl="Naar Simon Sinek — de Golden Circle, in woorden." data-en="After Simon Sinek — the Golden Circle, in words.">Naar Simon Sinek — de Golden Circle, in woorden.</p>
+      <svg class="circle-motif" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" stroke-width="1" opacity=".45"/>
+        <circle cx="60" cy="60" r="38" stroke-width="1" opacity=".7"/>
+        <circle cx="60" cy="60" r="20" stroke-width="1.5"/>
+        <circle cx="60" cy="60" r="4" fill="currentColor" stroke="none"/>
+      </svg>
+      <p data-nl="Ieder mens, ieder merk weet voor honderd procent wát het doet. Sommigen weten ook hóe: de één noemt het toegevoegde waarde, de ander z'n USP's. Maar heel weinig mensen of merken weten wáárom ze doen wat ze doen. En met waarom bedoelen we niet 'winst maken' — winst is een resultaat, nooit een doel." data-en="Every person, every brand knows one hundred percent what they do. Some also know how: one calls it added value, another their USPs. But very few people or brands know why they do what they do. And by why we don't mean 'making a profit' — profit is a result, never a purpose.">Ieder mens, ieder merk weet voor honderd procent wát het doet. Sommigen weten ook hóe: de één noemt het toegevoegde waarde, de ander z'n USP's. Maar heel weinig mensen of merken weten wáárom ze doen wat ze doen. En met waarom bedoelen we niet 'winst maken' — winst is een resultaat, nooit een doel.</p>
+      <dl class="gc">
+        <div class="term">
+          <dt data-nl="Waarom" data-en="Why">Waarom<small data-nl="de kern" data-en="the core">de kern</small></dt>
+          <dd><h3 data-nl="Waarom besta je?" data-en="Why do you exist?">Waarom besta je?</h3><p data-nl="Wat is je overtuiging, waar doe je het voor, waarom sta je op? Dit is de kern — en tegelijk het vaagst te verwoorden. Juist daar begint het werk." data-en="What is your conviction, what are you doing it for, why do you get up? This is the core — and the hardest to put into words. That's exactly where the work begins.">Wat is je overtuiging, waar doe je het voor, waarom sta je op? Dit is de kern — en tegelijk het vaagst te verwoorden. Juist daar begint het werk.</p></dd>
+        </div>
+        <div class="term">
+          <dt data-nl="Hoe" data-en="How">Hoe<small data-nl="de manier" data-en="the way">de manier</small></dt>
+          <dd><h3 data-nl="Hoe doe je het?" data-en="How do you do it?">Hoe doe je het?</h3><p data-nl="De manier waarop je je waarom waarmaakt: je principes, je aanpak, wat je anders maakt. Het onderscheidende zit hier." data-en="The way you live out your why: your principles, your approach, what makes you different. The distinctiveness lives here.">De manier waarop je je waarom waarmaakt: je principes, je aanpak, wat je anders maakt. Het onderscheidende zit hier.</p></dd>
+        </div>
+        <div class="term">
+          <dt data-nl="Wat" data-en="What">Wat<small data-nl="het bewijs" data-en="the proof">het bewijs</small></dt>
+          <dd><h3 data-nl="Wat doe je?" data-en="What do you do?">Wat doe je?</h3><p data-nl="Het product, de dienst, het tastbare resultaat. Het bewijs van je waarom — nooit het startpunt." data-en="The product, the service, the tangible result. The proof of your why — never the starting point.">Het product, de dienst, het tastbare resultaat. Het bewijs van je waarom — nooit het startpunt.</p></dd>
+        </div>
+      </dl>
+      <p class="pull" data-nl="Mensen kopen niet wát je doet. Ze kopen wáárom je het doet." data-en="People don't buy what you do. They buy why you do it.">Mensen kopen niet wát je doet. Ze kopen wáárom je het doet.</p>
+      <p data-nl="De meesten denken, doen en communiceren van buiten naar binnen: van het heldere (wát) naar het vage. Geïnspireerde merken doen het omgekeerd — van binnen naar buiten. Ze beginnen bij het waarom, en pas dan volgt de rest. Zo ontstaat richting, en uit richting rustige groei." data-en="Most people think, act and communicate from the outside in: from the clear (what) toward the vague. Inspired brands do the opposite — from the inside out. They start with why, and only then does the rest follow. That's how direction emerges, and from direction, calm growth.">De meesten denken, doen en communiceren van buiten naar binnen: van het heldere (wát) naar het vage. Geïnspireerde merken doen het omgekeerd — van binnen naar buiten. Ze beginnen bij het waarom, en pas dan volgt de rest. Zo ontstaat richting, en uit richting rustige groei.</p>
+    </section>
+
+    <section class="piece" id="aanpak" aria-labelledby="aanpakTitle">
+      <span class="tag"><span class="n">03</span> — <span data-nl="De aanpak" data-en="The approach">De aanpak</span></span>
+      <h2 id="aanpakTitle" data-nl="Een helder waarom, in drie stappen." data-en="A clear why, in three steps.">Een helder waarom, in drie stappen.</h2>
+      <p data-nl="Geen dik rapport, geen model om het model. Drie stappen van overtuiging naar woorden waar je merk mee vooruit kan." data-en="No thick report, no model for its own sake. Three steps from conviction to words your brand can move forward with.">Geen dik rapport, geen model om het model. Drie stappen van overtuiging naar woorden waar je merk mee vooruit kan.</p>
+      <ol class="steps">
+        <li><div><h3 data-nl="Luisteren &amp; graven" data-en="Listen &amp; dig">Luisteren &amp; graven</h3><p data-nl="We ontdekken je waarom, missie en kernwaarden. Ik luister, lees mee en stel de vervelende vraag net iets vaker dan prettig is." data-en="We uncover your why, mission and core values. I listen, read along and ask the awkward question just a little more often than is comfortable.">We ontdekken je waarom, missie en kernwaarden. Ik luister, lees mee en stel de vervelende vraag net iets vaker dan prettig is.</p></div></li>
+        <li><div><h3 data-nl="Verwoorden" data-en="Put into words">Verwoorden</h3><p data-nl="Ik vertaal de strategie naar een helder merkverhaal en de juiste taal: één zin waar iedereen achter staat, en de woorden eromheen." data-en="I turn the strategy into a clear brand story and the right language: one sentence everyone stands behind, and the words around it.">Ik vertaal de strategie naar een helder merkverhaal en de juiste taal: één zin waar iedereen achter staat, en de woorden eromheen.</p></div></li>
+        <li><div><h3 data-nl="Verankeren" data-en="Anchor">Verankeren</h3><p data-nl="Woorden hebben pas waarde als ze blijven. We borgen het waarom in de organisatie, zodat elke keuze en elke tekst erop teruggrijpt." data-en="Words only matter if they stick. We anchor the why in the organisation, so every choice and every text traces back to it.">Woorden hebben pas waarde als ze blijven. We borgen het waarom in de organisatie, zodat elke keuze en elke tekst erop teruggrijpt.</p></div></li>
+      </ol>
+      <p class="pull" data-nl="Merken die hun waarom kennen, maken betere keuzes en groeien rustiger." data-en="Brands that know their why make better choices and grow more calmly.">Merken die hun waarom kennen, maken betere keuzes en groeien rustiger.</p>
+    </section>
+
+    <section class="piece" id="ervaring" aria-labelledby="ervTitle">
+      <span class="tag"><span class="n">04</span> — <span data-nl="Ervaring" data-en="Experience">Ervaring</span></span>
+      <h2 id="ervTitle" data-nl="Waar ik aan bouwde." data-en="What I built along the way.">Waar ik aan bouwde.</h2>
+      <div class="reg">
+        <div class="r"><span class="yr">2021 — <span data-nl="heden" data-en="today">heden</span></span><span class="rl"><b>Essentie</b> — <span data-nl="strateeg &amp; schrijver" data-en="strategist &amp; writer">strateeg &amp; schrijver</span></span><span class="st now" data-nl="Actief" data-en="Active">Actief</span></div>
+        <div class="r"><span class="yr">2015 — <span data-nl="heden" data-en="today">heden</span></span><span class="rl"><b>Woordwaarde</b> — <span data-nl="mede-oprichter" data-en="co-founder">mede-oprichter</span></span><span class="st now" data-nl="Actief" data-en="Active">Actief</span></div>
+        <div class="r"><span class="yr">2012 — 2021</span><span class="rl"><b>Brandt &amp; Letter</b> — <span data-nl="strategiedirecteur" data-en="strategy director">strategiedirecteur</span></span><span class="st" data-nl="Verkocht" data-en="Sold">Verkocht</span></div>
+        <div class="r"><span class="yr">2008 — 2015</span><span class="rl"><b>Het Verhaalbureau</b> — <span data-nl="tekststrateeg" data-en="copy strategist">tekststrateeg</span></span><span class="st" data-nl="Verkocht" data-en="Sold">Verkocht</span></div>
+        <div class="r"><span class="yr">2005 — 2010</span><span class="rl"><b>Ruimte Redactie</b> — <span data-nl="redacteur" data-en="editor">redacteur</span></span><span class="st" data-nl="Verkocht" data-en="Sold">Verkocht</span></div>
+      </div>
+    </section>
+
+    <section class="piece" id="contact" aria-labelledby="contactTitle">
+      <span class="tag"><span class="n">05</span> — <span data-nl="Contact" data-en="Contact">Contact</span></span>
+      <h2 id="contactTitle" data-nl="Een gesprek begint met een vraag." data-en="A conversation starts with a question.">Een gesprek begint met een vraag.</h2>
+      <p data-nl="Over een merk dat vastloopt, een frisse start of gewoon om te sparren over het waarom. Schrijf, bel of app — wat je prettig vindt." data-en="About a brand that's stuck, a fresh start or just to spar about the why. Write, call or message — whatever suits you.">Over een merk dat vastloopt, een frisse start of gewoon om te sparren over het waarom. Schrijf, bel of app — wat je prettig vindt.</p>
+      <div class="contact-lines">
+        <a href="mailto:hallo@essentie.nl"><span class="w" data-nl="Mail" data-en="Email">Mail</span><span class="v">hallo@essentie.nl</span></a>
+        <a href="tel:+31611904820"><span class="w" data-nl="Bellen" data-en="Call">Bellen</span><span class="v">+31 6 11 90 48 20</span></a>
+        <a href="https://wa.me/31611904820" target="_blank" rel="noopener"><span class="w">WhatsApp</span><span class="v">+31 6 11 90 48 20</span></a>
+        <a href="https://www.linkedin.com/in/lenadewit" target="_blank" rel="noopener"><span class="w">LinkedIn</span><span class="v">/in/lenadewit</span></a>
+        <a href="https://maps.google.com/?q=Nieuwe+Gracht+Haarlem" target="_blank" rel="noopener"><span class="w" data-nl="Route" data-en="Directions">Route</span><span class="v">Nieuwe Gracht 12, Haarlem</span></a>
+      </div>
+      <p class="addr">Essentie · Nieuwe Gracht 12, 2011 NB Haarlem<br><span data-nl="Op afspraak, van maandag tot vrijdag." data-en="By appointment, Monday to Friday.">Op afspraak, van maandag tot vrijdag.</span></p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="measure">
+    <div class="row">
+      <b>Essentie</b>
+      <nav aria-label="Footer" data-nl-al="Footer" data-en-al="Footer">
+        <a href="#over" data-nl="Over" data-en="About">Over</a>
+        <a href="#waarom" data-nl="Waarom" data-en="Why">Waarom</a>
+        <a href="#aanpak" data-nl="Aanpak" data-en="Approach">Aanpak</a>
+        <a href="#ervaring" data-nl="Ervaring" data-en="Experience">Ervaring</a>
+        <a href="#contact" data-nl="Contact" data-en="Contact">Contact</a>
+      </nav>
+    </div>
+    <div class="fine">
+      <span>&copy; <span data-year>2026</span> Essentie · Lena de Wit</span>
+      <a href="#top" data-nl="Naar boven ↑" data-en="Back to top ↑">Naar boven ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  /* jaartal */
+  $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  /* taal — verwisselt de content-taal (data-nl/data-en) */
+  (function () {
+    var stored = 'nl';
+    try { var s = localStorage.getItem('essentie-lang'); if (s === 'en' || s === 'nl') stored = s; } catch (e) {}
+    function apply(lang) {
+      root.setAttribute('lang', lang);
+      $$('[data-nl]').forEach(function (el) { var v = el.getAttribute('data-' + lang); if (v != null) el.textContent = v; });
+      $$('[data-nl-al]').forEach(function (el) { var v = el.getAttribute('data-' + lang + '-al'); if (v != null) el.setAttribute('aria-label', v); });
+      $$('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false'); });
+      try { localStorage.setItem('essentie-lang', lang); } catch (e) {}
+    }
+    $$('.lang button').forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); }); });
+    apply(stored);
+  })();
+
+  /* zachte header-lijn + index scroll-spy (één lichte scrollloop) */
+  (function () {
+    var mast = document.getElementById('masthead');
+    var idxLinks = {}; $$('.index a').forEach(function (a) { var h = a.getAttribute('href'); if (h) idxLinks[h.slice(1)] = a; });
+    var ids = Object.keys(idxLinks);
+    var ticking = false;
+    function frame() {
+      ticking = false;
+      if (mast) mast.classList.toggle('solid', window.scrollY > 8);
+      var mid = window.innerHeight * 0.35, cur = null;
+      ids.forEach(function (id) { var el = document.getElementById(id); if (!el) return; var t = el.getBoundingClientRect().top; if (t - mid <= 0) cur = id; });
+      ids.forEach(function (id) { idxLinks[id].classList.toggle('active', id === cur); });
+    }
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    window.addEventListener('scroll', req, { passive: true });
+    window.addEventListener('resize', req, { passive: true });
+    frame();
+  })();
+})();
+</script>
+</body>
+</html>

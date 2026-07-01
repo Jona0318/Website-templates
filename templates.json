@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
   "generated": "2026-06-29",
-  "count": 162,
+  "count": 163,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8567,6 +8567,60 @@
           "Interactief",
           "Canvas",
           "Bold"
+        ]
+      }
+    },
+    {
+      "id": 163,
+      "slug": "163-essentie",
+      "path": "templates/163-essentie/",
+      "title": "Essentie — Lena de Wit, strateeg & schrijver",
+      "name": "Essentie",
+      "sector": "advies",
+      "tier": "editorial",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#faf8f2",
+        "#9a7b2e",
+        "#1c1a15",
+        "#e7e2d5",
+        "#6f6857"
+      ],
+      "fonts": [
+        "Spectral",
+        "Space Mono"
+      ],
+      "mechanics": [
+        "language-toggle",
+        "scroll-spy",
+        "sticky-header",
+        "reduced-motion-safe",
+        "no-canvas",
+        "content-first"
+      ],
+      "sections": [
+        "lede",
+        "index",
+        "over",
+        "waarom(golden-circle-proza)",
+        "aanpak",
+        "ervaring",
+        "contact"
+      ],
+      "note": "Puur-inhoud, content-first variant van de Golden Circle-adviseurssite: bewust GEEN canvas, geen bold graphics, geen kaarten of schaduwen. Een rustige, redactionele leespagina — één leeskolom, Spectral-leesserif, hairline-regels, drop-cap, pull-quotes, oversized sectienummers en één ingehouden gouden accent. De Golden Circle (waarom/hoe/wat) staat puur als tekst met een klein statisch concentrisch motief. Volledige NL/EN-taalwissel (verwisselt de content-taal), inhoudsopgave met scroll-spy en contact als pure links. Tegenpool van de drie visuele/interactieve varianten.",
+      "card": {
+        "title": "Essentie — puur inhoud",
+        "blurb": "Content-first leespagina: geen canvas of graphics, alleen mooie typografie. De Golden Circle als tekst, Spectral-serif, hairline-regels en subtiel goud. Volledige NL/EN-taalwissel.",
+        "emoji": "¶",
+        "grad": [
+          "#faf8f2",
+          "#9a7b2e"
+        ],
+        "tags": [
+          "Redactioneel",
+          "Content-first",
+          "Tweetalig"
         ]
       }
     }
