@@ -1,7 +1,7 @@
 {
   "_about": "Doorzoekbare index van alle templates in deze galerij. Lees DIT bestand om de juiste template te kiezen i.p.v. alle index.html-bestanden te openen — dat scheelt tokens. Elke template is een zelfstandig, dependency-vrij HTML-bestand (CSS+JS inline), behalve 01-business (meerdere pagina's met losse css/ en js/).",
-  "generated": "2026-06-29",
-  "count": 164,
+  "generated": "2026-07-02",
+  "count": 165,
   "generator": "Templates met een \"recipe\"-veld zijn gebouwd uit recipes/<slug>.json via `node _kit/build.mjs`. De gedeelde schil staat in _kit/core.css + _kit/core.js en wordt bij het bouwen in elk bestand ge-inlined (output blijft dependency-vrij). Zie recipes/_schema.md en PATTERNS.md.",
   "tiers": {
     "basis": "Eén schone, responsive pagina; nette basisinteractie.",
@@ -8682,6 +8682,72 @@
           "Persoonlijk",
           "CV + why-reis",
           "Tweetalig"
+        ]
+      }
+    },
+    {
+      "id": 165,
+      "slug": "165-kantlijn",
+      "path": "templates/165-kantlijn/",
+      "title": "Kantlijn — de algemene standaardtemplate",
+      "name": "Kantlijn",
+      "sector": "algemeen",
+      "tier": "signature",
+      "scheme": "light",
+      "multipage": false,
+      "palette": [
+        "#f6f3f4",
+        "#772c50",
+        "#2b2229",
+        "#6e6069",
+        "#efdde6"
+      ],
+      "fonts": [
+        "Besley",
+        "Source Sans 3",
+        "Fragment Mono"
+      ],
+      "mechanics": [
+        "split-flap-hero",
+        "count-up",
+        "pricing-toggle",
+        "quote-carousel",
+        "faq-accordion",
+        "scroll-spy",
+        "sticky-header",
+        "mobile-menu",
+        "contact-form",
+        "form-validate",
+        "reveal-system",
+        "anim-opt-in",
+        "reduced-motion-fallback"
+      ],
+      "sections": [
+        "hero(split-flap-wisselbord)",
+        "kerncijfers(flap+count-up)",
+        "diensten(register-rijen)",
+        "over(duotone-initiaal+waarden)",
+        "werkwijze(4-stappen-kantlijn)",
+        "cases(2+1-asymmetrisch)",
+        "testimonials(quote-carrousel)",
+        "prijzen(3-tiers+flap-toggle)",
+        "faq(accordion)",
+        "cta-band",
+        "contact(schrijflijn-formulier)"
+      ],
+      "note": "De algemene standaardtemplate als grootboek: porselein-rozegrijs grondvlak, aubergine inkt en één diep moerbei-accent (bewust géén cream). Registerrijen in plaats van kaarten, schrijflijn-inputs in plaats van boxjes, hairlines en een doorlopende kantlijn als ruggengraat; Besley (Clarendon-slab) boven Source Sans 3, Fragment Mono voor kapitaallabels en tabular-cijfers. SIGNATUUR: een mechanisch split-flap-wisselbord in de herokop (als een stationsvertrekbord) dat met gestaffeld klappende karakterkaartjes wisselt tussen doelgroepen — praktijken, winkels, bureaus, verenigingen; het motief keert precies één keer terug wanneer de kerncijfers per cijfer neerklappen. Volledig inhoud-agnostisch en herthemabaar via :root-variabelen (drie alternatieve kleurstellingen uitgecommentarieerd in de CSS); reduced-motion-veilig en volledig werkend zonder JS.",
+      "card": {
+        "title": "Kantlijn — de standaard-one-pager",
+        "blurb": "De universele basis als goed bijgehouden grootboek: registerrijen, schrijflijn-inputs en één moerbei-accent. In de hero klapt een mechanisch split-flap-bord tussen doelgroepen — bewijs dat dit ontwerp voor iedereen werkt.",
+        "emoji": "▤",
+        "grad": [
+          "#772c50",
+          "#2b2229"
+        ],
+        "tags": [
+          "Algemeen",
+          "Split-flap",
+          "Signature"
         ]
       }
     }
